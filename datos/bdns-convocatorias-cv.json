@@ -1,0 +1,3276 @@
+{
+  "version": "2026-10-18",
+  "consultado": "2026-10-18T20:26:17+02:00",
+  "origen": "BDNS · API pública del Sistema Nacional de Publicidad de Subvenciones y Ayudas Públicas (SNPSAP), Intervención General de la Administración del Estado: https://www.infosubvenciones.es/bdnstrans/api (OpenAPI: https://www.infosubvenciones.es/bdnstrans/estaticos/doc/snpsap-api.json). Búsquedas a las 20:26 y fichas de detalle entre las 20:28 y las 20:31 (hora peninsular) del 18/10/2026.",
+  "licencia": "Aviso legal del SNPSAP, https://www.infosubvenciones.es/bdnstrans/GE/es/avisolegal (texto leído en https://www.infosubvenciones.es/bdnstrans/assets/i18n/es.json, claves PagAvisoLegal.*). Permite reutilizar con fines comerciales y no comerciales (copia, difusión, modificación, adaptación, extracción, reordenación y combinación) con estas condiciones: no desnaturalizar el sentido de la información; citar la fuente («Origen de los datos: Intervención General de la Administración del Estado»); mencionar la fecha de última actualización; no sugerir que la IGAE participa, patrocina o apoya la reutilización; conservar los metadatos de fecha y condiciones. La IGAE no garantiza la continuidad ni responde de errores u omisiones; cada administración es responsable de lo que suministra. Los datos personales solo se reutilizan para controlar la gestión pública o, tras disociarlos, con fines históricos, estadísticos o científicos (esta copia no contiene concesiones ni beneficiarios).",
+  "aviso": "Copia de respaldo para la demo; la fuente viva es la API. Que una convocatoria aparezca aquí no dice que esté abierta hoy: revisa el plazo en la ficha oficial.",
+  "consulta": [
+    "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/busqueda?vpd=GE&page=0&pageSize=200&order=fechaRecepcion&direccion=desc&tiposBeneficiario=1&fechaDesde=01/07/2026&tipoAdministracion=A&regiones=54,55,56,57",
+    "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/busqueda?vpd=GE&page=0&pageSize=200&order=fechaRecepcion&direccion=desc&tiposBeneficiario=1&fechaDesde=01/07/2026&tipoAdministracion=C",
+    "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/busqueda?vpd=GE&page=0&pageSize=200&order=fechaRecepcion&direccion=desc&tiposBeneficiario=1&fechaDesde=01/07/2026&tipoAdministracion=L&organos=2903",
+    "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=<numeroBDNS>"
+  ],
+  "notas": [
+    "Origen de los datos: Intervención General de la Administración del Estado.",
+    "Selección: convocatorias recibidas en BDNS desde el 01/07/2026 con tiposBeneficiario=1 (personas físicas que no desarrollan actividad económica). Incluye las 18 autonómicas de la Comunitat Valenciana (regiones 54, 55, 56 y 57), las 17 del Ayuntamiento de València (órgano 2903) y las 24 estatales (tipoAdministracion=C) más recientes con ámbito España o todo el mundo. Se excluyen las estatales limitadas a otras comunidades.",
+    "plazoSolicitud.abierto copia el campo `abierto` de BDNS («¿Se puede solicitar indefinidamente?»), que no significa «abierta hoy». Las fechas y textos de plazo se copian tal cual.",
+    "Si tipoConvocatoria es «Concesión directa - instrumental», suele tratarse de una subvención nominativa o directa que no admite solicitudes de la ciudadanía, aunque esté etiquetada para personas físicas.",
+    "grupoConsulta indica de qué consulta procede cada convocatoria.",
+    "Los nombres de campo no son los de la API: numeroBDNS es codigoBDNS, titulo es descripcion y plazoSolicitud agrupa abierto, fechas y textos de plazo (textoInicio y textoFin son textInicio y textFin). La lista completa está en SETUP.md."
+  ],
+  "convocatorias": [
+    {
+      "numeroBDNS": "935684",
+      "titulo": "Becas asistencia julio 2026 Devesa-Albufera",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "local_ayuntamiento_valencia",
+      "organo": {
+        "nivel1": "LOCAL",
+        "nivel2": "VALENCIA",
+        "nivel3": "AYUNTAMIENTO DE VALENCIA"
+      },
+      "tipoConvocatoria": "Concesión directa - instrumental",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 12000,
+      "regiones": ["ES523 - Valencia / València"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Fomento del Empleo",
+      "fechaRecepcion": "2026-10-16",
+      "publicacionesDiarioOficial": [],
+      "plazoSolicitud": {
+        "abierto": true,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "ORDENANZA GENERAL DE SUBVENCIONES DEL AYUNTAMIENTO DE VALENCIA Y SUS ORGANISMOS PÚBLICOS",
+        "url": "https://sede.valencia.es/sede/ordenanzas/index.xhtml"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "Resol__10.07.25_notf_15.07.pdf",
+          "fechaPublicacion": "2026-10-16",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1538231"
+        },
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "Resol__10.07.25_notf_15.07.pdf",
+          "fechaPublicacion": "2026-10-16",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1538230"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/935684",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=935684"
+    },
+    {
+      "numeroBDNS": "934474",
+      "titulo": "Subvención directa al Consejo de la Juventud de España para sufragar sus gastos de funcionamiento de conformidad con lo establecido en el Real Decreto 816/2026, de 7 de octubre, por el que se regula la concesión directa de subvenciones a entidades del ter",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE JUVENTUD E INFANCIA",
+        "nivel3": "INSTITUTO DE LA JUVENTUD"
+      },
+      "tipoConvocatoria": "Concesión directa - instrumental",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 1000000,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Servicios Sociales y Promoción Social",
+      "fechaRecepcion": "2026-10-08",
+      "publicacionesDiarioOficial": [],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2026-10-09",
+        "fechaFinSolicitud": "2026-10-22",
+        "textoInicio": "El día siguiente al de la publicación del Real Decreto en el BOE",
+        "textoFin": "Diez días hábiles desde la entrada en vigor del Real Decreto"
+      },
+      "basesReguladoras": {
+        "titulo": "Real Decreto 816/2026, de 7 de octubre, por el que se regula la concesión directa de subvenciones a entidades del tercer sector y a otros organismos en materia de protección a la infancia y la adolescencia y la promoción de la participación de la juventud",
+        "url": "https://www.boe.es/boe/dias/2026/10/08/index.php?e=9592"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Documento de la convocatoria en español",
+          "nombreFichero": "BOE-A-2026-20916.pdf",
+          "fechaPublicacion": "2026-10-08",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1534710"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/934474",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=934474"
+    },
+    {
+      "numeroBDNS": "933999",
+      "titulo": "SUBVENCIÓN NOMMINATIVA REAL BASÍLICA VIRGEN DESAMPARADOS 2026",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "local_ayuntamiento_valencia",
+      "organo": {
+        "nivel1": "LOCAL",
+        "nivel2": "VALENCIA",
+        "nivel3": "AYUNTAMIENTO DE VALENCIA"
+      },
+      "tipoConvocatoria": "Concesión directa - instrumental",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 30000,
+      "regiones": ["ES523 - Valencia / València"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Cultura",
+      "fechaRecepcion": "2026-10-07",
+      "publicacionesDiarioOficial": [],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2026-01-01",
+        "fechaFinSolicitud": "2026-12-31",
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "ORDENANZA GENERAL DE SUBVENCIONES DEL AYUNTAMIENTO DE VALENCIA Y SUS ORGANISMOS PÚBLICOS",
+        "url": "https://sede.valencia.es/sede/ordenanzas/index.xhtml"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "acord_basilica_102.pdf",
+          "fechaPublicacion": "2026-10-07",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1533431"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/933999",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=933999"
+    },
+    {
+      "numeroBDNS": "933465",
+      "titulo": "PREMIOS ARTES Y CREATIVIDAD JOVEN 2026",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "local_ayuntamiento_valencia",
+      "organo": {
+        "nivel1": "LOCAL",
+        "nivel2": "VALENCIA",
+        "nivel3": "AYUNTAMIENTO DE VALENCIA"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 75000,
+      "regiones": ["ES523 - Valencia / València"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PYME Y PERSONAS FÍSICAS QUE DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Cultura",
+      "fechaRecepcion": "2026-10-05",
+      "publicacionesDiarioOficial": [],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "20 días naturales a contar desde el día siguiente al de la publicación del B.O.P.",
+        "textoFin": "Transcurrido el plazo de 20 días desde el día siguiente de la publicación en el B.O.P."
+      },
+      "basesReguladoras": {
+        "titulo": "ORDENANZA GENERAL DE SUBVENCIONES DEL AYUNTAMIENTO DE VALENCIA Y SUS ORGANISMOS PÚBLICOS",
+        "url": "https://sede.valencia.es/sede/ordenanzas/index.xhtml"
+      },
+      "sedeElectronica": "https://sede.valencia.es",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "2.-REV_BASES_ART_I_CREATIVITAT_JOVE_2026.pdf",
+          "fechaPublicacion": "2026-10-08",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1534476"
+        },
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "2.-BASES_ARTE_Y_CREATIVIDAD_JOVEN_2026.pdf",
+          "fechaPublicacion": "2026-10-08",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1534475"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/933465",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=933465"
+    },
+    {
+      "numeroBDNS": "933188",
+      "titulo": "PREMIO POR ESTUDIOS EN EL EXTRANJERO PARA ALUMNADO CONSERVATORIO MUNICIPAL JOSÉ ITURBI 25/26",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "local_ayuntamiento_valencia",
+      "organo": {
+        "nivel1": "LOCAL",
+        "nivel2": "VALENCIA",
+        "nivel3": "AYUNTAMIENTO DE VALENCIA"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 10000,
+      "regiones": ["ES523 - Valencia / València"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Educación",
+      "fechaRecepcion": "2026-10-02",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "B.O.P. DE VALENCIA",
+          "fechaPublicacion": "2026-10-16",
+          "cve": "BOPV-2026/12510",
+          "url": "https://bop.dival.es/bop/downloads?anuncioCSV=BOPV-2026/12510&lang=es",
+          "titulo": "Anuncio del Ayuntamiento de Valencia sobre extracto del Acuerdo de 02 de octubre 2026 de la Junta de Gobierno Local , por el que se aprueba la convocatoria del Premio para estudios en el extranjero destinado al alumnado del Conservatorio de música José Iturbi"
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": true,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "ORDENANZA GENERAL DE SUBVENCIONES DEL AYUNTAMIENTO DE VALENCIA Y SUS ORGANISMOS PÚBLICOS",
+        "url": "https://sede.valencia.es/sede/ordenanzas/index.xhtml"
+      },
+      "sedeElectronica": "https://sede.valencia.es",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "Acuerdo_Convocatoria_premio_JGL_02-10-26_para_peguis.pdf",
+          "fechaPublicacion": "2026-10-05",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1532362"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/933188",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=933188"
+    },
+    {
+      "numeroBDNS": "933143",
+      "titulo": "Convocatoria para el ejercicio 2026 del premio a tesis doctorales de especial relevancia en materia laboral.",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE TRABAJO Y ECONOMÍA SOCIAL",
+        "nivel3": "SUBSECRETARÍA DE TRABAJO Y ECONOMÍA SOCIAL"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 1850,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Fomento del Empleo",
+      "fechaRecepcion": "2026-10-02",
+      "publicacionesDiarioOficial": [],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "INDICADO EN LA CONVOCATORIA Y SU EXTRACTO",
+        "textoFin": "INDICADO EN LA CONVOCATORIA Y SU EXTRACTO"
+      },
+      "basesReguladoras": {
+        "titulo": "Orden TES/268/2025, de 11 de marzo, por la que se aprueban las bases reguladoras para la concesión de premios a tesis doctorales de especial relevancia en materia laboral.",
+        "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-5590"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "Convocatoria premios tesis.pdf.xsi.pdf",
+          "fechaPublicacion": "2026-10-02",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1531271"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/933143",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=933143"
+    },
+    {
+      "numeroBDNS": "932214",
+      "titulo": "AVS SUBVENCIÓ NOMINATIVA PARA ASOC PERSONAS SORDAS",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "local_ayuntamiento_valencia",
+      "organo": {
+        "nivel1": "LOCAL",
+        "nivel2": "VALENCIA",
+        "nivel3": "AYUNTAMIENTO DE VALENCIA"
+      },
+      "tipoConvocatoria": "Concesión directa - instrumental",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 36441.6,
+      "regiones": ["ES523 - Valencia / València"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Educación",
+      "fechaRecepcion": "2026-09-29",
+      "publicacionesDiarioOficial": [],
+      "plazoSolicitud": {
+        "abierto": true,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "ORDENANZA GENERAL DE SUBVENCIONES DEL AYUNTAMIENTO DE VALENCIA Y SUS ORGANISMOS PÚBLICOS",
+        "url": "https://sede.valencia.es/sede/ordenanzas/index.xhtml"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "PROGRAMA_INTEGRAL_DE_FORMACION_Y_EDUCACION_PARA_PERSONAS_SORDAS-2.pdf",
+          "fechaPublicacion": "2026-09-29",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1528720"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/932214",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=932214"
+    },
+    {
+      "numeroBDNS": "932161",
+      "titulo": "ASPERGER SUBVENCIÓN NOMINATIVA PROGRAMA ENTRE-TEAS",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "local_ayuntamiento_valencia",
+      "organo": {
+        "nivel1": "LOCAL",
+        "nivel2": "VALENCIA",
+        "nivel3": "AYUNTAMIENTO DE VALENCIA"
+      },
+      "tipoConvocatoria": "Concesión directa - instrumental",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 28386.24,
+      "regiones": ["ES523 - Valencia / València"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Educación",
+      "fechaRecepcion": "2026-09-29",
+      "publicacionesDiarioOficial": [],
+      "plazoSolicitud": {
+        "abierto": true,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "ORDENANZA GENERAL DE SUBVENCIONES DEL AYUNTAMIENTO DE VALENCIA Y SUS ORGANISMOS PÚBLICOS",
+        "url": "https://sede.valencia.es/sede/ordenanzas/index.xhtml"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "PEGUIS_-_Acuerdo_CONCESION_JUSTIFICACION_Y_PAGO_ENTRE-TEAS_-_ASPERGER-TEA-VLC.pdf",
+          "fechaPublicacion": "2026-09-29",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1528545"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/932161",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=932161"
+    },
+    {
+      "numeroBDNS": "932069",
+      "titulo": "SUBVENCIONES PARA LA FINANCIACIÓN DE ACCIONES FORMATIVAS ESPECÍFICAMENTE A COLECTIVOS VULNERABLES, Y VINCULADAS AL CATÁLOGO NACIONAL DE ESTÁNDARES DE COMPETENCIAS PROFESIONALES, EN SECTORES DE ALTA DEMANDA, PARA EL AÑO 2026.",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE EDUCACIÓN, FORMACIÓN PROFESIONAL Y DEPORTES",
+        "nivel3": "SECRETARÍA GENERAL DE FORMACIÓN PROFESIONAL"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 46700000,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "GRAN EMPRESA",
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PERSONAS JURÍDICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PYME Y PERSONAS FÍSICAS QUE DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Fomento del Empleo",
+      "fechaRecepcion": "2026-09-28",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "BOE. BOLETÍN OFICIAL DEL ESTADO",
+          "fechaPublicacion": "2026-09-30",
+          "cve": "BOE-B-2026-31652",
+          "url": "http://www.boe.es/diario_boe/verifica.php?acc=Verificar&c=BOE-B-2026-31652",
+          "titulo": "Extracto de la Resolución de la Secretaría General de Formación Profesional de fecha 25 de Septiembre de 2026, por la que se procede a la convocatoria, de ámbito estatal, de concesión de subvenciones a entidades de formación profesional para la financiación de acciones formativas vinculadas al catálogo nacional de estándares de competencias profesionales, en sectores de alta demanda, priorizando la atención de personas en situación de especial vulnerabilidad, para el año 2026."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "Desde el día siguiente al de la publicación del extracto de la convocatoria en BOE",
+        "textoFin": "Diez días (10) naturales a contar desde el día siguiente al de la publicación del extracto en BOE"
+      },
+      "basesReguladoras": {
+        "titulo": "Orden EFP/705/2022, de 20 de julio, (BOE 26 de julio) por la que se establecen las BBRR para la concesión de subvenciones para la financiación de acciones formativas vinculadas al CNCFP y su modificación por la Orden EFP/1189/2023, de 30 de octubre.",
+        "url": "https://www.boe.es/eli/es/o/2022/07/20/efp705"
+      },
+      "sedeElectronica": "https://sede.educacion.gob.es",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Documento de la convocatoria en español",
+          "nombreFichero": "CONVOCATORIA VULNERABILIDAD_2026_VF.pdf.xsig.pdf",
+          "fechaPublicacion": "2026-09-28",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1528299"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/932069",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=932069"
+    },
+    {
+      "numeroBDNS": "932058",
+      "titulo": "SUBVENCIONES A ENTIDADES DE FORMACIÓN PARA LA FINANCIACIÓN DE ACCIONES FORMATIVAS VINCULADAS AL CATÁLOGO NACIONAL DE ESTÁNDARES DE COMPETENCIAS PROFESIONALES, EN EL SECTOR DEL TURISMO PATRIMONIAL, CULTURAL Y SOSTENIBLE, PARA EL AÑO 2026",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE EDUCACIÓN, FORMACIÓN PROFESIONAL Y DEPORTES",
+        "nivel3": "SECRETARÍA GENERAL DE FORMACIÓN PROFESIONAL"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 20000000,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "GRAN EMPRESA",
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PERSONAS JURÍDICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PYME Y PERSONAS FÍSICAS QUE DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Fomento del Empleo",
+      "fechaRecepcion": "2026-09-28",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "BOE. BOLETÍN OFICIAL DEL ESTADO",
+          "fechaPublicacion": "2026-09-30",
+          "cve": "BOE-B-2026-31651",
+          "url": "http://www.boe.es/diario_boe/verifica.php?acc=Verificar&c=BOE-B-2026-31651",
+          "titulo": "Extracto de la Resolución de la Secretaría General de Formación Profesional de fecha 25 de Septiembre de 2026, por la que se procede a la convocatoria de ámbito estatal para la concesión de subvenciones a entidades de formación destinadas a la financiación de acciones formativas vinculadas al catálogo nacional de estándares de competencias profesionales, en el sector del turismo patrimonial, cultural y sostenible, así como de acciones formativas de apoyo a dicho sector, para el año 2026."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "Desde el día siguiente al de la publicación del extracto de la convocatoria en BOE",
+        "textoFin": "Diez días (10) naturales a contar desde el día siguiente al de la publicación del extracto en BOE"
+      },
+      "basesReguladoras": {
+        "titulo": "Orden EFP/705/2022, de 20 de julio, (BOE 26 de julio) por la que se establecen las BBRR para la concesión de subvenciones para la financiación de acciones formativas vinculadas al CNCFP y su modificación por la Orden EFP/1189/2023, de 30 de octubre.",
+        "url": "https://www.boe.es/eli/es/o/2022/07/20/efp705"
+      },
+      "sedeElectronica": "https://sede.educacion.gob.es",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Documento de la convocatoria en español",
+          "nombreFichero": "CONVOCATORIA TURISMO PATRIMONIAL_AF_2026_VF.pdf.xsig.pdf",
+          "fechaPublicacion": "2026-09-28",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1528284"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/932058",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=932058"
+    },
+    {
+      "numeroBDNS": "932056",
+      "titulo": "SUBVENCIONES A ENTIDADES DE FORMACIÓN PARA LA FINANCIACIÓN DE ACCIONES FORMATIVAS VINCULADAS AL CATÁLOGO NACIONAL DE ESTÁNDARES DE COMPETENCIAS PROFESIONALES, EN EL SECTOR DE LA CONSTRUCCIÓN, PARA EL AÑO 2026.",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE EDUCACIÓN, FORMACIÓN PROFESIONAL Y DEPORTES",
+        "nivel3": "SECRETARÍA GENERAL DE FORMACIÓN PROFESIONAL"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 25000000,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "GRAN EMPRESA",
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PERSONAS JURÍDICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PYME Y PERSONAS FÍSICAS QUE DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Fomento del Empleo",
+      "fechaRecepcion": "2026-09-28",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "BOE. BOLETÍN OFICIAL DEL ESTADO",
+          "fechaPublicacion": "2026-09-30",
+          "cve": "BOE-B-2026-31650",
+          "url": "http://www.boe.es/diario_boe/verifica.php?acc=Verificar&c=BOE-B-2026-31650",
+          "titulo": "Extracto de la Resolución de la Secretaría General de Formación Profesional de fecha 25 de Septiembre de 2026, por la que se procede a la convocatoria, de ámbito estatal, de concesión de subvenciones a entidades de formación para la financiación de acciones formativas vinculadas al catálogo nacional de estándares de competencias profesionales, en el sector de la construcción, para el año 2026."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "Desde el día siguiente al de la publicación del extracto de la convocatoria en BOE",
+        "textoFin": "Diez días (10) naturales a contar desde el día siguiente al de la publicación del extracto en BOE"
+      },
+      "basesReguladoras": {
+        "titulo": "Orden EFP/705/2022, de 20 de julio, (BOE 26 de julio) por la que se establecen las BBRR para la concesión de subvenciones para la financiación de acciones formativas vinculadas al CNCFP y su modificación por la Orden EFP/1189/2023, de 30 de octubre.",
+        "url": "https://www.boe.es/eli/es/o/2022/07/20/efp705"
+      },
+      "sedeElectronica": "https://sede.educacion.gob.es",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Documento de la convocatoria en español",
+          "nombreFichero": "CONVOCATORIA CONSTRUCCIÓN_AF_2026_VF.pdf.xsig.pdf",
+          "fechaPublicacion": "2026-09-28",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1528273"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/932056",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=932056"
+    },
+    {
+      "numeroBDNS": "932047",
+      "titulo": "SUBVENCIONES A ENTIDADES DE FORMACIÓN PARA LA FINANCIACIÓN DE ACCIONES FORMATIVAS VINCULADAS AL CATÁLOGO NACIONAL DE ESTÁNDARES DE COMPETENCIAS PROFESIONALES, EN OFICIOS Y DESEMPEÑOS ESTRATÉGICOS, PARA EL AÑO 2026",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE EDUCACIÓN, FORMACIÓN PROFESIONAL Y DEPORTES",
+        "nivel3": "SECRETARÍA GENERAL DE FORMACIÓN PROFESIONAL"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 35000000,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "GRAN EMPRESA",
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PERSONAS JURÍDICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PYME Y PERSONAS FÍSICAS QUE DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Fomento del Empleo",
+      "fechaRecepcion": "2026-09-28",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "BOE. BOLETÍN OFICIAL DEL ESTADO",
+          "fechaPublicacion": "2026-09-30",
+          "cve": "BOE-B-2026-31649",
+          "url": "http://www.boe.es/diario_boe/verifica.php?acc=Verificar&c=BOE-B-2026-31649",
+          "titulo": "Extracto de la Resolución de la Secretaría General de Formación Profesional de fecha 25 de Septiembre de 2026 por la que se  procede a la convocatoria, de ámbito  estatal, de concesión de subvenciones a entidades de formación para la financiación de acciones formativas vinculadas al catálogo nacional de estándares de competencias profesionales, en oficios y desempeños estratégicos, para el año 2026."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "Desde el día siguiente al de la publicación del extracto de la convocatoria en BOE",
+        "textoFin": "Diez días (10) naturales a contar desde el día siguiente al de la publicación del extracto en BOE"
+      },
+      "basesReguladoras": {
+        "titulo": "Orden EFP/705/2022, de 20 de julio, (BOE 26 de julio) por la que se establecen las BBRR para la concesión de subvenciones para la financiación de acciones formativas vinculadas al CNCFP y su modificación por la Orden EFP/1189/2023, de 30 de octubre.",
+        "url": "https://www.boe.es/eli/es/o/2022/07/20/efp705"
+      },
+      "sedeElectronica": "https://sede.educacion.gob.es",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Documento de la convocatoria en español",
+          "nombreFichero": "CONVOCATORIA OFICIOS_AF_26_VF.pdf.xsig.pdf",
+          "fechaPublicacion": "2026-09-28",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1528250"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/932047",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=932047"
+    },
+    {
+      "numeroBDNS": "931806",
+      "titulo": "Resolución de la Dirección General del Instituto de la Juventud, por la que se convocan ayudas del Programa\n«Erasmus+», línea de Juventud, correspondientes a la ronda de octubre de 2026",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE JUVENTUD E INFANCIA",
+        "nivel3": "INSTITUTO DE LA JUVENTUD"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 4701960.6,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PERSONAS JURÍDICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Educación",
+      "fechaRecepcion": "2026-09-25",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "BOE. BOLETÍN OFICIAL DEL ESTADO",
+          "fechaPublicacion": "2026-09-29",
+          "cve": "BOE-B-2026-31573",
+          "url": "http://www.boe.es/diario_boe/verifica.php?acc=Verificar&c=BOE-B-2026-31573",
+          "titulo": "Extracto de la Resolución de la Dirección General del Instituto de la Juventud, por la que se convocan ayudas del Programa «Erasmus+», línea de Juventud, correspondientes a la ronda de octubre de 2026"
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2026-08-01",
+        "fechaFinSolicitud": "2026-10-01",
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "Orden DSA/1029/2021, de 20 de septiembre, por la que se establecen para el período 2021-2027 las bases reguladoras para la concesión de subvenciones en el marco del Programa europeo \"Erasmus+\", para los capítulos de educación no formal.",
+        "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2021-15851"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [
+        "FGI - FONDOS DE GESTIÓN INDIRECTA (ART. 58.1.C RGTO. UE Nº 966/2012)"
+      ],
+      "documentos": [
+        {
+          "descripcion": "Documento de la convocatoria en español",
+          "nombreFichero": "Resol_Convocatoria_Erasmus+Juventud_2026_Ronda Octubre_firmada.xsig.pdf",
+          "fechaPublicacion": "2026-09-25",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1527525"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/931806",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=931806"
+    },
+    {
+      "numeroBDNS": "931799",
+      "titulo": "PREMIO MEJOR EXPEDIENTE ACADÉMICO CURSO 2025-2026 CONSERVATORIO MUNICIPAL JOSÉ ITURBI",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "local_ayuntamiento_valencia",
+      "organo": {
+        "nivel1": "LOCAL",
+        "nivel2": "VALENCIA",
+        "nivel3": "AYUNTAMIENTO DE VALENCIA"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 2000,
+      "regiones": ["ES523 - Valencia / València"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Educación",
+      "fechaRecepcion": "2026-09-25",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "B.O.P. DE VALENCIA",
+          "fechaPublicacion": "2026-10-08",
+          "cve": "BOPV-2026/12195",
+          "url": "https://bop.dival.es/bop/downloads?anuncioCSV=BOPV-2026/12195&lang=es",
+          "titulo": "Anuncio del Ayuntamiento de Valencia sobre extracto del Acuerdo de 25 de septiembre 2026 de la Junta de Gobierno Local del Ayuntamiento de Valencia, por el que se aprueba la convocatoria de subvenciones para la PREMIO MEJOR EXPEDIENTE ACADÉMICO CURSO 2025-2026 CONSERVATORIO MUNICIPAL JOSÉ ITURBI"
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2026-10-09",
+        "fechaFinSolicitud": "2026-10-28",
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "ORDENANZA GENERAL DE SUBVENCIONES DEL AYUNTAMIENTO DE VALENCIA Y SUS ORGANISMOS PÚBLICOS",
+        "url": "https://sede.valencia.es/sede/ordenanzas/index.xhtml"
+      },
+      "sedeElectronica": "https://sede.valencia.es",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "Acuerdo_JGL_25-09-26_CONVOCATORIA_para_PEGUIS.pdf",
+          "fechaPublicacion": "2026-10-08",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1534179"
+        },
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "Acuerdo_JGL_25-09-26_CONVOCATORIA_para_PEGUIS.pdf",
+          "fechaPublicacion": "2026-10-08",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1534178"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/931799",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=931799"
+    },
+    {
+      "numeroBDNS": "931744",
+      "titulo": "AYUDA MATERIAL ESCOLAR, CONVOCATORIA 2026-2027",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "local_ayuntamiento_valencia",
+      "organo": {
+        "nivel1": "LOCAL",
+        "nivel2": "VALENCIA",
+        "nivel3": "AYUNTAMIENTO DE VALENCIA"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 400000,
+      "regiones": ["ES523 - Valencia / València"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Educación",
+      "fechaRecepcion": "2026-09-25",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "B.O.P. DE VALENCIA",
+          "fechaPublicacion": "2026-10-06",
+          "cve": "BOPV-2026/12049",
+          "url": "https://bop.dival.es/bop/downloads?anuncioCSV=BOPV-2026/12049&lang=es",
+          "titulo": "Anuncio del Excelentísimo Ayuntamiento de Valencia sobre extracto del acuerdo de 25 de septiembre 2026 de la Junta de Gobierno Local del Ayuntamiento de Valencia, por el que se aprueba la convocatoria de subvenciones para la AYUDA MATERIAL ESCOLAR, CONVOCATORIA 2026-2027"
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2026-10-07",
+        "fechaFinSolicitud": "2026-10-26",
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "ORDENANZA GENERAL DE SUBVENCIONES DEL AYUNTAMIENTO DE VALENCIA Y SUS ORGANISMOS PÚBLICOS",
+        "url": "https://sede.valencia.es/sede/ordenanzas/index.xhtml"
+      },
+      "sedeElectronica": "https://sede.valencia.es",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "2._CONVOCATORIA_MATERIAL_ESCOLAR_2026-2027.pdf",
+          "fechaPublicacion": "2026-10-07",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1533428"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/931744",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=931744"
+    },
+    {
+      "numeroBDNS": "931619",
+      "titulo": "Resolución de 24 de septiembre de 2026, de la Comisión Nacional de los Mercados y la Competencia, por la que se convocan becas para la realización de actividades de formación, información y divulgación relacionadas con el ámbito de actuación de la CNMC.",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE ECONOMÍA, COMERCIO Y EMPRESA",
+        "nivel3": "COMISIÓN NACIONAL DE LOS MERCADOS Y LA COMPETENCIA"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 219352.56,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Otras Prestaciones económicas",
+      "fechaRecepcion": "2026-09-25",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "BOE. BOLETÍN OFICIAL DEL ESTADO",
+          "fechaPublicacion": "2026-09-26",
+          "cve": "BOE-B-2026-31263",
+          "url": "http://www.boe.es/diario_boe/verifica.php?acc=Verificar&c=BOE-B-2026-31263",
+          "titulo": "Extracto de la Resolución de 24 de septiembre de 2026, de la Comisión Nacional de los Mercados y la Competencia, por la que se convocan becas para la realización de actividades de formación, información y divulgación relacionadas con el ámbito de actuación de la Comisión Nacional de los Mercados y la Competencia."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "A partir del día siguiente al de la publicación en el Boletín Oficial del Estado de la convocatoria.",
+        "textoFin": "15 días hábiles desde el inicio del plazo de solicitudes"
+      },
+      "basesReguladoras": {
+        "titulo": "Resolución de 15 de junio de 2026, de la CNMC, por la que se establecen las bases reguladoras de concesión de ayudas para la realización de actividades de formación, información y divulgación relacionadas con el ámbito de actuación de la Comisión.",
+        "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2026-13640"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "BOE - BASES REGULADORAS",
+          "nombreFichero": "BOE-BASES REGULADORAS BECAS CNMC 2027.pdf",
+          "fechaPublicacion": "2026-09-25",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1527042"
+        },
+        {
+          "descripcion": "Documento de la convocatoria en español",
+          "nombreFichero": "RESOLUCIÓN CONVOCATORIA BECAS 2027.pdf",
+          "fechaPublicacion": "2026-09-25",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1527041"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/931619",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=931619"
+    },
+    {
+      "numeroBDNS": "931285",
+      "titulo": "CONVOCATORIA INSTRUMENTAL. ALIANZA MUNDIAL PARA LA EDUCACIÓN-GPE 2026",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE ASUNTOS EXTERIORES, UNIÓN EUROPEA Y COOPERACIÓN",
+        "nivel3": "AGENCIA ESTATAL AGENCIA ESPAÑOLA DE COOPERACIÓN INTERNACIONAL PARA EL DESARROLLO"
+      },
+      "tipoConvocatoria": "Concesión directa - instrumental",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 5000000,
+      "regiones": ["XXXX - TODO EL MUNDO"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Otras actuaciones de carácter económico",
+      "fechaRecepcion": "2026-09-23",
+      "publicacionesDiarioOficial": [],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2025-01-01",
+        "fechaFinSolicitud": "2026-12-31",
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "LEY 25/2014, DE 27 DE NOVIEMBRE, DE TRATADOS Y OTROS ACUERDOS INTERNACIONALES",
+        "url": "https://www.boe.es/eli/es/l/2014/11/27/25/con"
+      },
+      "sedeElectronica": "https://www.aecid.es/",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "06A9-2~1.PDF",
+          "fechaPublicacion": "2026-09-23",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1526149"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/931285",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=931285"
+    },
+    {
+      "numeroBDNS": "931220",
+      "titulo": "Resolución del director general de Casa África por la que se convoca, mediante tramitación anticipada, el premio «Ensayo Casa África» 2027.",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE ASUNTOS EXTERIORES, UNIÓN EUROPEA Y COOPERACIÓN",
+        "nivel3": "CONSORCIO CASA ÁFRICA"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 2000,
+      "regiones": ["XXXX - TODO EL MUNDO"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Cultura",
+      "fechaRecepcion": "2026-09-23",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "BOE. BOLETÍN OFICIAL DEL ESTADO",
+          "fechaPublicacion": "2026-09-25",
+          "cve": "BOE-B-2026-30926",
+          "url": "http://www.boe.es/diario_boe/verifica.php?acc=Verificar&c=BOE-B-2026-30926",
+          "titulo": "Extracto de la Resolución de la Dirección General de Casa África por la que se convoca, mediante tramitación anticipada, el premio «Ensayo Casa África» 2027."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "2 de febrero de 2027",
+        "textoFin": "2 de mayo de 2027 a las 14:00 horas (GMT+0)"
+      },
+      "basesReguladoras": {
+        "titulo": "Orden AUC/1114/2021, de 15 de septiembre (BOE núm.247 de 15 de octubre de 2021), se aprobaron las bases reguladoras para la concesión del premio «Ensayo Casa África» por el Consorcio Casa África.",
+        "url": "https://www.boe.es/boe/dias/2021/10/15/pdfs/BOE-A-2021-16776.pdf"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Documento de la convocatoria en español",
+          "nombreFichero": "CONVOCATORIA ANTICIPADA PREMIO ENSAYO 2027.pdf",
+          "fechaPublicacion": "2026-09-23",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1525989"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/931220",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=931220"
+    },
+    {
+      "numeroBDNS": "931087",
+      "titulo": "Orden de 22 de septiembre de 2026, por la que se convoca el Programa de ayuda al estudio de la Escuela Diplomática para el curso 2026-2027.",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE ASUNTOS EXTERIORES, UNIÓN EUROPEA Y COOPERACIÓN",
+        "nivel3": "SUBSECRETARÍA DE ASUNTOS EXTERIORES, UNIÓN EUROPEA Y COOPERACIÓN"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 87750,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Educación",
+      "fechaRecepcion": "2026-09-22",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "BOE. BOLETÍN OFICIAL DEL ESTADO",
+          "fechaPublicacion": "2026-09-24",
+          "cve": "BOE-B-2026-30833",
+          "url": "http://www.boe.es/diario_boe/verifica.php?acc=Verificar&c=BOE-B-2026-30833",
+          "titulo": "Extracto de la Orden de 22 de septiembre de 2026, por la que se convoca del programa de ayuda al estudio de la Escuela Diplomática para el curso 2026-2027."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "Día siguiente a la publicación en el Boletín Oficial del Estado",
+        "textoFin": "Quince días hábiles desde el inicio del periodo de solicitudes"
+      },
+      "basesReguladoras": {
+        "titulo": "Orden AUC/684/2019, de 19 de junio, por la que se establecen las bases reguladoras de la concesión de las becas de la Escuela Diplomática del Ministerio de Asuntos Exteriores, Unión Europea y Cooperación.",
+        "url": "https://www.boe.es/eli/es/o/2019/06/19/auc684/dof/spa/pdf"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Documento de la convocatoria en español",
+          "nombreFichero": "Orden de convocatoria Becas Ayuda al estudio Master 2026-2027.pdf.xsig.pdf",
+          "fechaPublicacion": "2026-09-22",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1525648"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/931087",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=931087"
+    },
+    {
+      "numeroBDNS": "930992",
+      "titulo": "RESOLUCION DE LA PRESIDENTA DE TURISME COMUNITAT VALENCIANA POR LA QUE SE CONVOCAN LAS AYUDAS DEL PROGRAMA \"BONO HOSTALERIA 2026\", EN DESARROLLO DEL PLAN ENDAVANT",
+      "tituloLenguaCooficial": "RESOLUCION DE LA PRESIDENTA DE TURISME COMUNITAT VALENCIANA PER LA QUAL ES CONVOQUEN LES AJUDES DEL PROGRAMA \"BONO *HOSTALERIA 2026\", EN DESENROTLLAMENT DEL PLA *ENDAVANT",
+      "grupoConsulta": "autonomica_cv",
+      "organo": {
+        "nivel1": "AUTONOMICA",
+        "nivel2": "COMUNITAT VALENCIANA",
+        "nivel3": "TURISME COMUNITAT VALENCIANA"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 3900000,
+      "regiones": ["ES52 - COMUNIDAD VALENCIANA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Comercio, Turismo y Pymes",
+      "fechaRecepcion": "2026-09-22",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "DOCV. D.O. DE LA COMUNITAT VALENCIANA",
+          "fechaPublicacion": "2026-09-28",
+          "cve": "DOGV-V-2026-30044",
+          "url": "https://dogv.gva.es/va/resultat-dogv?signatura=2026/30044",
+          "titulo": "Extracto de la resolución de la presidenta de Turisme Comunitat Valenciana, por la que se convocan las ayudas del programa “Bono Hostaleria 2026”, en desarrollo del Plan Endavant"
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2026-10-15",
+        "fechaFinSolicitud": "2026-11-30",
+        "textoInicio": "EL 15 DE OCTUBRE DE 2026 A LAS 09:00 HORAS",
+        "textoFin": "EL 30 DE NOVIEMBRE DE 2026 HASTA LAS 23:59"
+      },
+      "basesReguladoras": {
+        "titulo": "Decreto 4/2017, de 31 de marzo, del President de la Generalitat, por lo que se aprueban las bases reguladoras de las ayudas dirigidas al sector turístico de la Comunitat Valenciana, modificado por Decreto 6/23 de 26 de abril de 2023",
+        "url": "https://dogv.gva.es/datos/2017/04/04/pdf/2017_2821.pdf"
+      },
+      "sedeElectronica": "https://recuperemhosteleriaturismecv.gva.es",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "Resolucion_AYUDAS_HOSTALERIA_2026V_def.pdf_firmado.pdf",
+          "fechaPublicacion": "2026-09-22",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1525388"
+        },
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "Resolucion_AYUDAS_HOSTALERIA_2026V_def.pdf_firmado.pdf",
+          "fechaPublicacion": "2026-09-22",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1525389"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/930992",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=930992"
+    },
+    {
+      "numeroBDNS": "930830",
+      "titulo": "Subvenciones para la realización del informe de evaluación del edificio de uso residencial de vivienda en la Comunitat Valenciana (IEEV.CV)",
+      "tituloLenguaCooficial": "Subvencions per a la realització de l’informe d’avaluació de l’edifici d’ús residencial de vivenda a la Comunitat Valenciana (IEEV.CV)",
+      "grupoConsulta": "autonomica_cv",
+      "organo": {
+        "nivel1": "AUTONOMICA",
+        "nivel2": "COMUNITAT VALENCIANA",
+        "nivel3": "SECRETARÍA AUTONÓMICA DE VIVIENDA"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 980000,
+      "regiones": ["ES52 - COMUNIDAD VALENCIANA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Acceso a la vivienda y fomento de la edificación",
+      "fechaRecepcion": "2026-09-22",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "DOCV. D.O. DE LA COMUNITAT VALENCIANA",
+          "fechaPublicacion": "2026-10-05",
+          "cve": "DOGV-V-2026-31203",
+          "url": "https://dogv.gva.es/va/resultat-dogv?signatura=2026/31203",
+          "titulo": "Extracto de la Resolución de 24 de septiembre de 2026, por la que se convocan, para el ejercicio 2026, las subvenciones para la realización del informe de evaluación del edificio de uso residencial de vivienda en la Comunitat Valenciana (IEEV.CV)"
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2026-10-06",
+        "fechaFinSolicitud": "2026-12-07",
+        "textoInicio": "DÍA SIGUIENTE AL DE LA PUBLICACIÓN DE LA CONVOCATORIA EN EL DOGV",
+        "textoFin": "DOS MESES CONTADOS A PARTIR DEL DÍA SIGUIENTE DE LA PUBLICACIÓN DE LA CONVOCATORIA EN EL DOGV"
+      },
+      "basesReguladoras": {
+        "titulo": "RESOLUCIÓN de 19 de junio de 2026, por la que se aprueban las bases reguladoras de las subvenciones para la realización del informe de evaluación del edificio de uso residencial de vivienda en la Comunitat Valenciana (IEEV.CV)",
+        "url": "https://dogv.gva.es/es/resultat-dogv?signatura=2026/21494"
+      },
+      "sedeElectronica": "https://sede.gva.es/es/detall-tramit?id_proc=112181",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "CONVOCATORIA cas.pdf",
+          "fechaPublicacion": "2026-10-16",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1538308"
+        },
+        {
+          "descripcion": "Extracto (valenciano)",
+          "nombreFichero": "EXTRACTO val.pdf",
+          "fechaPublicacion": "2026-10-16",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1538312"
+        },
+        {
+          "descripcion": "Extracto (castellano)",
+          "nombreFichero": "EXTRACTO cas.pdf",
+          "fechaPublicacion": "2026-10-16",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1538310"
+        },
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "CONVOCATORIA val.pdf",
+          "fechaPublicacion": "2026-10-16",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1538309"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/930830",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=930830"
+    },
+    {
+      "numeroBDNS": "930760",
+      "titulo": "Convocatoria para la concesión de subvenciones destinadas a financiar la contratación de personas jóvenes desempleadas menores de treinta años en el marco de «Proyectos de primera experiencia en administraciones públicas»",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE TRABAJO Y ECONOMÍA SOCIAL",
+        "nivel3": "SERVICIO PÚBLICO DE EMPLEO ESTATAL"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 7057043,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Desempleo",
+      "fechaRecepcion": "2026-09-21",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "BOE. BOLETÍN OFICIAL DEL ESTADO",
+          "fechaPublicacion": "2026-09-23",
+          "cve": "BOE-B-2026-30719",
+          "url": "http://www.boe.es/diario_boe/verifica.php?acc=Verificar&c=BOE-B-2026-30719",
+          "titulo": "Extracto de la Resolución de 21 de septiembre de 2026, de la Dirección General del Servicio Público de Empleo Estatal, por la que se aprueba la convocatoria para la concesión de subvenciones públicas, destinadas a financiar en el ejercicio 2026, la contratación de personas jóvenes desempleadas menores de treinta años en el marco de «Proyectos de primera experiencia en administraciones públicas»"
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "Día siguiente a su publicación",
+        "textoFin": "15 días naturales desde día siguiente publicación"
+      },
+      "basesReguladoras": {
+        "titulo": "Orden TES/234/2025, de 7 de marzo, por la que se modifica la Orden TES/1077/2023, de 28 de septiembre",
+        "url": "https://www.boe.es/eli/es/o/2025/03/07/tes234"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Rectificación error material",
+          "nombreFichero": "report_Resolucion25.09.2026_Rectificacion error material Convocatoria2026 PEX.pdf",
+          "fechaPublicacion": "2026-09-28",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1527773"
+        },
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "Resolucion convocatoria PEX.pdf",
+          "fechaPublicacion": "2026-09-21",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1524863"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/930760",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=930760"
+    },
+    {
+      "numeroBDNS": "929846",
+      "titulo": "SUBVENCIONES A ENTIDADES DE FORMACIÓN PARA LA FINANCIACIÓN DE ACCIONES FORMATIVAS DIRIGIDAS A PERSONAS TRABAJADORAS Y VINCULADAS AL CATÁLOGO NACIONAL DE ESTÁNDARES DE\nCOMPETENCIAS PROFESIONALES, EN EL SECTOR DEL TRANSPORTE POR CARRETERA.",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE EDUCACIÓN, FORMACIÓN PROFESIONAL Y DEPORTES",
+        "nivel3": "SECRETARÍA GENERAL DE FORMACIÓN PROFESIONAL"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 5000000,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "GRAN EMPRESA",
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PERSONAS JURÍDICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PYME Y PERSONAS FÍSICAS QUE DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Fomento del Empleo",
+      "fechaRecepcion": "2026-09-16",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "BOE. BOLETÍN OFICIAL DEL ESTADO",
+          "fechaPublicacion": "2026-09-18",
+          "cve": "BOE-B-2026-30166",
+          "url": "http://www.boe.es/diario_boe/verifica.php?acc=Verificar&c=BOE-B-2026-30166",
+          "titulo": "Extracto de la Resolución de la Secretaría General de Formación Profesional por la que se procede a la convocatoria, de ámbito estatal, de concesión de subvenciones a entidades de formación para la financiación de acciones formativas dirigidas a personas trabajadoras y vinculadas al catálogo nacional de estándares de competencias profesionales, en el sector del transporte por carretera, para el año 2026"
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "Día siguiente a la publicación del extracto de esta convocatoria en BOE",
+        "textoFin": "Diez días (10) naturales a contar desde el día siguiente al de la publicación del extracto en BOE"
+      },
+      "basesReguladoras": {
+        "titulo": "Orden EFP/705/2022, de 20 de julio (BOE 26 de julio) por la que se establecen las BBRR para la concesión de subvenciones para la financiación de acciones formativas vinculadas al CNCFP y su modificación por la Orden EFP/1189/2023, de 30 de octubre.",
+        "url": "https://www.boe.es/boe/dias/2023/11/01/pdfs/BOE-A-2023-22355.pdf"
+      },
+      "sedeElectronica": "https://sede.educacion.gob.es",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Documento de la convocatoria en español",
+          "nombreFichero": "CONVOCATORIA TRANSPORTES_AF_2026_VF 2.pdf.xsig.pdf",
+          "fechaPublicacion": "2026-09-16",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1522434"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/929846",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=929846"
+    },
+    {
+      "numeroBDNS": "929820",
+      "titulo": "SUBVENCIONES A ENTIDADES DE FORMACIÓN PARA LA FINANCIACIÓN DE ACCIONES FORMATIVAS EN EL ÁMBITO DE LA PREVENCIÓN Y ACTUACIÓN ANTE EMERGENCIAS NATURALES E INCENDIOS, VINCULADAS AL CATÁLOGO NACIONAL DE ESTÁNDARES DE COMPETENCIAS PROFESIONALES, 2026",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE EDUCACIÓN, FORMACIÓN PROFESIONAL Y DEPORTES",
+        "nivel3": "SECRETARÍA GENERAL DE FORMACIÓN PROFESIONAL"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 5000000,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "GRAN EMPRESA",
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PERSONAS JURÍDICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PYME Y PERSONAS FÍSICAS QUE DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Fomento del Empleo",
+      "fechaRecepcion": "2026-09-16",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "BOE. BOLETÍN OFICIAL DEL ESTADO",
+          "fechaPublicacion": "2026-09-18",
+          "cve": "BOE-B-2026-30165",
+          "url": "http://www.boe.es/diario_boe/verifica.php?acc=Verificar&c=BOE-B-2026-30165",
+          "titulo": "Extracto de la Resolución de la Secretaría General de Formación Profesional por la que se procede a la convocatoria, de ámbito estatal, para la concesión de subvenciones a entidades de formación destinadas a la financiación de acciones formativas en el sector de la prevención y actuación ante emergencias naturales e incendios, vinculadas  al  catálogo  nacional  de  estándares  de  competencias profesionales, para el año 2026"
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "Día siguiente a la publicación del extracto de esta convocatoria en el BOE",
+        "textoFin": "Diez días (10) naturales contados desde el día siguiente al de la publicación del extracto en BOE"
+      },
+      "basesReguladoras": {
+        "titulo": "Orden EFP/705/2022, de 20 de julio, (BOE 26 de julio) por la que se establecen las BBRR para la concesión de subvenciones para la financiación de acciones formativas vinculadas al CNCFP y su modificación por la Orden EFP/1189/2023, de 30 de octubre.",
+        "url": "https://www.boe.es/eli/es/o/2022/07/20/efp705"
+      },
+      "sedeElectronica": "https://sede.educacion.gob.es",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Documento de la convocatoria en español",
+          "nombreFichero": "CONVOCATORIA EMERGENCIAS NATURALES E INCENDIOS 2026 .pdf",
+          "fechaPublicacion": "2026-09-16",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1522409"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/929820",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=929820"
+    },
+    {
+      "numeroBDNS": "929492",
+      "titulo": "Resolución 550/MADOC/PC-2026026 de 15 de septiembre de 2026, del TG Jefe del Mando de Adiestramiento y Doctrina por la que se convocan las becas para la matriculación en el Máster de Formación Permanente en Dirección Logística 4.0 de la UCO en 2026.",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE DEFENSA",
+        "nivel3": "EJÉRCITO DE TIERRA"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 18400,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Defensa",
+      "fechaRecepcion": "2026-09-15",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "BOE. BOLETÍN OFICIAL DEL ESTADO",
+          "fechaPublicacion": "2026-09-17",
+          "cve": "BOE-B-2026-30090",
+          "url": "http://www.boe.es/diario_boe/verifica.php?acc=Verificar&c=BOE-B-2026-30090",
+          "titulo": "Extracto de la Resolución de 15 de septiembre de 2026 del Mando de Adiestramiento y Doctrina por la que se convocan las becas para la matriculación en el Máster de Formación Permanente en Dirección Logística 4.0 de la Universidad de Córdoba, para el personal del Ejército de Tierra en el año 2026."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "Día siguiente al de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+        "textoFin": "Diez (10) días hábiles"
+      },
+      "basesReguladoras": {
+        "titulo": "Orden DEF/834/2026, de 27 de julio, por la que se establecen las bases reguladoras para la concesión de becas para la matriculación en el Máster de Formación Permanente en Dirección Logística 4.0 de la Universidad de Córdoba, para el personal del ET.",
+        "url": "https://www.boe.es/eli/es/o/2026/07/27/def834"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Documento de la convocatoria en español",
+          "nombreFichero": "260915-RESOLUCIÓN-CONVOCATORIA_LOG_4.0_2026.pdf",
+          "fechaPublicacion": "2026-09-15",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1521597"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/929492",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=929492"
+    },
+    {
+      "numeroBDNS": "929254",
+      "titulo": "Resolución de 10 de septiembre de 2026 del Museo Nacional Centro de Arte Reina Sofía, por la que se convoca la beca de investigación Esteban Vicente - MNCARS",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE CULTURA",
+        "nivel3": "MUSEO NACIONAL CENTRO DE ARTE REINA SOFÍA"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 21000,
+      "regiones": ["XXXX - TODO EL MUNDO"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Cultura",
+      "fechaRecepcion": "2026-09-14",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "BOE. BOLETÍN OFICIAL DEL ESTADO",
+          "fechaPublicacion": "2026-09-16",
+          "cve": "BOE-B-2026-30039",
+          "url": "http://www.boe.es/diario_boe/verifica.php?acc=Verificar&c=BOE-B-2026-30039",
+          "titulo": "Extracto de la Resolución de 10 de septiembre de 2026 del Museo Nacional Centro de Arte Reina Sofía, por la que se convoca la beca de investigación Esteban Vicente – MNCARS"
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "Al día siguiente a su publicación en BOE",
+        "textoFin": "25 días hábiles tras su publicación en BOE"
+      },
+      "basesReguladoras": {
+        "titulo": "Orden CUL/2912/2010, de 10 de noviembre, por la que se establecen las bases reguladoras para la concesión de subvenciones públicas en régimen de concurrencia competitiva del Ministerio de Cultura y de sus organismos públicos.",
+        "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2010-17455"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Documento de la convocatoria en español",
+          "nombreFichero": "report_Resolución bases beca Esteban Vicente - MNCARS.pdf",
+          "fechaPublicacion": "2026-09-14",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1520933"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/929254",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=929254"
+    },
+    {
+      "numeroBDNS": "929167",
+      "titulo": "Convocatoria de propuestas 2026. EAC/A12/2025 Programa Erasmus+ (C/2025/6080)",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE CIENCIA, INNOVACIÓN Y UNIVERSIDADES",
+        "nivel3": "SERVICIO ESPAÑOL PARA LA INTERNACIONALIZACIÓN DE LA EDUCACIÓN"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 69517343.54,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "GRAN EMPRESA",
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PERSONAS JURÍDICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PYME Y PERSONAS FÍSICAS QUE DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Educación",
+      "fechaRecepcion": "2026-09-14",
+      "publicacionesDiarioOficial": [],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2025-11-13",
+        "fechaFinSolicitud": "2026-02-19",
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "Convocatoria de propuestas 2026. EAC/A12/2025 Programa Erasmus+ (C/2025/6080)",
+        "url": "http://sepie.es/doc/convocatoria/2026/convocatoria_2026_es.pdf"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [
+        "FC - FONDO DE COHESIÓN (SIN UTILIZACIÓN EN EL PERÍODO 2014-2020)"
+      ],
+      "documentos": [
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "Convocatoria Erasmus 2026 EAC-A12-.pdf",
+          "fechaPublicacion": "2026-09-14",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1520747"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/929167",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=929167"
+    },
+    {
+      "numeroBDNS": "928841",
+      "titulo": "Convocatoria de ayudas sociales a mujeres deportistas, técnicas, entrenadoras, árbitras y juezas, en el año 2026",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE EDUCACIÓN, FORMACIÓN PROFESIONAL Y DEPORTES",
+        "nivel3": "CONSEJO SUPERIOR DE DEPORTES"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 700000,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Cooperación internacional para el desarrollo y cultural",
+      "fechaRecepcion": "2026-09-10",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "BOE. BOLETÍN OFICIAL DEL ESTADO",
+          "fechaPublicacion": "2026-09-12",
+          "cve": "BOE-B-2026-29712",
+          "url": "http://www.boe.es/diario_boe/verifica.php?acc=Verificar&c=BOE-B-2026-29712",
+          "titulo": "Extracto de la Resolución de 10 de septiembre de la Presidencia del Consejo Superior de Deportes, por la que se convocan ayudas sociales a mujeres deportistas, técnicas, entrenadoras, árbitras y juezas, en el año 2026"
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "Día siguiente a la publicación en BOE",
+        "textoFin": "10 días posteriores a la publicación en BOE"
+      },
+      "basesReguladoras": {
+        "titulo": "Orden ECD/2681/2012, de 12 de diciembre, por la que se aprueban las bases reguladoras para la concesión de subvenciones y ayudas por el Consejo Superior de Deportes",
+        "url": "http://www.boe.es/boe/dias/2012/12/15/pdfs/BOE-A-2012-15180.pdf"
+      },
+      "sedeElectronica": "https://sede.csd.gob.es/",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "Convocatoria ayudas sociales mujer.pdf",
+          "fechaPublicacion": "2026-09-10",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1520036"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/928841",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=928841"
+    },
+    {
+      "numeroBDNS": "928663",
+      "titulo": "Resolución de la Dirección General del Instituto de la Juventud, por la que se convocan ayudas del Programa «Cuerpo Europeo de Solidaridad» correspondientes a la ronda de octubre de 2026.",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE JUVENTUD E INFANCIA",
+        "nivel3": "INSTITUTO DE LA JUVENTUD"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 226874.2,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PERSONAS JURÍDICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PYME Y PERSONAS FÍSICAS QUE DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Servicios Sociales y Promoción Social",
+      "fechaRecepcion": "2026-09-10",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "BOE. BOLETÍN OFICIAL DEL ESTADO",
+          "fechaPublicacion": "2026-09-11",
+          "cve": "BOE-B-2026-29446",
+          "url": "http://www.boe.es/diario_boe/verifica.php?acc=Verificar&c=BOE-B-2026-29446",
+          "titulo": "Extracto de la Resolución de la Dirección General del Instituto de la Juventud, por la que se convocan ayudas del Programa «Cuerpo Europeo de Solidaridad» correspondientes a la ronda de octubre de 2026."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2026-09-10",
+        "fechaFinSolicitud": "2026-10-01",
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "Orden DSA/1028/2021, de 20 de septiembre, por la que se establecen para el periodo 2021-2027 las bases reguladoras para la concesión de subvenciones en el marco del Programa europeo «Cuerpo Europeo de Solidaridad».",
+        "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2021-15850"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [
+        "FGI - FONDOS DE GESTIÓN INDIRECTA (ART. 58.1.C RGTO. UE Nº 966/2012)"
+      ],
+      "documentos": [
+        {
+          "descripcion": "Documento de la convocatoria en español",
+          "nombreFichero": "Resolución de convocatoria CES 2026_Ronda de octubre.pdf.xsig.pdf",
+          "fechaPublicacion": "2026-09-10",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1519658"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/928663",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=928663"
+    },
+    {
+      "numeroBDNS": "927559",
+      "titulo": "Resolución de 1 de septiembre de 2026 de la Dirección del Centro de Estudios y Experimentación de Obras Públicas, O.A. y M.P. (CEDEX), por la que se convocan becas de formación y especialización científico y técnica en las materias propias del organismo",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE TRANSPORTES Y MOVILIDAD SOSTENIBLE",
+        "nivel3": "CENTRO DE ESTUDIOS Y EXPERIMENTACIÓN DE OBRAS PÚBLICAS (CEDEX)"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 105000,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Educación",
+      "fechaRecepcion": "2026-09-02",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "BOE. BOLETÍN OFICIAL DEL ESTADO",
+          "fechaPublicacion": "2026-09-04",
+          "cve": "BOE-B-2026-28539",
+          "url": "http://www.boe.es/diario_boe/verifica.php?acc=Verificar&c=BOE-B-2026-28539",
+          "titulo": "Extracto de la Resolución de 1 de septiembre de 2026 de la Dirección del Centro de Estudios y Experimentación de Obras Públicas, O.A. y M.P. (CEDEX), por la que se convocan becas de formación y especialización científico y técnica en las materias propias del organismo"
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "Al día siguiente de la publicación del extracto en el BOE",
+        "textoFin": "Quince días hábiles a contar desde el siguiente a la publicación del extracto en el BOE"
+      },
+      "basesReguladoras": {
+        "titulo": "Orden TMA/488/2023, de 28 de abril, por la que se aprueban las bases reguladoras para la concesión de becas de formación y especialización científico y técnica por el CEDEX, modificada por Orden TRM/477/2024, de 6 de mayo",
+        "url": "https://www.boe.es/boe/dias/2024/05/21/pdfs/BOE-A-2024-10213.pdf"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Documento de la convocatoria en español",
+          "nombreFichero": "Convocatoria_becas_2026.pdf",
+          "fechaPublicacion": "2026-09-02",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1516801"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/927559",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=927559"
+    },
+    {
+      "numeroBDNS": "927485",
+      "titulo": "Resolución de la Dirección General de Artes Escénicas y Música, por la que se convocan ayudas para el XIV programa de desarrollo de dramaturgias actuales, correspondientes al año 2026.",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE CULTURA",
+        "nivel3": "DIRECCIÓN GENERAL DE ARTES ESCÉNICAS Y MÚSICA"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 25000,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Cultura",
+      "fechaRecepcion": "2026-09-02",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "BOE. BOLETÍN OFICIAL DEL ESTADO",
+          "fechaPublicacion": "2026-09-03",
+          "cve": "BOE-B-2026-28490",
+          "url": "http://www.boe.es/diario_boe/verifica.php?acc=Verificar&c=BOE-B-2026-28490",
+          "titulo": "Extracto de Resolución de 28 de julio de 2026 de la Dirección General de Artes Escénicas y Música, por la que se convocan las ayudas para el XIV programa de desarrollo de dramaturgias actuales, correspondientes al año 2026."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "A partir del día siguiente al de la publicación del extracto en el BOE",
+        "textoFin": "15 días hábiles desde el inicio del plazo de solicitud"
+      },
+      "basesReguladoras": {
+        "titulo": "Orden CUL/2912/2010, de 10 de noviembre, por la que se establecen las bases reguladoras para la concesión de subvenciones públicas en régimen de concurrencia competitiva del Ministerio de Cultura y de sus organismos públicos",
+        "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2010-17455"
+      },
+      "sedeElectronica": "Sede electrónica del Ministerio de Cultura",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Documento de la convocatoria en español",
+          "nombreFichero": "Resolución-ayudas-Dramaturgias-Actuales-2026.pdf",
+          "fechaPublicacion": "2026-09-02",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1516545"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/927485",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=927485"
+    },
+    {
+      "numeroBDNS": "927379",
+      "titulo": "RESOLUCIÓN de la Conselleria de Educación, Cultura, Universidades y Empleo,, por la que se regula y concede una subvención directa a la UPV, UA, UV, UMH y UJI para el ejercicio 2025",
+      "tituloLenguaCooficial": "RESOLUCIÓ de la Conselleria d'Educació, Cultura, Universitats i Ocupació,, per la qual es regula i concedix una subvenció directa a la UPV, UA, UV, UMH i UJI per a l'exercici 2025",
+      "grupoConsulta": "autonomica_cv",
+      "organo": {
+        "nivel1": "AUTONOMICA",
+        "nivel2": "COMUNITAT VALENCIANA",
+        "nivel3": "SECRETARÍA AUTONÓMICA DE CULTURA Y DEPORTE"
+      },
+      "tipoConvocatoria": "Concesión directa - instrumental",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 250000,
+      "regiones": ["ES52 - COMUNIDAD VALENCIANA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Cultura",
+      "fechaRecepcion": "2026-09-02",
+      "publicacionesDiarioOficial": [],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2025-09-22",
+        "fechaFinSolicitud": "2025-09-26",
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "LEY 6/2025, de 30 de mayo, de presupuestos de la Generalitat para el ejercicio 2025.",
+        "url": "https://dogv.gva.es/es/eli/es-vc/l/2025/05/30/6/dof/spa/html"
+      },
+      "sedeElectronica": "https://www.gva.es/es/inicio/procedimientos?id_proc=105556",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "Resolució conces. UUPP formació cultura_S0063_val_firmado.pdf",
+          "fechaPublicacion": "2026-09-02",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1516205"
+        },
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "Resolución conces. UUPP formación cultura_S0063_cas_firmado.pdf",
+          "fechaPublicacion": "2026-09-02",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1516204"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/927379",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=927379"
+    },
+    {
+      "numeroBDNS": "927366",
+      "titulo": "Resolución de 21 de noviembre de 2024 de la secretaria autonómica de Cultura, por la que se regula y concede una subvención directa a los Ayuntamientos de Monóvar y de Bicorp, para el ejercicio 2024",
+      "tituloLenguaCooficial": "Resolució de 21 de novembre de 2024 de la secretària autonòmica de Cultura, per la qual es regula i concedix una subvenció directa als ajuntaments de Monòver i de Bicorp",
+      "grupoConsulta": "autonomica_cv",
+      "organo": {
+        "nivel1": "AUTONOMICA",
+        "nivel2": "COMUNITAT VALENCIANA",
+        "nivel3": "SECRETARÍA AUTONÓMICA DE CULTURA Y DEPORTE"
+      },
+      "tipoConvocatoria": "Concesión directa - instrumental",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 150000,
+      "regiones": ["ES52 - COMUNIDAD VALENCIANA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Cultura",
+      "fechaRecepcion": "2026-09-02",
+      "publicacionesDiarioOficial": [],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2025-01-01",
+        "fechaFinSolicitud": "2025-12-31",
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "LEY 6/2025, de 30 de mayo, de presupuestos de la Generalitat para el ejercicio 2025.",
+        "url": "https://dogv.gva.es/es/eli/es-vc/l/2025/05/30/6/dof/spa/html"
+      },
+      "sedeElectronica": "https://www.gva.es/es/inicio/procedimientos?id_proc=97586",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "S0061 resol concesion Capitales Culturales_rev_24-010474_trad_firmado.pdf",
+          "fechaPublicacion": "2026-09-02",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1516158"
+        },
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "S0061 resol concesion Capitales Culturales_rev_24-010474_orig_firmado.pdf",
+          "fechaPublicacion": "2026-09-02",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1516157"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/927366",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=927366"
+    },
+    {
+      "numeroBDNS": "927339",
+      "titulo": "Resolución de 21 de noviembre de 2024 de la secretaria autonómica de Cultura, por la que se regula y concede una subvención directa a los Ayuntamientos de Monóvar y de Bicorp, para el ejercicio 2024",
+      "tituloLenguaCooficial": "Resolució de 21 de novembre de 2024 de la secretària autonòmica de Cultura, per la qual es regula i concedix una subvenció directa als ajuntaments de Monòver i de Bicorp",
+      "grupoConsulta": "autonomica_cv",
+      "organo": {
+        "nivel1": "AUTONOMICA",
+        "nivel2": "COMUNITAT VALENCIANA",
+        "nivel3": "SECRETARÍA AUTONÓMICA DE CULTURA Y DEPORTE"
+      },
+      "tipoConvocatoria": "Concesión directa - instrumental",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 150000,
+      "regiones": ["ES52 - COMUNIDAD VALENCIANA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Cultura",
+      "fechaRecepcion": "2026-09-02",
+      "publicacionesDiarioOficial": [],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2025-01-01",
+        "fechaFinSolicitud": "2025-12-31",
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "LEY 6/2025, de 30 de mayo, de presupuestos de la Generalitat para el ejercicio 2025.",
+        "url": "https://dogv.gva.es/es/eli/es-vc/l/2025/05/30/6/dof/spa/html"
+      },
+      "sedeElectronica": "https://www.gva.es/es/inicio/procedimientos?id_proc=97586",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "S0061 resol concesion Capitales Culturales_rev_24-010474_trad_firmado.pdf",
+          "fechaPublicacion": "2026-09-02",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1515826"
+        },
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "S0061 resol concesion Capitales Culturales_rev_24-010474_orig_firmado.pdf",
+          "fechaPublicacion": "2026-09-02",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1515824"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/927339",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=927339"
+    },
+    {
+      "numeroBDNS": "927265",
+      "titulo": "Becas asistencia junio 2026 Devesa-Albufera",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "local_ayuntamiento_valencia",
+      "organo": {
+        "nivel1": "LOCAL",
+        "nivel2": "VALENCIA",
+        "nivel3": "AYUNTAMIENTO DE VALENCIA"
+      },
+      "tipoConvocatoria": "Concesión directa - instrumental",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 12000,
+      "regiones": ["ES523 - Valencia / València"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Fomento del Empleo",
+      "fechaRecepcion": "2026-09-01",
+      "publicacionesDiarioOficial": [],
+      "plazoSolicitud": {
+        "abierto": true,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "ORDENANZA GENERAL DE SUBVENCIONES DEL AYUNTAMIENTO DE VALENCIA Y SUS ORGANISMOS PÚBLICOS",
+        "url": "https://sede.valencia.es/sede/ordenanzas/index.xhtml"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "Resol__10.07.25_notf_15.07.pdf",
+          "fechaPublicacion": "2026-09-01",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1515274"
+        },
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "Resol__10.07.25_notf_15.07.pdf",
+          "fechaPublicacion": "2026-09-01",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1515273"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/927265",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=927265"
+    },
+    {
+      "numeroBDNS": "926993",
+      "titulo": "CONCURSO DIBUJO ARQUITECTONICO  RUSSAFA 2026",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "local_ayuntamiento_valencia",
+      "organo": {
+        "nivel1": "LOCAL",
+        "nivel2": "VALENCIA",
+        "nivel3": "AYUNTAMIENTO DE VALENCIA"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 500,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PYME Y PERSONAS FÍSICAS QUE DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Otras actuaciones de carácter económico",
+      "fechaRecepcion": "2026-08-31",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "B.O.P. DE VALENCIA",
+          "fechaPublicacion": "2026-09-22",
+          "cve": "BOPV-2026/11450",
+          "url": "https://bop.dival.es/bop/downloads?anuncioCSV=BOPV-2026/11450&lang=es",
+          "titulo": "Anuncio del Excelentísimo Ayuntamiento de València sobre extracto de la resolución Z-1321 de fecha 27-08-2026  de la Alcaldía en funciones, por el que se aprueba la convocatoria del \"CONCURSO DE DIBUJO ARQUITECTÓNICO DE LA JUNTA MUNICIPAL DE RUZAFA 2026\"."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2026-09-23",
+        "fechaFinSolicitud": "2026-10-22",
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "ORDENANZA GENERAL DE SUBVENCIONES DEL AYUNTAMIENTO DE VALENCIA Y SUS ORGANISMOS PÚBLICOS",
+        "url": "https://sede.valencia.es/sede/ordenanzas/index.xhtml"
+      },
+      "sedeElectronica": "https://sede.valencia.es",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "CONVOCATORIA_CAST..pdf",
+          "fechaPublicacion": "2026-09-22",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1525424"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/926993",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=926993"
+    },
+    {
+      "numeroBDNS": "926956",
+      "titulo": "S0228 - AYUDAS PERSONALES PARA LA PROMOCIÓN DE LA AUTONOMÍA PERSONAL - 2026",
+      "tituloLenguaCooficial": "S0228 - AJUDES PERSONALS PER A LA PROMOCIÓ DE L'AUTONOMIA PERSONAL - 2026",
+      "grupoConsulta": "autonomica_cv",
+      "organo": {
+        "nivel1": "AUTONOMICA",
+        "nivel2": "COMUNITAT VALENCIANA",
+        "nivel3": "SECRETARÍA AUTONÓMICA DE  FAMILIA Y SERVICIOS SOCIALES"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 1200000,
+      "regiones": ["ES52 - COMUNIDAD VALENCIANA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Servicios Sociales y Promoción Social",
+      "fechaRecepcion": "2026-08-28",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "DOCV. D.O. DE LA COMUNITAT VALENCIANA",
+          "fechaPublicacion": "2026-09-02",
+          "cve": "DOGV-V-2026-27842",
+          "url": "https://dogv.gva.es/va/resultat-dogv?signatura=2026/27842",
+          "titulo": "EXTRACTO de la Resolución de XX de XXXX de 2026, de la Conselleria de Servicios Sociales, Familia e Infancia, por la que se establecen las bases reguladoras para la concesión de subvenciones para la promoción de la autonomía personal de las personas con discapacidad y se procede a su convocatoria para el ejercicio 2026."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2025-12-16",
+        "fechaFinSolicitud": "2026-01-20",
+        "textoInicio": "Será desde el día siguiente al de la publiación en el DOGV de la Generalitat Valenciana",
+        "textoFin": "Será de un mes a contar desde el día siguiente de la publicación en el DOGV"
+      },
+      "basesReguladoras": {
+        "titulo": "RESOLUCIÓN de 21 de abril de 2026, por la que se establecen las bases reguladoras para la concesión de subvenciones dentro del ámbito competencial propio de la Dirección General de las Personas con Discapacidad.",
+        "url": "https://dogv.gva.es/datos/2026/04/24/pdf/2026_11817_es.pdf"
+      },
+      "sedeElectronica": "www.gva.es",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "BASES REGULADORAS Y CONCESIÓN - Consellera- 26-08-26.pdf",
+          "fechaPublicacion": "2026-09-02",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1516481"
+        },
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "BASES REGULADORES Y COCESSIÓ - Consellera- 26-08-26.pdf",
+          "fechaPublicacion": "2026-09-02",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1516486"
+        },
+        {
+          "descripcion": "Extracto firmado en valenciano",
+          "nombreFichero": "EXTRACTE - S0228 - Consellera - 26-08-26.pdf",
+          "fechaPublicacion": "2026-09-02",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1516490"
+        },
+        {
+          "descripcion": "Solicitud",
+          "nombreFichero": "Solicitud.pdf",
+          "fechaPublicacion": "2026-09-02",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1516488"
+        },
+        {
+          "descripcion": "Extracto firmado en castellano",
+          "nombreFichero": "EXTRACTO - S0228 - Consellera - 26-08-26.pdf",
+          "fechaPublicacion": "2026-09-02",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1516489"
+        },
+        {
+          "descripcion": "Anexo I",
+          "nombreFichero": "Anexo I.pdf",
+          "fechaPublicacion": "2026-09-02",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1516487"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/926956",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=926956"
+    },
+    {
+      "numeroBDNS": "925795",
+      "titulo": "CONCESIÓN BECAS ÉFESO. ITIN. C001.OP055.E006. HABILITACIÓ PER A LA DOCÈNCIA GRAUS A, B Y C DEL SISTEMA FP.",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "local_ayuntamiento_valencia",
+      "organo": {
+        "nivel1": "LOCAL",
+        "nivel2": "VALENCIA",
+        "nivel3": "AYUNTAMIENTO DE VALENCIA"
+      },
+      "tipoConvocatoria": "Concesión directa - instrumental",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 224749.5,
+      "regiones": ["ES523 - Valencia / València"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Fomento del Empleo",
+      "fechaRecepcion": "2026-08-20",
+      "publicacionesDiarioOficial": [],
+      "plazoSolicitud": {
+        "abierto": true,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "ORDENANZA GENERAL DE SUBVENCIONES DEL AYUNTAMIENTO DE VALENCIA Y SUS ORGANISMOS PÚBLICOS",
+        "url": "https://sede.valencia.es/sede/ordenanzas/index.xhtml"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": ["FSE - FONDO SOCIAL EUROPEO"],
+      "documentos": [
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "16-5-2_1.PDF",
+          "fechaPublicacion": "2026-08-20",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1511383"
+        },
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "16-5-2_1.PDF",
+          "fechaPublicacion": "2026-08-20",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1511382"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/925795",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=925795"
+    },
+    {
+      "numeroBDNS": "925677",
+      "titulo": "Resolución de 18 de agosto de 2026, de la Vicepresidencia Primera y Conselleria de Vivienda, Empleo, Juventud e Igualdad, por la que se aprueban las bases reguladoras y se convocan las ayudas del Bono Alquiler Joven para 2026",
+      "tituloLenguaCooficial": "Resolució de 18 d´agost de 2026, de la Vicepresidència Primera i Conselleria de Vivenda, Ocupació, Joventut i Igualtat, per la qual s'aproven les bases reguladores i es convoquen les ajudes del Bo Lloguer Jove per a 2026",
+      "grupoConsulta": "autonomica_cv",
+      "organo": {
+        "nivel1": "AUTONOMICA",
+        "nivel2": "COMUNITAT VALENCIANA",
+        "nivel3": "SECRETARÍA AUTONÓMICA DE VIVIENDA"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 29800000,
+      "regiones": ["ES52 - COMUNIDAD VALENCIANA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Acceso a la vivienda y fomento de la edificación",
+      "fechaRecepcion": "2026-08-19",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "DOCV. D.O. DE LA COMUNITAT VALENCIANA",
+          "fechaPublicacion": "2026-08-21",
+          "cve": "DOGV-V-2026-27322",
+          "url": "https://dogv.gva.es/va/resultat-dogv?signatura=2026/27322",
+          "titulo": "Extracto de la RESOLUCIÓN de 18 de agosto de 2026, de aprobación de las bases reguladoras para la concesión de ayudas al alquiler Bono Alquiler Joven durante el ejercicio 2026, y convocatoria 2026."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "A partir del día siguiente a la publicación del extracto en el DOGV",
+        "textoFin": "Quince días hábiles posteriores a la fecha de publicación"
+      },
+      "basesReguladoras": {
+        "titulo": "Resolución de 18 de agosto de 2026, de la Vicepresidencia Primera y Conselleria de Vivienda, Empleo, Juventud e Igualdad, por la que se aprueban las bases reguladoras y se convocan las ayudas del Bono Alquiler Joven para 2026",
+        "url": "."
+      },
+      "sedeElectronica": "https://sede.gva.es/es/detall-tramit?id_proc=G110699",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "20260625_Resolucin bases y convocatoria_26-006312_trad_REV_firmado.pdf",
+          "fechaPublicacion": "2026-09-29",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1529097"
+        },
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "Resolución bases y convocatoria_después intervención_REV_firmado.pdf",
+          "fechaPublicacion": "2026-09-29",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1529096"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/925677",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=925677"
+    },
+    {
+      "numeroBDNS": "925525",
+      "titulo": "Becas asistencia Mayo ET Devesa-Albufera 2025",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "local_ayuntamiento_valencia",
+      "organo": {
+        "nivel1": "LOCAL",
+        "nivel2": "VALENCIA",
+        "nivel3": "AYUNTAMIENTO DE VALENCIA"
+      },
+      "tipoConvocatoria": "Concesión directa - instrumental",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 12000,
+      "regiones": ["ES523 - Valencia / València"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Fomento del Empleo",
+      "fechaRecepcion": "2026-08-19",
+      "publicacionesDiarioOficial": [],
+      "plazoSolicitud": {
+        "abierto": true,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "ORDENANZA GENERAL DE SUBVENCIONES DEL AYUNTAMIENTO DE VALENCIA Y SUS ORGANISMOS PÚBLICOS",
+        "url": "https://sede.valencia.es/sede/ordenanzas/index.xhtml"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "Resol__10.07.25_notf_15.07.pdf",
+          "fechaPublicacion": "2026-08-19",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1510640"
+        },
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "Resol__10.07.25_notf_15.07.pdf",
+          "fechaPublicacion": "2026-08-19",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1510639"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/925525",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=925525"
+    },
+    {
+      "numeroBDNS": "924977",
+      "titulo": "CONCESIÓN BECAS ÉFESO. ITIN. C001.OP055.E009. OPERACIONES BÁSICAS COCINA 1ª EDICIÓN",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "local_ayuntamiento_valencia",
+      "organo": {
+        "nivel1": "LOCAL",
+        "nivel2": "VALENCIA",
+        "nivel3": "AYUNTAMIENTO DE VALENCIA"
+      },
+      "tipoConvocatoria": "Concesión directa - instrumental",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 10000,
+      "regiones": ["ES523 - Valencia / València"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Fomento del Empleo",
+      "fechaRecepcion": "2026-08-13",
+      "publicacionesDiarioOficial": [],
+      "plazoSolicitud": {
+        "abierto": true,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "ORDENANZA GENERAL DE SUBVENCIONES DEL AYUNTAMIENTO DE VALENCIA Y SUS ORGANISMOS PÚBLICOS",
+        "url": "https://sede.valencia.es/sede/ordenanzas/index.xhtml"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "16-5-2_1.PDF",
+          "fechaPublicacion": "2026-08-13",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1509332"
+        },
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "16-5-2_1.PDF",
+          "fechaPublicacion": "2026-08-13",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1509331"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/924977",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=924977"
+    },
+    {
+      "numeroBDNS": "924967",
+      "titulo": "Convocatoria cinco becas para la realización de prácticas profesionales en la dirección general competent en materia de cooperación internacional al desarrollo, durante los ejercicios 2026 y 2027.",
+      "tituloLenguaCooficial": "Convocatòria cinc beques per a la realització de pràctiques professionals en la direcció general competent en matèria de cooperació internacional al desenrotllament, durant els exercicis 2026 i 2027.",
+      "grupoConsulta": "autonomica_cv",
+      "organo": {
+        "nivel1": "AUTONOMICA",
+        "nivel2": "COMUNITAT VALENCIANA",
+        "nivel3": "SECRETARÍA AUTONÓMICA DE  FAMILIA Y SERVICIOS SOCIALES"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 79380.53,
+      "regiones": ["ES52 - COMUNIDAD VALENCIANA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Otras Prestaciones económicas",
+      "fechaRecepcion": "2026-08-13",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "DOCV. D.O. DE LA COMUNITAT VALENCIANA",
+          "fechaPublicacion": "2026-08-14",
+          "cve": "DOGV-V-2026-27008",
+          "url": "https://dogv.gva.es/va/resultat-dogv?signatura=2026/27008",
+          "titulo": "Extracto de la convocatoria de la Conselleria de Servicios Sociales, Familia e Infancia, por la que se convocan cinco becas para la realización de prácticas profesionales en la Dirección General competente en materia de cooperación internacional al desarrollo, durante los ejercicios 2026 y 2027"
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2026-08-17",
+        "fechaFinSolicitud": "2026-09-04",
+        "textoInicio": "Al día siguiente de la publicación del extracto de la convocatoria en el DOGV",
+        "textoFin": "15 días hábiles a contar desde el día siguiente a la publicación del extracto de la convocatoria"
+      },
+      "basesReguladoras": {
+        "titulo": "ORDEN 1/2019, de 28 de noviembre, de la Cª de Participación, Transparencia, Cooperación y Calidad Democrática, por la que se aprueban las bases reguladoras de la concesión de becas para la realización de prácticas profesionales en los centros directivos",
+        "url": "http://dogv.gva.es/datos/2019/12/05/pdf/2019_11610.pdf"
+      },
+      "sedeElectronica": "https://sede.gva.es/es/detall-tramit?id_proc=G113035",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "00 Convocatoria Becas_firmado.pdf",
+          "fechaPublicacion": "2026-09-02",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1516507"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/924967",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=924967"
+    },
+    {
+      "numeroBDNS": "924789",
+      "titulo": "CONCESIÓN BECAS ÉFESO. ITIN. C001.OP055.E012 OPERACIONES BÁSICAS RTE-BAR 2ª EDICIÓN",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "local_ayuntamiento_valencia",
+      "organo": {
+        "nivel1": "LOCAL",
+        "nivel2": "VALENCIA",
+        "nivel3": "AYUNTAMIENTO DE VALENCIA"
+      },
+      "tipoConvocatoria": "Concesión directa - instrumental",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 224749.5,
+      "regiones": ["ES523 - Valencia / València"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Fomento del Empleo",
+      "fechaRecepcion": "2026-08-12",
+      "publicacionesDiarioOficial": [],
+      "plazoSolicitud": {
+        "abierto": true,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "ORDENANZA GENERAL DE SUBVENCIONES DEL AYUNTAMIENTO DE VALENCIA Y SUS ORGANISMOS PÚBLICOS",
+        "url": "https://sede.valencia.es/sede/ordenanzas/index.xhtml"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": ["FSE - FONDO SOCIAL EUROPEO"],
+      "documentos": [
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "Acuerdo_BASES.zsig__5_.pdf",
+          "fechaPublicacion": "2026-08-12",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1508922"
+        },
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "Acuerdo_BASES.zsig__5_.pdf",
+          "fechaPublicacion": "2026-08-12",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1508921"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/924789",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=924789"
+    },
+    {
+      "numeroBDNS": "924655",
+      "titulo": "IV CONCURSO DE FOTOGRAFIA DEL DISTRITO DE PATRAIX 2026",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "local_ayuntamiento_valencia",
+      "organo": {
+        "nivel1": "LOCAL",
+        "nivel2": "VALENCIA",
+        "nivel3": "AYUNTAMIENTO DE VALENCIA"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 800,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Otras actuaciones de carácter económico",
+      "fechaRecepcion": "2026-08-12",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "B.O.P. DE VALENCIA",
+          "fechaPublicacion": "2026-08-21",
+          "cve": "BOPV-2026/10541",
+          "url": "https://bop.dival.es/bop/downloads?anuncioCSV=BOPV-2026/10541&lang=es",
+          "titulo": "Anuncio del Excelentísimo Ayuntamiento de València sobre extracto de la resolución Z-506 de fecha 07-08-2026 de la alcaldía en funciones,  en virtud de la resolución 144 de 27 de julio de 2026, por el que se aprueba la convocatoria del concurso \"IV CONCURSO DE FOTOGRAFIA DEL DISTRITO DE PATRAIX 2026\"."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2026-08-22",
+        "fechaFinSolicitud": "2026-10-31",
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "ORDENANZA GENERAL DE SUBVENCIONES DEL AYUNTAMIENTO DE VALENCIA Y SUS ORGANISMOS PÚBLICOS",
+        "url": "https://sede.valencia.es/sede/ordenanzas/index.xhtml"
+      },
+      "sedeElectronica": "https://sede.valencia.es",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "03_CONVOCATORIA_CONCURSO_CS.pdf",
+          "fechaPublicacion": "2026-09-16",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1522530"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/924655",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=924655"
+    },
+    {
+      "numeroBDNS": "924373",
+      "titulo": "Resolución de la Vicepresidencia Primera y Conselleria de Vivienda, Empleo, Juventud e Igualdad, por la que se convocan ayudas económicas destinadas a financiar los gastos derivados del asesora-miento jurídico para el desalojo o recuperación de la posesió",
+      "tituloLenguaCooficial": "resolució de la Vicepresidència Primera i Conselleria de Vivenda, Ocupació, Joventut i Igualtat, per la qual s’establixen les bases reguladores per a la concessió d’ajudes destinades a finançar els gastos derivats de l’assessorament jurídic per al desallo",
+      "grupoConsulta": "autonomica_cv",
+      "organo": {
+        "nivel1": "AUTONOMICA",
+        "nivel2": "COMUNITAT VALENCIANA",
+        "nivel3": "SECRETARÍA AUTONÓMICA DE VIVIENDA"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 250000,
+      "regiones": ["ES52 - COMUNIDAD VALENCIANA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Acceso a la vivienda y fomento de la edificación",
+      "fechaRecepcion": "2026-08-10",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "DOCV. D.O. DE LA COMUNITAT VALENCIANA",
+          "fechaPublicacion": "2026-08-12",
+          "cve": "DOGV-V-2026-26742",
+          "url": "https://dogv.gva.es/va/resultat-dogv?signatura=2026/26742",
+          "titulo": "Extracto de la RESOLUCIÓN de 4 de agosto de 2026, de la Vicepresidencia Primera y Conselleria de Vivienda, Empleo, Juventud e Igualdad, por la que se convocan ayudas económicas destinadas a financiar los gastos derivados del asesoramiento jurídico para el desalojo o recuperación de la posesión en caso de ocupación ilegal de viviendas y/o reparaciones de daños en los citados inmuebles, en el ejercicio 2026"
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2025-07-21",
+        "fechaFinSolicitud": "2026-09-10",
+        "textoInicio": "El plazo de presentación de solicitudes se iniciará a partir del día siguiente al de la publicación.",
+        "textoFin": "finalizará el 10 de septiembre de 2026."
+      },
+      "basesReguladoras": {
+        "titulo": "Resolución de la Vicepresidencia Primera y Conselleria de Vivienda, Empleo, Juventud e Igualdad, por la que se establecen las bases reguladoras para la concesión de ayudas destinadas a financiar los gastos derivados del asesoramiento jurídico para el desa",
+        "url": "https://dogv.gva.es/datos/2026/06/04/pdf/2026_19089_es.pdf"
+      },
+      "sedeElectronica": "https://sede.gva.es/es/",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "003_RESOLUCIÓN_VAL_20260805_131048.pdf",
+          "fechaPublicacion": "2026-08-10",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1507649"
+        },
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "002_RESOLUCIÓN_CAST_20260805_131048.pdf",
+          "fechaPublicacion": "2026-08-10",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1507648"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/924373",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=924373"
+    },
+    {
+      "numeroBDNS": "924229",
+      "titulo": "CONVOCATORIA DEL XIX PREMIO DE CARTOGRAFIA Y TERRITORIO PARE TOSCA.",
+      "tituloLenguaCooficial": "CONVOCATÒRIA DEL XIX PREMI DE CARTOGRAFIA I TERRITORI PARE TOSCA.",
+      "grupoConsulta": "autonomica_cv",
+      "organo": {
+        "nivel1": "AUTONOMICA",
+        "nivel2": "COMUNITAT VALENCIANA",
+        "nivel3": "INSTITUT CARTOGRÀFIC VALENCIÀ"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 3000,
+      "regiones": ["ES52 - COMUNIDAD VALENCIANA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Educación",
+      "fechaRecepcion": "2026-08-10",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "DOCV. D.O. DE LA COMUNITAT VALENCIANA",
+          "fechaPublicacion": "2026-09-17",
+          "cve": "DOGV-V-2026-29342",
+          "url": "https://dogv.gva.es/va/resultat-dogv?signatura=2026/29342",
+          "titulo": "EXTRACTO de la Resolución de 30 de julio de 2026, de la Vicepresidencia Tercera y Conselleria de Medio Ambiente, Infraestructuras, Territorio y de la Recuperación y Presidencia del Consejo de Dirección del Institut Cartogràfic Valencià, por la que se hace pública la Convocatoria del XIX Premio de Cartografía y Territorio Pare Tosca."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "Día siguiente de la publicación de la convocatoria en el DOGV",
+        "textoFin": "Un mes"
+      },
+      "basesReguladoras": {
+        "titulo": "ORDRE 10/2016, DE 22 DE SETEMBRE, DE LA CONSELLERIA D'HABITATGE, OBRES PUBLIQUES I VERTEBRACIO DEL TERRITORI, PER LA QUAL S'ESTABLEIXEN LES BASES REGULADORES PER A LA CONCESSIO DEL PREMI DE CARTOGRAFIA I TERRITORI PARE TOSCA.",
+        "url": "https://dogv.gva.es/datos/2016/09/28/pdf/2016_7460.pdf"
+      },
+      "sedeElectronica": "https://www.icv.gva.es",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "6.1 Resolución convocatoria modif._cast_firmado.pdf",
+          "fechaPublicacion": "2026-09-15",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1521527"
+        },
+        {
+          "descripcion": "Solicitud",
+          "nombreFichero": "0 SOL·LICITUD.pdf",
+          "fechaPublicacion": "2026-09-15",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1521529"
+        },
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "6.2 Resolución convocatoria modif._val_firmado.pdf",
+          "fechaPublicacion": "2026-09-15",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1521528"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/924229",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=924229"
+    },
+    {
+      "numeroBDNS": "923848",
+      "titulo": "III CONCURSO DE REDACCIÓN ESCOLAR SOBRE SOSTENIBILIDAD MEDIOAMBIENTAL DEL DISTRITO DE PATRAIX",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "local_ayuntamiento_valencia",
+      "organo": {
+        "nivel1": "LOCAL",
+        "nivel2": "VALENCIA",
+        "nivel3": "AYUNTAMIENTO DE VALENCIA"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 750,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Otras actuaciones de carácter económico",
+      "fechaRecepcion": "2026-08-06",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "B.O.P. DE VALENCIA",
+          "fechaPublicacion": "2026-08-18",
+          "cve": "BOPV-2026/10388",
+          "url": "https://bop.dival.es/bop/downloads?anuncioCSV=BOPV-2026/10388&lang=es",
+          "titulo": "Anuncio del Excelentísimo Ayuntamiento de València sobre extracto de la Resolución Z-312 de fecha 6 de agosto 2026,  de la Concejala  Delegada  de  Recursos  humanos,  Servicios  centrales  técnicos, Participación, Acción Vecinal y Pedanías, en virtud de la resolución nº 319 de 21 de noviembre de 2025, por la que se aprueba la convocatoria del  III CONCURSO DE REDACCIÓN ESCOLAR SOBRE SOSTENIBILIDAD MEDIOAMBIENTAL DEL DISTRITO DE PATRAIX."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2026-09-15",
+        "fechaFinSolicitud": "2026-10-31",
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "ORDENANZA GENERAL DE SUBVENCIONES DEL AYUNTAMIENTO DE VALENCIA Y SUS ORGANISMOS PÚBLICOS",
+        "url": "https://sede.valencia.es/sede/ordenanzas/index.xhtml"
+      },
+      "sedeElectronica": "https://sede.valencia.es",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "03_CONVOCATORIA_CONCURSO_CS.pdf",
+          "fechaPublicacion": "2026-09-16",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1522551"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/923848",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=923848"
+    },
+    {
+      "numeroBDNS": "923728",
+      "titulo": "Resolución de la Dirección General del Instituto de la Juventud, por la que se convocan ayudas del Programa \n«Erasmus+», línea de Juventud, correspondientes a la ronda de febrero de 2026.",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE JUVENTUD E INFANCIA",
+        "nivel3": "INSTITUTO DE LA JUVENTUD"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 25671800.4,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PERSONAS JURÍDICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Educación",
+      "fechaRecepcion": "2026-08-06",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "BOE. BOLETÍN OFICIAL DEL ESTADO",
+          "fechaPublicacion": "2026-08-08",
+          "cve": "BOE-B-2026-26629",
+          "url": "http://www.boe.es/diario_boe/verifica.php?acc=Verificar&c=BOE-B-2026-26629",
+          "titulo": "Extracto de la resolución de 5 de agosto de 2026 de la Dirección General del Instituto de la Juventud, por la que se convocan ayudas del Programa  «Erasmus+», línea de Juventud, correspondientes a la ronda de febrero de 2026."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2026-01-01",
+        "fechaFinSolicitud": "2026-03-05",
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "Orden DSA/1029/2021, de 20 de septiembre, por la que se establecen para el período 2021-2027 las bases reguladoras para la concesión de subvenciones en el marco del Programa europeo \"Erasmus+\", para los capítulos de educación no formal.",
+        "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2021-15851"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [
+        "FGI - FONDOS DE GESTIÓN INDIRECTA (ART. 58.1.C RGTO. UE Nº 966/2012)"
+      ],
+      "documentos": [
+        {
+          "descripcion": "Resolución de concesión Erasmus  Juventud Ronda 1",
+          "nombreFichero": "Resolucion de concesión Erasmus+ Juventud Ronda 1_firmada.pdf",
+          "fechaPublicacion": "2026-09-22",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1525341"
+        },
+        {
+          "descripcion": "Documento de la convocatoria en español",
+          "nombreFichero": "2-C5_Resolución Convocatoria_Erasmus+Juventud_2026_Ronda1_firmada.pdf.xsig.pdf",
+          "fechaPublicacion": "2026-08-06",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1505899"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/923728",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=923728"
+    },
+    {
+      "numeroBDNS": "923292",
+      "titulo": "Orden de 10 de julio de 2026 por la que se convocan becas para la preparación de las pruebas selectivas de acceso, por el sistema de promoción interna, a determinados Cuerpos adscritos al Ministerio de Inclusión, Seguridad Social y Migraciones",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO DE INCLUSIÓN, SEGURIDAD SOCIAL Y MIGRACIONES",
+        "nivel3": "SUBSECRETARÍA DE INCLUSIÓN, SEGURIDAD SOCIAL Y MIGRACIONES"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 82491,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Otras actuaciones de carácter económico",
+      "fechaRecepcion": "2026-08-03",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "BOE. BOLETÍN OFICIAL DEL ESTADO",
+          "fechaPublicacion": "2026-08-05",
+          "cve": "BOE-B-2026-26216",
+          "url": "http://www.boe.es/diario_boe/verifica.php?acc=Verificar&c=BOE-B-2026-26216",
+          "titulo": "Extracto de la Orden de 10 de julio de 2026 por la que se convocan becas para la preparación de las pruebas selectivas de acceso, por el sistema de promoción interna, al Cuerpo Superior de Interventores y Auditores de la Administración de la Seguridad Social y al Cuerpo de Gestión de la Administración de la Seguridad Social, especialidad de Auditoría y Contabilidad, correspondientes a la oferta de empleo público para el año 2025."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "A partir del día siguiente al de la publicación en BOE la resolución de aprobados de fase oposición",
+        "textoFin": "15 días hábiles contados a partir del inicio de solicitud"
+      },
+      "basesReguladoras": {
+        "titulo": "Orden ISM/1491/2025, de 10 de diciembre, por la que se aprueban las bases reguladoras para la concesión de becas destinadas a la preparación de las pruebas selectivas de acceso, por el sistema de promoción interna, a los Cuerpos y Escalas adscritos al Min",
+        "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-26122"
+      },
+      "sedeElectronica": "https://sede.inclusion.gob.es/ayudas-y-subvenciones",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Documento de la convocatoria en español",
+          "nombreFichero": "report_Orden convocatoria promoción interna.pdf",
+          "fechaPublicacion": "2026-08-03",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1504539"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/923292",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=923292"
+    },
+    {
+      "numeroBDNS": "923290",
+      "titulo": "AYUDAS CONCURRENCIA COMPETITIVA LÍNEA A DESARROLLO ACTIVIDADES INTERÉS GENERAL CONSIDERADAS INTERÉS SOCIAL, EN EL ÁMBITO DE LA INVESTIGACIÓN CIENTÍFICA Y TÉCNICA Y PROTECCIÓN MEDIO AMBIENTE EN MATERIAS DE COMPETENCIA ESTATAL. ANUALIDAD 2026.",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "estatal",
+      "organo": {
+        "nivel1": "ESTADO",
+        "nivel2": "MINISTERIO PARA LA TRANSICIÓN ECOLÓGICA Y EL RETO DEMOGRÁFICO",
+        "nivel3": "DIRECCIÓN GENERAL DE SERVICIOS"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 17389322.52,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Investigación, desarrollo e innovación",
+      "fechaRecepcion": "2026-08-03",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "BOE. BOLETÍN OFICIAL DEL ESTADO",
+          "fechaPublicacion": "2026-08-07",
+          "cve": "BOE-B-2026-26402",
+          "url": "http://www.boe.es/diario_boe/verifica.php?acc=Verificar&c=BOE-B-2026-26402",
+          "titulo": "Extracto de la Orden de 22 de julio de 2026, por la que se convoca para el año 2026 la concesión de subvenciones en régimen de concurrencia competitiva “línea a” para el desarrollo de actividades de interés general consideradas de interés social, en el ámbito de la investigación científica y técnica y protección al medio ambiente en materias de competencia estatal."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "día siguiente de publicación de extracto en el BOE",
+        "textoFin": "15 días hábiles tras publicación extracto BOE"
+      },
+      "basesReguladoras": {
+        "titulo": "Orden TED/898/2023, de 20 de julio, por la que se establecen las bases reguladoras de concesión de subvenciones, en régimen de concurrencia competitiva, para el desarrollo de actividades de interés general consideradas de interés social",
+        "url": "https://www.boe.es/boe/dias/2023/07/31/pdfs/BOE-A-2023-17623.pdf"
+      },
+      "sedeElectronica": "https://sede.miteco.gob.es/portal/site/seMITECO",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "report_CONVOCATORIA 2026.pdf",
+          "fechaPublicacion": "2026-08-04",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1505061"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/923290",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=923290"
+    },
+    {
+      "numeroBDNS": "922958",
+      "titulo": "RESOLUCIÓN de 29 de julio de 2026, de la Dirección General de Innovación e Inclusión Educativa, por la cual se convocan subvenciones para la adquisición de productos de apoyo no informáticos para el alumnado con necesidades educativas especiales, escolari",
+      "tituloLenguaCooficial": "RESOLUCIÓ de 29 de juliol de 2026, de la Direcció General d’Innovació i Inclusió Educativa, per la qual es convoquen subvencions per a l’adquisició de productes de suport no informàtics per a l’alumnat amb necessitats educatives especials, escolaritzat en",
+      "grupoConsulta": "autonomica_cv",
+      "organo": {
+        "nivel1": "AUTONOMICA",
+        "nivel2": "COMUNITAT VALENCIANA",
+        "nivel3": "SECRETARÍA AUTONÓMICA DE EDUCACIÓN"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 85000,
+      "regiones": ["ES52 - COMUNIDAD VALENCIANA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Educación",
+      "fechaRecepcion": "2026-07-31",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "DOCV. D.O. DE LA COMUNITAT VALENCIANA",
+          "fechaPublicacion": "2026-08-31",
+          "cve": "DOGV-V-2026-27606",
+          "url": "https://dogv.gva.es/va/resultat-dogv?signatura=2026/27606",
+          "titulo": "Extracto de la RESOLUCIÓN de 29 de julio de 2026, de la Dirección General de Innovación e Inclusión Educativa, por la cual se convocan subvenciones para la adquisición de productos de apoyo no informáticos para el alumnado con necesidades educativas especiales, escolarizado en centros educativos sostenidos con fondos públicos de titularidad distinta de la Generalitat, para el ejercicio 2026."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2026-09-01",
+        "fechaFinSolicitud": "2026-09-12",
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "ORDEN 3/2023, de 27 de septiembre, de la Conselleria de Educación, Universidades y Empleo, por la que se aprueban las bases reguladoras para la concesión de subvenciones para la adquisición de productos de apoyo no informáticos para el alumnado con necesi",
+        "url": "https://dogv.gva.es/datos/2023/10/02/pdf/2023_9881.pdf"
+      },
+      "sedeElectronica": "https://ovice.gva.es/",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "2. RESOLUCIÓ CONVOCATORIA PA CC_2026_26-007245_trad_firmado.pdf",
+          "fechaPublicacion": "2026-08-25",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1512520"
+        },
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "2. RESOLUCIÓN CONVOCATORIA PA CC_2026 fiscalizada_firmado.pdf",
+          "fechaPublicacion": "2026-08-25",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1512519"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/922958",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=922958"
+    },
+    {
+      "numeroBDNS": "922936",
+      "titulo": "CONCURSO DE FOTOGRAFIA TONI SANCHIS JM CIUTAT VELLA",
+      "tituloLenguaCooficial": null,
+      "grupoConsulta": "local_ayuntamiento_valencia",
+      "organo": {
+        "nivel1": "LOCAL",
+        "nivel2": "VALENCIA",
+        "nivel3": "AYUNTAMIENTO DE VALENCIA"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 250,
+      "regiones": ["ES - ESPAÑA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PYME Y PERSONAS FÍSICAS QUE DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Otras actuaciones de carácter económico",
+      "fechaRecepcion": "2026-07-31",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "B.O.P. DE VALENCIA",
+          "fechaPublicacion": "2026-08-13",
+          "cve": "BOPV-2026/10252",
+          "url": "https://bop.dival.es/bop/downloads?anuncioCSV=BOPV-2026/10252&lang=es",
+          "titulo": "Anuncio del Excelentísimo Ayuntamiento de València sobre extracto de la resolución CM-3634 de fecha 30 de julio de 2026, de la Concejala  Delegada  de  Recursos  humanos,  Servicios  centrales  técnicos, Participación, Acción Vecinal y Pedanías, en virtud de la resolución nº 319 de 21 de noviembre de 2025,  por la  que se aprueba la convocatoria del CONCURSO DE FOTOGRAFIA TONI SANCHIS JM CIUTAT VELLA"
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2026-09-01",
+        "fechaFinSolicitud": "2026-09-25",
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "ORDENANZA GENERAL DE SUBVENCIONES DEL AYUNTAMIENTO DE VALENCIA Y SUS ORGANISMOS PÚBLICOS",
+        "url": "https://sede.valencia.es/sede/ordenanzas/index.xhtml"
+      },
+      "sedeElectronica": "https://sede.valencia.es",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "03_BASES_CONCURSO_CS.pdf",
+          "fechaPublicacion": "2026-09-16",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1522541"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/922936",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=922936"
+    },
+    {
+      "numeroBDNS": "922596",
+      "titulo": "RESOLUCIÓN DE LA PRESIDENTA DE TURISME COMUNITAT VALENCIANA, POR LA QUE SE AMPLIA EL PLAZO PARA RESOLVER LOS EXPEDIENTES DE AYUDAS PARA MEJORAR EL POSICIONAMIENTO DEL SECTOR TURISTICO AÑO 2026 -PROGRAMA 1",
+      "tituloLenguaCooficial": "RESOLUCIÓ PRESIDENTA DE TURISME COMUNITAT VALENCIANA, PER LA QUAL S'ÀMPLIA EL TERMINI PER A RESOLDRE ELS EXPEDIENTS D'AJUDES PER A MILLORAR EL POSICIONAMENT DEL SECTOR *TURISTICO ANY 2026 -PROGRAMA 1",
+      "grupoConsulta": "autonomica_cv",
+      "organo": {
+        "nivel1": "AUTONOMICA",
+        "nivel2": "COMUNITAT VALENCIANA",
+        "nivel3": "TURISME COMUNITAT VALENCIANA"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 4000000,
+      "regiones": ["ES52 - COMUNIDAD VALENCIANA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PERSONAS JURÍDICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Comercio, Turismo y Pymes",
+      "fechaRecepcion": "2026-07-30",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "DOCV. D.O. DE LA COMUNITAT VALENCIANA",
+          "fechaPublicacion": "2026-08-03",
+          "cve": "DOGV-V-2026-25949",
+          "url": "https://dogv.gva.es/va/resultat-dogv?signatura=2026/25949",
+          "titulo": "EXTRACTO DE LA RESOLUCIÓN DE LA PRESIDENTA DE TURISME COMUNITAT VALENCIANA POR LA QUE SE AMPLIA EL PLAZO PARA RESOLVER LOS EXPEDIENTES DE AYUDAS DERIVADOS DE LA CONVOCATORIA DE AYUDAS PREVISTAS DE LA RESOLUCIÓN DE 23 DE MARZO DE 2026, DE LA PRESIDENTA DE TURISME COMUNITAT VALENCIANA, POR LA QUE SE CONVOCAN LAS AYUDAS PARA MEJORAR EL POSICIONAMIENTO DEL SECTOR TURÍSTICO PARA EL AÑO 2026, PROGRAMA 1."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2026-04-15",
+        "fechaFinSolicitud": "2026-04-30",
+        "textoInicio": "a las 9:00 horas del día 15 de abril de 2026",
+        "textoFin": "a las 14:00 horas del día 30 de abril  de 2026"
+      },
+      "basesReguladoras": {
+        "titulo": "Decreto 4/2017, de 31 de marzo, del President de la Generalitat, por lo que se aprueban las bases reguladoras de las ayudas dirigidas al sector turístico de la Comunitat Valenciana, modificado por Decreto 6/23 de 26 de abril de 2023",
+        "url": "https://dogv.gva.es/datos/2017/04/04/pdf/2017_2821.pdf"
+      },
+      "sedeElectronica": "https://formulariosturisme.gva.es/formulariosweb/ayudas",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "RESOLUCION  PRESIDENTA DE TURISME AMPLIACIÓN DE PLAZO PROGRAMA 1 AYUDAS 2026.pdf_firmado.pdf",
+          "fechaPublicacion": "2026-07-30",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1502795"
+        },
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "RESOLUCION  PRESIDENTA DE TURISME AMPLIACIÓN DE PLAZO PROGRAMA 1 AYUDAS 2026.pdf_firmado.pdf",
+          "fechaPublicacion": "2026-07-30",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1502794"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/922596",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=922596"
+    },
+    {
+      "numeroBDNS": "921809",
+      "titulo": "Resolución de 27 de julio de 2026, de la Conselleria de Educación, Cultura y Universidades por la que se convocan becas para el alumnado que vaya a realizar estudios en los centros asociados de la UNED en la Comunitat Valenciana curso 2025-2026.",
+      "tituloLenguaCooficial": "Resolució de 27 de juliol de 2026, de la Conselleria d'Educació, Cultura i Universitats per la qual es convoquen beques per a l'alumnat que vaja a realitzar estudis en els centres associats de la UNED en la Comunitat Valenciana curs 2025-2026.",
+      "grupoConsulta": "autonomica_cv",
+      "organo": {
+        "nivel1": "AUTONOMICA",
+        "nivel2": "COMUNITAT VALENCIANA",
+        "nivel3": "SECRETARÍA AUTONÓMICA DE UNIVERSIDADES"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 75000,
+      "regiones": ["ES52 - COMUNIDAD VALENCIANA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Educación",
+      "fechaRecepcion": "2026-07-27",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "DOCV. D.O. DE LA COMUNITAT VALENCIANA",
+          "fechaPublicacion": "2026-07-30",
+          "cve": "DOGV-V-2026-25527",
+          "url": "https://dogv.gva.es/va/resultat-dogv?signatura=2026/25527",
+          "titulo": "EXTRACTO de la Resolución de xx de julio de 2026, de la Conselleria de Educación, Cultura y Universidades por la que se convocan becas para el alumnado que vaya a realizar estudios en los centros asociados de la Universidad Nacional de Educación a Distancia en la Comunitat Valenciana durante el curso académico 2025-2026."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2026-07-31",
+        "fechaFinSolicitud": "2026-08-31",
+        "textoInicio": "A partir del día siguiente a la publicación de la convocatoria en el DOGV.",
+        "textoFin": "Un mes a partir del día siguiente a su publicación en el DOGV."
+      },
+      "basesReguladoras": {
+        "titulo": "Orden 74/2016, de 23 de noviembre de la Conselleria de Educación, Investigación y Deporte que establece las bases reguladoras para la concesión de las becas para el alumnado que vaya a realizar estudios en los centros asociados de la UNED en la CV (20/21)",
+        "url": "https://dogv.gva.es/datos/2016/11/28/pdf/2016_9401.pdf"
+      },
+      "sedeElectronica": "https://www.gva.es/proc112223",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "RES CONVOCA UNED 25-26_REV_ID_26-006991_trad_firmado.pdf",
+          "fechaPublicacion": "2026-07-27",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1500923"
+        },
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "RES CONVOCA UNED 25-26_REV_ID_firmado.pdf",
+          "fechaPublicacion": "2026-07-27",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1500922"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/921809",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=921809"
+    },
+    {
+      "numeroBDNS": "921643",
+      "titulo": "RESOLUCIÓN de la presidencia de Turisme Comunitat Valenciana por la que se convocan doce becas para la realización, con inicio en el ejercicio 2026, de prácticas profesionales en materia de turismo en dependencias de Turisme Comunitat Valenciana",
+      "tituloLenguaCooficial": "RESOLUCIÓ de la presidència de Turisme Comunitat Valenciana per la qual es convoquen dotze beques per a la realització, amb inici en l'exercici 2026, de pràctiques professionals en matèria de turisme en dependències de Turisme Comunitat Valenciana",
+      "grupoConsulta": "autonomica_cv",
+      "organo": {
+        "nivel1": "AUTONOMICA",
+        "nivel2": "COMUNITAT VALENCIANA",
+        "nivel3": "TURISME COMUNITAT VALENCIANA"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 179769.6,
+      "regiones": ["ES52 - COMUNIDAD VALENCIANA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Comercio, Turismo y Pymes",
+      "fechaRecepcion": "2026-07-27",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "DOCV. D.O. DE LA COMUNITAT VALENCIANA",
+          "fechaPublicacion": "2026-07-29",
+          "cve": "DOGV-V-2026-25475",
+          "url": "https://dogv.gva.es/va/resultat-dogv?signatura=2026/25475",
+          "titulo": "Extracto de la Resolución de la Presidencia de Turisme Comunitat Valenciana por la que se convocan doce becas para la realización, con inicio en el ejercicio 2026, de prácticas profesionales en materia de turismo en dependencias de Turisme Comunitat Valenciana y del Instituto Valenciano de Tecnologías Turísticas (INVAT·TUR)."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "Desde el día siguiente de la publicación de la convocatoria en el Diario Oficial",
+        "textoFin": "15 días hábiles desde el día siguiente a la publicación de la convocatoria en el Diario Oficial"
+      },
+      "basesReguladoras": {
+        "titulo": "DECRETO 20/2017 DE 24 DE NOVIEMBRE DEL PRESIDENT DE LA GENERALITAT POR EL QUE SE ESTABLECE LAS BASES REGULADORES PARA LA CONCESIÓN DE BECAS PARA LA REALIZACIÓN DE PRÁCTIVAS PROFESIONALES EN MATERIA DE TURISMO.",
+        "url": "http://www.dogv.gva.es/datos/2017/12/12/pdf/2017_11287.pdf"
+      },
+      "sedeElectronica": "https://sede.gva.es/es/",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "6.1 Extracto Resol Convocatoria Becas TurismeCV 2026 (WREDAS)vlc (1).docx",
+          "fechaPublicacion": "2026-07-27",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1500516"
+        },
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "Convocatoria Becas TCV 26 fda (1).pdf",
+          "fechaPublicacion": "2026-07-27",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1500515"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/921643",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=921643"
+    },
+    {
+      "numeroBDNS": "919225",
+      "titulo": "Resolución de 13 julio de 2026 la Conselleria de Educación, Cultura y Universidades, se convocan ayudas económicas destinadas a escolarización en centros privados autorizados de Educación Infantil y EIM primer ciclo CV.",
+      "tituloLenguaCooficial": "Resolució de 13 juliol de 2026 la Conselleria d'Educació, Cultura, Universitats i Ocupació, es convoquen ajudes econòmiques destinades a escolarització en centres privats autoritzats d'Educació Infantil i EIM primer cicle CV.",
+      "grupoConsulta": "autonomica_cv",
+      "organo": {
+        "nivel1": "AUTONOMICA",
+        "nivel2": "COMUNITAT VALENCIANA",
+        "nivel3": "SECRETARÍA AUTONÓMICA DE EDUCACIÓN"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 162981090,
+      "regiones": ["ES52 - COMUNIDAD VALENCIANA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Educación",
+      "fechaRecepcion": "2026-07-14",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "DOCV. D.O. DE LA COMUNITAT VALENCIANA",
+          "fechaPublicacion": "2026-07-15",
+          "cve": "DOGV-V-2026-24242",
+          "url": "https://dogv.gva.es/va/resultat-dogv?signatura=2026/24242",
+          "titulo": "Extracto de la Resolución de la Conselleria de Educación, Cultura y Universidades por la que se convocan las ayudas económicas destinadas a la escolarización en los centros privados autorizados de Educación Infantil y escuelas infantiles municipales de primer ciclo de la Comunitat Valenciana para el curso escolar 2026-2027"
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2026-07-16",
+        "fechaFinSolicitud": "2026-07-30",
+        "textoInicio": "Desde el siguiente al de la publicación de la resolución en el DOGV",
+        "textoFin": "15 días naturales desde el día siguiente al de la publicación de la resolución en el DOGV"
+      },
+      "basesReguladoras": {
+        "titulo": "RESOLUCIÓN de 23 de junio de 2025, por la que se aprueban las bases reguladoras de las ayudas económicas destinadas a la escolarización en los centros privados autorizados de Educación Infantil y escuelas infantiles municipales de primer ciclo de la CV",
+        "url": "https://dogv.gva.es/es/resultat-dogv?signatura=2025/24083"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "Resolucion convocatoria Fiscalizada_firmado.pdf",
+          "fechaPublicacion": "2026-07-29",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1502361"
+        },
+        {
+          "descripcion": "Extracte VLC",
+          "nombreFichero": "Extracto ampliación_revisat .pdf",
+          "fechaPublicacion": "2026-07-29",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1502364"
+        },
+        {
+          "descripcion": "Extracto CS",
+          "nombreFichero": "Extracto ampliación  - CS.pdf",
+          "fechaPublicacion": "2026-07-29",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1502363"
+        },
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "Resolució convocatòria 13_7_2026 ajudes a l'escolarització 0_3 anys_firmado.pdf",
+          "fechaPublicacion": "2026-07-29",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1502362"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/919225",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=919225"
+    },
+    {
+      "numeroBDNS": "918030",
+      "titulo": "RESOLUCIÓN de la Conselleria de Servicios Sociales, Familia e Infancia, de las bases reguladoras de los premios a Tesis Doctorales y Trabajos Finales de master y convocatoria 2026",
+      "tituloLenguaCooficial": "RESOLUCIÓ de la Conselleria de Servicis Socials, Família i Infància,de les bases reguladores dels Premis a Tesis Doctorals i Treballs Finals de master i convocatoria 2026",
+      "grupoConsulta": "autonomica_cv",
+      "organo": {
+        "nivel1": "AUTONOMICA",
+        "nivel2": "COMUNITAT VALENCIANA",
+        "nivel3": "SECRETARÍA AUTONÓMICA DE SISTEMA SOCIOSANITARIO"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 15500,
+      "regiones": ["ES52 - COMUNIDAD VALENCIANA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Servicios Sociales y Promoción Social",
+      "fechaRecepcion": "2026-07-08",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "DOCV. D.O. DE LA COMUNITAT VALENCIANA",
+          "fechaPublicacion": "2026-07-14",
+          "cve": "DOGV-V-2026-23941",
+          "url": "https://dogv.gva.es/va/resultat-dogv?signatura=2026/23941",
+          "titulo": "Extracto de la Resolución de la Conselleria de Servicios Sociales, Familia e Infancia, por la que se aprueban las bases reguladoras de los Premios a Tesis Doctorales y Trabajos Finales de Máster sobre Servicios Sociales María Asunción Martínez Román, y se convocan los premios para el ejercicio 2026."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2026-07-14",
+        "fechaFinSolicitud": "2026-08-15",
+        "textoInicio": null,
+        "textoFin": null
+      },
+      "basesReguladoras": {
+        "titulo": "RESOLUCIÓN de la Conselleria de Servicios Sociales, Familia e Infancia, de las bases reguladoras de los premios a Tesis Doctorales y Trabajos Finales de master y convocatoria 2026",
+        "url": "https://serviciossociales.gva.es/va/web/formacion-investigacion-y-calidad-de-los-servicios-sociales/premis"
+      },
+      "sedeElectronica": null,
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "RESOL. BB+C PREM ASUNCION MTEZ 47-26 - VAL_firmado.pdf",
+          "fechaPublicacion": "2026-07-10",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1492202"
+        },
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "RESOL. BB+C PREM ASUNCION MTEZ 47-26 - CAST_firmado.pdf",
+          "fechaPublicacion": "2026-07-10",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1492201"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/918030",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=918030"
+    },
+    {
+      "numeroBDNS": "917489",
+      "titulo": "S0512 Resolución de la Consellera de Justicia, Transparencia y Participación, por la que se efectúa la convocatoria de la V edición de los premios Participa-Acció, para el ejercicio 2026",
+      "tituloLenguaCooficial": "S0512 Resolució de la Consellera de Justicia, Transparencia y Participación, per la qual s'efectua la convocatòria de la V edició dels premis Participa-Acció, per a l'exercici 2026",
+      "grupoConsulta": "autonomica_cv",
+      "organo": {
+        "nivel1": "AUTONOMICA",
+        "nivel2": "COMUNITAT VALENCIANA",
+        "nivel3": "SECRETARÍA AUTONÓMICA DE TRANSPARENCIA Y PARTICIPACIÓN"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 23000,
+      "regiones": ["ES52 - COMUNIDAD VALENCIANA"],
+      "tiposBeneficiario": [
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Otras Prestaciones económicas",
+      "fechaRecepcion": "2026-07-07",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "DOCV. D.O. DE LA COMUNITAT VALENCIANA",
+          "fechaPublicacion": "2026-07-10",
+          "cve": "DOGV-V-2026-23380",
+          "url": "https://dogv.gva.es/va/resultat-dogv?signatura=2026/23380",
+          "titulo": "Extracto de la Resolución de la Consellera de Justicia, Transparencia y Participación, por la que se efectúa la convocatoria de la V edición de los Premios Participa-Acción para el ejercicio 2026"
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": null,
+        "fechaFinSolicitud": null,
+        "textoInicio": "11/07/2026",
+        "textoFin": "10/08/2026"
+      },
+      "basesReguladoras": {
+        "titulo": "Resolución de 24 de octubre de 2024, por la que se aprueban las bases reguladoras de los premios Participa-Acció",
+        "url": "https://dogv.gva.es/es/resultat-dogv?signatura=2024/13799"
+      },
+      "sedeElectronica": "https://sede.gva.es/es/inici",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "2026.07.02 RESOLUCION Premios firmada cast.pdf",
+          "fechaPublicacion": "2026-09-02",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1516403"
+        },
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "2026.07.02 RESOLUCION Premios firmada cast.pdf",
+          "fechaPublicacion": "2026-09-02",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1516401"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/917489",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=917489"
+    },
+    {
+      "numeroBDNS": "917102",
+      "titulo": "RESOLUCIÓN de 1 de julio de 2026, de la Presidencia del Instituto Valenciano de Competitividad Empresarial (IVACE), por la que se convocan ayudas para la electrificación de embarcaciones, con cargo al presupuesto del ejercicio 2026.",
+      "tituloLenguaCooficial": "RESOLUCIÓ d'1 de juliol de 2026, de la Presidència de l’Institut Valencià de Competitivitat Empresarial (IVACE), per la qual es convoquen ajudes per a l'electrificació d'embarcacions, amb càrrec al pressupost de l'exercici 2026.",
+      "grupoConsulta": "autonomica_cv",
+      "organo": {
+        "nivel1": "AUTONOMICA",
+        "nivel2": "COMUNITAT VALENCIANA",
+        "nivel3": "INSTITUTO VALENCIANO DE COMPETITIVIDAD EMPRESARIAL (IVACE)"
+      },
+      "tipoConvocatoria": "Concurrencia competitiva - canónica",
+      "instrumentos": ["SUBVENCIÓN Y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN"],
+      "presupuestoTotal": 400000,
+      "regiones": ["ES52 - COMUNIDAD VALENCIANA"],
+      "tiposBeneficiario": [
+        "GRAN EMPRESA",
+        "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PERSONAS JURÍDICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA",
+        "PYME Y PERSONAS FÍSICAS QUE DESARROLLAN ACTIVIDAD ECONÓMICA"
+      ],
+      "finalidad": "Industria y Energía",
+      "fechaRecepcion": "2026-07-03",
+      "publicacionesDiarioOficial": [
+        {
+          "diario": "DOCV. D.O. DE LA COMUNITAT VALENCIANA",
+          "fechaPublicacion": "2026-07-08",
+          "cve": "DOGV-V-2026-23161",
+          "url": "https://dogv.gva.es/va/resultat-dogv?signatura=2026/23161",
+          "titulo": "EXTRACTO de la Resolución de 1 de julio de 2026, de la Presidencia, por la que se convocan ayudas para la electrificación de embarcaciones, con cargo al presupuesto del ejercicio 2026."
+        }
+      ],
+      "plazoSolicitud": {
+        "abierto": false,
+        "fechaInicioSolicitud": "2026-07-09",
+        "fechaFinSolicitud": "2026-07-28",
+        "textoInicio": "Dia siguiente publicación del extracto en el DOGV",
+        "textoFin": "28/07/2026"
+      },
+      "basesReguladoras": {
+        "titulo": "Resolución 15 de junio de 2026, de la Presidencia, por la que se aprueban las bases reguladoras para la concesión de ayudas del IVACE en materia de electrificación de embarcaciones",
+        "url": "https://dogv.gva.es/datos/2026/06/23/pdf/2026_20989_es.pdf"
+      },
+      "sedeElectronica": "http://www.ivace.es",
+      "mrr": false,
+      "fondosUE": [],
+      "documentos": [
+        {
+          "descripcion": "Texto en otra lengua de la convocatoria",
+          "nombreFichero": "Convocatoria Electrificacio Embarcacions.pdf",
+          "fechaPublicacion": "2026-07-03",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1487822"
+        },
+        {
+          "descripcion": "Texto en castellano de la convocatoria",
+          "nombreFichero": "Convocatoria Electrificacion Embarcaciones 2026.pdf",
+          "fechaPublicacion": "2026-07-03",
+          "url": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias/documentos?idDocumento=1487821"
+        }
+      ],
+      "urlFichaOficial": "https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/917102",
+      "urlApiDetalle": "https://www.infosubvenciones.es/bdnstrans/api/convocatorias?vpd=GE&numConv=917102"
+    }
+  ]
+}

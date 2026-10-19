@@ -1,0 +1,819 @@
+{
+  "version": "2026-10-18",
+  "ambito": "Ciudadanía residente en la ciudad de València",
+  "aviso": "Catálogo curado para el hackathon. Verificar siempre en la sede oficial antes de actuar.",
+  "items": [
+    {
+      "id": "prestacion-desempleo",
+      "tipo": "tramite",
+      "titulo": "Solicitar la prestación por desempleo (paro)",
+      "administracion": "Estado",
+      "organismo": "Servicio Público de Empleo Estatal (SEPE)",
+      "frases_usuario": [
+        "me han echado del trabajo",
+        "me he quedado sin trabajo",
+        "se me ha acabado el contrato, ¿cómo pido el paro?",
+        "quiero cobrar el paro",
+        "m'han acomiadat i vull demanar l'atur"
+      ],
+      "requisitos_clave": [
+        "Estar en situación legal de desempleo (despido, fin de contrato, etc.)",
+        "Tener cotizado el periodo mínimo exigido y no estar en situación de incompatibilidad",
+        "Estar inscrito como demandante de empleo en el servicio de empleo autonómico (en la Comunitat Valenciana, Labora)",
+        "Personas de fuera de la UE/EEE: residir legalmente en España"
+      ],
+      "pasos": [
+        "Inscribirse como demandante de empleo en Labora",
+        "Opcional: calcular la prestación con el simulador del SEPE",
+        "Presentar la solicitud online en la sede del SEPE con certificado digital, DNIe o Cl@ve (o la presolicitud si no se tiene identificación electrónica)",
+        "Aportar la documentación que indique el justificante final de la solicitud",
+        "Consultar el estado en el Área Personal del SEPE"
+      ],
+      "documentacion": [
+        "DNI/NIE (extranjeros no UE: tarjeta de residencia y pasaporte)",
+        "La documentación adicional que indique el justificante al final del trámite"
+      ],
+      "plazo": "15 días desde el día siguiente a la situación legal de desempleo (RD 625/1985, art. 21). El SEPE los computa como días hábiles. Si se presenta fuera de plazo se pierden los días de retraso.",
+      "enlace_info": "https://sede.sepe.gob.es/portalSede/en/procedimientos-y-servicios/personas/proteccion-por-desempleo/solicitud-de-prestaciones",
+      "enlace_tramite": "https://sede.sepe.gob.es/PSolicitudUnicaWEB/solicitudUnica",
+      "fuente": "https://sede.sepe.gob.es/portalSede/en/procedimientos-y-servicios/personas/proteccion-por-desempleo/solicitud-de-prestaciones ; https://www.boe.es/buscar/doc.php?id=BOE-A-1985-8124",
+      "verificado": true,
+      "nota": "sepe.es (web informativa) no se pudo abrir (robots). El plazo de 15 días se confirmó en el BOE; que sean hábiles es el criterio general de cómputo administrativo (Ley 39/2015), no está en una página del SEPE que se haya podido abrir. La presolicitud está en https://sede.sepe.gob.es/portalSede/en/procedimientos-y-servicios/personas/proteccion-por-desempleo/presolicitud-prestacion-desempleo.html",
+      "relacionados": [
+        "inscripcion-demandante-labora",
+        "subsidio-desempleo",
+        "vida-laboral",
+        "identificacion-digital"
+      ]
+    },
+    {
+      "id": "subsidio-desempleo",
+      "tipo": "ayuda",
+      "titulo": "Subsidio por desempleo (nivel asistencial)",
+      "administracion": "Estado",
+      "organismo": "Servicio Público de Empleo Estatal (SEPE)",
+      "frases_usuario": [
+        "se me ha acabado el paro y no tengo ingresos",
+        "no tengo cotizado suficiente para el paro",
+        "ayuda de 480 euros cuando se acaba el paro",
+        "¿hay alguna ayuda si he agotado la prestación?",
+        "se m'ha acabat l'atur i no tinc ingressos"
+      ],
+      "requisitos_clave": [
+        "Estar en desempleo e inscrito como demandante de empleo",
+        "Carecer de rentas suficientes; se puede calcular de forma individual o por unidad familiar y acreditar con declaración responsable",
+        "Desde la reforma (RDL 2/2024, en vigor desde noviembre de 2024) pueden acceder también menores de 45 años sin responsabilidades familiares, entre otros colectivos"
+      ],
+      "pasos": [
+        "Mantener la inscripción como demandante de empleo en Labora",
+        "Solicitar el subsidio en la sede del SEPE (Cl@ve, certificado o DNIe) o con presolicitud",
+        "Renovar el subsidio cada trimestre"
+      ],
+      "documentacion": [
+        "DNI/NIE",
+        "Declaración responsable de rentas",
+        "La documentación que indique el justificante de la solicitud"
+      ],
+      "plazo": null,
+      "enlace_info": "https://www.sepe.es/HomeSepe/prestaciones-desempleo/subsidio-desempleo.html",
+      "enlace_tramite": "https://sede.sepe.gob.es/PSolicitudUnicaWEB/solicitudUnica",
+      "fuente": "https://www.sepe.es/HomeSepe/prestaciones-desempleo/subsidio-desempleo.html ; https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/trabajo14/paginas/2024/210624-reforma-subsidio-desempleo.aspx",
+      "verificado": true,
+      "nota": "Cuantía según La Moncloa (2024): 95 % del IPREM los 6 primeros meses, 90 % los 6 siguientes y 80 % el resto. Se elimina el mes de espera tras agotar el paro. Existe el Complemento de Apoyo al Empleo para compatibilizarlo con un trabajo. No se pudo confirmar en una web oficial abierta el plazo actual de solicitud tras la reforma. La página de subsidios del SEPE (consultada el 19/10/2026) remite a los requisitos de cada subsidio del RDL 2/2024.",
+      "relacionados": [
+        "prestacion-desempleo",
+        "inscripcion-demandante-labora",
+        "ingreso-minimo-vital"
+      ]
+    },
+    {
+      "id": "inscripcion-demandante-labora",
+      "tipo": "tramite",
+      "titulo": "Inscribirse como demandante de empleo (apuntarse al paro en Labora)",
+      "administracion": "Generalitat Valenciana",
+      "organismo": "Labora, Servicio Valenciano de Empleo y Formación",
+      "frases_usuario": [
+        "quiero apuntarme al paro",
+        "¿dónde me inscribo para buscar trabajo?",
+        "me piden la tarjeta del paro (DARDE)",
+        "necesito estar inscrito como demandante de empleo",
+        "vull apuntar-me a Labora"
+      ],
+      "requisitos_clave": [
+        "Residir en la Comunitat Valenciana y tener 16 años cumplidos",
+        "Nacionalidad española, UE/EEE o Suiza (y sus familiares); resto de personas extranjeras, con acceso reconocido al mercado de trabajo",
+        "Voluntaria, salvo para cobrar prestación o subsidio por desempleo: entonces es obligatoria y hay 15 días hábiles desde el fin de la última relación laboral",
+        "La inscripción y la renovación de la demanda las gestiona Labora (no el SEPE)"
+      ],
+      "pasos": [
+        "Online: 'primera inscripción online' en Punt Labora (puntlabora.gva.es) con certificado digital o Cl@ve, adjuntando foto o escaneo del NIF/NIE por ambas caras",
+        "Presencial: pedir cita previa ('cita previa 1ª inscripción') en la web o la app GVA Punt Labora o en el 012 (963 866 000), y acudir al Espai Labora que corresponda por domicilio",
+        "Guardar el DARDE (Documento de Alta y Renovación de la Demanda de Empleo), que indica la fecha de renovación",
+        "Renovar en esa fecha (app o web Punt Labora con el PIN del DARDE o firma ACCV, 012 o puntos Punt Labora); si no se renueva, la demanda causa baja"
+      ],
+      "documentacion": [
+        "NIF o NIE (ambas caras)",
+        "Permiso de residencia, en el caso de personas extranjeras no comunitarias",
+        "Con cita previa presencial: también un documento que acredite el domicilio de residencia"
+      ],
+      "plazo": "Todo el año. Si se va a pedir prestación o subsidio por desempleo, 15 días hábiles desde el fin de la última relación laboral",
+      "enlace_info": "https://labora.gva.es/es/ciutadania/busque-ocupacio/com-inscriuret/inscrpicio",
+      "enlace_tramite": "https://sede.gva.es/es/detall-tramit?id_proc=1684",
+      "fuente": "https://sede.gva.es/es/detall-tramit?id_proc=1684 ; https://sede.gva.es/es/detall-tramit?id_proc=G14988 ; https://labora.gva.es/es/ciutadania/busque-ocupacio/com-inscriuret/inscrpicio",
+      "verificado": true,
+      "nota": "Cita previa para inscribirse: https://sede.gva.es/es/detall-tramit?id_proc=G14988 (pide DNI/NIE, fecha de nacimiento, nombre, código postal y móvil). Si las citas superan el plazo de 15 días para pedir la prestación, hay que ir directamente al Espai Labora. Todos los servicios de Labora son gratuitos. Comprobado en la sede de la GVA el 18/10/2026.",
+      "relacionados": ["prestacion-desempleo", "subsidio-desempleo"]
+    },
+    {
+      "id": "alta-padron-valencia",
+      "tipo": "tramite",
+      "titulo": "Empadronarse o cambiar de domicilio en el Padrón de València",
+      "administracion": "Ajuntament de València",
+      "organismo": "Servicio de Padrón Municipal",
+      "frases_usuario": [
+        "me acabo de mudar a Valencia",
+        "quiero empadronarme",
+        "me he cambiado de piso dentro de Valencia",
+        "¿cómo me doy de alta en el padrón?",
+        "vull empadronar-me a València"
+      ],
+      "requisitos_clave": [
+        "Residir habitualmente en València (llegando de otro municipio o del extranjero) o cambiar de domicilio dentro de la ciudad",
+        "Ser mayor de edad o menor emancipado; los menores no emancipados se inscriben a través de sus padres o representantes",
+        "Todos los trámites de padrón son gratuitos"
+      ],
+      "pasos": [
+        "Online: Sede Electrónica, procedimiento PA.GP.11, 'Iniciar trámite', identificarse y firmar, rellenar el formulario y adjuntar documentos",
+        "Presencial: pedir cita previa (web, 010 o 962 081 104) y acudir con originales a la Oficina del Padrón (Plaza del Ayuntamiento, entrada por Periodista Azzati, 2), a la Oficina de Atención Ciudadana de Tabacalera o a una Junta Municipal",
+        "Seguir la solicitud en la Carpeta Ciudadana"
+      ],
+      "documentacion": [
+        "Documento de identidad en vigor (DNI; ciudadanos UE: certificado de registro, pasaporte o documento nacional; resto: tarjeta de residencia o pasaporte)",
+        "Vivienda en propiedad: escritura, nota simple del Registro (3 meses) o recibo del IBI a tu nombre",
+        "Vivienda en alquiler: contrato vigente de más de 6 meses firmado por todas las partes y con referencia catastral, más el último recibo o transferencia del alquiler (últimos 2 meses)",
+        "Vivienda ajena: impreso 'Autorización de inscripción en una vivienda ajena' firmado por el titular y copia de su documento de identidad",
+        "Menores: libro de familia o certificado de nacimiento y modelos según la custodia"
+      ],
+      "plazo": "Resolución en un máximo de 3 meses; el silencio es positivo",
+      "enlace_info": "https://www.valencia.es/cas/oficina-del-padron-municipal",
+      "enlace_tramite": "https://sede.valencia.es/sede/registro/procedimiento/PA.GP.11?lang=1",
+      "fuente": "https://sede.valencia.es/sede/registro/procedimiento/PA.GP.11?lang=1",
+      "verificado": true,
+      "relacionados": [
+        "certificado-empadronamiento",
+        "cambio-domicilio-dgt",
+        "tarjeta-sanitaria-sip"
+      ]
+    },
+    {
+      "id": "certificado-empadronamiento",
+      "tipo": "tramite",
+      "titulo": "Certificado o volante de empadronamiento (València)",
+      "administracion": "Ajuntament de València",
+      "organismo": "Servicio de Padrón Municipal",
+      "frases_usuario": [
+        "me piden el certificado de empadronamiento",
+        "necesito un papel que diga dónde vivo",
+        "certificado de convivencia para una ayuda",
+        "¿cuánta gente está empadronada en mi piso?",
+        "necessite un certificat de padró"
+      ],
+      "requisitos_clave": [
+        "Ser mayor de edad y estar empadronado en València",
+        "Tipos: individual, individual histórico, familiar (convivencia) y de vivienda",
+        "Gratuito"
+      ],
+      "pasos": [
+        "Inmediato: Sede Electrónica con certificado digital o DNIe (procedimiento PA.CE.10)",
+        "Sin certificado digital: formulario web de valencia.es; se envía por correo postal o email tras comprobaciones (no es inmediato)",
+        "Por teléfono: 010",
+        "Para bajas, personas fallecidas u otros casos: procedimiento PA.CE.15"
+      ],
+      "documentacion": [
+        "NIF/NIE/pasaporte del solicitante",
+        "Para el familiar: datos de cada persona empadronada en el domicilio"
+      ],
+      "plazo": null,
+      "enlace_info": "https://www.valencia.es/cas/tramites/certificado-de-padron",
+      "enlace_tramite": "https://sede.valencia.es/sede/registro/procedimiento/PA.CE.10?lang=1",
+      "fuente": "https://www.valencia.es/cas/tramites/certificado-de-padron",
+      "verificado": true,
+      "relacionados": [
+        "alta-padron-valencia",
+        "renovacion-dni",
+        "bono-social-electrico",
+        "renta-valenciana-inclusion"
+      ]
+    },
+    {
+      "id": "cambio-domicilio-dgt",
+      "tipo": "tramite",
+      "titulo": "Cambio de domicilio en la DGT (carnet de conducir y vehículos)",
+      "administracion": "Estado",
+      "organismo": "Dirección General de Tráfico (DGT)",
+      "frases_usuario": [
+        "me he mudado y tengo que cambiar la dirección del carnet",
+        "quiero que las multas me lleguen a mi nueva casa",
+        "cambiar el domicilio del coche",
+        "he cambiado de piso, ¿qué tengo que hacer con Tráfico?",
+        "he canviat de casa i vull actualitzar l'adreça a Trànsit"
+      ],
+      "requisitos_clave": [
+        "Comunicar la nueva dirección a Tráfico en un plazo de 15 días",
+        "Por teléfono, la DGT comprueba que el nuevo domicilio coincide con el del padrón (INE); conviene empadronarse antes",
+        "El domicilio fiscal de cada vehículo es un trámite separado (se puede hacer desde el mismo servicio)",
+        "Gratuito"
+      ],
+      "pasos": [
+        "Empadronarse en el nuevo domicilio",
+        "Online con Cl@ve o certificado en el servicio 'Cambio de dirección' de la sede DGT, o en la app miDGT (Ajustes > Datos personales > Domicilio de notificación)",
+        "Alternativas: teléfono 060, Jefatura Provincial con cita previa, o Punto de Acceso General para cambiar el domicilio en varios organismos a la vez",
+        "Cambiar también el domicilio fiscal de los vehículos"
+      ],
+      "documentacion": [
+        "Identificación con Cl@ve o certificado digital (online)",
+        "Presencial: impreso de solicitud (modelo 03) y documento de identidad"
+      ],
+      "plazo": "15 días desde el cambio de domicilio",
+      "enlace_info": "https://sede.dgt.gob.es/es/permisos-de-conducir/direccion-para-notificaciones/",
+      "enlace_tramite": "https://sede.dgt.gob.es/es/servicios-sede/cambio-de-direccion/",
+      "fuente": "https://sede.dgt.gob.es/es/permisos-de-conducir/direccion-para-notificaciones/",
+      "verificado": true,
+      "relacionados": [
+        "alta-padron-valencia",
+        "multa-dgt",
+        "identificacion-digital"
+      ]
+    },
+    {
+      "id": "renovacion-dni",
+      "tipo": "tramite",
+      "titulo": "Renovar el DNI (cita previa)",
+      "administracion": "Estado",
+      "organismo": "Policía Nacional (Ministerio del Interior)",
+      "frases_usuario": [
+        "se me caduca el DNI",
+        "necesito cita para renovar el carnet de identidad",
+        "he perdido el DNI",
+        "me han robado la cartera con el DNI",
+        "vull renovar el DNI"
+      ],
+      "requisitos_clave": [
+        "Se puede renovar en los últimos 180 días de vigencia",
+        "Presencia física obligatoria, con cita previa",
+        "Si se ha perdido o robado, presentar antes la denuncia"
+      ],
+      "pasos": [
+        "Pedir cita previa en citapreviadnie.es",
+        "Opcional: pagar la tasa online y aportar el justificante al pedir la cita (también se puede pagar en la oficina en efectivo o con tarjeta)",
+        "Acudir a la oficina de expedición con la documentación"
+      ],
+      "documentacion": [
+        "DNI actual",
+        "Fotografía reciente en color de 32 x 26 mm, fondo blanco (no hace falta si la oficina tiene cabina automática y no hay cambio de datos)",
+        "Si has cambiado de domicilio: certificado o volante de empadronamiento de menos de 3 meses (no hace falta si no te opones a la consulta electrónica y llevas al menos 2 meses empadronado)",
+        "Si han cambiado tus datos de filiación: certificado del Registro Civil"
+      ],
+      "plazo": null,
+      "enlace_info": "https://www.dnielectronico.es/PortalDNIe/PRF1_Cons02.action?pag=REF_420",
+      "enlace_tramite": "https://www.citapreviadnie.es/citaPreviaDni/Inicio.action",
+      "fuente": "https://www.dnielectronico.es/PortalDNIe/PRF1_Cons02.action?pag=REF_420",
+      "verificado": true,
+      "nota": "El importe de la tasa no figura en la página consultada; ver la página de tasas de dnielectronico.es (REF_480).",
+      "relacionados": ["certificado-empadronamiento", "identificacion-digital"]
+    },
+    {
+      "id": "vida-laboral",
+      "tipo": "tramite",
+      "titulo": "Obtener el informe de vida laboral",
+      "administracion": "Estado",
+      "organismo": "Tesorería General de la Seguridad Social (Import@ss)",
+      "frases_usuario": [
+        "necesito la vida laboral",
+        "¿cuántos días he cotizado?",
+        "me piden un papel con todos mis trabajos",
+        "quiero ver si mi empresa me dio de alta",
+        "necessite l'informe de vida laboral"
+      ],
+      "requisitos_clave": [
+        "Haber estado de alta en la Seguridad Social en algún momento",
+        "No incluye periodos en el extranjero ni servicio militar"
+      ],
+      "pasos": [
+        "Entrar en Import@ss > 'Informe de tu vida laboral' > 'Consultar vida laboral'",
+        "Identificarse con Cl@ve Permanente, Cl@ve Móvil, DNIe, certificado electrónico o vía SMS",
+        "Sin identificación electrónica: opción 'Ninguno de los anteriores' (datos personales, selfie y foto del documento) o 'Recibir informe en mi domicilio'",
+        "Descargar el PDF (completo o de un periodo)"
+      ],
+      "documentacion": [
+        "DNI/NIE y teléfono móvil o identificación electrónica"
+      ],
+      "plazo": null,
+      "enlace_info": "https://portal.seg-social.gob.es/wps/portal/importass/importass/Categorias/Vida+laboral+e+informes/Informes+sobre+tu+situacion+laboral/Informe+de+tu+vida+laboral",
+      "enlace_tramite": "https://portal.seg-social.gob.es/wps/portal/importass/importass/Categorias/Vida+laboral+e+informes/Informes+sobre+tu+situacion+laboral/Informe+de+tu+vida+laboral",
+      "fuente": "https://portal.seg-social.gob.es/wps/portal/importass/importass/Categorias/Vida+laboral+e+informes/Informes+sobre+tu+situacion+laboral/Informe+de+tu+vida+laboral",
+      "verificado": true,
+      "relacionados": ["prestacion-desempleo", "identificacion-digital"]
+    },
+    {
+      "id": "identificacion-digital",
+      "tipo": "tramite",
+      "titulo": "Conseguir identificación digital: registro en Cl@ve o certificado digital FNMT",
+      "administracion": "Estado",
+      "organismo": "Cl@ve (Gobierno de España) / Fábrica Nacional de Moneda y Timbre (FNMT)",
+      "frases_usuario": [
+        "no tengo certificado digital y me lo piden",
+        "¿cómo me saco la Cl@ve?",
+        "quiero hacer trámites por internet",
+        "me pide identificarme con Cl@ve o certificado",
+        "vull fer-me el certificat digital"
+      ],
+      "requisitos_clave": [
+        "Cl@ve básico: registro online con videoidentificación automática o con carta de invitación (no vale para todos los trámites)",
+        "Cl@ve avanzado: videoidentificación revisada por un empleado público, con certificado/DNIe, o presencial en oficina de registro",
+        "Certificado FNMT: solicitud online y acreditación de identidad en oficina (algunas con cita), por videoidentificación o con la app móvil"
+      ],
+      "pasos": [
+        "Cl@ve: elegir método de registro en clave.gob.es; al terminar llega un SMS de bienvenida y se puede usar la app Cl@ve (Cl@ve Móvil) o activar Cl@ve Permanente",
+        "Certificado FNMT: 1) configuración previa del ordenador; 2) solicitud online (recibes un código por email); 3) acreditar identidad en una oficina con ese código; 4) descargar el certificado aprox. una hora después y hacer copia de seguridad"
+      ],
+      "documentacion": [
+        "DNI/NIE",
+        "Teléfono móvil",
+        "Código de solicitud (certificado FNMT)"
+      ],
+      "plazo": null,
+      "enlace_info": "https://clave.gob.es/en/registro/como-puedo-registrarme",
+      "enlace_tramite": "https://www.sede.fnmt.gob.es/certificados/persona-fisica/obtener-certificado-software",
+      "fuente": "https://clave.gob.es/en/registro/como-puedo-registrarme ; https://www.sede.fnmt.gob.es/certificados/persona-fisica/obtener-certificado-software",
+      "verificado": true,
+      "relacionados": [
+        "prestacion-desempleo",
+        "declaracion-renta",
+        "voto-por-correo",
+        "vida-laboral"
+      ]
+    },
+    {
+      "id": "declaracion-renta",
+      "tipo": "tramite",
+      "titulo": "Declaración de la renta (IRPF) y borrador",
+      "administracion": "Estado",
+      "organismo": "Agencia Estatal de Administración Tributaria (AEAT)",
+      "frases_usuario": [
+        "tengo que hacer la declaración de la renta",
+        "¿cómo confirmo el borrador?",
+        "me ha llegado una carta de Hacienda",
+        "quiero saber si me sale a devolver",
+        "he de fer la declaració de la renda"
+      ],
+      "requisitos_clave": [
+        "Identificación con certificado electrónico, Cl@ve Móvil, número de referencia o eIDAS",
+        "En declaración conjunta, también NIF y referencia o Cl@ve Móvil del cónyuge",
+        "Los beneficiarios del Ingreso Mínimo Vital deben presentar declaración"
+      ],
+      "pasos": [
+        "Obtener el número de referencia o usar Cl@ve/certificado",
+        "Acceder al servicio de tramitación de borrador/declaración (Renta WEB / Renta DIRECTA)",
+        "Revisar datos fiscales, modificar si hace falta y presentar",
+        "También por teléfono o presencial con cita (oficinas AEAT y entidades con convenio)"
+      ],
+      "documentacion": [
+        "NIF",
+        "IBAN para devolución o domiciliación",
+        "Número de referencia o identificación electrónica"
+      ],
+      "plazo": "Campaña Renta 2025: del 8 de abril al 30 de junio de 2026 (domiciliación hasta el 25 de junio). A fecha 17/10/2026 el plazo ordinario está cerrado; la campaña de 2026 se abrirá en 2027 (fechas no publicadas).",
+      "enlace_info": "https://sede.agenciatributaria.gob.es/Sede/Renta.html",
+      "enlace_tramite": "https://www1.agenciatributaria.gob.es/wlpl/DASR-CORE/AccesoDR2025RVlt",
+      "fuente": "https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c01-campana-declaracion-renta/confirmacion-borrador-presentacion-declaraciones/plazo-forma-presentacion.html",
+      "verificado": true,
+      "relacionados": ["identificacion-digital", "complemento-ayuda-infancia"]
+    },
+    {
+      "id": "tarjeta-sanitaria-sip",
+      "tipo": "tramite",
+      "titulo": "Alta en el SIP y tarjeta sanitaria (Comunitat Valenciana)",
+      "administracion": "Generalitat Valenciana",
+      "organismo": "Conselleria de Sanidad",
+      "frases_usuario": [
+        "acabo de llegar y no tengo médico",
+        "necesito la tarjeta sanitaria",
+        "¿cómo me saco la SIP?",
+        "no tengo tarjeta para ir al centro de salud",
+        "necessite la targeta SIP"
+      ],
+      "requisitos_clave": [
+        "Residir en la Comunitat Valenciana (empadronamiento) o ser no residente con derecho a la asistencia del sistema valenciano",
+        "El empadronamiento se comprueba de oficio salvo oposición; si te opones, debes llevar el certificado de empadronamiento al centro de salud",
+        "Gratuito y abierto todo el año"
+      ],
+      "pasos": [
+        "Solicitar el alta online con certificado digital o Cl@ve en el trámite telemático SIP-ALTA",
+        "Recoger la tarjeta individual o el documento de inclusión en el centro de salud que te corresponda por domicilio",
+        "Dudas: teléfono 012 (o 963 866 000)"
+      ],
+      "documentacion": [
+        "Datos personales (fecha de nacimiento, sexo, nacionalidad) y tiempo de estancia",
+        "Certificado de empadronamiento solo si te opones a la consulta de oficio"
+      ],
+      "plazo": null,
+      "enlace_info": "https://www.san.gva.es/es/web/tarjeta-sanitaria/tramites-tarjeta-sip",
+      "enlace_tramite": "https://www.tramita.gva.es/ctt-att-atr/asistente/iniciarTramite.html?tramite=SIP-ALTA&version=1&idioma=es&login=c&idProcGuc=21561&idCatGuc=PR",
+      "fuente": "https://www.gva.es/en/inicio/procedimientos?id_proc=G21561",
+      "verificado": true,
+      "relacionados": ["alta-padron-valencia", "cita-medica-gva"]
+    },
+    {
+      "id": "cita-medica-gva",
+      "tipo": "tramite",
+      "titulo": "Pedir cita previa en el centro de salud (atención primaria)",
+      "administracion": "Generalitat Valenciana",
+      "organismo": "Conselleria de Sanidad",
+      "frases_usuario": [
+        "necesito cita con mi médico de cabecera",
+        "quiero pedir hora en el centro de salud",
+        "¿cómo anulo una cita del médico?",
+        "cita para la enfermera",
+        "vull demanar cita al metge"
+      ],
+      "requisitos_clave": [
+        "Tener tarjeta SIP / estar dado de alta en el sistema sanitario valenciano"
+      ],
+      "pasos": [
+        "Web: sección Cita previa del Portal del Paciente",
+        "App GVA +Salut",
+        "Teléfono 012 (o +34 96 386 60 00), de lunes a viernes de 8 a 19 h",
+        "Consultar y anular citas pendientes en el Portal del Paciente"
+      ],
+      "documentacion": ["Número de tarjeta SIP"],
+      "plazo": null,
+      "enlace_info": "https://www.san.gva.es/es/web/portal-del-paciente/asistencia-sanitaria",
+      "enlace_tramite": "https://www.san.gva.es/web/portal-del-paciente/cita-previa",
+      "fuente": "https://www.san.gva.es/es/web/portal-del-paciente/asistencia-sanitaria",
+      "verificado": true,
+      "nota": "La página consultada no detalla qué datos se piden; que se necesite el número SIP no está confirmado en ella. Guía visual: https://www.san.gva.es/documents/d/portal-del-paciente/infografia_cita_previa_cas",
+      "relacionados": ["tarjeta-sanitaria-sip"]
+    },
+    {
+      "id": "voto-por-correo",
+      "tipo": "tramite",
+      "titulo": "Solicitar el voto por correo (Elecciones Generales del 29 de noviembre de 2026)",
+      "administracion": "Estado",
+      "organismo": "Correos / Oficina del Censo Electoral (INE)",
+      "frases_usuario": [
+        "ese día no voy a estar para votar",
+        "quiero votar por correo",
+        "estaré de viaje el 29 de noviembre",
+        "¿hasta cuándo puedo pedir el voto por correo?",
+        "vull votar per correu"
+      ],
+      "requisitos_clave": [
+        "Electores residentes en España (y residentes en el extranjero que estén temporalmente en España)",
+        "Una vez aceptada la solicitud, no se puede votar en la mesa electoral",
+        "Trámite personal; solo se admite representante por enfermedad o incapacidad"
+      ],
+      "pasos": [
+        "Solicitarlo online en Correos con DNIe o certificado digital ('SOLICITAR VOTO'), o en cualquier oficina de Correos con documento de identidad",
+        "Recibir la documentación electoral en el domicilio indicado (del 9 al 22 de noviembre)",
+        "Entregar el voto en una oficina de Correos, como certificado (sin coste), desde que se recibe la documentación hasta el 25 de noviembre"
+      ],
+      "documentacion": [
+        "DNI, pasaporte o permiso de conducir en vigor",
+        "Online: DNIe o certificado digital aceptado",
+        "Si entrega otra persona el voto: autorización escrita, fotocopia del documento del votante y documento del autorizado"
+      ],
+      "plazo": "Solicitud del 6 de octubre al 19 de noviembre de 2026; entrega del voto hasta el 25 de noviembre de 2026",
+      "enlace_info": "https://www.ine.es/dyngs/CEL/index.htm?cid=1702",
+      "enlace_tramite": "https://www.correos.es/es/es/particulares/para-el-ciudadano/voto-por-correo",
+      "fuente": "https://www.correos.es/es/es/particulares/para-el-ciudadano/voto-por-correo ; https://www.ine.es/dyngs/CEL/index.htm?cid=1702 ; https://www.juntaelectoralcentral.es/cs/jec/documentos/eg2026_calendario.pdf",
+      "verificado": true,
+      "nota": "Son elecciones a Cortes Generales (Congreso y Senado), no autonómicas. Los residentes temporalmente en el extranjero tienen plazo de solicitud del 6 al 31 de octubre. Quien vive en el extranjero (CERA) no lo solicita: recibe la documentación de oficio y vota en su consulado del 21 al 26 de noviembre o envía el voto por correo al consulado hasta el 24 de noviembre.",
+      "relacionados": ["identificacion-digital"]
+    },
+    {
+      "id": "multa-dgt",
+      "tipo": "tramite",
+      "titulo": "Pagar una multa de tráfico de la DGT",
+      "administracion": "Estado",
+      "organismo": "Dirección General de Tráfico (DGT)",
+      "frases_usuario": [
+        "me ha llegado una multa de tráfico",
+        "quiero pagar la multa con descuento",
+        "¿puedo pagar la multa a plazos?",
+        "me han multado por exceso de velocidad",
+        "m'han posat una multa de trànsit"
+      ],
+      "requisitos_clave": [
+        "Comprobar quién te multa: DGT, comunidad autónoma o ayuntamiento (las multas de la Policía Local de València se pagan al Ajuntament, no a la DGT)",
+        "Descuento del 50 % si pagas en 20 días naturales desde el día siguiente a la notificación; pagar con descuento supone renunciar a alegar",
+        "La DGT no contempla aplazamiento ni fraccionamiento de multas",
+        "Si la multa es firme y no se paga, pasa a la Agencia Tributaria con un recargo del 20 %"
+      ],
+      "pasos": [
+        "Tener a mano el número de expediente y la fecha de notificación",
+        "Pagar online (con Cl@ve o sin certificado), en la app miDGT (Mis multas > Pendientes), por teléfono 060, en CaixaBank o en Correos",
+        "Si quieres recurrir, presentar alegación o recurso en la sede DGT (pierdes el descuento)"
+      ],
+      "documentacion": [
+        "Número de expediente",
+        "Fecha de notificación",
+        "Tarjeta, Bizum o efectivo (solo CaixaBank o Correos)"
+      ],
+      "plazo": "20 días naturales para pagar con el 50 % de descuento",
+      "enlace_info": "https://sede.dgt.gob.es/es/multas/pago-de-multas/",
+      "enlace_tramite": "https://sede.dgt.gob.es/.galleries/enlaces/enlaces_sedeclave/Pago-multas-sin-certificado.html",
+      "fuente": "https://sede.dgt.gob.es/es/multas/pago-de-multas/",
+      "verificado": true,
+      "nota": "Alegaciones o recursos: https://sede.dgt.gob.es/es/multas/presentacion-de-alegacion-o-recurso-a-una-multa/",
+      "relacionados": ["cambio-domicilio-dgt", "identificacion-digital"]
+    },
+    {
+      "id": "ingreso-minimo-vital",
+      "tipo": "ayuda",
+      "titulo": "Ingreso Mínimo Vital (IMV)",
+      "administracion": "Estado",
+      "organismo": "Instituto Nacional de la Seguridad Social (INSS)",
+      "frases_usuario": [
+        "no tengo ingresos y no puedo pagar nada",
+        "estoy sin trabajo y sin paro",
+        "necesito una ayuda para llegar a fin de mes",
+        "vivo sola y no tengo dinero",
+        "no tinc ingressos, quina ajuda puc demanar?"
+      ],
+      "requisitos_clave": [
+        "Residencia legal y efectiva en España de forma continuada durante al menos el año anterior (con excepciones, p. ej. víctimas de violencia de género o trata)",
+        "Vulnerabilidad económica: ingresos mensuales del hogar al menos 10 € por debajo de la renta garantizada; límite de patrimonio excluida la vivienda habitual",
+        "Edad mínima general de 23 años (excepciones: víctimas de violencia de género o trata desde 18, jóvenes extutelados de 18 a 22, padres de menores)",
+        "La unidad de convivencia debe existir desde al menos 6 meses antes"
+      ],
+      "pasos": [
+        "Comprobar con el simulador en imv.seg-social.es",
+        "Solicitar online en la sede de la Seguridad Social (hay vía sin certificado digital)",
+        "Aportar documentación si la Seguridad Social la requiere",
+        "Presentar la declaración de la renta anual una vez concedido"
+      ],
+      "documentacion": [
+        "DNI/NIE de los miembros del hogar",
+        "La que requiera el INSS (servicio de presentación de documentación acreditativa)"
+      ],
+      "plazo": "Se puede solicitar en cualquier momento",
+      "enlace_info": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/65850d68-8d06-4645-bde7-05374ee42ac7",
+      "enlace_tramite": "https://imv.seg-social.es/",
+      "fuente": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/65850d68-8d06-4645-bde7-05374ee42ac7",
+      "verificado": true,
+      "nota": "Cuantía 2026 para una persona adulta sola: 733,60 €/mes (más en hogares con más miembros). Teléfono de información: 020. La afirmación 'se puede solicitar en cualquier momento' es criterio general, no se leyó explícitamente.",
+      "relacionados": [
+        "complemento-ayuda-infancia",
+        "renta-valenciana-inclusion",
+        "bono-social-electrico",
+        "subsidio-desempleo"
+      ]
+    },
+    {
+      "id": "complemento-ayuda-infancia",
+      "tipo": "ayuda",
+      "titulo": "Complemento de Ayuda para la Infancia (CAPI) del IMV",
+      "administracion": "Estado",
+      "organismo": "Instituto Nacional de la Seguridad Social (INSS)",
+      "frases_usuario": [
+        "tengo hijos y cobro poco, ¿hay alguna ayuda?",
+        "ayuda por hijo a cargo",
+        "los 115 euros por niño",
+        "no llego con lo que gano y tengo un bebé",
+        "tinc fills i pocs ingressos"
+      ],
+      "requisitos_clave": [
+        "Hogar con menores que cumpla los requisitos generales del IMV",
+        "Ingresos inferiores al 300 % de la renta garantizada y patrimonio inferior al 150 % de los límites del IMV",
+        "Se puede conceder aunque no se tenga derecho al IMV",
+        "Incompatible con la asignación por hijo a cargo sin discapacidad o con discapacidad inferior al 33 %"
+      ],
+      "pasos": [
+        "Usar el simulador en imv.seg-social.es ('Iniciar solicitud'), que indica si podrías tener derecho solo al complemento",
+        "Presentar una solicitud de IMV (sirve para pedir el complemento solo o junto al IMV)",
+        "Presentar la declaración de la renta anual"
+      ],
+      "documentacion": [
+        "DNI/NIE de los miembros del hogar",
+        "La que requiera el INSS"
+      ],
+      "plazo": null,
+      "enlace_info": "https://revista.seg-social.es/-/gu%C3%ADa-sobre-el-nuevo-complemento-a-la-infancia-del-imv",
+      "enlace_tramite": "https://imv.seg-social.es/",
+      "fuente": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/65850d68-8d06-4645-bde7-05374ee42ac7",
+      "verificado": true,
+      "nota": "Cuantías por hijo y mes publicadas por la Seguridad Social: menores de 3 años 115 €; de 3 a 6 años 80,50 €; de 6 a 18 años 57,50 €. Para madres trabajadoras con hijos menores de 3 años existe además la deducción por maternidad del IRPF (AEAT, modelo 140): https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-relacionadas-hijos-descendientes/deduccion-maternidad.html",
+      "relacionados": [
+        "ingreso-minimo-vital",
+        "ayudas-comedor-escolar",
+        "xarxa-llibres",
+        "declaracion-renta"
+      ]
+    },
+    {
+      "id": "renta-valenciana-inclusion",
+      "tipo": "ayuda",
+      "titulo": "Renta Valenciana de Inclusión (RVI)",
+      "administracion": "Generalitat Valenciana",
+      "organismo": "Conselleria de Servicios Sociales, Familia e Infancia (dirección general competente en RVI; los servicios sociales municipales informan y hacen el diagnóstico)",
+      "frases_usuario": [
+        "no tengo ingresos y me han denegado el IMV",
+        "necesito la renta de inclusión",
+        "los servicios sociales me hablaron de una renta valenciana",
+        "no puedo pagar el alquiler ni la comida",
+        "vull demanar la renda valenciana d'inclusió"
+      ],
+      "requisitos_clave": [
+        "Estar empadronado en la Comunitat Valenciana 15 meses continuados antes de solicitar, o 5 años en los últimos 10 (sin mínimo para protección internacional, víctimas de trata o explotación sexual y víctimas de violencia sobre la mujer o intrafamiliar)",
+        "Edad mínima de 23 años; de 23 a 30, haber vivido de forma independiente los 2 años anteriores (con excepciones); de 18 a 22, solo en supuestos concretos",
+        "No estar de alta laboral",
+        "Ingresos de la unidad de convivencia al menos 10 € por debajo de la cuantía máxima (793,80 €/mes para una persona) y sin patrimonio suficiente",
+        "Haber solicitado antes las prestaciones a las que se tenga derecho, incluido el Ingreso Mínimo Vital",
+        "Situación de vulnerabilidad social acreditada con el diagnóstico de los servicios sociales y firma del acuerdo de inclusión"
+      ],
+      "pasos": [
+        "Informarse en los servicios sociales municipales de tu barrio o en el 012",
+        "Presentar la solicitud (con declaración responsable y acuerdo de inclusión), preferentemente por vía telemática, o en los servicios sociales o en el registro del ayuntamiento",
+        "Los servicios sociales emiten el diagnóstico de vulnerabilidad (máximo 1 mes) y la Generalitat resuelve",
+        "Duración inicial de 6 años; después, renovación cada 3 años"
+      ],
+      "documentacion": [
+        "No hace falta aportar lo que la Administración pueda consultar si lo autorizas",
+        "El resto, según indique la ficha del procedimiento o los servicios sociales"
+      ],
+      "plazo": "Todo el año. Resolución en 5 meses; si no hay respuesta, se considera DESESTIMADA (Ley 2/2026, art. 36, en vigor desde el 20/10/2026)",
+      "enlace_info": "https://www.gva.es/en/inicio/procedimientos?id_proc=19152",
+      "enlace_tramite": "https://sede.gva.es/en/detall-tramit?id_proc=19152",
+      "fuente": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-9799 ; https://dogv.gva.es/es/eli/es-vc/l/2026/04/14/2/dof/spa/html ; https://sede.gva.es/es/detall-tramit?id_proc=19152",
+      "verificado": true,
+      "nota": "Desde el 20/10/2026 rige la Ley 2/2026 (DOGV n.º 10345 de 20/04/2026), que deroga la Ley 19/2017. La ficha 19152 de la sede aún describe la ley anterior (25-64 años, 12 meses, silencio positivo a los 6 meses); revisar si se actualiza o cambia de código. Quien ya cobra la RVI la mantiene con al menos la misma cuantía. El desarrollo reglamentario de la nueva ley aún no existe.",
+      "relacionados": [
+        "ingreso-minimo-vital",
+        "certificado-empadronamiento",
+        "bono-social-electrico"
+      ]
+    },
+    {
+      "id": "bono-social-electrico",
+      "tipo": "ayuda",
+      "titulo": "Bono social eléctrico",
+      "administracion": "Estado",
+      "organismo": "Ministerio para la Transición Ecológica / comercializadoras de referencia (información CNMC)",
+      "frases_usuario": [
+        "no puedo pagar la factura de la luz",
+        "quiero un descuento en la luz",
+        "me van a cortar la luz",
+        "soy pensionista y la luz me sale muy cara",
+        "no puc pagar el rebut de la llum"
+      ],
+      "requisitos_clave": [
+        "Persona física, suministro en la vivienda habitual, potencia contratada de 10 kW o menos",
+        "Tener o pasar a la tarifa PVPC con una comercializadora de referencia",
+        "Ser consumidor vulnerable: renta por debajo del umbral (1,5 veces el IPREM ajustado por miembros), familia numerosa, pensionista con pensión mínima o beneficiario del IMV",
+        "Descuentos: 42,5 % (vulnerable), 57,5 % (vulnerable severo); en riesgo de exclusión social atendido por servicios sociales no se paga la factura y no se puede cortar el suministro"
+      ],
+      "pasos": [
+        "Contratar el PVPC con una comercializadora de referencia (si no se tiene)",
+        "Pedir el formulario de solicitud a la comercializadora de referencia y enviarlo con la documentación (teléfono, correo, email u oficina)",
+        "La comercializadora responde en 10 días hábiles",
+        "Dura 2 años y se renueva automáticamente si se mantienen las condiciones"
+      ],
+      "documentacion": [
+        "Formulario de solicitud",
+        "NIF/NIE del titular y de los miembros del hogar",
+        "Certificado de empadronamiento (individual o colectivo)",
+        "Libro de familia o certificados del Registro Civil",
+        "Título de familia numerosa o justificante del IMV, si aplica",
+        "Certificados de circunstancias especiales (discapacidad, violencia de género, dependencia...) si aplica"
+      ],
+      "plazo": "Se puede solicitar en cualquier momento; se aplica desde el ciclo de facturación en que se recibe la solicitud completa",
+      "enlace_info": "https://www.cnmc.es/facil-para-ti/que-hace-la-cnmc-para-consumidores/bono-social-electrico",
+      "enlace_tramite": "https://www.cnmc.es/facil-para-ti/que-hace-la-cnmc-para-consumidores/bono-social-electrico",
+      "fuente": "https://www.cnmc.es/facil-para-ti/que-hace-la-cnmc-para-consumidores/bono-social-electrico",
+      "verificado": true,
+      "nota": "Los porcentajes de descuento son los del Real Decreto-ley 7/2026 citados por la CNMC; pueden cambiar con nuevas prórrogas. No hay sede única: se solicita a la comercializadora de referencia (la CNMC lista las 8 con sus contactos).",
+      "relacionados": [
+        "ingreso-minimo-vital",
+        "certificado-empadronamiento",
+        "renta-valenciana-inclusion"
+      ]
+    },
+    {
+      "id": "bono-alquiler-joven",
+      "tipo": "ayuda",
+      "titulo": "Bono Alquiler Joven (convocatoria 2026, Comunitat Valenciana)",
+      "administracion": "Generalitat Valenciana",
+      "organismo": "Vicepresidencia Primera y Conselleria de Vivienda, Empleo, Juventud e Igualdad (Servicios Territoriales de Vivienda)",
+      "frases_usuario": [
+        "soy joven y no puedo pagar el alquiler",
+        "ayuda de 250 euros para el alquiler",
+        "tengo menos de 35 años y vivo de alquiler",
+        "¿hay ayudas para alquilar una habitación?",
+        "sóc jove i vull ajuda per al lloguer"
+      ],
+      "requisitos_clave": [
+        "Ser mayor de edad y tener hasta 35 años incluidos al solicitar (todos los titulares del contrato)",
+        "Ser titular, o estar en condiciones de firmar, un contrato de alquiler o cesión de vivienda o habitación en la Comunitat Valenciana, de al menos un año, como residencia habitual y empadronado en ella (no valen subarriendos, alquiler turístico ni uso distinto de vivienda)",
+        "Tener una fuente regular de ingresos y rentas anuales de hasta 3 veces el IPREM (4 veces si conviven dos jóvenes que pueden ser beneficiarios, 5 si son tres o más)",
+        "Alquiler máximo en València ciudad: 900 €/mes (vivienda) o 450 €/mes (habitación)",
+        "No ser propietario de una vivienda en España ni tener parentesco de primer o segundo grado con el arrendador",
+        "Cuantía: 250 €/mes durante 24 mensualidades desde enero de 2025 (o desde el inicio del contrato si es posterior); concurrencia competitiva por nivel de ingresos"
+      ],
+      "pasos": [
+        "Comprobar si hay convocatoria abierta en la sede de la Generalitat (G110699)",
+        "Presentar la solicitud telemática con certificado digital o Cl@ve; sin certificado, rellenar el formulario online, imprimir el justificante y registrarlo firmado (preferentemente en el Servicio Territorial de Vivienda de València, C/ Gregorio Gea, 27, con cita previa)",
+        "Consultar los listados provisionales en la sede (aviso por SMS) y subsanar en 10 días hábiles si hace falta",
+        "Justificar después los pagos del alquiler"
+      ],
+      "documentacion": [
+        "Solicitud con declaración responsable",
+        "Contrato de alquiler o cesión completo y firmado, con referencia catastral (o compromiso de aportarlo en 2 meses desde la concesión)",
+        "Acreditación de la fuente regular de ingresos (contrato de trabajo o alta censal)",
+        "Justificantes de pago del alquiler desde el 1 de enero de 2025 (o desde el inicio del contrato)",
+        "Certificado colectivo o volante único de empadronamiento",
+        "Impreso de domiciliación bancaria si es la primera ayuda de la Generalitat o cambia la cuenta"
+      ],
+      "plazo": "Convocatoria 2026: del 24 de agosto al 11 de septiembre de 2026 (15 días hábiles desde el extracto del DOGV n.º 10434 de 21/08/2026). A 18/10/2026 el plazo de solicitud está CERRADO; sigue abierta la aportación de documentación para quien ya solicitó. Resolución en 3 meses desde la publicación; sin respuesta, se entiende desestimada",
+      "enlace_info": "https://sede.gva.es/es/detall-tramit?id_proc=G110699",
+      "enlace_tramite": "https://sede.gva.es/es/detall-tramit?id_proc=G110699",
+      "fuente": "https://sede.gva.es/es/detall-tramit?id_proc=G110699 ; https://dogv.gva.es/es/resultat-dogv?signatura=2026/27284 ; https://dogv.gva.es/es/resultat-dogv?signatura=2026/27322 ; https://dogv.gva.es/es/resultat-dogv?signatura=2026/27605",
+      "verificado": true,
+      "nota": "Bases: Resolución de 18/08/2026 (DOGV n.º 10434 de 21/08/2026). Correcciones de errores: DOGV n.º 10440 (31/08/2026) y n.º 10457 (23/09/2026). Es compatible con el IMV y con la RVI salvo si la RVI incluye complemento de alquiler. Comprobado en la sede y el DOGV el 18/10/2026.",
+      "relacionados": ["alta-padron-valencia", "identificacion-digital"]
+    },
+    {
+      "id": "ayudas-comedor-escolar",
+      "tipo": "ayuda",
+      "titulo": "Ayudas de comedor escolar (curso 2026-2027)",
+      "administracion": "Generalitat Valenciana",
+      "organismo": "Conselleria de Educación, Cultura y Universidades",
+      "frases_usuario": [
+        "no puedo pagar el comedor del colegio",
+        "beca de comedor para mis hijos",
+        "¿hay ayudas para que mi hijo coma en el cole?",
+        "me han dicho que pida la ayuda del comedor",
+        "vull demanar la beca de menjador"
+      ],
+      "requisitos_clave": [
+        "Alumnado de centros públicos y concertados de la Comunitat Valenciana",
+        "Ayudas asistenciales según renta familiar de 2025: límites de 25.293 € (2 miembros), 34.332 € (3), 40.773 € (4), 45.572 € (5), 49.196 € (6), 52.780 € (7), 56.348 € (8) y 3.561 € más por cada miembro adicional",
+        "No haber presentado la declaración de la renta obligatoria es causa de denegación",
+        "Se puntúa por renta per cápita y circunstancias sociales (máximo 20 puntos)"
+      ],
+      "pasos": [
+        "Si solicitaste el curso pasado y usas ITACA Web Familia: descargar el borrador precargado, revisarlo, firmarlo y entregarlo en el centro",
+        "Si no: pedir el impreso (anexo I) en el centro educativo y entregarlo con la documentación",
+        "Una solicitud por centro (si hay varios hijos en el mismo colegio, una sola)"
+      ],
+      "documentacion": [
+        "Documento de identidad",
+        "Documentos que acrediten la composición familiar, la renta y las circunstancias sociales"
+      ],
+      "plazo": "Desde el día siguiente a la publicación (DOGV, 1 de julio de 2026) hasta el final del periodo de formalización de matrícula; si cambia de centro, durante la matrícula en el nuevo. Incorporaciones sobrevenidas: 10 días hábiles desde la matrícula. A 17/10/2026 el plazo ordinario está cerrado.",
+      "enlace_info": "https://ceice.gva.es/es/web/centros-docentes/comedor/transporte",
+      "enlace_tramite": "https://ceice.gva.es/es/web/centros-docentes/comedor/transporte",
+      "fuente": "https://portal.edu.gva.es/leonfelipe/wp-content/uploads/sites/1575/2026/07/RESOLUCION-26-JUNIO-2026.pdf",
+      "verificado": true,
+      "nota": "Fuente: copia de la Resolución de 26 de junio de 2026 (DOGV 01/07/2026) alojada en el portal oficial de un centro educativo de la GVA. Importe: hasta 4,35 €/día (Infantil, Primaria y ESO), 5,54 € (educación especial). La web de Conselleria no se pudo abrir; no es un trámite online: se entrega en el centro.",
+      "relacionados": ["xarxa-llibres", "complemento-ayuda-infancia"]
+    },
+    {
+      "id": "xarxa-llibres",
+      "tipo": "ayuda",
+      "titulo": "Programa Banco de Libros (curso 2026-2027)",
+      "administracion": "Generalitat Valenciana",
+      "organismo": "Conselleria de Educación, Cultura y Universidades",
+      "frases_usuario": [
+        "los libros del colegio son muy caros",
+        "quiero apuntarme al banco de libros",
+        "¿cómo consigo los libros de texto gratis?",
+        "tengo que devolver los libros al cole",
+        "vull participar en la Xarxa Llibres"
+      ],
+      "requisitos_clave": [
+        "Alumnado de Primaria, Educación Especial, ESO, FP de grado básico o Bachillerato matriculado en 2026-2027 en un centro de la Generalitat, concertado o de una corporación local participante",
+        "Haber devuelto el lote completo de libros del curso 2025-2026 (salvo quien entra en 1.º de Primaria; en 1.º y 2.º de Primaria el centro puede eximir por ser material no reutilizable)",
+        "Solo lo piden quienes no participaron en 2025-2026: quien ya participaba sigue dentro salvo renuncia",
+        "El alumnado de centros singulares o específicos de Educación Especial participa de oficio",
+        "Compromiso de uso responsable y de devolver todo al final del curso; si falta material, hay que reponerlo"
+      ],
+      "pasos": [
+        "Descargar el formulario de solicitud de participación (web de la Conselleria o ficha G112587 de la sede)",
+        "Rellenarlo, firmarlo y entregarlo en el centro escolar (en el centro del curso 2025-2026; quien entra en 1.º de Primaria, en el de 2026-2027)",
+        "Seguir las instrucciones del centro para recoger y devolver los lotes"
+      ],
+      "documentacion": [
+        "Formulario de solicitud de participación firmado por la persona responsable legal del alumno",
+        "Lote completo de libros del curso anterior devuelto en el centro"
+      ],
+      "plazo": "Desde el 18 de junio hasta el 10 de noviembre de 2026, inclusive (Resolución de 11 de junio de 2026, DOGV n.º 10386 de 17/06/2026). A 18/10/2026 el plazo está ABIERTO",
+      "enlace_info": "https://ceice.gva.es/es/web/centros-docentes/ayudas/subvenciones/libros-de-texto",
+      "enlace_tramite": "https://sede.gva.es/es/detall-tramit?id_proc=G112587",
+      "fuente": "https://sede.gva.es/es/detall-tramit?id_proc=G112587 ; https://dogv.gva.es/es/resultat-dogv?signatura=2026/20807",
+      "verificado": true,
+      "nota": "No es un trámite online: se entrega en el centro. La sede y la Conselleria lo llaman «Programa Banco de Libros»; «Xarxa Llibres» se mantiene solo como frase de usuario. Dudas: ajudesllibres@gva.es. La sede dice entregar en el centro 'donde se encuentre matriculado'; el DOGV precisa el centro del curso 2025-2026. Normativa base: Orden 26/2016, modificada por la Orden 9/2023. Comprobado el 18/10/2026.",
+      "relacionados": ["ayudas-comedor-escolar", "complemento-ayuda-infancia"]
+    }
+  ]
+}
