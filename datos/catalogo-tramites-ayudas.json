@@ -642,12 +642,12 @@
         "No hace falta aportar lo que la Administración pueda consultar si lo autorizas",
         "El resto, según indique la ficha del procedimiento o los servicios sociales"
       ],
-      "plazo": "Todo el año. Resolución en 5 meses; si no hay respuesta, se considera DESESTIMADA (Ley 2/2026, art. 36, en vigor desde el 20/10/2026)",
-      "enlace_info": "https://www.gva.es/en/inicio/procedimientos?id_proc=19152",
-      "enlace_tramite": "https://sede.gva.es/en/detall-tramit?id_proc=19152",
-      "fuente": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-9799 ; https://dogv.gva.es/es/eli/es-vc/l/2026/04/14/2/dof/spa/html ; https://sede.gva.es/es/detall-tramit?id_proc=19152",
-      "verificado": true,
-      "nota": "Desde el 20/10/2026 rige la Ley 2/2026 (DOGV n.º 10345 de 20/04/2026), que deroga la Ley 19/2017. La ficha 19152 de la sede aún describe la ley anterior (25-64 años, 12 meses, silencio positivo a los 6 meses); revisar si se actualiza o cambia de código. Quien ya cobra la RVI la mantiene con al menos la misma cuantía. El desarrollo reglamentario de la nueva ley aún no existe.",
+      "plazo": null,
+      "enlace_info": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-9799",
+      "enlace_tramite": null,
+      "fuente": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-9799 ; https://dogv.gva.es/es/eli/es-vc/l/2026/04/14/2/dof/spa/html",
+      "verificado": false,
+      "nota": "Procedimiento no disponible al generar este catálogo (20/10/2026): la Ley 2/2026 (DOGV n.º 10345 de 20/04/2026) entra en vigor el 20/10/2026 y deroga la Ley 19/2017, y la ficha 19152 de la sede de la GVA aparece cerrada (hasta el 19/10/2026) y con la ley anterior. Buscad el procedimiento nuevo en sede.gva.es; si lo encontráis, guardad el enlace en vuestros datos (src/datos/), no en datos/. Si no existe, la herramienta lo dice y remite a los servicios sociales municipales o al 012. Los requisitos y la cuantía de esta entrada sí están comprobados en la ley; la resolución es en 5 meses y, sin respuesta, se considera desestimada (art. 36). Quien ya cobra la RVI la mantiene con al menos la misma cuantía. El desarrollo reglamentario de la nueva ley aún no existe.",
       "relacionados": [
         "ingreso-minimo-vital",
         "certificado-empadronamiento",
