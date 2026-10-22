@@ -21,12 +21,19 @@ A daily job finds the aids that no API gives us (Social Security and SEPE benefi
 - [ ] FR-011 — The job MUST reject an aid without `titulo` or `enlace_info` and log its URL; a seed that errors MUST keep its previous aids; a seed that returns 0 aid links MUST fail the run; an aid whose every URL returns 404 or 410 MUST be removed.
 - [ ] FR-012 — `src/datos/central.json` MUST hold `{version, ambito, aviso, items, rastreo}`, items sorted by `id`, `rastreo` mapping each canonical URL to `{id, hash, etag, consultado}`; an unchanged run MUST give an empty diff.
 - [ ] FR-013 — A GitHub Actions workflow MUST run the job daily and on demand (`--dry-run --limit 3` writes nothing), run `bun run build`, and commit and push `src/datos/` only if it changed, after `git pull --rebase`.
-- [ ] FR-014 — `buscarAyudas` MUST include the central aids that match the profile's need through `frases_usuario` or `titulo`, as `Ficha` with `fuente: "central"`, after the catalogue aids; specs 002 and 003 MUST need no change.
+- [X] FR-014 — `buscarAyudas` MUST include the central aids that match the profile's need through `frases_usuario` or `titulo`, as `Ficha` with `fuente: "central"`, after the catalogue aids; specs 002 and 003 MUST need no change.
 - [ ] FR-015 — The same LLM call MUST say whether the page is an aid a citizen can apply for (`esAyuda`); pages that are not MUST be recorded in `rastreo` and not written, so mixed seeds (procedures, employment services) need no extra call.
 - [ ] FR-016 — The same LLM call MUST return `referencias: [{nombre, cita, url, tipo}]`, the other aids the page mentions, with `tipo` in `requisito | complemento | incompatible | relacionada` and `cita` checked like any quote. The job MUST resolve each one without the LLM: a `url` → canonical URL; no `url` → title match (trigram ≥ 0.8) against the catalogue, the store and the link texts of the seeds.
 - [ ] FR-017 — A resolved reference to a known aid MUST add its `id` to `relacionados` and `{id, tipo, cita}` to `relaciones`; a reference to an unknown URL on an official host (`*.gob.es`, `*.gva.es`, `valencia.es`, `boe.es`, `seg-social.es`, `sepe.es`, `imserso.es`) MUST be queued for a second pass in the same run, up to depth 2 from a seed, sharing the 30-call cap; queue overflow MUST persist in `rastreo.pendientes` for the next run; an unresolved reference MUST be logged.
 - [ ] FR-018 — After the last pass, the job MUST re-link references to aids created later in the same run, without the LLM.
 - [ ] FR-019 — The same LLM call MUST classify the aid's `naturaleza` as `prestacion | bonificacion | deduccion | emergencia_social | servicio | convocatoria` (`contexto.md` §1). The job MUST NOT write an aid that is a `convocatoria` or whose page carries a BDNS number; it MUST record it in `rastreo` as `{cubiertaPor: "bdns"}` and log it.
+- [X] FR-020 — Together with an aid page, the job MUST read up to 3 of its links on the same host whose text or URL names requisites, how or where to apply, deadline, amount, documents or rules, and send their text in the same LLM call; their URLs go in `fuente`. PDFs named as guide, summary, leaflet or information MUST be read too.
+- [X] FR-021 — When a seed listing shows an application period next to an aid link (GVA: `Solicitud: 04-10-2025 - 28-11-2025 · Cerrado`), the job MUST store it by code as `plazoListado: {texto, inicio, fin, estado}`, with no LLM.
+- [X] FR-022 — The prompt MUST treat any sentence on when to apply as `plazo` ("en cualquier momento", "en el plazo de tres meses desde…"); MUST return `esAyuda: false` for overview or index pages, whose references the job still follows; and MUST copy only what belongs to this aid when the text covers several. `fechaFin` MUST be parsed by code from the `plazo` quote only.
+- [X] FR-023 — The same LLM call MUST return `cuantia`, `ambito` and `exclusiones` as literal quotes, or empty.
+- [X] FR-024 — An aid with no `requisitos_clave` and no `plazo` MUST be written with `incompleta: true`.
+- [X] FR-025 — Pages on seg-social.es MUST be fetched with `changeLanguage=es`, so that they are read in Spanish.
+- [X] FR-026 — `scripts/indexar/medir.ts` MUST run the job on a fixed set of pages into a temporary folder and print, per aid, the fields filled, the quotes dropped and the time taken.
 
 ## Field extraction
 
@@ -98,9 +105,10 @@ Probed 2026-10-22 with a plain GET (no JavaScript). T001 confirms each and adds 
 - [X] T004 [P] Write merge, catalogue skip and near-duplicate flag with tests in `scripts/indexar/dedup.ts` → FR-008, FR-009
 - [X] T005 Write the extraction prompt (fields, `esAyuda`, `naturaleza`, `referencias`), quote check and link check with tests on a fake LLM in `scripts/indexar/extraer.ts`; compare its output for 2 catalogue aids with the catalogue entries → FR-006, FR-007, FR-015, FR-019
 - [ ] T006 Write the job in `scripts/indexar/index.ts` with the reference queue, depth limit and re-link pass; add the script to `package.json`; write the job e2e test (below); run `--backfill` once and commit `src/datos/` → FR-002, FR-005, FR-011, FR-012, FR-016, FR-017, FR-018
-- [ ] T007 Write `.github/workflows/indexar.yml`; run it once with `--dry-run --limit 3` → FR-013
-- [ ] T008 Write `src/lib/motor/central.ts` and add it in `src/lib/motor/index.ts`, with a test that a new aid appears for a matching need and the 4 profiles of `SETUP.md` still list catalogue aids first → FR-014
+- [ ] T007 Write `.github/workflows/indexar.yml` (written, uncommitted); run it once with `--dry-run --limit 3` once `HELMCODE_API_KEY` is a repo secret → FR-013
+- [X] T008 Write `src/lib/motor/central.ts` and add it in `src/lib/motor/index.ts`, with a test that a new aid appears for a matching need and the 4 profiles of `SETUP.md` still list catalogue aids first → FR-014
 - [ ] T009 Check 10 extracted aids by hand against their official pages; note wrong or missing requisites in the run log
+- [X] T010 Read the aid's own detail subpages and leaflets, the GVA listing period, a wider prompt (deadline, overview pages, one aid only, amount, scope, exclusions), `fechaFin` from the quote, the `incompleta` flag and Spanish seg-social pages, with tests; write `scripts/indexar/medir.ts` and re-run it on the 4 test aids plus one GVA aid → FR-020, FR-021, FR-022, FR-023, FR-024, FR-025, FR-026
 
 ## Job e2e test
 

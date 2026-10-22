@@ -21,11 +21,18 @@ exports[`indexar job first run: one call per new page, the rest decided by code 
       "plazo": null,
       "enlace_info": "http://sitio/a/inventada",
       "enlace_tramite": null,
-      "fuente": "http://sitio/a/inventada",
+      "fuente": "http://sitio/a/inventada ; http://sitio/solicitar",
       "verificado": false,
       "nota": null,
       "relacionados": [],
       "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "incompleta": true,
       "codigos": {
         "sia": [],
         "idProc": [],
@@ -61,6 +68,12 @@ exports[`indexar job first run: one call per new page, the rest decided by code 
       "nota": null,
       "relacionados": [],
       "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
       "codigos": {
         "sia": [],
         "idProc": [],
@@ -70,6 +83,137 @@ exports[`indexar job first run: one call per new page, the rest decided by code 
       "documentos": [],
       "textos": [
         "fb4386c09ef4eb6062f8f91942bbd3d0f51f07c10848fca2515a14a973912b19"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "ayuda-con-plazo",
+      "tipo": "ayuda",
+      "titulo": "Ayuda con plazo",
+      "administracion": "Comunitat Valenciana",
+      "organismo": null,
+      "frases_usuario": [
+        "necesito ayuda"
+      ],
+      "requisitos_clave": [
+        "Requisito: ser residente para Ayuda con plazo."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": "Plazo: hasta el 28/11/2025.",
+      "enlace_info": "http://sitio/d/1",
+      "enlace_tramite": null,
+      "fuente": "http://sitio/d/1",
+      "verificado": false,
+      "nota": null,
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "fechas",
+      "fechaInicio": "2025-10-04",
+      "fechaFin": "2025-11-28",
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "plazoListado": {
+        "texto": "Solicitud: 04-10-2025 - 28-11-2025",
+        "inicio": "2025-10-04",
+        "fin": "2025-11-28",
+        "estado": "Cerrado"
+      },
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "45ecea1d1bdbd92d42408b3a84abf396d9676ee49d186c2c9815875ccc513b6b"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "ayuda-con-regimen",
+      "tipo": "ayuda",
+      "titulo": "Ayuda con régimen",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "necesito ayuda"
+      ],
+      "requisitos_clave": [
+        "Requisito: estar afiliado para la ayuda con régimen."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "http://sitio/a/hijas",
+      "enlace_tramite": null,
+      "fuente": "http://sitio/a/hijas ; http://sitio/a/hijas/general",
+      "verificado": false,
+      "nota": null,
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "44a846806fb779e095a6e24b76912e90593b8db4373131ee99265569c4f4ca1a",
+        "8be1c34a0d30064949642977fe328a773d9ae864451825f9fbfb1d36311188b3"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "ayuda-con-subpagina",
+      "tipo": "ayuda",
+      "titulo": "Ayuda con subpágina",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "necesito ayuda"
+      ],
+      "requisitos_clave": [
+        "Requisito: tener 18 años para la ayuda con subpágina."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "http://sitio/a/detalle",
+      "enlace_tramite": null,
+      "fuente": "http://sitio/a/detalle ; http://sitio/a/detalle/requisitos",
+      "verificado": false,
+      "nota": null,
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "ae66bebaa3a2548bd20b72e572ade33ecf659c0e944ef680c0c2639d8929c53f",
+        "0280cdf96ce86e152f05e9462bc2e640cfcdcc865dbafbd43e78fe8f0fe746e3"
       ],
       "relaciones": [],
       "consultado": "2026-10-22"
@@ -98,6 +242,12 @@ exports[`indexar job first run: one call per new page, the rest decided by code 
         "ayuda-uno"
       ],
       "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
       "codigos": {
         "sia": [],
         "idProc": [],
@@ -115,6 +265,47 @@ exports[`indexar job first run: one call per new page, the rest decided by code 
           "cita": "Ver también la ayuda uno."
         }
       ],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "ayuda-hija",
+      "tipo": "ayuda",
+      "titulo": "Ayuda hija",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "necesito ayuda"
+      ],
+      "requisitos_clave": [
+        "Requisito: ser residente para Ayuda hija."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "http://sitio/a/hija",
+      "enlace_tramite": null,
+      "fuente": "http://sitio/a/hija",
+      "verificado": false,
+      "nota": null,
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "50fe09537e42459129ff28fd3272cb3c0fd257668c68470075e28546f409356e"
+      ],
+      "relaciones": [],
       "consultado": "2026-10-22"
     },
     {
@@ -139,6 +330,12 @@ exports[`indexar job first run: one call per new page, the rest decided by code 
       "nota": null,
       "relacionados": [],
       "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
       "codigos": {
         "sia": [],
         "idProc": [],
@@ -176,6 +373,12 @@ exports[`indexar job first run: one call per new page, the rest decided by code 
         "ayuda-p2"
       ],
       "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
       "codigos": {
         "sia": [],
         "idProc": [],
@@ -217,6 +420,12 @@ exports[`indexar job first run: one call per new page, the rest decided by code 
       "nota": null,
       "relacionados": [],
       "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
       "codigos": {
         "sia": [],
         "idProc": [],
@@ -226,6 +435,46 @@ exports[`indexar job first run: one call per new page, the rest decided by code 
       "documentos": [],
       "textos": [
         "24cd875fa485672d8f814943a7b6461bcc1c263abb87a6278792bd6426dbb931"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "ayuda-sin-datos",
+      "tipo": "ayuda",
+      "titulo": "Ayuda sin datos",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "necesito ayuda"
+      ],
+      "requisitos_clave": [],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "http://sitio/a/vacia",
+      "enlace_tramite": null,
+      "fuente": "http://sitio/a/vacia",
+      "verificado": false,
+      "nota": null,
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "incompleta": true,
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "5a5b5befdb356f003b1f66996780f6816a8b38c9a43d4bcaaa07a9ebe878e7ef"
       ],
       "relaciones": [],
       "consultado": "2026-10-22"
@@ -254,6 +503,12 @@ exports[`indexar job first run: one call per new page, the rest decided by code 
         "ayuda-dos"
       ],
       "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
       "codigos": {
         "sia": [],
         "idProc": [],
@@ -295,6 +550,12 @@ exports[`indexar job first run: one call per new page, the rest decided by code 
       "nota": null,
       "relacionados": [],
       "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
       "codigos": {
         "sia": [
           "1234567"
@@ -333,6 +594,12 @@ exports[`indexar job first run: one call per new page, the rest decided by code 
       "nota": null,
       "relacionados": [],
       "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
       "codigos": {
         "sia": [],
         "idProc": [],
@@ -368,6 +635,12 @@ exports[`indexar job first run: one call per new page, the rest decided by code 
       "nota": null,
       "relacionados": [],
       "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
       "codigos": {
         "sia": [],
         "idProc": [],
@@ -406,6 +679,12 @@ exports[`indexar job first run: one call per new page, the rest decided by code 
         "ingreso-minimo-vital"
       ],
       "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
       "codigos": {
         "sia": [],
         "idProc": [],
@@ -445,6 +724,12 @@ exports[`indexar job first run: one call per new page, the rest decided by code 
       "etag": "\\"d93b7e58696d5cc9\\"",
       "consultado": "2026-10-22"
     },
+    "http://sitio/a/detalle": {
+      "id": "ayuda-con-subpagina",
+      "hash": "ae66bebaa3a2548bd20b72e572ade33ecf659c0e944ef680c0c2639d8929c53f",
+      "etag": "\\"54c97d5518ca1b44\\"",
+      "consultado": "2026-10-22"
+    },
     "http://sitio/a/dos": {
       "id": "ayuda-dos",
       "hash": "fe2ae5adabb706a8e0ddfe5677386b06bde3efcbae576d48841490cd98876625",
@@ -456,6 +741,24 @@ exports[`indexar job first run: one call per new page, the rest decided by code 
       "hash": "fb4386c09ef4eb6062f8f91942bbd3d0f51f07c10848fca2515a14a973912b19",
       "etag": "\\"b828c0029361ece7\\"",
       "consultado": "2026-10-22"
+    },
+    "http://sitio/a/hija": {
+      "id": "ayuda-hija",
+      "hash": "50fe09537e42459129ff28fd3272cb3c0fd257668c68470075e28546f409356e",
+      "etag": "\\"845a5b0de07c58f\\"",
+      "consultado": "2026-10-22"
+    },
+    "http://sitio/a/hijas": {
+      "id": "ayuda-con-regimen",
+      "hash": "44a846806fb779e095a6e24b76912e90593b8db4373131ee99265569c4f4ca1a",
+      "etag": "\\"9f51f632ba887460\\"",
+      "consultado": "2026-10-22"
+    },
+    "http://sitio/a/indice": {
+      "hash": "4e0c73bade2be0c2d253166cf21a9dc9ef132bca23746c11945c1e98006e5014",
+      "etag": "\\"72925f4f841837b2\\"",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
     },
     "http://sitio/a/inventada": {
       "id": "ayuda-con-citas-inventadas",
@@ -511,6 +814,12 @@ exports[`indexar job first run: one call per new page, the rest decided by code 
       "etag": "\\"d93b7e58696d5cc9\\"",
       "consultado": "2026-10-22"
     },
+    "http://sitio/a/vacia": {
+      "id": "ayuda-sin-datos",
+      "hash": "5a5b5befdb356f003b1f66996780f6816a8b38c9a43d4bcaaa07a9ebe878e7ef",
+      "etag": "\\"335983e7be93ed38\\"",
+      "consultado": "2026-10-22"
+    },
     "http://sitio/b/sia": {
       "id": "pension-de-jubilacion-sia1234567",
       "hash": "e2a6053556dd5da0bf5b07ceb00635c920f1d833c4d175d534c3a99fd9e99168",
@@ -521,6 +830,12 @@ exports[`indexar job first run: one call per new page, the rest decided by code 
       "id": "ayuda-municipal",
       "hash": "898d14915309f0123322603712e6b5ea13555b4da8a3d0d996963b69a905ac57",
       "etag": "\\"aabcfc2e6574361a\\"",
+      "consultado": "2026-10-22"
+    },
+    "http://sitio/d/1": {
+      "id": "ayuda-con-plazo",
+      "hash": "45ecea1d1bdbd92d42408b3a84abf396d9676ee49d186c2c9815875ccc513b6b",
+      "etag": "\\"5fb0305e2b98db27\\"",
       "consultado": "2026-10-22"
     }
   },

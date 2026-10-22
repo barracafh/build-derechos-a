@@ -45,7 +45,8 @@ export type Almacen = {
   pendientes: Pendiente[];
 };
 
-export type Opciones = { backfill?: boolean; dryRun?: boolean; limite?: number; maxLlamadas?: number };
+// `urls` skips the seeds and starts from these aid pages (used by medir.ts).
+export type Opciones = { backfill?: boolean; dryRun?: boolean; limite?: number; maxLlamadas?: number; urls?: string[] };
 
 export type Entorno = {
   semillas: Semilla[];
@@ -101,6 +102,13 @@ function administracionDe(url: string): Ayuda["administracion"] {
   return "Estado";
 }
 
+// seg-social.es answers some pages in English unless asked for Spanish (FR-025).
+export function urlDeDescarga(url: string): string {
+  const u = new URL(url);
+  if (esDe(u.hostname, "seg-social.es") && !u.searchParams.has("changeLanguage")) u.searchParams.set("changeLanguage", "es");
+  return u.href;
+}
+
 // Polite fetch: one request per second per host, a timeout, and conditional headers.
 function crearDescarga(pausaMs: number) {
   const ultima = new Map<string, number>();
@@ -109,7 +117,7 @@ function crearDescarga(pausaMs: number) {
     const espera = (ultima.get(host) ?? 0) + pausaMs - Date.now();
     if (espera > 0) await Bun.sleep(espera);
     ultima.set(host, Date.now());
-    return fetch(url, {
+    return fetch(urlDeDescarga(url), {
       headers: { "user-agent": "Mozilla/5.0 (compatible; derechos-indexar)", "accept-language": "es-ES,es;q=0.9", ...cabeceras },
       signal: AbortSignal.timeout(TIMEOUT_MS),
       redirect: "follow",
@@ -129,6 +137,23 @@ function enlacesDeSemilla(html: string, base: string): Enlace[] {
   return enlaces;
 }
 
+export type PlazoListado = { texto: string; inicio: string | null; fin: string | null; estado: string | null };
+
+const iso = (fecha?: string) => (fecha ? fecha.split("-").reverse().join("-") : null);
+
+// "Solicitud: 04-10-2025 - 28-11-2025 Cerrado" or "Solicitud: hasta 14-11-2025 Cerrado", as the GVA listing shows it (FR-021).
+export function plazoDeListado(texto: string): PlazoListado | null {
+  const m = texto.match(/Solicitud:\s*(?:(\d{2}-\d{2}-\d{4})\s*-\s*|hasta\s+)?(\d{2}-\d{2}-\d{4})\s*(Abierto|Cerrado|Pr[oó]ximamente|En plazo|Fuera de plazo)?/i);
+  if (!m) return null;
+  const desde = m[1] ? `${m[1]} - ` : "hasta ";
+  return { texto: `Solicitud: ${desde}${m[2]}`, inicio: iso(m[1]), fin: iso(m[2]), estado: m[3] ?? null };
+}
+
+// Detail subpages of the aid on the same site: requisites, how or where to apply, deadline, amount, documents, rules (FR-020).
+const SUBPAGINA = /requisit|solicit|tramit|plazo|cuant[ií]a|importe|documentaci|normativa|beneficiari|c[oó]mo\s|d[oó]nde\s/i;
+const PDF_UTIL = /bases|convocatoria|gu[ií]a|resumen|requisit|folleto|informaci[oó]n|tr[ií]ptico/i;
+const MAX_SUBPAGINAS = 3;
+
 const paginasDe = (s: Semilla) => {
   if (!s.paginacion) return [s.url];
   return Array.from({ length: s.paginacion.max }, (_, i) => {
@@ -138,7 +163,7 @@ const paginasDe = (s: Semilla) => {
   });
 };
 
-type EnCola = Pendiente & { semilla?: string };
+type EnCola = Pendiente & { semilla?: string; plazoListado?: PlazoListado };
 type Relacion = { desde: string; tipo: Referencia["tipo"]; cita: string } & ({ url: string } | { id: string });
 
 export async function ejecutar(opciones: Opciones, entorno: Entorno): Promise<Resumen> {
@@ -167,7 +192,7 @@ export async function ejecutar(opciones: Opciones, entorno: Entorno): Promise<Re
     enCola.add(e.url);
     cola.push(e);
   };
-  for (const s of semillas) {
+  for (const s of opciones.urls ? [] : semillas) {
     let fallo = false;
     let encontrados = 0;
     for (const pagina of paginasDe(s)) {
@@ -179,7 +204,8 @@ export async function ejecutar(opciones: Opciones, entorno: Entorno): Promise<Re
           const url = canonica(e.url);
           textosDeSemilla.push({ texto: e.texto, url });
           encontrados++;
-          encolar({ url, profundidad: 1, administracion: s.administracion, semilla: s.id });
+          const plazoListado = plazoDeListado(e.texto) ?? undefined;
+          encolar({ url, profundidad: 1, administracion: s.administracion, semilla: s.id, ...(plazoListado ? { plazoListado } : {}) });
         }
       } catch (error) {
         fallo = true;
@@ -189,7 +215,8 @@ export async function ejecutar(opciones: Opciones, entorno: Entorno): Promise<Re
     }
     if (!fallo && encontrados === 0) throw new Error(`seed ${s.id} returned no aid links: the page may have changed its design`);
   }
-  for (const p of almacen.pendientes) encolar(p);
+  for (const u of opciones.urls ?? []) encolar({ url: canonica(u), profundidad: 1, administracion: administracionDe(u) });
+  if (!opciones.urls) for (const p of almacen.pendientes) encolar(p);
   almacen.pendientes = [];
 
   // 2. Aid pages, breadth first; references add pages up to MAX_PROFUNDIDAD.
@@ -200,8 +227,42 @@ export async function ejecutar(opciones: Opciones, entorno: Entorno): Promise<Re
   const porHash = new Map(Object.entries(almacen.rastreo).flatMap(([url, r]) => (r.hash && r.id ? [[r.hash, { url, id: r.id }]] : [])));
   const alias = () => new Map(Object.entries(almacen.rastreo).flatMap(([url, r]) => (r.id ? [[url, r.id]] : [])));
 
+  // References: a link → that page; a name only → the catalogue, the store or a seed link.
+  // `desde` is null for an overview page: its references are followed but not related.
+  function seguirReferencias(referencias: Referencia[], desde: string | null, profundidad: number) {
+    for (const r of referencias) {
+      let destino = r.url ? canonica(r.url) : null;
+      if (!destino) {
+        const porNombre = (titulo: string) => similitud(titulo, r.nombre) >= 0.8;
+        const delCatalogo = catalogo.items.find((c) => porNombre(c.titulo));
+        if (delCatalogo) {
+          if (desde) relaciones.push({ desde, tipo: r.tipo, cita: r.cita, id: delCatalogo.id });
+          continue;
+        }
+        const delAlmacen = [...items.values()].find((a) => porNombre(a.titulo));
+        if (delAlmacen) {
+          if (desde) relaciones.push({ desde, tipo: r.tipo, cita: r.cita, id: delAlmacen.id });
+          continue;
+        }
+        destino = textosDeSemilla.find((e) => porNombre(e.texto))?.url ?? null;
+      }
+      if (!destino) {
+        log(`${desde ? `aid ${desde}` : "page"}: reference "${r.nombre}" not resolved`);
+        continue;
+      }
+      if (desde) relaciones.push({ desde, tipo: r.tipo, cita: r.cita, url: destino });
+      if (urlsCatalogo.has(destino) || almacen.rastreo[destino]) continue;
+      if (!oficial(new URL(destino).hostname)) {
+        log(`${desde ? `aid ${desde}` : "page"}: reference ${destino} is not an official site, not followed`);
+        continue;
+      }
+      if (profundidad + 1 > MAX_PROFUNDIDAD) continue;
+      encolar({ url: destino, profundidad: profundidad + 1, administracion: administracionDe(destino) });
+    }
+  }
+
   for (let i = 0; i < cola.length; i++) {
-    const { url, profundidad, administracion } = cola[i];
+    const { url, profundidad, administracion, plazoListado } = cola[i];
     if (opciones.limite !== undefined && procesadas >= opciones.limite) break;
     procesadas++;
     const previo = almacen.rastreo[url];
@@ -253,10 +314,32 @@ export async function ejecutar(opciones: Opciones, entorno: Entorno): Promise<Re
       continue;
     }
 
-    // PDFs linked as rules, guide or call: their requisite sections go to the model.
+    // Detail subpages on the same site go to the model in the same call.
     const pdfs = enlaces.filter((e) => /\.pdf(\b|$)/i.test(e.url));
+    const host = new URL(url).host;
+    // Child pages under the aid's own path first ("…/10956/28347"), then links named as details.
+    const ruta = new URL(url).pathname;
+    const esHija = (u: string) => new URL(u).pathname.startsWith(`${ruta}/`);
+    const subpaginas = enlaces
+      .filter((e) => !pdfs.includes(e))
+      .map((e) => ({ ...e, url: canonica(e.url) }))
+      .filter((e) => new URL(e.url).host === host && e.url !== url && !urlsCatalogo.has(e.url))
+      .filter((e) => esHija(e.url) || SUBPAGINA.test(`${e.texto} ${e.url}`))
+      .sort((a, b) => Number(esHija(b.url)) - Number(esHija(a.url)))
+      .slice(0, MAX_SUBPAGINAS);
+    const textosSub: string[] = [];
+    for (const sub of subpaginas) {
+      try {
+        const r = await descargar(sub.url);
+        if (r.ok) textosSub.push(`## Subpágina: ${sub.texto}\n${leerHtml(await r.text(), sub.url).texto}`);
+      } catch (error) {
+        log(`subpage ${sub.url}: ${(error as Error).message}`);
+      }
+    }
+
+    // PDFs linked as rules, guide, leaflet or call: their requisite sections go to the model.
     const textosPdf: string[] = [];
-    for (const pdf of pdfs.filter((e) => /bases|convocatoria|gu[ií]a|resumen|requisit/i.test(`${e.texto} ${e.url}`)).slice(0, MAX_PDFS)) {
+    for (const pdf of pdfs.filter((e) => PDF_UTIL.test(`${e.texto} ${e.url}`)).slice(0, MAX_PDFS)) {
       try {
         const r = await descargar(pdf.url);
         if (r.ok) textosPdf.push(await textoDePdf(new Uint8Array(await r.arrayBuffer())));
@@ -266,13 +349,22 @@ export async function ejecutar(opciones: Opciones, entorno: Entorno): Promise<Re
     }
 
     const titulo = texto.split("\n").find((l) => l.startsWith("## "))?.slice(3) ?? null;
-    const entrada = componerEntrada(texto, textosPdf);
-    let lectura: Awaited<ReturnType<typeof extraer>>;
-    try {
-      llamadas++;
-      lectura = await extraer({ url, titulo, texto: entrada, enlaces }, entorno.completar);
-    } catch (error) {
-      log(`page ${url}: LLM failed (${(error as Error).message}); retried next run`);
+    const entrada = componerEntrada([texto, ...textosSub].join("\n\n"), textosPdf);
+    // One retry on a network or server error: HelmCode drops connections under load.
+    let lectura: Awaited<ReturnType<typeof extraer>> = null;
+    let fallo: Error | null = null;
+    llamadas++;
+    for (let intento = 1; intento <= 2; intento++) {
+      try {
+        lectura = await extraer({ url, titulo, texto: entrada, enlaces }, entorno.completar);
+        fallo = null;
+        break;
+      } catch (error) {
+        fallo = error as Error;
+      }
+    }
+    if (fallo) {
+      log(`page ${url}: LLM failed (${fallo.message}); retried next run`);
       continue;
     }
     if (!lectura) {
@@ -281,11 +373,13 @@ export async function ejecutar(opciones: Opciones, entorno: Entorno): Promise<Re
     }
     const { extraccion: x, descartes } = lectura;
     if (descartes.length > 0) log(`page ${url}: ${descartes.length} quote(s) not in the text, dropped`);
-    for (const t of [texto, ...textosPdf]) textosNuevos.set(hashTexto(t), t);
-    const textos = [hash, ...textosPdf.map(hashTexto)];
+    for (const t of [texto, ...textosSub, ...textosPdf]) textosNuevos.set(hashTexto(t), t);
+    const textos = [hash, ...[...textosSub, ...textosPdf].map(hashTexto)];
 
+    // An overview page is not an aid, but it leads to aids (FR-022).
     if (!x.esAyuda) {
       almacen.rastreo[url] = { hash, ...cabecerasNuevas, consultado: hoy, noEsAyuda: true };
+      seguirReferencias(x.referencias, null, profundidad);
       continue;
     }
     if (x.naturaleza === "convocatoria") {
@@ -312,11 +406,20 @@ export async function ejecutar(opciones: Opciones, entorno: Entorno): Promise<Re
       plazo: x.plazo,
       enlace_info: url,
       enlace_tramite: x.enlace_tramite,
-      fuente: [url, ...pdfs.map((p) => p.url)].join(" ; "),
+      fuente: [url, ...subpaginas.map((p) => p.url), ...pdfs.map((p) => p.url)].join(" ; "),
       verificado: false,
       nota: x.nota,
       relacionados: [],
       naturaleza: x.naturaleza,
+      // The listing's official dates win over a quote (FR-021).
+      ...(plazoListado?.fin
+        ? { tipoPlazo: "fechas", fechaInicio: plazoListado.inicio, fechaFin: plazoListado.fin }
+        : { tipoPlazo: x.tipoPlazo, fechaInicio: x.fechaInicio, fechaFin: x.fechaFin }),
+      cuantia: x.cuantia,
+      ambito: x.ambito,
+      exclusiones: x.exclusiones,
+      ...(plazoListado ? { plazoListado } : {}),
+      ...(x.requisitos_clave.length === 0 && x.tipoPlazo === "sin_plazo" && !plazoListado ? { incompleta: true } : {}),
       codigos: codigosPagina,
       documentos: pdfs.map((p) => ({ titulo: p.texto, url: p.url })),
       textos,
@@ -341,36 +444,7 @@ export async function ejecutar(opciones: Opciones, entorno: Entorno): Promise<Re
     almacen.rastreo[url] = { id, hash, ...cabecerasNuevas, consultado: hoy };
     porHash.set(hash, { url, id });
 
-    // References: a link → that page; a name only → the catalogue, the store or a seed link.
-    for (const r of x.referencias) {
-      let destino = r.url ? canonica(r.url) : null;
-      if (!destino) {
-        const porNombre = (titulo: string) => similitud(titulo, r.nombre) >= 0.8;
-        const delCatalogo = catalogo.items.find((c) => porNombre(c.titulo));
-        if (delCatalogo) {
-          relaciones.push({ desde: id, tipo: r.tipo, cita: r.cita, id: delCatalogo.id });
-          continue;
-        }
-        const delAlmacen = [...items.values()].find((a) => porNombre(a.titulo));
-        if (delAlmacen) {
-          relaciones.push({ desde: id, tipo: r.tipo, cita: r.cita, id: delAlmacen.id });
-          continue;
-        }
-        destino = textosDeSemilla.find((e) => porNombre(e.texto))?.url ?? null;
-      }
-      if (!destino) {
-        log(`aid ${id}: reference "${r.nombre}" not resolved`);
-        continue;
-      }
-      relaciones.push({ desde: id, tipo: r.tipo, cita: r.cita, url: destino });
-      if (urlsCatalogo.has(destino) || almacen.rastreo[destino]) continue;
-      if (!oficial(new URL(destino).hostname)) {
-        log(`aid ${id}: reference ${destino} is not an official site, not followed`);
-        continue;
-      }
-      if (profundidad + 1 > MAX_PROFUNDIDAD) continue;
-      encolar({ url: destino, profundidad: profundidad + 1, administracion: administracionDe(destino) });
-    }
+    seguirReferencias(x.referencias, id, profundidad);
   }
 
   // 3. Re-link references once every page of the run is known (FR-018).

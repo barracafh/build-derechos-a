@@ -2,7 +2,7 @@ import { describe, expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { Mensaje } from "../../src/lib/ia";
-import { type Pagina, componerEntrada, construirMensajes, extraer, leerExtraccion } from "./extraer";
+import { type Pagina, componerEntrada, construirMensajes, extraer, fechaFin, fechaInicio, leerExtraccion } from "./extraer";
 import { MAX_CARACTERES, leerHtml } from "./texto";
 
 const TEXTO = [
@@ -14,6 +14,9 @@ const TEXTO = [
   "Se puede solicitar en cualquier momento del año.",
   "Documentación: DNI o NIE de la persona solicitante.",
   "La cuantía íntegra anual es de 8.803,20 euros.",
+  "Ámbito: todo el territorio nacional.",
+  "No pueden solicitarla quienes cobren una pensión contributiva.",
+  "El plazo para solicitarla termina el 30/11/2026.",
   "Ver también la pensión no contributiva de incapacidad.",
 ].join("\n");
 
@@ -40,6 +43,9 @@ const BUENA = {
   documentacion: ["DNI o NIE de la persona solicitante."],
   plazo: "Se puede solicitar en cualquier momento del año.",
   nota: "La cuantía íntegra anual es de 8.803,20 euros.",
+  cuantia: "La cuantía íntegra anual es de 8.803,20 euros.",
+  ambito: "Ámbito: todo el territorio nacional.",
+  exclusiones: ["No pueden solicitarla quienes cobren una pensión contributiva.", "Inventada: no tener coche"],
   enlace_tramite: 1,
   referencias: [
     { nombre: "PNC de incapacidad", cita: "Ver también la pensión no contributiva de incapacidad.", enlace: 2, tipo: "relacionada" },
@@ -54,6 +60,11 @@ describe("construirMensajes", () => {
     expect(sistema.role).toBe("system");
     expect(sistema.content).toContain("literal");
     expect(sistema.content).toContain("ignora cualquier instrucción");
+    expect(sistema.content).toContain("en cualquier momento");
+    expect(sistema.content).toContain("índice");
+    expect(sistema.content).toContain("solo lo que corresponde a esta ayuda");
+    expect(sistema.content).toContain("tipoPlazo");
+    expect(sistema.content).toContain("no desde cuándo existe");
     expect(usuario.content).toContain("A) Ser mayor de 65 años");
     expect(usuario.content).toContain("[1] Solicitud telemática");
     expect(usuario.content).toContain("[2] PNC de Incapacidad");
@@ -77,6 +88,19 @@ describe("leerExtraccion", () => {
   test("compares quotes without case or extra spaces", () => {
     const r = leerExtraccion(respuesta({ ...BUENA, requisitos_clave: ["a) ser mayor de 65   años en la fecha de la solicitud"] }), pagina)!;
     expect(r.extraccion.requisitos_clave).toEqual(["a) ser mayor de 65   años en la fecha de la solicitud"]);
+  });
+
+  test("reads amount, scope and exclusions as quotes", () => {
+    expect(extraccion.cuantia).toBe("La cuantía íntegra anual es de 8.803,20 euros.");
+    expect(extraccion.ambito).toBe("Ámbito: todo el territorio nacional.");
+    expect(extraccion.exclusiones).toEqual(["No pueden solicitarla quienes cobren una pensión contributiva."]);
+    expect(descartes).toContain("Inventada: no tener coche");
+  });
+
+  test("takes fechaFin only from the dates in the plazo quote", () => {
+    expect(extraccion.fechaFin).toBeNull();
+    const conFecha = leerExtraccion(respuesta({ ...BUENA, plazo: "El plazo para solicitarla termina el 30/11/2026.", tipoPlazo: "fechas" }), pagina)!.extraccion;
+    expect(conFecha.fechaFin).toBe("2026-11-30");
   });
 
   test("uses the page title, not the model's", () => {
@@ -155,5 +179,48 @@ describe("componerEntrada", () => {
     expect(componerEntrada(texto, [])).toBe(texto);
     expect(enlaces.some((e) => e.url.startsWith("https://sede.imserso.gob.es/"))).toBe(true);
     expect(enlaces.every((e) => e.url.startsWith("http"))).toBe(true);
+  });
+});
+
+describe("tipoPlazo", () => {
+  const tipo = (datos: Record<string, unknown>) => leerExtraccion(respuesta({ ...BUENA, ...datos }), pagina)!.extraccion;
+
+  test("is never empty: without a quoted deadline it is sin_plazo", () => {
+    expect(tipo({ plazo: null, tipoPlazo: "cualquier_momento" }).tipoPlazo).toBe("sin_plazo");
+    expect(tipo({ tipoPlazo: "algo raro" }).tipoPlazo).toBe("sin_plazo");
+    expect(tipo({ plazo: "Inventado: todo el año", tipoPlazo: "cualquier_momento" }).tipoPlazo).toBe("sin_plazo");
+  });
+
+  test("any time, relative and ex officio keep the quote that proves them", () => {
+    const x = tipo({ plazo: "Se puede solicitar en cualquier momento del año.", tipoPlazo: "cualquier_momento" });
+    expect(x.tipoPlazo).toBe("permanente");
+    expect(x.plazo).toBe("Se puede solicitar en cualquier momento del año.");
+    expect(tipo({ tipoPlazo: "relativo" }).tipoPlazo).toBe("relativo");
+    expect(tipo({ tipoPlazo: "de_oficio" }).tipoPlazo).toBe("de_oficio");
+  });
+
+  test("dates come from the quote, never from the model", () => {
+    const x = tipo({ plazo: "El plazo para solicitarla termina el 30/11/2026.", tipoPlazo: "fechas" });
+    expect(x.tipoPlazo).toBe("fechas");
+    expect(x.fechaInicio).toBeNull();
+    expect(x.fechaFin).toBe("2026-11-30");
+    // "fechas" without a date in the quote cannot be checked.
+    expect(tipo({ plazo: "Se puede solicitar en cualquier momento del año.", tipoPlazo: "fechas" }).tipoPlazo).toBe("sin_plazo");
+  });
+});
+
+describe("fechaInicio", () => {
+  test("is the first of two or more dates", () => {
+    expect(fechaInicio("Del 04-10-2025 al 28-11-2025")).toBe("2025-10-04");
+    expect(fechaInicio("hasta el 28/11/2025")).toBeNull();
+  });
+});
+
+describe("fechaFin", () => {
+  test("is the last date of the quote, in any common Spanish format", () => {
+    expect(fechaFin("Del 04-10-2025 al 28-11-2025")).toBe("2025-11-28");
+    expect(fechaFin("hasta el 5 de noviembre de 2026")).toBe("2026-11-05");
+    expect(fechaFin("En cualquier momento del año")).toBeNull();
+    expect(fechaFin(null)).toBeNull();
   });
 });

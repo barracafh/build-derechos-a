@@ -5,11 +5,11 @@ import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync } from "node
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { Semilla } from "../../src/datos/semillas";
-import { type Almacen, type Entorno, ejecutar } from "./index";
+import { type Almacen, type Entorno, ejecutar, urlDeDescarga } from "./index";
 
 type Pagina = { status?: number; html?: string };
 type Ref = { nombre: string; cita: string; ruta?: string; tipo?: string };
-type Guion = { esAyuda?: boolean; naturaleza?: string; requisitos?: string[]; enlaceTramite?: number; refs?: Ref[] };
+type Guion = { fallaUnaVez?: boolean; esAyuda?: boolean; naturaleza?: string; requisitos?: string[]; plazo?: string; enlaceTramite?: number; refs?: Ref[] };
 
 const pagina = (titulo: string, cuerpo: string[], enlaces: [string, string][] = []) =>
   `<html><body><nav><a href="/menu">Menú</a></nav><main><h1>${titulo}</h1>${cuerpo.map((p) => `<p>${p}</p>`).join("")}${enlaces
@@ -33,7 +33,11 @@ const guiones: Record<string, Guion> = {
   "/a/externa": { refs: [{ nombre: "Otra web", cita: "Más información en otra web.", ruta: "http://otro.test/x" }] },
   "/a/p1": { refs: [{ nombre: "P2", cita: "Ver la ayuda P2.", ruta: "/a/p2" }] },
   "/a/p2": { refs: [{ nombre: "P3", cita: "Ver la ayuda P3.", ruta: "/a/p3" }] },
+  "/a/indice": { esAyuda: false, refs: [{ nombre: "Ayuda hija", cita: "Una de ellas es la ayuda hija.", ruta: "/a/hija" }] },
+  "/d/1": { plazo: "Plazo: hasta el 28/11/2025." },
+  "/a/hijas": { fallaUnaVez: true },
 };
+const fallos = new Set<string>();
 
 function sitioInicial(): Record<string, Pagina> {
   const s: Record<string, Pagina> = {
@@ -41,7 +45,11 @@ function sitioInicial(): Record<string, Pagina> {
       html: semilla([
         "/a/uno", "/a/copia", "/a/dos", "/a/no-ayuda", "/a/convocatoria", "/a/bdns", "/a/catalogo",
         "/a/sia", "/a/pei25", "/a/pei24", "/a/inventada", "/a/nombre", "/a/externa", "/a/p1",
+        "/a/indice", "/a/detalle", "/a/vacia", "/a/hijas",
       ]),
+    },
+    "/s4": {
+      html: `<html><body><main><a href="/d/1"><div>Conselleria</div><div>Ayuda con plazo</div><div>Solicitud: <span>04-10-2025</span><span> - </span><span>28-11-2025</span></div><div>Cerrado</div></a></main></body></html>`,
     },
     "/s2": { html: semilla(["/b/sia"]) },
     "/s3": { html: semilla(["/c/uno"]) },
@@ -62,6 +70,14 @@ function sitioInicial(): Record<string, Pagina> {
     "/a/p2": { html: ayuda("Ayuda P2", ["Ver la ayuda P3."], [["P3", "/a/p3"]]) },
     "/a/p3": { html: ayuda("Ayuda P3") },
     "/c/uno": { html: ayuda("Ayuda municipal") },
+    "/a/indice": { html: pagina("Prestaciones", ["Hay varias prestaciones. Una de ellas es la ayuda hija."], [["Ayuda hija", "/a/hija"]]) },
+    "/a/hija": { html: ayuda("Ayuda hija") },
+    "/a/detalle": { html: pagina("Ayuda con subpágina", ["Información general."], [["Requisitos y plazos", "/a/detalle/requisitos"], ["Noticias", "/noticias"]]) },
+    "/a/detalle/requisitos": { html: pagina("Requisitos", ["Requisito: tener 18 años para la ayuda con subpágina."]) },
+    "/a/vacia": { html: pagina("Ayuda sin datos", ["Texto general sin requisitos."]) },
+    "/a/hijas": { html: pagina("Ayuda con régimen", ["Prestación económica."], [["Régimen General", "/a/hijas/general"]]) },
+    "/a/hijas/general": { html: pagina("Régimen General", ["Requisito: estar afiliado para la ayuda con régimen."]) },
+    "/d/1": { html: ayuda("Ayuda con plazo", ["Plazo: hasta el 28/11/2025."]) },
   };
   s["/a/copia"] = s["/a/uno"];
   return s;
@@ -85,10 +101,10 @@ function contestar(contenido: string): string {
     titulo: null,
     organismo: null,
     frases_usuario: ["necesito ayuda"],
-    requisitos_clave: g.requisitos ?? [texto.split("\n").find((l) => l.startsWith("Requisito:"))],
+    requisitos_clave: g.requisitos ?? texto.split("\n").filter((l) => l.startsWith("Requisito:")).slice(0, 1),
     pasos: [],
     documentacion: [],
-    plazo: null,
+    plazo: g.plazo ?? null,
     nota: null,
     enlace_tramite: g.enlaceTramite ?? null,
     referencias: (g.refs ?? []).map((r) => ({
@@ -111,6 +127,11 @@ beforeAll(() => {
       if (pathname === "/v1/chat/completions") {
         llamadasLlm++;
         const cuerpo = await req.json();
+        const ruta = new URL(cuerpo.messages[1].content.match(/^URL: (.+)$/m)[1]).pathname;
+        if (guiones[ruta]?.fallaUnaVez && !fallos.has(ruta)) {
+          fallos.add(ruta);
+          return new Response("error", { status: 502 });
+        }
         return Response.json({ choices: [{ message: { content: contestar(cuerpo.messages[1].content) } }] });
       }
       pedidas.push(pathname);
@@ -141,6 +162,7 @@ const semillas = (): Semilla[] => [
   { id: "s1", url: `${base}/s1`, patron: /^http:\/\/localhost:\d+\/a\//, administracion: "Estado" },
   { id: "s2", url: `${base}/s2`, patron: /^http:\/\/localhost:\d+\/b\//, administracion: "Comunitat Valenciana" },
   { id: "s3", url: `${base}/s3`, patron: /^http:\/\/localhost:\d+\/c\//, administracion: "Local" },
+  { id: "s4", url: `${base}/s4`, patron: /^http:\/\/localhost:\d+\/d\//, administracion: "Comunitat Valenciana" },
 ];
 
 function entorno(nombre: string, cambios: Partial<Entorno> = {}): Entorno {
@@ -171,11 +193,15 @@ describe("indexar job", () => {
     const r = await ejecutar({}, e());
     registro = r.registro;
     primera = leer(e());
-    // uno, dos, no-ayuda, convocatoria, sia, pei25, pei24, inventada, nombre, externa, p1, p2, b/sia, c/uno.
-    expect(llamadasLlm).toBe(14);
-    expect(r.llamadas).toBe(14);
+    // uno, dos, no-ayuda, convocatoria, sia, pei25, pei24, inventada, nombre, externa, p1, indice, detalle,
+    // vacia, hijas (failed once, retried), p2, hija, b/sia, c/uno, d/1.
+    expect(llamadasLlm).toBe(21);
+    expect(r.llamadas).toBe(20);
     expect(primera.items.map((i) => new URL(i.enlace_info).pathname).sort()).toEqual(
-      ["/a/dos", "/a/externa", "/a/inventada", "/a/nombre", "/a/p1", "/a/p2", "/a/pei24", "/a/pei25", "/a/sia", "/a/uno", "/c/uno"].sort(),
+      [
+        "/a/detalle", "/a/dos", "/a/externa", "/a/hija", "/a/hijas", "/a/inventada", "/a/nombre", "/a/p1", "/a/p2",
+        "/a/pei24", "/a/pei25", "/a/sia", "/a/uno", "/a/vacia", "/c/uno", "/d/1",
+      ].sort(),
     );
     const normalizado = readFileSync(e().archivoAlmacen, "utf8").replaceAll(base, "http://sitio");
     expect(normalizado).toMatchSnapshot();
@@ -226,6 +252,39 @@ describe("indexar job", () => {
     expect(registro.some((l) => l.includes("otro.test") && l.includes("not followed"))).toBe(true);
     expect(pedidas).toContain("/a/p2");
     expect(pedidas).not.toContain("/a/p3");
+  });
+
+  test("an overview page is not written, but its references are followed", () => {
+    expect(primera.rastreo[`${base}/a/indice`].noEsAyuda).toBe(true);
+    expect(porUrl(primera, "/a/hija")).toBeDefined();
+  });
+
+  test("the aid's own detail subpages are read in the same call", () => {
+    const d = porUrl(primera, "/a/detalle")!;
+    expect(d.requisitos_clave).toEqual(["Requisito: tener 18 años para la ayuda con subpágina."]);
+    expect(d.fuente).toContain(`${base}/a/detalle/requisitos`);
+    expect(pedidas).not.toContain("/noticias");
+  });
+
+  test("child pages under the aid's own path are read even without a keyword; a failed LLM call is retried once", () => {
+    const h = porUrl(primera, "/a/hijas")!;
+    expect(h.requisitos_clave).toEqual(["Requisito: estar afiliado para la ayuda con régimen."]);
+    expect(h.fuente).toContain(`${base}/a/hijas/general`);
+  });
+
+  test("an aid with no requisites and no deadline is marked incomplete", () => {
+    expect(porUrl(primera, "/a/vacia")!.incompleta).toBe(true);
+    expect(porUrl(primera, "/a/uno")!.incompleta).toBeUndefined();
+  });
+
+  test("the listing's application period is kept, and fechaFin comes from the plazo quote", () => {
+    const d = porUrl(primera, "/d/1")!;
+    expect(d.plazoListado).toEqual({ texto: "Solicitud: 04-10-2025 - 28-11-2025", inicio: "2025-10-04", fin: "2025-11-28", estado: "Cerrado" });
+    expect(d.plazo).toBe("Plazo: hasta el 28/11/2025.");
+    expect(d.tipoPlazo).toBe("fechas");
+    expect(d.fechaInicio).toBe("2025-10-04");
+    expect(d.fechaFin).toBe("2025-11-28");
+    expect(porUrl(primera, "/a/uno")!.tipoPlazo).toBe("sin_plazo");
   });
 
   test("texts are saved by hash", () => {
@@ -280,12 +339,35 @@ describe("indexar job limits", () => {
     expect(leer(e).items.length).toBe(40);
   });
 
+  test("a fixed list of URLs skips the seeds", async () => {
+    sitio = sitioInicial();
+    pedidas.length = 0;
+    const e = entorno("lista");
+    llamadasLlm = 0;
+    await ejecutar({ urls: [`${base}/c/uno`] }, e);
+    expect(llamadasLlm).toBe(1);
+    expect(pedidas).toEqual(["/c/uno"]);
+    expect(leer(e).items.map((i) => i.enlace_info)).toEqual([`${base}/c/uno`]);
+  });
+
   test("--dry-run --limit 3 reads 3 pages and writes nothing", async () => {
+    const rutas = ["/a/x1", "/a/x2", "/a/x3", "/a/x4"];
+    sitio = { "/s1": { html: semilla(rutas) } };
+    for (const r of rutas) sitio[r] = { html: ayuda(`Ayuda ${r}`) };
     const e = entorno("prueba", { semillas: [semillas()[0]] });
     llamadasLlm = 0;
     const r = await ejecutar({ dryRun: true, limite: 3 }, e);
     expect(llamadasLlm).toBe(3);
     expect(r.escrito).toBe(false);
     expect(existsSync(e.archivoAlmacen)).toBe(false);
+  });
+});
+
+describe("urlDeDescarga", () => {
+  test("asks seg-social.es for the Spanish page and leaves other sites alone", () => {
+    expect(urlDeDescarga("https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10938")).toBe(
+      "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10938?changeLanguage=es",
+    );
+    expect(urlDeDescarga("https://imserso.es/pnc")).toBe("https://imserso.es/pnc");
   });
 });
