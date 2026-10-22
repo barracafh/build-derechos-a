@@ -41,3 +41,31 @@
     }
   }
 }
+
+/* Foco visible para todo lo que se maneja con teclado. El anillo claro de los
+   componentes no llega a 3:1 sobre blanco; este contorno usa el color del
+   texto (19,8:1). Va fuera de @layer para ganar a las utilidades. */
+:focus-visible {
+  outline: 3px solid var(--foreground);
+  outline-offset: 3px;
+}
+
+/* El cuadro de escribir lleva el foco en el contorno redondeado entero. */
+.composer:focus-within {
+  outline: 3px solid var(--foreground);
+  outline-offset: 3px;
+}
+.composer textarea:focus-visible {
+  outline: none;
+}
+
+/* Las zonas que reciben el foco por código (títulos de respuesta) no lo dibujan
+   al hacer clic, pero sí al llegar con teclado. */
+[tabindex="-1"]:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Dentro de listas con bordes recortados, el contorno va hacia dentro. */
+a.foco-interno:focus-visible {
+  outline-offset: -3px;
+}

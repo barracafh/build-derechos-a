@@ -25,16 +25,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <a
           href="#contenido"
-          className="fixed top-2 left-2 z-50 inline-flex min-h-11 -translate-y-[calc(100%+16px)] items-center rounded-xl bg-foreground px-4 text-[15px] font-medium text-background focus-visible:translate-y-0"
+          className="fixed top-2 left-2 z-50 inline-flex min-h-12 -translate-y-[calc(100%+16px)] items-center rounded-xl bg-foreground px-4 text-lg font-medium text-background focus-visible:translate-y-0"
         >
           Saltar al contenido
         </a>
-        <p
-          role="note"
-          className="bg-muted px-(--page-gutter) py-2 text-center text-sm text-(--text-secondary)"
-        >
-          Herramienta experimental. No es un servicio oficial.
-        </p>
+        <aside aria-label="Aviso" className="bg-muted px-(--page-gutter) py-2">
+          <p className="mx-auto max-w-(--container-content) text-base text-(--text-secondary)">
+            Herramienta experimental. No es un servicio oficial.
+          </p>
+        </aside>
         {children}
       </body>
     </html>
