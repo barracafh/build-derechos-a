@@ -66,16 +66,7 @@ const SIN_PLAZO = [
 // Una ayuda: a la vista solo lo que decide (por qué encaja, plazo e importe) y,
 // plegado, todo lo demás. `detalle` es opcional: una ficha de otra fuente puede
 // traer solo los campos del contrato.
-export function TarjetaAyuda({
-  f,
-  n,
-  principal = false,
-}: {
-  f: Ficha;
-  n: number;
-  // La acción principal de la pantalla (una sola, con el sol); el resto, oscura.
-  principal?: boolean;
-}) {
+export function TarjetaAyuda({ f, n }: { f: Ficha; n: number }) {
   const d = f.detalle;
   const resumen = d?.resumen ?? [f.finalidad];
   const avisos = d?.avisos ?? [];
@@ -166,10 +157,7 @@ export function TarjetaAyuda({
             <a
               href={d.enlaceTramite}
               className={cn(
-                buttonVariants({
-                  variant: principal ? "sunset" : "default",
-                  size: "lg",
-                }),
+                buttonVariants({ variant: "default", size: "lg" }),
                 "h-auto min-h-12 px-6 py-2 text-lg font-medium whitespace-normal max-md:w-full",
               )}
             >

@@ -226,7 +226,7 @@ function VistaRespuesta({
           {ahora.length > 0 && (
             <ol className="grid grid-cols-[minmax(0,1fr)] gap-6">
               {ahora.map((x, i) => (
-                <TarjetaAyuda key={x.id} f={x} n={i + 1} principal={i === 0} />
+                <TarjetaAyuda key={x.id} f={x} n={i + 1} />
               ))}
             </ol>
           )}
