@@ -162,14 +162,9 @@ function VistaRespuesta({
               ? "Podrías optar a 1 ayuda"
               : `Podrías optar a ${n} ayudas`}
         </h2>
-        <Lineas
-          lineas={[
-            "Esto no es seguro.",
-            "Comprueba siempre los requisitos en la información oficial.",
-            `Hemos mirado el ${fechaLarga(r.cobertura.fechaConsulta)}.`,
-          ]}
-          className="text-(--text-secondary)"
-        />
+        <p className="text-base text-(--text-secondary)">
+          Hemos mirado el {fechaLarga(r.cobertura.fechaConsulta)}.
+        </p>
       </div>
 
       {entendido.length > 0 && (
