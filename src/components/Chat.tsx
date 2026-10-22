@@ -20,6 +20,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { BotonAviso } from "@/components/BotonAviso";
 import { TarjetaAyuda } from "@/components/TarjetaAyuda";
+import { Formulario } from "@/components/Formulario";
 import { Lineas } from "@/components/Texto";
 import { ruta, site } from "@/config/sitio";
 import { CATALOGO_ACTUALIZADO } from "@/datos/actualizacion";
@@ -149,10 +150,14 @@ function VistaRespuesta({
   id,
   r,
   alPreguntar,
+  alEnviar,
+  activa,
 }: {
   id: number;
   r: Respuesta;
   alPreguntar: () => void;
+  alEnviar: (texto: string) => void;
+  activa: boolean;
 }) {
   const n = r.fichas.length;
   const entendido = [
@@ -163,10 +168,18 @@ function VistaRespuesta({
     f.estado === "abierta" || f.estado === "permanente";
   const ahora = r.fichas.filter(esAhora);
   const despues = r.fichas.filter((f) => !esAhora(f));
-  // Mientras se conoce a la persona, la respuesta es solo la pregunta, como en
-  // un chat. El formato de resultados es para cuando hay ayudas que enseñar.
+  // Las conversaciones guardadas antes del formulario no lo traen.
+  const campos = r.formulario ?? [];
+  // Mientras se conoce a la persona, la respuesta es solo la pregunta o el
+  // formulario, como en un chat. El formato de resultados es para cuando hay
+  // ayudas que enseñar. Solo la última respuesta deja contestar.
   if (n === 0 && r.pregunta)
-    return (
+    return campos.length ? (
+      <div className="grid gap-6 pt-1">
+        <p>Para buscar tus ayudas, cuéntame un poco de ti.</p>
+        {activa && <Formulario id={id} campos={campos} alEnviar={alEnviar} enfocar />}
+      </div>
+    ) : (
       <p className="pt-1">{r.pregunta}</p>
     );
   return (
@@ -188,7 +201,7 @@ function VistaRespuesta({
         </p>
       </div>
 
-      {r.pregunta && (
+      {r.pregunta && campos.length === 0 && (
         <section className="flex flex-wrap items-center gap-x-4 gap-y-2">
           <h3 className="sr-only">Para afinar la búsqueda</h3>
           <p>{r.pregunta}</p>
@@ -271,6 +284,15 @@ function VistaRespuesta({
         </>
       )}
 
+      {campos.length > 0 && activa && (
+        <section aria-labelledby={`afinar-${id}`} className="grid gap-6">
+          <h3 id={`afinar-${id}`} className={H3}>
+            Para afinar la búsqueda
+          </h3>
+          <Formulario id={id} campos={campos} alEnviar={alEnviar} enfocar={false} />
+        </section>
+      )}
+
       <PanelCobertura c={r.cobertura} />
 
 
@@ -281,10 +303,14 @@ function VistaRespuesta({
 function BurbujaAsistente({
   m,
   alPreguntar,
+  alEnviar,
+  activa,
   alReintentar,
 }: {
   m: Extract<Mensaje, { rol: "asistente" }>;
   alPreguntar: () => void;
+  alEnviar: (texto: string) => void;
+  activa: boolean;
   alReintentar: (id: number, historial: MensajeChat[]) => void;
 }) {
   return (
@@ -330,7 +356,15 @@ function BurbujaAsistente({
             </Button>
           </div>
         )}
-        {m.estado === "ok" && <VistaRespuesta id={m.id} r={m.respuesta} alPreguntar={alPreguntar} />}
+        {m.estado === "ok" && (
+          <VistaRespuesta
+            id={m.id}
+            r={m.respuesta}
+            alPreguntar={alPreguntar}
+            alEnviar={alEnviar}
+            activa={activa}
+          />
+        )}
       </div>
     </div>
   );
@@ -471,9 +505,13 @@ export function Chat() {
       reemplazar(idA, { id: idA, rol: "asistente", estado: "ok", respuesta });
       const n = respuesta.fichas.length;
       // Una pregunta se lee en voz alta y el foco se queda en el cuadro de
-      // texto, para contestar sin moverse.
+      // texto, o va al formulario, para contestar sin moverse.
       if (n === 0 && respuesta.pregunta) {
-        setAnuncio(respuesta.pregunta);
+        setAnuncio(
+          respuesta.formulario.length
+            ? "Te pregunto unos datos para buscar tus ayudas."
+            : respuesta.pregunta,
+        );
         return;
       }
       setAnuncio(
@@ -645,6 +683,8 @@ export function Chat() {
                     key={m.id}
                     m={m}
                     alPreguntar={preguntar}
+                    alEnviar={enviar}
+                    activa={m.id === mensajes.at(-1)?.id}
                     alReintentar={(id, h) => void buscar(id, h)}
                   />
                 ),

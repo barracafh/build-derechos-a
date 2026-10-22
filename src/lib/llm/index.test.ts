@@ -2,12 +2,10 @@ import { describe, expect, test } from "bun:test";
 import type { Mensaje } from "@/lib/ia";
 import type { MensajeChat, Respuesta } from "@/lib/tipos";
 import { responder } from "./index";
-import { PREGUNTA_INICIAL } from "./pregunta";
 
 const hoy = new Date("2026-10-22T10:00:00+02:00");
 const usuario = (texto: string): MensajeChat => ({ rol: "usuario", texto });
 const ids = (r: Respuesta) => r.fichas.map((f) => f.id);
-const PREGUNTA_INGRESOS = "¿Cuánto dinero entra en tu casa cada mes, más o menos?";
 const usoRespaldo = (r: Respuesta) =>
   r.cobertura.noConsultado.some((t) => t.startsWith("La lectura de tu mensaje"));
 
@@ -58,7 +56,7 @@ describe("perfiles de prueba con el LLM", () => {
     expect(bono.pendiente).toEqual(["ingresos"]);
     expect(bono.detalle?.pasos.length).toBeGreaterThan(0);
     expect(bono.detalle?.ambito).toBe("Comunitat Valenciana");
-    expect(r.pregunta).toBe(PREGUNTA_INGRESOS);
+    expect(r.formulario[0]).toBe("ingresos");
     expect(usoRespaldo(r)).toBe(false);
   });
 
@@ -135,7 +133,7 @@ describe("perfiles de prueba con el LLM", () => {
     expect(ids(r)).toEqual(["xarxa-llibres", "complemento-ayuda-infancia", "ayudas-comedor-escolar"]);
     const libros = r.fichas[0];
     expect(libros).toMatchObject({ estado: "abierta", fechaFin: "2026-11-10", pendiente: [] });
-    expect(r.pregunta).toBe(PREGUNTA_INGRESOS);
+    expect(r.formulario[0]).toBe("ingresos");
   });
 });
 
@@ -191,8 +189,8 @@ describe("responder", () => {
       respaldo: true,
       fechaConsulta: "2026-10-22",
     });
-    // Sin ningún dato ni necesidad, la primera pregunta guía a la persona.
-    expect(r.pregunta).toBe(PREGUNTA_INICIAL);
+    // Sin ningún dato ni necesidad, el formulario empieza por qué necesita.
+    expect(r.formulario[0]).toBe("necesidad");
   });
 });
 

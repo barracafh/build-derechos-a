@@ -1,9 +1,11 @@
-import type { CampoPerfil, Ficha, MensajeChat, Perfil } from "@/lib/tipos";
+import type { CampoFormulario, CampoPerfil, Ficha, MensajeChat, Perfil } from "@/lib/tipos";
 
-// La pregunta la elige el código, no el modelo (spec 003, FR-005). Va guiando a
-// la persona, un dato cada vez, hasta tener el perfil que filtra las ayudas.
+// Las preguntas las elige el código, no el modelo (spec 003, FR-005). Se
+// preguntan todos los datos que faltan a la vez, en un formulario, para no ir y
+// volver al modelo por cada uno.
 
-export const TEXTO_PREGUNTA: Record<CampoPerfil, string> = {
+export const TEXTO_PREGUNTA: Record<CampoFormulario, string> = {
+  necesidad: "¿Qué necesitas? Por ejemplo, pagar el alquiler, la luz o los libros del colegio.",
   edad: "¿Cuántos años tienes?",
   municipio: "¿En qué municipio vives?",
   situacionLaboral: "¿Trabajas ahora o estás en paro?",
@@ -14,12 +16,16 @@ export const TEXTO_PREGUNTA: Record<CampoPerfil, string> = {
   discapacidad: "¿Tienes alguna discapacidad?",
 };
 
-// Cuando no se ha entendido nada todavía.
-export const PREGUNTA_INICIAL =
-  "Cuéntame un poco de ti: ¿qué necesitas? Por ejemplo, pagar el alquiler, la luz o los libros del colegio.";
+// Valores cerrados: el formulario los ofrece como opciones, la interfaz los
+// muestra tal cual y el motor los entiende.
+export const OPCIONES: Partial<Record<CampoPerfil, string[]>> = {
+  situacionLaboral: ["en paro", "paro agotado", "trabajando", "autónomo", "jubilado", "estudiando", "otra"],
+  vivienda: ["alquiler", "habitación", "propiedad", "otra"],
+  ingresos: ["sin ingresos", "bajos", "medios", "altos"],
+};
 
 // Los datos que deciden las ayudas del catálogo, en el orden en que se piden
-// cuando ninguna ficha pide uno en concreto.
+// después de los que piden las fichas.
 const BASICOS: CampoPerfil[] = [
   "municipio",
   "edad",
@@ -29,25 +35,29 @@ const BASICOS: CampoPerfil[] = [
   "ingresos",
 ];
 
-// 1. Lo que piden más fichas. 2. Los datos básicos que faltan. Nunca se repite
-// una pregunta ya hecha: si la persona no la contestó, se pasa a la siguiente.
-export function elegirPregunta(
+// 1. Qué necesita, si aún no hay ayudas. 2. Lo que piden más fichas. 3. Los
+// datos básicos. Nunca se repite una pregunta ya hecha: si la persona la dejó
+// sin contestar, no se vuelve a pedir.
+export function elegirPreguntas(
   fichas: Ficha[],
   perfil: Perfil,
   mensajes: MensajeChat[],
-): string | null {
-  const hechas = new Set(mensajes.filter((m) => m.rol === "asistente").map((m) => m.texto));
-  const nada = perfil.hechos.length === 0 && !perfil.necesidad && fichas.length === 0;
-  if (nada && !hechas.has(PREGUNTA_INICIAL)) return PREGUNTA_INICIAL;
-
+): { formulario: CampoFormulario[]; pregunta: string | null } {
+  const hechas = mensajes.filter((m) => m.rol === "asistente").map((m) => m.texto);
+  const libre = (c: CampoFormulario) => !hechas.some((t) => t.includes(TEXTO_PREGUNTA[c]));
   const conocidos = new Set(perfil.hechos.map((h) => h.campo));
-  const libre = (c: CampoPerfil) => !conocidos.has(c) && !hechas.has(TEXTO_PREGUNTA[c]);
+
   const cuenta = new Map<CampoPerfil, number>();
-  for (const f of fichas)
-    for (const c of f.pendiente) if (libre(c)) cuenta.set(c, (cuenta.get(c) ?? 0) + 1);
-  let mejor: CampoPerfil | null = null;
-  for (const [campo, n] of cuenta)
-    if (mejor === null || n > (cuenta.get(mejor) ?? 0)) mejor = campo;
-  mejor ??= BASICOS.find(libre) ?? null;
-  return mejor ? TEXTO_PREGUNTA[mejor] : null;
+  for (const f of fichas) for (const c of f.pendiente) cuenta.set(c, (cuenta.get(c) ?? 0) + 1);
+  const porFichas = [...cuenta].sort((a, b) => b[1] - a[1]).map(([c]) => c);
+  const formulario: CampoFormulario[] = [...new Set([...porFichas, ...BASICOS])].filter(
+    (c) => !conocidos.has(c) && libre(c),
+  );
+  if (!perfil.necesidad && fichas.length === 0 && libre("necesidad"))
+    formulario.unshift("necesidad");
+
+  return {
+    formulario,
+    pregunta: formulario.length ? formulario.map((c) => TEXTO_PREGUNTA[c]).join("\n") : null,
+  };
 }

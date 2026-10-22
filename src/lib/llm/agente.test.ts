@@ -204,7 +204,7 @@ describe("responder con herramientas", () => {
       buscar: async () => (buscadas++, resultado([])),
     });
     expect(buscadas).toBe(0);
-    expect(r.pregunta).toBe("¿En qué municipio vives?");
+    expect(r.formulario).toContain("municipio");
     expect(r.cobertura.noConsultado).toContain(
       "Convocatorias publicadas en la BDNS: falta saber tu municipio",
     );

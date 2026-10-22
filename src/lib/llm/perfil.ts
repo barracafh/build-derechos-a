@@ -2,6 +2,7 @@ import catalogo from "../../../datos/catalogo-tramites-ayudas.json";
 import type { Mensaje } from "@/lib/ia";
 import { normalizar } from "@/lib/lugares";
 import { IDS_AYUDAS } from "@/lib/motor/catalogo";
+import { OPCIONES } from "./pregunta";
 import type { CampoPerfil, Hecho, MensajeChat, Perfil } from "@/lib/tipos";
 
 // El LLM sugiere; este archivo comprueba en código todo lo que se puede comprobar.
@@ -16,13 +17,6 @@ const CAMPOS: CampoPerfil[] = [
   "pension",
   "discapacidad",
 ];
-
-// Valores cerrados: la interfaz los muestra tal cual y el motor los entiende.
-const OPCIONES: Partial<Record<CampoPerfil, string[]>> = {
-  situacionLaboral: ["en paro", "paro agotado", "trabajando", "autónomo", "jubilado", "estudiando", "otra"],
-  vivienda: ["alquiler", "habitación", "propiedad", "otra"],
-  ingresos: ["sin ingresos", "bajos", "medios", "altos"],
-};
 
 const LISTA_CERRADA = catalogo.items
   .filter((e) => IDS_AYUDAS.includes(e.id))

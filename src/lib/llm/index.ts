@@ -1,7 +1,7 @@
 import type { ArgsBuscar, AyudaEncontrada, ResultadoBuscar } from "@/lib/ayudas/buscar";
 import type { ErrorUbicacion } from "@/lib/ayudas/territorio";
 import type { Mensaje } from "@/lib/ia";
-import { elegirPregunta, PREGUNTA_INICIAL, TEXTO_PREGUNTA } from "@/lib/llm/pregunta";
+import { elegirPreguntas, TEXTO_PREGUNTA } from "@/lib/llm/pregunta";
 import { hablaDeDana, perfilDeTexto } from "@/lib/llm/respaldo";
 import {
   bloqueada,
@@ -97,6 +97,7 @@ export async function responder(
         fechaConsulta,
       },
       pregunta: null,
+      formulario: [],
     };
 
   // En los registros, solo el error de HelmCode, nunca el texto de la persona.
@@ -178,20 +179,22 @@ export async function responder(
     fechaConsulta,
   };
   if (!buscar)
-    return { perfil, fichas, cobertura: base, pregunta: elegirPregunta(fichas, perfil, mensajes) };
+    return { perfil, fichas, cobertura: base, ...elegirPreguntas(fichas, perfil, mensajes) };
 
   alAvanzar("buscando");
   const bdns = await conBdns(perfil, lectura, hallazgos, buscar, requisitos);
-  // La pregunta de la BDNS (dónde vives) va primero, salvo que ya se hiciera o
-  // que aún no se sepa nada de la persona.
-  const guiada = elegirPregunta(fichas, perfil, mensajes);
+  // Si la BDNS no reconoce el municipio, se aclara eso solo; si falta, ya va
+  // en el formulario.
   const hecha = (p: string) => mensajes.some((m) => m.rol === "asistente" && m.texto === p);
+  const aclarar =
+    bdns.pregunta && bdns.pregunta !== TEXTO_PREGUNTA.municipio && !hecha(bdns.pregunta);
   return {
     perfil,
     fichas: porEstado([...fichas, ...bdns.fichas]),
     cobertura: coberturaConBdns(base, hallazgos.busqueda, bdns.motivo),
-    pregunta:
-      bdns.pregunta && guiada !== PREGUNTA_INICIAL && !hecha(bdns.pregunta) ? bdns.pregunta : guiada,
+    ...(aclarar
+      ? { pregunta: bdns.pregunta, formulario: [] }
+      : elegirPreguntas(fichas, perfil, mensajes)),
   };
 }
 

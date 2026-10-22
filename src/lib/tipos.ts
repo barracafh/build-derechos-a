@@ -87,7 +87,12 @@ export type Respuesta = {
   cobertura: Cobertura;
   /** Una pregunta opcional para afinar la búsqueda. */
   pregunta: string | null;
+  /** Los datos que faltan, para preguntarlos todos a la vez en un formulario. */
+  formulario: CampoFormulario[];
 };
+
+/** Lo que se puede preguntar: un dato del perfil o qué necesita la persona. */
+export type CampoFormulario = CampoPerfil | "necesidad";
 
 /** Fase en la que está la búsqueda. Solo una clave fija, nunca texto del LLM. */
 export type Paso = "leyendo" | "reintentando" | "comprobando" | "buscando";
