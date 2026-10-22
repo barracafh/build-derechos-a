@@ -4,6 +4,149 @@
   "aviso": "Extraído de páginas oficiales por un proceso automático. No verificado por una persona: revisa siempre la página oficial.",
   "items": [
     {
+      "id": "acogimientos-en-familia-extensa",
+      "tipo": "ayuda",
+      "titulo": "Acogimientos en familia extensa",
+      "administracion": "Local",
+      "organismo": null,
+      "frases_usuario": [
+        "quiero acoger a mi nieto",
+        "a mi sobrina le han retirado la custodia y la quiero acoger",
+        "cómo me ofrezco para cuidar a un menor de mi familia",
+        "acogimiento de un familiar menor en Valencia"
+      ],
+      "requisitos_clave": [
+        "El acogimiento en familia extensa se entiende como el que se produce cuando la familia de acogida mantiene un vínculo de parentesco o una relación afectiva previa relevante con la persona menor de edad que se quiere acoger.",
+        "Toda familia extensa que se ofrece para el acogimiento de una persona menor de edad en particular ha de someterse a un proceso valoración de su aptitud."
+      ],
+      "pasos": [
+        "Para ello debe informarse en el Centro Municipal de Servicios Sociales de su zona de residencia o de residencia de la persona menor de edad para la que se ofrece como familia de acogida."
+      ],
+      "documentacion": [],
+      "plazo": "Se establece un plazo máximo de seis meses desde la fecha de la resolución por la que se declara el desamparo de la persona menor de edad para que la familia extensa presente su ofrecimiento para acogerla.",
+      "enlace_info": "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=5F163188F995CA86C12582C800403610",
+      "enlace_tramite": null,
+      "fuente": "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=5F163188F995CA86C12582C800403610 ; https://www.valencia.es/documents/20142/618951/PROGRAMA+MARCO+DE+INSERCION+SOCIAL+Y+LABORAL.pdf/6793a6ed-3b0f-5ac8-487c-a77aedddcf6f?t=1619253382906 ; https://www.valencia.es/documents/20142/618951/20190830%2520PROGRAMA%2520CAST%25202019%2520castellano%2520%255Bpersonas%2520sin%2520techo.pdf/5e96e164-b9bd-df20-6707-623a54c8fe94",
+      "verificado": false,
+      "nota": "Transcurrido dicho plazo los ofrecimientos únicamente podrán tramitarse de oficio por la administración pública.",
+      "relacionados": [
+        "ajuda-a-domicili",
+        "menjar-a-domicili",
+        "teleassistencia-per-a-persones-majors-o-amb-discapacitat"
+      ],
+      "naturaleza": "servicio",
+      "tipoPlazo": "relativo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "Programa marco de Inserción Social y Laboral",
+          "url": "https://www.valencia.es/documents/20142/618951/PROGRAMA+MARCO+DE+INSERCION+SOCIAL+Y+LABORAL.pdf/6793a6ed-3b0f-5ac8-487c-a77aedddcf6f?t=1619253382906"
+        },
+        {
+          "titulo": "Programa del Centro de Atención a Personas sin Techo \"CAST 2019\".",
+          "url": "https://www.valencia.es/documents/20142/618951/20190830%2520PROGRAMA%2520CAST%25202019%2520castellano%2520%255Bpersonas%2520sin%2520techo.pdf/5e96e164-b9bd-df20-6707-623a54c8fe94"
+        }
+      ],
+      "textos": [
+        "972793f1b8aaa991708a96fceecbfe80be051ec66559e8592348f0aed23f8f91"
+      ],
+      "relaciones": [
+        {
+          "id": "ajuda-a-domicili",
+          "tipo": "relacionada",
+          "cita": "Ayuda a Domicilio"
+        },
+        {
+          "id": "menjar-a-domicili",
+          "tipo": "relacionada",
+          "cita": "Menjar a Domicili"
+        },
+        {
+          "id": "teleassistencia-per-a-persones-majors-o-amb-discapacitat",
+          "tipo": "relacionada",
+          "cita": "Teleasistencia"
+        }
+      ],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "ajuda-a-domicili",
+      "tipo": "ayuda",
+      "titulo": "Ajuda a domicili",
+      "administracion": "Local",
+      "organismo": "Ajuntament de Valéncia",
+      "frases_usuario": [
+        "necesito ayuda en casa para asearme",
+        "alguien que venga a limpiar a casa de mi madre mayor",
+        "ayuda a domicilio en Valencia",
+        "tengo dependencia y me han dado el PIA",
+        "no puedo con las tareas de casa"
+      ],
+      "requisitos_clave": [
+        "Estar empadronat en el municipi de València i residir efectivament tots els membres de la unitat familiar.",
+        "Que necessiten suport per a l'exercici de la seua autonomia i requerisquen assistència per a continuar en el seu entorn habitual.",
+        "Persones que tinguen reconeguda la situació de dependència i que a través de la corresponent resolució del Programa Individual d'Atenció (PIA) se'ls haja prescrit el Servei d'Ajuda a Domicili.",
+        "Persones amb dificultats per a la realització de les activitats bàsiques de la vida diària, no reconegudes com a persones en situació de dependència.",
+        "Que els ingressos bruts anuals de la unitat de convivència no excedisquen de 24.318,84 € (per a unitats familiars d'1 membre) i de 27.792,96 € (per a unitats familiars de 2 membres o més)."
+      ],
+      "pasos": [
+        "Tinga preparada la documentació que necessite adjuntar d'acord amb l'apartat Documentació a presentar",
+        "Òmpliga el formulari",
+        "Adjunte, si és el cas, la documentació indicada",
+        "Presente i firme la sol•licitud"
+      ],
+      "documentacion": [
+        "DNI, Passaport o NIE de la persona sol·licitant i de tots els membres de la unitat familiar",
+        "Targeta sanitària de la persona sol·licitant",
+        "Informe de salut de la persona sol·licitant i altres convivents per al reconeixement de prestacions socials",
+        "Autorització expressa de totes les persones de la unitat familiar majors de 16 anys:",
+        "Fotocòpia del llibre de família",
+        "Certificat de grau de discapacitat",
+        "Certificat d'empadronament de tota la unitat familiar"
+      ],
+      "plazo": "Al llarg de tot l’any.",
+      "enlace_info": "https://sede.valencia.es/sede/registro/procedimiento/BS.MA.60",
+      "enlace_tramite": null,
+      "fuente": "https://sede.valencia.es/sede/registro/procedimiento/BS.MA.60 ; http://www.dogv.gva.es/datos/2019/02/21/pdf/2019_1653.pdf",
+      "verificado": false,
+      "nota": "De l'aplicació del barem resultarà una puntuació global, que determinarà un ordre preferent per a l'adjudicació del servei, prevalent-se aquelles sol·licituds que obtinguen major puntuació.",
+      "relacionados": [],
+      "naturaleza": "servicio",
+      "tipoPlazo": "permanente",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "Llei 3/2019",
+          "url": "http://www.dogv.gva.es/datos/2019/02/21/pdf/2019_1653.pdf"
+        }
+      ],
+      "textos": [
+        "3b6fd16e74dbfd5749cb0c17b15df8f508d63c612ec7f3c8e5e5af47de5c0905"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
       "id": "amianto",
       "tipo": "ayuda",
       "titulo": "Amianto",
@@ -652,6 +795,52 @@
       "consultado": "2026-10-22"
     },
     {
+      "id": "ivaj",
+      "tipo": "ayuda",
+      "titulo": "IVAJ",
+      "administracion": "Comunitat Valenciana",
+      "organismo": "IVAJ",
+      "frases_usuario": [
+        "quiero el carnet joven con tarjeta del banco",
+        "soy joven y busco descuentos",
+        "cómo saco el carnet jove financiero",
+        "tarjeta joven sin gastos de mantenimiento"
+      ],
+      "requisitos_clave": [
+        "Para obtener el Carnet Jove en la modalidad financiera tendréis que acudir a una sucursal de alguna de las entidades financieras que aparecen relacionadas más abajo (o realizar el trámite on line) y abrir una cuenta asociada, que no tendrá gastos de mantenimiento:"
+      ],
+      "pasos": [
+        "Para obtener el Carnet Jove en la modalidad financiera tendréis que acudir a una sucursal de alguna de las entidades financieras que aparecen relacionadas más abajo (o realizar el trámite on line) y abrir una cuenta asociada, que no tendrá gastos de mantenimiento:"
+      ],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://ivaj.gva.es/es/targeta-financera",
+      "enlace_tramite": null,
+      "fuente": "https://ivaj.gva.es/es/targeta-financera",
+      "verificado": false,
+      "nota": null,
+      "relacionados": [],
+      "naturaleza": "bonificacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "EL CARNET JOVE DEL IVAJ ES GRATUITO.",
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "6307a4261dff30b64249341006411f3ea4255f97da01ea162a83b0106aa0bd41"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
       "id": "joop-jove-oportunitat-ivaj-g19936",
       "tipo": "ayuda",
       "titulo": "JOOP - JOVE OPORTUNITAT (IVAJ)",
@@ -851,6 +1040,75 @@
       "documentos": [],
       "textos": [
         "6cfecddfeeaf5f0c66b1dae1eb2fddda733a5f1c5084ef7bf727d423000af200"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "menjar-a-domicili",
+      "tipo": "ayuda",
+      "titulo": "Menjar a domicili",
+      "administracion": "Local",
+      "organismo": "Ajuntament de Valéncia",
+      "frases_usuario": [
+        "no puedo cocinar y vivo solo",
+        "comida a domicilio para mayores",
+        "mi padre no puede hacerse la comida",
+        "que me traigan la comida a casa",
+        "tengo dependencia y necesito ayuda con las comidas"
+      ],
+      "requisitos_clave": [
+        "a. Tenir 65 anys o més.",
+        "b. Tenir 18 anys o més i tenir un certificat oficial de discapacitat de 33% o superior.",
+        "c. Tenir 18 anys o més i tenir reconeixement de dependència anivelles 1, 2 o 3.",
+        "d. Tenir 18 anys o més i ser perceptor d'una pensió d'incapacitat permanent total, absoluta o gran invalidesa.",
+        "e. Estar empadronat/a en el municipi de València i haver sigut derivat/pels professionals dels Centres Municipals de Serveis socials de l'Ajuntament de València.",
+        "f. Tenir autonomia per a la preparació i ingesta dels aliments servits, o bé aportar compromís dels familiars que es responsabilitzen d'aquesta tasca.",
+        "g. Precisar el servei, acreditat mitjançant informe social i informe mèdic.",
+        "h. Viure sols/as o bé en companyia de persones en situació similar d'edat i característiques.",
+        "i. Que els ingressos bruts anuals de la unitat de convivència no superen 3 vegades el valor de l’IPREM anual de 12 pagues per a un sol·licitant i 3.5 vegades l’ IPREM per a dos o més sol·licitants.",
+        "j. Obtenir una puntuació d'acord amb el barem de l'Annex I, que li permeta ser inclòs en el servei de ““Menjar a Domicili”” segons dotació pressupostària.",
+        "l. Tenir minvades les capacitats físiques o psicològiques en grau tal que dificulten la realització de la compra o l'elaboració total d'aliments."
+      ],
+      "pasos": [
+        "L'interessat acudirà al Centre de serveis socials que li pertanga per la seua zona de residència i realitzarà tot el tràmit allí on serà atès pels professionals d'aquest centre.",
+        "Òmpliga el formulari",
+        "Adjunte, si és el cas, la documentació indicada",
+        "Presente i firme la sol•licitud"
+      ],
+      "documentacion": [
+        "Còpia DNI/NIE del sol·licitant i dels membres de la unitat de convivència",
+        "Còpia de la Targeta sanitària en cas de tindre-la coberta per Asseguradores privades",
+        "Informe mèdic d'accés a prestacions socials que realitzen els Centres de salut:",
+        "Qualificació de discapacitat, en cas de no autoritzar l'accés a dades",
+        "Annex. Valoració \"Menjar a domicili\":",
+        "Annex. Declaració responsable \"Menjar a domicili\":"
+      ],
+      "plazo": "Durant tot l'any.",
+      "enlace_info": "https://sede.valencia.es/sede/registro/procedimiento/BS.MA.50",
+      "enlace_tramite": null,
+      "fuente": "https://sede.valencia.es/sede/registro/procedimiento/BS.MA.50",
+      "verificado": false,
+      "nota": "La cobertura del servei serà els 7 dies de la setmana durant tot l'any, i segons la dieta recomanada per el/la metge/a d'atenció primària per a cada persona usuària.",
+      "relacionados": [],
+      "naturaleza": "servicio",
+      "tipoPlazo": "permanente",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "El cost del servei serà finançat per l'Ajuntament en un 68% del cost. L'aportació de les persones usuàries serà el 32% del cost del servei.",
+      "ambito": null,
+      "exclusiones": [
+        "k. No patir malaltia infectocontagiosa."
+      ],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "a78437dd7408dc87790ceebdaae0059d82d23a5c3a545967d8d0dd458107883c"
       ],
       "relaciones": [],
       "consultado": "2026-10-22"
@@ -1343,6 +1601,61 @@
       "consultado": "2026-10-22"
     },
     {
+      "id": "programa-de-implementacion-itinerarios-de-inclusion-social-f",
+      "tipo": "ayuda",
+      "titulo": "Programa de implementación itinerarios de inclusión social FSE+",
+      "administracion": "Local",
+      "organismo": null,
+      "frases_usuario": [
+        "estoy en exclusión social y necesito ayuda para encontrar trabajo",
+        "quiero que me acompañen para formarme y buscar empleo en Valencia",
+        "necesito apoyo de servicios sociales para salir adelante",
+        "busco un itinerario de inserción laboral en Valencia"
+      ],
+      "requisitos_clave": [
+        "El programa de implementación de itinerarios de inclusión social FSE+ persigue atender y promover la integración social y laboral de personas en situación de exclusión social o vulnerabilidad en el ámbito territorial de Valencia."
+      ],
+      "pasos": [
+        "Puede solicitar cita previa presencial para información y asesoramiento al respecto en el centro municipal de servicios sociales de su zona de residencia o a través de la central de llamadas ([teléfono])."
+      ],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=40668527",
+      "enlace_tramite": null,
+      "fuente": "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=40668527 ; https://www.valencia.es/documents/20142/618951/PROGRAMA+MARCO+DE+INSERCION+SOCIAL+Y+LABORAL.pdf/6793a6ed-3b0f-5ac8-487c-a77aedddcf6f?t=1619253382906 ; https://www.valencia.es/documents/20142/618951/20190830%2520PROGRAMA%2520CAST%25202019%2520castellano%2520%255Bpersonas%2520sin%2520techo.pdf/5e96e164-b9bd-df20-6707-623a54c8fe94",
+      "verificado": false,
+      "nota": "Estos itinerarios consisten en el desarrollo de intervenciones planificadas a través de acciones formativas, laborales, educativas y de apoyo social, favoreciendo la participación social y el acceso a la ocupación.",
+      "relacionados": [],
+      "naturaleza": "servicio",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": "en el ámbito territorial de Valencia",
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "Programa marco de Inserción Social y Laboral",
+          "url": "https://www.valencia.es/documents/20142/618951/PROGRAMA+MARCO+DE+INSERCION+SOCIAL+Y+LABORAL.pdf/6793a6ed-3b0f-5ac8-487c-a77aedddcf6f?t=1619253382906"
+        },
+        {
+          "titulo": "Programa del Centro de Atención a Personas sin Techo \"CAST 2019\".",
+          "url": "https://www.valencia.es/documents/20142/618951/20190830%2520PROGRAMA%2520CAST%25202019%2520castellano%2520%255Bpersonas%2520sin%2520techo.pdf/5e96e164-b9bd-df20-6707-623a54c8fe94"
+        }
+      ],
+      "textos": [
+        "8781b61887b4b92ff206455799f8ff7cf7a3a455f1351db5b732d04087ecddb1"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
       "id": "programa-europeo-cuerpo-europeo-de-solidaridad-ces-ivaj-sia3016439",
       "tipo": "ayuda",
       "titulo": "Programa europeo Cuerpo Europeo de Solidaridad (CES). IVAJ",
@@ -1399,118 +1712,6 @@
       ],
       "relaciones": [],
       "consultado": "2026-10-22"
-    },
-    {
-      "id": "programas-valencia",
-      "tipo": "ayuda",
-      "titulo": "Programas - València",
-      "administracion": "Local",
-      "organismo": null,
-      "frases_usuario": [
-        "estoy en exclusión social y necesito ayuda para encontrar trabajo",
-        "quiero que me acompañen para formarme y buscar empleo en Valencia",
-        "necesito apoyo de servicios sociales para salir adelante",
-        "busco un itinerario de inserción laboral en Valencia"
-      ],
-      "requisitos_clave": [
-        "El programa de implementación de itinerarios de inclusión social FSE+ persigue atender y promover la integración social y laboral de personas en situación de exclusión social o vulnerabilidad en el ámbito territorial de Valencia."
-      ],
-      "pasos": [
-        "Puede solicitar cita previa presencial para información y asesoramiento al respecto en el centro municipal de servicios sociales de su zona de residencia o a través de la central de llamadas ([teléfono])."
-      ],
-      "documentacion": [],
-      "plazo": null,
-      "enlace_info": "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=40668527",
-      "enlace_tramite": null,
-      "fuente": "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=40668527 ; https://www.valencia.es/documents/20142/618951/PROGRAMA+MARCO+DE+INSERCION+SOCIAL+Y+LABORAL.pdf/6793a6ed-3b0f-5ac8-487c-a77aedddcf6f?t=1619253382906 ; https://www.valencia.es/documents/20142/618951/20190830%2520PROGRAMA%2520CAST%25202019%2520castellano%2520%255Bpersonas%2520sin%2520techo.pdf/5e96e164-b9bd-df20-6707-623a54c8fe94",
-      "verificado": false,
-      "nota": "Estos itinerarios consisten en el desarrollo de intervenciones planificadas a través de acciones formativas, laborales, educativas y de apoyo social, favoreciendo la participación social y el acceso a la ocupación.",
-      "relacionados": [],
-      "naturaleza": "servicio",
-      "tipoPlazo": "sin_plazo",
-      "fechaInicio": null,
-      "fechaFin": null,
-      "cuantia": null,
-      "ambito": "en el ámbito territorial de Valencia",
-      "exclusiones": [],
-      "codigos": {
-        "sia": [],
-        "idProc": [],
-        "bdns": [],
-        "boe": []
-      },
-      "documentos": [
-        {
-          "titulo": "Programa marco de Inserción Social y Laboral",
-          "url": "https://www.valencia.es/documents/20142/618951/PROGRAMA+MARCO+DE+INSERCION+SOCIAL+Y+LABORAL.pdf/6793a6ed-3b0f-5ac8-487c-a77aedddcf6f?t=1619253382906"
-        },
-        {
-          "titulo": "Programa del Centro de Atención a Personas sin Techo \"CAST 2019\".",
-          "url": "https://www.valencia.es/documents/20142/618951/20190830%2520PROGRAMA%2520CAST%25202019%2520castellano%2520%255Bpersonas%2520sin%2520techo.pdf/5e96e164-b9bd-df20-6707-623a54c8fe94"
-        }
-      ],
-      "textos": [
-        "8781b61887b4b92ff206455799f8ff7cf7a3a455f1351db5b732d04087ecddb1"
-      ],
-      "relaciones": [],
-      "consultado": "2026-10-22"
-    },
-    {
-      "id": "programas-valencia-2",
-      "tipo": "ayuda",
-      "titulo": "Programas - València",
-      "administracion": "Local",
-      "organismo": null,
-      "frases_usuario": [
-        "quiero acoger a mi nieto",
-        "a mi sobrina le han retirado la custodia y la quiero acoger",
-        "cómo me ofrezco para cuidar a un menor de mi familia",
-        "acogimiento de un familiar menor en Valencia"
-      ],
-      "requisitos_clave": [
-        "El acogimiento en familia extensa se entiende como el que se produce cuando la familia de acogida mantiene un vínculo de parentesco o una relación afectiva previa relevante con la persona menor de edad que se quiere acoger.",
-        "Toda familia extensa que se ofrece para el acogimiento de una persona menor de edad en particular ha de someterse a un proceso valoración de su aptitud."
-      ],
-      "pasos": [
-        "Para ello debe informarse en el Centro Municipal de Servicios Sociales de su zona de residencia o de residencia de la persona menor de edad para la que se ofrece como familia de acogida."
-      ],
-      "documentacion": [],
-      "plazo": "Se establece un plazo máximo de seis meses desde la fecha de la resolución por la que se declara el desamparo de la persona menor de edad para que la familia extensa presente su ofrecimiento para acogerla.",
-      "enlace_info": "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=5F163188F995CA86C12582C800403610",
-      "enlace_tramite": null,
-      "fuente": "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=5F163188F995CA86C12582C800403610 ; https://www.valencia.es/documents/20142/618951/PROGRAMA+MARCO+DE+INSERCION+SOCIAL+Y+LABORAL.pdf/6793a6ed-3b0f-5ac8-487c-a77aedddcf6f?t=1619253382906 ; https://www.valencia.es/documents/20142/618951/20190830%2520PROGRAMA%2520CAST%25202019%2520castellano%2520%255Bpersonas%2520sin%2520techo.pdf/5e96e164-b9bd-df20-6707-623a54c8fe94",
-      "verificado": false,
-      "nota": "Transcurrido dicho plazo los ofrecimientos únicamente podrán tramitarse de oficio por la administración pública.",
-      "relacionados": [],
-      "naturaleza": "servicio",
-      "tipoPlazo": "relativo",
-      "fechaInicio": null,
-      "fechaFin": null,
-      "cuantia": null,
-      "ambito": null,
-      "exclusiones": [],
-      "codigos": {
-        "sia": [],
-        "idProc": [],
-        "bdns": [],
-        "boe": []
-      },
-      "documentos": [
-        {
-          "titulo": "Programa marco de Inserción Social y Laboral",
-          "url": "https://www.valencia.es/documents/20142/618951/PROGRAMA+MARCO+DE+INSERCION+SOCIAL+Y+LABORAL.pdf/6793a6ed-3b0f-5ac8-487c-a77aedddcf6f?t=1619253382906"
-        },
-        {
-          "titulo": "Programa del Centro de Atención a Personas sin Techo \"CAST 2019\".",
-          "url": "https://www.valencia.es/documents/20142/618951/20190830%2520PROGRAMA%2520CAST%25202019%2520castellano%2520%255Bpersonas%2520sin%2520techo.pdf/5e96e164-b9bd-df20-6707-623a54c8fe94"
-        }
-      ],
-      "textos": [
-        "972793f1b8aaa991708a96fceecbfe80be051ec66559e8592348f0aed23f8f91"
-      ],
-      "relaciones": [],
-      "consultado": "2026-10-22",
-      "posibleDuplicado": "programas-valencia"
     },
     {
       "id": "residencias-juveniles-ivaj-sia3016390",
@@ -1818,9 +2019,81 @@
       ],
       "relaciones": [],
       "consultado": "2026-10-22"
+    },
+    {
+      "id": "teleassistencia-per-a-persones-majors-o-amb-discapacitat",
+      "tipo": "ayuda",
+      "titulo": "Teleassistència per a persones majors o amb discapacitat",
+      "administracion": "Local",
+      "organismo": "Ajuntament de Valéncia",
+      "frases_usuario": [
+        "mi madre vive sola y es mayor",
+        "quiero el botón de teleasistencia",
+        "necesito un aparato para avisar si me caigo en casa",
+        "tengo discapacidad y vivo solo",
+        "teleasistencia en Valencia"
+      ],
+      "requisitos_clave": [
+        "Estar empadronada en el municipi de València.",
+        "Tindre 65 anys o més, o ser menor d'eixa edat amb discapacitat o pensió d'incapacitat.",
+        "Viure sola o amb persones en una situació similar d'edat o discapacitat.",
+        "Tindre cobertes les necessitats bàsiques de vivenda, alimentació i higiene.",
+        "La vivenda ha de disposar de línia telefònica i subministrament elèctric.",
+        "Els ingressos bruts anuals de la unitat de convivència no han de superar 20.845 € si viu una sola persona, o 24.319 € si viuen dos o més persones."
+      ],
+      "pasos": [
+        "Òmpliga el formulari i adjunte la documentació requerida.",
+        "En l’apartat “Documentació addicional” pot incorporar tots els arxius que necessite.",
+        "Revise les dades, firme i presente la sol·licitud."
+      ],
+      "documentacion": [
+        "L'imprés de sol·licitud de servicis domiciliaris (disponible en l'apartat Impresos), firmat per totes les persones que corresponga.",
+        "Annex 1. Valoració teleassistència:",
+        "Informe de salut per al reconeixement de prestacions socials",
+        "Certificat de grau de discapacitat",
+        "Certificat d'empadronament de tota la unitat familiar"
+      ],
+      "plazo": "La sol·licitud pot presentar-se durant tot l'any.",
+      "enlace_info": "https://sede.valencia.es/sede/registro/procedimiento/BS.MA.30",
+      "enlace_tramite": null,
+      "fuente": "https://sede.valencia.es/sede/registro/procedimiento/BS.MA.30 ; http://www.dogv.gva.es/datos/2019/02/21/pdf/2019_1653.pdf",
+      "verificado": false,
+      "nota": "Hi ha un nombre de terminals contractat i el temps d' espera dependrà de les vacants que hi haja en aqueix moment, que depenendrà de les baixes que es van produint.",
+      "relacionados": [],
+      "naturaleza": "servicio",
+      "tipoPlazo": "permanente",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [
+        "No presentar malalties mentals greus, demències o altres situacions que impedisquen utilitzar el sistema de teleassistència."
+      ],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "Llei 3/2019, de 18 de febrer, de la Generalitat, de Serveis Socials Inclusius de la Comunitat Valenciana",
+          "url": "http://www.dogv.gva.es/datos/2019/02/21/pdf/2019_1653.pdf"
+        }
+      ],
+      "textos": [
+        "0e8b4d4159185cb5443701e1f97f27259a9e9ee53a8b7f03786911117afdbd7b"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
     }
   ],
   "rastreo": {
+    "https://atv.gva.es/es/vull-sol-licitar-un-ajornament-o-fraccionament": {
+      "hash": "d3a282fa9e017a37aa7526b9ef5052df578259506ecf1fbfd3dc3941a83dc717",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
     "https://imserso.es/es/web/sede-electronica/procedimiento-servicios/detalle/-/asset_publisher/Clv43EZRrpqn/content/subvenciones-a-personas-en-situacion-de-dependencia-residentes-en-ceuta-y-melilla/20123": {
       "hash": "da2bb1cc6eeda1b2684485fb4e961a64e18e4708d0c0adac1739bf1b40edf4bf",
       "consultado": "2026-10-22",
@@ -1870,6 +2143,12 @@
       "hash": "bcc297d3c2dd4502057a92dee2b52480b273b658f7d4583dcada340ff50d29f4",
       "consultado": "2026-10-22",
       "noEsAyuda": true
+    },
+    "https://ivaj.gva.es/es/targeta-financera": {
+      "id": "ivaj",
+      "hash": "6307a4261dff30b64249341006411f3ea4255f97da01ea162a83b0106aa0bd41",
+      "etag": "\"c5617039\"",
+      "consultado": "2026-10-22"
     },
     "https://sede.gva.es/es/detall-tramit?id_proc=E64504": {
       "hash": "bfbc8e0da2f1ad5e42976680bd723166896e788a6f40aa688c565ca0a5e3d55d",
@@ -1995,6 +2274,21 @@
       "hash": "4b9ae6781296183029babdf954d002ef3ee00c57b6c2f77c99697bab19a46ce1",
       "consultado": "2026-10-22",
       "noEsAyuda": true
+    },
+    "https://sede.valencia.es/sede/registro/procedimiento/BS.MA.30": {
+      "id": "teleassistencia-per-a-persones-majors-o-amb-discapacitat",
+      "hash": "0e8b4d4159185cb5443701e1f97f27259a9e9ee53a8b7f03786911117afdbd7b",
+      "consultado": "2026-10-22"
+    },
+    "https://sede.valencia.es/sede/registro/procedimiento/BS.MA.50": {
+      "id": "menjar-a-domicili",
+      "hash": "a78437dd7408dc87790ceebdaae0059d82d23a5c3a545967d8d0dd458107883c",
+      "consultado": "2026-10-22"
+    },
+    "https://sede.valencia.es/sede/registro/procedimiento/BS.MA.60": {
+      "id": "ajuda-a-domicili",
+      "hash": "3b6fd16e74dbfd5749cb0c17b15df8f508d63c612ec7f3c8e5e5af47de5c0905",
+      "consultado": "2026-10-22"
     },
     "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10938": {
       "id": "asistencia-sanitaria",
@@ -2213,7 +2507,7 @@
       "noEsAyuda": true
     },
     "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=40668527": {
-      "id": "programas-valencia",
+      "id": "programa-de-implementacion-itinerarios-de-inclusion-social-f",
       "hash": "8781b61887b4b92ff206455799f8ff7cf7a3a455f1351db5b732d04087ecddb1",
       "consultado": "2026-10-22"
     },
@@ -2223,7 +2517,7 @@
       "noEsAyuda": true
     },
     "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=5F163188F995CA86C12582C800403610": {
-      "id": "programas-valencia-2",
+      "id": "acogimientos-en-familia-extensa",
       "hash": "972793f1b8aaa991708a96fceecbfe80be051ec66559e8592348f0aed23f8f91",
       "consultado": "2026-10-22"
     },

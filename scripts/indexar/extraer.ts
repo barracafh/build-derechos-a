@@ -14,7 +14,7 @@ export type TipoReferencia = (typeof TIPOS_REFERENCIA)[number];
 
 export type Pagina = {
   url: string;
-  // From <h1> or og:title; the model's title is used only when this is null.
+  // From <h1> or og:title; the model's quoted title wins when it has one.
   titulo: string | null;
   // What the model reads: page text plus PDF sections (see componerEntrada).
   texto: string;
@@ -131,7 +131,8 @@ export function leerExtraccion(respuesta: string, pagina: Pagina): Lectura | nul
     extraccion: {
       esAyuda: d.esAyuda === true,
       naturaleza: NATURALEZAS.find((n) => n === d.naturaleza) ?? null,
-      titulo: pagina.titulo ?? cita(d.titulo),
+      // A quoted title from the model beats a generic page title ("Ajuntament de València").
+      titulo: (texto.includes(comparable(String(d.titulo ?? "")).trim() || "\u0000") ? (d.titulo as string).trim() : null) ?? pagina.titulo,
       organismo: cita(d.organismo),
       frases_usuario: Array.isArray(d.frases_usuario) ? d.frases_usuario.filter(conTexto).map((f) => f.trim()) : [],
       requisitos_clave: citas(d.requisitos_clave),

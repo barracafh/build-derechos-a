@@ -1,0 +1,245 @@
+## ...quiero solicitar un aplazamiento o fraccionamiento?
+...quiero solicitar un aplazamiento o fraccionamiento?
+Las deudas que se encuentren en periodo voluntario o ejecutivo podrán aplazarse o fraccionarse en los términos que se fijen reglamentariamente y previa solicitud del deudor, cuando su situación económico-financiera le impida, de forma transitoria, efectuar el pago en los plazos establecidos.
+Una vez concedido el aplazamiento o fraccionamiento, si desea cancelar la deuda de forma anticipada, NUNCA utilice un modelo de autoliquidación. Más detalles en el apartado "¿Puedo cancelar anticipadamente un aplazamiento o fraccionamiento?"
+¿Cómo se tramita la solicitud?
+Únicamente para los modelos 600 (Impuesto de Transmisiones Patrimoniales), 650 (Impuesto sobre Sucesiones) o 651 (Impuesto sobre Donaciones), podrá realizarse la solicitud telemáticamente mediante la presentación telemática Aplázate.
+Si se trata de liquidaciones practicadas por la administración (010, 011, 012, 047…), o de otros modelos de autoliquidación distintos a los señalados anteriormente, puede cumplimentar el modelo correspondiente y presentarlo a través de la solicitud general única.
+Asimismo, si desea tramitarlo presencialmente, o requiere información o ayuda en la cumplimentación, puede solicitar cita tanto presencial como telefónica.
+Copiar enlace directo a este contenido
+https://atv.gva.es/es/vull-sol-licitar-un-ajornament-o-fraccionament#177843959
+Criterios de concesión
+Introducción.
+El contribuyente podrá aplazar o fraccionar el pago de la deuda tributaria en las condiciones establecidas reglamentariamente y de conformidad con los criterios de concesión señalados a continuación.
+Será requisito necesario para la concesión del mismo, que el contribuyente no tenga otras deudas período ejecutivo respecto de las que no se haya solicitado aplazamiento o fraccionamiento de pago.
+Desde este apartado puede pagar las deudas en periodo ejecutivo.
+Fraccionamientos.
+El importe mínimo de cada fracción no podrá ser inferior a 50 euros.
+Se establecerá con carácter general una periodicidad mensual en la concesión de los fraccionamientos de acuerdo con los plazos máximos que se señalan a continuación:
+IMPORTE
+PLAZO MÁXIMO
+50 ≤ x < 500
+3 meses
+500 ≤ x < 1.500
+6 meses
+1.500 ≤ x < 3.000
+12 meses
+3.000 ≤ x < 6.000
+18 meses
+6.000 ≤ x < 12.000
+24 meses
+12.000 ≤ x < 30.000
+36 meses
+30.000 ≤ x < 50.000
+48 meses
+50.000 ≤ x
+60 meses
+Aplazamientos.
+El aplazamiento se concederá en atención a la propuesta de plazos que el obligado al pago haya indicado en su solicitud y el plazo que el órgano competente para resolver considere procedente, según las circunstancias de cada caso, siempre que se ajuste a los plazos máximos e importes que se señalan a continuación:
+IMPORTE
+PLAZO MÁXIMO
+50.000 ≤ x 200.000
+1 año
+200.000 ≤ x< 500.000
+1,5 años
+500.000 ≤ x
+2 años
+Copiar enlace directo a este contenido
+https://atv.gva.es/es/vull-sol-licitar-un-ajornament-o-fraccionament#177943946
+Plazos de solicitud, documentación y efectos
+¿Cuándo?
+En el caso de deudas derivadas de una autoliquidación, la solicitud de aplazamiento o fraccionamiento debe presentarse dentro del plazo establecido en la normativa propia de cada tributo, el mismo día de la presentación de la autoliquidación.
+Por su parte, cuando la deuda deriva de una liquidación practicada por la Administración, se debe diferenciar:
+Deuda en periodo voluntario → la solicitud debe presentarse dentro del plazo señalado para el ingreso de la liquidación. Consulte dichos plazos en la información de liquidaciones.
+Deuda en periodo ejecutivo → la solicitud puede presentarse en cualquier momento antes de que se notifique el acuerdo de enajenación de bienes embargados.
+Modelos
+Los modelos para solicitar el aplazamiento o fraccionamiento son:
+Modelo 720. Deudas inferiores o iguales a 50.000 €. No se exigen garantías para estas solicitudes de aplazamiento o fraccionamiento.
+Modelo 721. Deudas superiores a 50.000 €
+Datos que debe incluir la solicitud
+El nombre y apellidos o razón social, NIF y domicilio del obligado al pago y, en su caso, del representante.
+El domicilio designado a efecto de notificaciones.
+La identificación completa de la deuda, indicando al menos su importe, concepto y fecha de finalización del plazo de ingreso en período voluntario.
+Los plazos y demás condiciones que se solicitan, teniendo en cuenta los criterios internos de concesión señalados en el apartado anterior.
+La orden de domiciliación bancaria, indicando el número de código cuenta cliente (ccc) y los datos de la entidad donde debe efectuarse el cargo en cuenta de los vencimientos que se acuerden.
+La garantía que se ofrece, si por la cuantía (superior a 50.000 euros) no se está dispensado de prestarla.
+Lugar, fecha y firma del solicitante.
+Documentación
+A esta solicitud se acompañará la siguiente documentación, de acuerdo con el artículo 46 del Reglamento General de Recaudación, salvo que el interesado no esté obligado a presentarla por obrar ya en poder de la Administración; en cuyo caso, se señalará el día y procedimiento en que la presentó:
+Documentación acreditativa, en su caso, de la representación.
+En caso de solicitarse el aplazamiento/fraccionamiento de una deuda derivada de una autoliquidación, fotocopia de dicha declaración.
+Documentación acreditativa de la titularidad, cotitularidad o autorización en la cuenta bancaria designada a efectos de domiciliación (certificado de la entidad financiera, sello de la entidad financiera en el modelo de orden de domiciliación o copia de la libreta en la que conste el número de cuenta y titular).
+Documentación relativa a la garantía aportada. No se exigen garantías para las solicitudes de aplazamiento/fraccionamiento de pago de las deudas cuyo importe en conjunto no exceda de 50.000 euros.
+Compromiso de aval bancario.
+Nota simple registral y tasación, etc.
+Aspectos importantes del procedimiento
+No pueden ser objeto de aplazamiento o fraccionamiento las deudas tributarias a las que se refiere el artículo 65.2 Ley General Tributaria.
+Salvo que una norma lo prevea de forma expresa, el aplazamiento/fraccionamiento de la deuda devenga intereses de demora desde la fecha de vencimiento del plazo voluntario de ingreso.
+El plazo para considerar desestimada la solicitud de aplazamiento/fraccionamiento por silencio administrativo es de 6 meses.
+El pago del aplazamiento/fraccionamiento se realizará mediante domiciliación bancaria.
+Copiar enlace directo a este contenido
+https://atv.gva.es/es/vull-sol-licitar-un-ajornament-o-fraccionament#174188762
+¿Puedo cancelar anticipadamente un aplazamiento o fraccionamiento?
+Si, pero NUNCA utilizando un modelo de autoliquidación, contacte previamente con la administración conforme los siguientes casos:
+Si la solicitud aún no ha sido resuelta por el órgano competente:
+Se contactará con el departamento de Recaudación y se identificará el expediente en tramitación y se aportará un correo electrónico válido para el envío de carta de pago manual (modelo 025). Solicite una cita telefónica.
+Una vez que se acredite el pago, tras la recepción del justificante del ingreso en el Departamento de Recaudación, se remitirá resolución de archivo por ingreso junto con la liquidación de intereses de demora (modelo 018) para su pago en los plazos que se le indicarán.
+Si ya existe una resolución notificada con un calendario de pagos, podrá adelantarse el pago de uno, varios o todos los vencimientos concedidos:
+Podrá realizar el pago de manera telemática, a través del formulario (opción recaudación) o solicitando cita telefónica.
+Se identificará el expediente y se aportará un correo electrónico válido para el envío de carta de pago manual. Además, se deberá indicar la fecha prevista de ingreso para el cálculo de los intereses de demora asociados.
+La carta de pago (modelo 024) incluirá los intereses de demora calculados hasta ese día y solo será válida para la fecha indicada.
+Una vez que se realice el pago se remitirá al departamento de recaudación justificante del ingreso realizado para el archivo del expediente y la no emisión del cargo de domiciliación de los vencimientos afectados.
+Copiar enlace directo a este contenido
+https://atv.gva.es/es/vull-sol-licitar-un-ajornament-o-fraccionament#174188793
+Aplazamientos y fraccionamientos específicos en el Impuesto sobre Sucesiones y Donaciones
+Sin perjuicio de las especialidades previstas en la normativa propia del impuesto, serán aplicables las normas generales sobre aplazamientos y fraccionamientos contenidas en el Reglamento General de Recaudación. No obstante, se prevén supuestos especiales de aplazamientos y fraccionamientos en el ámbito de este impuesto.
+Es importante que recuerde que estas solicitudes de aplazamiento o fraccionamiento no pueden formularse respecto de deudas que se encuentren en periodo ejecutivo.
+Los supuestos especiales son:
+APLAZAMIENTOS:
+Objeto
+Deudas derivadas de autoliquidaciones/liquidaciones por causa de muerte
+Causa
+No exista inventariado efectivo o bienes de fácil realización suficientes para el pago del impuesto
+Plazo de aplazamiento
+Se aplaza el pago hasta un año
+Garantía
+No es preciso prestar garantía
+Intereses
+Se devengan los intereses de demora correspondientes
+Documentación
+Se debe acreditar que no existe inventariado entre los bienes del causante efectivo o bienes de fácil realización para el pago de la deuda.
+Modelos
+732. Solicitud de aplazamiento de deudas derivadas de una autoliquidación por plazo de hasta un año
+Objeto:
+Aplazar deudas derivadas de autoliquidaciones por plazo de hasta un año
+Plazo de presentación:
+Dentro de los seis primeros meses del plazo reglamentario de presentación (es decir, 6 primeros meses desde el fallecimiento).
+731. Solicitud de aplazamiento de deudas derivadas de una liquidación administrativa por plazo de hasta un año
+Objeto:
+Aplazar deudas derivadas de liquidaciones practicadas por la Administración, por plazo de hasta un año
+Plazo de presentación:
+Antes de que expire el plazo reglamentario de pago
+Objeto
+Deudas derivadas de autoliquidaciones o liquidaciones giradas como consecuencia de transmisión por herencia, legado o donación de una empresa individual que ejerza una actividad industrial, comercial, artesanal, agrícola o profesional, y de participaciones en entidades a las que sea de aplicación la exención del art. 4.Ocho.Dos de la Ley del Impuesto sobre Patrimonio
+Solicitud
+A petición del sujeto pasivo, antes de expirar el plazo de presentación de la autoliquidación o el plazo reglamentario de pago de la liquidación
+Plazo de aplazamiento
+5 años
+Garantía
+Se debe constituir caución suficiente
+Intereses
+No se devengan intereses de demora
+Modelo
+736. Solicitud de aplazamiento de autoliquidaciones/liquidaciones en caso de transmisión de empresas individuales y de la vivienda habitual
+Documentación
+Compromiso de constituir la garantía suficiente
+Objeto
+Deudas derivadas de autoliquidaciones o liquidaciones giradas como consecuencia de transmisión hereditaria de la vivienda habitual de una persona
+Requisito
+Causahabiente: cónyuge, ascendiente o descendiente del causante, o bien pariente colateral mayor de 65 años que hubiera convivido con el causante durante los dos años anteriores al fallecimiento
+Solicitud
+A petición del sujeto pasivo, antes de expirar el plazo de presentación de la autoliquidación o el plazo reglamentario de pago de la liquidación
+Plazo de aplazamiento
+5 años
+Garantía
+Se debe constituir caución suficiente
+Intereses
+No se devengan intereses de demora
+Modelo
+736. Solicitud de aplazamiento de autoliquidaciones/liquidaciones en caso de transmisión de empresas individuales y de la vivienda habitual
+Documentación
+Compromiso de constituir la garantía suficiente
+Terminado el plazo de aplazamiento de cinco años, podrá fraccionarse el pago en 10 plazos semestrales, con el correspondiente abono del interés legal del dinero durante el tiempo de fraccionamiento. Se empleará el modelo 737 de fraccionamiento de autoliquidaciones/liquidaciones en caso de transmisión de empresas individuales y de la vivienda habitual.
+Objeto
+Deudas derivadas de autoliquidaciones/liquidaciones por causa de muerte
+Causa
+No exista inventariado efectivo o bienes de fácil realización suficientes para el pago del impuesto Y
+Causahabientes (herederos, legatario) desconocidos
+Plazo de aplazamiento
+Se aplaza hasta que fueran conocidos los causahabientes de la sucesión
+Garantía
+Se debe prestar garantía suficiente para cubrir el importe de la deuda principal e intereses de demora, más un 25% de la suma de ambas partidas. La concesión definitiva del fraccionamiento queda subordinada a la constitución de la garantía.
+Intereses
+Se devengan los intereses de demora correspondientes
+Documentación
+Se debe acreditar que no existe inventariado entre los bienes del causante efectivo o bienes de fácil realización para el pago de la deuda.
+También se debe aportar compromiso de constituir la garantía correspondiente.
+Modelo
+738. Solicitud de aplazamiento de autoliquidaciones/liquidaciones en caso de causahabientes desconocidos
+Plazo de presentación
+Si se trata del aplazamiento de una autoliquidación, dentro de los seis primeros meses del plazo reglamentario de presentación (es decir, 6 primeros meses desde el fallecimiento)
+Si se trata del aplazamiento de una liquidación practicada por la Administración, antes de que expire el plazo reglamentario de pago
+Solicitud
+La solicitan los administradores o poseedores de los bienes hereditarios
+FRACCIONAMIENTOS:
+Objeto
+Deudas derivadas de autoliquidaciones/liquidaciones por causa de muerte
+Causa
+No exista inventariado efectivo o bienes de fácil realización suficientes para el pago del impuesto
+Plazo de fraccionamiento
+Se fracciona el pago hasta 5 anualidades
+Garantía
+Se debe prestar garantía suficiente para cubrir el importe de la deuda principal e intereses de demora, más un 25% de la suma de ambas partidas. La concesión definitiva del fraccionamiento queda subordinada a la constitución de la garantía.
+Intereses
+Se devengan los intereses de demora correspondientes
+Documentación
+Se debe acreditar que no existe inventariado entre los bienes del causante efectivo o bienes de fácil realización para el pago de la deuda.
+También se debe aportar compromiso de constituir la garantía correspondiente.
+Modelos
+734. Solicitud de fraccionamiento de deudas derivadas de una autoliquidación por plazo no superior a 5 anualidades
+Objeto:
+Fraccionar deudas derivadas de autoliquidaciones por plazo no superior a 5 anualidades
+Plazo de presentación:
+Dentro de los seis primeros meses del plazo reglamentario de presentación (es decir, 6 primeros meses desde el fallecimiento).
+733. Solicitud de fraccionamiento de deudas derivadas de una liquidación administrativa por plazo no superior a 5 anualidades
+Objeto:
+Fraccionar deudas derivadas de liquidaciones practicadas por la Administración, por plazo no superior a 5 anualidades
+Plazo de presentación:
+Antes de que expire el plazo reglamentario de pago
+Objeto
+Seguros sobre la vida en los que el causante sea, a su vez, el contratante del seguro individual o el asegurado en el seguro colectivo
+Requisito
+El importe del seguro de vida se perciba en forma de renta
+Solicitud
+A petición del beneficiario, antes de expirar el plazo de presentación de la autoliquidación o el plazo reglamentario de pago de la liquidación
+Plazo de fraccionamiento
+Renta temporal: número de años en los que se percibe la pensión
+Renta vitalicia: máximo 15 años
+Garantía
+No se exige la constitución de garantía
+Intereses
+No se devengan intereses de demora
+Modelo
+735. Solicitud de fraccionamiento de la cuota derivada de las cantidades percibidas en forma de renta por contratos de seguro sobre la vida
+Documentación
+Se debe acreditar el número de años en los que se percibe la renta temporal, o la condición de renta vitalicia, en su caso
+Información del procedimiento
+Copiar enlace directo a este contenido
+https://atv.gva.es/es/vull-sol-licitar-un-ajornament-o-fraccionament#174188925
+Aplazamientos y fraccionamientos específicos en el Impuesto sobre Transmisiones Patrimoniales Onerosas y Actos Jurídicos Documentados
+Son aplicables las normas generales de aplazamientos y fraccionamientos contenidas en el Reglamento General de Recaudación.
+No obstante, se prevé un supuesto especial de fraccionamiento en el ámbito del ITPAJD con las condiciones siguientes:
+3 anualidades como máximo
+Deudas derivadas de la adquisición de viviendas que cumplan los siguientes requisitos:
+Superficie útil no superior a 120 metros cuadrados.
+Destinadas al domicilio habitual y permanente del sujeto pasivo. Para la consideración de vivienda habitual se estará al concepto recogido en la normativa reguladora del Impuesto sobre la Renta de las Personas Físicas (art. 41bis del Real Decreto 439/2007, de 30 de marzo, por el que se aprueba el Reglamento del Impuesto sobre la Renta de las Personas Físicas).
+Deben ser solicitados antes de que expire el plazo de presentación de la autoliquidación o de pago de la liquidación
+Devengan el correspondiente interés de demora
+Estos fraccionamientos quedan sin efecto, sin necesidad de requerimiento previo, cuando:
+Se enajene, total o parcialmente, la vivienda objeto de la transmisión
+El contribuyente deje de satisfacer una anualidad, en el plazo máximo de 15 días siguientes al vencimiento
+La solicitud de fraccionamiento en este supuesto específico se debe presentar a través de los modelos:
+724. Solicitud de fraccionamiento de AUTOLIQUIDACIÓN
+725. Solicitud de fraccionamiento de LIQUIDACIÓN
+La solicitud deberá acompañarse de la documentación siguiente:
+Identificación completa del interesado, y en su caso, de su representante
+Identificación de la deuda a fraccionar
+Acreditación de tratarse de la vivienda habitual del sujeto pasivo
+Fotocopia de la escritura pública o documento privado de transmisión de la vivienda
+Esta especialidad no es aplicable en caso de deudas en periodo ejecutivo.
+Información del procedimiento
+Copiar enlace directo a este contenido
+https://atv.gva.es/es/vull-sol-licitar-un-ajornament-o-fraccionament#174190102
+Cita previa
+Modelos de aplazamiento y fraccionamiento
+Normativa

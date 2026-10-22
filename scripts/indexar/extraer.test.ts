@@ -103,8 +103,15 @@ describe("leerExtraccion", () => {
     expect(conFecha.fechaFin).toBe("2026-11-30");
   });
 
-  test("uses the page title, not the model's", () => {
+  test("uses the page title when the model's is not a quote", () => {
     expect(extraccion.titulo).toBe("PNC de Jubilación");
+  });
+
+  test("a quoted title from the model beats a generic page title", () => {
+    const generica = { ...pagina, titulo: "Ajuntament de València" };
+    expect(leerExtraccion(respuesta({ ...BUENA, titulo: "Pensión no contributiva de jubilación" }), generica)!.extraccion.titulo).toBe(
+      "Pensión no contributiva de jubilación",
+    );
   });
 
   test("takes the model's title only if it is quoted and the page has none", () => {

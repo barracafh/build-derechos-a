@@ -137,6 +137,11 @@ beforeAll(() => {
       pedidas.push(pathname);
       const p = sitio[pathname];
       if (!p) return new Response("no", { status: 404 });
+      // A body that breaks after the headers, like a server timing out mid-page.
+      if (p.html === "lenta")
+        return new Response(new ReadableStream({ start(c) { c.enqueue(new TextEncoder().encode("<html>")); c.error(new Error("body timed out")); } }), {
+          headers: { "content-type": "text/html" },
+        });
       if (p.status && p.status !== 200) return new Response("error", { status: p.status });
       const etag = `"${Bun.hash(p.html!).toString(16)}"`;
       if (req.headers.get("if-none-match") === etag) {
@@ -350,6 +355,15 @@ describe("indexar job limits", () => {
     await ejecutar({}, e);
     expect(pedidas).toContain("/a/si");
     expect(pedidas).not.toContain("/a/no");
+  });
+
+  test("a page whose body fails after the headers is logged and kept, not a crash", async () => {
+    sitio = { "/s1": { html: semilla(["/a/lenta", "/a/bien"]) }, "/a/bien": { html: ayuda("Ayuda bien") } };
+    sitio["/a/lenta"] = { html: "lenta" };
+    const e = entorno("cuerpo", { semillas: [semillas()[0]] });
+    const r = await ejecutar({}, e);
+    expect(r.registro.some((l) => l.includes("/a/lenta") && l.includes("kept as it was"))).toBe(true);
+    expect(leer(e).items.map((i) => i.enlace_info)).toEqual([`${base}/a/bien`]);
   });
 
   test("a fixed list of URLs skips the seeds", async () => {

@@ -286,7 +286,14 @@ export async function ejecutar(opciones: Opciones, entorno: Entorno): Promise<Re
       log(`page ${url}: HTTP ${res.status}; kept as it was`);
       continue;
     }
-    const html = await res.text();
+    // The body can time out after the headers arrived: same as a failed request.
+    let html: string;
+    try {
+      html = await res.text();
+    } catch (error) {
+      log(`page ${url}: ${(error as Error).message}; kept as it was`);
+      continue;
+    }
     const { texto, enlaces } = leerHtml(html, url);
     const hash = hashTexto(texto);
     const cabecerasNuevas = {
