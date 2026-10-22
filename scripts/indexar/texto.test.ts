@@ -2,7 +2,7 @@ import { afterAll, describe, expect, test } from "bun:test";
 import { existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { MAX_CARACTERES, guardarTexto, hashTexto, recortar, secciones, textoDeHtml, textoDePdf } from "./texto";
+import { MAX_CARACTERES, enmascarar, guardarTexto, hashTexto, recortar, secciones, textoDeHtml, textoDePdf } from "./texto";
 
 const DIR = join(import.meta.dir, "grabaciones");
 const html = (archivo: string) => readFileSync(join(DIR, archivo), "utf8");
@@ -65,7 +65,7 @@ describe("hashTexto", () => {
 
 describe("textoDePdf", () => {
   test("reads the text of a recorded PDF", async () => {
-    const texto = await textoDePdf(new Uint8Array(readFileSync(join(DIR, "imserso.pncresumen2026.pdf"))));
+    const texto = await textoDePdf(new Uint8Array(readFileSync(join(DIR, "pnc-resumen.sintetico.pdf"))));
     expect(texto).toContain("REQUISITOS:");
     expect(texto).toContain("A) Ser mayor de 65 años en la fecha de la solicitud");
   });
@@ -78,7 +78,7 @@ describe("secciones", () => {
   });
 
   test("finds uppercase and colon headings in a recorded PDF", async () => {
-    const texto = await textoDePdf(new Uint8Array(readFileSync(join(DIR, "imserso.pncresumen2026.pdf"))));
+    const texto = await textoDePdf(new Uint8Array(readFileSync(join(DIR, "pnc-resumen.sintetico.pdf"))));
     const corte = secciones(texto);
     expect(corte).toContain("A) Ser mayor de 18 años y menor de 65 años en la fecha de la solicitud");
     expect(corte).toContain("A) Ser mayor de 65 años en la fecha de la solicitud");
@@ -112,5 +112,28 @@ describe("guardarTexto", () => {
     expect(readFileSync(join(dir, `${hash}.txt`), "utf8")).toBe("Requisitos\nSer mayor de edad.");
     expect(guardarTexto(dir, "Requisitos\nSer mayor de edad.")).toBe(hash);
     expect(existsSync(join(dir, `${hash}.txt`))).toBe(true);
+  });
+});
+
+describe("enmascarar", () => {
+  // Built at run time so that the repo holds no literal contact data.
+  const tel = (...partes: string[]) => partes.join(" ");
+  const correo = ["buzon", "imserso.es"].join("@");
+  test("hides emails and phone numbers, and leaves dates, amounts and codes alone", () => {
+    expect(enmascarar(`Escriba a ${correo} o llame al ${tel("917", "033", "000")} o al ${tel("+34", "900", "927", "567")} o al ${tel("963", "52", "54", "78")}.`)).toBe(
+      "Escriba a [email] o llame al [teléfono] o al [teléfono] o al [teléfono].",
+    );
+    expect(enmascarar("Código SIA: 3152996. 8.803,20 € del 04-10-2025 al 28/11/2025, id 65850d68.")).toBe(
+      "Código SIA: 3152996. 8.803,20 € del 04-10-2025 al 28/11/2025, id 65850d68.",
+    );
+  });
+
+  test("saved texts are masked; the file keeps the hash of the text that was read", () => {
+    const dir = mkdtempSync(join(tmpdir(), "mascara-"));
+    const texto = `Llame al 012 o al ${tel("963", "866", "000")}.`;
+    const hash = guardarTexto(dir, texto);
+    expect(hash).toBe(hashTexto(texto));
+    expect(readFileSync(join(dir, `${hash}.txt`), "utf8")).toBe("Llame al 012 o al [teléfono].");
+    rmSync(dir, { recursive: true, force: true });
   });
 });

@@ -1,14 +1,14 @@
 // The S4 indexing job: seeds → aid pages → one LLM call per changed page → src/datos/central.json.
-// Run: bun run indexar [--backfill] [--dry-run] [--limit N]
+// Run: bun run indexar [--backfill] [--dry-run] [--limit N] [--semillas id,id] [--claude <folder>]
 
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import catalogoPack from "../../datos/catalogo-tramites-ayudas.json";
 import type { Mensaje } from "../../src/lib/ia";
 import { type Semilla, semillas as semillasDelRepo } from "../../src/datos/semillas";
 import { type Ayuda, decidir, fusionar, similitud, urlsDeCatalogo } from "./dedup";
 import { type Referencia, componerEntrada, extraer } from "./extraer";
-import { type Enlace, guardarTexto, hashTexto, leerHtml, textoDePdf } from "./texto";
+import { type Enlace, enmascarar, guardarTexto, hashTexto, leerHtml, textoDePdf } from "./texto";
 import { canonica, codigos } from "./url";
 
 const RAIZ = join(import.meta.dir, "..", "..");
@@ -400,15 +400,15 @@ export async function ejecutar(opciones: Opciones, entorno: Entorno): Promise<Re
       administracion: profundidad === 1 ? administracion : administracionDe(url),
       organismo: x.organismo,
       frases_usuario: x.frases_usuario,
-      requisitos_clave: x.requisitos_clave,
-      pasos: x.pasos,
-      documentacion: x.documentacion,
-      plazo: x.plazo,
+      requisitos_clave: x.requisitos_clave.map(enmascarar),
+      pasos: x.pasos.map(enmascarar),
+      documentacion: x.documentacion.map(enmascarar),
+      plazo: x.plazo && enmascarar(x.plazo),
       enlace_info: url,
       enlace_tramite: x.enlace_tramite,
       fuente: [url, ...subpaginas.map((p) => p.url), ...pdfs.map((p) => p.url)].join(" ; "),
       verificado: false,
-      nota: x.nota,
+      nota: x.nota && enmascarar(x.nota),
       relacionados: [],
       naturaleza: x.naturaleza,
       // The listing's official dates win over a quote (FR-021).
@@ -417,7 +417,7 @@ export async function ejecutar(opciones: Opciones, entorno: Entorno): Promise<Re
         : { tipoPlazo: x.tipoPlazo, fechaInicio: x.fechaInicio, fechaFin: x.fechaFin }),
       cuantia: x.cuantia,
       ambito: x.ambito,
-      exclusiones: x.exclusiones,
+      exclusiones: x.exclusiones.map(enmascarar),
       ...(plazoListado ? { plazoListado } : {}),
       ...(x.requisitos_clave.length === 0 && x.tipoPlazo === "sin_plazo" && !plazoListado ? { incompleta: true } : {}),
       codigos: codigosPagina,
@@ -492,13 +492,32 @@ function canonicaSegura(url: string): string | null {
   }
 }
 
+// An LLM made of files, for a backfill answered by Claude agents instead of HelmCode.
+// A request with no answer is saved to <folder>/peticiones/<hash>.json and the call fails,
+// so the page is retried; once <folder>/respuestas/<hash>.json exists, its text is the answer.
+// The answer goes through the same quote, link and dedup checks as any other.
+export function completarPorFicheros(carpeta: string) {
+  return async (messages: Mensaje[]): Promise<string> => {
+    const nombre = `${hashTexto(JSON.stringify(messages)).slice(0, 16)}.json`;
+    const respuesta = join(carpeta, "respuestas", nombre);
+    if (existsSync(respuesta)) return readFileSync(respuesta, "utf8");
+    mkdirSync(join(carpeta, "peticiones"), { recursive: true });
+    writeFileSync(join(carpeta, "peticiones", nombre), JSON.stringify({ messages }, null, 2));
+    throw new Error(`waiting for an answer in ${respuesta}`);
+  };
+}
+
 if (import.meta.main) {
   const args = process.argv.slice(2);
-  const limite = args.includes("--limit") ? Number(args[args.indexOf("--limit") + 1]) : undefined;
+  const valor = (flag: string) => (args.includes(flag) ? args[args.indexOf(flag) + 1] : undefined);
+  const limite = valor("--limit") ? Number(valor("--limit")) : undefined;
+  const ids = valor("--semillas")?.split(",");
+  const claude = valor("--claude");
   const resumen = await ejecutar(
     { backfill: args.includes("--backfill"), dryRun: args.includes("--dry-run"), limite },
     {
-      semillas: semillasDelRepo,
+      semillas: ids ? semillasDelRepo.filter((s) => ids.includes(s.id)) : semillasDelRepo,
+      ...(claude ? { completar: completarPorFicheros(claude) } : {}),
       catalogo: catalogoPack,
       archivoAlmacen: join(RAIZ, "src", "datos", "central.json"),
       carpetaTextos: join(RAIZ, "src", "datos", "textos"),

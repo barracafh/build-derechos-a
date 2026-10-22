@@ -172,13 +172,22 @@ export function recortar(texto: string, max = MAX_CARACTERES): string {
   return texto.slice(0, corte > 0 ? corte : max);
 }
 
-// Saves the text as <dir>/<hash>.txt (once) and returns the hash (FR-010).
+// Contact data of offices (emails, phone numbers) is not stored: the event rules forbid
+// anything that looks like personal data in the repo, and the official link has it.
+const EMAIL = /[\w.+-]+@[\w-]+(?:\.[\w-]+)+/g;
+const TELEFONO = /(?<![\w/.-])(?:\+34[\s.]?)?[6789]\d{2}(?:[\s.]?\d{3}){2}(?![\w/-]|\.\d)|(?<![\w/.-])(?:\+34[\s.]?)?[6789]\d{1,2}(?:[\s.]\d{2}){3}(?![\w/-]|\.\d)/g;
+
+export function enmascarar(texto: string): string {
+  return texto.replace(EMAIL, "[email]").replace(TELEFONO, "[teléfono]");
+}
+
+// Saves the masked text as <dir>/<hash>.txt (once) and returns the hash of the text read (FR-010).
 export function guardarTexto(dir: string, texto: string): string {
   const hash = hashTexto(texto);
   const archivo = join(dir, `${hash}.txt`);
   if (!existsSync(archivo)) {
     mkdirSync(dir, { recursive: true });
-    writeFileSync(archivo, texto);
+    writeFileSync(archivo, enmascarar(texto));
   }
   return hash;
 }

@@ -1,6 +1,6 @@
 {
   "consultado": "2026-10-22",
-  "nota": "Plain GET with Accept-Language es-ES and 1 s between requests. Pairs that reference each other: sepe.subsidio <-> sepe.complemento-apoyo-empleo, imserso.pnc-jubilacion <-> imserso.pnc-incapacidad. gva.G97829 and gva.G94985 are yearly calls without a BDNS number on the page. *.segunda.html are the same pages fetched again minutes later, to test that the hash ignores what changes between visits. imserso.pncresumen2026.pdf is the PNC summary guide linked from the IMSERSO PNC pages.",
+  "nota": "Plain GET with Accept-Language es-ES and 1 s between requests. Pairs that reference each other: sepe.subsidio <-> sepe.complemento-apoyo-empleo, imserso.pnc-jubilacion <-> imserso.pnc-incapacidad. gva.G97829 and gva.G94985 are yearly calls without a BDNS number on the page. *.segunda.html are the same pages fetched again minutes later, to test that the hash ignores what changes between visits. pnc-resumen.sintetico.pdf is a small synthetic PDF shaped like the IMSERSO PNC guide (uppercase headings, REQUISITOS:), written by hand so that no real PDF is in the repo. Emails and phone numbers in the recordings are replaced by contacto@example.org and [teléfono], so the repo holds no contact data.",
   "paginas": [
     {
       "archivo": "seg-social.semilla.html",
@@ -113,9 +113,9 @@
       "url": "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=40668527"
     },
     {
-      "archivo": "imserso.pncresumen2026.pdf",
+      "archivo": "pnc-resumen.sintetico.pdf",
       "semilla": "imserso",
-      "url": "https://imserso.es/documents/20123/1595507/pncresumen2026.pdf/c4b41c80-63fe-942d-7231-f3ee20e28694"
+      "url": "(synthetic, no URL)"
     }
   ]
 }

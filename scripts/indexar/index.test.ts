@@ -5,7 +5,7 @@ import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync } from "node
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { Semilla } from "../../src/datos/semillas";
-import { type Almacen, type Entorno, ejecutar, urlDeDescarga } from "./index";
+import { type Almacen, type Entorno, completarPorFicheros, ejecutar, urlDeDescarga } from "./index";
 
 type Pagina = { status?: number; html?: string };
 type Ref = { nombre: string; cita: string; ruta?: string; tipo?: string };
@@ -369,5 +369,29 @@ describe("urlDeDescarga", () => {
       "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10938?changeLanguage=es",
     );
     expect(urlDeDescarga("https://imserso.es/pnc")).toBe("https://imserso.es/pnc");
+  });
+});
+
+describe("completarPorFicheros", () => {
+  const carpeta = mkdtempSync(join(tmpdir(), "claude-"));
+  afterAll(() => rmSync(carpeta, { recursive: true, force: true }));
+  const mensajes = [
+    { role: "system" as const, content: "instrucciones" },
+    { role: "user" as const, content: "URL: https://imserso.es/x\n\nTexto" },
+  ];
+
+  test("without an answer it saves the request and fails, so the page is retried", async () => {
+    const completar = completarPorFicheros(carpeta);
+    await expect(completar(mensajes)).rejects.toThrow("waiting for an answer");
+    const peticiones = readdirSync(join(carpeta, "peticiones"));
+    expect(peticiones.length).toBe(1);
+    expect(JSON.parse(readFileSync(join(carpeta, "peticiones", peticiones[0]), "utf8")).messages).toEqual(mensajes);
+  });
+
+  test("with an answer file of the same name it returns its text", async () => {
+    const [peticion] = readdirSync(join(carpeta, "peticiones"));
+    Bun.write(join(carpeta, "respuestas", peticion), '{"esAyuda":false}');
+    await Bun.sleep(10);
+    expect(await completarPorFicheros(carpeta)(mensajes)).toBe('{"esAyuda":false}');
   });
 });
