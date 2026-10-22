@@ -10,6 +10,7 @@
     "dev": "next dev",
     "build": "next build --webpack",
     "typecheck": "tsc --noEmit",
+    "indexar": "bun scripts/indexar/index.ts",
     "test": "bun test",
     "territorio": "bun scripts/territorio/generar.ts"
   },

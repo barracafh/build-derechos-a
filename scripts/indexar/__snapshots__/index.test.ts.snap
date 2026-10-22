@@ -1,0 +1,530 @@
+// Bun Snapshot v1, https://bun.sh/docs/test/snapshots
+
+exports[`indexar job first run: one call per new page, the rest decided by code 1`] = `
+"{
+  "version": "2026-10-22",
+  "ambito": "Ayudas sin API (prestaciones, bonos, deducciones y ayudas sociales) para residentes en València",
+  "aviso": "Extraído de páginas oficiales por un proceso automático. No verificado por una persona: revisa siempre la página oficial.",
+  "items": [
+    {
+      "id": "ayuda-con-citas-inventadas",
+      "tipo": "ayuda",
+      "titulo": "Ayuda con citas inventadas",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "necesito ayuda"
+      ],
+      "requisitos_clave": [],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "http://sitio/a/inventada",
+      "enlace_tramite": null,
+      "fuente": "http://sitio/a/inventada",
+      "verificado": false,
+      "nota": null,
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "83f622ce95c221060fa7d173a4bd51b18bb2ff957f4d182915c6dc82c3359a21"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "ayuda-con-enlace-externo",
+      "tipo": "ayuda",
+      "titulo": "Ayuda con enlace externo",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "necesito ayuda"
+      ],
+      "requisitos_clave": [
+        "Requisito: ser residente para Ayuda con enlace externo."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "http://sitio/a/externa",
+      "enlace_tramite": null,
+      "fuente": "http://sitio/a/externa",
+      "verificado": false,
+      "nota": null,
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "fb4386c09ef4eb6062f8f91942bbd3d0f51f07c10848fca2515a14a973912b19"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "ayuda-dos",
+      "tipo": "ayuda",
+      "titulo": "Ayuda dos",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "necesito ayuda"
+      ],
+      "requisitos_clave": [
+        "Requisito: ser residente para Ayuda dos."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "http://sitio/a/dos",
+      "enlace_tramite": null,
+      "fuente": "http://sitio/a/dos",
+      "verificado": false,
+      "nota": null,
+      "relacionados": [
+        "ayuda-uno"
+      ],
+      "naturaleza": "prestacion",
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "fe2ae5adabb706a8e0ddfe5677386b06bde3efcbae576d48841490cd98876625"
+      ],
+      "relaciones": [
+        {
+          "id": "ayuda-uno",
+          "tipo": "requisito",
+          "cita": "Ver también la ayuda uno."
+        }
+      ],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "ayuda-municipal",
+      "tipo": "ayuda",
+      "titulo": "Ayuda municipal",
+      "administracion": "Local",
+      "organismo": null,
+      "frases_usuario": [
+        "necesito ayuda"
+      ],
+      "requisitos_clave": [
+        "Requisito: ser residente para Ayuda municipal."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "http://sitio/c/uno",
+      "enlace_tramite": null,
+      "fuente": "http://sitio/c/uno",
+      "verificado": false,
+      "nota": null,
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "898d14915309f0123322603712e6b5ea13555b4da8a3d0d996963b69a905ac57"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "ayuda-p1",
+      "tipo": "ayuda",
+      "titulo": "Ayuda P1",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "necesito ayuda"
+      ],
+      "requisitos_clave": [
+        "Requisito: ser residente para Ayuda P1."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "http://sitio/a/p1",
+      "enlace_tramite": null,
+      "fuente": "http://sitio/a/p1",
+      "verificado": false,
+      "nota": null,
+      "relacionados": [
+        "ayuda-p2"
+      ],
+      "naturaleza": "prestacion",
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "5aff826de7b2a6fcacf5352717c9e0351cd9b654e695f63274784cc2b6e487af"
+      ],
+      "relaciones": [
+        {
+          "id": "ayuda-p2",
+          "tipo": "relacionada",
+          "cita": "Ver la ayuda P2."
+        }
+      ],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "ayuda-p2",
+      "tipo": "ayuda",
+      "titulo": "Ayuda P2",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "necesito ayuda"
+      ],
+      "requisitos_clave": [
+        "Requisito: ser residente para Ayuda P2."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "http://sitio/a/p2",
+      "enlace_tramite": null,
+      "fuente": "http://sitio/a/p2",
+      "verificado": false,
+      "nota": null,
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "24cd875fa485672d8f814943a7b6461bcc1c263abb87a6278792bd6426dbb931"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "ayuda-uno",
+      "tipo": "ayuda",
+      "titulo": "Ayuda uno",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "necesito ayuda"
+      ],
+      "requisitos_clave": [
+        "Requisito: ser residente para Ayuda uno."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "http://sitio/a/uno",
+      "enlace_tramite": null,
+      "fuente": "http://sitio/a/uno",
+      "verificado": false,
+      "nota": null,
+      "relacionados": [
+        "ayuda-dos"
+      ],
+      "naturaleza": "prestacion",
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "86c7dc3fe3a3910ec71b8b7dc824d1b5f32d5db42ea66f9bd4975f5f3c31098f"
+      ],
+      "relaciones": [
+        {
+          "id": "ayuda-dos",
+          "tipo": "complemento",
+          "cita": "Ver también la ayuda dos."
+        }
+      ],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "pension-de-jubilacion-sia1234567",
+      "tipo": "ayuda",
+      "titulo": "Jubilación no contributiva",
+      "administracion": "Comunitat Valenciana",
+      "organismo": null,
+      "frases_usuario": [
+        "necesito ayuda"
+      ],
+      "requisitos_clave": [
+        "Requisito: ser residente para Jubilación no contributiva."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "http://sitio/a/sia",
+      "enlace_tramite": null,
+      "fuente": "http://sitio/a/sia ; http://sitio/b/sia",
+      "verificado": false,
+      "nota": null,
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "codigos": {
+        "sia": [
+          "1234567"
+        ],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "37dd96754d94ed50f57829b3738c30f7bad34f87ddc77753465ed84786868d45",
+        "e2a6053556dd5da0bf5b07ceb00635c920f1d833c4d175d534c3a99fd9e99168"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "prestaciones-economicas-individuales-para-personas-con-disca",
+      "tipo": "ayuda",
+      "titulo": "Prestaciones Económicas Individuales para personas con discapacidad del ejercicio 2025",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "necesito ayuda"
+      ],
+      "requisitos_clave": [
+        "Requisito: ser residente para Prestaciones Económicas Individuales para personas con discapacidad del ejercicio 2025."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "http://sitio/a/pei25",
+      "enlace_tramite": null,
+      "fuente": "http://sitio/a/pei25",
+      "verificado": false,
+      "nota": null,
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "d988bed7bd64663595d79318a3c5d50f58212837967a25d02846b66a1226102a"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "prestaciones-economicas-individuales-para-personas-con-disca-2",
+      "tipo": "ayuda",
+      "titulo": "Prestaciones Económicas Individuales para personas con discapacidad del ejercicio 2024",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "necesito ayuda"
+      ],
+      "requisitos_clave": [
+        "Requisito: ser residente para Prestaciones Económicas Individuales para personas con discapacidad del ejercicio 2024."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "http://sitio/a/pei24",
+      "enlace_tramite": null,
+      "fuente": "http://sitio/a/pei24",
+      "verificado": false,
+      "nota": null,
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "180b7b93b087ecf39d9462f2447138a737a2a7619fc1203408d58cc7cd6f5908"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22",
+      "posibleDuplicado": "prestaciones-economicas-individuales-para-personas-con-disca"
+    },
+    {
+      "id": "renta-de-inclusion",
+      "tipo": "ayuda",
+      "titulo": "Renta de inclusión",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "necesito ayuda"
+      ],
+      "requisitos_clave": [
+        "Requisito: ser residente para Renta de inclusión."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "http://sitio/a/nombre",
+      "enlace_tramite": null,
+      "fuente": "http://sitio/a/nombre",
+      "verificado": false,
+      "nota": null,
+      "relacionados": [
+        "ingreso-minimo-vital"
+      ],
+      "naturaleza": "prestacion",
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "0ae319b9257501b820c6810ec3f68c583bede2335bfed01a38d8d430b05119fc"
+      ],
+      "relaciones": [
+        {
+          "id": "ingreso-minimo-vital",
+          "tipo": "requisito",
+          "cita": "Hay que pedir antes el Ingreso Mínimo Vital (IMV)."
+        }
+      ],
+      "consultado": "2026-10-22"
+    }
+  ],
+  "rastreo": {
+    "http://sitio/a/bdns": {
+      "hash": "bff92cb9e082e822566302205737f9909edb8b8f2100ed14bef9a3d28900eb2c",
+      "etag": "\\"6dc9802c9039e11b\\"",
+      "consultado": "2026-10-22",
+      "cubiertaPor": "bdns"
+    },
+    "http://sitio/a/convocatoria": {
+      "hash": "cb54203ef21516eb78fc8393823af97403b94320d20dcaa4266d05831f121cb4",
+      "etag": "\\"71630f582982f44\\"",
+      "consultado": "2026-10-22",
+      "cubiertaPor": "bdns"
+    },
+    "http://sitio/a/copia": {
+      "id": "ayuda-uno",
+      "hash": "86c7dc3fe3a3910ec71b8b7dc824d1b5f32d5db42ea66f9bd4975f5f3c31098f",
+      "etag": "\\"d93b7e58696d5cc9\\"",
+      "consultado": "2026-10-22"
+    },
+    "http://sitio/a/dos": {
+      "id": "ayuda-dos",
+      "hash": "fe2ae5adabb706a8e0ddfe5677386b06bde3efcbae576d48841490cd98876625",
+      "etag": "\\"55a589a73cb7886b\\"",
+      "consultado": "2026-10-22"
+    },
+    "http://sitio/a/externa": {
+      "id": "ayuda-con-enlace-externo",
+      "hash": "fb4386c09ef4eb6062f8f91942bbd3d0f51f07c10848fca2515a14a973912b19",
+      "etag": "\\"b828c0029361ece7\\"",
+      "consultado": "2026-10-22"
+    },
+    "http://sitio/a/inventada": {
+      "id": "ayuda-con-citas-inventadas",
+      "hash": "83f622ce95c221060fa7d173a4bd51b18bb2ff957f4d182915c6dc82c3359a21",
+      "etag": "\\"e9f9549f5ebc637c\\"",
+      "consultado": "2026-10-22"
+    },
+    "http://sitio/a/no-ayuda": {
+      "hash": "55ed8bec111dfe7d3f00e6b29b52bf38b92f10c0745359308911f68f5079f542",
+      "etag": "\\"ce352277ba8d816a\\"",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "http://sitio/a/nombre": {
+      "id": "renta-de-inclusion",
+      "hash": "0ae319b9257501b820c6810ec3f68c583bede2335bfed01a38d8d430b05119fc",
+      "etag": "\\"ab35bab9edd70ba3\\"",
+      "consultado": "2026-10-22"
+    },
+    "http://sitio/a/p1": {
+      "id": "ayuda-p1",
+      "hash": "5aff826de7b2a6fcacf5352717c9e0351cd9b654e695f63274784cc2b6e487af",
+      "etag": "\\"e5dfb50fff8ca9af\\"",
+      "consultado": "2026-10-22"
+    },
+    "http://sitio/a/p2": {
+      "id": "ayuda-p2",
+      "hash": "24cd875fa485672d8f814943a7b6461bcc1c263abb87a6278792bd6426dbb931",
+      "etag": "\\"640fd33e78a1bea5\\"",
+      "consultado": "2026-10-22"
+    },
+    "http://sitio/a/pei24": {
+      "id": "prestaciones-economicas-individuales-para-personas-con-disca-2",
+      "hash": "180b7b93b087ecf39d9462f2447138a737a2a7619fc1203408d58cc7cd6f5908",
+      "etag": "\\"c2125f53e2417710\\"",
+      "consultado": "2026-10-22"
+    },
+    "http://sitio/a/pei25": {
+      "id": "prestaciones-economicas-individuales-para-personas-con-disca",
+      "hash": "d988bed7bd64663595d79318a3c5d50f58212837967a25d02846b66a1226102a",
+      "etag": "\\"b2b18fdf493126e3\\"",
+      "consultado": "2026-10-22"
+    },
+    "http://sitio/a/sia": {
+      "id": "pension-de-jubilacion-sia1234567",
+      "hash": "37dd96754d94ed50f57829b3738c30f7bad34f87ddc77753465ed84786868d45",
+      "etag": "\\"fc7e737b64117e25\\"",
+      "consultado": "2026-10-22"
+    },
+    "http://sitio/a/uno": {
+      "id": "ayuda-uno",
+      "hash": "86c7dc3fe3a3910ec71b8b7dc824d1b5f32d5db42ea66f9bd4975f5f3c31098f",
+      "etag": "\\"d93b7e58696d5cc9\\"",
+      "consultado": "2026-10-22"
+    },
+    "http://sitio/b/sia": {
+      "id": "pension-de-jubilacion-sia1234567",
+      "hash": "e2a6053556dd5da0bf5b07ceb00635c920f1d833c4d175d534c3a99fd9e99168",
+      "etag": "\\"945a866aa50a3450\\"",
+      "consultado": "2026-10-22"
+    },
+    "http://sitio/c/uno": {
+      "id": "ayuda-municipal",
+      "hash": "898d14915309f0123322603712e6b5ea13555b4da8a3d0d996963b69a905ac57",
+      "etag": "\\"aabcfc2e6574361a\\"",
+      "consultado": "2026-10-22"
+    }
+  },
+  "pendientes": []
+}
+"
+`;
