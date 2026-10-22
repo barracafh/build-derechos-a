@@ -76,7 +76,7 @@ export function TarjetaAyuda({ f, n }: { f: Ficha; n: number }) {
               </Badge>
             )}
           </div>
-          <h3 className="grid grid-cols-[32px_minmax(0,1fr)] gap-x-3 font-sans text-2xl leading-[1.25] font-medium">
+          <h3 className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-2 font-sans text-2xl leading-[1.25] font-medium">
             <span aria-hidden="true" className="font-light text-brand tabular-nums">
               {n}
             </span>
