@@ -10,6 +10,8 @@ export type Semilla = {
   administracion: "Estado" | "Comunitat Valenciana" | "Local";
   // Links that match `patron` but are not aids.
   excluir?: RegExp;
+  // Listing text (title, office) of procedures that are not aids for a person, dropped before any fetch.
+  excluirTexto?: RegExp;
   // The seed is paged: the job sets `parametro` = 1..max on `url`.
   paginacion?: { parametro: string; max: number };
 };
@@ -21,6 +23,9 @@ export type Semilla = {
 const GVA_BUSCADOR = "https://sede.gva.es/es/cercador-tramits?perfiles=5271&tamanyoPagina=100";
 const GVA_TRAMITE = /^https:\/\/sede\.gva\.es\/(?:es\/)?detall-tramit\?id_proc=[A-Z]?\d+$/;
 const GVA_SIMULACION = /id_proc=13141$/;
+// GVA listings mix aids with grants to entities, councils' elections, permits and paperwork.
+const GVA_NO_AYUDA =
+  /subvenci|premio|beca|convocatoria|concurso|entidad|empresa|ayuntamiento|asociaci|corporaci|contrataci|concierto|acci[oó]n concertada|habilitaci|certificad|inscripci|registro|autorizaci|acreditaci|homologaci|pr[aá]cticas|curso|formaci|candidatur|votaci|elecci|colegio electoral|vocal|consejo|consell|aportaci[oó]n de documentaci|subsanaci|alegaci|recurso|reclamaci|queja|adopci|calificaci|licencia|declaraci[oó]n responsable|comunicaci[oó]n/i;
 
 export const semillas: Semilla[] = [
   {
@@ -48,6 +53,7 @@ export const semillas: Semilla[] = [
     patron: GVA_TRAMITE,
     administracion: "Comunitat Valenciana",
     excluir: GVA_SIMULACION,
+    excluirTexto: GVA_NO_AYUDA,
     paginacion: { parametro: "pagina", max: 4 },
   },
   {
@@ -56,6 +62,7 @@ export const semillas: Semilla[] = [
     patron: GVA_TRAMITE,
     administracion: "Comunitat Valenciana",
     excluir: GVA_SIMULACION,
+    excluirTexto: GVA_NO_AYUDA,
     paginacion: { parametro: "pagina", max: 4 },
   },
   {
@@ -64,6 +71,7 @@ export const semillas: Semilla[] = [
     patron: GVA_TRAMITE,
     administracion: "Comunitat Valenciana",
     excluir: GVA_SIMULACION,
+    excluirTexto: GVA_NO_AYUDA,
     paginacion: { parametro: "pagina", max: 2 },
   },
   {

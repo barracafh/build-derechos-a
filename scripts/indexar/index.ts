@@ -200,7 +200,7 @@ export async function ejecutar(opciones: Opciones, entorno: Entorno): Promise<Re
         const res = await descargar(pagina);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         for (const e of enlacesDeSemilla(await res.text(), pagina)) {
-          if (!s.patron.test(e.url) || s.excluir?.test(e.url)) continue;
+          if (!s.patron.test(e.url) || s.excluir?.test(e.url) || s.excluirTexto?.test(e.texto)) continue;
           const url = canonica(e.url);
           textosDeSemilla.push({ texto: e.texto, url });
           encontrados++;

@@ -339,6 +339,19 @@ describe("indexar job limits", () => {
     expect(leer(e).items.length).toBe(40);
   });
 
+  test("a seed's text filter drops listing entries before any fetch", async () => {
+    sitio = {
+      "/s1": { html: `<html><body><main><a href="/a/si">Prestación para personas mayores</a><a href="/a/no">Subvenciones a entidades</a></main></body></html>` },
+      "/a/si": { html: ayuda("Prestación para personas mayores") },
+      "/a/no": { html: ayuda("Subvenciones a entidades") },
+    };
+    pedidas.length = 0;
+    const e = entorno("filtro", { semillas: [{ ...semillas()[0], excluirTexto: /subvenci/i }] });
+    await ejecutar({}, e);
+    expect(pedidas).toContain("/a/si");
+    expect(pedidas).not.toContain("/a/no");
+  });
+
   test("a fixed list of URLs skips the seeds", async () => {
     sitio = sitioInicial();
     pedidas.length = 0;
