@@ -541,6 +541,67 @@
       "consultado": "2026-10-22"
     },
     {
+      "id": "hacerme-el-carnet-jove-ivaj-sia210559",
+      "tipo": "ayuda",
+      "titulo": "Hacerme el Carnet Jove (IVAJ)",
+      "administracion": "Comunitat Valenciana",
+      "organismo": "Institut Valencià de la Joventut IVAJ",
+      "frases_usuario": [
+        "quiero descuentos por ser joven",
+        "cómo me saco el carnet jove",
+        "tengo 20 años y quiero descuentos en transporte",
+        "quiero descuentos en viajes y cultura para jóvenes",
+        "dónde pido el carnet joven en Valencia"
+      ],
+      "requisitos_clave": [
+        "Tener entre 14 y 30 años (ambas edades incluidas)."
+      ],
+      "pasos": [
+        "No necesitas certificado digital, únicamente un DNI, NIE o pasaporte en vigor.",
+        "Si al solicitar el Carnet Jove digital también quieres la tarjeta física, puedes elegir el ayuntamiento, la mancomunidad u oficina del IVAJ donde quieres recogerla.",
+        "En el caso de DNI o NIE debes rellenar este formulario.",
+        "En el caso de disponer de pasaporte, debes registrarse primero en las oficinas del IVAJ."
+      ],
+      "documentacion": [
+        "No necesitas certificado digital, únicamente un DNI, NIE o pasaporte en vigor."
+      ],
+      "plazo": "En cualquier momento. Tiene una vigencia de 2 años, tras los cuales habrá que renovarlo.",
+      "enlace_info": "https://sede.gva.es/es/detall-tramit?id_proc=G206",
+      "enlace_tramite": "https://projove.gva.es/projove/carnet/es/pedido",
+      "fuente": "https://sede.gva.es/es/detall-tramit?id_proc=G206 ; https://sede.gva.es/es/detall-tramit?p_p_id=es_gva_es_siac_portlet_SiacDetalleProcedimientosNuevoGVA&p_p_lifecycle=2&p_p_state=normal&p_p_mode=view&p_p_cacheability=cacheLevelPage&_es_gva_es_siac_portlet_SiacDetalleProcedimientosNuevoGVA_accion=pdf&_es_gva_es_siac_portlet_SiacDetalleProcedimientosNuevoGVA_codigo=G206 ; https://sede.gva.es/es/formulari-problemes-tecnics?codSIAC=G206&descripcionTramite=Hacerme%20el%20Carnet%20Jove%20(IVAJ)&descripcionCortaTramite=Hacerme%20el%20Carnet%20Jove%20(IVAJ) ; https://sede.gva.es/es/preguntes-frequents",
+      "verificado": false,
+      "nota": "El Carnet Jove expedido en la Comunitat Valenciana es un documento de carácter personal e intransferible que acredita a su titular como beneficiario de los servicios que lleva aparejado, y tendrá una validez de 2 años.",
+      "relacionados": [],
+      "naturaleza": "bonificacion",
+      "tipoPlazo": "permanente",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "El Carnet Joven es gratuito.",
+      "ambito": "Los carnés serán expedidos en el ámbito territorial de la Comunitat Valenciana, teniendo validez en dicha comunitat, así como en otras Comunidades Autónomas y otros países, de conformidad con lo dispuesto en las normas y acuerdos nacionales e internacionales que resulten de aplicación.",
+      "exclusiones": [],
+      "codigos": {
+        "sia": [
+          "210559"
+        ],
+        "idProc": [
+          "G206"
+        ],
+        "bdns": [],
+        "boe": [
+          "BOE-A-2017-15372"
+        ]
+      },
+      "documentos": [],
+      "textos": [
+        "6393f38a30f7a7f87d9a74dabd8a13c4b6dda40dd2abfe29d73acaf4ef3b65da",
+        "4d999475bf5141fbb763e13fecc3c637deb4d1770ad931892b8e823af45aa75e",
+        "c5cb2070b3b18fe149b75eedb0441351a7330d45331069d9f9ad3c5e354196a4",
+        "0081dd40ce113c347804c8598745a8f23948c52531142ee05d91ceaf36b389cb"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
       "id": "incapacidad-permanente",
       "tipo": "ayuda",
       "titulo": "Incapacidad permanente",
@@ -586,6 +647,51 @@
         "a0fc738e9b28dbcb0dc0033e4960761ec691bd8fa7fe5e15297448c181a81187",
         "da84f935619f051ef995a908634f687724d98d905716035312a55ef367411077",
         "847941a7fc5f0315c383119503778f7e2c7671e4310f9815e5df6196685c782e"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "joop-jove-oportunitat-ivaj-g19936",
+      "tipo": "ayuda",
+      "titulo": "JOOP - JOVE OPORTUNITAT (IVAJ)",
+      "administracion": "Comunitat Valenciana",
+      "organismo": "Institut Valencià de la Joventut IVAJ",
+      "frases_usuario": [
+        "dejé los estudios y no sé qué hacer",
+        "soy joven y ni estudio ni trabajo",
+        "programa para jóvenes que han abandonado el instituto",
+        "quiero una segunda oportunidad para estudiar o trabajar"
+      ],
+      "requisitos_clave": [],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://sede.gva.es/es/detall-tramit?id_proc=G19936",
+      "enlace_tramite": "https://ivaj.gva.es/es/joop",
+      "fuente": "https://sede.gva.es/es/detall-tramit?id_proc=G19936",
+      "verificado": false,
+      "nota": null,
+      "relacionados": [],
+      "naturaleza": "servicio",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "incompleta": true,
+      "codigos": {
+        "sia": [],
+        "idProc": [
+          "G19936"
+        ],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "dbdaabf62f34b483770f89bb321616b9ba114a6c847b826b1fa3df07c9b819ce"
       ],
       "relaciones": [],
       "consultado": "2026-10-22"
@@ -703,6 +809,50 @@
           "cita": "Es incompatible con las prestaciones económicas establecidas para la incapacidad permanente"
         }
       ],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "linea-112-ucrania-g22468",
+      "tipo": "ayuda",
+      "titulo": "Línea 112 Ucrania",
+      "administracion": "Comunitat Valenciana",
+      "organismo": "Agencia Valenciana de Seguridad y Respuesta a las Emergencias AVSRE",
+      "frases_usuario": [
+        "he llegado de Ucrania y necesito ayuda",
+        "teléfono de atención para refugiados ucranianos",
+        "acojo a una familia ucraniana y no sé a quién llamar"
+      ],
+      "requisitos_clave": [],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://sede.gva.es/es/detall-tramit?id_proc=G22468",
+      "enlace_tramite": null,
+      "fuente": "https://sede.gva.es/es/detall-tramit?id_proc=G22468",
+      "verificado": false,
+      "nota": null,
+      "relacionados": [],
+      "naturaleza": "servicio",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "incompleta": true,
+      "codigos": {
+        "sia": [],
+        "idProc": [
+          "G22468"
+        ],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "6cfecddfeeaf5f0c66b1dae1eb2fddda733a5f1c5084ef7bf727d423000af200"
+      ],
+      "relaciones": [],
       "consultado": "2026-10-22"
     },
     {
@@ -1193,6 +1343,64 @@
       "consultado": "2026-10-22"
     },
     {
+      "id": "programa-europeo-cuerpo-europeo-de-solidaridad-ces-ivaj-sia3016439",
+      "tipo": "ayuda",
+      "titulo": "Programa europeo Cuerpo Europeo de Solidaridad (CES). IVAJ",
+      "administracion": "Comunitat Valenciana",
+      "organismo": "Institut Valencià de la Joventut IVAJ",
+      "frases_usuario": [
+        "quiero hacer un voluntariado en otro país",
+        "soy joven y quiero irme de voluntario a Europa",
+        "voluntariado europeo con el viaje pagado",
+        "cómo me apunto al Cuerpo Europeo de Solidaridad"
+      ],
+      "requisitos_clave": [
+        "Los jóvenes de 17 a 30 años se pueden inscribir en el portal del Cuerpo Europeo de Solidaridad, aunque deberán comenzar su actividad a partir de los 18 años y hasta los 30.",
+        "Pueden participar jóvenes (18 a 30 años) residentes en los países participantes."
+      ],
+      "pasos": [
+        "Se han de registrar en el portal del Cuerpo Europeo de Solidaridad https://europa.eu/youth/solidarity/young-people/about_en y buscar oportunidades."
+      ],
+      "documentacion": [],
+      "plazo": "Plazo Abierto",
+      "enlace_info": "https://sede.gva.es/es/detall-tramit?id_proc=G20012",
+      "enlace_tramite": "https://europa.eu/youth/soliDarity_es",
+      "fuente": "https://sede.gva.es/es/detall-tramit?id_proc=G20012 ; https://sede.gva.es/es/detall-tramit?p_p_id=es_gva_es_siac_portlet_SiacDetalleProcedimientosNuevoGVA&p_p_lifecycle=2&p_p_state=normal&p_p_mode=view&p_p_cacheability=cacheLevelPage&_es_gva_es_siac_portlet_SiacDetalleProcedimientosNuevoGVA_accion=pdf&_es_gva_es_siac_portlet_SiacDetalleProcedimientosNuevoGVA_codigo=G20012 ; https://sede.gva.es/es/formulari-problemes-tecnics?codSIAC=G20012&descripcionTramite=Programa%20europeo%20Cuerpo%20Europeo%20de%20Solidaridad%20(CES).%20IVAJ&descripcionCortaTramite=Programa%20europeo%20Cuerpo%20Europeo%20de%20Solidaridad%20(CES).%20IVAJ ; https://programaseuropeos.injuve.es/sites/main/files/2025-06/resoluci%C3%B3n%20convocatoria%20ces%202025.pdf.xsig_.pdf",
+      "verificado": false,
+      "nota": "Los gastos de viaje de ida y vuelta al lugar del proyecto están cubiertos.",
+      "relacionados": [],
+      "naturaleza": "servicio",
+      "tipoPlazo": "permanente",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [
+          "3016439"
+        ],
+        "idProc": [
+          "G20012"
+        ],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "Resolución de la Dirección General del Instituto de la Juventud, por la que se convocan ayudas para la realización de actividades financiadas por la Comisión Europea del Programa «Cuerpo Europeo de Solidaridad», para 2025.",
+          "url": "https://programaseuropeos.injuve.es/sites/main/files/2025-06/resoluci%C3%B3n%20convocatoria%20ces%202025.pdf.xsig_.pdf"
+        }
+      ],
+      "textos": [
+        "b0565acf6d5d656fdefd26116ea9a9ddaf5dff03341c313c3cb7a1bc3f81749f",
+        "4d999475bf5141fbb763e13fecc3c637deb4d1770ad931892b8e823af45aa75e",
+        "c5cb2070b3b18fe149b75eedb0441351a7330d45331069d9f9ad3c5e354196a4"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
       "id": "programas-valencia",
       "tipo": "ayuda",
       "titulo": "Programas - València",
@@ -1303,6 +1511,55 @@
       "relaciones": [],
       "consultado": "2026-10-22",
       "posibleDuplicado": "programas-valencia"
+    },
+    {
+      "id": "residencias-juveniles-ivaj-sia3016390",
+      "tipo": "ayuda",
+      "titulo": "Residencias juveniles (IVAJ)",
+      "administracion": "Comunitat Valenciana",
+      "organismo": "Institut Valencià de la Joventut IVAJ",
+      "frases_usuario": [
+        "busco plaza en una residencia para jóvenes",
+        "necesito alojamiento barato para estudiar en Valencia",
+        "cómo pido entrar en una residencia juvenil del IVAJ",
+        "soy joven y necesito un sitio donde vivir mientras estudio"
+      ],
+      "requisitos_clave": [],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://sede.gva.es/es/detall-tramit?id_proc=G12469",
+      "enlace_tramite": null,
+      "fuente": "https://sede.gva.es/es/detall-tramit?id_proc=G12469 ; https://sede.gva.es/es/detall-tramit?p_p_id=es_gva_es_siac_portlet_SiacDetalleProcedimientosNuevoGVA&p_p_lifecycle=2&p_p_state=normal&p_p_mode=view&p_p_cacheability=cacheLevelPage&_es_gva_es_siac_portlet_SiacDetalleProcedimientosNuevoGVA_accion=pdf&_es_gva_es_siac_portlet_SiacDetalleProcedimientosNuevoGVA_codigo=G12469 ; https://sede.gva.es/es/formulari-problemes-tecnics?codSIAC=G12469&descripcionTramite=Residencias%20juveniles%20(IVAJ)&descripcionCortaTramite=Residencias%20juveniles%20(IVAJ)",
+      "verificado": false,
+      "nota": null,
+      "relacionados": [],
+      "naturaleza": "servicio",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "incompleta": true,
+      "codigos": {
+        "sia": [
+          "3016390"
+        ],
+        "idProc": [
+          "G12469"
+        ],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "b23019ae4a9d7c7b691e40be51c8adb6cd42b3848477f8398acdaac1105fccc8",
+        "4d999475bf5141fbb763e13fecc3c637deb4d1770ad931892b8e823af45aa75e",
+        "c5cb2070b3b18fe149b75eedb0441351a7330d45331069d9f9ad3c5e354196a4"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
     },
     {
       "id": "riesgo-durante-el-embarazo",
@@ -1497,6 +1754,70 @@
       ],
       "relaciones": [],
       "consultado": "2026-10-22"
+    },
+    {
+      "id": "supuesto-especial-de-fraccionamiento-en-el-impuesto-de-trans-sia210971",
+      "tipo": "ayuda",
+      "titulo": "Supuesto especial de fraccionamiento en el Impuesto de Transmisiones Patrimoniales y Actos Jurídicos Documentados, tanto en su modalidad TPO como en su modalidad AJD. Adquisición de vivienda habitual",
+      "administracion": "Comunitat Valenciana",
+      "organismo": "Agencia Tributaria Valenciana ATV",
+      "frases_usuario": [
+        "he comprado un piso y no puedo pagar el impuesto de golpe",
+        "quiero pagar a plazos el ITP de mi vivienda",
+        "fraccionar el impuesto de transmisiones al comprar casa",
+        "me piden mucho dinero de impuestos por comprar mi vivienda"
+      ],
+      "requisitos_clave": [
+        "Que la vivienda que se adquiere tenga una superficie útil igual o inferior a 120 metros cuadrados.",
+        "Que la solicitud se presente en periodo voluntario de pago.",
+        "Los sujetos pasivos de las autoliquidaciones o liquidaciones complementarias, incluidas las derivadas de comprobación de valores, giradas por el Impuesto de Transmisiones Patrimoniales y Actos Jurídicos Documentados, como consecuencia de la adquisición de viviendas destinadas a domicilio habitual."
+      ],
+      "pasos": [
+        "Presentación de la solicitud junto con la documentación que se cita en el precedente apartado."
+      ],
+      "documentacion": [
+        "Identificación completa del interesado, y en su caso, de su representante y domicilio a efectos de notificaciones.",
+        "Identificación de la deuda a fraccionar: número de liquidación, fecha fin periodo voluntario o, en su caso, modelo 600 debidamente cumplimentado, e importe a fraccionar.",
+        "Plazos en los que se desea fraccionar el pago del Impuesto, vencimiento e importe de cada uno de ellos.",
+        "Acreditación de tratarse de la vivienda habitual del sujeto pasivo.",
+        "Escritura autorizada y copia simple o, en su caso, original y copia del documento privado origen de la transmisión.",
+        "A partir del 6 de marzo de 2015, se establece la domiciliación obligatoria del pago de aplazamientos y fraccionamientos de tributos y otros ingresos de derecho público concedidos por la Generalitat, conforme a la orden 4/2015 de 5 de marzo, por lo que también debe aportarse la orden de domiciliación de adeudo directo SEPA."
+      ],
+      "plazo": "Dentro del periodo voluntario de pago.",
+      "enlace_info": "https://sede.gva.es/es/detall-tramit?id_proc=G1640",
+      "enlace_tramite": "https://aplazate.gva.es/aplazate-frontend/",
+      "fuente": "https://sede.gva.es/es/detall-tramit?id_proc=G1640 ; https://sede.gva.es/es/detall-tramit?p_p_id=es_gva_es_siac_portlet_SiacDetalleProcedimientosNuevoGVA&p_p_lifecycle=2&p_p_state=normal&p_p_mode=view&p_p_cacheability=cacheLevelPage&_es_gva_es_siac_portlet_SiacDetalleProcedimientosNuevoGVA_accion=pdf&_es_gva_es_siac_portlet_SiacDetalleProcedimientosNuevoGVA_codigo=G1640 ; https://sede.gva.es/es/formulari-problemes-tecnics?codSIAC=G1640&descripcionTramite=Supuesto%20especial%20de%20fraccionamiento%20en%20el%20Impuesto%20de%20Transmisiones%20Patrimoniales%20y%20Actos%20Jur%C3%ADdicos%20Documentados,%20tanto%20en%20su%20modalidad%20TPO%20como%20en%20su%20modalidad%20AJD.%20Adquisici%C3%B3n%20de%20vivienda%20habitual&descripcionCortaTramite=Supuesto%20especial%20de%20fraccionamiento%20en%20el%20Impuesto%20de%20Transmisiones%20Patrimoniales%20y%20Actos%20Jur%C3%ADdicos%20Documentados,%20tanto%20en%20su%20modalidad%20TPO%20como%20en%20s ; https://sede.gva.es/es/preguntes-frequents",
+      "verificado": false,
+      "nota": "Caso de no cumplir los requisitos para poder obtener este fraccionamiento, se puede solicitar el fraccionamiento previsto con carácter general en el Reglamento General de Recaudación.",
+      "relacionados": [],
+      "naturaleza": "bonificacion",
+      "tipoPlazo": "relativo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "El fraccionamiento solicitado, cumpliendo con los requisitos necesarios para su concesión, se concederá por un periodo máximo de tres anualidades y devengará el correspondiente interés de demora.",
+      "ambito": null,
+      "exclusiones": [
+        "Los fraccionamientos concedidos quedarán sin efecto, cuando se enajene la vivienda adquirida o cuando el contribuyente deje de satisfacer cualquiera de los importes fraccionados en el plazo máximo de quince días siguientes a su vencimiento."
+      ],
+      "codigos": {
+        "sia": [
+          "210971"
+        ],
+        "idProc": [
+          "G1640"
+        ],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "acb9989e9a0c75cb5d8d166b241cd9470b449aaf4fac01b1c355d127840c5461",
+        "4d999475bf5141fbb763e13fecc3c637deb4d1770ad931892b8e823af45aa75e",
+        "c5cb2070b3b18fe149b75eedb0441351a7330d45331069d9f9ad3c5e354196a4",
+        "0081dd40ce113c347804c8598745a8f23948c52531142ee05d91ceaf36b389cb"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
     }
   ],
   "rastreo": {
@@ -1550,10 +1871,130 @@
       "consultado": "2026-10-22",
       "noEsAyuda": true
     },
+    "https://sede.gva.es/es/detall-tramit?id_proc=E64504": {
+      "hash": "bfbc8e0da2f1ad5e42976680bd723166896e788a6f40aa688c565ca0a5e3d55d",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=E64584": {
+      "hash": "3f1fc75559914840845b416e9772e8ae9a676793b91a8f0121e31e356537752a",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
     "https://sede.gva.es/es/detall-tramit?id_proc=G104345": {
       "id": "bono-social-termico-2025-sia3178888",
       "hash": "84f12ccfae9c3f90ab6e5c29cea7fa7b26fda60ee8e2637643187753994e6526",
       "consultado": "2026-10-22"
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G106163": {
+      "hash": "d1746ac830abd5f03feac092cc1d52b798c6f30fa2dd415775d802356d65bfaa",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G106241": {
+      "hash": "07f483ec6febc8e52aa93253da1e3d431e3a18920c85676c49295893d8c8c112",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G110": {
+      "hash": "9bb93bc4fafa44d3f88deb040edfd35973d25dd6db2d9b88fbbb204a5e89707a",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G12410": {
+      "hash": "a2b238c1a001a536a5ecfd953693c32d48b60ae140d7f808adf4f3fafb788a85",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G12469": {
+      "id": "residencias-juveniles-ivaj-sia3016390",
+      "hash": "b23019ae4a9d7c7b691e40be51c8adb6cd42b3848477f8398acdaac1105fccc8",
+      "consultado": "2026-10-22"
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G14286": {
+      "hash": "236cda64204b347dd5188e72a7ec95f7938f87e39dff0990aac4bb0880d95920",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G15323": {
+      "hash": "c9e61c4586bf7289364d50feec31cb828c6b3d9bc23b693efc812cf5dd2810ba",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G15408": {
+      "hash": "caeadea2b513991816b1c9c6bdd87fb4d3276de11a5a46a6ca847d58c67b8af1",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G15480": {
+      "hash": "8c37d482bc8f2d64570b822be15c9064e731a2de5cf3a7097de3eae5b2dbf0b8",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G15651": {
+      "hash": "dcc1824feffc587ca3ce92ffec1c934d6398ba8c97c6c0416bfa59f8c6f6c2e9",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G1640": {
+      "id": "supuesto-especial-de-fraccionamiento-en-el-impuesto-de-trans-sia210971",
+      "hash": "acb9989e9a0c75cb5d8d166b241cd9470b449aaf4fac01b1c355d127840c5461",
+      "consultado": "2026-10-22"
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G19158": {
+      "hash": "2e7e0a467e5c6683deec01201dad02d578950dbcc0819f12eb3b86360a6d2338",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G19936": {
+      "id": "joop-jove-oportunitat-ivaj-g19936",
+      "hash": "dbdaabf62f34b483770f89bb321616b9ba114a6c847b826b1fa3df07c9b819ce",
+      "consultado": "2026-10-22"
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G19976": {
+      "hash": "b8e53e5e6068500a7db754aa572036369bfd12464aaf683f6950d2eb1d59e689",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G20012": {
+      "id": "programa-europeo-cuerpo-europeo-de-solidaridad-ces-ivaj-sia3016439",
+      "hash": "b0565acf6d5d656fdefd26116ea9a9ddaf5dff03341c313c3cb7a1bc3f81749f",
+      "consultado": "2026-10-22"
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G206": {
+      "id": "hacerme-el-carnet-jove-ivaj-sia210559",
+      "hash": "6393f38a30f7a7f87d9a74dabd8a13c4b6dda40dd2abfe29d73acaf4ef3b65da",
+      "consultado": "2026-10-22"
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G214": {
+      "hash": "5a5fdaeca2e847917b4fc3998d89402867bb9efb10aa0be86b5bbd83ee65855c",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G22468": {
+      "id": "linea-112-ucrania-g22468",
+      "hash": "6cfecddfeeaf5f0c66b1dae1eb2fddda733a5f1c5084ef7bf727d423000af200",
+      "consultado": "2026-10-22"
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G22884": {
+      "hash": "89225650eb8aabb95e37f6dfd203bb9422fa46f57c0e8a80730d7976d9edf76b",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G25525": {
+      "hash": "f5057a791b614252420986a6b2624bac1435697483bd4c7361b02b43f3cdb60a",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G2594": {
+      "hash": "cd65e238b9603513538a4ee3af22ea7e5ef9d172ba18473f154c4ed4703ff858",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G96305": {
+      "hash": "4b9ae6781296183029babdf954d002ef3ee00c57b6c2f77c99697bab19a46ce1",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
     },
     "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10938": {
       "id": "asistencia-sanitaria",
@@ -1793,6 +2234,11 @@
     },
     "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=BA8D7F69EC24FE0EC1257560003B4562": {
       "hash": "13305bb4db5fd18ca7b4cf621d19091c21b1ca370c172f4a410413544ac8d1d6",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=CE074B0272CFEA16C12572F3004264CA": {
+      "hash": "1eb3d669dd7d0aa309d63cc83986f560df5bc693e988e90b23d23d86543ae2c4",
       "consultado": "2026-10-22",
       "noEsAyuda": true
     }

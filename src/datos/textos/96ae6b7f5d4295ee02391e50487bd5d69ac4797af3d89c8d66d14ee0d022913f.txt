@@ -1,0 +1,264 @@
+## Subpágina: PROPER: Procedimiento para tramitar las altas, modificaciones y bajas de las domiciliaciones bancarias (Domiciliación bancaria). Trámite automatizado
+Atrás
+## PROPER: Procedimiento para tramitar las altas, modificaciones y bajas de las domiciliaciones bancarias (Domiciliación bancaria). Trámite automatizado
+Conselleria de Economía, Hacienda y Administración Pública
+Código SIA: 2892987
+|
+Código GVA: 22648
+Descargar información
+Plazo de solicitud Abierto
+Desde 01-07-2022 00:00:00h
+Tramitar
+Qué necesitas saber
+Qué es
+A quién va dirigido
+Cómo se tramita
+Tramitación
+Solicitud
+Resolución
+Ayuda
+Preguntas frecuentes
+Temas relacionados
+Enlaces de interés
+Compartir en redes sociales
+Correo electrónicoxfaceboolwhatsapptelegram
+## Qué es
+Qué es y para qué sirve
+1.- Actuaciones o trámites de alta, modificación y baja de los datos personales identificativos y bancarios de las personas físicas y jurídicas que puedan relacionarse económicamente con la Administración de la Generalitat y los organismos autónomos cuya contabilidad esté integrada en el sistema de información contable de la primera, como requisito previo para percibir pagos del órgano competente en materia de tesorería.
+2.- El alta, modificación y baja de los datos identificativos y bancarios de las personas físicas y jurídicas que puedan relacionarse con la Administración de la Generalitat y los organismos autónomos deberá realizarse de forma automatizada y cuando esto no sea obligatorio, o siendo obligatorio no se reúnan la totalidad de los requisitos previstos en la normativa, el tercero podrá utilizar la actuación o trámite no automatizado.
+Plazos
+SolicitudPlazoAbierto
+Desde 01-07-2022 00:00:00h
+Observaciones
+Puede realizar este trámite presencialmente con la ayuda de personal funcionario habilitado.
+·CONCEPTOS
+La solicitud de alta puede ser de dos tipos: alta de nuevo/a perceptor/a o alta de nueva domiciliación bancaria.
+- A través de las altas de nuevo/a perceptor/a se solicita su incorporación a la Base de Datos Corporativa.
+- A través de las altas de nueva domiciliación bancaria se solicita asociar otras cuentas bancarias a un titular ya preexistente en la Base de Datos Corporativa, sin modificar ni anular las domiciliaciones que ya tiene registradas.
+- La solicitud de baja de domiciliación bancaria implicará que esa cuenta no se usará en nuevos expedientes contables si bien se mantendrá, hasta su terminación, en los expedientes contables en curso que hayan incorporado dicha domiciliación como dato del expediente en su inicio.
+·TITULARIDAD DE LA CUENTA
+La titularidad de la cuenta deberá ser inexcusablemente del tercero que vaya a ser acreedor de la Administración de la Generalitat o de los organismos autónomos contemplados en el artículo 1.1 de la Orden 2/2022., o en su caso de su representante legal, para lo que el interesado o su representante deberá declarar que la cuenta es de su titularidad o de su representado, respectivamente.
+El régimen de las declaraciones será el previsto en el artículo 69 de la Ley 39/2015, de 1 de noviembre, de tal manera que la falsedad de lo declarado determinará la imposibilidad de percibir, en su caso, el derecho de contenido económico reconocido desde el momento en que se tenga constancia de la falsedad, sin perjuicio de las responsabilidades penales, civiles o administrativas a que hubiere lugar.
+·REQUISITO ESPECIAL DE LA CUENTA BANCARIA
+Los datos bancarios que se den de alta a través de esta actuación o trámite tan sólo podrán referirse a cuentas bancarias cuyo código IBAN se identifique con país origen España.
+De no ser así, se seguirá la actuación o trámite NO AUTOMATIZADO
+·EFECTOS DEL PAGO
+Las transferencias de fondos efectuadas a cualquiera de las cuentas declaradas como de titularidad del acreedor o de quién esté autorizado para recibirlas en su nombre liberarán a la Generalitat de su deuda.
+·BAJA DE LAS DOMICILIACIONES
+Las domiciliaciones bancarias que no hayan registrado apuntes contables en los cuatro ejercicios anteriores serán objeto de baja de oficio en el sistema. Lo anterior se llevará a cabo a través de un proceso informático que será ejecutado al principio de cada ejercicio. Asimismo, también se darán de baja las domiciliaciones que correspondan a personas físicas o jurídicas que hayan causado baja y ésta haya sido notificada por la Agencia Estatal de Administración Tributaria.
+·DATOS DE CARACTER PERSONAL
+De conformidad con la legislación, europea y española, en protección de datos de carácter personal, los datos que nos proporcione serán tratados, en calidad de Responsable y en el ejercicio de las competencias atribuidas, por la Conselleria de Hacienda, Economía y Administración Pública, con la finalidad de gestionar el objeto de la instancia presentada. Ud. podrá ejercitar los derechos de acceso, rectificación, supresión, limitación u oposición, presentando escrito en el Registro de entrada de la Conselleria, así como, en su caso, podrá reclamar ante la Agencia Española de Protección de Datos, en el supuesto de no haber obtenido satisfacción en el ejercicio de los derechos. Más información sobre el tratamiento de los datos http://www.hisenda.gva.es/es/registre-de-tractament-de-dades.
+Enlaces
+Si realiza el trámite como Ente Habilitado (representante voluntario) rellene el siguiente documento de autorización de representación administrativa y adjúntelo a la solicitud
+## A quién va dirigido
+Ciudadanía
+Empresas
+Personas interesadas
+Personas físicas o personas jurídicas o entidades sin personalidad jurídica, públicas o privadas, no obligados a seguir la actuación o trámite automatizado previsto en la Orden 2/2022, de la Conselleria de Hacienda, Economía y Administración Pública, como consecuencia de operaciones presupuestarias o no presupuestarias, y a cuyo favor surjan las obligaciones o se expidan los pagos derivados de las mismas, o bien estando obligados a seguir la actuación trámite telemático mencionado anteriormente, esto no fuera posible.
+Obligados a utilizar el trámite automatizado (artículo 6 Orden 2/2022)
+1. La actuación o trámite de alta, modificación y baja de los datos personales identificativos o bancarios a incorporar en la BDC, obligatoriamente se llevará a cabo de forma automatizada en el caso de los siguientes sujetos:
+a) Las personas jurídicas.
+b) Las entidades sin personalidad jurídica.
+c) Quienes ejerzan una actividad profesional para la que se requiera colegiación obligatoria, para los trámites y actuaciones que realicen con las Administraciones Públicas en ejercicio de dicha actividad profesional. En todo caso, dentro de este colectivo se entenderán incluidos los notarios y registradores de la propiedad y mercantiles.
+d) Quienes representen a un interesado que esté obligado a relacionarse electrónicamente con la Administración.
+e) El personal al servicio de las entidades a que hace referencia el artículo 1.1, para los trámites y actuaciones que realicen con ellas por razón de su condición de empleado o empleada del sector público, incluido el alta o baja de los datos bancarios para el pago de las nóminas, salvo en aquellos supuestos en que no pueda identificarse por cualquiera de los medios previstos en el artículo 5, en cuyo caso se seguirá la actuación o trámite previsto en el artículo 7.
+## Cómo se tramita
+Proceso de tramitación
+Dicha actuación o trámite será accesible a través de la sede electrónica de la Generalitat, https://sede.gva.es
+A tal efecto, los interesados deberán identificarse mediante cualquiera de los medios admitidos en dicha sede electrónica, cumplimentar y presentar el formulario normalizado existente en la misma, en el que se declarará que el solicitante es titular de la cuenta bancaria, siguiendo las instrucciones que se indiquen en la misma.
+La tramitación automatizada de la comunicación de alta, modificación y baja de los datos identificativos y bancarios de los interesados que actúen por medio de representante, se efectuará por éste debidamente acreditado en el registro de apoderamientos correspondiente, mediante el formulario normalizado existente en la citada sede electrónica, en el que declarará que la cuenta bancaria es de la titularidad de su representado. La presentación se efectuará de acuerdo con las instrucciones que figuren en dicha sede electrónica.
+Órganos de tramitación
+Conselleria de Economía, Hacienda y Administración Pública
+C/ Palau, 14
+46003 - València (València/Valencia)
+## Entidades colaboradoras de certificación
+## Solicitud
+Plazo
+Desde 01-07-2022 00:00:00h
+Durante todo el año.
+Documentación
+No debe adjuntarse ninguna documentación adicional.
+Forma de presentación
+Telemática
+Se tramita a través de la Sede Electrónica de la Generalitat Valenciana, la cual es la dirección electrónica de Internet disponible para los ciudadanos, a modo de oficina electrónica, que para la Administración de la Comunitat Valenciana...
+Se tramita a través de la Sede Electrónica de la Generalitat Valenciana, la cual es la dirección electrónica de Internet disponible para los ciudadanos, a modo de oficina electrónica, que para la Administración de la Comunitat Valenciana es:
+https://sede.gva.es/es/inicio/procedimientos?id_proc=22648, Se tramita a través de la Sede Electrónica de la Generalitat Valenciana, la cual es la dirección electrónica de Internet disponible para los ciudadanos, a modo de oficina electrónica, que para la Administración de la Comunitat Valenciana es:
+https://sede.gva.es/es/inicio/procedimientos?id_proc=22648
+MásMenos
+SolicitudPresentación autenticada
+Con la asistencia de personal funcionario habilitado
+Las personas interesadas que no estén obligadas a relacionarse electrónicamente con la Administración y no dispongan de los medios para la presentación telemática, podrán contar con la asistencia de personal funcionario habilitado para la identificación y firma electrónica de las solicitudes, en...
+Las personas interesadas que no estén obligadas a relacionarse electrónicamente con la Administración y no dispongan de los medios para la presentación telemática, podrán contar con la asistencia de personal funcionario habilitado para la identificación y firma electrónica de las solicitudes, en horario de 9 a 15 h o de 9 a 14 h durante la semana de fiestas locales, en las siguientes oficinas de asistencia en materia de registro:
+MásMenos
+Presencial
+Las personas interesadas que no estén obligadas a relacionarse a través de medios electrónicos con las Administraciones Públicas, podrán presentar la documentación:
+a) En las oficinas de asistencia en materia de registros
+b) En las oficinas de Correos, en la forma que reglamentariamente se establezca.
+c) En las representaciones diplomáticas u oficinas consulares de España en el extranjero.
+d) En cualquier otro que establezcan las disposiciones vigentes.
+Enlaces
+Sede Electrónca de la Generalitat Valenciana
+Normativa
+Orden 2/2022 de la Conselleria de Hacienda y Modelo Económico, por la que se regulan las actuaciones o trámites de alta, modificación y baja de los datos personales identificativos y bancarios de las personas físicas y jurídicas que se relacionen económicamente con la Generalitat.
+DOGV núm. 9324...
+RESOLUCIÓN de 13 de junio de 2023, del conseller de Hacienda y Modelo Económico, por la que se autoriza la implementación de una nueva funcionalidad en el sistema informático PROPER y se regulan las actuaciones administrativas automatizadas a realizar en el aplicativo SIGNO para incorporar los...
+Resolución de 16 de junio de 2022, del conseller de Hacienda y Modelo Económico, por la que se aprueba la implementación del sistema informático PROPER y se regulan las actuaciones administrativas automatizadas de la Intervención de la Generalitat Valenciana, de acuerdo con lo previsto en la...
+## Resolución
+Órganos resolución
+Conselleria de Economía, Hacienda y Administración Pública
+C/ Palau, 14
+46003 - València (València/Valencia)
+Agota vía administrativa
+Sí
+## Preguntas frecuentes
+Dudas sobre el trámite
+Dónde consultar dudas sobre el trámite:
+[email]
+Problemas técnicos
+Problemas informáticos
+Formulario de consulta
+Preguntas frecuentes sobre Carpeta ciudadana y Bandeja de firmas
+Preguntas frecuentes sobre la tramitación telemática
+## Temas relacionados
+## MATERIAS
+Ciudadanía
+Economía y Hacienda
+Abono de facturas
+Ayudas, becas y subvenciones
+Empresas
+Ayudas y subvenciones
+Financiación y tributos
+## TEMA
+Economía y hacienda
+Financiación
+Economía
+Tributos
+Promoción económica
+Pagos
+Sector público instrumental
+Hacienda
+Administración pública
+Condiciones personal empleado público
+Administración electrónica
+## PERFILES
+Empresa
+Gran empresa
+Pequeña y mediana empresa
+Profesionales y autónomos
+Fundaciones
+Cooperativas
+Entidades del tercer sector
+Ciudadanía
+Personas en riesgo de exclusión
+Pensionistas
+Jóvenes
+Investigadores/oras
+Niños y familias
+Inmigrantes
+Gente mayor
+Estudiantes
+Mujeres
+Docentes
+Personas con discapacidad
+Personas desempleadas
+## SECTOR
+Agricultura, alimentación, ganadería, pesca y actividades forestales
+Actividades forestales
+Agricultura
+Sanidad vegetal y alimentaria
+Industria agroalimentaria
+Pesca
+Ganadería
+Industria
+Accidentes graves
+Homologaciones y metrología
+Importadores y fabricantes de metales preciosos
+Industrias extractivas. Minas
+Industria química y petroquímica
+Industria agroalimentaria
+Energía
+Energía eléctrica
+Gas natural
+Petróleo
+Producción de energía
+Ahorro y eficiencia energética
+Autoconsumo
+Construcción e instalaciones
+Instalaciones
+Instaladores
+Actuar como empresa instaladora en Comunitat Valenciana
+Construcción
+Agentes de la propiedad inmobiliaria
+Trabajar con la administración
+Agua, saneamiento y residuos
+Suministro y captación de agua
+Residuos
+Saneamiento y vertido
+Salud
+Productos y establecimientos sanitarios
+Sanidad ambiental y alimentaria
+Formación sanitaria especializada
+Salud laboral
+Hostelería y turismo
+Establecimientos turísticos
+Profesionales del turismo
+Bares y restaurantes
+Turismo pesquero
+Comercio
+Quiero abrir una tienda
+Franquicias
+Comercio electrónico
+Quejas y reclamaciones
+Estaciones de servicio
+Talleres de reparación de vehículos
+Artesanía
+Ferias
+Fabricantes e importadores de metales preciosos
+Transporte y tecnología
+Transporte por carretera
+Centrales de mercancías
+Transporte por cable
+Puertos
+Aeropuertos y transporte aéreo
+Transporte marítimo
+Educación, cultura y ocio
+Centros de enseñanza y formación
+Lengua y empresa
+Empresas culturales y audiovisuales
+Espectáculos y actividades recreativas
+Actividades profesionales del deporte
+Instalaciones juveniles
+Actividades de los profesionales
+Agentes de la propiedad inmobiliaria
+Lengua y empresa
+Profesionales del turismo
+Consulta de ingenieros de proyectos ICT
+Profesionales de los transportes
+Profesionales del deporte
+Empresas de trabajo temporal
+Carnets, licencias y tarjetas profesionales
+Actividades financieras y seguros
+Seguros
+Empresas aseguradoras
+## TEMÁTICA
+Financiación y gestión económica
+Impuestos y tributos
+Gestión económica
+## CICLO VITAL
+Planificar un negocio
+Crecer y consolidarse
+## TIPO
+Tributos
+## Enlaces de interés
+Acceso a Cl@u
+Carpeta ciudadana
+Pago telemático genérico
+Registro Electrónico de Apoderamientos de la Administración General del Estado
+Registro de Representantes de la ACCV
+Sistemas de identificación y firma aceptados
+Sistemas de verificación de firma
+Correo electrónico
+Twitter
+Facebook
+whatsapp
+telegram

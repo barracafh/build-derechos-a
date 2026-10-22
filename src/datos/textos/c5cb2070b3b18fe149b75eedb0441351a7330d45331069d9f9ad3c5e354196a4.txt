@@ -1,0 +1,92 @@
+## Subpágina: Formulario de consulta
+## Texto superior formulario problemas técnicos
+Por favor revise previamente el listado de preguntas frecuentes
+Le recordamos que también tiene a su disposición un trámite de pruebas que le permitirá familiarizarse con la tramitación y comprobar previamente su equipo
+Si su incidente está relacionado con el acceso a través de un certificado digital verifique previamente su validez a través de la página http://valide.redsara.es/valide/inicio.html y adjunte captura.
+Formulario problemas técnicos
+La información marcada con * es obligatoria
+Error. Se debe rellenar el campo Tipo de incidencia
+Tipo de incidencia
+Requerido
+Seleccione una opción
+Trámites de la Agencia Tributaria Valenciana (modelo 600,620, 650 o 651)
+Trámites del IVACE
+Trámites Industria (Instalaciones eléctricas y térmicas)
+Otros trámites: Incidencias de acceso a trámites con autenticación
+Otros trámites: Incidencias de acceso a trámites sin autenticación
+Otros trámites: Incidencias con los pagos
+Otros trámites: Incidentes con Autofirma/errores tipo SAF_XX
+Otros trámites: Incidencias dentro de los trámites
+Incidencias de acceso
+Notificaciones caducadas
+Otros casos
+Incidencias de acceso
+Otros casos
+Incidencias cita previa telemática (ETURNOS)
+Código seguro de verificación (CSV)
+Verificación de huella de documentos (HASH)
+Consultas sobre cada trámite
+Para poder finalizar un trámite telemático con pago, es necesario que el pago se realice dentro del propio trámite. No se admitirá el pago vía banca-online, pago genérico o pago presencial, es decir, con pago realizado fuera del trámite. Si ya ha pagado por fuera del trámite le recomendamos que realice una nueva tramitación, pague y registre. Posteriormente solicite el reembolso de la tasa desde https://atv.gva.es/es/dii-756-acces.
+Este formulario es para incidentes, por favor, para saber donde dirigir las consultas de cada trámite consulte la FAQ Consultas funcionales sobre los trámites
+Si se trata de un incidente con Autofirma o del tipo SAF_XXX, por favor, consulte la FAQ 12. Incidentes relacionados con Autofirma/errores tipo SAF_XX
+Nombre
+Asunto
+Error. Se debe rellenar el campo DNI o CIF del CERTIFICADO DIGITAL CON EL QUE SE ESTA TRAMITANDO
+* DNI o CIF del CERTIFICADO DIGITAL CON EL QUE SE ESTA TRAMITANDO (campo obligatorio)
+Requerido
+Error. Se debe rellenar el campo Correo electrónico de respuesta
+* Correo electrónico de respuesta (campo obligatorio)
+Requerido
+Error. Se debe rellenar el campo Método de acceso
+* Método de acceso (campo obligatorio)
+Requerido
+Cl@ve DNIe / Certificado electrónico
+Cl@ve Móvil
+Cl@ve permanente
+Certificado digital
+Anónimo
+Error. Se debe rellenar el campo Fecha y hora aproximada en la que se ha producido el error
+* Fecha y hora aproximada en la que se ha producido el error (campo obligatorio)
+Requerido
+Error. Se debe rellenar el campo Trámite telemático al que se está accediendo
+* Trámite telemático al que se está accediendo (campo obligatorio)
+Error. Se debe rellenar el campo URL o dirección de la página donde se produce el incidente
+* URL o dirección de la página donde se produce el incidente (campo obligatorio)
+Requerido
+Error. Se debe rellenar el campo Descripción del problema
+* Descripción del problema (campo obligatorio)
+Requerido
+******************* En caso de incidencia de pago por favor rellene estos datos *******************
+Tipo de pago
+Pago dentro del trámite
+Resto de pagos(genérico directamente en el banco en la banca online)
+NIF del titular del Pago
+Fecha/hora del pago
+Número de autoliquidación
+Importe
+El campo Extracto bancario del pago: fichero-corrupto-o-vacio
+El tamaño de los ficheros adjuntos supera el límite permitido.
+Extracto bancario del pago
+(máx.: 1) (Tamaño máximo del total de los ficheros adjuntados: 15MB)
+Seleccionar archivo
+No hay ficheros seleccionados
+El campo Justificante de pago: fichero-corrupto-o-vacio
+El tamaño de los ficheros adjuntos supera el límite permitido.
+Justificante de pago
+(Tamaño máximo del total de los ficheros adjuntados: 15MB)
+Seleccionar archivo
+No hay ficheros seleccionados
+Por favor, seleccione el paso en el que se encuentra:
+ha iniciado un nuevo pago
+está utilizando el botón de verificación de pago sin éxito
+El campo * Captura de pantalla del error: fichero-corrupto-o-vacio
+Error. Se debe rellenar el campo Captura de pantalla del error
+El tamaño de los ficheros adjuntos supera el límite permitido.
+* Captura de pantalla del error (campo obligatorio)
+(Tamaño máximo del total de los ficheros adjuntados: 15MB)
+Seleccionar archivo
+No hay ficheros seleccionados
+Código SIAC
+Fecha fin solicitud
+Nombre corto tramite
+Enviar
