@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Saltar al contenido
         </a>
         <aside aria-label="Aviso" className="bg-muted px-(--page-gutter) py-2">
-          <p className="mx-auto max-w-(--container-content) text-base text-(--text-secondary)">
+          <p className="mx-auto max-w-(--container-content) text-center text-base text-(--text-secondary)">
             Herramienta experimental. No es un servicio oficial.
           </p>
         </aside>
