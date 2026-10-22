@@ -116,6 +116,21 @@
       "archivo": "pnc-resumen.sintetico.pdf",
       "semilla": "imserso",
       "url": "(synthetic, no URL)"
+    },
+    {
+      "archivo": "aeat-deducciones.semilla.html",
+      "semilla": "aeat-deducciones",
+      "url": "https://sede.agenciatributaria.gob.es/Sede/irpf.html"
+    },
+    {
+      "archivo": "gva-deducciones.semilla.html",
+      "semilla": "gva-deducciones",
+      "url": "https://hisenda.gva.es/es/web/tributos/beneficis-fiscals"
+    },
+    {
+      "archivo": "gva-dependencia.semilla.html",
+      "semilla": "gva-dependencia",
+      "url": "https://serviciossociales.gva.es/es/web/dependencia/cataleg"
     }
   ]
 }

@@ -76,6 +76,26 @@ export const semillas: Semilla[] = [
     paginacion: { parametro: "pagina", max: 2 },
   },
   {
+    id: "aeat-deducciones",
+    // IRPF family and disability deductions (maternity, large family, dependants with disability).
+    url: "https://sede.agenciatributaria.gob.es/Sede/irpf.html",
+    patron: /^https:\/\/sede\.agenciatributaria\.gob\.es\/Sede\/irpf\/deducciones[\w-]*\.html$/,
+    administracion: "Estado",
+  },
+  {
+    id: "gva-deducciones",
+    // Regional IRPF deductions and tax benefits, one page per tax year.
+    url: "https://hisenda.gva.es/es/web/tributos/beneficis-fiscals",
+    patron: /^https:\/\/hisenda\.gva\.es\/es\/web\/tributos\/beneficis-fiscals-202[56]$/,
+    administracion: "Comunitat Valenciana",
+  },
+  {
+    id: "gva-dependencia",
+    url: "https://serviciossociales.gva.es/es/web/dependencia/cataleg",
+    patron: /^https:\/\/serviciossociales\.gva\.es\/es\/web\/dependencia\/(prestaciones-y-servicios|grau-iii-dependencia-extrema|ajudes-ela|informacio-general)$/,
+    administracion: "Comunitat Valenciana",
+  },
+  {
     id: "valencia-programas",
     url: "https://www.valencia.es/cas/bienestar-social-integracion/programas",
     patron: /^https:\/\/www\.valencia\.es\/cas\/bienestar-social-integracion\/programas\/-\/content\/programas\?uid=\w+$/,

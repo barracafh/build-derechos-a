@@ -205,6 +205,90 @@
       "consultado": "2026-10-22"
     },
     {
+      "id": "asistencia-personal",
+      "tipo": "ayuda",
+      "titulo": "ASISTENCIA PERSONAL",
+      "administracion": "Comunitat Valenciana",
+      "organismo": null,
+      "frases_usuario": [
+        "necesito un asistente personal para ir a trabajar",
+        "tengo dependencia y quiero vivir de forma independiente",
+        "ayuda para pagar un asistente personal",
+        "mi hijo con discapacidad necesita acompañamiento en el colegio",
+        "quiero contratar a alguien que me ayude en el día a día"
+      ],
+      "requisitos_clave": [
+        "1.º Que hayan sido valoradas en cualquier de los grados de situación de dependencia.",
+        "2.º Que tengan cumplidos los 18 años de edad y no hayan cumplido los 65 años. (1*)",
+        "3.º Que manifiestan la voluntad de tener una vida independiente.",
+        "4.º Que realizan un proyecto de vida independiente.",
+        "5.º Que el Programa Individual de Atención (**PIA) prescriba la idoneidad de esta prestación.",
+        "6.º Que formalizan un contrato de trabajo con la persona de asistencia personal o un contrato de prestación de este servicio con entidad jurídica o persona profesional autónoma prestamista del servicio acreditada.",
+        "2.º Que tengan cumplidos los 3 años de edad y no hayan cumplido los 18 años."
+      ],
+      "pasos": [
+        "Se puede solicitar en cualquier momento, indicándolo siempre en las preferencias de la solicitud inicial de reconocimiento de la situación de dependencia o si es un momento posterior, en la solicitud de petición de nuevas preferencias de servicios o prestaciones."
+      ],
+      "documentacion": [
+        "1. “Solicitud inicial de reconocimiento de la situación de dependencia y del derecho a las prestaciones del sistema”, indicando la preferencia de este recurso.",
+        "2. Proyecto de vida independiente (PVI)",
+        "3. Domiciliación bancaria",
+        "Declaración responsable de la persona asistente personal",
+        "Certificado negativo del registro de delincuentes sexuales (solo si se opone a la consulta por parte de la Administración en la declaración responsable de la persona asistente personal)",
+        "Titulación de la persona asistente personal (solo si no autoriza la consulta en la declaración responsable)",
+        "Anexo de acompañamiento de la persona asistente personal en el ámbito educativo"
+      ],
+      "plazo": "Se puede solicitar en cualquier momento",
+      "enlace_info": "https://serviciossociales.gva.es/es/web/dependencia/asistente-personal",
+      "enlace_tramite": "https://www.gva.es/es/inicio/procedimientos?id_proc=G3256",
+      "fuente": "https://serviciossociales.gva.es/es/web/dependencia/asistente-personal ; https://serviciossociales.gva.es/es/web/dependencia/normativa ; https://serviciossociales.gva.es/documents/610662/370800300/importes+prestaciones+ec.y+vinculadas_cas+20.12.24.xlsx/1c2ee17f-4618-76a6-a8ce-76c118318a34?t=1734699747037 ; https://serviciossociales.gva.es/documents/610662/370791566/Compatibilidad+recursos_cas+20.12.24.pdf/95bd1b59-128b-c273-2233-6f42f4327c3f?t=1734700990832 ; https://serviciossociales.gva.es/documents/610662/370791315/PVI+PAP_cast_mem-dic+24.pdf/ec5e6b76-1462-a27b-c7bc-9507402aa78d?t=1734683495684 ; https://serviciossociales.gva.es/documents/610662/370791315/PVI+PATI_cast_membrete-dict24.pdf/deb3d713-8d56-d52e-d9f4-f83eb4006506?t=1734683539575 ; https://serviciossociales.gva.es/documents/610662/370791315/cast.INSTRUCC+ACREDITAC+ASIST.PERSONAL_+MAYO23.pdf/d9a60393-a6df-195c-7e9d-e8c2585264a2?t=1685604752036 ; https://serviciossociales.gva.es/documents/610662/370791315/Listado+de+entidades+y+personas+autorizadas+para+la+prestaci%C3%B3n+de+asistencia+personal.pdf/d42cda1c-0084-cc60-c09c-bbb764059d1c?t=1773062941609",
+      "verificado": false,
+      "nota": "(1*)podrá ser solicitada por personas mayores de 65 años, que por sufrimiento de una enfermedad sobrevenida no derivada de la edad necesitan del servicio para continuar con su proyecto de vida independiente.",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "permanente",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "ENLACE",
+          "url": "https://serviciossociales.gva.es/documents/610662/370791566/Compatibilidad+recursos_cas+20.12.24.pdf/95bd1b59-128b-c273-2233-6f42f4327c3f?t=1734700990832"
+        },
+        {
+          "titulo": "PROYECTO DE VIDA INDEPENDIENTE. PAP (para mayores de edad)",
+          "url": "https://serviciossociales.gva.es/documents/610662/370791315/PVI+PAP_cast_mem-dic+24.pdf/ec5e6b76-1462-a27b-c7bc-9507402aa78d?t=1734683495684"
+        },
+        {
+          "titulo": "PROYECTO DE VIDA INDEPENDIENTE. PATI (para menores de edad)",
+          "url": "https://serviciossociales.gva.es/documents/610662/370791315/PVI+PATI_cast_membrete-dict24.pdf/deb3d713-8d56-d52e-d9f4-f83eb4006506?t=1734683539575"
+        },
+        {
+          "titulo": "INSTRUCCIÓN POR LA QUE SE REGULAN LAS CONDICIONES PARA LA ACREDITACIÓN PROVISIONAL DE ENTIDADES, EMPRESAS Y PERSONAS QUE PRESTAN EL SERVICIO DE ASISTENCIA PERSONAL",
+          "url": "https://serviciossociales.gva.es/documents/610662/370791315/cast.INSTRUCC+ACREDITAC+ASIST.PERSONAL_+MAYO23.pdf/d9a60393-a6df-195c-7e9d-e8c2585264a2?t=1685604752036"
+        },
+        {
+          "titulo": "Listado de entidades y personas autorizadas para la prestación de asistencia personal",
+          "url": "https://serviciossociales.gva.es/documents/610662/370791315/Listado+de+entidades+y+personas+autorizadas+para+la+prestaci%C3%B3n+de+asistencia+personal.pdf/d42cda1c-0084-cc60-c09c-bbb764059d1c?t=1773062941609"
+        }
+      ],
+      "textos": [
+        "1a8450f2e650e3712e7335be8e45a21baf27156f57dc3648e9973368a12cd0eb",
+        "80f4884ee3f1a218e746557e8a6b5ff200158d29baf930f8987b34ad6e499a68",
+        "5703e079afd084eec1853a77a05418fddad2a0639344e4afc0d0869acedf84bb"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
       "id": "asistencia-sanitaria",
       "tipo": "ayuda",
       "titulo": "Asistencia sanitaria",
@@ -333,6 +417,825 @@
       "consultado": "2026-10-22"
     },
     {
+      "id": "ayudas-ela",
+      "tipo": "ayuda",
+      "titulo": "Ayudas ELA",
+      "administracion": "Comunitat Valenciana",
+      "organismo": "Dirección General de Dependencia y de Personas Mayores",
+      "frases_usuario": [
+        "tengo ELA y necesito pagar material y cuidadores",
+        "ayudas para enfermos de ELA en Valencia",
+        "mi madre tiene esclerosis lateral amiotrófica, hay alguna ayuda",
+        "dinero para contratar a alguien que cuide a un enfermo de ELA"
+      ],
+      "requisitos_clave": [
+        "personas afectadas por esclerosis lateral amiotrófica (ELA) en fase avanzada que precisan cuidados de alta complejidad"
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://serviciossociales.gva.es/es/web/dependencia/ajudes-ela",
+      "enlace_tramite": null,
+      "fuente": "https://serviciossociales.gva.es/es/web/dependencia/ajudes-ela ; https://serviciossociales.gva.es/es/web/dependencia/normativa ; https://serviciossociales.gva.es/documents/610662/401275084/Resoluci%C3%B3n+plan+de+control+ELA.pdf/db6a56f7-8bc2-2dee-e3f4-8de8fb457b11?t=1769502777433",
+      "verificado": false,
+      "nota": "AYUDAS ELA, Ayudas para la adquisición de material o contratación de personal de ayuda para personas enfermas de ELA",
+      "relacionados": [
+        "grado-iii-de-dependencia-extrema"
+      ],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "RESOLUCIÓN de la consellera de Servicios Sociales, Familia e Infancia por la que se aprueba el Plan de control aplicable a la línea: S2061 “AYUDAS ELA, Ayudas para la adquisición de material o contratación de personal de ayuda para personas enfermas de ELA” a cargo de la dotación presupuestaria de la Dirección General de Dependencia y de Personas Mayores, en el ejercicio 2025.",
+          "url": "https://serviciossociales.gva.es/documents/610662/401275084/Resoluci%C3%B3n+plan+de+control+ELA.pdf/db6a56f7-8bc2-2dee-e3f4-8de8fb457b11?t=1769502777433"
+        }
+      ],
+      "textos": [
+        "10cba71fdb758166041b029229dba27f8acbddd4a4b0ab9350796d8164297d79",
+        "80f4884ee3f1a218e746557e8a6b5ff200158d29baf930f8987b34ad6e499a68"
+      ],
+      "relaciones": [
+        {
+          "id": "grado-iii-de-dependencia-extrema",
+          "tipo": "relacionada",
+          "cita": "Grado III+ de dependencia extrema"
+        }
+      ],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "beneficios-fiscales-2025",
+      "tipo": "ayuda",
+      "titulo": "Beneficios fiscales 2025",
+      "administracion": "Comunitat Valenciana",
+      "organismo": null,
+      "frases_usuario": [
+        "qué deducciones autonómicas tengo en la renta en la Comunitat Valenciana",
+        "deducción por alquiler de vivienda en la declaración valenciana",
+        "desgravar por nacimiento de un hijo en Valencia",
+        "deducción por familia numerosa o monoparental en el IRPF",
+        "deducción en la renta por discapacidad o por cuidar a mis padres"
+      ],
+      "requisitos_clave": [
+        "600€, 750€ o 900€, según se trate del primero, segundo o tercero y sucesivos.- Por cada hijo nacido o adoptado durante el periodo impositivo, o persona acogida o guardada con fines de adopción, cuando tal situación comprenda la totalidad del periodo impositivo. (Art.4.1.a Ley 13/1997).",
+        "246€.- Por nacimiento o adopción múltiples, durante el período impositivo. (Art.4.1.b Ley 13/1997).",
+        "330€ o 660€.- Por ostentar el título de familia numerosa o el de familia monoparental, según su categoría. (Art.4.1.d Ley 13/1997).",
+        "15% De las cantidades destinadas a la custodia no ocasional en guarderías y centros de primer ciclo de educación infantil, de hijos e hijas o personas adoptadas, acogidas o con delegación de guarda con fines de adopción, menores de 3 años. Límite: 297€ por cada una de ellas. (Art.4.1.e Ley 13/1997).",
+        "460€.- Por conciliación del trabajo con la vida familiar: Por cada hijo o hija o persona acogida o con delegación de guarda con fines de adopción, mayor de tres años y menor de cinco años (Art.4.1.f Ley 13/1997).",
+        "197€.- Para contribuyentes con un grado de discapacidad igual o superior al 33%, de edad igual o superior a 65 años (Art.4.1.g Ley 13/1997).",
+        "197€.-Por ascendientes mayores de 75 años, y por ascendientes mayores de 65 años que tengan un grado de discapacidad igual o superior al 65%, o un grado de discapacidad intelectual o mental reconocido de manera permanente igual o superior al 33%, cuando convivan con el contribuyente y no tengan rentas anuales, excluidas las exentas, superiores a 8.000€ (Art.4.1.h Ley 13/1997).",
+        "Por arrendamiento o pago por la cesión en uso de la vivienda habitual, sobre las cantidades satisfechas: (Art.4.1.n Ley 13/1997).",
+        "El 25%, con el límite de 950€ o 30%, con el límite de 1.100€, si reúne dos o más de las siguientes condiciones: Tener una edad igual o inferior a 35 años, tener reconocido un determinado grado de discapacidad o tener consideración de víctima de violencia de género.",
+        "110€.- Por cantidades destinadas a la adquisición de material escolar por hijo o hija o persona acogida o con delegación de guarda con fines de adopción."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://hisenda.gva.es/es/web/tributos/beneficis-fiscals-2025",
+      "enlace_tramite": null,
+      "fuente": "https://hisenda.gva.es/es/web/tributos/beneficis-fiscals-2025 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=2 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=4 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=2 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=5 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=4 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=5 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos.pdf/6f47593e-f72f-06c4-5d0e-33185d694428?t=1755598834690#view=Fit&page=4 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=6 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=6 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=7 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=8 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=8 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=10 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=17 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=12 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=16 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=13 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=20 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=14 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=7 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=15 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=17 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=9 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=19 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=10 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=20 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=22 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=11 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=23 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=25 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=12 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=26 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=28 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=30 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=31 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=21 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=32 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=33 ; https://hisenda.gva.es/documents/168162620/0/CUESTIONES+SALUD.pdf/7689ed1f-794c-632b-8428-414d756a403c?t=1713943941919 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=22 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=35 ; https://hisenda.gva.es/documents/168162620/0/CUESTIONES+DEPORTE.pdf/2f805300-0c6e-d02a-ad6c-45bd27b0ded0?t=1747737999070&download=true ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=13 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=36 ; http://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos.pdf/6f47593e-f72f-06c4-5d0e-33185d694428?t=1750161495511#view=Fit&page=33 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=14 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=37 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=15 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=39 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=40 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=23 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=43 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=19 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=44 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=18 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=46 ; https://dogv.gva.es/datos/2020/06/15/pdf/2020_4450.pdf ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=47 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=29 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=30 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=31 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=33 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=34 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=35 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=36 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=38 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=40 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=41 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=45 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=43 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=47 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=49 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=50 ; https://dogv.gva.es/datos/2024/06/29/pdf/2024_6384.pdf ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=46 ; https://dogv.gva.es/datos/2021/12/30/pdf/2021_13105.pdf#view=Fit&page=37 ; http://www.epsar.gva.es/sanejament/docs/154.pdf#view=Fit&page=20 ; https://www.boe.es/buscar/pdf/1992/BOE-A-1992-12147-consolidado.pdf#view=Fit&page=13 ; http://www.boe.es/buscar/pdf/1992/BOE-A-1992-12147-consolidado.pdf#view=Fit&page=15 ; https://dogv.gva.es/datos/2021/12/30/pdf/2021_13105.pdf#view=Fit&page=27",
+      "verificado": false,
+      "nota": "También serán aplicables las anteriores deducciones cuando se haya declarado judicialmente la incapacidad o la curatela representativa de las personas con discapacidad.",
+      "relacionados": [],
+      "naturaleza": "deduccion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": [
+          "BOE-A-2019-4086",
+          "BOE-A-2015-1952",
+          "BOE-A-1992-12147"
+        ]
+      },
+      "documentos": [
+        {
+          "titulo": "Art. 2 bis",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=2"
+        },
+        {
+          "titulo": "Art.4.1.a",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=4"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=2"
+        },
+        {
+          "titulo": "Art.4.1.b",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=5"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=4"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=5"
+        },
+        {
+          "titulo": "Beneficios fiscales 1 de junio de 2025",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos.pdf/6f47593e-f72f-06c4-5d0e-33185d694428?t=1755598834690#view=Fit&page=4"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=6"
+        },
+        {
+          "titulo": "Art.4.1.e",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=6"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=7"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=8"
+        },
+        {
+          "titulo": "Art. 4.1.i",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=8"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=10"
+        },
+        {
+          "titulo": "Art. 4.1.v",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=17"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=12"
+        },
+        {
+          "titulo": "Art. 4.1.t",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=16"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=13"
+        },
+        {
+          "titulo": "Art.4.1.aa",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=20"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=14"
+        },
+        {
+          "titulo": "Art.4.1.g",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=7"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=15"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=17"
+        },
+        {
+          "titulo": "Art.4.1.k",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=9"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=19"
+        },
+        {
+          "titulo": "Art.4.1.l",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=10"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=20"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=22"
+        },
+        {
+          "titulo": "Art.4.1.n",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=11"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=23"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=25"
+        },
+        {
+          "titulo": "Art.4.1.ñ",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=12"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=26"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=28"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=30"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=31"
+        },
+        {
+          "titulo": "Art.4.1.ab",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=21"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=32"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=33"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/CUESTIONES+SALUD.pdf/7689ed1f-794c-632b-8428-414d756a403c?t=1713943941919"
+        },
+        {
+          "titulo": "Art.4.1.ad",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=22"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=35"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/CUESTIONES+DEPORTE.pdf/2f805300-0c6e-d02a-ad6c-45bd27b0ded0?t=1747737999070&download=true"
+        },
+        {
+          "titulo": "Art.4.1.p",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=13"
+        },
+        {
+          "titulo": "PULSE AQU",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=36"
+        },
+        {
+          "titulo": "Í",
+          "url": "http://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos.pdf/6f47593e-f72f-06c4-5d0e-33185d694428?t=1750161495511#view=Fit&page=33"
+        },
+        {
+          "titulo": "Art.4.1.q",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=14"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=37"
+        },
+        {
+          "titulo": "Art.4.1.r",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=15"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=39"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=40"
+        },
+        {
+          "titulo": "Art.4.1.ae",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=23"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=43"
+        },
+        {
+          "titulo": "Art.4.1.z",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=19"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=44"
+        },
+        {
+          "titulo": "Art.4.1.x",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=18"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=46"
+        },
+        {
+          "titulo": "Orden 5/2020",
+          "url": "https://dogv.gva.es/datos/2020/06/15/pdf/2020_4450.pdf"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=47"
+        },
+        {
+          "titulo": "Art.10.1.a Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=29"
+        },
+        {
+          "titulo": "Art.10.dos.1º Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=30"
+        },
+        {
+          "titulo": "Art.10.dos.3º Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=31"
+        },
+        {
+          "titulo": "Art.10 bis. 1 Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=33"
+        },
+        {
+          "titulo": "Art.10.bis. 3º Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=34"
+        },
+        {
+          "titulo": "Art.10.bis. 5º Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=35"
+        },
+        {
+          "titulo": "Art.10.bis. 6º Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=36"
+        },
+        {
+          "titulo": "Art.12 bis 1. a, b y c Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=38"
+        },
+        {
+          "titulo": "(Art. 13.Tres Ley 13/1997)",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=40"
+        },
+        {
+          "titulo": "(Art. 13. Cuatro Ley 13/1997)",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=41"
+        },
+        {
+          "titulo": "(Art.13. Cinco Ley 13/1997)",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=45"
+        },
+        {
+          "titulo": "Art. 13.Tres.4 Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=43"
+        },
+        {
+          "titulo": "Art. 14 Bis.Tres Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=47"
+        },
+        {
+          "titulo": "Art. 14 Bis.Cinco Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=49"
+        },
+        {
+          "titulo": "Art. 14 Bis.Siete Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=50"
+        },
+        {
+          "titulo": "Decreto Ley 5/2024",
+          "url": "https://dogv.gva.es/datos/2024/06/29/pdf/2024_6384.pdf"
+        },
+        {
+          "titulo": "Art. 14.Uno.b Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+1+de+junio+2025.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1750153867293#view=Fit&page=46"
+        },
+        {
+          "titulo": "Art. 30 de la Ley 7/2021",
+          "url": "https://dogv.gva.es/datos/2021/12/30/pdf/2021_13105.pdf#view=Fit&page=37"
+        },
+        {
+          "titulo": "Art.20 bis",
+          "url": "http://www.epsar.gva.es/sanejament/docs/154.pdf#view=Fit&page=20"
+        },
+        {
+          "titulo": "Ley 2/1992",
+          "url": "https://www.boe.es/buscar/pdf/1992/BOE-A-1992-12147-consolidado.pdf#view=Fit&page=13"
+        },
+        {
+          "titulo": "Art. 25 bis Ley 2/1992",
+          "url": "http://www.boe.es/buscar/pdf/1992/BOE-A-1992-12147-consolidado.pdf#view=Fit&page=15"
+        },
+        {
+          "titulo": "Art.15 Ley 7/2021",
+          "url": "https://dogv.gva.es/datos/2021/12/30/pdf/2021_13105.pdf#view=Fit&page=27"
+        }
+      ],
+      "textos": [
+        "a87ed8bbb0884abb14a6861ebb86b3000aa02f082373a0a76b0101a6f4780e20",
+        "39e49cf846c35025028f4fac83e836d253ac53180dbef8a48461c5845eee0c81",
+        "39e49cf846c35025028f4fac83e836d253ac53180dbef8a48461c5845eee0c81",
+        "39e49cf846c35025028f4fac83e836d253ac53180dbef8a48461c5845eee0c81"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22",
+      "posibleDuplicado": "beneficios-fiscales-2026"
+    },
+    {
+      "id": "beneficios-fiscales-2026",
+      "tipo": "ayuda",
+      "titulo": "Beneficios fiscales 2026",
+      "administracion": "Comunitat Valenciana",
+      "organismo": null,
+      "frases_usuario": [
+        "qué deducciones autonómicas tengo en la renta en la Comunitat Valenciana",
+        "deducción por alquiler de vivienda en la declaración valenciana",
+        "desgravar por nacimiento de un hijo en Valencia",
+        "deducción por familia numerosa o monoparental en el IRPF",
+        "deducción en la renta por discapacidad o por cuidar a mis padres"
+      ],
+      "requisitos_clave": [
+        "600€, 750€ o 900€, según se trate del primero, segundo o tercero y sucesivos.- Por cada hijo nacido o adoptado durante el periodo impositivo, o persona acogida o guardada con fines de adopción, cuando tal situación comprenda la totalidad del periodo impositivo. (Art.4.1.a Ley 13/1997).",
+        "246€.- Por nacimiento o adopción múltiples, durante el período impositivo. (Art.4.1.b Ley 13/1997).",
+        "330€ o 660€.- Por ostentar el título de familia numerosa o el de familia monoparental, según su categoría. (Art.4.1.d Ley 13/1997).",
+        "15% De las cantidades destinadas a la custodia no ocasional en guarderías y centros de primer ciclo de educación infantil, de hijos e hijas o personas adoptadas, acogidas o con delegación de guarda con fines de adopción, menores de 3 años. Límite: 297€ por cada una de ellas. (Art.4.1.e Ley 13/1997).",
+        "460€.- Por conciliación del trabajo con la vida familiar: Por cada hijo o hija o persona acogida o con delegación de guarda con fines de adopción, mayor de tres años y menor de cinco años (Art.4.1.f Ley 13/1997).",
+        "197€.- Para contribuyentes con un grado de discapacidad igual o superior al 33%, de edad igual o superior a 65 años (Art.4.1.g Ley 13/1997).",
+        "197€.-Por ascendientes mayores de 75 años, y por ascendientes mayores de 65 años que tengan un grado de discapacidad igual o superior al 65%, o un grado de discapacidad intelectual o mental reconocido de manera permanente igual o superior al 33%, cuando convivan con el contribuyente y no tengan rentas anuales, excluidas las exentas, superiores a 8.000€ (Art.4.1.h Ley 13/1997).",
+        "Por arrendamiento o pago por la cesión en uso de la vivienda habitual, sobre las cantidades satisfechas: (Art.4.1.n Ley 13/1997).",
+        "El 25%, con el límite de 950€ o 30%, con el límite de 1.100€, si reúne dos o más de las siguientes condiciones: Tener una edad igual o inferior a 35 años, tener reconocido un determinado grado de discapacidad o tener consideración de víctima de violencia de género.",
+        "110€.- Por cantidades destinadas a la adquisición de material escolar por hijo o hija o persona acogida o con delegación de guarda con fines de adopción."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://hisenda.gva.es/es/web/tributos/beneficis-fiscals-2026",
+      "enlace_tramite": null,
+      "fuente": "https://hisenda.gva.es/es/web/tributos/beneficis-fiscals-2026 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=2 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=3 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=2 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=4 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=4 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=5 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=5 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=6 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=7 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=6 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=8 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=8 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=10 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=15 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=12 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=14 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=13 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=18 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=14 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=7 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=15 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=7 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=17 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=9 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=19 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=20 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=22 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=10 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=23 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=25 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=11 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=26 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=28 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=16 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=30 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=31 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=19 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=32 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=33 ; https://hisenda.gva.es/documents/168162620/0/CUESTIONES+SALUD.pdf/7689ed1f-794c-632b-8428-414d756a403c?t=1713943941919 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=20 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=35 ; https://hisenda.gva.es/documents/168162620/0/CUESTIONES+DEPORTE.pdf/2f805300-0c6e-d02a-ad6c-45bd27b0ded0?t=1747737999070&download=true ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=12 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=36 ; http://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos.pdf/6f47593e-f72f-06c4-5d0e-33185d694428?t=1750161495511#view=Fit&page=33 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=37 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=13 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=39 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=40 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=21 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=43 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=17 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=44 ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=46 ; https://dogv.gva.es/datos/2020/06/15/pdf/2020_4450.pdf ; https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=47 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=26 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=27 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=28 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=29 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=31 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=30 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=32 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=33 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=35 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+11+de+agosto+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1787313662435#view=Fit&page=37 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+11+de+agosto+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1787313662435#view=Fit&page=39 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+11+de+agosto+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1787313662435#view=Fit&page=40 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+11+de+agosto+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1787313662435#view=Fit&page=42 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+11+de+agosto+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1787313662435#view=Fit&page=44 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+11+de+agosto+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1787313662435#view=Fit&page=45 ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+11+de+agosto+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1787313662435#view=Fit&page=46 ; https://dogv.gva.es/datos/2024/06/29/pdf/2024_6384.pdf ; https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+11+de+agosto+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1787313662435#view=Fit&page=43 ; https://dogv.gva.es/datos/2021/12/30/pdf/2021_13105.pdf#view=Fit&page=37 ; https://www.boe.es/buscar/pdf/1992/BOE-A-1992-12147-consolidado.pdf#view=Fit&page=15 ; http://www.boe.es/buscar/pdf/1992/BOE-A-1992-12147-consolidado.pdf#view=Fit&page=17 ; https://dogv.gva.es/datos/2021/12/30/pdf/2021_13105.pdf#view=Fit&page=27",
+      "verificado": false,
+      "nota": "También serán aplicables las anteriores deducciones cuando se haya declarado judicialmente la incapacidad o la curatela representativa de las personas con discapacidad.",
+      "relacionados": [],
+      "naturaleza": "deduccion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": [
+          "BOE-A-2019-4086",
+          "BOE-A-2015-1952",
+          "BOE-A-1992-12147"
+        ]
+      },
+      "documentos": [
+        {
+          "titulo": "Art. 2 bis",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=2"
+        },
+        {
+          "titulo": "Art.4.1.a",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=3"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=2"
+        },
+        {
+          "titulo": "Art.4.1.b",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=4"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=4"
+        },
+        {
+          "titulo": "Art.4.1.c",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=5"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=5"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=6"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=7"
+        },
+        {
+          "titulo": "Art.4.1.f",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=6"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=8"
+        },
+        {
+          "titulo": "Art. 4.1.i",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=8"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=10"
+        },
+        {
+          "titulo": "Art. 4.1.v",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=15"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=12"
+        },
+        {
+          "titulo": "Art. 4.1.t",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=14"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=13"
+        },
+        {
+          "titulo": "Art.4.1.aa",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=18"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=14"
+        },
+        {
+          "titulo": "Art.4.1.g",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=7"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=15"
+        },
+        {
+          "titulo": "Art.4.1.h",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+7+de+marzo+2026.pdf/66aaa0ff-f1a2-f5b8-ad66-014c2aa3f985?t=1773059104699#view=Fit&page=7"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=17"
+        },
+        {
+          "titulo": "Art.4.1.k",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=9"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=19"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=20"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=22"
+        },
+        {
+          "titulo": "Art.4.1.n",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=10"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=23"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=25"
+        },
+        {
+          "titulo": "Art.4.1.ñ",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=11"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=26"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=28"
+        },
+        {
+          "titulo": "Art.4.1.w",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=16"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=30"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=31"
+        },
+        {
+          "titulo": "Art.4.1.ab",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=19"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=32"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=33"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/CUESTIONES+SALUD.pdf/7689ed1f-794c-632b-8428-414d756a403c?t=1713943941919"
+        },
+        {
+          "titulo": "Art.4.1.ad",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=20"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=35"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/CUESTIONES+DEPORTE.pdf/2f805300-0c6e-d02a-ad6c-45bd27b0ded0?t=1747737999070&download=true"
+        },
+        {
+          "titulo": "Art.4.1.p",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=12"
+        },
+        {
+          "titulo": "PULSE AQU",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=36"
+        },
+        {
+          "titulo": "Í",
+          "url": "http://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos.pdf/6f47593e-f72f-06c4-5d0e-33185d694428?t=1750161495511#view=Fit&page=33"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=37"
+        },
+        {
+          "titulo": "Art.4.1.r",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=13"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=39"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=40"
+        },
+        {
+          "titulo": "Art.4.1.ae",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=21"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=43"
+        },
+        {
+          "titulo": "Art.4.1.z",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=17"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=44"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=46"
+        },
+        {
+          "titulo": "Orden 5/2020",
+          "url": "https://dogv.gva.es/datos/2020/06/15/pdf/2020_4450.pdf"
+        },
+        {
+          "titulo": "PULSE AQUÍ",
+          "url": "https://hisenda.gva.es/documents/168162620/0/Beneficios+fiscales+2025+ampliado+con+requisitos_marzo+2026.pdf/e16ccc4d-fec0-7263-5c60-548d4b2f80c2?t=1774260433318#view=Fit&page=47"
+        },
+        {
+          "titulo": "Art.10.1.a Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=26"
+        },
+        {
+          "titulo": "Art.10.1.c Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=27"
+        },
+        {
+          "titulo": "Art.10.1.e Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=28"
+        },
+        {
+          "titulo": "Art.10.2.a Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=29"
+        },
+        {
+          "titulo": "Art.10 bis.2.a Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=31"
+        },
+        {
+          "titulo": "Art.10.bis. 1.a Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=30"
+        },
+        {
+          "titulo": "Art.10.bis. 2.c Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=32"
+        },
+        {
+          "titulo": "Art.10.bis. 2.d Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=33"
+        },
+        {
+          "titulo": "Art.12 bis 1. a, b y c Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+31+de+marzo+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1778840627079#view=Fit&page=35"
+        },
+        {
+          "titulo": "Art. 13.Dos Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+11+de+agosto+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1787313662435#view=Fit&page=37"
+        },
+        {
+          "titulo": "(Art. 13.Tres Ley 13/1997)",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+11+de+agosto+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1787313662435#view=Fit&page=39"
+        },
+        {
+          "titulo": "(Art. 13. Cuatro Ley 13/1997)",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+11+de+agosto+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1787313662435#view=Fit&page=40"
+        },
+        {
+          "titulo": "(Art.13. Cinco Ley 13/1997)",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+11+de+agosto+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1787313662435#view=Fit&page=42"
+        },
+        {
+          "titulo": "Art. 14 Bis.Tres Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+11+de+agosto+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1787313662435#view=Fit&page=44"
+        },
+        {
+          "titulo": "Art. 14 Bis.Cinco Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+11+de+agosto+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1787313662435#view=Fit&page=45"
+        },
+        {
+          "titulo": "Art. 14 Bis.Siete Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+11+de+agosto+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1787313662435#view=Fit&page=46"
+        },
+        {
+          "titulo": "Decreto Ley 5/2024",
+          "url": "https://dogv.gva.es/datos/2024/06/29/pdf/2024_6384.pdf"
+        },
+        {
+          "titulo": "Art. 14.Uno.b Ley 13/1997",
+          "url": "https://hisenda.gva.es/documents/168162620/169398267/Ley+13_1997+a+11+de+agosto+de+2026.pdf/595d4420-7366-3582-eef7-36708b38d6a9?t=1787313662435#view=Fit&page=43"
+        },
+        {
+          "titulo": "Art. 30 de la Ley 7/2021",
+          "url": "https://dogv.gva.es/datos/2021/12/30/pdf/2021_13105.pdf#view=Fit&page=37"
+        },
+        {
+          "titulo": "Art. 21 Ley 2/1992",
+          "url": "https://www.boe.es/buscar/pdf/1992/BOE-A-1992-12147-consolidado.pdf#view=Fit&page=15"
+        },
+        {
+          "titulo": "Art. 26 Ley 2/1992",
+          "url": "http://www.boe.es/buscar/pdf/1992/BOE-A-1992-12147-consolidado.pdf#view=Fit&page=17"
+        },
+        {
+          "titulo": "Art.15 Ley 7/2021",
+          "url": "https://dogv.gva.es/datos/2021/12/30/pdf/2021_13105.pdf#view=Fit&page=27"
+        }
+      ],
+      "textos": [
+        "1c342aabb72741917162c147b762901e3d60cbebb61e377f230f94963d387cb0",
+        "39e49cf846c35025028f4fac83e836d253ac53180dbef8a48461c5845eee0c81",
+        "39e49cf846c35025028f4fac83e836d253ac53180dbef8a48461c5845eee0c81",
+        "39e49cf846c35025028f4fac83e836d253ac53180dbef8a48461c5845eee0c81"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
       "id": "bono-social-termico-2025-sia3178888",
       "tipo": "ayuda",
       "titulo": "Bono social térmico 2025",
@@ -388,6 +1291,68 @@
         "84f12ccfae9c3f90ab6e5c29cea7fa7b26fda60ee8e2637643187753994e6526",
         "4d999475bf5141fbb763e13fecc3c637deb4d1770ad931892b8e823af45aa75e",
         "bcc9b9f576b1396f2fd81224a5a700bf019fd93512355d5fafdbac7b66ae23df"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "censo-de-personas-cuidadoras-en-el-entorno-familiar",
+      "tipo": "ayuda",
+      "titulo": "Censo de personas cuidadoras en el entorno familiar",
+      "administracion": "Comunitat Valenciana",
+      "organismo": "VICEPRESIDENCIA SEGUNDA Y CONSELLERIA DE SERVICIOS SOCIALES, IGUALDAD Y VIVIENDA",
+      "frases_usuario": [
+        "cuido de un familiar dependiente y quiero trabajar de ello",
+        "quiero que me reconozcan la experiencia cuidando a mi madre",
+        "cómo saco el certificado de profesionalidad de atención sociosanitaria siendo cuidadora familiar",
+        "soy cuidadora no profesional y quiero una titulación",
+        "quiero trabajar de auxiliar de ayuda a domicilio"
+      ],
+      "requisitos_clave": [
+        "Ser mayor de 18 años.",
+        "Tener la nacionalidad española o la residencia legal en territorio español.",
+        "La persona solicitante deberá de tener reconocida la condición de persona cuidadora en la Resolución de aprobación del Programa Individual de Atención (PIA) de la persona o personas dependientes atendidas.",
+        "Deberá disponer de una experiencia mínima como persona cuidadora en el entorno familiar de 3 años y 2.000 horas en los últimos 10 años anteriores a la inscripción en este censo.",
+        "Que no dispongan ya de las cualificaciones profesionales que se describen en el siguiente punto.",
+        "Y que estén interesadas en participar en los procedimientos de reconocimiento de la competencia profesional adquirida por experiencia laboral y, en la formación que fuera necesaria para adquirir la cualificación profesional de Atención Sociosanitaria a Personas en el Domicilio o de Atención Sociosanitaria a Personas Dependientes en Instituciones Sociales."
+      ],
+      "pasos": [
+        "PASO 1: SOLICITUD DE INSCRIPCIÓN EN EL CENSO DE PERSONAS CUIDADORAS EN EL ENTORNO FAMILIAR DE LA VICEPRESIDENCIA SEGUNDA Y CONSELLERIA DE SERVICIOS SOCIALES, IGUALDAD Y VIVIENDA:",
+        "Se puede acceder a la solicitud de la inscripción en el censo de personas cuidadoras en el entorno familiar pinchando en el este ENLACE.",
+        "PASO 2: SOLICITUD DE PROCEDIMIENTO DE RECONOCIMIENTO DE LA COMPETENCIA PROFESIONAL ADQUIRIDA A TRAVÉS DE LA EXPERIENCIA LABORAL O DE VÍAS NO FORMALES DE FORMACIÓN COMO PERSONA CUIDADORA EN EL ENTORNO FAMILIAR DE LA CONSELLERIA",
+        "Es muy importante, ya que estás inscrito en el censo, que después de cumplimentar los datos personales que te sean solicitados, se elija el colectivo de “Cuidadores No Profesionales”, la familia profesional de Servicios Socioculturales, la comarca y la sede que quede más próxima a tu domicilio.",
+        "Si completas todo el proceso de este procedimiento y obtienes la acreditación de todas las unidades de competencia de la cualificación profesional solicitada, podrás solicitar el certificado de profesionalidad correspondiente."
+      ],
+      "documentacion": [],
+      "plazo": "Dado que el procedimiento de reconocimiento de la competencia profesional se encuentra permanentemente abierto, el siguiente paso es inscribirte, en cualquier momento,",
+      "enlace_info": "https://serviciossociales.gva.es/es/web/dependencia/cens-de-persones-cuidadores-en-l-entorn-familiar",
+      "enlace_tramite": "https://www.gva.es/es/inicio/procedimientos?id_proc=G20554",
+      "fuente": "https://serviciossociales.gva.es/es/web/dependencia/cens-de-persones-cuidadores-en-l-entorn-familiar ; https://serviciossociales.gva.es/es/web/dependencia/normativa ; https://dogv.gva.es/datos/2019/11/25/pdf/2019_11122.pdf",
+      "verificado": false,
+      "nota": "Si tienes dudas, puedes enviar un e-mail a [email], o llamar al teléfono [teléfono] en horario de mañana (desde las 9 hasta las 15 horas).",
+      "relacionados": [],
+      "naturaleza": "servicio",
+      "tipoPlazo": "permanente",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": "Comunidad Valenciana",
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "Resolución de 20 de noviembre de 2019, de la Vicepresidencia y Conselleria de Igualdad y Políticas Inclusivas, por la que se crea en la Comunitat Valenciana el censo de personas cuidadoras en el entorno familiar, para la concreción de necesidades de acceso a un procedimiento de reconocimiento de la competencia profesional adquirida por la experiencia en cuidados no profesionales y se convoca para su inscripción",
+          "url": "https://dogv.gva.es/datos/2019/11/25/pdf/2019_11122.pdf"
+        }
+      ],
+      "textos": [
+        "87af703a49136528c4ddc19303b7304581fada20eea652fc34a7516c20fc2d36",
+        "80f4884ee3f1a218e746557e8a6b5ff200158d29baf930f8987b34ad6e499a68"
       ],
       "relaciones": [],
       "consultado": "2026-10-22"
@@ -635,6 +1600,466 @@
       "consultado": "2026-10-22"
     },
     {
+      "id": "deduccion-por-ascendiente-con-discapacidad-a-cargo",
+      "tipo": "ayuda",
+      "titulo": "Deducción por ascendiente con discapacidad a cargo",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "mi madre con discapacidad vive conmigo, ¿me desgravo algo?",
+        "deducción en la renta por cuidar a mi padre discapacitado",
+        "tengo a mi cargo un ascendiente con discapacidad",
+        "puedo cobrar por adelantado la deducción por mi padre"
+      ],
+      "requisitos_clave": [],
+      "pasos": [
+        "Presentando la declaración de IRPF.",
+        "Si tu cuota es positiva resta de ésta el importe de la deducción e ingresa o solicita la devolución de la diferencia.",
+        "Si tu cuota diferencial es cero o negativa solicita la devolución que resulta de tu declaración.",
+        "O bien solicitando, cuando cumplas los requisitos, el abono anticipado."
+      ],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-personas-discapacidad/deduccion-ascendiente-discapacidad-cargo.html",
+      "enlace_tramite": null,
+      "fuente": "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-personas-discapacidad/deduccion-ascendiente-discapacidad-cargo.html",
+      "verificado": false,
+      "nota": "Se aplica tanto si la cuota diferencial es positiva (tu renta es a pagar) como si es negativa (tu renta es a devolver) como si es cero.",
+      "relacionados": [],
+      "naturaleza": "deduccion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "incompleta": true,
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "5fa77222362f352d7f5728a4ea10633b7fffe820a9aca4ca0661c602f29edb7e"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22",
+      "posibleDuplicado": "deduccion-por-descendiente-con-discapacidad-a-cargo"
+    },
+    {
+      "id": "deduccion-por-ascendiente-con-dos-hijos-separado-o-sin-vincu",
+      "tipo": "ayuda",
+      "titulo": "Deducción por ascendiente con dos hijos separado o sin vínculo matrimonial",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "Estoy separada y tengo dos hijos, ¿me desgravo algo?",
+        "Soy padre solo con dos hijos, qué deducción tengo en la renta",
+        "Deducción en el IRPF para monoparentales con dos hijos",
+        "Quiero cobrar por adelantado la deducción de familia monoparental"
+      ],
+      "requisitos_clave": [],
+      "pasos": [
+        "Presentando la declaración de IRPF.",
+        "O bien solicitando, cuando cumplas los requisitos, el abono anticipado. En este caso, no podrás minorar el importe de la deducción de la cuota diferencial que resulte de tu declaración de IRPF, pero no te olvides de declararlo."
+      ],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-relacionadas-hijos-descendientes/deduccion-ascendiente-dos-hijos-separado-matrimonial.html",
+      "enlace_tramite": null,
+      "fuente": "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-relacionadas-hijos-descendientes/deduccion-ascendiente-dos-hijos-separado-matrimonial.html",
+      "verificado": false,
+      "nota": "Se aplica tanto si la cuota diferencial es positiva (tu renta es a pagar) como si es negativa (tu renta es a devolver) como si es cero.",
+      "relacionados": [],
+      "naturaleza": "deduccion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "incompleta": true,
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": [
+          "BOE-A-2006-20764",
+          "BOE-A-2007-6820",
+          "BOE-A-2014-13675",
+          "BOE-A-2015-2629",
+          "BOE-A-2017-1334",
+          "BOE-A-2018-10064"
+        ]
+      },
+      "documentos": [],
+      "textos": [
+        "66b8ec10a937ec0eb1ec9cd936006cc4a9e1012a3e352811fb1daeabba183def"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "deduccion-por-conyuge-con-discapacidad-a-cargo",
+      "tipo": "ayuda",
+      "titulo": "Deducción por cónyuge con discapacidad a cargo",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "mi mujer tiene discapacidad y no trabaja, ¿me desgravo algo?",
+        "deducción en la renta por mi marido discapacitado",
+        "tengo a mi pareja con discapacidad a cargo",
+        "puedo cobrar por adelantado la deducción por mi cónyuge"
+      ],
+      "requisitos_clave": [],
+      "pasos": [
+        "Presentando la declaración de IRPF.",
+        "Si tu cuota es positiva resta de ésta el importe de la deducción e ingresa o solicita la devolución de la diferencia.",
+        "Si tu cuota diferencial es cero o negativa solicita la devolución que resulta de tu declaración.",
+        "O bien solicitando, cuando cumplas los requisitos, el abono anticipado."
+      ],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-personas-discapacidad/deduccion-conyuge-discapacidad-cargo.html",
+      "enlace_tramite": null,
+      "fuente": "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-personas-discapacidad/deduccion-conyuge-discapacidad-cargo.html",
+      "verificado": false,
+      "nota": "Se aplica tanto si la cuota diferencial es positiva (tu renta es a pagar) como si es negativa (tu renta es a devolver) como si es cero.",
+      "relacionados": [],
+      "naturaleza": "deduccion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "incompleta": true,
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "a88e08a250932965db06eaf327339e4875fad047c9facc37ec6fd34767a4026b"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "deduccion-por-descendiente-con-discapacidad-a-cargo",
+      "tipo": "ayuda",
+      "titulo": "Deducción por descendiente con discapacidad a cargo",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "Tengo un hijo con discapacidad, ¿me desgravo algo en la renta?",
+        "Deducción en el IRPF por hijo discapacitado",
+        "Quiero cobrar por adelantado la ayuda por hijo con discapacidad",
+        "Cuánto me devuelve Hacienda por tener un hijo con discapacidad"
+      ],
+      "requisitos_clave": [],
+      "pasos": [
+        "Presentando la declaración de IRPF.",
+        "O bien solicitando, cuando cumplas los requisitos, el abono anticipado. En este caso, no podrás minorar el importe de la deducción de la cuota diferencial que resulte de tu declaración de IRPF, pero no te olvides de declararlo."
+      ],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-personas-discapacidad/deduccion-descendiente-discapacidad-cargo.html",
+      "enlace_tramite": null,
+      "fuente": "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-personas-discapacidad/deduccion-descendiente-discapacidad-cargo.html",
+      "verificado": false,
+      "nota": "Se aplica tanto si la cuota diferencial es positiva (tu renta es a pagar) como si es negativa (tu renta es a devolver) como si es cero.",
+      "relacionados": [],
+      "naturaleza": "deduccion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "incompleta": true,
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "9ab1aaa54c3fbb0708b29e2184e199fd6078bde75aba4b323c53b74b4a2922fd"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "deduccion-por-familia-numerosa",
+      "tipo": "ayuda",
+      "titulo": "Deducción por familia numerosa",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "Somos familia numerosa, ¿qué nos desgravamos en la renta?",
+        "Deducción del IRPF por familia numerosa",
+        "Quiero cobrar cada mes la deducción de familia numerosa",
+        "Tengo tres hijos y el título de familia numerosa"
+      ],
+      "requisitos_clave": [],
+      "pasos": [
+        "Presentando la declaración de IRPF.",
+        "O bien solicitando, cuando cumplas los requisitos, el abono anticipado. En este caso, no podrás minorar el importe de la deducción de la cuota diferencial que resulte de tu declaración de IRPF, pero no te olvides de declararlo."
+      ],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-relacionadas-hijos-descendientes/deduccion-familia-numerosa.html",
+      "enlace_tramite": null,
+      "fuente": "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-relacionadas-hijos-descendientes/deduccion-familia-numerosa.html",
+      "verificado": false,
+      "nota": "Se aplica tanto si la cuota diferencial es positiva (tu renta es a pagar) como si es negativa (tu renta es a devolver) como si es cero.",
+      "relacionados": [],
+      "naturaleza": "deduccion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "incompleta": true,
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": [
+          "BOE-A-2006-20764",
+          "BOE-A-2007-6820",
+          "BOE-A-2014-13675",
+          "BOE-A-2015-2629",
+          "BOE-A-2017-1334",
+          "BOE-A-2018-10064"
+        ]
+      },
+      "documentos": [],
+      "textos": [
+        "2b2a7fd47f1c58240bc30831770982d293811c4a02ab544aadd03a55bfd9b94d"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "deduccion-por-maternidad",
+      "tipo": "ayuda",
+      "titulo": "Deducción por maternidad",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "acabo de ser madre, ¿hay deducción en la renta?",
+        "los 100 euros al mes por hijo menor de 3 años",
+        "me desgravo la guardería de mi hijo",
+        "cobrar por adelantado la deducción por maternidad",
+        "deducción por tener un bebé"
+      ],
+      "requisitos_clave": [],
+      "pasos": [
+        "Presentando la declaración de IRPF.",
+        "Si tu cuota es positiva resta de ésta el importe de la deducción e ingresa o solicita la devolución de la diferencia.",
+        "Si tu cuota diferencial es cero o negativa solicita la devolución que resulta de tu declaración.",
+        "O bien solicitando, cuando cumplas los requisitos, el abono anticipado."
+      ],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-relacionadas-hijos-descendientes/deduccion-maternidad.html",
+      "enlace_tramite": null,
+      "fuente": "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-relacionadas-hijos-descendientes/deduccion-maternidad.html",
+      "verificado": false,
+      "nota": "Se aplica tanto si la cuota diferencial es positiva (tu renta es a pagar) como si es negativa (tu renta es a devolver) como si es cero.",
+      "relacionados": [],
+      "naturaleza": "deduccion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "incompleta": true,
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": [
+          "BOE-A-2006-20764",
+          "BOE-A-2022-24386",
+          "BOE-A-2018-17772",
+          "BOE-A-2020-2901",
+          "BOE-A-2020-15598"
+        ]
+      },
+      "documentos": [],
+      "textos": [
+        "4b3c4c1a75adce7a2afa1e19c7f71dbfab630960b968d75ab832ae146ea91ebe"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "deducciones-de-personas-con-discapacidad",
+      "tipo": "ayuda",
+      "titulo": "Deducciones de personas con discapacidad",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "tengo un hijo con discapacidad, qué me desgrava Hacienda",
+        "deducción por familiar con discapacidad a cargo",
+        "cobrar por adelantado la deducción por discapacidad",
+        "mi madre con discapacidad vive conmigo, puedo deducirme algo",
+        "modelo 143 discapacidad"
+      ],
+      "requisitos_clave": [
+        "Deducción por descendiente con discapacidad a cargo",
+        "Deducción por ascendiente con discapacidad a cargo",
+        "Deducción por cónyuge con discapacidad a cargo",
+        "Quiénes son personas con discapacidad a efectos del IRPF y cómo deben acreditarlo"
+      ],
+      "pasos": [
+        "Puedes realizar las gestiones relativas a los modelos 143, 121 y 122."
+      ],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-personas-discapacidad.html",
+      "enlace_tramite": "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-personas-discapacidad/gestiones-personas-discapacidad.html",
+      "fuente": "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-personas-discapacidad.html",
+      "verificado": false,
+      "nota": "Te informamos sobre las deducciones por descendiente, ascendiente y cónyuge con discapacidad",
+      "relacionados": [],
+      "naturaleza": "deduccion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": [
+          "BOE-A-2006-20764",
+          "BOE-A-2007-6820",
+          "BOE-A-2014-13675",
+          "BOE-A-2015-2629",
+          "BOE-A-2017-1334",
+          "BOE-A-2018-10064"
+        ]
+      },
+      "documentos": [],
+      "textos": [
+        "adac35f45a2dc9e334066eb4ce400247cd7b61cf3668f9444c9f36c92bef8cdd"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "deducciones-por-familia-numerosa-o-por-personas-con-discapac",
+      "tipo": "ayuda",
+      "titulo": "Deducciones por familia numerosa o por personas con discapacidad a cargo",
+      "administracion": "Estado",
+      "organismo": "Agencia Tributaria",
+      "frases_usuario": [
+        "somos familia numerosa, ¿me desgravo algo en la renta?",
+        "tengo un hijo con discapacidad a mi cargo",
+        "cuido de mi madre con discapacidad, ¿hay deducción?",
+        "mi pareja tiene discapacidad y no trabaja",
+        "deducción de 1.200 euros en la renta por familia numerosa"
+      ],
+      "requisitos_clave": [
+        "Hasta 1.200 euros anuales por cada descendiente con discapacidad con derecho a la aplicación del mínimo por descendientes",
+        "Hasta 1.200 euros anuales por cada ascendiente con discapacidad con derecho a la aplicación del mínimo por ascendientes.",
+        "Hasta 1.200 euros anuales por el cónyuge no separado legalmente con discapacidad, siempre que no tenga rentas anuales, excluidas las exentas, superiores a 8.000 euros ni genere el derecho a las deducciones anteriores por descendientes o ascendientes con discapacidad.",
+        "Las deducciones se aplican, para cada contribuyente con derecho a las mismas, proporcionalmente al número de meses en que se cumplan de forma simultánea los requisitos previstos para aplicarla."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c18-cuota-liquida-resultante-autoliquidacion/resultado-declaracion/deducciones-familia-numerosa-personas-discapacidad-cargo.html",
+      "enlace_tramite": null,
+      "fuente": "https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c18-cuota-liquida-resultante-autoliquidacion/resultado-declaracion/deducciones-familia-numerosa-personas-discapacidad-cargo.html ; https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c18-cuota-liquida-resultante-autoliquidacion/resultado-declaracion/deducciones-familia-numerosa-personas-discapacidad-cargo/requisitos-otras-condiciones-aplicacion-deducciones.html ; https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c18-cuota-liquida-resultante-autoliquidacion/resultado-declaracion/deducciones-familia-numerosa-personas-discapacidad-cargo/cuantia-maxima-deducciones.html ; https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c18-cuota-liquida-resultante-autoliquidacion/resultado-declaracion/deducciones-familia-numerosa-personas-discapacidad-cargo/prorrateo-calculo-importe-limite-deducciones.html",
+      "verificado": false,
+      "nota": "Cuando dos o más contribuyentes tengan derecho a la aplicación de alguna de las anteriores deducciones respecto de un mismo descendiente, ascendiente o familia numerosa, su importe se prorrateará entre ellos por partes iguales, sin perjuicio de la solicitud de abono anticipado a la que más adelante nos referimos.",
+      "relacionados": [],
+      "naturaleza": "deduccion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "Hasta 1.200 euros anuales por ser un ascendiente, o un hermano huérfano de padre y madre, que forme parte de una familia numerosa de categoría general conforme a la Ley 40/2003, de 18 de noviembre, de Protección a las Familias Numerosas.",
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "71d85200ccb899dededbcee1a0713227d39886fb6440d78f532e56771c372e97",
+        "88b284c2ef3c2ccbf589ef3e617e5aae586c2c9a7ead0f6d89907e8c588303a6",
+        "00d0c725a0e103cbf55abf8d16865af2c430a8a3f51702cb15a706a8393cef90",
+        "91304ed8af4170d07a3cc17738651b69cad450817d97b981abb3313578f26bef"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "deducciones-relacionadas-con-hijos-y-descendientes",
+      "tipo": "ayuda",
+      "titulo": "Deducciones relacionadas con hijos y descendientes",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "qué me desgrava Hacienda por tener hijos",
+        "deducción por maternidad y guardería",
+        "deducción por familia numerosa en la renta",
+        "estoy separada con dos hijos, tengo alguna deducción",
+        "los 100 euros al mes por hijo"
+      ],
+      "requisitos_clave": [
+        "Deducción por maternidad",
+        "Deducción por familia numerosa",
+        "Deducción por ascendiente con dos hijos separado o sin vínculo matrimonial",
+        "A partir de 1 de enero de 2023 quién tiene derecho a la deducción, al incremento por gastos en guardería o centros de educación infantil autorizados, qué cuantía te corresponde y cómo hacerla efectiva"
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-relacionadas-hijos-descendientes.html",
+      "enlace_tramite": null,
+      "fuente": "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-relacionadas-hijos-descendientes.html",
+      "verificado": false,
+      "nota": "Te informamos sobre las deducciones por maternidad, familia numerosa y ascendiente con dos hijos separado o sin vínculo matrimonial",
+      "relacionados": [],
+      "naturaleza": "deduccion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "d7f3183e5ff95dac0944d26ea712fd5f7bf24db7ff74a7db57e6d3ffbfd85fb3"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
       "id": "gestion-de-la-prestacion-de-incapacidad-temporal",
       "tipo": "ayuda",
       "titulo": "Gestión de la prestación de Incapacidad Temporal",
@@ -681,6 +2106,74 @@
         "3f63d7b4cf2f4b8e741782ef538e75e9e28685c41ae048c856da62cbfa398493"
       ],
       "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "grado-iii-de-dependencia-extrema",
+      "tipo": "ayuda",
+      "titulo": "Grado III+ de dependencia extrema",
+      "administracion": "Comunitat Valenciana",
+      "organismo": "Dirección General con competencias en materia de atención a las personas en situación de dependencia",
+      "frases_usuario": [
+        "mi padre tiene ELA y necesita cuidados las 24 horas",
+        "ayuda para cuidador en casa por dependencia extrema",
+        "cómo pido el grado 3+ de dependencia",
+        "prestación para enfermos de ELA en la Comunitat Valenciana",
+        "enfermedad irreversible y necesito atención en casa todo el día"
+      ],
+      "requisitos_clave": [
+        "El reconocimiento de este Grado 3+ supone la concesión a las personas beneficiarias de una prestación económica destinada a cubrir su atención especializada en domicilio durante las 24 horas del día para prevenir el riesgo de muerte evitable en la fase avanzada de la enfermedad.",
+        "La resolución consistirá en la estimación o desestimación del Grado 3+ de dependencia, en función de si se acredita el cumplimiento de los criterios clínicos establecidos para ello."
+      ],
+      "pasos": [
+        "Para ello, deberán presentar el modelo de Solicitud de reconocimiento del Grado 3+ de dependencia junto a correspondiente certificado médico, que consta también como modelo normalizado.",
+        "Presentada esta solicitud, la Dirección General con competencias en materia de atención a las personas en situación de dependencia tramitará el procedimiento conforme a la Ley 39/2015, de 1 de octubre, del Procedimiento Administrativo Común de las Administraciones Públicas.",
+        "En caso de que la resolución del Grado 3+ de dependencia sea estimatoria, a continuación se procederá a la resolución del Programa Individual de Atención (PIA) atendiendo a lo expresado por la persona solicitante en su solicitud de Grado 3+, y con las cuantías establecidas en la normativa vigente."
+      ],
+      "documentacion": [
+        "Solicitud Grado Dependencia 3+",
+        "Certificado médico para el reconocimiento Grado 3+ (Dependencia Extrem) en pacientes afectados por esclerosis lateral amiotrófica (ELA)",
+        "Certificado médico para el reconocimiento Grado 3+ (Dependencia Extrem) en pacientes afectados por enfermedades de alta complejidad y curso irreversible (distintas a ELA)"
+      ],
+      "plazo": null,
+      "enlace_info": "https://serviciossociales.gva.es/es/web/dependencia/grau-iii-dependencia-extrema",
+      "enlace_tramite": "https://siac-front.gva.es/siac-front/public/descarga/es/F156700",
+      "fuente": "https://serviciossociales.gva.es/es/web/dependencia/grau-iii-dependencia-extrema ; https://serviciossociales.gva.es/es/web/dependencia/normativa ; https://serviciossociales.gva.es/documents/610662/401933534/Instrucci%C3%B3n+Grado+III%2B.pdf/c2bc2dd4-334e-47e2-cc31-6831729a9fe4?t=1770879952542",
+      "verificado": false,
+      "nota": null,
+      "relacionados": [
+        "ayudas-ela"
+      ],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "El importe de la prestación económica puede ascender hasta 9850 euros mensuales.",
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "Instrucción de la Dirección General de Dependencia y de las Personas Mayores para la aplicación de las disposiciones normativas reguladoras del Grado III+ de Dependencia Extrema",
+          "url": "https://serviciossociales.gva.es/documents/610662/401933534/Instrucci%C3%B3n+Grado+III%2B.pdf/c2bc2dd4-334e-47e2-cc31-6831729a9fe4?t=1770879952542"
+        }
+      ],
+      "textos": [
+        "c580798c8d3398857ecea5fee1b0e249289d522421685f5ad32b6b83f19d6ee0",
+        "80f4884ee3f1a218e746557e8a6b5ff200158d29baf930f8987b34ad6e499a68"
+      ],
+      "relaciones": [
+        {
+          "id": "ayudas-ela",
+          "tipo": "relacionada",
+          "cita": "Ayudas ELA"
+        }
+      ],
       "consultado": "2026-10-22"
     },
     {
@@ -1547,6 +3040,77 @@
       "consultado": "2026-10-22"
     },
     {
+      "id": "prestacion-para-cuidados-en-el-entorno-familiar",
+      "tipo": "ayuda",
+      "titulo": "Prestación para cuidados en el entorno familiar",
+      "administracion": "Comunitat Valenciana",
+      "organismo": null,
+      "frases_usuario": [
+        "cuido de mi madre en casa, ¿me pagan algo?",
+        "ayuda por cuidar a un familiar dependiente",
+        "la paga de cuidador familiar de la dependencia",
+        "mi padre es dependiente y lo cuido yo",
+        "cobrar por cuidar a mi abuela"
+      ],
+      "requisitos_clave": [
+        "Ser mayor de edad.",
+        "No tener reconocida (ni haber solicitado) situación de dependencia en cualquiera de sus grados, ni estar en situación de gran invalidez.",
+        "Tener acreditada, en el informe social de entorno, la capacidad física, mental e intelectual suficiente para desarrollar adecuadamente por sí misma las funciones de atención y cuidado.",
+        "Estar empadronada a una distancia del domicilio de la persona beneficiaria que permita el desarrollo de los cuidados.",
+        "Compromiso formal de estar en disposición de prestar el cuidado, al menos, un año continuado.",
+        "Acreditar una formación específica en materia de cuidados a personas en situación de dependencia, o bien comprometerse a realizarla.",
+        "Atender de forma exclusiva a una persona dependiente.",
+        "La vivienda de la persona beneficiaria deberá cumplir las condiciones de habitabilidad, salubridad, conservación, equipamiento, higiene y accesibilidad que la hagan apta para su uso por parte de la misma."
+      ],
+      "pasos": [
+        "1º) El procedimiento se inicia a instancia de la persona interesada dirigida a los servicios sociales de atención primaria del Ayuntamiento donde se encuentre empadronada.",
+        "Está siendo atendida mediante cuidados en el entorno familiar por una persona cuidadora que cumpla los requisitos."
+      ],
+      "documentacion": [
+        "Solicitud inicial de reconocimiento de la situación dependencia y derecho a las prestaciones del sistema.",
+        "Compromiso de permanencia y formación de la persona cuidadora.",
+        "Modelo de domiciliación bancaria",
+        "Solicitud de nuevas preferencias de servicios o prestaciones, ampliación o revisión del PIA.",
+        "Solicitud de cambio de la persona/s que ejerce/n los cuidados en el entorno familiar."
+      ],
+      "plazo": null,
+      "enlace_info": "https://serviciossociales.gva.es/es/web/dependencia/prestacion-para-cuidados-en-el-entorno-familiar",
+      "enlace_tramite": "https://www.gva.es/es/inicio/procedimientos?id_proc=G3256",
+      "fuente": "https://serviciossociales.gva.es/es/web/dependencia/prestacion-para-cuidados-en-el-entorno-familiar ; https://serviciossociales.gva.es/es/web/dependencia/normativa ; https://serviciossociales.gva.es/documents/610662/370800300/importes+prestaciones+ec.y+vinculadas_cas+20.12.24.xlsx/1c2ee17f-4618-76a6-a8ce-76c118318a34?t=1734699747037 ; https://serviciossociales.gva.es/documents/610662/370791566/Compatibilidad+recursos_cas+20.12.24.pdf/95bd1b59-128b-c273-2233-6f42f4327c3f?t=1734700990832",
+      "verificado": false,
+      "nota": "Se trata de una prestación nominativa que perciben las personas en situación de dependencia.",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [
+        "No estar vinculada la persona cuidadora a una empresa o entidad acreditada para la prestación de servicios de atención domiciliaria.",
+        "No haber sido condenada por sentencia firme por delito de lesiones, de malos tratos, violencia de género, delitos sexuales o contra la integridad y la libertad de las personas, salvo que se haya extinguido su responsabilidad penal."
+      ],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "ENLACE",
+          "url": "https://serviciossociales.gva.es/documents/610662/370791566/Compatibilidad+recursos_cas+20.12.24.pdf/95bd1b59-128b-c273-2233-6f42f4327c3f?t=1734700990832"
+        }
+      ],
+      "textos": [
+        "db35f54a8093e5944b51c638a251c460286448a15ff232f6051e36219565c15d",
+        "80f4884ee3f1a218e746557e8a6b5ff200158d29baf930f8987b34ad6e499a68",
+        "5703e079afd084eec1853a77a05418fddad2a0639344e4afc0d0869acedf84bb"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
       "id": "prestaciones-del-seguro-escolar",
       "tipo": "ayuda",
       "titulo": "Prestaciones del Seguro escolar",
@@ -1596,6 +3160,125 @@
         "918e5494f867701dabe96575bf346cbc40d2af90ab974384641cc95c41a55941",
         "49935d7255211f65bb5094f1e8dbf43bd350fd3d2cde03b11375691d95440b34",
         "c0d06b02ebd8484a4ae9fccc572c27b1f81a31bbc0b6ef0cef1c22507717454b"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "prestaciones-vinculadas-a-los-servicios",
+      "tipo": "ayuda",
+      "titulo": "Prestaciones vinculadas a los servicios",
+      "administracion": "Comunitat Valenciana",
+      "organismo": null,
+      "frases_usuario": [
+        "No hay plaza pública y pago una residencia privada para mi padre",
+        "Me pueden ayudar a pagar el centro de día privado",
+        "Pago una empresa de ayuda a domicilio para mi madre dependiente",
+        "Ayuda económica para pagar el cuidado de una persona dependiente",
+        "Quiero que la Generalitat me pague parte de la residencia"
+      ],
+      "requisitos_clave": [
+        "Dirigido a personas valoradas en cualquiera de los grados de situación de dependencia con prescripción de idoneidad en su PIA y lo contraten con una empresa acreditada por la Conselleria.",
+        "La persona en situación de dependencia deberá acreditar que al menos recibe el número mínimo de horas establecido en su PIA.",
+        "Dirigido a personas valoradas en cualquiera de los grados de situación de dependencia con prescripción de idoneidad en su PIA y que reciban el servicio de forma continuada (sin interrupción que supere los 2 meses durante el año natural) por parte de una empresa acreditada por la Conselleria ."
+      ],
+      "pasos": [
+        "El procedimiento se inicia a instancia de la persona interesada dirigida a los servicios sociales de atención primaria del Ayuntamiento donde se encuentre empadronada, indicando en la solicitud inicial el servicio o prestación que prefiere o si es un momento posterior, en la solicitud de petición de nuevas preferencias."
+      ],
+      "documentacion": [
+        "Modelo de solicitud inicial indicando la preferencia del servicio o prestación.",
+        "Modelo de solicitud de nuevas preferencias, ampliación o revisión del PIA."
+      ],
+      "plazo": null,
+      "enlace_info": "https://serviciossociales.gva.es/es/web/dependencia/prestacions-vinculades-als-serveis",
+      "enlace_tramite": "https://www.gva.es/es/inicio/procedimientos?id_proc=G3256",
+      "fuente": "https://serviciossociales.gva.es/es/web/dependencia/prestacions-vinculades-als-serveis ; https://serviciossociales.gva.es/es/web/dependencia/normativa ; https://serviciossociales.gva.es/documents/610662/370800300/importes+prestaciones+ec.y+vinculadas_cas+20.12.24.xlsx/1c2ee17f-4618-76a6-a8ce-76c118318a34?t=1734699747037 ; https://serviciossociales.gva.es/documents/610662/370791566/Compatibilidad+recursos_cas+20.12.24.pdf/95bd1b59-128b-c273-2233-6f42f4327c3f?t=1734700990832 ; https://serviciossociales.gva.es/documents/610662/370791566/Compatibilidad+recursos_cas+17.01.23.pdf/bec966ff-062c-3b96-72b7-1c1ae1c8c2b1?t=1705756332031 ; https://serviciossociales.gva.es/documents/610662/164359017/AYUDA+A+DOMICILIO+-+ACTUALIZADO+OCTUBRE+2026.pdf/eff4570e-6ec9-d793-405d-49a0ddc22574?t=1792491580585 ; https://inclusio.gva.es/documents/610662/166872542/SERVEIS+PREVENCI%C3%93+PROMOCI%C3%93.+DIVERSITAT+FUNCIONAL.pdf/e5b86df0-674f-44b3-a740-5c35d96cbc1d?t=1671616917893 ; https://inclusio.gva.es/documents/610662/166872542/SERVEIS+PREVENCI%C3%93+PROMOCI%C3%93.+PERSONES+MAJORS.pdf/235a6a95-6301-4a33-afc1-c6fda8ea18f2?t=1673363328795 ; https://inclusio.gva.es/documents/610651/386436221/CD.+DISC.+INTEL.+PRIV.+.pdf/1c733c42-39f1-d06f-7b23-cb7c48f5d4f6?t=1727439069775 ; https://inclusio.gva.es/documents/610651/384721001/%C2%A1CDEM+PRIV.+.pdf/0224f778-2bef-0584-7762-4d4b19a45c71?t=1727437071212 ; https://serviciossociales.gva.es/documents/610662/371132673/CD+ACREDITADOS_MAYORES+-+CD+ACREDITATS_MAJORS+12_02_24.pdf/b06710d7-5b5e-f03d-1b62-19551b3901d0?t=1707743771732 ; https://serviciossociales.gva.es/documents/610662/371132673/C.+RESIDENCIALES+ACREDITADOS.+MAYORES++28_03_24.pdf/7e5c6513-06f9-e340-4f5c-7a610140d3ae?t=1712741284152 ; https://inclusio.gva.es/documents/610651/386436221/RESID.+DISC.+F_PRIV.pdf/c64422b1-9fcb-7ffd-2f23-e329ce0cb4a8?t=1727684887316 ; https://serviciossociales.gva.es/documents/610651/390572909/R-CARD.DF%2CPS.+PRIV.pdf/446a4287-3b0b-b607-b1bb-c2d49fc1e24d?t=1740984941384 ; https://inclusio.gva.es/documents/610651/386436221/CRCC.+DISC.+INTEL.+PRIV.+AP.EXT.+.pdf/6fdccd63-00ae-d4b2-2ca6-f2a5699310d4?t=1727960366489 ; https://inclusio.gva.es/documents/610651/386436221/CRCC_DISC_PS_AP_LIMIT_RPIV.pdf/43eb6162-093c-5ef6-3e4e-ef4b28ee75bc?t=1727772170917 ; https://inclusio.gva.es/documents/610651/384721001/RESID.+PRIV.+AUT.+PERS.+SM+.pdf/13c5ab81-929e-e867-2890-996ffa69fff3?t=1727439937885 ; https://inclusio.gva.es/documents/610651/384721001/CRCC.+EM.+AP.+EXT_PRIV+%281%29.pdf/c1db6abc-1bdb-bc23-bcfa-f3a1f85a0d0c?t=1727961537767 ; https://inclusio.gva.es/documents/610651/384721001/CRCC%7EWGN.pdf/0c8c4863-53e1-82d5-1173-821d06128208?t=1727961538234",
+      "verificado": false,
+      "nota": "Los servicios tendrán carácter prioritario y se prestarán a través de la oferta pública, de no ser posible la atención mediante alguno de dichos servicios se resolverá la prestación económica vinculada.",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "Esta prestación económica de carácter personal estará, en todo caso, vinculada a un servicio concreto y tiene por objeto contribuir a la financiación del coste, el cual vendrá establecido en el programa individual de atención (PIA) de cada persona beneficiaria, en función de su grado de dependencia.",
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "ENLACE",
+          "url": "https://serviciossociales.gva.es/documents/610662/370791566/Compatibilidad+recursos_cas+20.12.24.pdf/95bd1b59-128b-c273-2233-6f42f4327c3f?t=1734700990832"
+        },
+        {
+          "titulo": "",
+          "url": "https://serviciossociales.gva.es/documents/610662/370791566/Compatibilidad+recursos_cas+17.01.23.pdf/bec966ff-062c-3b96-72b7-1c1ae1c8c2b1?t=1705756332031"
+        },
+        {
+          "titulo": "Empresas servicio ayuda a domicilio acreditadas (SAD)",
+          "url": "https://serviciossociales.gva.es/documents/610662/164359017/AYUDA+A+DOMICILIO+-+ACTUALIZADO+OCTUBRE+2026.pdf/eff4570e-6ec9-d793-405d-49a0ddc22574?t=1792491580585"
+        },
+        {
+          "titulo": "Discapacidad",
+          "url": "https://inclusio.gva.es/documents/610662/166872542/SERVEIS+PREVENCI%C3%93+PROMOCI%C3%93.+DIVERSITAT+FUNCIONAL.pdf/e5b86df0-674f-44b3-a740-5c35d96cbc1d?t=1671616917893"
+        },
+        {
+          "titulo": "Mayores",
+          "url": "https://inclusio.gva.es/documents/610662/166872542/SERVEIS+PREVENCI%C3%93+PROMOCI%C3%93.+PERSONES+MAJORS.pdf/235a6a95-6301-4a33-afc1-c6fda8ea18f2?t=1673363328795"
+        },
+        {
+          "titulo": "Centros de día para personas con discapacidad intelectual.",
+          "url": "https://inclusio.gva.es/documents/610651/386436221/CD.+DISC.+INTEL.+PRIV.+.pdf/1c733c42-39f1-d06f-7b23-cb7c48f5d4f6?t=1727439069775"
+        },
+        {
+          "titulo": "Centros de día para personas con problemas graves de salud mental.",
+          "url": "https://inclusio.gva.es/documents/610651/384721001/%C2%A1CDEM+PRIV.+.pdf/0224f778-2bef-0584-7762-4d4b19a45c71?t=1727437071212"
+        },
+        {
+          "titulo": "Mayores",
+          "url": "https://serviciossociales.gva.es/documents/610662/371132673/CD+ACREDITADOS_MAYORES+-+CD+ACREDITATS_MAJORS+12_02_24.pdf/b06710d7-5b5e-f03d-1b62-19551b3901d0?t=1707743771732"
+        },
+        {
+          "titulo": "Centros residenciales",
+          "url": "https://serviciossociales.gva.es/documents/610662/371132673/C.+RESIDENCIALES+ACREDITADOS.+MAYORES++28_03_24.pdf/7e5c6513-06f9-e340-4f5c-7a610140d3ae?t=1712741284152"
+        },
+        {
+          "titulo": "Residencias para personas con discapacidad física",
+          "url": "https://inclusio.gva.es/documents/610651/386436221/RESID.+DISC.+F_PRIV.pdf/c64422b1-9fcb-7ffd-2f23-e329ce0cb4a8?t=1727684887316"
+        },
+        {
+          "titulo": "Residencias para personas con discapacidad intelectual",
+          "url": "https://serviciossociales.gva.es/documents/610651/390572909/R-CARD.DF%2CPS.+PRIV.pdf/446a4287-3b0b-b607-b1bb-c2d49fc1e24d?t=1740984941384"
+        },
+        {
+          "titulo": "Apoyo extenso para personas con discapacidad intelectual",
+          "url": "https://inclusio.gva.es/documents/610651/386436221/CRCC.+DISC.+INTEL.+PRIV.+AP.EXT.+.pdf/6fdccd63-00ae-d4b2-2ca6-f2a5699310d4?t=1727960366489"
+        },
+        {
+          "titulo": "Apoyo limitado o intermitente para personas con discapacidad intelectual",
+          "url": "https://inclusio.gva.es/documents/610651/386436221/CRCC_DISC_PS_AP_LIMIT_RPIV.pdf/43eb6162-093c-5ef6-3e4e-ef4b28ee75bc?t=1727772170917"
+        },
+        {
+          "titulo": "Residencias para personas con problemas de salud mental",
+          "url": "https://inclusio.gva.es/documents/610651/384721001/RESID.+PRIV.+AUT.+PERS.+SM+.pdf/13c5ab81-929e-e867-2890-996ffa69fff3?t=1727439937885"
+        },
+        {
+          "titulo": "Apoyo extenso para personas con problemas de salud mental",
+          "url": "https://inclusio.gva.es/documents/610651/384721001/CRCC.+EM.+AP.+EXT_PRIV+%281%29.pdf/c1db6abc-1bdb-bc23-bcfa-f3a1f85a0d0c?t=1727961537767"
+        },
+        {
+          "titulo": "Apoyo limitado o intermitente para personas con problemas de salud mental",
+          "url": "https://inclusio.gva.es/documents/610651/384721001/CRCC%7EWGN.pdf/0c8c4863-53e1-82d5-1173-821d06128208?t=1727961538234"
+        }
+      ],
+      "textos": [
+        "73a71918c094ece47e478620412f402f7a5eadbdad1b484f61e53c04e84f6457",
+        "80f4884ee3f1a218e746557e8a6b5ff200158d29baf930f8987b34ad6e499a68",
+        "5703e079afd084eec1853a77a05418fddad2a0639344e4afc0d0869acedf84bb"
       ],
       "relaciones": [],
       "consultado": "2026-10-22"
@@ -1709,6 +3392,71 @@
         "b0565acf6d5d656fdefd26116ea9a9ddaf5dff03341c313c3cb7a1bc3f81749f",
         "4d999475bf5141fbb763e13fecc3c637deb4d1770ad931892b8e823af45aa75e",
         "c5cb2070b3b18fe149b75eedb0441351a7330d45331069d9f9ad3c5e354196a4"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "reconocimiento-inicial-de-la-dependencia",
+      "tipo": "ayuda",
+      "titulo": "Reconocimiento inicial de la dependencia",
+      "administracion": "Comunitat Valenciana",
+      "organismo": "Dirección General con competencias en materia de atención a las personas en situación de dependencia",
+      "frases_usuario": [
+        "quiero pedir la ley de dependencia para mi madre",
+        "cómo se solicita el grado de dependencia",
+        "mi padre ya no se vale por sí mismo",
+        "necesito que valoren a mi familiar para tener ayudas",
+        "dónde pido la valoración de dependencia"
+      ],
+      "requisitos_clave": [
+        "Se trata de un derecho subjetivo de acceso al Sistema para la Autonomía y Atención a la Dependencia que tienen todas las personas con residencia efectiva en la Comunitat Valenciana."
+      ],
+      "pasos": [
+        "El procedimiento se inicia a instancia de la persona interesada ante los servicios sociales de atención primaria del Ayuntamiento donde se encuentre empadronada.",
+        "La solicitud debe presentarse preferentemente en el registro oficial de su ayuntamiento, no obstante, también podrá presentarse en los registros establecidos en el art.16.4 de la Ley 39/2015, de 1 de octubre, del Procedimiento Administrativo Común de las Administraciones Públicas.",
+        "Una vez presentada toda la documentación y completado el expediente, se procederá a la valoración de la situación de dependencia y a la elaboración del informe social del entorno, que serán incorporados al expediente.",
+        "Los servicios sociales de atención primaria básica notificarán a la persona la fecha y hora en la que se realizará la valoración.",
+        "Una vez efectuada la valoración y el informe social de entorno se emitirá un Dictamen Técnico con indicación del grado de dependencia propuesto y especificación de los servicios y prestaciones a los que la persona puede optar en virtud del grado otorgado, el cual será elevado a la Dirección General con competencias en materia de atención a las personas en situación de dependencia para su Resolución.",
+        "La Dirección General con competencias en materia de atención a las personas en situación de dependencia emitirá de oficio, la correspondiente Resolución aprobando el Programa Individual de Atención (PIA), siempre y cuando las preferencias de servicios y/o prestaciones escogidas inicialmente por la persona interesada sean compatibles entre sí, acordes con el grado de dependencia reconocido y prescritas por el informe social de entorno."
+      ],
+      "documentacion": [
+        "1.“Solicitud inicial de reconocimiento de la situación de dependencia y del derecho a las prestaciones del sistema”",
+        "2.Informe de salud",
+        "3.Certificado empadronamiento histórico",
+        "4.Certificado de discapacidad, solo en el caso de que haya sido emitido en otra comunidad autónoma.",
+        "4.Modelo domiciliación bancaria"
+      ],
+      "plazo": null,
+      "enlace_info": "https://serviciossociales.gva.es/es/web/dependencia/reconeixement-inicial-de-la-dependencia",
+      "enlace_tramite": "https://www.gva.es/es/inicio/procedimientos?id_proc=G3256",
+      "fuente": "https://serviciossociales.gva.es/es/web/dependencia/reconeixement-inicial-de-la-dependencia ; https://serviciossociales.gva.es/es/web/dependencia/normativa ; https://serviciossociales.gva.es/documents/610662/370800300/importes+prestaciones+ec.y+vinculadas_cas+20.12.24.xlsx/1c2ee17f-4618-76a6-a8ce-76c118318a34?t=1734699747037 ; https://serviciossociales.gva.es/documents/610662/370791566/Compatibilidad+recursos_cas+20.12.24.pdf/95bd1b59-128b-c273-2233-6f42f4327c3f?t=1734700990832",
+      "verificado": false,
+      "nota": "El plazo máximo para dictar y notificar la resolución del procedimiento de reconocimiento de grado será de 3 meses, computándose desde la fecha de registro de entrada de la solicitud en el registro de cualquier entidad competente para su tramitación (Entidades Locales y Generalitat Valenciana).",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": "Comunitat Valenciana",
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "ENLACE",
+          "url": "https://serviciossociales.gva.es/documents/610662/370791566/Compatibilidad+recursos_cas+20.12.24.pdf/95bd1b59-128b-c273-2233-6f42f4327c3f?t=1734700990832"
+        }
+      ],
+      "textos": [
+        "7b7c00356b29491c32cec4bc8ca5e7f983a94e6f42245953d357c42c71bc3964",
+        "80f4884ee3f1a218e746557e8a6b5ff200158d29baf930f8987b34ad6e499a68",
+        "5703e079afd084eec1853a77a05418fddad2a0639344e4afc0d0869acedf84bb"
       ],
       "relaciones": [],
       "consultado": "2026-10-22"
@@ -1888,6 +3636,325 @@
       "consultado": "2026-10-22"
     },
     {
+      "id": "servicio-de-atencion-residencial-residencias-centros-de-cara",
+      "tipo": "ayuda",
+      "titulo": "Servicio de atención residencial: Residencias/Centros de carácter convivencial(viviendas tuteladas)",
+      "administracion": "Comunitat Valenciana",
+      "organismo": null,
+      "frases_usuario": [
+        "Necesito una residencia para mi madre dependiente",
+        "Busco plaza pública en una residencia para mayores",
+        "Mi hermano tiene discapacidad y necesita una vivienda tutelada",
+        "No puedo cuidar a mi padre en casa y quiero una residencia",
+        "Cómo pido plaza en residencia por dependencia"
+      ],
+      "requisitos_clave": [
+        "Dirigido a las personas mayores en situación de dependencia, y a personas con discapacidad en situación de dependencia."
+      ],
+      "pasos": [
+        "Se puede solicitar en cualquier momento, indicándolo siempre en las preferencias de la solicitud inicial de reconocimiento de la situación de dependencia o si es un momento posterior, en la solicitud de petición de nuevas preferencias"
+      ],
+      "documentacion": [
+        "Solicitud inicial de reconocimiento de la situación de dependencia y del derecho a las prestaciones del sistema , indicando preferencia por este servicio.",
+        "Solicitud de nuevas preferencias de servicios o prestaciones, ampliación o revisión del PIA"
+      ],
+      "plazo": "Se puede solicitar en cualquier momento",
+      "enlace_info": "https://serviciossociales.gva.es/es/web/dependencia/servicio-residencial",
+      "enlace_tramite": "https://www.gva.es/es/inicio/procedimientos?id_proc=G3256",
+      "fuente": "https://serviciossociales.gva.es/es/web/dependencia/servicio-residencial ; https://serviciossociales.gva.es/es/web/dependencia/normativa ; https://serviciossociales.gva.es/documents/610662/370791566/Compatibilidad+recursos_cas+20.12.24.pdf/95bd1b59-128b-c273-2233-6f42f4327c3f?t=1734700990832 ; https://serviciossociales.gva.es/documents/387188025/392316946/RED+CENTROS+PM+WEB.pdf/fe64c401-74e4-8124-d57f-4e261f15cdaf ; https://serviciossociales.gva.es/documents/387188025/392316946/RED+CENTROS+PM+ALICANTE+WEB_CS.pdf/01a3bb79-e566-36fd-77bc-34c84fa411af ; https://serviciossociales.gva.es/documents/387188025/392316946/RED+CENTROS+PM+CASTELLON+WEB_CS.pdf/940587df-5b94-28fb-5dec-5e18105811ac ; https://serviciossociales.gva.es/documents/387188025/392316946/RED+CENTROS+PM+VALENCIA+WEB_CS.pdf/dc8399dc-45cc-98f0-cf7d-17002f752c5e ; https://inclusio.gva.es/documents/610651/390572487/R+-CARD+DF.+F.+P%C3%9AB.pdf/cb3bdb41-db7f-9ba4-d4e2-0d3f2f89e208?t=1740987853926 ; https://inclusio.gva.es/documents/610651/390572487/R-CARD+DF+PS+P%C3%9AB..pdf/68dd1fbd-b135-f155-36fe-22f51d926f3b?t=1740984820775 ; https://inclusio.gva.es/documents/610651/386431837/crcc.+disc.+intel.+p%C3%BAb.+ap.+ext.pdf/01390e96-43d0-402b-9ef0-f5e84a0171e4?t=1727959204487 ; https://inclusio.gva.es/documents/610651/386436221/CRCC_DISC_PS_AP_LIMIT_PRIV.pdf/b51675ca-5325-ddf1-13b9-4a2aca5dc1d9?t=1727770997294 ; https://inclusio.gva.es/documents/610651/386431837/VT.+DF.+F.+P%C3%9AB+%28RECURSO+CONGELADO.+SUPERV%29.+.pdf/3a5e815e-82e2-9b4a-bd9d-475a62fd3b92?t=1727438795731 ; https://inclusio.gva.es/documents/610651/390633893/CEEM+PUB.pdf/c8944b8d-d74a-4881-b67c-104e2bae61fc?t=1741173279028 ; https://inclusio.gva.es/documents/610651/384720990/CRCC.EM.AP_EXT_P%C3%9AB.pdf/74df1ee4-70a5-fe23-c0f2-0cc3cb0aadcb?t=1727961443929 ; https://inclusio.gva.es/documents/610651/384720990/CRCC.EM.+AP_LIMIT_P%C3%9AB.pdf/d93697a3-1f9f-9b00-22f6-7aa6b190a1a7?t=1727961408900",
+      "verificado": false,
+      "nota": "En el supuesto de que no se disponga de plaza pública residencial adecuada al grado de dependencia en un radio de 20 km respecto al domicilio de la persona en situación de dependencia, se ofertará a la persona usuaria, como medida sustitutiva de la plaza pública, la posibilidad de percibir una prestación económica vinculada al servicio residencial.",
+      "relacionados": [],
+      "naturaleza": "servicio",
+      "tipoPlazo": "permanente",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "Podrá existir aportación económica de la persona beneficiaria del servicio de atención residencial en función de su capacidad económica y siempre garantizándole a la persona una cantidad mínima para sus gastos personales.",
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "ENLACE",
+          "url": "https://serviciossociales.gva.es/documents/610662/370791566/Compatibilidad+recursos_cas+20.12.24.pdf/95bd1b59-128b-c273-2233-6f42f4327c3f?t=1734700990832"
+        },
+        {
+          "titulo": "ATENCIÓN RESIDENCIAL PARA PERSONAS MAYORES DEPENDIENTES DEL SISTEMA PÚBLICO VALENCIANO DE SERVICIOS SOCIALES",
+          "url": "https://serviciossociales.gva.es/documents/387188025/392316946/RED+CENTROS+PM+WEB.pdf/fe64c401-74e4-8124-d57f-4e261f15cdaf"
+        },
+        {
+          "titulo": "Provincia de Alicante",
+          "url": "https://serviciossociales.gva.es/documents/387188025/392316946/RED+CENTROS+PM+ALICANTE+WEB_CS.pdf/01a3bb79-e566-36fd-77bc-34c84fa411af"
+        },
+        {
+          "titulo": "Provincia de Castellón",
+          "url": "https://serviciossociales.gva.es/documents/387188025/392316946/RED+CENTROS+PM+CASTELLON+WEB_CS.pdf/940587df-5b94-28fb-5dec-5e18105811ac"
+        },
+        {
+          "titulo": "Provincia de València",
+          "url": "https://serviciossociales.gva.es/documents/387188025/392316946/RED+CENTROS+PM+VALENCIA+WEB_CS.pdf/dc8399dc-45cc-98f0-cf7d-17002f752c5e"
+        },
+        {
+          "titulo": "Residencia para personas con discapacidad física.",
+          "url": "https://inclusio.gva.es/documents/610651/390572487/R+-CARD+DF.+F.+P%C3%9AB.pdf/cb3bdb41-db7f-9ba4-d4e2-0d3f2f89e208?t=1740987853926"
+        },
+        {
+          "titulo": "Residencia para personas con discapacidad intelectual.",
+          "url": "https://inclusio.gva.es/documents/610651/390572487/R-CARD+DF+PS+P%C3%9AB..pdf/68dd1fbd-b135-f155-36fe-22f51d926f3b?t=1740984820775"
+        },
+        {
+          "titulo": "Apoyo extenso para personas con discapacidad intelectual",
+          "url": "https://inclusio.gva.es/documents/610651/386431837/crcc.+disc.+intel.+p%C3%BAb.+ap.+ext.pdf/01390e96-43d0-402b-9ef0-f5e84a0171e4?t=1727959204487"
+        },
+        {
+          "titulo": "Apoyo limitado o intermitente para personas con discapacidad intelectual",
+          "url": "https://inclusio.gva.es/documents/610651/386436221/CRCC_DISC_PS_AP_LIMIT_PRIV.pdf/b51675ca-5325-ddf1-13b9-4a2aca5dc1d9?t=1727770997294"
+        },
+        {
+          "titulo": "Viviendas Tuteladas Supervisadas para personas con discapacidad física.",
+          "url": "https://inclusio.gva.es/documents/610651/386431837/VT.+DF.+F.+P%C3%9AB+%28RECURSO+CONGELADO.+SUPERV%29.+.pdf/3a5e815e-82e2-9b4a-bd9d-475a62fd3b92?t=1727438795731"
+        },
+        {
+          "titulo": "Residencias para personas con problemas de salud mental",
+          "url": "https://inclusio.gva.es/documents/610651/390633893/CEEM+PUB.pdf/c8944b8d-d74a-4881-b67c-104e2bae61fc?t=1741173279028"
+        },
+        {
+          "titulo": "Apoyo extenso para personas con problemas de salud mental",
+          "url": "https://inclusio.gva.es/documents/610651/384720990/CRCC.EM.AP_EXT_P%C3%9AB.pdf/74df1ee4-70a5-fe23-c0f2-0cc3cb0aadcb?t=1727961443929"
+        },
+        {
+          "titulo": "Apoyo limitado o intermitente para personas con problemas de salud mental",
+          "url": "https://inclusio.gva.es/documents/610651/384720990/CRCC.EM.+AP_LIMIT_P%C3%9AB.pdf/d93697a3-1f9f-9b00-22f6-7aa6b190a1a7?t=1727961408900"
+        }
+      ],
+      "textos": [
+        "51f15c1f6eaffcf4fe4edc39cf05f8db599c4f26e8554b1b8a2bc34532abbefd",
+        "80f4884ee3f1a218e746557e8a6b5ff200158d29baf930f8987b34ad6e499a68"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "servicio-de-ayuda-a-domicilio",
+      "tipo": "ayuda",
+      "titulo": "Servicio de ayuda a domicilio",
+      "administracion": "Comunitat Valenciana",
+      "organismo": null,
+      "frases_usuario": [
+        "Necesito que alguien venga a casa a asear a mi madre",
+        "Ayuda a domicilio para mi padre dependiente",
+        "Quiero más horas de ayuda a domicilio",
+        "Mi abuela no puede ducharse sola y no quiero llevarla a una residencia",
+        "Cómo pido una auxiliar en casa por dependencia"
+      ],
+      "requisitos_clave": [
+        "Dirigido a personas en situación de dependencia, que requieran de estos apoyos para normalizar su vida personal y social en su propio entorno, evitando la institucionalización."
+      ],
+      "pasos": [
+        "Si no tiene reconocida la situación de dependencia deberá solicitarla a través de los Servicios Sociales de su municipio, cumplimentando la solicitud inicial de reconocimiento de la situación de dependencia e indicando este servicio como recurso preferente.",
+        "También podrá solicitarlo en cualquier momento posterior mediante el documento de “solicitud de nuevas preferencias de servicios o prestaciones, ampliación o revisión PIA”."
+      ],
+      "documentacion": [
+        "en el impreso de “solicitud inicial de reconocimiento de la situación de dependencia y del derecho a las prestaciones del sistema” deberá indicar la preferencia por este servicio.",
+        "Impreso “Solicitud de nuevas preferencias de servicios o prestaciones, ampliación o revisión del PIA”",
+        "- “solicitud de aumento del importe de la prestación vinculada al servicio de ayuda a domicilio”",
+        "- contrato actualizado con la empresa prestadora del servicio de ayuda a domicilio acreditada por la Conselleria en materia de Servicios Sociales."
+      ],
+      "plazo": "También podrá solicitarlo en cualquier momento posterior",
+      "enlace_info": "https://serviciossociales.gva.es/es/web/dependencia/servei-ajuda-domicili",
+      "enlace_tramite": "https://www.gva.es/es/inicio/procedimientos?id_proc=G3256",
+      "fuente": "https://serviciossociales.gva.es/es/web/dependencia/servei-ajuda-domicili ; https://serviciossociales.gva.es/es/web/dependencia/normativa ; https://serviciossociales.gva.es/documents/610662/370791566/Compatibilidad+recursos_cas+20.12.24.pdf/95bd1b59-128b-c273-2233-6f42f4327c3f?t=1734700990832",
+      "verificado": false,
+      "nota": "Los servicios relacionados con la atención de las necesidades domésticas sólo podrán prestarse asociados con los servicios de atención personal.",
+      "relacionados": [],
+      "naturaleza": "servicio",
+      "tipoPlazo": "permanente",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "El Programa Individual de Atención (PIA) determinará la intensidad de protección en el Servicio de Ayuda a Domicilio referida a horas/mes necesarias de acuerdo con el grado de dependencia reconocido, entendiéndose como mínimo garantizado las establecidas en el Anexo IV del Decreto 102/2022, de 5 de agosto , del Consell.",
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "ENLACE:",
+          "url": "https://serviciossociales.gva.es/documents/610662/370791566/Compatibilidad+recursos_cas+20.12.24.pdf/95bd1b59-128b-c273-2233-6f42f4327c3f?t=1734700990832"
+        }
+      ],
+      "textos": [
+        "b739d54670579429dcbb3be39985b288e62296e6f12a9f4f2612577b257351ee",
+        "80f4884ee3f1a218e746557e8a6b5ff200158d29baf930f8987b34ad6e499a68"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "servicio-de-centro-de-dia-centro-ocupacional",
+      "tipo": "ayuda",
+      "titulo": "Servicio de Centro de día/Centro ocupacional",
+      "administracion": "Comunitat Valenciana",
+      "organismo": null,
+      "frases_usuario": [
+        "busco un centro de día para mi madre",
+        "plaza en centro de día para mi padre dependiente",
+        "centro ocupacional para mi hijo con discapacidad",
+        "necesito que atiendan a mi abuelo durante el día",
+        "dónde hay centros de día públicos"
+      ],
+      "requisitos_clave": [
+        "Dirigido a las personas mayores en situación de dependencia, y a personas con discapacidad en situación de dependencia."
+      ],
+      "pasos": [
+        "Se puede solicitar en cualquier momento, indicándolo siempre en las preferencias de la solicitud inicial de reconocimiento de la situación de dependencia o si es un momento posterior, en la solicitud de petición de nuevas preferencias."
+      ],
+      "documentacion": [
+        "solicitud inicial de reconocimiento de la situación de dependencia y del derecho a las prestaciones del sistema, indicando la preferencia por este servicio.",
+        "Solicitud de nuevas preferencias de servicios o prestaciones, ampliación o revisión del PIA."
+      ],
+      "plazo": "Se puede solicitar en cualquier momento",
+      "enlace_info": "https://serviciossociales.gva.es/es/web/dependencia/centro-de-dia",
+      "enlace_tramite": "https://www.gva.es/es/inicio/procedimientos?id_proc=G3256",
+      "fuente": "https://serviciossociales.gva.es/es/web/dependencia/centro-de-dia ; https://serviciossociales.gva.es/es/web/dependencia/normativa ; https://serviciossociales.gva.es/documents/610662/370791566/Compatibilidad+recursos_cas+20.12.24.pdf/95bd1b59-128b-c273-2233-6f42f4327c3f?t=1734700990832 ; https://serviciossociales.gva.es/documents/610693/386909598/CD_GENERAL_CASTELLANO.pdf/2091d724-1a12-9fb3-ee24-454975891b08 ; https://serviciossociales.gva.es/documents/610693/386909598/CD_ALICANTE_SPVSS.pdf/14e70b24-b1ca-0d7b-4787-081015dcfef4 ; https://serviciossociales.gva.es/documents/610693/386909598/CD_CASTELLON_SPVSS.pdf/1057b5fa-d052-1ca0-4915-8c1a26af6924 ; https://serviciossociales.gva.es/documents/610693/386909598/CD_VALENCIA_SPVSS.pdf/a69cf84f-2f30-68cc-ee35-e2bdf5064a0a ; https://inclusio.gva.es/documents/610651/390572487/CD+-+CAAD+DF.+F.P%C3%9AB.pdf/39938abe-e3b0-6396-2c32-62f57d640d05?t=1740984817275 ; https://inclusio.gva.es/documents/610651/386431837/CD.+DISC.+INTEL.+P%C3%9AB.pdf/52b30df5-b284-148d-8ba3-ea08737e3aa7?t=1727683476628 ; https://inclusio.gva.es/documents/610651/390633893/CD-+CADD+EM+P%C3%9AB.pdf/9c01b394-a045-e6f0-846c-48c9c86eda35?t=1741173278000 ; https://inclusio.gva.es/documents/610651/390572487/CO+DF+PUB.pdf/32b9a6de-8361-ab7f-b781-6817e84ba89d?t=1741163818414 ; https://inclusio.gva.es/documents/610651/357690468/CENT+OCUPAC+DF+PUB.pdf/96ef0d15-2591-ab0a-1ef3-4ac8423b975e?t=1676030133260 ; https://inclusio.gva.es/documents/610651/384720990/COEM+PUB+NOBRE+ACTUALIZADO+2024_nuevo.pdf/fd8e5411-23f4-7595-3c18-f4c348628d3d?t=1727699870059",
+      "verificado": false,
+      "nota": "Podrán estar abiertos todos los días laborables entre las 9:00 y las 18:00h, con posibilidad de abrir los sábados.",
+      "relacionados": [],
+      "naturaleza": "servicio",
+      "tipoPlazo": "permanente",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "ENLACE",
+          "url": "https://serviciossociales.gva.es/documents/610662/370791566/Compatibilidad+recursos_cas+20.12.24.pdf/95bd1b59-128b-c273-2233-6f42f4327c3f?t=1734700990832"
+        },
+        {
+          "titulo": "Centros de día públicos y concertados para personas mayores dependientes:",
+          "url": "https://serviciossociales.gva.es/documents/610693/386909598/CD_GENERAL_CASTELLANO.pdf/2091d724-1a12-9fb3-ee24-454975891b08"
+        },
+        {
+          "titulo": "Provincia de Alicante",
+          "url": "https://serviciossociales.gva.es/documents/610693/386909598/CD_ALICANTE_SPVSS.pdf/14e70b24-b1ca-0d7b-4787-081015dcfef4"
+        },
+        {
+          "titulo": "Provincia de Castellón",
+          "url": "https://serviciossociales.gva.es/documents/610693/386909598/CD_CASTELLON_SPVSS.pdf/1057b5fa-d052-1ca0-4915-8c1a26af6924"
+        },
+        {
+          "titulo": "Provincia de València",
+          "url": "https://serviciossociales.gva.es/documents/610693/386909598/CD_VALENCIA_SPVSS.pdf/a69cf84f-2f30-68cc-ee35-e2bdf5064a0a"
+        },
+        {
+          "titulo": "Listado centros de día para personas con discapacidad física.",
+          "url": "https://inclusio.gva.es/documents/610651/390572487/CD+-+CAAD+DF.+F.P%C3%9AB.pdf/39938abe-e3b0-6396-2c32-62f57d640d05?t=1740984817275"
+        },
+        {
+          "titulo": "Listado centros de día para personas con discapacidad intelectual.",
+          "url": "https://inclusio.gva.es/documents/610651/386431837/CD.+DISC.+INTEL.+P%C3%9AB.pdf/52b30df5-b284-148d-8ba3-ea08737e3aa7?t=1727683476628"
+        },
+        {
+          "titulo": "​​​​​Listado centros de día para personas con problema graves de salud mental.",
+          "url": "https://inclusio.gva.es/documents/610651/390633893/CD-+CADD+EM+P%C3%9AB.pdf/9c01b394-a045-e6f0-846c-48c9c86eda35?t=1741173278000"
+        },
+        {
+          "titulo": "Centros ocupacionales para personas con discapacidad.",
+          "url": "https://inclusio.gva.es/documents/610651/390572487/CO+DF+PUB.pdf/32b9a6de-8361-ab7f-b781-6817e84ba89d?t=1741163818414"
+        },
+        {
+          "titulo": "",
+          "url": "https://inclusio.gva.es/documents/610651/357690468/CENT+OCUPAC+DF+PUB.pdf/96ef0d15-2591-ab0a-1ef3-4ac8423b975e?t=1676030133260"
+        },
+        {
+          "titulo": "Centros ocupacionales para personas con problemas graves de salud mental.",
+          "url": "https://inclusio.gva.es/documents/610651/384720990/COEM+PUB+NOBRE+ACTUALIZADO+2024_nuevo.pdf/fd8e5411-23f4-7595-3c18-f4c348628d3d?t=1727699870059"
+        }
+      ],
+      "textos": [
+        "7595cda9577a3f23d591a2e08ab0f4ae2848d77d005d970b84f5db1db3ac8648",
+        "80f4884ee3f1a218e746557e8a6b5ff200158d29baf930f8987b34ad6e499a68"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "servicio-de-prevencion-de-la-situacion-de-dependencia-y-prom",
+      "tipo": "ayuda",
+      "titulo": "Servicio de prevención de la situación de dependencia y promoción de la autonomía personal",
+      "administracion": "Comunitat Valenciana",
+      "organismo": null,
+      "frases_usuario": [
+        "Mi hijo necesita atención temprana",
+        "Quiero terapia ocupacional para mi madre dependiente",
+        "Estimulación cognitiva para mi padre con demencia",
+        "Rehabilitación para mantener la autonomía de una persona dependiente",
+        "Busco un centro de atención temprana público"
+      ],
+      "requisitos_clave": [
+        "Dirigido a las personas mayores en situación de dependencia, y a personas con discapacidad en situación de dependencia."
+      ],
+      "pasos": [
+        "Se puede solicitar en cualquier momento, indicándolo siempre en las preferencias de la solicitud inicial de reconocimiento de la situación de dependencia o si es un momento posterior, en la solicitud de petición de nuevas preferencias."
+      ],
+      "documentacion": [
+        "en el impreso de “solicitud inicial de reconocimiento de la situación de dependencia y del derecho a las prestaciones del sistema” deberá indicar la preferencia por este servicio.",
+        "Impreso “Solicitud de nuevas preferencias de servicios o prestaciones, ampliación o revisión del PIA”"
+      ],
+      "plazo": "Se puede solicitar en cualquier momento",
+      "enlace_info": "https://serviciossociales.gva.es/es/web/dependencia/servicio-de-promocion-de-la-autonomia-personal",
+      "enlace_tramite": "https://www.gva.es/es/inicio/procedimientos?id_proc=G3256",
+      "fuente": "https://serviciossociales.gva.es/es/web/dependencia/servicio-de-promocion-de-la-autonomia-personal ; https://serviciossociales.gva.es/es/web/dependencia/normativa ; https://serviciossociales.gva.es/documents/610662/370791566/Compatibilidad+recursos_cas+20.12.24.pdf/95bd1b59-128b-c273-2233-6f42f4327c3f?t=1734700990832 ; https://inclusio.gva.es/documents/610651/390633893/CRIS+PUB.pdf/5134a0ed-5d4a-0340-6780-ddda2fe924ec?t=1741173281207",
+      "verificado": false,
+      "nota": "Los servicios de promoción pueden ofertarse en distintas modalidades y se ha de contratar un número de horas mínimo en función del grado de dependencia de acuerdo con la siguiente tabla:",
+      "relacionados": [],
+      "naturaleza": "servicio",
+      "tipoPlazo": "permanente",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "ENLACE:",
+          "url": "https://serviciossociales.gva.es/documents/610662/370791566/Compatibilidad+recursos_cas+20.12.24.pdf/95bd1b59-128b-c273-2233-6f42f4327c3f?t=1734700990832"
+        },
+        {
+          "titulo": "CENTRO DE RECUPERACIÓN E INCLUSIÓN SOCIAL Y SOCIOLABORAL .CRISOL",
+          "url": "https://inclusio.gva.es/documents/610651/390633893/CRIS+PUB.pdf/5134a0ed-5d4a-0340-6780-ddda2fe924ec?t=1741173281207"
+        }
+      ],
+      "textos": [
+        "111c9bfc558666479fb24309eba8e71a36d35ff73c045178c4ceb7ba5130c732",
+        "80f4884ee3f1a218e746557e8a6b5ff200158d29baf930f8987b34ad6e499a68"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
       "id": "solicitud-de-complemento-para-titulares-de-pension-no-contri",
       "tipo": "ayuda",
       "titulo": "Solicitud de complemento para titulares de pensión no contributiva que residan en una vivienda alquilada",
@@ -2021,6 +4088,63 @@
       "consultado": "2026-10-22"
     },
     {
+      "id": "teleasistencia-avanzada",
+      "tipo": "ayuda",
+      "titulo": "Teleasistencia Avanzada",
+      "administracion": "Comunitat Valenciana",
+      "organismo": null,
+      "frases_usuario": [
+        "Quiero una pulsera de emergencia para mi madre que vive sola",
+        "Mi padre dependiente vive solo y me da miedo que se caiga",
+        "Cómo pido la teleasistencia",
+        "Necesito un botón para avisar si me pasa algo en casa",
+        "Teleasistencia gratis para personas dependientes"
+      ],
+      "requisitos_clave": [
+        "La teleasistencia avanzada se trata de un derecho dirigido a todas las personas en situación de dependencia que vivan en su domicilio, siendo compatible con cualquier otro servicio o prestación económica con excepción del servicio de atención residencial permanente o su prestación vinculada."
+      ],
+      "pasos": [
+        "Se puede solicitar en cualquier momento, indicándolo siempre en las preferencias de la solicitud inicial de reconocimiento de la situación de dependencia o si es un momento posterior, en la solicitud de petición de nuevas preferencias y aportando junto con las mismas el modelo normalizado “Servicio de Teleasistencia Avanzada”."
+      ],
+      "documentacion": [
+        "Modelo Servicio de teleasistencia Avanzada"
+      ],
+      "plazo": "Se puede solicitar en cualquier momento",
+      "enlace_info": "https://serviciossociales.gva.es/es/web/dependencia/teleasistencia",
+      "enlace_tramite": "https://www.gva.es/es/inicio/procedimientos?id_proc=G3256",
+      "fuente": "https://serviciossociales.gva.es/es/web/dependencia/teleasistencia ; https://serviciossociales.gva.es/es/web/dependencia/normativa ; https://serviciossociales.gva.es/documents/610662/370791566/Compatibilidad+recursos_cas+20.12.24.pdf/95bd1b59-128b-c273-2233-6f42f4327c3f?t=1734700990832",
+      "verificado": false,
+      "nota": "Puede prestarse a través de un terminal de teleasistencia fija en el domicilio o teleasistencia móvil.",
+      "relacionados": [],
+      "naturaleza": "servicio",
+      "tipoPlazo": "permanente",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "La Teleasistencia Avance es un servicio totalmente gratuito",
+      "ambito": "En la Comunidad Valenciana el Servicio de Teleasistencia avanzada es financiado con cargo a los fondos europeos procedentes del Mecanismo para la Recuperación y Resiliencia, dentro del Pla de Recuperación, Transformación y Resiliencia del Gobierno.",
+      "exclusiones": [
+        "con excepción del servicio de atención residencial permanente o su prestación vinculada."
+      ],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "ENLACE.",
+          "url": "https://serviciossociales.gva.es/documents/610662/370791566/Compatibilidad+recursos_cas+20.12.24.pdf/95bd1b59-128b-c273-2233-6f42f4327c3f?t=1734700990832"
+        }
+      ],
+      "textos": [
+        "5bcb8176625e916386d54d0538f1c72f795a9927a2f7ff0e891e9ebb0438163b",
+        "80f4884ee3f1a218e746557e8a6b5ff200158d29baf930f8987b34ad6e499a68"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
       "id": "teleassistencia-per-a-persones-majors-o-amb-discapacitat",
       "tipo": "ayuda",
       "titulo": "Teleassistència per a persones majors o amb discapacitat",
@@ -2094,6 +4218,21 @@
       "consultado": "2026-10-22",
       "noEsAyuda": true
     },
+    "https://ceice.gva.es/es/web/cualificaciones-profesionales": {
+      "hash": "673a90559eb42a01096c302b797d4caf88b11d2e0feda0b71065d07e38ea6bfb",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://hisenda.gva.es/es/web/tributos/beneficis-fiscals-2025": {
+      "id": "beneficios-fiscales-2025",
+      "hash": "a87ed8bbb0884abb14a6861ebb86b3000aa02f082373a0a76b0101a6f4780e20",
+      "consultado": "2026-10-22"
+    },
+    "https://hisenda.gva.es/es/web/tributos/beneficis-fiscals-2026": {
+      "id": "beneficios-fiscales-2026",
+      "hash": "1c342aabb72741917162c147b762901e3d60cbebb61e377f230f94963d387cb0",
+      "consultado": "2026-10-22"
+    },
     "https://imserso.es/es/web/sede-electronica/procedimiento-servicios/detalle/-/asset_publisher/Clv43EZRrpqn/content/subvenciones-a-personas-en-situacion-de-dependencia-residentes-en-ceuta-y-melilla/20123": {
       "hash": "da2bb1cc6eeda1b2684485fb4e961a64e18e4708d0c0adac1739bf1b40edf4bf",
       "consultado": "2026-10-22",
@@ -2149,6 +4288,66 @@
       "hash": "6307a4261dff30b64249341006411f3ea4255f97da01ea162a83b0106aa0bd41",
       "etag": "\"c5617039\"",
       "consultado": "2026-10-22"
+    },
+    "https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c18-cuota-liquida-resultante-autoliquidacion/resultado-declaracion/deducciones-familia-numerosa-personas-discapacidad-cargo.html": {
+      "id": "deducciones-por-familia-numerosa-o-por-personas-con-discapac",
+      "hash": "71d85200ccb899dededbcee1a0713227d39886fb6440d78f532e56771c372e97",
+      "modificado": "Tue, 17 Mar 2026 18:58:26 GMT",
+      "consultado": "2026-10-22"
+    },
+    "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-personas-discapacidad.html": {
+      "id": "deducciones-de-personas-con-discapacidad",
+      "hash": "adac35f45a2dc9e334066eb4ce400247cd7b61cf3668f9444c9f36c92bef8cdd",
+      "modificado": "Thu, 09 Apr 2026 17:54:44 GMT",
+      "consultado": "2026-10-22"
+    },
+    "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-personas-discapacidad/deduccion-ascendiente-discapacidad-cargo.html": {
+      "id": "deduccion-por-ascendiente-con-discapacidad-a-cargo",
+      "hash": "5fa77222362f352d7f5728a4ea10633b7fffe820a9aca4ca0661c602f29edb7e",
+      "modificado": "Wed, 12 Feb 2025 12:35:13 GMT",
+      "consultado": "2026-10-22"
+    },
+    "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-personas-discapacidad/deduccion-conyuge-discapacidad-cargo.html": {
+      "id": "deduccion-por-conyuge-con-discapacidad-a-cargo",
+      "hash": "a88e08a250932965db06eaf327339e4875fad047c9facc37ec6fd34767a4026b",
+      "modificado": "Wed, 12 Feb 2025 12:35:12 GMT",
+      "consultado": "2026-10-22"
+    },
+    "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-personas-discapacidad/deduccion-descendiente-discapacidad-cargo.html": {
+      "id": "deduccion-por-descendiente-con-discapacidad-a-cargo",
+      "hash": "9ab1aaa54c3fbb0708b29e2184e199fd6078bde75aba4b323c53b74b4a2922fd",
+      "modificado": "Wed, 12 Feb 2025 12:35:12 GMT",
+      "consultado": "2026-10-22"
+    },
+    "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-relacionadas-hijos-descendientes.html": {
+      "id": "deducciones-relacionadas-con-hijos-y-descendientes",
+      "hash": "d7f3183e5ff95dac0944d26ea712fd5f7bf24db7ff74a7db57e6d3ffbfd85fb3",
+      "modificado": "Thu, 09 Apr 2026 17:54:33 GMT",
+      "consultado": "2026-10-22"
+    },
+    "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-relacionadas-hijos-descendientes/deduccion-ascendiente-dos-hijos-separado-matrimonial.html": {
+      "id": "deduccion-por-ascendiente-con-dos-hijos-separado-o-sin-vincu",
+      "hash": "66b8ec10a937ec0eb1ec9cd936006cc4a9e1012a3e352811fb1daeabba183def",
+      "modificado": "Tue, 24 Mar 2026 09:49:12 GMT",
+      "consultado": "2026-10-22"
+    },
+    "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-relacionadas-hijos-descendientes/deduccion-familia-numerosa.html": {
+      "id": "deduccion-por-familia-numerosa",
+      "hash": "2b2a7fd47f1c58240bc30831770982d293811c4a02ab544aadd03a55bfd9b94d",
+      "modificado": "Mon, 23 Mar 2026 12:52:09 GMT",
+      "consultado": "2026-10-22"
+    },
+    "https://sede.agenciatributaria.gob.es/Sede/ciudadanos-familias-personas-discapacidad/deducciones-relacionadas-hijos-descendientes/deduccion-maternidad.html": {
+      "id": "deduccion-por-maternidad",
+      "hash": "4b3c4c1a75adce7a2afa1e19c7f71dbfab630960b968d75ab832ae146ea91ebe",
+      "modificado": "Thu, 19 Mar 2026 12:53:51 GMT",
+      "consultado": "2026-10-22"
+    },
+    "https://sede.agenciatributaria.gob.es/Sede/irpf/deducciones-familiares-personas-discapacidad.html": {
+      "hash": "61d71325af532251587d639ef4ddf44f7b89278a259661c29215174839b0ee33",
+      "modificado": "Wed, 01 Jul 2026 12:10:19 GMT",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
     },
     "https://sede.gva.es/es/detall-tramit?id_proc=E64504": {
       "hash": "bfbc8e0da2f1ad5e42976680bd723166896e788a6f40aa688c565ca0a5e3d55d",
@@ -2288,6 +4487,126 @@
     "https://sede.valencia.es/sede/registro/procedimiento/BS.MA.60": {
       "id": "ajuda-a-domicili",
       "hash": "3b6fd16e74dbfd5749cb0c17b15df8f508d63c612ec7f3c8e5e5af47de5c0905",
+      "consultado": "2026-10-22"
+    },
+    "https://serviciossociales.gva.es/es/web/dependencia/ajudes-ela": {
+      "id": "ayudas-ela",
+      "hash": "10cba71fdb758166041b029229dba27f8acbddd4a4b0ab9350796d8164297d79",
+      "etag": "\"61108e24\"",
+      "consultado": "2026-10-22"
+    },
+    "https://serviciossociales.gva.es/es/web/dependencia/asistente-personal": {
+      "id": "asistencia-personal",
+      "hash": "1a8450f2e650e3712e7335be8e45a21baf27156f57dc3648e9973368a12cd0eb",
+      "etag": "\"4bb8f8a0\"",
+      "consultado": "2026-10-22"
+    },
+    "https://serviciossociales.gva.es/es/web/dependencia/beques": {
+      "hash": "30dc47fd9bad856a04975e2de0dbb3317be8ee8f58cb699f355de8245bb69f2c",
+      "etag": "\"3bf382aa\"",
+      "consultado": "2026-10-22",
+      "cubiertaPor": "bdns"
+    },
+    "https://serviciossociales.gva.es/es/web/dependencia/catalogo-del-saad769": {
+      "hash": "dab6c8ec353c570b4c174006e9435886846ed726dc9ee0287ffdecd9d996b3ba",
+      "etag": "\"3282072f\"",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://serviciossociales.gva.es/es/web/dependencia/cens-de-persones-cuidadores-en-l-entorn-familiar": {
+      "id": "censo-de-personas-cuidadoras-en-el-entorno-familiar",
+      "hash": "87af703a49136528c4ddc19303b7304581fada20eea652fc34a7516c20fc2d36",
+      "etag": "\"a6dd6573\"",
+      "consultado": "2026-10-22"
+    },
+    "https://serviciossociales.gva.es/es/web/dependencia/centro-de-dia": {
+      "id": "servicio-de-centro-de-dia-centro-ocupacional",
+      "hash": "7595cda9577a3f23d591a2e08ab0f4ae2848d77d005d970b84f5db1db3ac8648",
+      "etag": "\"50124174\"",
+      "consultado": "2026-10-22"
+    },
+    "https://serviciossociales.gva.es/es/web/dependencia/compatibilidades": {
+      "hash": "60f9a257427d6b92b86f387b35be03cce239916e89560c2fc80ae259084252f2",
+      "etag": "\"ec49b3f9\"",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://serviciossociales.gva.es/es/web/dependencia/grau-iii-dependencia-extrema": {
+      "id": "grado-iii-de-dependencia-extrema",
+      "hash": "c580798c8d3398857ecea5fee1b0e249289d522421685f5ad32b6b83f19d6ee0",
+      "etag": "\"bb971353\"",
+      "consultado": "2026-10-22"
+    },
+    "https://serviciossociales.gva.es/es/web/dependencia/informacio-general": {
+      "hash": "cf759db75a40ce186663c57ff3db08e7d1564c516e4f33d2ee92573cdc8136d0",
+      "etag": "\"887b326d\"",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://serviciossociales.gva.es/es/web/dependencia/informacio-general-i-guies": {
+      "hash": "878b3802ed019b560fa381c1a233a734dbccc3ae3bed4f8b1a5c97173397823c",
+      "etag": "\"38b6e36\"",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://serviciossociales.gva.es/es/web/dependencia/prestacion-para-cuidados-en-el-entorno-familiar": {
+      "id": "prestacion-para-cuidados-en-el-entorno-familiar",
+      "hash": "db35f54a8093e5944b51c638a251c460286448a15ff232f6051e36219565c15d",
+      "etag": "\"4adbcd36\"",
+      "consultado": "2026-10-22"
+    },
+    "https://serviciossociales.gva.es/es/web/dependencia/prestaciones-economicas": {
+      "hash": "8bbaf66f3675b5de439add1d6e6cfe8774d255ff3c813618c1fed58b02599d08",
+      "etag": "\"15d8edac\"",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://serviciossociales.gva.es/es/web/dependencia/prestaciones-y-servicios": {
+      "hash": "5214f7757d6a53003ecbba8e861336a5a20aa609ce4a2a286661475575a6192f",
+      "etag": "\"46632fd2\"",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://serviciossociales.gva.es/es/web/dependencia/prestacions-vinculades-als-serveis": {
+      "id": "prestaciones-vinculadas-a-los-servicios",
+      "hash": "73a71918c094ece47e478620412f402f7a5eadbdad1b484f61e53c04e84f6457",
+      "etag": "\"183666b8\"",
+      "consultado": "2026-10-22"
+    },
+    "https://serviciossociales.gva.es/es/web/dependencia/reconeixement-inicial-de-la-dependencia": {
+      "id": "reconocimiento-inicial-de-la-dependencia",
+      "hash": "7b7c00356b29491c32cec4bc8ca5e7f983a94e6f42245953d357c42c71bc3964",
+      "etag": "\"9edcc242\"",
+      "consultado": "2026-10-22"
+    },
+    "https://serviciossociales.gva.es/es/web/dependencia/servei-ajuda-domicili": {
+      "id": "servicio-de-ayuda-a-domicilio",
+      "hash": "b739d54670579429dcbb3be39985b288e62296e6f12a9f4f2612577b257351ee",
+      "etag": "\"aa85e7a2\"",
+      "consultado": "2026-10-22"
+    },
+    "https://serviciossociales.gva.es/es/web/dependencia/servicio-de-promocion-de-la-autonomia-personal": {
+      "id": "servicio-de-prevencion-de-la-situacion-de-dependencia-y-prom",
+      "hash": "111c9bfc558666479fb24309eba8e71a36d35ff73c045178c4ceb7ba5130c732",
+      "etag": "\"353b17d2\"",
+      "consultado": "2026-10-22"
+    },
+    "https://serviciossociales.gva.es/es/web/dependencia/servicio-residencial": {
+      "id": "servicio-de-atencion-residencial-residencias-centros-de-cara",
+      "hash": "51f15c1f6eaffcf4fe4edc39cf05f8db599c4f26e8554b1b8a2bc34532abbefd",
+      "etag": "\"9d8cc2ea\"",
+      "consultado": "2026-10-22"
+    },
+    "https://serviciossociales.gva.es/es/web/dependencia/servicios": {
+      "hash": "7c541503852c4f1c39120e57e28b1783279ad694bad1bf540072fdafb5a13259",
+      "etag": "\"742f0e1b\"",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://serviciossociales.gva.es/es/web/dependencia/teleasistencia": {
+      "id": "teleasistencia-avanzada",
+      "hash": "5bcb8176625e916386d54d0538f1c72f795a9927a2f7ff0e891e9ebb0438163b",
+      "etag": "\"cf73235a\"",
       "consultado": "2026-10-22"
     },
     "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10938": {
