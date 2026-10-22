@@ -1277,7 +1277,7 @@
           <thead><tr><th>Task</th><th>Change</th><th>File</th><th>Requirements</th><th>Status</th></tr></thead>
           <tbody>
             <tr><td>T001</td><td>Confirm the seeds, find the PAG and gva.es search endpoints and the current URLs of the 404 pages; write the seeds; record pages, including a pair that reference each other</td><td>src/datos/semillas.ts</td><td>FR-001</td><td>done</td></tr>
-            <tr><td>T002</td><td>Write canonical URL and code patterns with tests</td><td>scripts/indexar/url.ts</td><td>FR-003</td><td>todo</td></tr>
+            <tr><td>T002</td><td>Write canonical URL and code patterns with tests</td><td>scripts/indexar/url.ts</td><td>FR-003</td><td>done</td></tr>
             <tr><td>T003</td><td>Write clean text, hash and section cut with tests; a page fetched twice hashes the same</td><td>scripts/indexar/texto.ts</td><td>FR-004, FR-010</td><td>todo</td></tr>
             <tr><td>T004</td><td>Write merge, catalogue skip and near-duplicate flag with tests</td><td>scripts/indexar/dedup.ts</td><td>FR-008, FR-009</td><td>todo</td></tr>
             <tr><td>T005</td><td>Write the prompt (fields, esAyuda, naturaleza, referencias), quote and link checks with tests on a fake LLM; compare 2 catalogue aids</td><td>scripts/indexar/extraer.ts</td><td>FR-006, FR-007, FR-015, FR-019</td><td>todo</td></tr>
@@ -1295,7 +1295,7 @@
         <tbody>
           <tr><td>FR-001</td><td>Seeds list official pages that list aids, with their aid URL pattern and administration.</td><td>done</td></tr>
           <tr><td>FR-002</td><td>Fetches seeds, aid pages and their PDFs at 1 request/s per host, 10 s timeout, conditional requests.</td><td>todo</td></tr>
-          <tr><td>FR-003</td><td>Every URL is canonicalised before any comparison.</td><td>todo</td></tr>
+          <tr><td>FR-003</td><td>Every URL is canonicalised before any comparison.</td><td>done</td></tr>
           <tr><td>FR-004</td><td>SHA-256 of the cleaned text; same hash is skipped, a known hash under a new URL is an alias; no LLM in either case.</td><td>todo</td></tr>
           <tr><td>FR-005</td><td>One LLM call per new or changed hash, input ~12k tokens, at most 30 per run; --backfill for the first fill.</td><td>todo</td></tr>
           <tr><td>FR-006</td><td>Each aid has the catalogue item keys plus codigos, documentos, textos and consultado; verificado false.</td><td>todo</td></tr>

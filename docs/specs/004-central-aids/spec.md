@@ -10,7 +10,7 @@ A daily job finds the aids that no API gives us (Social Security and SEPE benefi
 
 - [X] FR-001 — `src/datos/semillas.ts` MUST list the seed pages (official pages that list aids), each with `id`, `url`, the URL pattern of its aid pages and the `administracion` they belong to.
 - [ ] FR-002 — `bun run indexar` MUST fetch each seed and each matching aid page, and the PDFs it links as bases or call, with at most 1 request per second per host, a 10 s timeout and a conditional request (`ETag`/`Last-Modified`) when the server gave one.
-- [ ] FR-003 — Every URL MUST be canonicalised before any comparison: lowercase host, no fragment, no tracking parameters, no trailing slash, one language variant (`/va/`→`/es/` on gva.es, no `lang` on valencia.es).
+- [X] FR-003 — Every URL MUST be canonicalised before any comparison: lowercase host, no fragment, no tracking parameters, no trailing slash, one language variant (`/va/`→`/es/` on gva.es, no `lang` on valencia.es).
 - [ ] FR-004 — The hash MUST be SHA-256 of the cleaned main text (no menus, footers, dates of last update or session tokens; whitespace normalised). The job MUST skip a known URL with the same hash, and record a new URL whose hash is known as an alias of that aid, both without calling the LLM.
 - [ ] FR-005 — The job MUST make one LLM call per new or changed hash, with input capped at ~12k tokens (page text plus the PDF sections on beneficiaries, requisites, deadline and documents), and at most 30 calls per run; `--backfill` lifts the cap for a manual first fill.
 - [ ] FR-006 — Each aid MUST be written with the keys of a `datos/catalogo-tramites-ayudas.json` item, filled as in the table below, plus `codigos`, `documentos: [{titulo, url}]`, `textos` (hashes read) and `consultado`; `tipo: "ayuda"`, `verificado: false`.
@@ -93,7 +93,7 @@ Probed 2026-10-22 with a plain GET (no JavaScript). T001 confirms each and adds 
 ## Tasks
 
 - [X] T001 Confirm the seeds of the table, find the search endpoints of the PAG and gva.es and the current URLs of the 404 ones; write `src/datos/semillas.ts`; record one seed and two aid pages each, including one pair of pages that reference each other → FR-001
-- [ ] T002 [P] Write canonical URL and code patterns with tests in `scripts/indexar/url.ts` → FR-003
+- [X] T002 [P] Write canonical URL and code patterns with tests in `scripts/indexar/url.ts` → FR-003
 - [ ] T003 [P] Write clean text, hash and section cut with tests in `scripts/indexar/texto.ts`, including a page fetched twice that must hash the same → FR-004, FR-010
 - [ ] T004 [P] Write merge, catalogue skip and near-duplicate flag with tests in `scripts/indexar/dedup.ts` → FR-008, FR-009
 - [ ] T005 Write the extraction prompt (fields, `esAyuda`, `naturaleza`, `referencias`), quote check and link check with tests on a fake LLM in `scripts/indexar/extraer.ts`; compare its output for 2 catalogue aids with the catalogue entries → FR-006, FR-007, FR-015, FR-019
