@@ -70,8 +70,8 @@ describe("estadoCentral", () => {
       expect(fichaCentral(a, perfil(null), null, HOY).detalle?.plazo).toEqual(["En cualquier momento."]);
     }
   });
-  test("fechas: cerrada antes de abrir, abierta dentro, cerrada después", () => {
-    expect(estadoCentral({ ...F, fechaInicio: "2026-11-01", fechaFin: "2026-11-30" }, HOY)).toEqual({ estado: "cerrada", fechaFin: "2026-11-30" });
+  test("fechas: sin confirmar antes de abrir, abierta dentro, cerrada después", () => {
+    expect(estadoCentral({ ...F, fechaInicio: "2026-11-01", fechaFin: "2026-11-30" }, HOY)).toEqual({ estado: "desconocido", fechaFin: "2026-11-30" });
     expect(estadoCentral({ ...F, fechaInicio: "2026-10-01", fechaFin: "2026-10-22" }, HOY)).toEqual({ estado: "abierta", fechaFin: "2026-10-22" });
     expect(estadoCentral({ ...F, fechaInicio: "2026-10-01", fechaFin: "2026-10-21" }, HOY)).toEqual({ estado: "cerrada", fechaFin: "2026-10-21" });
     expect(estadoCentral({ ...F, fechaFin: "2026-12-31" }, HOY)).toEqual({ estado: "abierta", fechaFin: "2026-12-31" });

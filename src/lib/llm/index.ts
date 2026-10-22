@@ -2,7 +2,7 @@ import type { ArgsBuscar, AyudaEncontrada, ResultadoBuscar } from "@/lib/ayudas/
 import type { Enlaces } from "@/lib/ayudas/convocatoria";
 import type { ErrorUbicacion } from "@/lib/ayudas/territorio";
 import type { Mensaje } from "@/lib/ia";
-import { elegirPreguntas, TEXTO_PREGUNTA } from "@/lib/llm/pregunta";
+import { elegirPreguntas, INGRESOS_BAJOS, TEXTO_PREGUNTA } from "@/lib/llm/pregunta";
 import { hablaDeDana, perfilDeTexto } from "@/lib/llm/respaldo";
 import {
   bloqueada,
@@ -10,7 +10,7 @@ import {
   fichasDelCatalogo,
   IDS_AYUDAS,
   noCubiertoPor,
-  porEstado,
+  vigentesPorEstado,
 } from "@/lib/motor/catalogo";
 import { fichasCentrales, VERSION_CENTRAL } from "@/lib/motor/central";
 import { normalizar } from "@/lib/lugares";
@@ -133,11 +133,15 @@ export async function responder(
   let sinTiempo = false;
   if (agente) {
     alAvanzar("leyendo");
+    // Si el agente se pasa de tiempo, sigue en segundo plano: sus fases ya no se envían.
+    let enAgente = true;
     try {
       const texto = await conLimite(
-        conversarConHerramientas(mensajes, agente, hallazgos, ejecutar, anteriores),
+        conversarConHerramientas(mensajes, agente, hallazgos, ejecutar, anteriores, (paso) => {
+          if (enAgente) alAvanzar(paso);
+        }),
         msAgente,
-      );
+      ).finally(() => (enAgente = false));
       lectura = texto
         ? leerRespuesta(texto, mensajes, new Set(hallazgos.ayudas.keys()), anterior)
         : null;
@@ -168,7 +172,7 @@ export async function responder(
   const noConsultado: string[] = [];
   if (lectura) {
     perfil = lectura.perfil;
-    fichas = porEstado(
+    fichas = vigentesPorEstado(
       lectura.elegidos
         .filter(({ id }) => IDS_AYUDAS.includes(id) && !bloqueada(id, perfil))
         .map(({ id, citas }) =>
@@ -191,7 +195,7 @@ export async function responder(
   }
 
   // Ayudas centrales (spec 004): después del catálogo, sin repetirlas.
-  fichas = porEstado([...fichas, ...fichasCentrales(perfil, new Set(fichas.map((f) => f.id)), hoy)]);
+  fichas = vigentesPorEstado([...fichas, ...fichasCentrales(perfil, new Set(fichas.map((f) => f.id)), hoy)]);
 
   const base: Cobertura = {
     consultado: [
@@ -205,7 +209,8 @@ export async function responder(
   if (!buscar)
     return { perfil, fichas, cobertura: base, ...elegirPreguntas(fichas, perfil, mensajes) };
 
-  alAvanzar("buscando");
+  // Si el agente ya buscó, conBdns usa su resultado y no vuelve a buscar.
+  if (!hallazgos.busqueda) alAvanzar("buscando");
   const bdns = await conBdns(perfil, lectura, hallazgos, buscar, requisitos, comprobar, adelantada);
   // Si la BDNS no reconoce el municipio, se aclara eso solo; si falta, ya va
   // en el formulario.
@@ -214,7 +219,7 @@ export async function responder(
     bdns.pregunta && bdns.pregunta !== TEXTO_PREGUNTA.municipio && !hecha(bdns.pregunta);
   return {
     perfil,
-    fichas: porEstado([...fichas, ...bdns.fichas]),
+    fichas: vigentesPorEstado([...fichas, ...bdns.fichas]),
     cobertura: coberturaConBdns(base, hallazgos.busqueda, bdns.motivo),
     recurrentes: bdns.recurrentes,
     ...(aclarar
@@ -242,7 +247,8 @@ function rentaSiEncaja(
   const senales = perfil.hechos
     .filter(
       (h) =>
-        (h.campo === "ingresos" && /sin ingresos|bajos/.test(h.valor)) ||
+        (h.campo === "ingresos" &&
+          (h.valor === "sin ingresos" || INGRESOS_BAJOS.includes(h.valor))) ||
         (h.campo === "situacionLaboral" && h.valor === "paro agotado"),
     )
     .map((h) => h.cita);

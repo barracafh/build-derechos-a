@@ -2,6 +2,7 @@ import catalogo from "../../../datos/catalogo-tramites-ayudas.json";
 import { estadoDe, type Estado } from "@/datos/estados";
 import { ADAPTADAS } from "@/datos/lectura-facil";
 import { normalizar, zonaDe, type Zona } from "@/lib/lugares";
+import { INGRESOS_BAJOS } from "@/lib/llm/pregunta";
 import type { CampoPerfil, Ficha, Perfil } from "@/lib/tipos";
 
 // Motor sobre el catálogo local: del `Perfil` de la persona a las ayudas del
@@ -39,6 +40,8 @@ type Senales = {
   paroAgotado: boolean;
   sinIngresos: boolean;
   pocosIngresos: boolean;
+  // Lo que dijo de sus ingresos, para el motivo.
+  dichoIngresos: string;
   alquiler: boolean;
   hijos: boolean;
   escolar: boolean;
@@ -64,12 +67,19 @@ function senalesDe(perfil: Perfil): Senales {
   const libros = /\b(libros|llibres)\b/.test(nec);
   const municipio = valor("municipio")[0] ?? null;
   const zona = municipio ? zonaDe(municipio) : null;
+  const ingresos = perfil.hechos.find((h) => h.campo === "ingresos")?.valor;
   return {
     edad: Number.isFinite(edadN) && edadN > 0 ? edadN : null,
     paro: tiene("situacionLaboral", "en paro") || tiene("situacionLaboral", "paro agotado"),
     paroAgotado: tiene("situacionLaboral", "paro agotado"),
     sinIngresos: tiene("ingresos", "sin ingresos"),
-    pocosIngresos: tiene("ingresos", "bajos"),
+    pocosIngresos: INGRESOS_BAJOS.some((v) => tiene("ingresos", v)),
+    dichoIngresos:
+      ingresos === "sin ingresos"
+        ? "Dices que no tienes ingresos."
+        : ingresos === "bajos"
+          ? "Dices que tus ingresos son bajos."
+          : `Dices que en tu casa entran ${ingresos} al mes.`,
     alquiler: tiene("vivienda", "alquiler"),
     hijos,
     escolar:
@@ -139,7 +149,7 @@ const REGLAS: Regla[] = [
         p.pocosIngresos && {
           peso: 2,
           motivo: [
-            "Dices que tus ingresos son bajos.",
+            p.dichoIngresos,
             "El **IMV** mira los ingresos y el **patrimonio** de tu hogar.",
           ],
         },
@@ -184,7 +194,7 @@ const REGLAS: Regla[] = [
         (p.sinIngresos || p.pocosIngresos) && {
           peso: 2,
           motivo: [
-            "Dices que tus ingresos son bajos.",
+            p.dichoIngresos,
             "El límite de ingresos del **CAPI** es más alto que el del **IMV**.",
             "Puedes recibirlo aunque no tengas derecho al **IMV**.",
           ],
@@ -206,7 +216,7 @@ const REGLAS: Regla[] = [
         p.pocosIngresos && {
           peso: 2,
           motivo: [
-            "Dices que tus ingresos son bajos.",
+            p.dichoIngresos,
             "La **RVI** mira los recursos de tu hogar.",
           ],
         },
@@ -254,8 +264,8 @@ const REGLAS: Regla[] = [
         (p.sinIngresos || p.pocosIngresos) && {
           peso: 1,
           motivo: [
-            "Dices que tus ingresos son bajos.",
-            "Con ingresos bajos, puedes estar por debajo del límite de ingresos.",
+            p.dichoIngresos,
+            "Con esos ingresos, puedes estar por debajo del límite.",
           ],
         },
       ]),
@@ -440,8 +450,9 @@ export function crearFicha(
   };
 }
 
-export const porEstado = (fichas: Ficha[]) =>
-  [...fichas].sort((a, b) => ORDEN[a.estado] - ORDEN[b.estado]);
+// Una ayuda con el plazo ya vencido no se propone: no se puede pedir.
+export const vigentesPorEstado = (fichas: Ficha[]) =>
+  fichas.filter((f) => f.estado !== "cerrada").sort((a, b) => ORDEN[a.estado] - ORDEN[b.estado]);
 
 // Un dato dicho por la persona que el catálogo pone como límite descarta la ayuda.
 const CON_HIJOS = ["complemento-ayuda-infancia", "ayudas-comedor-escolar", "xarxa-llibres"];
@@ -484,7 +495,7 @@ export function fichasDelCatalogo(perfil: Perfil, hoy = new Date()): Ficha[] {
       ),
     );
   }
-  return porEstado(fichas);
+  return vigentesPorEstado(fichas);
 }
 
 /** Lo que este catálogo no cubre según lo que ha dicho la persona. */

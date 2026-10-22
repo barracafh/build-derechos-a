@@ -6,7 +6,7 @@ import type { AyudaEncontrada, ResultadoBuscar } from "@/lib/ayudas/buscar";
 import { ejecutarHerramienta, HERRAMIENTAS } from "@/lib/ayudas/herramientas";
 import type { Requisitos } from "@/lib/ayudas/requisitos";
 import type { MensajeAgente, RespuestaAgente } from "@/lib/ia";
-import type { MensajeChat } from "@/lib/tipos";
+import type { MensajeChat, Paso } from "@/lib/tipos";
 import { construirMensajes } from "./perfil";
 
 export type Agente = (
@@ -117,12 +117,15 @@ export async function conversarConHerramientas(
   hallazgos: Hallazgos,
   ejecutar: Ejecutar = ejecutarHerramienta,
   anteriores: string[] = [],
+  alAvanzar: (paso: Paso) => void = () => {},
 ): Promise<string | null> {
   const historia: MensajeAgente[] = construirMensajes(mensajes, { herramientas: true, anteriores });
   // Cada búsqueda son unas 13 peticiones a la BDNS: una por turno y, si no
   // reconoció el lugar, otra para corregirlo.
   let busquedas = 0;
   for (let ronda = 1; ronda <= RONDAS; ronda++) {
+    // Después de la primera ronda, el modelo decide con lo que han traído las herramientas.
+    if (ronda > 1) alAvanzar("eligiendo");
     const r = await agente(historia, HERRAMIENTAS);
     if (!r.tool_calls.length) return r.content;
     historia.push({ role: "assistant", content: r.content, tool_calls: r.tool_calls });
@@ -142,6 +145,8 @@ export async function conversarConHerramientas(
             // ejecutarHerramienta devuelve el error de JSON.
           }
         }
+        if (t.function.name === "buscar_ayudas") alAvanzar("buscando");
+        if (t.function.name === "ver_requisitos") alAvanzar("requisitos");
         const res = await ejecutar(t.function.name, args);
         guardar(hallazgos, t.function.name, res);
         return paraElModelo(t.function.name, res);

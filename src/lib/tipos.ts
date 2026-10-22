@@ -101,7 +101,13 @@ export type Respuesta = {
 export type CampoFormulario = CampoPerfil | "necesidad";
 
 /** Fase en la que está la búsqueda. Solo una clave fija, nunca texto del LLM. */
-export type Paso = "leyendo" | "reintentando" | "comprobando" | "buscando";
+export type Paso =
+  | "leyendo"
+  | "reintentando"
+  | "comprobando"
+  | "buscando"
+  | "requisitos"
+  | "eligiendo";
 
 /** Cada línea de la respuesta de /api/chat (NDJSON): fases y, al final, la respuesta. */
 export type EventoChat = { paso: Paso } | { respuesta: Respuesta };

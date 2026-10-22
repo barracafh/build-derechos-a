@@ -59,9 +59,10 @@
   outline: none;
 }
 
-/* Las zonas que reciben el foco por código (títulos de respuesta) no lo dibujan
-   al hacer clic, pero sí al llegar con teclado. */
-[tabindex="-1"]:focus:not(:focus-visible) {
+/* Las zonas que reciben el foco por código (títulos de respuesta) no lo dibujan:
+   no se pueden usar y el tabulador no llega a ellas. Tras enviar con Intro el
+   navegador marcaría ese foco como :focus-visible. */
+[tabindex="-1"]:focus {
   outline: none;
 }
 

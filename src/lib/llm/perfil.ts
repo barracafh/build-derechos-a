@@ -39,6 +39,7 @@ ${Object.entries(OPCIONES)
   .map(([campo, opciones]) => `  - ${campo}: uno de ${opciones.map((o) => `"${o}"`).join(", ")}`)
   .join("\n")}
   - municipio, pension, discapacidad: texto breve
+- En "ingresos", el tramo del dinero que entra cada mes en todo su hogar. "bajos" solo si dice que gana poco sin decir cuánto.
 - "necesidad": la frase literal en la que dice qué necesita, o null.
 - "elegidos": las ayudas del catálogo que podrían encajar, de la más a la menos útil, con su "id" exacto. Solo ids de la lista. Si nada encaja, lista vacía.
 - Las ayudas de la Generalitat del catálogo son solo para quien vive en la Comunitat Valenciana.

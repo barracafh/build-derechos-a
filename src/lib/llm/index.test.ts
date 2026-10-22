@@ -49,14 +49,9 @@ describe("perfiles de prueba con el LLM", () => {
     const r = await responder([usuario(texto)], { completar, hoy });
 
     expect(llamadas).toHaveLength(1);
-    // Ordenadas por estado: sin fecha límite, sin confirmar, cerrada.
-    expect(ids(r)).toEqual(["ingreso-minimo-vital", "subsidio-desempleo", "bono-alquiler-joven"]);
-    const bono = r.fichas.find((f) => f.id === "bono-alquiler-joven")!;
-    expect(bono.estado).toBe("cerrada");
-    expect(bono.porQue).toEqual(["Dices: «24 años».", "Dices: «vivo de alquiler»."]);
-    expect(bono.pendiente).toEqual(["ingresos"]);
-    expect(bono.detalle?.pasos.length).toBeGreaterThan(0);
-    expect(bono.detalle?.ambito).toBe("Comunitat Valenciana");
+    // Ordenadas por estado: sin fecha límite, sin confirmar. El bono alquiler
+    // joven tiene el plazo vencido y no sale.
+    expect(ids(r)).toEqual(["ingreso-minimo-vital", "subsidio-desempleo"]);
     expect(r.formulario[0]).toBe("ingresos");
     expect(usoRespaldo(r)).toBe(false);
   });
@@ -131,7 +126,7 @@ describe("perfiles de prueba con el LLM", () => {
     });
     const r = await responder([usuario(texto)], { completar, hoy });
 
-    expect(ids(r)).toEqual(["xarxa-llibres", "complemento-ayuda-infancia", "ayudas-comedor-escolar"]);
+    expect(ids(r)).toEqual(["xarxa-llibres", "ayudas-comedor-escolar", "complemento-ayuda-infancia"]);
     const libros = r.fichas[0];
     expect(libros).toMatchObject({ estado: "abierta", fechaFin: "2026-11-10", pendiente: [] });
     expect(r.formulario[0]).toBe("ingresos");
@@ -206,7 +201,8 @@ describe("respaldo sin LLM", () => {
     const t = "Tengo 24 años, estoy en paro y vivo de alquiler en València";
     const r = await buscar(t);
     expect(usoRespaldo(r)).toBe(true);
-    expect(ids(r)).toContain("bono-alquiler-joven");
+    expect(ids(r)).toContain("subsidio-desempleo");
+    expect(ids(r)).not.toContain("bono-alquiler-joven");
     expect(r.perfil.hechos.find((h) => h.campo === "edad")?.cita).toBe("Tengo 24");
     for (const h of r.perfil.hechos) expect(t).toContain(h.cita);
   });

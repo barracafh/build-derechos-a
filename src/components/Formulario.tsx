@@ -13,7 +13,9 @@ import type { CampoFormulario } from "@/lib/tipos";
 // lectura y validación que lo que se escribe a mano. En valenciano, las frases
 // van en valenciano: el LLM las lee igual.
 
-type Opcion = { etiqueta: string; frase: string };
+// `escribe`: la opción «Otra» abre un campo para contar cuál; lo escrito va en
+// la frase.
+type Opcion = { etiqueta: string; frase: string; escribe?: (v: string) => string };
 
 // Las preguntas en castellano son las del servidor, que las usa para no
 // repetirlas.
@@ -42,13 +44,21 @@ const RESPUESTAS_ES: Partial<Record<CampoFormulario, Opcion[]>> = {
     { etiqueta: "Autónomo/a", frase: "Trabajo como autónomo/a." },
     { etiqueta: "Jubilado/a", frase: "Estoy jubilado/a." },
     { etiqueta: "Estudio", frase: "Estoy estudiando." },
-    { etiqueta: "Otra", frase: "Mi situación de trabajo es otra." },
+    {
+      etiqueta: "Otra",
+      frase: "Mi situación de trabajo es otra.",
+      escribe: (v) => `Mi situación de trabajo: ${punto(v)}`,
+    },
   ],
   vivienda: [
     { etiqueta: "De alquiler", frase: "Vivo de alquiler." },
     { etiqueta: "En una habitación", frase: "Vivo en una habitación alquilada." },
     { etiqueta: "En una casa mía", frase: "Vivo en una casa de mi propiedad." },
-    { etiqueta: "Otra", frase: "Vivo de otra forma." },
+    {
+      etiqueta: "Otra",
+      frase: "Vivo de otra forma.",
+      escribe: (v) => `Sobre mi vivienda: ${punto(v)}`,
+    },
   ],
   hijos: [
     { etiqueta: "No", frase: "No tengo hijos." },
@@ -57,10 +67,11 @@ const RESPUESTAS_ES: Partial<Record<CampoFormulario, Opcion[]>> = {
     { etiqueta: "3 o más", frase: "Tengo 3 hijos o más." },
   ],
   ingresos: [
-    { etiqueta: "Ninguno", frase: "No tengo ingresos." },
-    { etiqueta: "Bajos", frase: "Mis ingresos son bajos." },
-    { etiqueta: "Medios", frase: "Mis ingresos son medios." },
-    { etiqueta: "Altos", frase: "Mis ingresos son altos." },
+    { etiqueta: "Nada", frase: "No tengo ingresos." },
+    { etiqueta: "Menos de 600 €", frase: "En mi casa entran menos de 600 € al mes." },
+    { etiqueta: "De 600 a 1.200 €", frase: "En mi casa entran de 600 a 1.200 € al mes." },
+    { etiqueta: "De 1.200 a 1.800 €", frase: "En mi casa entran de 1.200 a 1.800 € al mes." },
+    { etiqueta: "Más de 1.800 €", frase: "En mi casa entran más de 1.800 € al mes." },
   ],
   pension: [
     { etiqueta: "Sí", frase: "Cobro una pensión." },
@@ -82,13 +93,21 @@ const RESPUESTAS: Record<Idioma, Partial<Record<CampoFormulario, Opcion[]>>> = {
       { etiqueta: "Autònom/a", frase: "Treballe com a autònom/a." },
       { etiqueta: "Jubilat/ada", frase: "Estic jubilat/ada." },
       { etiqueta: "Estudie", frase: "Estic estudiant." },
-      { etiqueta: "Una altra", frase: "La meua situació de treball és una altra." },
+      {
+        etiqueta: "Una altra",
+        frase: "La meua situació de treball és una altra.",
+        escribe: (v) => `La meua situació de treball: ${punto(v)}`,
+      },
     ],
     vivienda: [
       { etiqueta: "De lloguer", frase: "Visc de lloguer." },
       { etiqueta: "En una habitació", frase: "Visc en una habitació llogada." },
       { etiqueta: "En una casa meua", frase: "Visc en una casa de la meua propietat." },
-      { etiqueta: "Una altra", frase: "Visc d'una altra manera." },
+      {
+        etiqueta: "Una altra",
+        frase: "Visc d'una altra manera.",
+        escribe: (v) => `Sobre el meu habitatge: ${punto(v)}`,
+      },
     ],
     hijos: [
       { etiqueta: "No", frase: "No tinc fills." },
@@ -97,10 +116,11 @@ const RESPUESTAS: Record<Idioma, Partial<Record<CampoFormulario, Opcion[]>>> = {
       { etiqueta: "3 o més", frase: "Tinc 3 fills o més." },
     ],
     ingresos: [
-      { etiqueta: "Cap", frase: "No tinc ingressos." },
-      { etiqueta: "Baixos", frase: "Els meus ingressos són baixos." },
-      { etiqueta: "Mitjans", frase: "Els meus ingressos són mitjans." },
-      { etiqueta: "Alts", frase: "Els meus ingressos són alts." },
+      { etiqueta: "Res", frase: "No tinc ingressos." },
+      { etiqueta: "Menys de 600 €", frase: "A ma casa entren menys de 600 € al mes." },
+      { etiqueta: "De 600 a 1.200 €", frase: "A ma casa entren de 600 a 1.200 € al mes." },
+      { etiqueta: "De 1.200 a 1.800 €", frase: "A ma casa entren de 1.200 a 1.800 € al mes." },
+      { etiqueta: "Més de 1.800 €", frase: "A ma casa entren més de 1.800 € al mes." },
     ],
     pension: [
       { etiqueta: "Sí", frase: "Cobre una pensió." },
@@ -131,10 +151,12 @@ const FRASE: Record<Idioma, Partial<Record<CampoFormulario, (v: string) => strin
 const TEXTOS = {
   es: {
     enviar: "Enviar respuestas",
+    cual: "¿Cuál?",
     ayuda: "Contesta solo lo que quieras. También puedes escribirlo abajo.",
   },
   va: {
     enviar: "Enviar respostes",
+    cual: "Quina?",
     ayuda: "Contesta només el que vulgues. També ho pots escriure a baix.",
   },
 };
@@ -152,6 +174,7 @@ export function Formulario({
 }) {
   const idioma = useIdioma();
   const [valores, setValores] = useState<Partial<Record<CampoFormulario, string>>>({});
+  const [otros, setOtros] = useState<Partial<Record<CampoFormulario, string>>>({});
   const formulario = useRef<HTMLFormElement>(null);
   const poner = (c: CampoFormulario, v: string) => setValores((vs) => ({ ...vs, [c]: v }));
 
@@ -168,7 +191,11 @@ export function Formulario({
   const frases = campos.flatMap((c) => {
     const v = valores[c]?.trim();
     if (!v) return [];
-    return [RESPUESTAS[idioma][c] ? v : FRASE[idioma][c]!(v)];
+    const opciones = RESPUESTAS[idioma][c];
+    if (!opciones) return [FRASE[idioma][c]!(v)];
+    const escribe = opciones.find((o) => o.frase === v)?.escribe;
+    const otro = otros[c]?.trim();
+    return [escribe && otro ? escribe(otro) : v];
   });
 
   return (
@@ -204,6 +231,20 @@ export function Formulario({
                 </label>
               ))}
             </div>
+            {opciones.find((o) => o.frase === valores[c])?.escribe && (
+              <div className="mt-2 grid gap-2">
+                <label htmlFor={`${nombre}-otra`}>{TEXTOS[idioma].cual}</label>
+                <Input
+                  id={`${nombre}-otra`}
+                  type="text"
+                  maxLength={200}
+                  value={otros[c] ?? ""}
+                  onChange={(e) => setOtros((os) => ({ ...os, [c]: e.target.value }))}
+                  autoComplete="off"
+                  className="h-12 max-w-md rounded-xl border-(--text-secondary) px-4 text-lg md:text-lg"
+                />
+              </div>
+            )}
           </fieldset>
         ) : (
           <div key={c} className="grid gap-2">

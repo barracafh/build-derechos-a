@@ -21,8 +21,23 @@ export const TEXTO_PREGUNTA: Record<CampoFormulario, string> = {
 export const OPCIONES: Partial<Record<CampoPerfil, string[]>> = {
   situacionLaboral: ["en paro", "paro agotado", "trabajando", "autónomo", "jubilado", "estudiando", "otra"],
   vivienda: ["alquiler", "habitación", "propiedad", "otra"],
-  ingresos: ["sin ingresos", "bajos", "medios", "altos"],
+  // Lo que entra al mes en todo el hogar, en tramos del IPREM (600 €/mes en
+  // 2026), la referencia de casi todas las ayudas. «bajos», para quien lo dice
+  // así, sin cantidad.
+  ingresos: [
+    "sin ingresos",
+    "menos de 600 €",
+    "de 600 a 1.200 €",
+    "de 1.200 a 1.800 €",
+    "más de 1.800 €",
+    "bajos",
+  ],
 };
+
+// Hasta 2 veces el IPREM cuenta como pocos ingresos para proponer el IMV, el
+// CAPI, la renta de la comunidad o el bono social: sus límites crecen con cada
+// miembro del hogar. Los requisitos se comprueban en la sede.
+export const INGRESOS_BAJOS = ["bajos", "menos de 600 €", "de 600 a 1.200 €"];
 
 // Los datos que deciden las ayudas del catálogo, en el orden en que se piden
 // después de los que piden las fichas.

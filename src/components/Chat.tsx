@@ -11,6 +11,7 @@ import {
 import {
   ArrowUp,
   ArrowUpRight,
+  Check,
   ChevronRight,
   Search,
   SquarePen,
@@ -48,8 +49,11 @@ const ES = {
     reintentando: "Tarda un poco más. Lo intento otra vez",
     comprobando: "Comprobando requisitos y plazos",
     buscando: "Buscando convocatorias de tu zona",
+    requisitos: "Leyendo los requisitos de las convocatorias",
+    eligiendo: "Eligiendo las ayudas que encajan contigo",
   } satisfies Record<Paso, string>,
   pensando: "Pensando",
+  paciencia: "Puede tardar hasta un minuto.",
   escribe: "Escribe tu situación con tus palabras",
   buscarAyudas: "Buscar ayudas",
   unidad: {
@@ -83,10 +87,10 @@ const ES = {
   abrirSede: "Abrir la sede de la Generalitat",
   despues: (ahora: number, despues: number) =>
     ahora === 0
-      ? "Ayudas que no puedes pedir ahora o sin plazo confirmado"
+      ? "Ayudas con el plazo sin confirmar"
       : despues === 1
-        ? "1 ayuda más que no puedes pedir ahora o sin plazo confirmado"
-        : `${despues} ayudas más que no puedes pedir ahora o sin plazo confirmado`,
+        ? "1 ayuda más con el plazo sin confirmar"
+        : `${despues} ayudas más con el plazo sin confirmar`,
   respuesta: "Respuesta: ",
   problema: "Ha habido un problema.",
   otraVez: "Intentar otra vez",
@@ -124,8 +128,11 @@ const TEXTOS: Record<Idioma, typeof ES> = {
       reintentando: "Tarda un poc més. Ho torne a intentar",
       comprobando: "Comprovant requisits i terminis",
       buscando: "Buscant convocatòries de la teua zona",
+      requisitos: "Llegint els requisits de les convocatòries",
+      eligiendo: "Triant les ajudes que encaixen amb tu",
     },
     pensando: "Pensant",
+    paciencia: "Pot tardar fins a un minut.",
     escribe: "Escriu la teua situació amb les teues paraules",
     buscarAyudas: "Buscar ajudes",
     unidad: {
@@ -150,9 +157,9 @@ const TEXTOS: Record<Idioma, typeof ES> = {
       habitación: "habitació",
       propiedad: "propietat",
       "sin ingresos": "sense ingressos",
+      "menos de 600 €": "menys de 600 €",
+      "más de 1.800 €": "més de 1.800 €",
       bajos: "baixos",
-      medios: "mitjans",
-      altos: "alts",
     },
     loQueBuscas: "El que busques",
     cuentame: "Per a buscar les teues ajudes, conta'm un poc de tu.",
@@ -172,10 +179,10 @@ const TEXTOS: Record<Idioma, typeof ES> = {
     abrirSede: "Obrir la seu de la Generalitat",
     despues: (ahora, despues) =>
       ahora === 0
-        ? "Ajudes que no pots demanar ara o sense termini confirmat"
+        ? "Ajudes amb el termini sense confirmar"
         : despues === 1
-          ? "1 ajuda més que no pots demanar ara o sense termini confirmat"
-          : `${despues} ajudes més que no pots demanar ara o sense termini confirmat`,
+          ? "1 ajuda més amb el termini sense confirmar"
+          : `${despues} ajudes més amb el termini sense confirmar`,
     respuesta: "Resposta: ",
     problema: "Hi ha hagut un problema.",
     otraVez: "Tornar-ho a intentar",
@@ -199,7 +206,7 @@ const TEXTOS: Record<Idioma, typeof ES> = {
 
 type Mensaje =
   | { id: number; rol: "usuario"; texto: string }
-  | { id: number; rol: "asistente"; estado: "cargando"; paso?: Paso }
+  | { id: number; rol: "asistente"; estado: "cargando"; pasos?: Paso[] }
   | { id: number; rol: "asistente"; estado: "error"; error: string; historial: MensajeChat[] }
   | { id: number; rol: "asistente"; estado: "ok"; respuesta: Respuesta };
 
@@ -428,6 +435,47 @@ function VistaRespuesta({
   );
 }
 
+// Mientras se busca: las fases ya hechas, marcadas, y la actual con los
+// puntos. Si pasan 10 s, se avisa de que puede tardar.
+function Progreso({ pasos }: { pasos: Paso[] }) {
+  const t = TEXTOS[useIdioma()];
+  const [lento, setLento] = useState(false);
+  useEffect(() => {
+    const reloj = setTimeout(() => setLento(true), 10_000);
+    return () => clearTimeout(reloj);
+  }, []);
+  const actual = pasos.at(-1);
+  // «Lo intento otra vez» no es una fase hecha: solo se ve mientras dura.
+  const hechas = [...new Set(pasos)].filter((p) => p !== actual && p !== "reintentando");
+  return (
+    <div className="grid gap-1 leading-9 text-(--text-secondary)">
+      {hechas.length > 0 && (
+        <ul>
+          {hechas.map((p) => (
+            <li key={p} className="aparece flex items-center gap-3">
+              <span aria-hidden="true" className="flex w-6 justify-center">
+                <Check className="size-5" />
+              </span>
+              {t.paso[p]}
+            </li>
+          ))}
+        </ul>
+      )}
+      <p className="flex items-center gap-3">
+        <span aria-hidden="true" className="escribiendo flex w-6 justify-center gap-1">
+          <span className="size-1.5 rounded-full bg-current" />
+          <span className="size-1.5 rounded-full bg-current" />
+          <span className="size-1.5 rounded-full bg-current" />
+        </span>
+        <span key={actual ?? "pensando"} className="aparece">
+          {actual ? t.paso[actual] : t.pensando}
+        </span>
+      </p>
+      {lento && <p className="aparece pl-9 text-base">{t.paciencia}</p>}
+    </div>
+  );
+}
+
 function BurbujaAsistente({
   m,
   alPreguntar,
@@ -456,18 +504,7 @@ function BurbujaAsistente({
         className="aparece min-w-0 text-lg leading-[1.6] [&>:not(.sr-only)~*]:mt-8"
       >
         <span className="sr-only">{t.respuesta}</span>
-        {m.estado === "cargando" && (
-          <p className="flex items-center gap-3 leading-9 text-(--text-secondary)">
-            <span aria-hidden="true" className="escribiendo flex gap-1">
-              <span className="size-1.5 rounded-full bg-current" />
-              <span className="size-1.5 rounded-full bg-current" />
-              <span className="size-1.5 rounded-full bg-current" />
-            </span>
-            <span key={m.paso ?? "buscando"} className="aparece">
-              {m.paso ? t.paso[m.paso] : t.pensando}
-            </span>
-          </p>
-        )}
+        {m.estado === "cargando" && <Progreso pasos={m.pasos ?? []} />}
         {m.estado === "error" && (
           <div
             role="alert"
@@ -618,6 +655,7 @@ export function Chat() {
       }
       // Llega una línea JSON por evento: fases y, al final, la respuesta.
       let respuesta: Respuesta | null = null;
+      const pasos: Paso[] = [];
       let resto = "";
       const lector = res.body.pipeThrough(new TextDecoderStream()).getReader();
       for (let l = await lector.read(); !l.done; l = await lector.read()) {
@@ -627,7 +665,8 @@ export function Chat() {
           const e = JSON.parse(linea) as EventoChat;
           if ("respuesta" in e) respuesta = e.respuesta;
           else {
-            reemplazar(idA, { id: idA, rol: "asistente", estado: "cargando", paso: e.paso });
+            if (pasos.at(-1) !== e.paso) pasos.push(e.paso);
+            reemplazar(idA, { id: idA, rol: "asistente", estado: "cargando", pasos: [...pasos] });
             setAnuncio(`${t.paso[e.paso]}.`);
           }
         }

@@ -72,7 +72,8 @@ export function estadoCentral(a: AyudaCentral, hoy: Date): { estado: Ficha["esta
     return { estado: "permanente", fechaFin: null };
   if (tipo === "sin_plazo") return { estado: "desconocido", fechaFin: null };
   // tipo === "fechas"
-  if (inicio && h < inicio) return { estado: "cerrada", fechaFin: fin };
+  // Aún no ha abierto: no ha pasado, así que no se da por cerrada.
+  if (inicio && h < inicio) return { estado: "desconocido", fechaFin: fin };
   if (fin) return { estado: h > fin ? "cerrada" : "abierta", fechaFin: fin };
   const texto = a.plazoListado?.estado ?? "";
   if (/cerrad|tancat/i.test(texto)) return { estado: "cerrada", fechaFin: null };

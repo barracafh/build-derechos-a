@@ -315,3 +315,20 @@ describe("búsquedas del agente", () => {
     expect(llamadas).toHaveLength(2);
   });
 });
+
+describe("fases que ve la persona", () => {
+  test("leer, buscar, elegir y comprobar, sin repetir la búsqueda del agente", async () => {
+    const pasos: string[] = [];
+    const { agente } = agenteFalso({ ...PERFIL, elegidos: [] });
+    await responder([usuario(TEXTO)], {
+      completar: nuncaCompletar,
+      hoy,
+      agente,
+      ejecutar: async () => resultado([ayuda(1)]),
+      buscar: async () => resultado([]),
+      requisitos: async () => [],
+      alAvanzar: (p) => pasos.push(p),
+    });
+    expect(pasos).toEqual(["leyendo", "buscando", "eligiendo", "comprobando"]);
+  });
+});

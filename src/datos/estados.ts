@@ -50,8 +50,10 @@ const DEFINICIONES: Record<string, Definicion> = {
       "Si ya la pediste, todavía puedes entregar documentos.",
     ],
   },
+  // El plazo normal ha pasado, pero quien entra más tarde en el colegio aún puede
+  // pedirla: no se da por cerrada.
   "ayudas-comedor-escolar": {
-    tipo: "cerrada",
+    tipo: "sin-confirmar",
     lineas: [
       "El plazo normal está cerrado.",
       "Si empiezas más tarde en el colegio, tienes 10 **días hábiles** desde la matrícula.",

@@ -6,6 +6,7 @@ import type { Recurrente } from "@/lib/ayudas/recurrentes";
 import { RENTAS_CONSULTADO, rentaPorId } from "@/lib/ayudas/rentas";
 import { sinOrganismo, type Tema } from "@/lib/ayudas/temas";
 import { normalizar } from "@/lib/lugares";
+import { INGRESOS_BAJOS } from "@/lib/llm/pregunta";
 import type { Cobertura, Ficha, Perfil } from "@/lib/tipos";
 
 export type Busqueda = {
@@ -79,7 +80,7 @@ export function busquedaDelPerfil(perfil: Perfil): Busqueda | null {
     poner("educacion", hijos.cita);
   }
   const ingresos = hecho("ingresos");
-  if (ingresos && /sin ingresos|bajos/.test(valor("ingresos")))
+  if (ingresos && (ingresos.valor === "sin ingresos" || INGRESOS_BAJOS.includes(ingresos.valor)))
     poner("servicios_sociales", ingresos.cita);
   const discapacidad = hecho("discapacidad");
   if (discapacidad && !/^no\b/.test(valor("discapacidad"))) poner("discapacidad", discapacidad.cita);
