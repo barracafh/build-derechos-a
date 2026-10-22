@@ -62,7 +62,8 @@ jobs:
         env:
           HELMCODE_API_KEY: ${{ secrets.HELMCODE_API_KEY }}
           HELMCODE_MODEL: ${{ vars.HELMCODE_MODEL || 'glm5.3-flash' }}
-          HELMCODE_BASE_URL: ${{ vars.HELMCODE_BASE_URL }}
+          # No HELMCODE_BASE_URL here: an empty string is not "unset" for ia.ts
+          # and breaks the URL; the client's default is the event's endpoint.
         run: bun run indexar ${{ steps.flags.outputs.flags }}
 
       - name: Check for changes
