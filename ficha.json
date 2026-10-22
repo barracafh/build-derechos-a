@@ -1,6 +1,6 @@
 {
   "nombre": "Derechos",
-  "frase": "Encuentra las ayudas que te corresponden.",
+  "frase": "Encuentra las ayudas a las que podrías optar.",
   "icono": "+",
   "herramienta": "derechos",
   "equipo": "derechos-a",
@@ -11,9 +11,9 @@
       "url": "https://www.infosubvenciones.es/"
     },
     {
-      "nombre": "dadesobertes.gva.es",
-      "url": "https://dadesobertes.gva.es/"
+      "nombre": "sede.gva.es",
+      "url": "https://sede.gva.es/"
     }
   ],
-  "datos": "simulados"
+  "datos": "reales"
 }
