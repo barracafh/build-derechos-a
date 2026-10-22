@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import type { Perfil } from "@/lib/tipos";
-import { AYUDAS_CENTRALES, coincidencias, estadoCentral, fichaCentral, fichasCentrales, palabras, SIN_PLAZO } from "./central";
+import { AYUDAS_CENTRALES, coincidencias, estadoCentral, fichaCentral, fichasCentrales, palabras, PLAZO_RELATIVO, SIN_PLAZO } from "./central";
 import { buscarAyudas } from "./index";
 import { IDS_AYUDAS } from "./catalogo";
 
@@ -63,12 +63,20 @@ describe("estadoCentral", () => {
     expect(estadoCentral(AYUDA, HOY)).toEqual({ estado: "desconocido", fechaFin: null });
     expect(fichaCentral(AYUDA, perfil(null), null, HOY).detalle?.plazo).toEqual([SIN_PLAZO]);
   });
-  test("permanente, relativo y de_oficio son permanente y muestran la cita", () => {
-    for (const tipoPlazo of ["permanente", "relativo", "de_oficio"] as const) {
+  test("permanente y de_oficio son permanente y muestran la cita", () => {
+    for (const tipoPlazo of ["permanente", "de_oficio"] as const) {
       const a = { ...AYUDA, tipoPlazo, plazo: "En cualquier momento." };
       expect(estadoCentral(a, HOY)).toEqual({ estado: "permanente", fechaFin: null });
       expect(fichaCentral(a, perfil(null), null, HOY).detalle?.plazo).toEqual(["En cualquier momento."]);
     }
+  });
+  test("relativo no es «sin fecha límite»: sin confirmar, con aviso y la cita", () => {
+    const a = { ...AYUDA, tipoPlazo: "relativo" as const, plazo: "En el plazo de 3 meses desde la baja." };
+    expect(estadoCentral(a, HOY)).toEqual({ estado: "desconocido", fechaFin: null });
+    expect(fichaCentral(a, perfil(null), null, HOY).detalle?.plazo).toEqual([
+      `${PLAZO_RELATIVO} Según la página oficial: «En el plazo de 3 meses desde la baja.»`,
+    ]);
+    expect(fichaCentral({ ...a, plazo: null }, perfil(null), null, HOY).detalle?.plazo).toEqual([PLAZO_RELATIVO]);
   });
   test("fechas: sin confirmar antes de abrir, abierta dentro, cerrada después", () => {
     expect(estadoCentral({ ...F, fechaInicio: "2026-11-01", fechaFin: "2026-11-30" }, HOY)).toEqual({ estado: "desconocido", fechaFin: "2026-11-30" });

@@ -60,6 +60,9 @@ const fecha = (d: Date) => d.toISOString().slice(0, 10);
 /** Texto del plazo cuando la página oficial no da ninguno. */
 export const SIN_PLAZO = "La página oficial no indica plazo.";
 
+/** Primera línea del plazo cuando cuenta desde una fecha de cada persona. */
+export const PLAZO_RELATIVO = "El plazo cuenta desde una fecha tuya, así que pídela cuanto antes.";
+
 // Estado calculado el día de la consulta, nunca guardado: así no caduca. Sale
 // solo de lo que el job sacó por código (`tipoPlazo`, `fechaInicio`, `fechaFin`,
 // `plazoListado`), nunca del texto libre del LLM.
@@ -68,8 +71,10 @@ export function estadoCentral(a: AyudaCentral, hoy: Date): { estado: Ficha["esta
   const fin = a.fechaFin ?? a.plazoListado?.fin ?? null;
   const inicio = a.fechaInicio ?? a.plazoListado?.inicio ?? null;
   const tipo = a.tipoPlazo ?? (fin || inicio ? "fechas" : "sin_plazo");
-  if (tipo === "permanente" || tipo === "relativo" || tipo === "de_oficio")
-    return { estado: "permanente", fechaFin: null };
+  if (tipo === "permanente" || tipo === "de_oficio") return { estado: "permanente", fechaFin: null };
+  // «Relativo» cuenta desde una fecha de cada persona (tres meses desde la baja,
+  // seis desde la resolución…): puede haber pasado, así que no es «sin fecha límite».
+  if (tipo === "relativo") return { estado: "desconocido", fechaFin: null };
   if (tipo === "sin_plazo") return { estado: "desconocido", fechaFin: null };
   // tipo === "fechas"
   // Aún no ha abierto: no ha pasado, así que no se da por cerrada.
@@ -149,6 +154,10 @@ export function fichaCentral(a: AyudaCentral, perfil: Perfil, frase: string | nu
   const { estado, fechaFin } = estadoCentral(a, hoy);
   const plazo = [a.plazoListado?.texto, a.plazo].map(limpio).filter(Boolean);
   if (plazo.length === 0 && (a.tipoPlazo ?? "sin_plazo") === "sin_plazo") plazo.push(SIN_PLAZO);
+  // Suelen ser plazos cortos (15 días, 3 meses): la cita oficial va en la línea
+  // que se ve sin abrir la ficha, para que cada uno sepa si llega.
+  if (a.tipoPlazo === "relativo")
+    plazo.splice(0, plazo.length, plazo.length ? `${PLAZO_RELATIVO} Según la página oficial: «${plazo.join(" ")}»` : PLAZO_RELATIVO);
   const fuentes = [a.enlace_info, ...limpio(a.fuente).split(";").map((u) => u.trim())]
     .filter((u, i, all) => /^https?:\/\//.test(u) && all.indexOf(u) === i)
     .map((url) => ({ nombre: new URL(url).hostname, url }));

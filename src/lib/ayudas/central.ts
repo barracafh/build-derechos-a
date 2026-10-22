@@ -38,8 +38,8 @@ export function estadoAyudaCentral(a: AyudaCentral, hoy: string): ResultadoPlazo
     return {
       estado: "por_confirmar",
       motivo: texto
-        ? `El plazo cuenta desde un hecho de cada persona. Según la página oficial: «${texto}»`
-        : "El plazo cuenta desde un hecho de cada persona: confírmalo en la página oficial.",
+        ? `El plazo cuenta desde un hecho de cada persona y suele ser corto: si encaja, que la pida cuanto antes. Según la página oficial: «${texto}»`
+        : "El plazo cuenta desde un hecho de cada persona y suele ser corto: si encaja, que la pida cuanto antes y lo confirme en la página oficial.",
       fin: null,
     };
   if (estado === "permanente")
