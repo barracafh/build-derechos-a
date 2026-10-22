@@ -20,9 +20,11 @@ describe("construirMensajes", () => {
     for (const id of IDS_AYUDAS) expect(sistema.content).toContain(`"id":"${id}"`);
     expect(sistema.content).not.toContain('"id":"renovacion-dni"');
     expect(resto).toEqual([
-      { role: "user", content: "Hola" },
-      { role: "assistant", content: "¿Cuántos años tienes?" },
-      { role: "user", content: "24" },
+      {
+        role: "user",
+        content:
+          "Conversación hasta ahora:\n\nPersona: Hola\nAsistente: ¿Cuántos años tienes?\nPersona: 24\n\nDevuelve solo el objeto JSON.",
+      },
     ]);
   });
 });

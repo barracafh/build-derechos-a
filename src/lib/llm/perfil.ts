@@ -76,10 +76,15 @@ export function construirMensajes(
       role: "system",
       content: (herramientas ? SISTEMA + CON_HERRAMIENTAS : SISTEMA) + yaVistas,
     },
-    ...mensajes.map((m) => ({
-      role: m.rol === "usuario" ? ("user" as const) : ("assistant" as const),
-      content: m.texto,
-    })),
+    // La conversación va como datos en un solo mensaje: con turnos de chat, el
+    // modelo sin razonar sigue la charla («¿Cuál es tu situación laboral?») en
+    // vez de devolver el JSON.
+    {
+      role: "user",
+      content: `Conversación hasta ahora:\n\n${mensajes
+        .map((m) => `${m.rol === "usuario" ? "Persona" : "Asistente"}: ${m.texto}`)
+        .join("\n")}\n\nDevuelve solo el objeto JSON.`,
+    },
   ];
 }
 
