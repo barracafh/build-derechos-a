@@ -131,6 +131,8 @@ export async function conversarConHerramientas(
     historia.push({ role: "assistant", content: r.content, tool_calls: r.tool_calls });
     const resultados = await Promise.all(
       r.tool_calls.map(async (t, i) => {
+        if (!["buscar_ayudas", "ver_requisitos"].includes(t.function.name))
+          return { error: "Herramienta no permitida." };
         if (i >= LLAMADAS_POR_RONDA || ronda === RONDAS)
           return { error: "No quedan llamadas: responde ya con el JSON." };
         let args: unknown = t.function.arguments;

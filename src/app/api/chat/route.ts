@@ -2,7 +2,7 @@ import { buscarAyudas } from "@/lib/ayudas/buscar";
 import { comprobarEnlaces } from "@/lib/ayudas/enlaces";
 import { requisitosDelExtracto } from "@/lib/ayudas/requisitos";
 import { completar, completarConHerramientas } from "@/lib/ia";
-import { responder } from "@/lib/llm";
+import { responderProtegido as responder } from "@/lib/llm/guardarrailes";
 import type { EventoChat, MensajeChat } from "@/lib/tipos";
 
 // POST {"mensajes": MensajeChat[], "perfil"?: Perfil, "ayudas"?: string[]} → NDJSON de EventoChat que acaba en la Respuesta (spec 003).
