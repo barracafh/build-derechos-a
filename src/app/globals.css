@@ -70,6 +70,43 @@ a.foco-interno:focus-visible {
   outline-offset: -3px;
 }
 
+/* Los mensajes entran con un fundido corto y los puntos dicen que se está
+   pensando. Quieto si la persona pide menos movimiento. */
+@media (prefers-reduced-motion: no-preference) {
+  .aparece {
+    animation: aparece 0.3s ease-out both;
+  }
+  .escribiendo > span {
+    animation: punto 1.2s ease-in-out infinite;
+  }
+  .escribiendo > span:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  .escribiendo > span:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+}
+
+@keyframes aparece {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes punto {
+  0%,
+  60%,
+  100% {
+    opacity: 0.4;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+}
+
 /* El contenedor principal solo recibe el foco como destino del enlace «Saltar
    al contenido»; no es un control, así que no lleva anillo. */
 main#contenido:focus-visible {

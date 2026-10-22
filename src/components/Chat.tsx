@@ -163,6 +163,12 @@ function VistaRespuesta({
     f.estado === "abierta" || f.estado === "permanente";
   const ahora = r.fichas.filter(esAhora);
   const despues = r.fichas.filter((f) => !esAhora(f));
+  // Mientras se conoce a la persona, la respuesta es solo la pregunta, como en
+  // un chat. El formato de resultados es para cuando hay ayudas que enseñar.
+  if (n === 0 && r.pregunta)
+    return (
+      <p className="pt-1">{r.pregunta}</p>
+    );
   return (
     <>
       <div className="grid gap-3">
@@ -172,9 +178,7 @@ function VistaRespuesta({
           className="font-sans text-3xl leading-9 font-medium"
         >
           {n === 0
-            ? r.pregunta
-              ? "Necesito saber un poco más de ti"
-              : "No he encontrado ayudas"
+            ? "No he encontrado ayudas"
             : n === 1
               ? "Podrías optar a 1 ayuda"
               : `Podrías optar a ${n} ayudas`}
@@ -210,7 +214,7 @@ function VistaRespuesta({
       )}
 
       {n === 0 ? (
-        !r.pregunta && <Card
+        <Card
           render={<section />}
           className="gap-4 bg-muted px-6 py-6 text-lg ring-0"
         >
@@ -291,13 +295,21 @@ function BurbujaAsistente({
       >
         <Search className="size-5" />
       </span>
-      <div className="min-w-0 text-lg leading-[1.6] [&>:not(.sr-only)~*]:mt-8">
+      {/* La clave cambia con el estado: cada cambio entra con su animación. */}
+      <div
+        key={m.estado}
+        className="aparece min-w-0 text-lg leading-[1.6] [&>:not(.sr-only)~*]:mt-8"
+      >
         <span className="sr-only">Respuesta: </span>
         {m.estado === "cargando" && (
-          <p className="text-(--text-secondary) leading-9">
-            {m.paso ? TEXTO_PASO[m.paso] : "Buscando ayudas"}
-            <span aria-hidden="true" className="motion-safe:animate-pulse">
-              …
+          <p className="flex items-center gap-3 leading-9 text-(--text-secondary)">
+            <span aria-hidden="true" className="escribiendo flex gap-1">
+              <span className="size-1.5 rounded-full bg-current" />
+              <span className="size-1.5 rounded-full bg-current" />
+              <span className="size-1.5 rounded-full bg-current" />
+            </span>
+            <span key={m.paso ?? "buscando"} className="aparece">
+              {m.paso ? TEXTO_PASO[m.paso] : "Pensando"}
             </span>
           </p>
         )}
@@ -458,6 +470,12 @@ export function Chat() {
       if (!respuesta) throw new Error("No he podido buscar ahora mismo.");
       reemplazar(idA, { id: idA, rol: "asistente", estado: "ok", respuesta });
       const n = respuesta.fichas.length;
+      // Una pregunta se lee en voz alta y el foco se queda en el cuadro de
+      // texto, para contestar sin moverse.
+      if (n === 0 && respuesta.pregunta) {
+        setAnuncio(respuesta.pregunta);
+        return;
+      }
       setAnuncio(
         n === 0
           ? "No he encontrado ayudas."
@@ -617,7 +635,7 @@ export function Chat() {
                   <div
                     key={m.id}
                     ref={m.id === idUltimoUsuario ? ultimoUsuario : undefined}
-                    className="ml-auto max-w-[85%] scroll-mt-4 rounded-3xl bg-muted px-5 py-3 text-lg leading-[1.6] whitespace-pre-wrap [overflow-wrap:anywhere]"
+                    className="aparece ml-auto max-w-[85%] scroll-mt-4 rounded-3xl bg-muted px-5 py-3 text-lg leading-[1.6] whitespace-pre-wrap [overflow-wrap:anywhere]"
                   >
                     <span className="sr-only">Tú: </span>
                     {m.texto}
