@@ -105,7 +105,6 @@ const ES = {
   nueva: "Nueva conversación",
   conversacion: "Conversación",
   tu: "Tú: ",
-  privacidad: "Tu conversación solo se guarda en esta pestaña y se borra al cerrarla.",
   aviso: "¿Algo está mal? Avísanos",
   accesibilidad: "Accesibilidad",
   pieza: "Una pieza del squad",
@@ -197,7 +196,6 @@ const TEXTOS: Record<Idioma, typeof ES> = {
     nueva: "Conversa nova",
     conversacion: "Conversa",
     tu: "Tu: ",
-    privacidad: "La teua conversa només es guarda en esta pestanya i s'esborra en tancar-la.",
     aviso: "Hi ha algun error? Avisa'ns",
     accesibilidad: "Accessibilitat",
     pieza: "Una peça de l'squad",
@@ -858,9 +856,6 @@ export function Chat() {
 
               {hayRespuesta && (
                 <footer className="flex flex-wrap items-center gap-3">
-                  <p className="w-full text-base text-(--text-secondary)">
-                    {t.privacidad}
-                  </p>
                   <a
                     href={site.feedbackUrl}
                     className={cn(
