@@ -485,9 +485,10 @@ export function Chat() {
               <h1 className="font-sans text-[clamp(32px,5vw,48px)] leading-[1.15] font-medium">
                 {PREGUNTA}
               </h1>
-              <p className="text-xl leading-[1.5] text-(--text-secondary)">
-                Cuéntanos tu situación y te decimos qué ayudas pueden ser para
-                ti.
+              {/* Más ancho que la columna para que quepa en una línea en pantallas grandes. */}
+              <p className="text-lg leading-[1.5] text-(--text-secondary) lg:-mx-28">
+                Te ayudamos a encontrar becas, prestaciones y recursos públicos
+                que se adaptan a tu situación.
               </p>
             </div>
 
