@@ -13,7 +13,7 @@
 | BDNS adapter | 3 searches + ≤ 10 ficha calls, parallel, timeout; normalises API and pack to one shape | none | S2 |
 | Benefits catalogue | `datos/catalogo-tramites-ayudas.json`, 8 aids, used unchanged | versioned | — |
 | Pack BDNS copy | `datos/bdns-convocatorias-cv.json`, fallback if the API fails | versioned | — |
-| Central aid store *(optional)* | `src/datos/*.json`, unstructured aids normalised to `Ficha` | versioned, built by `bun run indexar` | S4 |
+| Central aid store *(optional)* | `src/datos/central.json`, aids outside BDNS in the catalogue's shape; `src/datos/textos/` holds read texts by hash | versioned, rebuilt daily by `bun run indexar` in GitHub Actions | S4 |
 | HelmCode LLM | `glm5.3-flash` via `src/lib/ia.ts` (`completar`) | external | — |
 | BDNS API | Live calls, public, no key, no CORS | external | — |
 
@@ -73,8 +73,9 @@ src/lib/motor/          catalogue rules, filter, rank         S2
 src/lib/bdns.ts         BDNS adapter + pack fallback          S2
 src/app/api/chat/       route                                 S3
 src/lib/llm/            prompts, profile parsing, guardrails  S3
-src/datos/              central aid store                     S4
-scripts/indexar.ts      builds the store                      S4
+src/datos/              central aid store, seeds, read texts  S4
+scripts/indexar/        crawl, extract, dedup, write store    S4
+.github/workflows/      daily indexing job                    S4
 datos/                  pack files, read-only
 ```
 
@@ -87,9 +88,11 @@ datos/                  pack files, read-only
 
 ## Scaling to more sources
 
-A new aid source is one adapter in `src/lib/motor/` that returns `Ficha[]`; S4 is the first example.
+A new aid source is one adapter in `src/lib/motor/` that returns `Ficha[]`; S4 (`central.ts`) is the first example.
+S4 indexes offline: a daily job crawls seed pages, makes one LLM call per new or changed page (≤ 30 per run), checks quotes by code, and commits `central.json`; at query time the engine only reads it in memory.
+S4 keeps only aids that no API gives (no BDNS calls), so it never overlaps S2.
 Limits that appear first: BDNS ficha calls (1 per result) and the shared LLM rate limit.
-Index, embeddings and pgvector are out of this project; not built until measured.
+Embeddings and pgvector are not built until measured: past a few thousand aids, or when keyword match misses aids; the texts saved by hash let us build them without crawling again.
 
 ## Decisions
 
