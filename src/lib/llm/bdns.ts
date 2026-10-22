@@ -4,6 +4,7 @@
 import type { ArgsBuscar, AyudaEncontrada, ResultadoBuscar } from "@/lib/ayudas/buscar";
 import type { Recurrente } from "@/lib/ayudas/recurrentes";
 import { RENTAS_CONSULTADO, rentaPorId } from "@/lib/ayudas/rentas";
+import { SERVICIOS_SOCIALES, URGENCIA } from "@/lib/ayudas/servicios-sociales";
 import { sinOrganismo, type Tema } from "@/lib/ayudas/temas";
 import { normalizar } from "@/lib/lugares";
 import { INGRESOS_BAJOS } from "@/lib/llm/pregunta";
@@ -271,6 +272,77 @@ export function fichaDeRenta(
         ...(e.solicitud && e.solicitud !== e.ficha ? [{ nombre: "Trámite en la sede electrónica", url: e.solicitud }] : []),
       ],
       oficial: { titulo: r.titulo, organismo: r.organismo, requisitos: r.requisitos_clave, plazo: r.plazo },
+    },
+  };
+}
+
+// El apartado de beneficiarios dice que la piden entidades, no personas
+// («Podrán … resultar beneficiarias … las entidades de formación privadas»):
+// la entidad tiene que venir en la misma frase, detrás de quién puede pedirla.
+const ENTIDADES_BENEFICIARIAS =
+  /(beneficiari\w*|podr[aá]n (participar|solicitar|concurrir))[^.;:]{0,160}?\b(las|los) (entidades|empresas|asociaciones|ayuntamientos|entes locales|corporaciones|fundaciones|federaciones|clubes|cooperativas|universidades|centros (docentes|educativos|de formaci[oó]n))\b/i;
+const PERSONAS =
+  /personas f[ií]sicas|alumn|estudiant|familias|j[oó]venes|mujeres|personas (desemplead|trabajador|mayores|con discapacidad|interesadas|solicitantes|titulares)|unidades? de convivencia|ciudadan|aut[oó]nom[oa]s|titulares|empresari[oa]s individuales/i;
+
+export function paraEntidades(lineas: string[]): boolean {
+  const inicio = lineas.slice(0, 2).join(" ").slice(0, 400);
+  return ENTIDADES_BENEFICIARIAS.test(inicio) && !PERSONAS.test(inicio);
+}
+
+// Servicios sociales del ayuntamiento, cuando la persona cuenta una urgencia o
+// no tiene ingresos: no es una convocatoria, es a dónde ir. Sin importes ni
+// plazos, porque los decide cada ayuntamiento.
+export function fichaServiciosSociales(perfil: Perfil): Ficha | null {
+  const senales = perfil.hechos
+    .filter(
+      (h) =>
+        (h.campo === "ingresos" && (h.valor === "sin ingresos" || h.valor === "menos de 600 €")) ||
+        (h.campo === "situacionLaboral" && h.valor === "paro agotado"),
+    )
+    .map((h) => h.cita);
+  const necesidad = perfil.necesidad ?? "";
+  const urgente = URGENCIA.test(normalizar(necesidad)) && necesidad.length <= 160;
+  if (!senales.length && !urgente) return null;
+  const s = SERVICIOS_SOCIALES;
+  return {
+    id: "servicios-sociales",
+    titulo: "Servicios sociales de tu ayuntamiento",
+    finalidad: "Atención social y, si hace falta, ayudas de urgencia del ayuntamiento.",
+    fuente: "catalogo",
+    administracion: "Local",
+    estado: "desconocido",
+    fechaFin: null,
+    enlace: s.mapa,
+    porQue: UNICOS([...(urgente ? [necesidad] : []), ...senales].map((c) => `Dices: «${c}».`)),
+    requisitos: ["Cada ayuntamiento decide qué ayudas da y con qué requisitos: pregúntalo en tu centro."],
+    pendiente: [],
+    verificado: true,
+    detalle: {
+      ambito: null,
+      porQueDetalle: [],
+      resumen: [
+        "El centro de servicios sociales de tu barrio o pueblo es la puerta de entrada a la ayuda social.",
+        `Entre lo que ofrecen los servicios sociales están las «${s.cita.charAt(0).toLowerCase()}${s.cita.slice(1)}».`,
+        "Muchas ayudas de urgencia del ayuntamiento no salen en ninguna convocatoria: se piden allí.",
+      ],
+      avisos: [],
+      dinero: null,
+      plazo: ["No hay plazo general: depende de cada ayuntamiento."],
+      pasos: [
+        "Busca tu centro de servicios sociales en el mapa del Ministerio o en la web de tu ayuntamiento.",
+        "Pide cita y cuenta tu situación.",
+        "Te dirán qué ayudas hay y qué papeles hacen falta.",
+      ],
+      documentos: ["Los que te pidan en el centro."],
+      enlaceTramite: null,
+      fuentes: [
+        { nombre: `Mapa de centros de servicios sociales de atención primaria (${s.organismo})`, url: s.mapa },
+        {
+          nombre: `Catálogo de Referencia de Servicios Sociales, consultado el ${fechaCorta(s.consultado)}`,
+          url: s.catalogo,
+        },
+      ],
+      oficial: { titulo: "Servicios sociales de atención primaria", organismo: s.organismo, requisitos: [], plazo: null },
     },
   };
 }

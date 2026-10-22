@@ -1,6 +1,6 @@
 import { buscarAyudas } from "@/lib/ayudas/buscar";
 import { comprobarEnlaces } from "@/lib/ayudas/enlaces";
-import { requisitosDelExtracto } from "@/lib/ayudas/requisitos";
+import { requisitosParaFicha } from "@/lib/ayudas/requisitos";
 import { completar, completarConHerramientas } from "@/lib/ia";
 import { responderProtegido as responder } from "@/lib/llm/guardarrailes";
 import type { EventoChat, MensajeChat } from "@/lib/tipos";
@@ -56,7 +56,7 @@ export async function POST(req: Request) {
         hoy: new Date(),
         agente: (m, tools) => completarConHerramientas(m, tools, { razonar: false }),
         buscar: buscarAyudas,
-        requisitos: requisitosDelExtracto,
+        requisitos: requisitosParaFicha,
         comprobar: comprobarEnlaces,
         anterior: cuerpo.perfil,
         ayudasAnteriores: cuerpo.ayudas,

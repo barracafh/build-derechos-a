@@ -1,3 +1,4 @@
+import type { Prioridad } from "@/lib/ayudas/bdns";
 import type { ArgsBuscar, AyudaEncontrada, ResultadoBuscar } from "@/lib/ayudas/buscar";
 import type { Enlaces } from "@/lib/ayudas/convocatoria";
 import type { ErrorUbicacion } from "@/lib/ayudas/territorio";
@@ -12,7 +13,8 @@ import {
   noCubiertoPor,
   vigentesPorEstado,
 } from "@/lib/motor/catalogo";
-import { fichasCentrales, VERSION_CENTRAL } from "@/lib/motor/central";
+import { centralPorId } from "@/lib/ayudas/central";
+import { fichaCentral, fichasCentrales, VERSION_CENTRAL } from "@/lib/motor/central";
 import { normalizar } from "@/lib/lugares";
 import type { Cobertura, Ficha, MensajeChat, Paso, Perfil, Respuesta } from "@/lib/tipos";
 import {
@@ -29,6 +31,8 @@ import {
   fichaDeBdns,
   fichaDeRecurrente,
   fichaDeRenta,
+  fichaServiciosSociales,
+  paraEntidades,
   temasEnTitulo,
 } from "./bdns";
 import { construirMensajes, leerDatos, leerRespuesta, type Lectura } from "./perfil";
@@ -45,7 +49,7 @@ type Dependencias = {
   agente?: Agente;
   ejecutar?: Ejecutar;
   buscar?: (args: ArgsBuscar) => Promise<ResultadoBuscar | ErrorUbicacion>;
-  requisitos?: (numero: string) => Promise<string[]>;
+  requisitos?: (numero: string, p?: Prioridad) => Promise<string[]>;
   // Quita los enlaces rotos antes de enseñarlos.
   comprobar?: (enlaces: Enlaces) => Promise<Enlaces>;
   msAgente?: number;
@@ -61,6 +65,7 @@ type Dependencias = {
 const MS_LLM_CON_AGENTE = 70_000;
 const MS_BUSQUEDA = 14_000;
 const MS_REQUISITOS = 4_000;
+const MS_PRECARGA = 30_000;
 // Convocatorias que se proponen solas si el LLM no elige ninguna, y cuántas
 // puede elegir él.
 const AUTOMATICAS = 4;
@@ -118,15 +123,15 @@ export async function responder(
 
   // Mientras el LLM lee, se adelanta la búsqueda con el municipio que encuentran
   // las reglas: la BDNS queda en caché para cuando la pida el agente.
-  const adelantada = buscar ? adelantar(delUsuario, buscar) : null;
+  const adelantada = buscar ? adelantar(delUsuario, buscar, requisitos) : null;
 
   // En los registros, solo el error de HelmCode, nunca el texto de la persona.
   // Solo ids con forma de ayuda: van al prompt.
+  // Las fichas centrales llevan el id sin prefijo: al modelo se le da con «central:».
   const anteriores = (Array.isArray(ayudasAnteriores) ? ayudasAnteriores : [])
-    .filter(
-      (id): id is string =>
-        typeof id === "string" && (IDS_AYUDAS.includes(id) || /^(bdns|renta):[\w-]{1,40}$/.test(id)),
-    )
+    .filter((id): id is string => typeof id === "string")
+    .map((id) => (centralPorId(id) ? `central:${id}` : id))
+    .filter((id) => IDS_AYUDAS.includes(id) || /^(bdns|renta|central):[\w-]{1,80}$/.test(id))
     .slice(0, 15);
   let lectura: Lectura | null = null;
   const hallazgos = nuevosHallazgos();
@@ -196,6 +201,18 @@ export async function responder(
 
   // Ayudas centrales (spec 004): después del catálogo, sin repetirlas.
   fichas = vigentesPorEstado([...fichas, ...fichasCentrales(perfil, new Set(fichas.map((f) => f.id)), hoy)]);
+  // Las centrales que eligió el agente entre las de buscar_ayudas, con sus citas.
+  for (const e of lectura?.elegidos ?? []) {
+    const a = e.id.startsWith("central:") ? centralPorId(e.id.slice("central:".length)) : null;
+    if (!a) continue;
+    const porQue = e.citas.map((c) => `Dices: «${c}».`);
+    const ya = fichas.find((f) => f.id === a.id);
+    if (ya) ya.porQue = porQue;
+    else fichas = vigentesPorEstado([...fichas, { ...fichaCentral(a, perfil, null, hoy), porQue }]);
+  }
+  // Y, si cuenta una urgencia o no tiene ingresos, a dónde ir: servicios sociales.
+  const social = fichaServiciosSociales(perfil);
+  if (social) fichas = [...fichas, social];
 
   const base: Cobertura = {
     consultado: [
@@ -229,6 +246,13 @@ export async function responder(
 }
 
 const PROPONIBLE = new Set<AyudaEncontrada["estado"]>(["abierta", "sin_plazo_fijo", "proximamente"]);
+
+// Las convocatorias que se proponen solas si el LLM no elige ninguna.
+const automaticas = (ayudas: AyudaEncontrada[]) =>
+  ayudas
+    .filter((a) => a.id.startsWith("bdns:") && PROPONIBLE.has(a.estado))
+    .filter(encajaPorTitulo)
+    .slice(0, AUTOMATICAS);
 
 // Convocatorias de la BDNS para el municipio: las que eligió el LLM entre las
 // que devolvió buscar_ayudas o, si no eligió ninguna, las primeras que tratan de
@@ -264,11 +288,24 @@ function rentaSiEncaja(
 
 type Adelantada = { municipio: string; promesa: Promise<ResultadoBuscar | ErrorUbicacion> };
 
-function adelantar(delUsuario: MensajeChat[], buscar: NonNullable<Dependencias["buscar"]>): Adelantada | null {
+function adelantar(
+  delUsuario: MensajeChat[],
+  buscar: NonNullable<Dependencias["buscar"]>,
+  requisitos: Dependencias["requisitos"],
+): Adelantada | null {
   const b = busquedaDelPerfil(perfilDeTexto(delUsuario.map((m) => m.texto).join("\n")));
   if (!b?.args.municipio) return null;
   const promesa = buscar(b.args);
-  promesa.catch(() => {}); // si nadie la espera, que no quede un rechazo suelto
+  // También los requisitos de las que encajan: si hay que bajar el PDF, que
+  // quede en caché antes de montar las fichas. Con prioridad baja, detrás de
+  // lo que pida el agente.
+  promesa
+    .then((r) => {
+      if ("error" in r || !requisitos) return;
+      const p: Prioridad = { baja: true, hasta: Date.now() + MS_PRECARGA };
+      for (const a of automaticas(r.ayudas)) requisitos(a.id.slice("bdns:".length), p).catch(() => {});
+    })
+    .catch(() => {}); // si nadie la espera, que no quede un rechazo suelto
   return { municipio: b.args.municipio, promesa };
 }
 
@@ -328,46 +365,45 @@ async function conBdns(
     .filter(({ a }) => a && a.estado !== "cerrada" && a.estado !== "no_solicitable")
     .slice(0, MAX_ELEGIDAS) as { a: AyudaEncontrada; porQue: string[] }[];
   if (!elegidas.length)
-    elegidas = r.ayudas
-      .filter((a) => a.id.startsWith("bdns:") && PROPONIBLE.has(a.estado))
-      .filter(encajaPorTitulo)
-      .slice(0, AUTOMATICAS)
-      .map((a) => ({
-        a,
-        porQue: [
-          ...comoPorQue([...new Set(temasEnTitulo(a).flatMap((t) => busqueda?.citasPorTema[t] ?? []))]),
-          // No es una cita: con las reglas, la necesidad son palabras sueltas.
-          ...(a.palabras_en_titulo.length
-            ? [`Su título habla de ${a.palabras_en_titulo.map((p) => `«${p}»`).join(" y ")}, como lo que pides.`]
-            : []),
-        ],
-      }));
+    elegidas = automaticas(r.ayudas).map((a) => ({
+      a,
+      porQue: [
+        ...comoPorQue([...new Set(temasEnTitulo(a).flatMap((t) => busqueda?.citasPorTema[t] ?? []))]),
+        // No es una cita: con las reglas, la necesidad son palabras sueltas.
+        ...(a.palabras_en_titulo.length
+          ? [`Su título habla de ${a.palabras_en_titulo.map((p) => `«${p}»`).join(" y ")}, como lo que pides.`]
+          : []),
+      ],
+    }));
 
   // Enlaces sin los rotos, a la vez que los requisitos.
   const enlaces = Promise.all(
     elegidas.map(({ a }) => (comprobar ? comprobar(a.enlaces) : a.enlaces)),
   );
 
-  // Requisitos: los que leyó el agente o, si no, el extracto del boletín (sin PDF).
-  const lineas = await conLimite(
-    Promise.all(
-      elegidas.map(async ({ a }) => {
-        const leidas = hallazgos.requisitos.get(a.id);
-        if (leidas) return leidas;
-        return requisitos ? requisitos(a.id.slice("bdns:".length)).catch(() => []) : [];
-      }),
-    ),
-    MS_REQUISITOS,
-  ).catch(() => elegidas.map(({ a }) => hallazgos.requisitos.get(a.id) ?? []));
+  // Requisitos: los que leyó el agente o, si no, los del extracto o el PDF. Cada
+  // ficha con su límite: un PDF lento no deja sin requisitos a las demás.
+  const lineas = await Promise.all(
+    elegidas.map(({ a }) => {
+      const leidas = hallazgos.requisitos.get(a.id);
+      if (leidas || !requisitos) return leidas ?? [];
+      return conLimite(requisitos(a.id.slice("bdns:".length)), MS_REQUISITOS).catch(() => []);
+    }),
+  );
 
   const vivos = await conLimite(enlaces, MS_REQUISITOS).catch(() => elegidas.map(({ a }) => a.enlaces));
   return {
     fichas: [
-      ...elegidas.map(({ a, porQue }, i) =>
-        fichaDeBdns(
-          { ...a, enlaces: vivos[i] },
-          { comunidad: r.ubicacion.comunidad, porQue, requisitos: lineas[i] },
-        ),
+      ...elegidas.flatMap(({ a, porQue }, i) =>
+        // Si el texto oficial dice que la piden entidades, no es para la persona.
+        paraEntidades(lineas[i])
+          ? []
+          : [
+              fichaDeBdns(
+                { ...a, enlaces: vivos[i] },
+                { comunidad: r.ubicacion.comunidad, porQue, requisitos: lineas[i] },
+              ),
+            ],
       ),
       ...rentaSiEncaja(perfil, lectura, r, busqueda?.citasPorTema.servicios_sociales ?? []),
     ],

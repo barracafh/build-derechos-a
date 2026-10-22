@@ -1,15 +1,13 @@
 // Ayudas que tradicionalmente han sido anuales y que el año pasado se abrieron
 // por estas fechas (de hoy a dos meses). No se dice nunca cuándo abrirán: solo
 // cuándo se pudieron pedir el año pasado, que es un dato comprobable.
-import { buscarConvocatorias, leerFicha, type ResultadoBusqueda } from "./bdns";
-import {
-  AUTONOMO,
-  busquedas,
-  NO_SOLICITABLE_TITULO,
-  PERSONA_FISICA,
-  type ArgsBuscar,
-  type Nivel,
-} from "./buscar";
+//
+// Sin búsquedas propias (la BDNS pide una petición por segundo): salen de la
+// búsqueda principal, que ya cubre los últimos 365 días. Las del año pasado
+// son las recibidas al principio de ese año; si este año ya hay una parecida,
+// no se anuncia. Solo se leen unas pocas fichas, con prioridad baja.
+import { leerFicha, type Prioridad, type ResultadoBusqueda } from "./bdns";
+import { AUTONOMO, NO_SOLICITABLE_TITULO, PERSONA_FISICA, type ArgsBuscar, type Nivel } from "./buscar";
 import { desdeApi, enlacesDe, type Enlaces } from "./convocatoria";
 import { normalizar } from "./nombres";
 import { fechaLegible, sumarDias } from "./plazo";
@@ -32,7 +30,7 @@ export type Recurrente = {
 };
 
 const VENTANA_DIAS = 60;
-const MAX_FICHAS = 10;
+const MAX_FICHAS = 2;
 const MAX_RESULTADOS = 6;
 
 // Puntuales aunque lleven año (decretos, urgencias, catástrofes, premios) o que
@@ -40,7 +38,6 @@ const MAX_RESULTADOS = 6;
 const PUNTUAL =
   /\b(real decreto|decreto ley|dana|urgente|urgencia|extraordinari|emergencia|catastrof|incendio|inundacion|terremoto|volcan|premio|concurso|certamen|investigaci)/;
 
-const aBdns = (iso: string) => `${iso.slice(8, 10)}/${iso.slice(5, 7)}/${iso.slice(0, 4)}`;
 
 // Sin fechas («de 12 de diciembre de 2025»): el año que queda es el de la convocatoria.
 const sinFechas = (t: string) =>
@@ -58,56 +55,52 @@ function huella(titulo: string): Set<string> {
   return new Set(t.split(/[^a-zñç]+/).filter((p) => p.length > 3));
 }
 
-function parecidas(a: Set<string>, b: Set<string>): boolean {
+function parecidas(a: Set<string>, b: Set<string>, umbral = 0.6): boolean {
   const comunes = [...a].filter((p) => b.has(p)).length;
-  return comunes / Math.max(1, Math.min(a.size, b.size)) >= 0.6;
+  return comunes / Math.max(1, Math.min(a.size, b.size)) >= umbral;
 }
+
+export type Publicadas = {
+  resultados: (ResultadoBusqueda & { nivel: Nivel })[];
+  // Niveles que la BDNS no devolvió enteros: sin ellos no se sabe si ha vuelto a salir.
+  incompletos: Nivel[];
+};
 
 export async function buscarRecurrentes(
   u: Ubicacion,
   args: ArgsBuscar,
   hoy: string,
-  // Lo publicado este año, para descartar las que ya han vuelto a salir.
-  actuales: Promise<ResultadoBusqueda[]>,
+  publicadas: Promise<Publicadas>,
+  p: Prioridad,
 ): Promise<Recurrente[]> {
   const hace1Ano = sumarDias(hoy, -365);
   const hasta = sumarDias(hace1Ano, VENTANA_DIAS);
   const ano = Number(hace1Ano.slice(0, 4));
   const temas = args.temas ?? [];
   const palabras = args.palabras ?? [];
-
-  // Publicadas desde 3 meses antes de abrir hasta el final de la ventana.
-  const lista = busquedas(u, args, hoy).map((b) => ({
-    ...b,
-    filtros: { ...b.filtros, fechaDesde: aBdns(sumarDias(hace1Ano, -90)), fechaHasta: aBdns(hasta) },
-  }));
-  const [resultados, recientes] = await Promise.all([
-    Promise.all(
-      lista.map((b) =>
-        buscarConvocatorias(b.filtros)
-          .then((r) => r.map((x) => ({ ...x, nivel: b.nivel })))
-          .catch(() => []),
-      ),
-    ),
-    actuales.catch(() => [] as ResultadoBusqueda[]),
-  ]);
+  const { resultados, incompletos } = await publicadas;
 
   const vistas = new Set<string>();
   const candidatas = resultados
-    .flat()
     .filter((r) => {
-      if (vistas.has(r.numeroConvocatoria)) return false;
+      if (vistas.has(r.numeroConvocatoria) || incompletos.includes(r.nivel)) return false;
       vistas.add(r.numeroConvocatoria);
+      // Recibida antes del final de la ventana: abre, como mucho, dentro de dos meses.
+      if (r.fechaRecepcion.slice(0, 10) > hasta) return false;
       const t = normalizar(r.descripcion);
       if (NO_SOLICITABLE_TITULO.test(r.descripcion) || PUNTUAL.test(t)) return false;
       if (!esDelAno(r.descripcion, ano)) return false;
-      // Si este año ya hay una igual del mismo organismo, no es «por venir».
+      // Si este año ya hay una parecida, no es «por venir». No se exige el mismo
+      // organismo (las consejerías cambian de nombre) y el parecido pedido es
+      // menor: ante la duda, no se anuncia.
       const h = huella(r.descripcion);
-      return !recientes.some(
+      // Es de este año si llegó medio año después o si lleva el año siguiente
+      // («curso 2026-2027» publicada en marzo).
+      return !resultados.some(
         (x) =>
-          x.nivel3 === r.nivel3 &&
-          x.fechaRecepcion > sumarDias(r.fechaRecepcion.slice(0, 10), 180) &&
-          parecidas(h, huella(x.descripcion)),
+          (x.fechaRecepcion > sumarDias(r.fechaRecepcion.slice(0, 10), 180) ||
+            (x.fechaRecepcion > r.fechaRecepcion && esDelAno(x.descripcion, ano + 1))) &&
+          parecidas(h, huella(x.descripcion), 0.5),
       );
     })
     .map((r) => ({ ...r, puntos: relevancia(r.descripcion, null, temas, palabras) }))
@@ -118,7 +111,7 @@ export async function buscarRecurrentes(
   const leidas = await Promise.all(
     candidatas.map(async (cand) => {
       try {
-        const c = desdeApi(await leerFicha(cand.numeroConvocatoria));
+        const c = desdeApi(await leerFicha(cand.numeroConvocatoria, p));
         const abrio = c.plazo.inicio?.slice(0, 10) ?? null;
         const cerro = c.plazo.fin?.slice(0, 10) ?? null;
         // Que abriera hace un año, más o menos, entre hoy y dentro de dos meses.

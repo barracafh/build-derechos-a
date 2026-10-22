@@ -3,7 +3,9 @@
 import {
   buscarConvocatorias,
   leerFicha,
+  MAX_RESULTADOS_BDNS,
   type FiltrosBusqueda,
+  type Prioridad,
   type ResultadoBusqueda,
 } from "./bdns";
 import {
@@ -23,7 +25,16 @@ import {
   type Convocatoria,
   type Enlaces,
 } from "./convocatoria";
-import { buscarRecurrentes, type Recurrente } from "./recurrentes";
+import {
+  AVISO_CENTRAL,
+  AYUDAS_CENTRALES,
+  centralAplicaEn,
+  enlacesCentral,
+  estadoAyudaCentral,
+  puntosCentral,
+  temasCentral,
+} from "./central";
+import { buscarRecurrentes, type Publicadas, type Recurrente } from "./recurrentes";
 import { enlacesRenta, estadoRenta, rentaDe } from "./rentas";
 import { calcularEstado, fechaLegible, hoyEnMadrid, sumarDias, type Estado } from "./plazo";
 import { normalizar } from "./nombres";
@@ -64,7 +75,7 @@ export type AyudaEncontrada = {
   // Ficha oficial (BDNS o página del catálogo).
   enlace: string;
   enlaces: Enlaces;
-  fuente: "catalogo" | "bdns" | "pack";
+  fuente: "catalogo" | "bdns" | "pack" | "central";
 };
 
 export type ResultadoBuscar = {
@@ -94,7 +105,9 @@ export type ResultadoBuscar = {
 // Unas 10 fichas por consulta, como pide la organización (SETUP.md).
 const FICHAS_POR_PAGINA = 10;
 const LIMITE_MS = 18_000;
-const MS_RECURRENTES = 8_000;
+// Lo que se espera a las anuales cuando ya ha terminado la búsqueda principal.
+const MS_RECURRENTES = 2_500;
+const MAX_CENTRALES = 6;
 
 // Títulos de subvenciones nominativas, convenios o directas a una entidad:
 // nadie puede solicitarlas, así que no se gasta una ficha en ellas.
@@ -123,8 +136,13 @@ export type Busqueda = {
 
 type Candidata = ResultadoBusqueda & { nivel: Nivel; puntos: number };
 
+// La búsqueda llega 60 días más atrás que la lista (365): ese tramo solo sirve a
+// las anuales, que así no necesitan búsquedas propias.
+const DIAS_LISTA = 365;
+const DIAS_BUSQUEDA = 425;
+
 export function busquedas(u: Ubicacion, args: ArgsBuscar, hoy: string): Busqueda[] {
-  const d = sumarDias(hoy, -365);
+  const d = sumarDias(hoy, -DIAS_BUSQUEDA);
   const fechaDesde = `${d.slice(8, 10)}/${d.slice(5, 7)}/${d.slice(0, 4)}`;
   const tiposBeneficiario = args.autonomo ? [1, 3] : [1];
   const esCV = ["03", "12", "46"].includes(u.ineProvincia);
@@ -205,20 +223,25 @@ export async function buscarAyudas(
   // 1. Búsquedas en paralelo (baratas: una llamada cada una).
   const lista = busquedas(u, args, hoy);
   const desdePack: { c: Convocatoria; nivel: Nivel }[] = [];
-  let publicadas: (r: ResultadoBusqueda[]) => void = () => {};
-  // Las anuales van a la vez, con su propio límite: si tardan, no se enseñan.
+  let publicadas: (r: Publicadas) => void = () => {};
+  // Las anuales salen de estas mismas búsquedas y leen sus fichas con prioridad
+  // baja; su plazo se fija al terminar la búsqueda principal.
+  const turnoAnuales: Prioridad = { baja: true, hasta: Infinity };
   const recurrentes =
     pagina === 1
-      ? Promise.race([
-          buscarRecurrentes(u, args, hoy, new Promise((r) => (publicadas = r))),
-          new Promise<Recurrente[]>((r) => setTimeout(() => r([]), MS_RECURRENTES)),
-        ]).catch(() => [] as Recurrente[])
+      ? buscarRecurrentes(u, args, hoy, new Promise((r) => (publicadas = r)), turnoAnuales).catch(
+          () => [] as Recurrente[],
+        )
       : Promise.resolve([] as Recurrente[]);
+  const incompletos: Nivel[] = [];
   const resultados = await Promise.all(
     lista.map(async (b) => {
       try {
-        return (await buscarConvocatorias(b.filtros)).map((r) => ({ ...r, nivel: b.nivel }));
+        const r = await buscarConvocatorias(b.filtros);
+        if (r.length >= MAX_RESULTADOS_BDNS) incompletos.push(b.nivel);
+        return r.map((x) => ({ ...x, nivel: b.nivel }));
       } catch {
+        incompletos.push(b.nivel);
         if (b.respaldo) {
           respaldos.push(b.nombre);
           for (const c of grupoDelPack(b.respaldo)) desdePack.push({ c, nivel: b.nivel });
@@ -228,12 +251,14 @@ export async function buscarAyudas(
     }),
   );
 
-  publicadas(resultados.flat());
+  publicadas({ resultados: resultados.flat(), incompletos });
 
   // 2. Candidatas sin repetir, sin las que no se pueden solicitar por título y ordenadas.
   const vistas = new Set<string>();
   const candidatas: Candidata[] = [];
+  const desdeLista = sumarDias(hoy, -DIAS_LISTA);
   for (const r of resultados.flat()) {
+    if (r.fechaRecepcion.slice(0, 10) < desdeLista) continue;
     if (vistas.has(r.numeroConvocatoria)) continue;
     vistas.add(r.numeroConvocatoria);
     // Llegan de la más reciente a la más antigua: del mismo organismo y con el
@@ -331,6 +356,46 @@ export async function buscarAyudas(
       });
     }
 
+  // 5b. Ayudas centrales (src/datos/central.json): prestaciones leídas de páginas
+  // oficiales por el job nocturno. Van aunque el agente pida `catalogo: false`,
+  // porque no están en su prompt. Solo las que tratan de lo que pide.
+  if (pagina === 1 && (temas.length || palabras.length)) {
+    const delCatalogo = new Set(ayudasCatalogo.map((e) => normalizar(e.titulo)));
+    const centrales = AYUDAS_CENTRALES.filter(
+      (a) => centralAplicaEn(a, u) && !delCatalogo.has(normalizar(a.titulo)) && !ayudasCatalogo.some((e) => e.id === a.id),
+    )
+      .map((a) => ({ a, puntos: puntosCentral(a, temas, palabras) }))
+      .filter(({ puntos }) => puntos > 0)
+      .sort((x, y) => y.puntos - x.puntos)
+      .slice(0, MAX_CENTRALES);
+    for (const { a, puntos } of centrales) {
+      const est = estadoAyudaCentral(a, hoy);
+      if (est.estado === "cerrada" && !args.incluir_cerradas) {
+        cerradas++;
+        continue;
+      }
+      ayudas.push({
+        id: `central:${a.id}`,
+        titulo: a.titulo,
+        organismo: a.organismo || a.administracion,
+        nivel: a.administracion === "Estado" ? "Estado" : a.administracion === "Local" ? "Local" : "Comunidad autónoma",
+        estado: est.estado,
+        plazo: est.motivo,
+        fin_plazo: est.fin,
+        finalidad: a.nota ?? null,
+        encaja_con: temasCentral(a, temas),
+        palabras_en_titulo: palabrasEnTitulo(a.titulo, palabras),
+        para_quien: [],
+        ambito: a.administracion === "Estado" ? [] : [a.administracion === "Local" ? "València" : "Comunitat Valenciana"],
+        aviso: AVISO_CENTRAL,
+        enlace: a.enlace_info,
+        enlaces: enlacesCentral(a),
+        fuente: "central",
+        puntos,
+      });
+    }
+  }
+
   // 6. Renta mínima de la comunidad (fuera de la CV, que está en el catálogo).
   const renta = pagina === 1 ? rentaDe(u.ineProvincia) : null;
   if (renta) {
@@ -374,7 +439,7 @@ export async function buscarAyudas(
     );
   noConsultado.push(
     "Mancomunidades, consorcios, universidades y otros organismos.",
-    "Deducciones fiscales y prestaciones de la Seguridad Social que no están en el catálogo.",
+    "Deducciones fiscales y prestaciones que no están en el catálogo ni en las ayudas leídas de páginas oficiales.",
   );
   if (!args.autonomo) noConsultado.push("Ayudas para autónomos y empresas (indica autonomo: true si aplica).");
   if (sinFicha) noConsultado.push(`${sinFicha} convocatorias cuya ficha no respondió a tiempo.`);
@@ -390,7 +455,13 @@ export async function buscarAyudas(
     },
     fecha_consulta: fechaLegible(hoy),
     ayudas: ayudas.map(({ puntos: _puntos, ...a }) => a),
-    recurrentes: await recurrentes,
+    recurrentes: await (() => {
+      turnoAnuales.hasta = Date.now() + MS_RECURRENTES;
+      return Promise.race([
+        recurrentes,
+        new Promise<Recurrente[]>((r) => setTimeout(() => r([]), MS_RECURRENTES + 1_000)),
+      ]);
+    })(),
     resumen: {
       pagina,
       convocatorias_revisadas: convocatorias.length,
