@@ -1,4 +1,12 @@
-import { ArrowUpRight, ChevronRight } from "lucide-react";
+import {
+  ArrowUpRight,
+  CalendarClock,
+  ChevronRight,
+  Euro,
+  Lightbulb,
+  ListChecks,
+  type LucideIcon,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -33,6 +41,22 @@ const AMBITO = {
 
 // Etiqueta de cada bloque: pequeña y en gris, como en el resto de la herramienta.
 const ETIQUETA = "text-lg font-medium text-(--text-secondary)";
+
+// Título de bloque con icono decorativo (el texto ya dice lo mismo).
+function Titulo({
+  icono: Icono,
+  children,
+}: {
+  icono: LucideIcon;
+  children: string;
+}) {
+  return (
+    <h4 className={`${ETIQUETA} flex items-center gap-2`}>
+      <Icono aria-hidden="true" className="size-5 shrink-0" />
+      {children}
+    </h4>
+  );
+}
 
 const SIN_PLAZO = [
   "No hemos podido confirmar el plazo de esta ayuda.",
@@ -86,7 +110,7 @@ export function TarjetaAyuda({ f, n }: { f: Ficha; n: number }) {
         </header>
 
         <section className="grid gap-2">
-          <h4 className={ETIQUETA}>Por qué puede ser para ti</h4>
+          <Titulo icono={Lightbulb}>Por qué puede ser para ti</Titulo>
           <Lineas lineas={f.porQue} />
           {avisos.length > 0 && (
             <div className="mt-1 rounded-lg bg-(--warning) px-4 py-3 text-(--warning-foreground)">
@@ -98,19 +122,19 @@ export function TarjetaAyuda({ f, n }: { f: Ficha; n: number }) {
 
         <div className="grid gap-3 md:grid-cols-2">
           <section className="grid content-start gap-2 rounded-xl bg-muted px-5 py-5">
-            <h4 className={ETIQUETA}>Qué tienes que cumplir</h4>
+            <Titulo icono={ListChecks}>Qué tienes que cumplir</Titulo>
             <Lista items={f.requisitos} />
           </section>
           <div className="grid content-start gap-3">
             {plazo.length > 0 && (
               <section className="grid gap-2 rounded-xl bg-muted px-5 py-5">
-                <h4 className={ETIQUETA}>Plazo</h4>
+                <Titulo icono={CalendarClock}>Plazo</Titulo>
                 <Lineas lineas={plazo} />
               </section>
             )}
             {d?.dinero && (
               <section className="grid gap-2 rounded-xl bg-muted px-5 py-5">
-                <h4 className={ETIQUETA}>Cuánto dinero es</h4>
+                <Titulo icono={Euro}>Cuánto dinero es</Titulo>
                 <Lineas lineas={d.dinero.intro} />
                 {d.dinero.lista && <Lista items={d.dinero.lista} />}
               </section>
