@@ -20,8 +20,9 @@ function lector(texto: string) {
   };
 }
 
+// Una «inundación» suelta puede ser una tubería rota: solo cuenta con la fecha.
 export function hablaDeDana(texto: string): boolean {
-  return /\b(dana|riada|inundacion(es)?)\b/.test(normalizar(texto));
+  return /\b(dana|riada|inundacion(es)? de (octubre|2024))\b/.test(normalizar(texto));
 }
 
 export function perfilDeTexto(texto: string): Perfil {
