@@ -10,7 +10,23 @@ export type Mensaje = {
   content: string | Parte[];
 };
 
-export async function completar(messages: Mensaje[]): Promise<string> {
+// Para llamar con herramientas (`tools`): el modelo puede pedir que se ejecute
+// una y recibe el resultado en un mensaje con role "tool".
+export type LlamadaHerramienta = {
+  id: string;
+  type: "function";
+  function: { name: string; arguments: string };
+};
+export type MensajeAgente =
+  | Mensaje
+  | { role: "assistant"; content: string | null; tool_calls?: LlamadaHerramienta[] }
+  | { role: "tool"; tool_call_id: string; content: string };
+export type RespuestaAgente = {
+  content: string | null;
+  tool_calls: LlamadaHerramienta[];
+};
+
+async function pedirHelmCode(cuerpo: object) {
   const { HELMCODE_API_KEY, HELMCODE_BASE_URL, HELMCODE_MODEL } = process.env;
   if (!HELMCODE_API_KEY || !HELMCODE_MODEL)
     throw new Error("Faltan HELMCODE_API_KEY o HELMCODE_MODEL en .env.local");
@@ -24,7 +40,7 @@ export async function completar(messages: Mensaje[]): Promise<string> {
           authorization: `Bearer ${HELMCODE_API_KEY}`,
           "content-type": "application/json",
         },
-        body: JSON.stringify({ model: HELMCODE_MODEL, messages }),
+        body: JSON.stringify({ model: HELMCODE_MODEL, ...cuerpo }),
       },
     );
     if (res.status === 429 && intento < 3) {
@@ -34,6 +50,18 @@ export async function completar(messages: Mensaje[]): Promise<string> {
     }
     if (!res.ok) throw new Error(`HelmCode respondió ${res.status}`);
     const data = await res.json();
-    return data.choices[0].message.content;
+    return data.choices[0].message;
   }
+}
+
+export async function completar(messages: Mensaje[]): Promise<string> {
+  return (await pedirHelmCode({ messages })).content;
+}
+
+export async function completarConHerramientas(
+  messages: MensajeAgente[],
+  tools: readonly object[],
+): Promise<RespuestaAgente> {
+  const m = await pedirHelmCode({ messages, tools });
+  return { content: m.content ?? null, tool_calls: m.tool_calls ?? [] };
 }

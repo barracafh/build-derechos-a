@@ -1,5 +1,8 @@
+import { zonaPorTerritorio } from "@/lib/ayudas/territorio";
+
 // Lugares que la herramienta reconoce en el texto. Solo sirven para saber si
-// la persona vive en la Comunitat Valenciana o fuera de ella.
+// la persona vive en la Comunitat Valenciana o fuera de ella. Si no está en las
+// listas, se busca entre los municipios y provincias de España.
 
 export const LUGARES_CV = [
   "valencia",
@@ -54,5 +57,5 @@ export function zonaDe(lugar: string): Zona {
   const l = normalizar(lugar);
   if (LUGARES_CV.some((x) => l.includes(x))) return "cv";
   if (LUGARES_FUERA.some((x) => l.includes(x))) return "fuera";
-  return null;
+  return zonaPorTerritorio(lugar);
 }

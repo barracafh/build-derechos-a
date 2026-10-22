@@ -1,3 +1,4 @@
+import { lugarEnFrase } from "@/lib/ayudas/territorio";
 import { normalizar, LUGARES_CV, LUGARES_FUERA } from "@/lib/lugares";
 import type { CampoPerfil, Hecho, Perfil } from "@/lib/tipos";
 
@@ -42,7 +43,13 @@ export function perfilDeTexto(texto: string): Perfil {
     hallar(new RegExp(`\\b(?:${lista.join("|")})\\b`));
   const cv = lugar(LUGARES_CV);
   const fuera = lugar(LUGARES_FUERA);
-  poner("municipio", (cv ?? fuera)?.cita ?? "", cv ?? fuera);
+  // Fuera de las listas: «vivo en Adeje», «soy de Lugo»… cualquier municipio de España.
+  const enFrase = cv || fuera ? null : lugarEnFrase(normalizar(texto));
+  const otro: Hallazgo | null = enFrase
+    ? { cita: texto.slice(enFrase.desde, enFrase.hasta), grupos: [] as unknown as RegExpExecArray }
+    : null;
+  const sitio = cv ?? fuera ?? otro;
+  poner("municipio", sitio?.cita ?? "", sitio);
 
   const agotado = hallar(
     /(se (me )?(ha )?acab(ado|o) (el )?(paro|subsidio)|agot(e|ado) (el )?paro|sin paro|acabat l.atur)/,

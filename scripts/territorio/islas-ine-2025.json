@@ -1,0 +1,780 @@
+{
+ "fuente": "INE, Relación de municipios y códigos por provincia e islas a 1 de enero de 2025, https://www.ine.es/daco/daco42/codmun/26codislas.xlsx",
+ "municipios": [
+  {
+   "ine": "07024",
+   "municipio": "Formentera",
+   "isla": "Formentera"
+  },
+  {
+   "ine": "07026",
+   "municipio": "Eivissa",
+   "isla": "Ibiza"
+  },
+  {
+   "ine": "07046",
+   "municipio": "Sant Antoni de Portmany",
+   "isla": "Ibiza"
+  },
+  {
+   "ine": "07050",
+   "municipio": "Sant Joan de Labritja",
+   "isla": "Ibiza"
+  },
+  {
+   "ine": "07048",
+   "municipio": "Sant Josep de sa Talaia",
+   "isla": "Ibiza"
+  },
+  {
+   "ine": "07054",
+   "municipio": "Santa Eulària des Riu",
+   "isla": "Ibiza"
+  },
+  {
+   "ine": "07001",
+   "municipio": "Alaró",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07003",
+   "municipio": "Alcúdia",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07004",
+   "municipio": "Algaida",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07005",
+   "municipio": "Andratx",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07901",
+   "municipio": "Ariany",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07006",
+   "municipio": "Artà",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07007",
+   "municipio": "Banyalbufar",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07008",
+   "municipio": "Binissalem",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07009",
+   "municipio": "Búger",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07010",
+   "municipio": "Bunyola",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07011",
+   "municipio": "Calvià",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07012",
+   "municipio": "Campanet",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07013",
+   "municipio": "Campos",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07014",
+   "municipio": "Capdepera",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07016",
+   "municipio": "Consell",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07017",
+   "municipio": "Costitx",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07018",
+   "municipio": "Deià",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07019",
+   "municipio": "Escorca",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07020",
+   "municipio": "Esporles",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07021",
+   "municipio": "Estellencs",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07022",
+   "municipio": "Felanitx",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07025",
+   "municipio": "Fornalutx",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07027",
+   "municipio": "Inca",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07028",
+   "municipio": "Lloret de Vistalegre",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07029",
+   "municipio": "Lloseta",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07030",
+   "municipio": "Llubí",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07031",
+   "municipio": "Llucmajor",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07033",
+   "municipio": "Manacor",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07034",
+   "municipio": "Mancor de la Vall",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07035",
+   "municipio": "Maria de la Salut",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07036",
+   "municipio": "Marratxí",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07038",
+   "municipio": "Montuïri",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07039",
+   "municipio": "Muro",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07040",
+   "municipio": "Palma",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07041",
+   "municipio": "Petra",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07044",
+   "municipio": "Pobla, Sa",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07042",
+   "municipio": "Pollença",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07043",
+   "municipio": "Porreres",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07045",
+   "municipio": "Puigpunyent",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07059",
+   "municipio": "Salines, Ses",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07049",
+   "municipio": "Sant Joan",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07051",
+   "municipio": "Sant Llorenç des Cardassar",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07053",
+   "municipio": "Santa Eugènia",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07055",
+   "municipio": "Santa Margalida",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07056",
+   "municipio": "Santa María del Camí",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07057",
+   "municipio": "Santanyí",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07058",
+   "municipio": "Selva",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07047",
+   "municipio": "Sencelles",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07060",
+   "municipio": "Sineu",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07061",
+   "municipio": "Sóller",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07062",
+   "municipio": "Son Servera",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07063",
+   "municipio": "Valldemossa",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07065",
+   "municipio": "Vilafranca de Bonany",
+   "isla": "Mallorca"
+  },
+  {
+   "ine": "07002",
+   "municipio": "Alaior",
+   "isla": "Menorca"
+  },
+  {
+   "ine": "07064",
+   "municipio": "Castell, Es",
+   "isla": "Menorca"
+  },
+  {
+   "ine": "07015",
+   "municipio": "Ciutadella de Menorca",
+   "isla": "Menorca"
+  },
+  {
+   "ine": "07023",
+   "municipio": "Ferreries",
+   "isla": "Menorca"
+  },
+  {
+   "ine": "07032",
+   "municipio": "Maó",
+   "isla": "Menorca"
+  },
+  {
+   "ine": "07037",
+   "municipio": "Mercadal, Es",
+   "isla": "Menorca"
+  },
+  {
+   "ine": "07902",
+   "municipio": "Migjorn Gran, Es",
+   "isla": "Menorca"
+  },
+  {
+   "ine": "07052",
+   "municipio": "Sant Lluís",
+   "isla": "Menorca"
+  },
+  {
+   "ine": "35003",
+   "municipio": "Antigua",
+   "isla": "Fuerteventura"
+  },
+  {
+   "ine": "35007",
+   "municipio": "Betancuria",
+   "isla": "Fuerteventura"
+  },
+  {
+   "ine": "35014",
+   "municipio": "Oliva, La",
+   "isla": "Fuerteventura"
+  },
+  {
+   "ine": "35015",
+   "municipio": "Pájara",
+   "isla": "Fuerteventura"
+  },
+  {
+   "ine": "35017",
+   "municipio": "Puerto del Rosario",
+   "isla": "Fuerteventura"
+  },
+  {
+   "ine": "35030",
+   "municipio": "Tuineje",
+   "isla": "Fuerteventura"
+  },
+  {
+   "ine": "35001",
+   "municipio": "Agaete",
+   "isla": "Gran Canaria"
+  },
+  {
+   "ine": "35002",
+   "municipio": "Agüimes",
+   "isla": "Gran Canaria"
+  },
+  {
+   "ine": "35020",
+   "municipio": "Aldea de San Nicolás, La",
+   "isla": "Gran Canaria"
+  },
+  {
+   "ine": "35005",
+   "municipio": "Artenara",
+   "isla": "Gran Canaria"
+  },
+  {
+   "ine": "35006",
+   "municipio": "Arucas",
+   "isla": "Gran Canaria"
+  },
+  {
+   "ine": "35008",
+   "municipio": "Firgas",
+   "isla": "Gran Canaria"
+  },
+  {
+   "ine": "35009",
+   "municipio": "Gáldar",
+   "isla": "Gran Canaria"
+  },
+  {
+   "ine": "35011",
+   "municipio": "Ingenio",
+   "isla": "Gran Canaria"
+  },
+  {
+   "ine": "35012",
+   "municipio": "Mogán",
+   "isla": "Gran Canaria"
+  },
+  {
+   "ine": "35013",
+   "municipio": "Moya",
+   "isla": "Gran Canaria"
+  },
+  {
+   "ine": "35016",
+   "municipio": "Palmas de Gran Canaria, Las",
+   "isla": "Gran Canaria"
+  },
+  {
+   "ine": "35019",
+   "municipio": "San Bartolomé de Tirajana",
+   "isla": "Gran Canaria"
+  },
+  {
+   "ine": "35021",
+   "municipio": "Santa Brígida",
+   "isla": "Gran Canaria"
+  },
+  {
+   "ine": "35022",
+   "municipio": "Santa Lucía de Tirajana",
+   "isla": "Gran Canaria"
+  },
+  {
+   "ine": "35023",
+   "municipio": "Santa María de Guía de Gran Canaria",
+   "isla": "Gran Canaria"
+  },
+  {
+   "ine": "35025",
+   "municipio": "Tejeda",
+   "isla": "Gran Canaria"
+  },
+  {
+   "ine": "35026",
+   "municipio": "Telde",
+   "isla": "Gran Canaria"
+  },
+  {
+   "ine": "35027",
+   "municipio": "Teror",
+   "isla": "Gran Canaria"
+  },
+  {
+   "ine": "35032",
+   "municipio": "Valleseco",
+   "isla": "Gran Canaria"
+  },
+  {
+   "ine": "35031",
+   "municipio": "Valsequillo de Gran Canaria",
+   "isla": "Gran Canaria"
+  },
+  {
+   "ine": "35033",
+   "municipio": "Vega de San Mateo",
+   "isla": "Gran Canaria"
+  },
+  {
+   "ine": "35004",
+   "municipio": "Arrecife",
+   "isla": "Lanzarote"
+  },
+  {
+   "ine": "35010",
+   "municipio": "Haría",
+   "isla": "Lanzarote"
+  },
+  {
+   "ine": "35018",
+   "municipio": "San Bartolomé",
+   "isla": "Lanzarote"
+  },
+  {
+   "ine": "35024",
+   "municipio": "Teguise",
+   "isla": "Lanzarote"
+  },
+  {
+   "ine": "35028",
+   "municipio": "Tías",
+   "isla": "Lanzarote"
+  },
+  {
+   "ine": "35029",
+   "municipio": "Tinajo",
+   "isla": "Lanzarote"
+  },
+  {
+   "ine": "35034",
+   "municipio": "Yaiza",
+   "isla": "Lanzarote"
+  },
+  {
+   "ine": "38002",
+   "municipio": "Agulo",
+   "isla": "Gomera, La"
+  },
+  {
+   "ine": "38003",
+   "municipio": "Alajeró",
+   "isla": "Gomera, La"
+  },
+  {
+   "ine": "38021",
+   "municipio": "Hermigua",
+   "isla": "Gomera, La"
+  },
+  {
+   "ine": "38036",
+   "municipio": "San Sebastián de la Gomera",
+   "isla": "Gomera, La"
+  },
+  {
+   "ine": "38049",
+   "municipio": "Valle Gran Rey",
+   "isla": "Gomera, La"
+  },
+  {
+   "ine": "38050",
+   "municipio": "Vallehermoso",
+   "isla": "Gomera, La"
+  },
+  {
+   "ine": "38013",
+   "municipio": "Frontera",
+   "isla": "Hierro, El"
+  },
+  {
+   "ine": "38901",
+   "municipio": "Pinar de El Hierro, El",
+   "isla": "Hierro, El"
+  },
+  {
+   "ine": "38048",
+   "municipio": "Valverde",
+   "isla": "Hierro, El"
+  },
+  {
+   "ine": "38007",
+   "municipio": "Barlovento",
+   "isla": "Palma, La"
+  },
+  {
+   "ine": "38008",
+   "municipio": "Breña Alta",
+   "isla": "Palma, La"
+  },
+  {
+   "ine": "38009",
+   "municipio": "Breña Baja",
+   "isla": "Palma, La"
+  },
+  {
+   "ine": "38014",
+   "municipio": "Fuencaliente de la Palma",
+   "isla": "Palma, La"
+  },
+  {
+   "ine": "38016",
+   "municipio": "Garafía",
+   "isla": "Palma, La"
+  },
+  {
+   "ine": "38024",
+   "municipio": "Llanos de Aridane, Los",
+   "isla": "Palma, La"
+  },
+  {
+   "ine": "38027",
+   "municipio": "Paso, El",
+   "isla": "Palma, La"
+  },
+  {
+   "ine": "38029",
+   "municipio": "Puntagorda",
+   "isla": "Palma, La"
+  },
+  {
+   "ine": "38030",
+   "municipio": "Puntallana",
+   "isla": "Palma, La"
+  },
+  {
+   "ine": "38033",
+   "municipio": "San Andrés y Sauces",
+   "isla": "Palma, La"
+  },
+  {
+   "ine": "38037",
+   "municipio": "Santa Cruz de la Palma",
+   "isla": "Palma, La"
+  },
+  {
+   "ine": "38045",
+   "municipio": "Tazacorte",
+   "isla": "Palma, La"
+  },
+  {
+   "ine": "38047",
+   "municipio": "Tijarafe",
+   "isla": "Palma, La"
+  },
+  {
+   "ine": "38053",
+   "municipio": "Villa de Mazo",
+   "isla": "Palma, La"
+  },
+  {
+   "ine": "38001",
+   "municipio": "Adeje",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38004",
+   "municipio": "Arafo",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38005",
+   "municipio": "Arico",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38006",
+   "municipio": "Arona",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38010",
+   "municipio": "Buenavista del Norte",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38011",
+   "municipio": "Candelaria",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38012",
+   "municipio": "Fasnia",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38015",
+   "municipio": "Garachico",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38017",
+   "municipio": "Granadilla de Abona",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38018",
+   "municipio": "Guancha, La",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38019",
+   "municipio": "Guía de Isora",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38020",
+   "municipio": "Güímar",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38022",
+   "municipio": "Icod de los Vinos",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38025",
+   "municipio": "Matanza de Acentejo, La",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38026",
+   "municipio": "Orotava, La",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38028",
+   "municipio": "Puerto de la Cruz",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38031",
+   "municipio": "Realejos, Los",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38032",
+   "municipio": "Rosario, El",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38023",
+   "municipio": "San Cristóbal de La Laguna",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38034",
+   "municipio": "San Juan de la Rambla",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38035",
+   "municipio": "San Miguel de Abona",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38038",
+   "municipio": "Santa Cruz de Tenerife",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38039",
+   "municipio": "Santa Úrsula",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38040",
+   "municipio": "Santiago del Teide",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38041",
+   "municipio": "Sauzal, El",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38042",
+   "municipio": "Silos, Los",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38043",
+   "municipio": "Tacoronte",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38044",
+   "municipio": "Tanque, El",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38046",
+   "municipio": "Tegueste",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38051",
+   "municipio": "Victoria de Acentejo, La",
+   "isla": "Tenerife"
+  },
+  {
+   "ine": "38052",
+   "municipio": "Vilaflor de Chasna",
+   "isla": "Tenerife"
+  }
+ ]
+}

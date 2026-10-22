@@ -1,11 +1,14 @@
-import { completar } from "@/lib/ia";
+import { buscarAyudas } from "@/lib/ayudas/buscar";
+import { requisitosDelExtracto } from "@/lib/ayudas/requisitos";
+import { completar, completarConHerramientas } from "@/lib/ia";
 import { responder } from "@/lib/llm";
 import type { MensajeChat } from "@/lib/tipos";
 
 // POST {"mensajes": MensajeChat[]} → Respuesta (spec 003).
 // No se guarda ni se registra lo que escribe la persona.
 
-// Dos intentos al LLM de 20 s como mucho, más el margen de los reintentos por 429.
+// El LLM con herramientas (30 s como mucho) o, si falla rápido, sin ellas, y
+// después la BDNS: el reparto está en lib/llm/index.ts.
 export const maxDuration = 60;
 
 const error400 = (m: string) => Response.json({ error: m }, { status: 400 });
@@ -40,6 +43,12 @@ export async function POST(req: Request) {
   if (!mensajes.some((m) => m.rol === "usuario"))
     return error400("Falta un mensaje de la persona.");
 
-  const r = await responder(mensajes, { completar, hoy: new Date() });
+  const r = await responder(mensajes, {
+    completar,
+    hoy: new Date(),
+    agente: completarConHerramientas,
+    buscar: buscarAyudas,
+    requisitos: requisitosDelExtracto,
+  });
   return Response.json(r, { headers: { "cache-control": "no-store" } });
 }
