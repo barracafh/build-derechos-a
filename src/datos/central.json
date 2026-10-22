@@ -1,0 +1,371 @@
+{
+  "version": "2026-10-22",
+  "ambito": "Ayudas sin API (prestaciones, bonos, deducciones y ayudas sociales) para residentes en València",
+  "aviso": "Extraído de páginas oficiales por un proceso automático. No verificado por una persona: revisa siempre la página oficial.",
+  "items": [
+    {
+      "id": "asistencia-sanitaria",
+      "tipo": "ayuda",
+      "titulo": "Asistencia sanitaria",
+      "administracion": "Estado",
+      "organismo": "Instituto Nacional de la Seguridad Social",
+      "frases_usuario": [
+        "Cómo consigo la tarjeta sanitaria",
+        "No tengo papeles, ¿puedo ir al médico gratis?",
+        "He vuelto a vivir a España, ¿tengo derecho a sanidad?",
+        "¿Quién está cubierto por la sanidad pública?",
+        "Me han agotado el paro, ¿cuánto pago de los medicamentos?"
+      ],
+      "requisitos_clave": [
+        "Tener nacionalidad española y residencia habitual en el territorio español.",
+        "Ser persona extranjera y con residencia legal y habitual en el territorio español y no tener la obligación de acreditar la cobertura obligatoria de la prestación sanitaria por otra vía.",
+        "Ser trabajador por cuenta ajena o por cuenta propia, afiliado y en situación de alta o asimilada a la de alta.",
+        "Ostentar la condición de pensionista de dichos regímenes en su modalidad contributiva.",
+        "Ser perceptor de cualquier otra prestación periódica de dichos regímenes."
+      ],
+      "pasos": [
+        "Todas las personas que reúnan y mantengan los requisitos previstos para ser titulares del derecho tendrán garantizada la asistencia sanitaria en España, con cargo a fondos públicos, a través del Sistema Nacional de Salud, la cual se hará efectiva por las administraciones sanitarias competentes mediante la expedición de la tarjeta sanitaria individual.",
+        "La comprobación de estos requisitos actualmente corresponde al Instituto Nacional de la Seguridad Social y al Instituto Social de la Marina en sus respectivos ámbitos de gestión.",
+        "Las CCAA, en el ámbito de sus competencias, fijarán el procedimiento para la solicitud y expedición del documento certificativo que acredite a las personas extranjeras para poder recibir esta prestación asistencial."
+      ],
+      "documentacion": [
+        "La residencia legal de los extranjeros se acredita con el correspondiente permiso de residencia.",
+        "La residencia habitual se certifica con el empadronamiento.",
+        "En todo caso, será necesario aportar una declaración responsable de no poder exportar el derecho a la asistencia sanitaria desde otro país y, adicionalmente, certificado acreditativo de que no procede la exportación de la cobertura sanitaria a cargo del país de procedencia cuando con este país España aplica una norma internacional de Seguridad Social que incluya la cobertura sanitaria.",
+        "Los españoles de origen retornados justificarán su condición mediante la presentación de la baja consular en el país de residencia y el certificado de empadronamiento en el municipio donde hayan fijado su residencia en nuestro país."
+      ],
+      "plazo": null,
+      "enlace_info": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10938",
+      "enlace_tramite": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10938/30497",
+      "fuente": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10938 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10938/30476 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10938/30480 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10938/30483",
+      "verificado": false,
+      "nota": "Aquellas personas que no se encuentren en ninguna de las situaciones anteriores, podrán obtener dicha prestación mediante el pago de la correspondiente contraprestación o cuota derivada de la suscripción de un convenio especial.",
+      "relacionados": [
+        "ingreso-minimo-vital"
+      ],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "La cartera común básica de servicios asistenciales del SNS comprende todas las actividades asistenciales de prevención, diagnóstico, tratamiento y rehabilitación que se realicen en centros sanitarios o sociosanitarios, así como el transporte sanitario urgente, cubiertos de forma completa por financiación pública.",
+      "ambito": "en las mismas condiciones, a todas las personas que se encuentren en el Estado Español",
+      "exclusiones": [
+        "Asimismo, perderán la condición de beneficiarios de otros titulares del derecho a efectos de la aportación farmacéutica, quienes dejen de mantener la relación de afectividad, cumplan el límite de edad, dejen de reunir los requisitos de residencia o pasen a tener la condición de trabajador o de perceptor de pensión u otra prestación periódica de cualquier régimen de Seguridad Social, sin perjuicio de que pudieran pasar a adquirir el derecho por título propio."
+      ],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "de5f1651b916021978698bf6dc45324cec79729273684b85f12a3044a955bbc9",
+        "40335368701a9e35a30774cefc1d8757eb9ceee44592f776e05cf2f63d797a28",
+        "7e15cfdb799658a45e6d192bfbed5bf6026c8d94edfacdda61d370c8accac0d5",
+        "0cb8226d18919a56d178f75d24a195a826224e2435f6994a95c35f6b3e13b398"
+      ],
+      "relaciones": [
+        {
+          "id": "ingreso-minimo-vital",
+          "tipo": "relacionada",
+          "cita": "Personas beneficiarias del ingreso mínimo vital."
+        }
+      ],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "bono-social-termico-2025-sia3178888",
+      "tipo": "ayuda",
+      "titulo": "Bono social térmico 2025",
+      "administracion": "Comunitat Valenciana",
+      "organismo": "Instituto Valenciano de Competitividad Empresarial IVACE",
+      "frases_usuario": [
+        "¿Me toca el bono social térmico este año?",
+        "¿Tengo que pedir el bono de la calefacción o me lo dan automáticamente?",
+        "Era beneficiaria del bono social de la luz, ¿me corresponde también el térmico?",
+        "¿Cuánto dinero me van a ingresar del bono térmico?",
+        "Me llegó la carta del bono social térmico, ¿cuándo me pagan?"
+      ],
+      "requisitos_clave": [
+        "Son beneficiarios/as del Bono Social Térmico 2025, sin necesidad de realizar ningún trámite ni solicitud, los/las consumidores/as que eran beneficiarios/as del Bono Social de Electricidad a 31 de diciembre de 2024."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": "Son beneficiarios/as del Bono Social Térmico 2025, sin necesidad de realizar ningún trámite ni solicitud, los/las consumidores/as que eran beneficiarios/as del Bono Social de Electricidad a 31 de diciembre de 2024.",
+      "enlace_info": "https://sede.gva.es/es/detall-tramit?id_proc=G104345",
+      "enlace_tramite": null,
+      "fuente": "https://sede.gva.es/es/detall-tramit?id_proc=G104345 ; https://sede.gva.es/es/detall-tramit?p_p_id=es_gva_es_siac_portlet_SiacDetalleProcedimientosNuevoGVA&p_p_lifecycle=2&p_p_state=normal&p_p_mode=view&p_p_cacheability=cacheLevelPage&_es_gva_es_siac_portlet_SiacDetalleProcedimientosNuevoGVA_accion=pdf&_es_gva_es_siac_portlet_SiacDetalleProcedimientosNuevoGVA_codigo=G104345 ; https://dogv.gva.es/datos/2023/09/29/pdf/2023_9946.pdf ; https://dogv.gva.es/datos/2023/12/07/pdf/2023_12365.pdf",
+      "verificado": false,
+      "nota": "Los/las beneficiarios/as del Bono Social Térmico 2025 recibirán una notificación en su domicilio, en la que se les informará de la ayuda que les corresponde; que, salvo renuncia expresa, será abonada directamente en la cuenta bancaria, donde tengan domiciliada la factura eléctrica.",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "de_oficio",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "la cuantía de la misma depende de su grado de vulnerabilidad y de la zona climática en la que se localice la vivienda en la que se encuentre empadronado/a.",
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [
+          "3178888"
+        ],
+        "idProc": [
+          "G104345"
+        ],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "DECRETO LEY 11/2023, de 29 de septiembre, del Consell, para minimización del impacto sobre las familias y empresas del pago del canon de saneamiento aplazado por el Decreto ley 6/2022, de 8 de julio, y por el Decreto ley 19/2022, de 30 de diciembre, del Consell.",
+          "url": "https://dogv.gva.es/datos/2023/09/29/pdf/2023_9946.pdf"
+        },
+        {
+          "titulo": "DECRETO LEY 13/2023, de 5 de diciembre, del Consell, por el que se regulan la comunicación de información a la Generalitat por las empresas comercializadoras de referencia para la gestión del bono social térmico y otras medidas relacionadas de carácter social.",
+          "url": "https://dogv.gva.es/datos/2023/12/07/pdf/2023_12365.pdf"
+        }
+      ],
+      "textos": [
+        "84f12ccfae9c3f90ab6e5c29cea7fa7b26fda60ee8e2637643187753994e6526",
+        "4d999475bf5141fbb763e13fecc3c637deb4d1770ad931892b8e823af45aa75e",
+        "bcc9b9f576b1396f2fd81224a5a700bf019fd93512355d5fafdbac7b66ae23df"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "corresponsabilidad-en-el-cuidado-del-lactante",
+      "tipo": "ayuda",
+      "titulo": "Corresponsabilidad en el cuidado del lactante",
+      "administracion": "Estado",
+      "organismo": "Instituto Nacional de la Seguridad Social (INSS)",
+      "frases_usuario": [
+        "Voy a ser padre y quiero saber cómo pedir la prestación por cuidar al bebé",
+        "¿Cuánto me pagan si reduzco media hora la jornada por el lactante?",
+        "Mi bebé cumple nueve meses, ¿hasta cuándo puedo pedir la ayuda?",
+        "¿Pueden cobrar los dos la prestación de corresponsabilidad?",
+        "¿Cuántos días cotizados necesito para el subsidio del lactante?"
+      ],
+      "requisitos_clave": [
+        "Se considerará situación protegida la reducción de la jornada de trabajo en media hora que, de acuerdo con lo previsto en el párrafo cuarto del artículo 37.4 del texto refundido de la Ley del ET, lleven a cabo con la misma duración y régimen los dos progenitores, adoptantes, guardadores con fines de adopción o acogedores de carácter permanente, cuando ambos trabajen, para el cuidado del lactante desde que cumpla nueve meses hasta los doce meses de edad.",
+        "Personas trabajadoras incluidas en el Régimen General de la Seguridad Social, incluyendo el Sistema Especial de Empleados del Hogar, Sistema Especial Agrario de trabajadores por cuenta ajena; así como para los trabajadores del Régimen Especial de la Minería del Carbón.",
+        "Estar en alta o situación asimilada al alta en el momento del hecho causante.",
+        "Acreditar los periodos de cotización exigidos, en función de la edad de los progenitores:",
+        "Personas trabajadoras de más de veintiséis años: al menos ciento ochenta días cotizados en los siete años inmediatamente anteriores al momento del inicio del hecho causante, o trescientos sesenta días cotizados a lo largo de su vida laboral."
+      ],
+      "pasos": [],
+      "documentacion": [
+        "Acreditación de identidad del progenitor solicitante y del otro progenitor, y del representante legal, si lo hubiera",
+        "Españoles: Documento Nacional de Identidad (DNI).",
+        "Extranjeros residentes o no residentes en España: Pasaporte o, en su caso, documento de identidad vigente en su país y NIE (Número de Identificación de Extranjero) exigido por la AEAT a efectos de pago.",
+        "Certificado de la empresa, de cada uno de los progenitores en el que conste: La fecha de inicio y fin de la reducción de jornada del trabajador/a prevista en el párrafo cuarto del artículo 37.4 del Estatuto de los Trabajadores. La indicación del número de horas de trabajo habitual semanales. El porcentaje en que ha quedado fijada la reducción de jornada.",
+        "Libro de familia o, en su defecto, certificado de la inscripción del hijo en el Registro Civil o resolución judicial o administrativa por la que se haya concedido la adopción, la guarda con fines de adopción o el acogimiento permanente.",
+        "En el caso de familias monoparentales: Libro de familia en el que conste un solo progenitor o, en el caso de que consten dos progenitores, certificado de defunción de uno de ellos, o resolución judicial en el que se declare el abandono de familia de uno de ellos."
+      ],
+      "plazo": "El inicio de la reducción de la jornada de trabajo, puede comenzar entre el mes noveno del nacimiento del lactante y hasta el duodécimo",
+      "enlace_info": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/61f8b540-c867-43cf-926d-77476b975f36",
+      "enlace_tramite": null,
+      "fuente": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/61f8b540-c867-43cf-926d-77476b975f36 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/61f8b540-c867-43cf-926d-77476b975f36/a2ec8a85-cb5a-4bee-a888-8b1165c8af52 ; https://www.boe.es/boe/dias/2019/03/07/pdfs/BOE-A-2019-3244.pdf",
+      "verificado": false,
+      "nota": "Esta prestación está exenta de tributación por IRPF, salvo en Navarra.",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "relativo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "La prestación económica consistirá en un subsidio, de devengo diario, equivalente al 100% de la base reguladora establecida para la prestación por incapacidad temporal derivada de contingencias comunes, y en proporción a la reducción que experimente la jornada de trabajo: base de cotización del mes anterior al hecho causante (reducción de la jornada) o las bases de cotización de los tres meses anteriores en caso de contratos a tiempo parcial.",
+      "ambito": null,
+      "exclusiones": [
+        "No será de aplicación a los funcionarios públicos, que se regirán por lo establecido en el art. 48.f) del texto refundido de la Ley del Estatuto Básico del Empleado Público, y en la normativa que lo desarrolle.",
+        "Esta prestación, será incompatible con cualquier otro subsidio que suponga la suspensión de la relación laboral.",
+        "Cuando ambos progenitores, adoptantes, guardadores con fines de adopción o acogedores de carácter permanente, reúnan las condiciones para ser beneficiarios de la prestación, el derecho a percibirla sólo podrá ser reconocido a favor de uno de ellos."
+      ],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": [
+          "BOE-A-2019-3244"
+        ]
+      },
+      "documentos": [
+        {
+          "titulo": "Real Decreto-ley 6/2019",
+          "url": "https://www.boe.es/boe/dias/2019/03/07/pdfs/BOE-A-2019-3244.pdf"
+        }
+      ],
+      "textos": [
+        "9fdf03006fa8c30497b26f4df8dc7950f82206e79da5b9e2c0b2d6630dbd836f",
+        "f9b5b98478ea0a34ffeb565a8e3de7c75ffcc4491a240360829dd2c6052cb9c6"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "nacimiento-y-cuidado-de-menor",
+      "tipo": "ayuda",
+      "titulo": "Nacimiento y cuidado de menor",
+      "administracion": "Estado",
+      "organismo": "El Instituto Nacional de la Seguridad Social (INSS), con carácter general.",
+      "frases_usuario": [
+        "Acabo de tener un bebé y quiero pedir la prestación de nacimiento y cuidado de menor.",
+        "¿Cuánto se cobra durante el permiso por nacimiento de un hijo?",
+        "Me han dicho que maternidad y paternidad ahora son la misma ayuda.",
+        "No tengo suficientes días cotizados, ¿puedo cobrar algo igual?",
+        "Voy a adoptar un niño, ¿tengo derecho al subsidio?"
+      ],
+      "requisitos_clave": [
+        "Serán beneficiarias las personas trabajadoras por cuenta ajena o propia, cualquiera que sea su sexo, siempre que, se encuentren en situación de alta o asimilada al alta, disfruten de los periodos de suspensión del contrato de trabajo/permiso por nacimiento y cuidado de menor y acrediten los períodos mínimos de cotización exigibles en cada caso.",
+        "Estar afiliados o afiliadas y en alta o en situación asimilada al alta, al inicio de cada uno de los períodos de descanso.",
+        "Tener cubierto un período mínimo de cotización que varía en función de la edad:",
+        "Estar al corriente en el pago de las cuotas, de las que sean responsables directas las personas trabajadoras, aunque la prestación sea reconocida, como consecuencia del cómputo recíproco de cotizaciones, en un régimen de trabajadores por cuenta ajena."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/6b96a085-4dc0-47af-b2cb-97e00716791e",
+      "enlace_tramite": "https://www.seg-social.es/wps/portal/wss/internet/Pensionistas/Servicios/34887/40968/675dcd57-75d3-4a97-926a-1ba60fa72d32",
+      "fuente": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/6b96a085-4dc0-47af-b2cb-97e00716791e ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/6b96a085-4dc0-47af-b2cb-97e00716791e/situaciones+protegidas19-c021 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/6b96a085-4dc0-47af-b2cb-97e00716791e/19-c021personas+benefiiciarias ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/6b96a085-4dc0-47af-b2cb-97e00716791e/requisitos+19-c021",
+      "verificado": false,
+      "nota": "Las notificaciones y comunicaciones dirigidas a las personas solicitantes o perceptoras de la prestación de nacimiento y cuidado de menor, incluidas las resoluciones de la prestación, se envían exclusivamente por medios electrónicos.",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "La prestación económica por nacimiento y cuidado de menor consistirá en un subsidio equivalente al 100 por ciento de la base reguladora correspondiente, que será la base de cotización por contingencias comunes del mes inmediatamente anterior al mes previo al del hecho causante dividida entre el número de días a que dicha cotización se refiera.",
+      "ambito": null,
+      "exclusiones": [
+        "Actúe fraudulentamente para obtener o conservar la prestación.",
+        "Trabaje por cuenta propia o ajena durante los correspondientes períodos de descanso, salvo si se trata de la percepción del subsidio en régimen de jornada a tiempo parcial o en los supuestos de pluriempleo y pluriactividad."
+      ],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": [
+          "BOE-A-2019-3244",
+          "BOE-A-2015-11430",
+          "BOE-A-2015-11719"
+        ]
+      },
+      "documentos": [],
+      "textos": [
+        "db676ac6dddc25b611a11b31d9250166637261379d61fc254647316b230bebbb",
+        "f98db7b9ce59b1de1b73e4829e5a2c3e5c11e474a7ed1a61997a856716ea323c",
+        "e70bd7833fb81b3074641ef36853e29d2c54f080fe5b0896058bc30750c6a6c2",
+        "e47444ee20e75d0c24b7d910ca0da8203c9ae4999eb6b52d58b7d872493f08ec"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "riesgo-durante-el-embarazo",
+      "tipo": "ayuda",
+      "titulo": "Riesgo durante el embarazo",
+      "administracion": "Estado",
+      "organismo": "Sistema de la Seguridad Social",
+      "frases_usuario": [
+        "Estoy embarazada y en mi trabajo hay riesgos para el bebé",
+        "Mi empresa no tiene otro puesto compatible con mi embarazo",
+        "¿Cuánto me pagan durante la suspensión por riesgo en el embarazo?",
+        "¿Qué papeles necesito para pedir el subsidio por riesgo durante el embarazo?",
+        "Soy autónoma y tengo que dejar de trabajar por el embarazo"
+      ],
+      "requisitos_clave": [
+        "Las trabajadoras por cuenta ajena y socias trabajadoras de sociedades cooperativas o laborales, en situación de suspensión de contrato o permiso por riesgo durante el embarazo",
+        "Estar afiliadas y en alta en alguno de los regímenes del sistema de la Seguridad Social en la fecha en que se inicie la suspensión.",
+        "No se exige período mínimo de cotización al derivarse de contingencias profesionales desde el 24-03-2007.",
+        "En el caso de los representantes de comercio se exige, además, estar al corriente del pago de cuotas en la fecha en que sobrevenga la contingencia."
+      ],
+      "pasos": [
+        "El procedimiento se inicia a instancia de la trabajadora, mediante un informe que deberá solicitar al facultativo del Servicio Público de Salud, en el que se acredite la situación de embarazo y la fecha probable del parto.",
+        "Con el citado informe y un certificado de la empresa sobre la actividad desarrollada y las condiciones del puesto de trabajo, la trabajadora solicitará la emisión de la certificación médica sobre la existencia de riesgo durante el embarazo ante la Entidad gestora o colaboradora que corresponda.",
+        "Una vez certificado el riesgo, si no ha sido posible el cambio del puesto de trabajo, la empresa declarará a la trabajadora afectada en situación de suspensión del contrato por riesgo durante el embarazo.",
+        "Para el reconocimiento del subsidio, la trabajadora deberá presentar solicitud dirigida a la Dirección provincial competente de la Entidad gestora de la provincia en que aquélla tenga su domicilio o ante Mutua Colaboradora con la Seguridad social que le corresponda.",
+        "El Director provincial de la Entidad gestora competente dictará resolución expresa y la notificará a la interesada en el plazo de 30 días, contados desde la recepción de la solicitud de la interesada."
+      ],
+      "documentacion": [
+        "Españolas: Documento Nacional de Identidad (DNI ).",
+        "Número de Identificación de extranjeros (NIE) y pasaporte o documento/carta de su país (UE , EEE y Suiza).",
+        "Trabajadora por cuenta ajena del Régimen General: certificado de empresa debidamente cumplimentado.",
+        "Informe médico del facultativo del Servicio Público de Salud que la asiste.(1)",
+        "Certificación médica expedida por los Servicios Médicos de la Entidad Gestora",
+        "Declaraciones de la empresa o de la trabajadora por cuenta propia. (2)",
+        "Declaración de situación de actividad, sólo para las trabajadoras del Régimen Especial de Trabajadores Autónomos. (3)"
+      ],
+      "plazo": "El derecho al reconocimiento de la prestación prescribe a los 5 años, contados desde el día siguiente a aquél en que se produce el hecho causante, sin perjuicio de que los efectos de tal reconocimiento se produzcan a partir de los 3 meses anteriores a la fecha en que se presente la correspondiente solicitud.",
+      "enlace_info": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10956",
+      "enlace_tramite": null,
+      "fuente": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10956 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10956/28347 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10956/6205",
+      "verificado": false,
+      "nota": "Las notificaciones y comunicaciones dirigidas a las personas solicitantes o perceptoras de la prestación de riesgo durante el embarazo, incluidas las resoluciones de la prestación, no se remiten en papel sino que se envían exclusivamente por medios electrónicos.",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "relativo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "La prestación económica consiste en un subsidio equivalente al 100% de la base reguladora correspondiente",
+      "ambito": null,
+      "exclusiones": [
+        "No se considerará situación protegida la derivada de riesgos o patologías que puedan influir negativamente en la salud de la trabajadora o del feto, cuando no esté relacionada con agentes, procedimientos o condiciones de trabajo del puesto desempeñado.",
+        "Cuando la trabajadora se encuentre en situación de incapacidad temporal (IT) y, durante la misma, solicite la prestación de riesgo durante el embarazo, no procederá el reconocimiento, en su caso, del subsidio hasta que se extinga la situación de IT por cualquiera de las causas legal o reglamentariamente establecidas.",
+        "Actúe fraudulentamente para obtener o conservar el subsidio.",
+        "Realice cualquier trabajo o actividad, ya sea por cuenta ajena o propia, salvo lo previsto en los supuestos de pluriactividad."
+      ],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "4509b9c564a42273411335276ff6e5336164363653689d6ee0286f026f4371aa",
+        "c94ddcfe014dd050d2e68bb482c45e97aa6d62fa4b5707ede83a8cb152070b4d",
+        "9a3353cd9adf32cc24ccb1dbe87b51f86fd0d512648b8794fa60478c2ed376c1"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    }
+  ],
+  "rastreo": {
+    "https://imserso.es/pnc-prestaciones-subvenciones/presentaciones-sistema-autonomia-atencion-dependencia": {
+      "hash": "a107aebb6b8a7cfd1a824e4895f2b508e5857ff0c64131ba08424db84beaa345",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://sede.gva.es/es/detall-tramit?id_proc=G104345": {
+      "id": "bono-social-termico-2025-sia3178888",
+      "hash": "84f12ccfae9c3f90ab6e5c29cea7fa7b26fda60ee8e2637643187753994e6526",
+      "consultado": "2026-10-22"
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10938": {
+      "id": "asistencia-sanitaria",
+      "hash": "de5f1651b916021978698bf6dc45324cec79729273684b85f12a3044a955bbc9",
+      "consultado": "2026-10-22"
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10956": {
+      "id": "riesgo-durante-el-embarazo",
+      "hash": "4509b9c564a42273411335276ff6e5336164363653689d6ee0286f026f4371aa",
+      "consultado": "2026-10-22"
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/12778": {
+      "hash": "cb5cf92bf5f8398b5146d527626771a828e8dca8fd1d0128f1d83577cb0fb419",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/61f8b540-c867-43cf-926d-77476b975f36": {
+      "id": "corresponsabilidad-en-el-cuidado-del-lactante",
+      "hash": "9fdf03006fa8c30497b26f4df8dc7950f82206e79da5b9e2c0b2d6630dbd836f",
+      "consultado": "2026-10-22"
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/6b96a085-4dc0-47af-b2cb-97e00716791e": {
+      "id": "nacimiento-y-cuidado-de-menor",
+      "hash": "db676ac6dddc25b611a11b31d9250166637261379d61fc254647316b230bebbb",
+      "consultado": "2026-10-22"
+    }
+  },
+  "pendientes": []
+}
