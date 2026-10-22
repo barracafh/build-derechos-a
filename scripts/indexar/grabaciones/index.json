@@ -1,0 +1,23 @@
+{
+  "consultado": "2026-10-22",
+  "nota": "Plain GET with Accept-Language es-ES and 1 s between requests. Pairs that reference each other: sepe.subsidio <-> sepe.complemento-apoyo-empleo, imserso.pnc-jubilacion <-> imserso.pnc-incapacidad. gva.G97829 and gva.G94985 are yearly calls without a BDNS number on the page.",
+  "paginas": [
+    { "archivo": "seg-social.semilla.html", "semilla": "seg-social", "url": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores?changeLanguage=es" },
+    { "archivo": "seg-social.imv.html", "semilla": "seg-social", "url": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/65850d68-8d06-4645-bde7-05374ee42ac7" },
+    { "archivo": "seg-social.nacimiento.html", "semilla": "seg-social", "url": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/6b96a085-4dc0-47af-b2cb-97e00716791e" },
+    { "archivo": "sepe.semilla.html", "semilla": "sepe", "url": "https://www.sepe.es/HomeSepe/prestaciones-desempleo.html" },
+    { "archivo": "sepe.subsidio.html", "semilla": "sepe", "url": "https://www.sepe.es/HomeSepe/prestaciones-desempleo/subsidio-desempleo.html" },
+    { "archivo": "sepe.complemento-apoyo-empleo.html", "semilla": "sepe", "url": "https://www.sepe.es/HomeSepe/prestaciones-desempleo/complemento-de-apoyo-empleo.html" },
+    { "archivo": "imserso.semilla.html", "semilla": "imserso", "url": "https://imserso.es/pnc-prestaciones-subvenciones" },
+    { "archivo": "imserso.pnc-jubilacion.html", "semilla": "imserso", "url": "https://imserso.es/pnc-prestaciones-subvenciones/pnc-jubilacion" },
+    { "archivo": "imserso.pnc-incapacidad.html", "semilla": "imserso", "url": "https://imserso.es/pnc-prestaciones-subvenciones/pnc-incapacidad" },
+    { "archivo": "gva-servicios-sociales.semilla.html", "semilla": "gva-servicios-sociales", "url": "https://sede.gva.es/es/cercador-tramits?perfiles=5271&tamanyoPagina=100&temas=5191&pagina=1" },
+    { "archivo": "gva-familias.semilla.html", "semilla": "gva-familias", "url": "https://sede.gva.es/es/cercador-tramits?perfiles=5271&tamanyoPagina=100&temas=5197&pagina=1" },
+    { "archivo": "gva-vivienda.semilla.html", "semilla": "gva-vivienda", "url": "https://sede.gva.es/es/cercador-tramits?perfiles=5271&tamanyoPagina=100&temas=5101&pagina=1" },
+    { "archivo": "gva.G97829.html", "semilla": "gva-servicios-sociales", "url": "https://sede.gva.es/es/detall-tramit?id_proc=G97829" },
+    { "archivo": "gva.G94985.html", "semilla": "gva-servicios-sociales", "url": "https://sede.gva.es/es/detall-tramit?id_proc=G94985" },
+    { "archivo": "valencia-programas.semilla.html", "semilla": "valencia-programas", "url": "https://www.valencia.es/cas/bienestar-social-integracion/programas" },
+    { "archivo": "valencia.acogimiento-familia-extensa.html", "semilla": "valencia-programas", "url": "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=5F163188F995CA86C12582C800403610" },
+    { "archivo": "valencia.itinerarios-inclusion.html", "semilla": "valencia-programas", "url": "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=40668527" }
+  ]
+}
