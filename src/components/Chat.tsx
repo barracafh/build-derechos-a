@@ -15,6 +15,7 @@ import {
   ChevronRight,
   Search,
   SquarePen,
+  UsersRound,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -44,6 +45,8 @@ const ES = {
     "Tengo 3 hijos en edad escolar y vivo en València",
   ],
   tituloEjemplos: "Ejemplos para empezar",
+  comunidadTitulo: "Tu comunidad tiene mucho que ofrecer.",
+  comunidadTexto: "Estamos reuniendo recursos y actividades para que sea más fácil encontrarlos.",
   // Lo que se ve mientras se busca, según la fase que manda el servidor.
   paso: {
     leyendo: "Leyendo tu mensaje",
@@ -123,6 +126,8 @@ const TEXTOS: Record<Idioma, typeof ES> = {
       "Tinc 3 fills en edat escolar i visc a València",
     ],
     tituloEjemplos: "Exemples per a començar",
+    comunidadTitulo: "La teua comunitat té molt a oferir.",
+    comunidadTexto: "Estem reunint recursos i activitats perquè siga més fàcil trobar-los.",
     paso: {
       leyendo: "Llegint el teu missatge",
       reintentando: "Tarda un poc més. Ho torne a intentar",
@@ -827,6 +832,20 @@ export function Chat() {
                 ))}
               </ul>
             </section>
+            <Card
+              render={<aside aria-labelledby="titulo-comunidad" />}
+              className="flex-row items-start gap-4 bg-muted px-5 py-5 ring-0 sm:px-6 sm:py-6"
+            >
+              <UsersRound aria-hidden="true" className="mt-1 size-6 shrink-0 text-brand" />
+              <div className="min-w-0 space-y-2">
+                <h2 id="titulo-comunidad" className="font-sans text-xl leading-snug font-medium">
+                  {t.comunidadTitulo}
+                </h2>
+                <p className="text-base leading-relaxed text-(--text-secondary)">
+                  {t.comunidadTexto}
+                </p>
+              </div>
+            </Card>
           </div>
         ) : (
           <>
