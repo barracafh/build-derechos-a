@@ -186,6 +186,16 @@
   .steps li::before { content: counter(step); display: grid; place-items: center; width: 22px; height: 22px; margin-bottom: 8px; border-radius: 50%; font: 600 12px var(--mono); color: #fff; background: var(--s1); }
   .steps b { display: block; font-size: 14px; margin-bottom: 2px; }
   .steps span { display: block; font-size: 13px; line-height: 1.5; color: var(--text-2); }
+  /* S4 walkthrough: numbered steps with text, file and status. */
+  .walkthrough h4 { margin: 20px 0 0; font-size: 15px; }
+  .walkthrough .lead { margin-top: 10px; }
+  .walk { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 10px; counter-reset: walk; }
+  .walk li { counter-increment: walk; display: grid; grid-template-columns: 26px minmax(0, 1fr); column-gap: 10px; padding: 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); }
+  .walk li::before { content: counter(walk); grid-row: 1 / span 3; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; font: 600 12px var(--mono); color: var(--text); background: color-mix(in srgb, var(--s4) 35%, transparent); }
+  .walk b { font-size: 14px; }
+  .walk p { margin: 4px 0 0; font-size: 14px; line-height: 1.6; color: var(--text-2); max-width: 80ch; }
+  .walk .meta { margin-top: 6px; font: 12px var(--mono); color: var(--muted); }
+  .walk code, .walkthrough code { font: 12.5px var(--mono); overflow-wrap: anywhere; }
   .lead { margin: 0; font-size: 15px; line-height: 1.65; color: var(--text-2); max-width: 75ch; }
   .lead b { color: var(--text); font-weight: 600; }
   .takeaway { margin: 12px 0 0; padding: 8px 12px; font-size: 14px; color: var(--text); background: var(--surface-2); border-left: 2px solid var(--s1); border-radius: 0 8px 8px 0; }
@@ -1261,6 +1271,42 @@
       <div class="card kpi kpi-wide" data-progress="t-spec-004"><span>Tasks done</span><b></b><div class="bar"><i></i></div><span>from Tasks table</span></div>
       <div class="card kpi kpi-wide" data-progress="t-spec-004-fr"><span>Requirements met</span><b></b><div class="bar"><i></i></div><span>from Requirements table</span></div>
     </div>
+    <figure class="card walkthrough" id="s4-how">
+      <figcaption><h3>How S4 works, step by step</h3><p>A plain-language walk through the daily job and what happens when a citizen asks. Each step names the file that does it and its status.</p></figcaption>
+      <p class="lead">Many public aids never appear in the <a class="term" href="#term-bdns">BDNS</a>: Social Security and SEPE <a class="term" href="#term-prestacion">benefits</a>, non-contributory pensions, social bonuses, tax deductions and municipal social aid. They only exist as pages on official websites. <b>S4 is a robot that visits those pages once a day, copies out what each aid asks for, and keeps the result in one file of ours.</b> The chat then finds them like the aids of the <a class="term" href="#term-catalogue">catalogue</a>, without visiting any website while the citizen waits.</p>
+
+      <h4>Every day: the indexing job</h4>
+      <ol class="walk">
+        <li><b>The job wakes up</b><p>Once a day, GitHub (the service that hosts our code) starts the job on its own computers. Nobody has to be online. It can also be started by hand, for example to try it with only 3 pages and without saving anything.</p><span class="meta">.github/workflows/indexar.yml · T007 · to do</span></li>
+        <li><b>It opens the seed pages</b><p>A <a class="term" href="#term-seed">seed</a> is an official page that lists aids: the Social Security benefits page, the SEPE unemployment page, the IMSERSO non-contributory pensions page, the Generalitat procedure search (three topics: social services, families, housing) and València's social programmes. Grant calls are left out on purpose: they are in the BDNS, which spec S2 reads live.</p><span class="meta">src/datos/semillas.ts · T001 · done</span></li>
+        <li><b>It collects the links to each aid</b><p>Each seed has a pattern that says what an aid link looks like, for example <code>sede.gva.es/es/detall-tramit?id_proc=G97829</code>. Menu links, news and contact pages do not match and are ignored. If a seed suddenly returns no aid links at all, the website has probably changed its design, and the job stops with an error instead of silently losing aids.</p><span class="meta">src/datos/semillas.ts · T001 · done</span></li>
+        <li><b>It writes every link the same way</b><p>The same page can be linked in several ways: in Valencian or Spanish, with or without a final slash, with tracking codes such as <code>utm_source</code>. The job turns every link into one <a class="term" href="#term-canonical">canonical URL</a>, so it never downloads or stores the same page twice.</p><span class="meta">scripts/indexar/url.ts · T002 · done</span></li>
+        <li><b>It downloads politely</b><p>At most one request per second to each website, and a 10-second limit per page. If the website says the page has not changed since yesterday, it does not even download it again.</p><span class="meta">scripts/indexar/index.ts · T006 · to do</span></li>
+        <li><b>It keeps only the useful text</b><p>A web page carries menus, footers, cookie banners and survey pop-ups. The job keeps the main content and drops the rest. It also drops lines that change on every visit, such as "last updated" or the name of the server that answered. For PDFs (the official rules of an aid), it reads the text inside.</p><span class="meta">scripts/indexar/texto.ts · T003 · done</span></li>
+        <li><b>It takes the fingerprint of the text</b><p>From that clean text it computes a <a class="term" href="#term-hash">hash</a>: a short code that is always the same for the same text and changes if one word changes. Same fingerprint as yesterday? The page has not changed, and the job moves on without spending anything. We tested this by downloading five pages twice: the raw pages differ, the fingerprints do not.</p><span class="meta">scripts/indexar/texto.ts · T003 · done</span></li>
+        <li><b>It saves the text it read</b><p>Each new text is saved as a file named after its fingerprint. That way we can always check what the page said on the day we read it, and a future smarter search can be built from these files without visiting the websites again.</p><span class="meta">scripts/indexar/texto.ts · T003 · done</span></li>
+        <li><b>It asks the AI once per changed page</b><p>Only for new or changed texts, the <a class="term" href="#term-llm">AI</a> fills the same fields as the catalogue: title, who manages it, requirements, steps, documents, deadline and the phrases a citizen would use to ask for it. In the same call it says whether the page is really an aid, what kind (benefit, discount, tax deduction, grant call…) and which other aids it mentions. At most 30 calls a day, to protect the AI quota that every team shares. Long rules are cut to the parts on beneficiaries, requirements, deadline and documents.</p><span class="meta">scripts/indexar/extraer.ts · T005 · to do</span></li>
+        <li><b>It checks every quote</b><p>The AI may only copy sentences, not write them. For each requirement, step or deadline, the job looks for that exact sentence in the saved text. If it is not there, the field stays empty. The link to apply must also be one that really appears on the page. This is how the tool never invents a requirement, an amount or a date.</p><span class="meta">scripts/indexar/extraer.ts · T005 · to do</span></li>
+        <li><b>It drops what is not ours</b><p>Pages that are not an aid (a contact page, a form) are not stored. Grant calls, and any page that shows a BDNS number, are not stored either: S2 already covers them, and the two sources must never overlap.</p><span class="meta">scripts/indexar/extraer.ts · T005 · to do</span></li>
+        <li><b>It joins duplicates</b><p>The same aid can appear on two websites. The job merges two entries when they share the same page or a code that names one procedure: the SIA code or the Generalitat procedure number. Laws cited in the page (BOE) do not count, because many aids cite the same law. Two entries with a very similar title but no shared code are not merged: they are flagged as "possible duplicate" for a person to check, because a wrong merge would hide an aid.</p><span class="meta">scripts/indexar/dedup.ts · T004 · done</span></li>
+        <li><b>It follows the references</b><p>Aids mention each other: the child supplement is linked to the IMV, the regional minimum income asks you to apply for the IMV first. When a page mentions an official page we do not have yet, the job visits it in a second round, at most two jumps away from a seed, and records how the two aids relate (requirement, supplement, incompatible, related). This is how aids that no list shows, such as tax deductions, get in.</p><span class="meta">scripts/indexar/index.ts · T006 · to do</span></li>
+        <li><b>It cleans up and saves</b><p>Aids whose page has disappeared are removed. Everything is written to <code>src/datos/central.json</code>, sorted so that a day with no changes produces no change at all. If something changed, the job checks that the site still builds and saves it to the repository, and the site is republished on its own.</p><span class="meta">scripts/indexar/index.ts · T006 · to do</span></li>
+      </ol>
+
+      <h4>When a citizen asks</h4>
+      <ol class="walk">
+        <li><b>The engine reads our file</b><p>When the site starts, the engine (spec S2) loads <code>central.json</code> into memory. Reading it takes less than a millisecond; no website and no extra AI call is involved.</p><span class="meta">src/lib/motor/central.ts · T008 · to do</span></li>
+        <li><b>It picks the aids that fit the need</b><p>If what the citizen needs matches the phrases or the title of an aid, that aid is added to the answer, after the catalogue aids. It shows its official link and is marked as not verified by a person.</p><span class="meta">src/lib/motor/central.ts · T008 · to do</span></li>
+        <li><b>Nothing else changes</b><p>The chat screen (S1) and the AI conversation (S3) work exactly as before. S4 only adds more aids to choose from.</p><span class="meta">no file · by design</span></li>
+      </ol>
+
+      <h4>One page through the job</h4>
+      <p class="lead">The IMSERSO page on the non-contributory retirement pension is listed on the IMSERSO seed (step 2). Its link already has one form only (step 4). The job downloads it and its summary PDF, keeps the text and drops the menus (step 6), and computes its fingerprint (step 7). It is new, so the AI reads it once (step 9) and copies, for example, "Ser mayor de 65 años en la fecha de la solicitud"; the job finds that exact sentence in the PDF text, so it is kept (step 10). The page links to the disability pension, which gets visited and linked as a related aid (step 13). The next day the fingerprint is the same, so the page costs nothing.</p>
+
+      <h4>Cost and checks</h4>
+      <p class="lead"><b>Cost:</b> the AI is used only in step 9, once per new or changed page: an estimated 100–300 aids for the first fill and under 10 calls a day after that. Everything else is ordinary code. <b>Checks:</b> each step has tests that run on saved copies of real pages, with no internet, so they always give the same result. A full job test uses a fake website and a fake AI that counts its calls: the second run must make zero calls and change nothing. Finally, a person checks 10 extracted aids against their official pages (T009).</p>
+      <p class="takeaway">The AI copies, the code checks; anything that cannot be found word for word on an official page stays empty.</p>
+    </figure>
     <figure class="card" data-status-table="t-spec-004">
       <figcaption><h3>Tasks</h3><p>Task order from the spec; green is done, dashed is to do. T002–T004 run in parallel with T001.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a task for its card</li><li>Drag to pan</li><li>⌘/Ctrl + scroll to zoom</li><li>Double-click to reset</li></ul></span></figcaption>
       <div class="diagram"></div>
@@ -1278,8 +1324,8 @@
           <tbody>
             <tr><td>T001</td><td>Confirm the seeds, find the PAG and gva.es search endpoints and the current URLs of the 404 pages; write the seeds; record pages, including a pair that reference each other</td><td>src/datos/semillas.ts</td><td>FR-001</td><td>done</td></tr>
             <tr><td>T002</td><td>Write canonical URL and code patterns with tests</td><td>scripts/indexar/url.ts</td><td>FR-003</td><td>done</td></tr>
-            <tr><td>T003</td><td>Write clean text, hash and section cut with tests; a page fetched twice hashes the same</td><td>scripts/indexar/texto.ts</td><td>FR-004, FR-010</td><td>todo</td></tr>
-            <tr><td>T004</td><td>Write merge, catalogue skip and near-duplicate flag with tests</td><td>scripts/indexar/dedup.ts</td><td>FR-008, FR-009</td><td>todo</td></tr>
+            <tr><td>T003</td><td>Write clean text, hash and section cut with tests; a page fetched twice hashes the same</td><td>scripts/indexar/texto.ts</td><td>FR-004, FR-010</td><td>done</td></tr>
+            <tr><td>T004</td><td>Write merge, catalogue skip and near-duplicate flag with tests</td><td>scripts/indexar/dedup.ts</td><td>FR-008, FR-009</td><td>done</td></tr>
             <tr><td>T005</td><td>Write the prompt (fields, esAyuda, naturaleza, referencias), quote and link checks with tests on a fake LLM; compare 2 catalogue aids</td><td>scripts/indexar/extraer.ts</td><td>FR-006, FR-007, FR-015, FR-019</td><td>todo</td></tr>
             <tr><td>T006</td><td>Write the job with reference queue, depth limit and re-link pass; job e2e test; run --backfill once and commit</td><td>scripts/indexar/index.ts</td><td>FR-002, FR-005, FR-011, FR-012, FR-016, FR-017, FR-018</td><td>todo</td></tr>
             <tr><td>T007</td><td>Write the daily workflow; run it once with --dry-run --limit 3</td><td>.github/workflows/indexar.yml</td><td>FR-013</td><td>todo</td></tr>
@@ -1300,7 +1346,7 @@
           <tr><td>FR-005</td><td>One LLM call per new or changed hash, input ~12k tokens, at most 30 per run; --backfill for the first fill.</td><td>todo</td></tr>
           <tr><td>FR-006</td><td>Each aid has the catalogue item keys plus codigos, documentos, textos and consultado; verificado false.</td><td>todo</td></tr>
           <tr><td>FR-007</td><td>Organism, requisites, steps, documents, deadline and note are literal quotes or empty; enlace_tramite is a link on the page or null.</td><td>todo</td></tr>
-          <tr><td>FR-008</td><td>Merges by canonical URL or official code; never writes a catalogue aid.</td><td>todo</td></tr>
+          <tr><td>FR-008</td><td>Merges by canonical URL, SIA code or own id_proc (not BOE or BDNS); never writes a catalogue aid.</td><td>done</td></tr>
           <tr><td>FR-009</td><td>Similar title without shared code is inserted as posibleDuplicado, never merged.</td><td>todo</td></tr>
           <tr><td>FR-010</td><td>Read texts saved by hash in src/datos/textos/, not imported by the app; PDFs only linked.</td><td>todo</td></tr>
           <tr><td>FR-011</td><td>Rejects aids without title or link; failed seed keeps its aids; seed with 0 links fails the run; 404/410 removes the aid.</td><td>todo</td></tr>
@@ -1408,6 +1454,9 @@
       <div id="term-fixture"><dt>Fixture</dt><dd>A saved example answer, for example the Respuesta for one test profile. The frontend draws it before the real engine exists.</dd></div>
       <div id="term-mock"><dt>Mock route</dt><dd>A stand-in /api/chat that returns fixtures instead of calling the AI and the BDNS. S3 replaces it with the real route.</dd></div>
       <div id="term-vibe"><dt>Vibe coding</dt><dd>Building by describing what you want to an AI coding tool and checking the result on screen, without writing the code by hand.</dd></div>
+      <div id="term-seed"><dt>Seed page</dt><dd>An official page that lists aids, where the S4 job starts each day, for example the Social Security benefits page. Listed in src/datos/semillas.ts.</dd></div>
+      <div id="term-canonical"><dt>Canonical URL</dt><dd>The one way we write a page's address, so that two spellings of the same page (Valencian or Spanish, with tracking codes, with a final slash) count as one.</dd></div>
+      <div id="term-hash"><dt>Hash (fingerprint)</dt><dd>A short code computed from a text: always the same for the same text, different if one word changes. S4 uses it to know whether a page changed since the last visit.</dd></div>
       <div id="term-vercel"><dt>Vercel / push to main</dt><dd>The platform that publishes the site each time code is pushed to the main branch. The organisers own the project.</dd></div>
     </dl></div>
     </div>

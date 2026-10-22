@@ -15,7 +15,7 @@ A daily job finds the aids that no API gives us (Social Security and SEPE benefi
 - [ ] FR-005 — The job MUST make one LLM call per new or changed hash, with input capped at ~12k tokens (page text plus the PDF sections on beneficiaries, requisites, deadline and documents), and at most 30 calls per run; `--backfill` lifts the cap for a manual first fill.
 - [ ] FR-006 — Each aid MUST be written with the keys of a `datos/catalogo-tramites-ayudas.json` item, filled as in the table below, plus `codigos`, `documentos: [{titulo, url}]`, `textos` (hashes read) and `consultado`; `tipo: "ayuda"`, `verificado: false`.
 - [ ] FR-007 — `organismo`, `requisitos_clave`, `pasos`, `documentacion`, `plazo` and `nota` MUST each be a literal quote found in the text, or stay empty; `enlace_tramite` MUST be a link present on the page, or `null`.
-- [ ] FR-008 — The job MUST merge into an existing aid when its canonical URL or any `codigo` matches, and MUST NOT write an aid whose canonical URL is an `enlace_info`, `enlace_tramite` or `fuente` URL of the catalogue.
+- [X] FR-008 — The job MUST merge into an existing aid when its canonical URL matches, or its SIA code or the `id_proc` of its own URL matches; BOE ids and BDNS numbers MUST NOT merge (pages cite shared laws, and menus link other procedures). The job MUST NOT write an aid whose canonical URL is an `enlace_info`, `enlace_tramite` or `fuente` URL of the catalogue.
 - [ ] FR-009 — An aid with no matching URL or code whose normalised `titulo` + `organismo` is similar (trigram Jaccard ≥ 0.8) to an existing one MUST be inserted with `posibleDuplicado: <id>` and logged; the job MUST NOT merge it.
 - [ ] FR-010 — Each read text MUST be saved as `src/datos/textos/<hash>.txt`; the app MUST NOT import that folder; PDFs MUST NOT be stored, only linked in `documentos`.
 - [ ] FR-011 — The job MUST reject an aid without `titulo` or `enlace_info` and log its URL; a seed that errors MUST keep its previous aids; a seed that returns 0 aid links MUST fail the run; an aid whose every URL returns 404 or 410 MUST be removed.
@@ -94,8 +94,8 @@ Probed 2026-10-22 with a plain GET (no JavaScript). T001 confirms each and adds 
 
 - [X] T001 Confirm the seeds of the table, find the search endpoints of the PAG and gva.es and the current URLs of the 404 ones; write `src/datos/semillas.ts`; record one seed and two aid pages each, including one pair of pages that reference each other → FR-001
 - [X] T002 [P] Write canonical URL and code patterns with tests in `scripts/indexar/url.ts` → FR-003
-- [ ] T003 [P] Write clean text, hash and section cut with tests in `scripts/indexar/texto.ts`, including a page fetched twice that must hash the same → FR-004, FR-010
-- [ ] T004 [P] Write merge, catalogue skip and near-duplicate flag with tests in `scripts/indexar/dedup.ts` → FR-008, FR-009
+- [X] T003 [P] Write clean text, hash and section cut with tests in `scripts/indexar/texto.ts`, including a page fetched twice that must hash the same → FR-004, FR-010
+- [X] T004 [P] Write merge, catalogue skip and near-duplicate flag with tests in `scripts/indexar/dedup.ts` → FR-008, FR-009
 - [ ] T005 Write the extraction prompt (fields, `esAyuda`, `naturaleza`, `referencias`), quote check and link check with tests on a fake LLM in `scripts/indexar/extraer.ts`; compare its output for 2 catalogue aids with the catalogue entries → FR-006, FR-007, FR-015, FR-019
 - [ ] T006 Write the job in `scripts/indexar/index.ts` with the reference queue, depth limit and re-link pass; add the script to `package.json`; write the job e2e test (below); run `--backfill` once and commit `src/datos/` → FR-002, FR-005, FR-011, FR-012, FR-016, FR-017, FR-018
 - [ ] T007 Write `.github/workflows/indexar.yml`; run it once with `--dry-run --limit 3` → FR-013
