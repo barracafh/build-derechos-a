@@ -54,12 +54,21 @@ function normalizar(texto: string): string {
     .join("\n");
 }
 
+export type Enlace = { texto: string; url: string };
+
 // Main text of a page: no menus, footers, scripts or last-update lines; headings as "## ".
 export function textoDeHtml(html: string): string {
+  return leerHtml(html).texto;
+}
+
+// Main text and the links inside it, with absolute URLs resolved against `base`.
+export function leerHtml(html: string, base?: string): { texto: string; enlaces: Enlace[] } {
   const region = REGIONES.find(([existe]) => existe.test(html))?.[1] ?? "body";
   let dentro = 0;
   let quitado = 0;
   let salida = "";
+  let enlace: { href: string; texto: string } | null = null;
+  const enlaces: Enlace[] = [];
   const escribir = (s: string) => {
     if (dentro > 0 && quitado === 0) salida += s;
   };
@@ -74,6 +83,7 @@ export function textoDeHtml(html: string): string {
         const esQuitado = QUITAR.has(tag) || /(^|\s)modal(\s|$)/.test(e.getAttribute("class") ?? "");
         const esTituloHtml = TITULOS.has(tag);
         const esBloque = BLOQUES.has(tag);
+        const href = tag === "a" && dentro > 0 && quitado === 0 ? e.getAttribute("href") : null;
 
         if (tag === "br") escribir("\n");
         if (tag === "td" || tag === "th") escribir(" ");
@@ -82,8 +92,16 @@ export function textoDeHtml(html: string): string {
         if (esBloque) escribir("\n");
         if (esTituloHtml) escribir("\n## ");
 
-        if (e.selfClosing || VACIOS.has(tag) || !(esRegion || esQuitado || esBloque || esTituloHtml)) return;
+        if (href) enlace = { href, texto: "" };
+
+        if (e.selfClosing || VACIOS.has(tag) || !(esRegion || esQuitado || esBloque || esTituloHtml || href)) return;
         e.onEndTag(() => {
+          if (href && enlace) {
+            const url = absoluta(decodificar(enlace.href), base);
+            const texto = normalizar(decodificar(enlace.texto)).replace(/\n/g, " ");
+            if (url && !enlaces.some((x) => x.url === url)) enlaces.push({ texto, url });
+            enlace = null;
+          }
           if (esBloque || esTituloHtml) escribir("\n");
           if (esQuitado) quitado--;
           if (esRegion) dentro--;
@@ -93,11 +111,22 @@ export function textoDeHtml(html: string): string {
     .onDocument({
       text(t) {
         escribir(t.text);
+        if (enlace && dentro > 0 && quitado === 0) enlace.texto += t.text;
       },
     })
     .transform(html);
 
-  return normalizar(decodificar(salida));
+  return { texto: normalizar(decodificar(salida)), enlaces };
+}
+
+// Only http(s) links: anchors, mail and javascript links are not pages.
+function absoluta(href: string, base?: string): string | null {
+  try {
+    const url = new URL(href, base);
+    return url.protocol === "http:" || url.protocol === "https:" ? url.href : null;
+  } catch {
+    return null;
+  }
 }
 
 export async function textoDePdf(datos: Uint8Array): Promise<string> {
