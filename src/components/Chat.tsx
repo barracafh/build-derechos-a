@@ -491,9 +491,6 @@ export function Chat() {
             </div>
 
             <div className="grid grid-cols-[minmax(0,1fr)] gap-4">
-              <h2 className="text-center font-sans text-xl leading-[1.5] font-medium">
-                Palabras importantes que tienes que conocer
-              </h2>
               <Composer
                 texto={texto}
                 onChange={setTexto}
