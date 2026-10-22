@@ -1,0 +1,67 @@
+## Subpágina: Normativa y requisitos
+## Normativa y requisitos
+Real Decreto Legislativo 8/2015, de 30 de octubre, por el que se aprueba el texto refundido de la Ley General de la Seguridad Social. (BOE de 31 de octubre).
+Real Decreto 357/1991, de 15 de marzo, por el que se desarrolla en materia de pensiones no contributivas la Ley 26/1990, de 20 de diciembre, por la que se establecen en la Seguridad Social prestaciones no contributivas (integrada en el Real Decreto Legislativo anterior), (BOE de 21 de marzo).
+Orden PRE/3113/2009, de 13 de noviembre, por la que se dictan normas de aplicación y desarrollo del Real Decreto 357/1991, de 15 de marzo, por el que se desarrolla, en materia de pensiones no contributivas, la Ley 26/1990, de 20 de diciembre, por la que se establecen en la Seguridad Social prestaciones no contributivas, sobre rentas o ingresos computables y su imputación. (BOE de 20 de noviembre).
+El Estado a través de la Seguridad Social garantiza a las personas comprendidas en su campo de aplicación, por realizar una actividad profesional o por cumplir los requisitos exigidos en la modalidad no contributiva, la protección adecuada frente a las contingencias y en las situaciones que se contemplan en la Ley General de la Seguridad Social.
+La pensión no contributiva de incapacidad -su denominación fue pensión no contributiva de invalidez hasta la entrada en vigor de la Ley 2/2025, de 29 de abril, por la que se modifican el texto refundido de la Ley del Estatuto de los Trabajadores, aprobado por el Real Decreto Legislativo 2/2015, de 23 de octubre, en materia de extinción del contrato de trabajo por incapacidad permanente de las personas trabajadoras, y el texto refundido de la Ley General de la Seguridad Social, aprobado por el Real Decreto Legislativo 8/2015, de 30 de octubre, en materia de incapacidad permanente-, asegura a toda la ciudadanía en situación de incapacidad y en estado de necesidad una prestación económica, asistencia médico-farmacéutica gratuita y servicios sociales complementarios.
+Pueden ser personas beneficiarias de la pensión no contributiva de incapacidad los ciudadanos españoles y nacionales de otros países, con residencia legal en España que cumplen los siguientes REQUISITOS:
+Edad: Tener dieciocho o más años y menos de sesenta y cinco en la fecha de la solicitud.
+Residencia: Residir en territorio español y haberlo hecho durante un período de cinco años, de los cuales dos han de ser consecutivos e inmediatamente anteriores a la fecha de la solicitud.
+Discapacidad: Estar afectado de un grado de discapacidad igual o superior al 65%.
+Carecer de ingresos suficientes:
+Existe carencia cuando las rentas o ingresos personales de que se disponga, en cómputo anual, para 2026, sean inferiores a 8.803,20 € anuales.
+No obstante, si son inferiores a 8.803,20 € anuales y se convive con familiares, únicamente se cumple el requisito cuando la suma de las rentas o ingresos anuales de todos los miembros de su unidad económica de convivencia, sean inferiores a las cuantías que se recogen más adelante.
+Existirá unidad económica de convivencia en todos los casos de convivencia del beneficiario con otras personas unidas con aquel por matrimonio o por lazos de parentesco de consanguinidad o adopción hasta el segundo grado. El parentesco por consanguinidad hasta el 2º grado alcanza a: padres, abuelos, hijos, nietos y hermanos del solicitante. Las personas que convivan con el solicitante en el mismo domicilio y no estén unidas con el solicitante por matrimonio o por lazos de parentesco de consanguinidad o adopción hasta el segundo grado no se integran en la unidad económica de convivencia y las rentas o ingresos imputables a esas personas no se computan a efectos de acreditar el requisito de carecer de ingresos suficientes.
+Convivencia sólo con su cónyuge y/o parientes consanguíneos de segundo grado:
+Nº convivientes
+€/Año
+2
+14.965,44
+3
+21.127,68
+4
+27.289,92
+...
+...
+Si el pensionista de incapacidad no contributiva acredita la necesidad de asistencia de una tercera persona, los importes del límite de acumulación de recursos en esta situación de convivencia serán los siguientes:
+Nº convivientes
+€/Año
+2
+22.448,16
+3
+31.691,52
+4
+40.934,88
+...
+...
+Si entre las personas con las que convive se encuentra algún pariente consanguíneo de primer grado (padres o hijos):
+Nº convivientes
+€/Año
+2
+37.413,60
+3
+52.819,20
+4
+68.224,80
+...
+...
+Si el pensionista de incapacidad no contributiva acredita la necesidad de asistencia de una tercera persona, los importes del límite de acumulación de recursos en esta situación de convivencia serán los siguientes:
+Nº convivientes
+€/Año
+2
+56.120,40
+3
+79.228,80
+4
+102.337,20
+...
+...
+La pensión no contributiva de incapacidad es incompatible con la pensión no contributiva de jubilación, con las pensiones asistenciales reguladas en la Ley 45/1960,de 21 de julio, por la que se crean determinados Fondos Nacionales para la aplicación social del Impuesto y del Ahorro, y suprimidas por la Ley 28/1992, de 24 de noviembre, de Medidas Presupuestarias Urgentes y con los subsidios de garantía de ingresos mínimos y por ayuda de tercera persona contemplados en el Real Decreto Legislativo 1/2013, de 29 de noviembre, por el que se aprueba el Texto Refundido de la Ley General de derechos de las personas con discapacidad y de su inclusión social, así como con la condición de causante de la asignación familiar por hijo a cargo mayor de 18 años con discapacidad igual o superior al 65%.
+La cuantía individual de la pensión se establece en función del número de beneficiarios de pensión no contributiva integrados en la misma unidad económica de convivencia, de los ingresos personales y/o los de las personas que integran la unidad económica, no pudiendo ser inferior dicha cuantía a 2.200,80 € anuales, que se corresponde con el 25 por 100 del importe íntegro para el año 2026.
+La cuantía individual establecida se incrementa con el complemento por necesidad de otra persona siempre que se acredite un grado de discapacidad igual o superior al 75 por 100, así como la necesidad del concurso de otra persona para realizar los actos esenciales de la vida. El importe de este complemento para el año 2026 es de 4.401,60 € anuales.
+El derecho a pensión no contributiva de incapacidad no impide el ejercicio de aquellas actividades laborales, sean o no lucrativas, compatibles con la discapacidad del pensionista y que no representen un cambio en su capacidad real para el trabajo.
+Las personas que con anterioridad al inicio de una actividad laboral vinieran percibiendo una pensión no contributiva de incapacidad, podrán compatibilizar el percibo de la pensión con los ingresos derivados de la actividad, durante los cuatro años siguientes al inicio de la actividad, si la suma de la cuantía anual de la pensión que tuviera reconocida el pensionista y de los ingresos anuales que perciba o prevea vaya a percibir de la actividad laboral no superan 16.003,20 €. En caso de exceder de dicho límite, la cuantía anual de la pensión se reducirá en la cuantía necesaria para no sobrepasarlo. El límite indicado de 16.003,20 € es el resultado de sumar los importes anuales vigentes en 2026 para el indicador público de renta de efectos múltiples (Iprem), que se cifra en 7.200,00 € y para la pensión de incapacidad no contributiva, que es de 8.803,20 €.
+Si transcurrido el plazo de cuatro años, el pensionista continúa realizando una actividad laboral se suspenderá el derecho a la pensión y mantendrá dicha situación en tanto no se produzca el cese en la actividad.
+Una vez que el pensionista cese en la actividad laboral, se recuperará el derecho a la pensión, sin que se tengan en cuenta los ingresos derivados de esa actividad.
+viernes, 26 diciembre 2025 10:02

@@ -175,7 +175,7 @@ export function recortar(texto: string, max = MAX_CARACTERES): string {
 // Contact data of offices (emails, phone numbers) is not stored: the event rules forbid
 // anything that looks like personal data in the repo, and the official link has it.
 const EMAIL = /[\w.+-]+@[\w-]+(?:\.[\w-]+)+/g;
-const TELEFONO = /(?<![\w/.-])(?:\+34[\s.]?)?[6789]\d{2}(?:[\s.]?\d{3}){2}(?![\w/-]|\.\d)|(?<![\w/.-])(?:\+34[\s.]?)?[6789]\d{1,2}(?:[\s.]\d{2}){3}(?![\w/-]|\.\d)/g;
+const TELEFONO = /(?<![\w.])(?:\+34[\s.]?)?[6789]\d{2}(?:[\s.]?\d{3}){2}(?![\w]|[.-]\d)|(?<![\w.])(?:\+34[\s.]?)?[6789]\d{1,2}(?:[\s.]\d{2}){3}(?![\w]|[.-]\d)|(?<![\w.])(?:\+34[\s.]?)?[6789]\d[\s.]\d{3}(?:[\s.]\d{2}){2}(?![\w]|[.-]\d)/g;
 
 export function enmascarar(texto: string): string {
   return texto.replace(EMAIL, "[email]").replace(TELEFONO, "[teléfono]");

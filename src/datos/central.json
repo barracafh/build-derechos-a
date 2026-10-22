@@ -4,6 +4,64 @@
   "aviso": "Extraído de páginas oficiales por un proceso automático. No verificado por una persona: revisa siempre la página oficial.",
   "items": [
     {
+      "id": "amianto",
+      "tipo": "ayuda",
+      "titulo": "Amianto",
+      "administracion": "Estado",
+      "organismo": "Instituto Nacional de la Seguridad Social",
+      "frases_usuario": [
+        "trabajé con amianto y tengo una incapacidad",
+        "tengo asbestosis por el trabajo",
+        "me han dado la incapacidad por mesotelioma",
+        "indemnización para víctimas del amianto",
+        "mi cáncer de pulmón viene del amianto"
+      ],
+      "requisitos_clave": [
+        "Contar con reconocimiento de incapacidad permanente derivada de una contingencia profesional ocasionada por la exposición al amianto.",
+        "Padecer alguna de las enfermedades incluidas en el baremo previsto en el Anexo I del Real Decreto 483/2025:",
+        "Mesotelioma",
+        "Cáncer de pulmón",
+        "Cáncer de laringe",
+        "Asbestosis con repercusión funcional moderada o severa",
+        "No haber recibido indemnización alguna por los daños derivados de la exposición al amianto."
+      ],
+      "pasos": [
+        "Para solicitar la compensación, se puede acceder al servicio en el Portal de prestaciones de la Seguridad Social (a partir del 18 de septiembre), o bien descargar e imprimir el formulario correspondiente y presentarlo, una vez cumplimentado, en el Centro de Atención e Información de la Seguridad Social (CAISS), puedes solicitar cita aquí, o enviarlo por correo ordinario a la Dirección Provincial más cercana a su domicilio."
+      ],
+      "documentacion": [
+        "Certificado de patologías derivadas de exposición al amianto, emitido por las unidades designadas en la consejería de sanidad o el órgano correspondiente de la comunidad autónoma, o el Instituto Nacional de Gestión Sanitaria en Ceuta y Melilla.",
+        "Declaración responsable informando sobre si se ha percibido o no algún tipo de indemnización o compensación por exposición al amianto o de haber ejercido o no acciones judiciales o extrajudiciales solicitándolo. Debe hacerlo en el modelo proporcionado para ello.",
+        "En caso de haber percibido indemnización o haber emprendido acciones judiciales o extrajudiciales, deberá aportar documentación acreditativa del importe percibido, copia de la sentencia firme en la que conste dicho importe, y en su caso, el auto judicial por el que se declara la insolvencia total o parcial, de todos los responsables, así como toda la documentación relativa al ejercicio de las acciones emprendidas."
+      ],
+      "plazo": "Si la pensión de incapacidad permanente fue reconocida antes del 18 de septiembre de 2025, el plazo para solicitar la compensación es de 5 años desde esa fecha, por lo que finalizará el 18 de septiembre de 2030.",
+      "enlace_info": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/3ad031ff-e95d-4b89-a3cb-4e2c6f432e8d",
+      "enlace_tramite": "https://www.seg-social.es/wps/portal/wss/internet/Pensionistas/Servicios/34887/40968/86b122a3-b511-43bd-8e5a-7e2c62da07e5",
+      "fuente": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/3ad031ff-e95d-4b89-a3cb-4e2c6f432e8d ; https://www.seg-social.es/wps/portal/wss/internet/Pensionistas/Servicios/34887/40968/86b122a3-b511-43bd-8e5a-7e2c62da07e5",
+      "verificado": false,
+      "nota": "Si fue reconocida a partir del 19 de septiembre de 2025, el plazo es de 5 años desde el reconocimiento de la pensión.",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "fechas",
+      "fechaInicio": "2025-09-18",
+      "fechaFin": "2030-09-18",
+      "cuantia": "Se trata de una compensación de un único pago cuya cuantía está determinada por el baremo recogido en el Anexo I del Real Decreto 483/2025, de 17 de junio, por el que se establecen los requisitos y se regula el procedimiento para reconocer el derecho a la compensación económica para las víctimas del amianto.",
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "c13b853279705a2545c708dad2319238baf6910c0a7dfe20cc2320978ca861a9",
+        "69bd151167bb3408ba875a7f57c8a94788bf59d30285f117141c3cf7b3ea3a7c"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
       "id": "asistencia-sanitaria",
       "tipo": "ayuda",
       "titulo": "Asistencia sanitaria",
@@ -75,6 +133,63 @@
       "consultado": "2026-10-22"
     },
     {
+      "id": "ayudas-a-las-personas-afectadas-por-la-talidomida-1950-1985",
+      "tipo": "ayuda",
+      "titulo": "Ayudas a las personas afectadas por la talidomida (1950-1985)",
+      "administracion": "Estado",
+      "organismo": "Imserso",
+      "frases_usuario": [
+        "tengo malformaciones por la talidomida",
+        "ayuda para afectados por talidomida",
+        "mi madre tomó talidomida en el embarazo",
+        "indemnización por la talidomida"
+      ],
+      "requisitos_clave": [
+        "Haber sufrido malformaciones corporales durante el proceso de gestación, compatibles con las descritas para la talidomida, cuyo origen no pueda ser explicado por otras embriopatías o alteraciones cromosómicas, durante el período 1950-1985.",
+        "Que la gestación se haya producido en España.",
+        "Que la persona interesada figure inscrita en el Registro Estatal de Enfermedades Raras, gestionado por el Instituto de Salud Carlos III, en virtud del informe de validación positivo emitido por el Comité Científico-Técnico de la Talidomida, acreditativo de lo dispuesto en la letra a)."
+      ],
+      "pasos": [
+        "Asimismo, podrán presentarse por medios electrónicos a través de la sede electrónica del Imserso; en este caso, las solicitudes estarán disponibles para su cumplimentación en la citada sede electrónica y en esta página web.",
+        "Las solicitudes, dirigidas a la persona titular de la Dirección General del Imserso, se podrán presentar en la oficina de asistencia en materia de registro de este Instituto, en la Avda. de la Ilustración s/n, c/v a la c/ Ginzo de Limia, 58, 28029 Madrid."
+      ],
+      "documentacion": [
+        "Para la calificación que permita identificar a la persona interesada como persona que ha sufrido malformaciones corporales durante el proceso de gestación, compatibles con las descritas para la talidomida, será preceptivo el certificado emitido por el Instituto de Salud Carlos III, que acredite que la persona interesada está inscrita en el Registro Estatal de Enfermedades Raras en virtud del informe de validación positivo emitido por el Comité Científico-Técnico de la Talidomida."
+      ],
+      "plazo": "en concreto desde el jueves 6 de julio hasta el viernes 6 de octubre de 2023, ambos incluidos",
+      "enlace_info": "https://imserso.es/pnc-prestaciones-subvenciones/ayudas-personas-afectadas-por-talidomida-1950-1985",
+      "enlace_tramite": "https://sede.imserso.gob.es/web/sede-electronica/procedimiento-servicios/detalle/-/asset_publisher/Clv43EZRrpqn/content/ayudas-a-las-personas-afectadas-por-la-talidomida-1950-1985/20123#detalle",
+      "fuente": "https://imserso.es/pnc-prestaciones-subvenciones/ayudas-personas-afectadas-por-talidomida-1950-1985",
+      "verificado": false,
+      "nota": "Transcurrido el plazo de presentación previsto en el primer párrafo sin que las personas interesadas, sus representantes legales o las personas que prestan medidas de apoyo a la persona interesada con discapacidad para el ejercicio de su capacidad jurídica hubieran presentado la correspondiente solicitud, se producirá la caducidad del derecho y su consiguiente extinción.",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "fechas",
+      "fechaInicio": null,
+      "fechaFin": "2023-10-06",
+      "cuantia": "la ayuda a percibir consistirá en un pago único que será el resultado de multiplicar doce mil euros por cada uno de los puntos porcentuales de discapacidad reconocida a la persona afectada, por los organismos competentes, a la fecha de presentación de la solicitud de la ayuda.",
+      "ambito": null,
+      "exclusiones": [
+        "En todo caso, la percepción de esta ayuda deducirá de su cuantía cualquier otra ayuda o prestación de análoga naturaleza y finalidad a las reguladas en este real decreto que haya podido recibir la persona beneficiaria, procedentes de cualquier administración o de entes públicos o privados, nacionales o internacionales, y en concreto con las ayudas establecidas en el Real Decreto 1006/2010, de 5 de agosto, por el que se regula el procedimiento de concesión de ayudas a las personas afectadas por la talidomida en España durante el período 1960-1965."
+      ],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": [
+          "BOE-A-2018-9268",
+          "BOE-A-2023-15554",
+          "BOE-A-2015-10565"
+        ]
+      },
+      "documentos": [],
+      "textos": [
+        "d5d6329cad16702c1552db8950e990308e2dec8e1dff3e5129600307bfebb327"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
       "id": "bono-social-termico-2025-sia3178888",
       "tipo": "ayuda",
       "titulo": "Bono social térmico 2025",
@@ -130,6 +245,111 @@
         "84f12ccfae9c3f90ab6e5c29cea7fa7b26fda60ee8e2637643187753994e6526",
         "4d999475bf5141fbb763e13fecc3c637deb4d1770ad931892b8e823af45aa75e",
         "bcc9b9f576b1396f2fd81224a5a700bf019fd93512355d5fafdbac7b66ae23df"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "complemento-de-apoyo-al-empleo-cae",
+      "tipo": "ayuda",
+      "titulo": "Complemento de Apoyo al Empleo (CAE)",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "cobro el paro y me han ofrecido un trabajo",
+        "puedo trabajar y seguir cobrando el paro",
+        "compatibilizar el subsidio con un empleo",
+        "complemento de apoyo al empleo",
+        "me sale a cuenta aceptar un trabajo si cobro el subsidio"
+      ],
+      "requisitos_clave": [
+        "Es posible compatibilizar la prestación contributiva y los subsidios por desempleo con el trabajo por cuenta ajena a tiempo parcial y a tiempo completo en la modalidad de Complemento de Apoyo al Empleo (CAE) con las condiciones que determina la Ley General de la Seguridad Social."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://www.sepe.es/HomeSepe/prestaciones-desempleo/complemento-de-apoyo-empleo.html",
+      "enlace_tramite": null,
+      "fuente": "https://www.sepe.es/HomeSepe/prestaciones-desempleo/complemento-de-apoyo-empleo.html",
+      "verificado": false,
+      "nota": "Puedes consultar la percepción del CAE en tu Area Personal.",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "9e171e41a7c4cd6b2a5aa6dac3169ca4ddadde6177e03529402f9518430336df"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "complemento-para-la-reduccion-de-la-brecha-de-genero",
+      "tipo": "ayuda",
+      "titulo": "Complemento para la reducción de la brecha de género",
+      "administracion": "Estado",
+      "organismo": "Instituto Nacional de la Seguridad Social",
+      "frases_usuario": [
+        "tengo hijos y cobro la pensión de jubilación, me dan algo más",
+        "complemento de la pensión por haber tenido hijos",
+        "soy padre jubilado, puedo cobrar el complemento de brecha de género",
+        "me han quedado la viudedad y tengo dos hijos, hay algún extra",
+        "complemento por maternidad en la pensión"
+      ],
+      "requisitos_clave": [
+        "Las mujeres y los hombres que hayan tenido uno o más hijos o hijas y que sean personas beneficiarias de una pensión contributiva de jubilación (salvo la jubilación parcial), de incapacidad permanente o de viudedad causada a partir del 4 de febrero de 2021.",
+        "El derecho al complemento por cada hijo o hija se reconocerá y mantendrá al progenitor que lo solicite siempre que no medie solicitud y reconocimiento del complemento en favor del otro progenitor."
+      ],
+      "pasos": [
+        "Desde el portal prestaciones.seg-social.es, con o sin identificación electrónica.",
+        "En los centros de atención e información de la Seguridad Social, con cita previa.",
+        "Los trabajadores del mar en las oficinas del Instituto Social de la Marina."
+      ],
+      "documentacion": [
+        "La documentación que debe presentar para el trámite de la pensión está detallada en el modelo de solicitud."
+      ],
+      "plazo": null,
+      "enlace_info": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/4c43ce49-6636-4a12-bacf-5e6697eb81da",
+      "enlace_tramite": null,
+      "fuente": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/4c43ce49-6636-4a12-bacf-5e6697eb81da ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/4c43ce49-6636-4a12-bacf-5e6697eb81da/beneficiarios ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/4c43ce49-6636-4a12-bacf-5e6697eb81da/cuantia ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/4c43ce49-6636-4a12-bacf-5e6697eb81da/efectos+economicos",
+      "verificado": false,
+      "nota": "En consecuencia, dejan de ser exigibles a los hombres los requisitos adicionales recogidos en el apartado 1.a) y b) de dicho artículo.",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "En el año 2026, el importe es de 36,90 € mensuales por cada hijo o hija, con el límite de cuatro veces dicho importe.",
+      "ambito": null,
+      "exclusiones": [
+        "No se reconocerá el derecho al complemento al padre o a la madre que haya sido privado de la patria potestad por sentencia fundada en el incumplimiento de los deberes inherentes a la misma o dictada en causa criminal o matrimonial.",
+        "Tampoco se reconocerá el derecho al complemento al padre que haya sido condenado por violencia contra la mujer, ni al padre o a la madre que haya sido condenado o condenada por ejercer violencia contra los hijos o hijas.",
+        "El percibo del complemento es incompatible con la percepción de este complemento por el otro progenitor, por los mismos hijos o hijas.",
+        "Los complementos que pudieran ser reconocidos en cualquiera de los regímenes de Seguridad Social serán incompatibles entre sí, siendo abonado en el régimen en el que el causante de la pensión tenga más periodos de alta."
+      ],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "44f39cf85cd17f6be1bbbd8ac798ca16a88eb66524f0b3698fd0ad39a21179c1",
+        "90221230685e86301637458de54aa5752593a7d6d16bb12ef31c74da5c0d094d",
+        "5af1774af21b275703aed721995db3caa0c838dee5d878045c630c13e9b0c843",
+        "7e2832ac4bced3ca8a97668a58ebf632de087b4174277f332492b7b87a7e8e25"
       ],
       "relaciones": [],
       "consultado": "2026-10-22"
@@ -203,6 +423,403 @@
       "consultado": "2026-10-22"
     },
     {
+      "id": "cuidado-de-menores-afectados-por-cancer-u-otra-enfermedad-gr",
+      "tipo": "ayuda",
+      "titulo": "Cuidado de menores afectados por cáncer u otra enfermedad grave",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "mi hijo tiene cáncer y tengo que reducir la jornada",
+        "he reducido jornada para cuidar a mi hija hospitalizada",
+        "ayuda por cuidar a un hijo con enfermedad grave",
+        "cobro menos por cuidar a mi hijo enfermo",
+        "mi niño está ingresado y no puedo trabajar entero"
+      ],
+      "requisitos_clave": [
+        "Reduzcan su jornada de trabajo en, al menos, un 50% de su duración. El subsidio se reconocerá en proporción al porcentaje de reducción que experimente la jornada de trabajo que disfruten las personas trabajadoras.",
+        "Dentro de cada unidad familiar, ambos progenitores, guardadores o acogedores deben acreditar que se encuentran afiliadas y en situación de alta en algún régimen público de Seguridad Social o sólo una de ellas, si la otra, en razón del ejercicio de su actividad profesional, está incorporada obligatoriamente a la mutualidad de previsión social establecida por el correspondiente colegio profesional.",
+        "Si son menores de 21 años en la fecha en que inicien la reducción de jornada: no se exige período de cotización.",
+        "Si tienen cumplidos 21 años de edad y son menores de 26 en la fecha en que inicien la reducción de jornada: 90 días cotizados dentro de los 7 años inmediatamente anteriores a dicha fecha. Se considerará cumplido el mencionado requisito si, alternativamente, acredita 180 días cotizados a lo largo de su vida laboral, con anterioridad a la fecha indicada.",
+        "Si tienen cumplidos 26 años en la fecha en que inicie la reducción de jornada: 180 días dentro de los 7 años inmediatamente anteriores a dicha fecha. Se considerará cumplido el mencionado requisito si, alternativamente, acredita 360 días cotizados a lo largo de su vida laboral, con anterioridad a la fecha indicada.",
+        "Se encuentren al corriente en el pago de las cuotas, de las que sean responsables directos los trabajadores, aunque la prestación sea reconocida, como consecuencia del cómputo recíproco de cotizaciones, en un régimen de trabajadores por cuenta ajena.",
+        "Padezcan cáncer o una enfermedad grave que requiera ingreso hospitalario de larga duración."
+      ],
+      "pasos": [
+        "El procedimiento para el reconocimiento del subsidio se iniciará mediante solicitud, de la persona trabajadora, dirigida a la dirección provincial competente de la correspondiente entidad gestora de la provincia en que aquélla tenga su domicilio, o ante la mutua colaboradora con la Seguridad Social que le corresponda.",
+        "Junto con la solicitud deberá acreditarse o, en su caso, aportarse los documentos que se indican en la misma.",
+        "A la vista de los datos y de la documentación presentada y una vez comprobados todos los requisitos formales, hechos y condiciones exigidos para acceder al subsidio, la correspondiente entidad gestora o la mutua dictará resolución expresa y notificará en el plazo de 30 días, contados desde la recepción de la solicitud, el reconocimiento o denegación del derecho a la prestación económica."
+      ],
+      "documentacion": [
+        "Españoles: Documento nacional de identidad (DNI).",
+        "Extranjeros: Pasaporte o, en su caso, documento de identidad vigente en su país y NIE (Número de Identificación de Extranjero) exigido por la AEAT a efectos de pago.",
+        "Certificado de la empresa en el que consten la cuantía de la base de cotización de la persona trabajadora por contingencias profesionales o, en su caso, por contingencias comunes, correspondiente al mes previo a la fecha de inicio de la reducción de jornada y, en su caso, las cantidades de percepción no periódica abonadas durante el año anterior a dicha fecha.",
+        "Certificado de la empresa sobre la fecha de inicio de la reducción de jornada de la persona trabajadora prevista en el párrafo 3º del artículo 37.6 de la Ley del Estatuto de los Trabajadores, con indicación del porcentaje en que ha quedado fijada dicha reducción de jornada.",
+        "Declaración del facultativo del Servicio Público de Salud en el que conste que el causante se encuentra afectado por cáncer u otra enfermedad grave que requiere ingreso hospitalario de larga duración, indicando la fecha estimada de duración del ingreso y si precisa un tratamiento continuado de la enfermedad, fuera del centro hospitalario, que indique la duración estimada del mismo.",
+        "Libro de familia o, en su defecto, certificado de la inscripción del hijo en el Registro Civil o resolución judicial de la adopción.",
+        "Resolución judicial o administrativa por la que se haya concedido el acogimiento de carácter permanente o la guarda con fines de adopción o, en su caso, la tutela del menor."
+      ],
+      "plazo": "siempre que la solicitud se formule en el plazo de 3 meses desde la fecha en que se produjo dicha reducción.",
+      "enlace_info": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/1941",
+      "enlace_tramite": null,
+      "fuente": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/1941 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/1941/1942 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/1941/1943",
+      "verificado": false,
+      "nota": "Esta prestación está exenta de tributación por IRPF.",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "relativo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "La prestación consiste en un subsidio, de devengo diario, equivalente al 100% de la base reguladora (BR) que esté establecida para la prestación de incapacidad temporal (IT) derivada de contingencias profesionales o, en su caso, la derivada de contingencias comunes, cuando no se haya optado por la cobertura de las contingencias profesionales y en proporción a la reducción que experimente la jornada de trabajo.",
+      "ambito": null,
+      "exclusiones": [
+        "Esta prestación está incluida dentro de la acción protectora del Sistema de la Seguridad Social desde 01-01-2011, no siendo aplicable a los funcionarios públicos, que se regirán por lo establecido en el art.49.e) del Real Decreto Legislativo 5/2015, de 30 de octubre, por el que se aprueba el Texto Refundido de la Ley del Estatuto Básico del Empleado Público.",
+        "En el supuesto de personas trabajadoras contratadas a tiempo parcial, no se tendrá derecho al subsidio cuando la duración efectiva de la jornada a tiempo parcial sea igual o inferior al 25% de una jornada de trabajo de una persona trabajadora a tiempo completo comparable. No obstante, si la persona trabajadora tuviera dos o más contratos a tiempo parcial, se sumarán las jornadas efectivas de trabajo a efectos de determinar el citado límite.",
+        "Cuando ambos progenitores, guardadores o acogedores tuvieran derecho al subsidio, sólo podrá ser reconocido en favor de uno de ellos."
+      ],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "6fc92e3c5d1e843db1112f2c09dc2abca0586570c1ee1810b64665909525f4d0",
+        "f868417a6a7123b8d51e6aa9cbc139d37f6b8bf6a232283be265e1151323b231",
+        "1b43a42458483b40064d9a9fad0fd41170b9e037b92908d7bb1aed26b2c5c42a"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "gestion-de-la-prestacion-de-incapacidad-temporal",
+      "tipo": "ayuda",
+      "titulo": "Gestión de la prestación de Incapacidad Temporal",
+      "administracion": "Estado",
+      "organismo": "INSS",
+      "frases_usuario": [
+        "estoy de baja médica, ¿cuánto cobro?",
+        "me he puesto enfermo y no puedo trabajar",
+        "baja por accidente laboral",
+        "soy autónomo y estoy de baja",
+        "cuánto se cobra en una baja por enfermedad común"
+      ],
+      "requisitos_clave": [
+        "Estar en alta o en situación asimilada al alta en el Régimen correspondiente.",
+        "Estar al corriente en el pago de las cuotas, de las que sean responsables directos los trabajadores, aunque la prestación sea reconocida, como consecuencia del cómputo recíproco de cotizaciones, en un régimen de trabajadores por cuenta ajena."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10952",
+      "enlace_tramite": "https://www.seg-social.es/wps/portal/wss/internet/InformacionUtil/44539/44667",
+      "fuente": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10952 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10952/28362 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10952/6109 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10952/4ee1e4ae-a34b-4af7-bd78-ceb7826c457c",
+      "verificado": false,
+      "nota": "A partir del 1 de septiembre de 2026 las comunicaciones y notificaciones relativas a la prestación de incapacidad temporal se efectuarán por medios electrónicos en la Sede Electrónica de la Seguridad Social",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "La cuantía se obtiene aplicando los porcentajes correspondientes a la base reguladora (BR).",
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "bd34e491fea293a7e82aa9cd05f593f4dd1951bc437ead17f0cb0b7f7c5a20ec",
+        "1574ebb0761bf3e491e968425647623d25b3beccf5271905af08193f393a57eb",
+        "c0c90939268b543245592693c249b8fb42d0bb61a59ce7ab257f5f315070fd28",
+        "3f63d7b4cf2f4b8e741782ef538e75e9e28685c41ae048c856da62cbfa398493"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "incapacidad-permanente",
+      "tipo": "ayuda",
+      "titulo": "Incapacidad permanente",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "por mi enfermedad ya no puedo volver a trabajar",
+        "quiero pedir la incapacidad permanente",
+        "tuve un accidente y me quedé con secuelas para siempre",
+        "cómo pido la invalidez",
+        "me han dado la total, qué cobro"
+      ],
+      "requisitos_clave": [
+        "Estar en alta o en situación asimilada al alta en el Régimen correspondiente. No obstante, se puede causar derecho a pensión de incapacidad permanente absoluta o gran incapacidad, derivadas de contingencias comunes, desde la situación de no alta.",
+        "Reunir el período mínimo de cotización exigido, en su caso.",
+        "Estar al corriente en el pago de las cuotas, de las que sean responsables directos los trabajadores, aunque la prestación sea reconocida, como consecuencia del cómputo recíproco de cotizaciones, en un régimen de trabajadores por cuenta ajena."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10960",
+      "enlace_tramite": "https://www.seg-social.es/wps/portal/wss/internet/InformacionUtil/44539/45982",
+      "fuente": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10960 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10960/28750 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10960/6091 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10960/40e9fa95-a3af-44e8-9cfa-1fba02cf041d",
+      "verificado": false,
+      "nota": "A partir del 1 de septiembre de 2026 las comunicaciones y notificaciones relativas a la prestación de incapacidad permanente se efectuarán por medios electrónicos en la Sede Electrónica de la Seguridad Social, en el siguiente enlace: info.seg-social.es/notif",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "bc7c457cb51a812c2284675bfcf96686bcae88f25955b0419b69466853c03170",
+        "a0fc738e9b28dbcb0dc0033e4960761ec691bd8fa7fe5e15297448c181a81187",
+        "da84f935619f051ef995a908634f687724d98d905716035312a55ef367411077",
+        "847941a7fc5f0315c383119503778f7e2c7671e4310f9815e5df6196685c782e"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "jubilacion",
+      "tipo": "ayuda",
+      "titulo": "Jubilación",
+      "administracion": "Estado",
+      "organismo": "Seguridad Social",
+      "frases_usuario": [
+        "me quiero jubilar, ¿qué tengo que hacer?",
+        "cuándo puedo pedir la pensión de jubilación",
+        "quiero jubilarme antes de tiempo",
+        "soy autónomo y me voy a jubilar",
+        "cuánto me quedará de pensión"
+      ],
+      "requisitos_clave": [
+        "Estar en alta o en situación asimilada al alta en el Régimen correspondiente. No obstante, se puede causar derecho a pensión de jubilación desde la situación de no alta, siempre que se reúnan los requisitos de edad y cotización establecidos.",
+        "Estar al corriente en el pago de las cuotas, de las que sean responsables directos los trabajadores, aunque la prestación sea reconocida, como consecuencia del cómputo recíproco de cotizaciones, en un régimen de trabajadores por cuenta ajena.",
+        "Edad: la edad ordinaria exigida en cada momento."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": "La fecha del hecho causante debe estar comprendida dentro de los tres meses anteriores o posteriores al día de presentación de la solicitud o coincidir con este.",
+      "enlace_info": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10963",
+      "enlace_tramite": "https://www.seg-social.es/wps/portal/wss/internet/InformacionUtil/44539/45370",
+      "fuente": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10963 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10963/28393 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10963/6137 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10963/4b590fd3-7bc7-486d-b42a-ced5299da6fc",
+      "verificado": false,
+      "nota": "Los efectos económicos del reconocimiento del derecho se producirán a partir del día siguiente a la fecha del hecho causante.",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "relativo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "e9a1ce777856fd0d5b3aafb9772e68690ed17e14e3ab50f9304341338db6898e",
+        "bba0e427744e7fb9525ceadb326b85a0f20a079c5decee249fb6779e95e8464d",
+        "9dc2311bbace27f0cff12fc189a080aa61c4112091c40489cfbcbff16b70ebc9",
+        "5ee77bb76bd4b70f8a271a50bec013d987381197a95a8be87fd060c22a144783"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "lesiones-permanentes-no-incapacitantes",
+      "tipo": "ayuda",
+      "titulo": "Lesiones permanentes no incapacitantes",
+      "administracion": "Estado",
+      "organismo": "Instituto Nacional de la Seguridad Social",
+      "frases_usuario": [
+        "tuve un accidente de trabajo y me ha quedado una secuela",
+        "me quedó una cicatriz por un accidente laboral, ¿me pagan algo?",
+        "indemnización por lesión de un accidente de trabajo",
+        "he perdido un dedo trabajando, ¿tengo derecho a algo?",
+        "enfermedad profesional con secuelas pero sin incapacidad"
+      ],
+      "requisitos_clave": [
+        "Causada por accidente de trabajo o enfermedad profesional.",
+        "De carácter definitivo.",
+        "Que no constituya incapacidad permanente.",
+        "Que altere o disminuya la integridad física del trabajador.",
+        "Que esté catalogada en el baremo establecido al efecto.",
+        "Los trabajadores integrados en el Régimen General, en alta o situación asimilada a la de alta, que hayan sufrido la lesión, mutilación o deformación con motivo de un accidente de trabajo o enfermedad profesional y hayan sido dados de alta médica por curación.",
+        "Deben estar acogidos a la mejora voluntaria de la acción protectora derivada de las contingencias de accidentes de trabajo y enfermedades profesionales y además, previa o simultáneamente, haber optado por la cobertura de la prestación económica por incapacidad temporal.",
+        "Deben encontrarse al corriente en el pago de cuotas."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/32857",
+      "enlace_tramite": "https://www.seg-social.es/wps/portal/wss/internet/InformacionUtil/44539/45997",
+      "fuente": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/32857 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/32857/32860 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/32857/32881 ; https://www.seg-social.es/wps/portal/wss/internet/Normativa?categoria1=2010&categoria2=3033",
+      "verificado": false,
+      "nota": "La cuantía de la prestación se aumentará, según la gravedad de la falta, de un 30% a un 50% cuando la lesión, mutilación o deformidad se produzca por máquinas, artefactos o en instalaciones, centros o lugares de trabajo que carezcan de los dispositivos de precaución reglamentarios, los tengan inutilizados o en malas condiciones, o cuando no se hayan observado las medidas de seguridad e higiene en el trabajo, o las elementales de salubridad o las de adecuación personal a cada trabajo, habida cuenta de sus características y de la edad, sexo y demás condiciones del trabajador.",
+      "relacionados": [
+        "incapacidad-permanente"
+      ],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "La prestación consiste en una indemnización a tanto alzado, que se concede por una sola vez, cuya cuantía está fijada por baremo y para las lesiones, mutilaciones y deformidades que en el mismo se recogen.",
+      "ambito": null,
+      "exclusiones": [
+        "Es incompatible con las prestaciones económicas establecidas para la incapacidad permanente, salvo que las lesiones, mutilaciones o deformidades sean totalmente independientes de las tomadas en consideración para declarar la incapacidad permanente y su grado."
+      ],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "4f1e609fc9b5670fef79eb2d86c4f5b144a8e0fc8835129d3d96fe89de1404b9",
+        "844dfa6ca23b1d89089d4e6a9e211f462366d73499a5c2150f1166f638063dad",
+        "b300a2712059154d2804e6668f6d5189456e4de5a7f9531117c0eb514f60c4fd",
+        "0a81bfeba559af11acd382d8716b89b57c921cfebb1272c67b09bbaa6180d9af"
+      ],
+      "relaciones": [
+        {
+          "id": "incapacidad-permanente",
+          "tipo": "incompatible",
+          "cita": "Es incompatible con las prestaciones económicas establecidas para la incapacidad permanente"
+        }
+      ],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "mi-prestacion-y-el-trabajo-en-gibraltar-situacion-de-los-fro",
+      "tipo": "ayuda",
+      "titulo": "Mi prestación y el trabajo en Gibraltar: Situación de los fronterizos",
+      "administracion": "Estado",
+      "organismo": "Servicio Público de Empleo Estatal (SEPE)",
+      "frases_usuario": [
+        "vivo en España y trabajaba en Gibraltar, cómo cobro el paro",
+        "se me ha acabado el paro de Gibraltar y quiero cobrar en España",
+        "soy trabajador fronterizo de Gibraltar y me han despedido",
+        "necesito el documento U1 para Gibraltar"
+      ],
+      "requisitos_clave": [
+        "Este Acuerdo se aplica únicamente a las personas trabajadoras fronterizas, es decir, a los ciudadanos de la Unión Europea residentes en España que trabajan en Gibraltar y regresan a España al menos una vez por semana, así como a los ciudadanos del Reino Unido residentes en Gibraltar que trabajan en España y regresan a Gibraltar al menos una vez por semana.",
+        "Para el reconocimiento de la prestación por desempleo complementaria en España es imprescindible que la prestación por desempleo gibraltareña esté extinguida por agotamiento."
+      ],
+      "pasos": [
+        "Si resides en España y tu último trabajo ha sido en Gibraltar, debes ponerte a disposición de los servicios de empleo en Gibraltar y solicitar allí tu prestación por desempleo, de acuerdo con los plazos y requisitos establecidos en su legislación.",
+        "Una vez agotada la prestación en Gibraltar, podrás solicitar en España una prestación complementaria."
+      ],
+      "documentacion": [
+        "Para ello, deberás aportar el modelo U1 GI-ES, mediante el cual la institución gibraltareña que haya reconocido inicialmente la prestación certificará los periodos cotizados, la cuantía y duración de la prestación percibida, así como toda la información necesaria para el reconocimiento de la prestación complementaria en España."
+      ],
+      "plazo": "El plazo para solicitar esta prestación complementaria será el previsto en la normativa española: 15 días en caso de la prestación contributiva o 6 meses si se trata de un subsidio, a contar desde el día siguiente a la extinción de la prestación en Gibraltar.",
+      "enlace_info": "https://www.sepe.es/HomeSepe/prestaciones-desempleo/Gibraltar-situacion-fronterizos.html",
+      "enlace_tramite": "https://sede.sepe.gob.es/portalSede/procedimientos-y-servicios/personas/proteccion-por-desempleo.html",
+      "fuente": "https://www.sepe.es/HomeSepe/prestaciones-desempleo/Gibraltar-situacion-fronterizos.html ; https://www.sepe.es/HomeSepe/mas-informacion-contacto/preguntas-frecuentes.html ; https://www.boe.es/boe/dias/2020/12/30/pdfs/BOE-A-2020-17266.pdf",
+      "verificado": false,
+      "nota": "Esto implica que el cese de la actividad en Gibraltar ya no permite solicitar directamente la prestación por desempleo en España, como ocurría hasta ahora.",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "relativo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "Si cumples todos los requisitos, España reconocerá esta prestación como si hubieras estado sujeto a la legislación española durante tu última actividad laboral, descontando en todo caso los días ya percibidos en Gibraltar.",
+      "ambito": null,
+      "exclusiones": [
+        "Quedan excluidos los trabajadores no fronterizos (es decir, aquellos que permanecen fuera de su Estado de residencia durante más de una semana), los ciudadanos del Reino Unido residentes en España que trabajan en Gibraltar y los ciudadanos extracomunitarios, incluso cuando tengan la condición de trabajadores fronterizos."
+      ],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": [
+          "BOE-A-2020-17266"
+        ]
+      },
+      "documentos": [
+        {
+          "titulo": "Real Decreto-ley 38/2020",
+          "url": "https://www.boe.es/boe/dias/2020/12/30/pdfs/BOE-A-2020-17266.pdf"
+        }
+      ],
+      "textos": [
+        "a826c5636dfa8bce09c96e491ec4f990cfc7fd3d7a2b102ba3d2daa1bff3979c",
+        "2c5b5f39b4d713e9fde97c885c98ec02bbb7a41bd83abf012368e25adc57bb24"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "mi-prestacion-y-el-trabajo-en-la-ue",
+      "tipo": "ayuda",
+      "titulo": "Mi prestación y el trabajo en la UE",
+      "administracion": "Estado",
+      "organismo": "Servicio Público de Empleo Estatal",
+      "frases_usuario": [
+        "me voy a buscar trabajo a Europa y cobro el paro",
+        "puedo cobrar el paro en otro país de la UE",
+        "he trabajado en Alemania y quiero el paro en España",
+        "cómo pido el formulario U1",
+        "trabajé en Reino Unido y ahora estoy en paro en España"
+      ],
+      "requisitos_clave": [
+        "Si estás percibiendo una prestación y has permanecido inscrita o inscrito como demandante de empleo en España durante 4 semanas como mínimo, y se traslada a buscar empleo a un país de la UE/EEE o a Suiza, puedes exportar dicha prestación durante 3 meses, con posibilidad de prorrogarla por otros 3 meses.",
+        "Para acceder a la protección por desempleo en España, se tendrán en cuenta, además de las cotizaciones efectuadas en España, lo que haya cotizado en otros países de la UE/EEE y en Suiza."
+      ],
+      "pasos": [
+        "Solicitar la autorización de desplazamiento y el documento U2 en tu oficina de prestaciones del Servicio Público de Empleo Estatal.",
+        "Inscribirte como demandante de empleo en el otro Estado miembro en el plazo de los siete días posteriores a la fecha en que dejes de estar a disposición de los servicios públicos de empleo españoles."
+      ],
+      "documentacion": [
+        "Para demostrar dichos períodos, debe presentar el formulario U1, facilitado por la institución competente del Estado donde realizó el trabajo que pretende justificar."
+      ],
+      "plazo": null,
+      "enlace_info": "https://www.sepe.es/HomeSepe/prestaciones-desempleo/prestaciones-desempleo-trabajo-ue.html",
+      "enlace_tramite": null,
+      "fuente": "https://www.sepe.es/HomeSepe/prestaciones-desempleo/prestaciones-desempleo-trabajo-ue.html ; https://www.sepe.es/HomeSepe/prestaciones-desempleo/prestaciones-desempleo-trabajo-ue/informacion-brexit.html",
+      "verificado": false,
+      "nota": "El pago de la prestación se seguirá realizando por el mismo sistema que durante tu residencia en España.",
+      "relacionados": [],
+      "naturaleza": "servicio",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [
+        "Se reducirá la duración de la prestación que se le apruebe en España en tantos días como haya cobrado dicha prestación en cualquier otro país del ámbito comunitario."
+      ],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "82a57d67fa673b9912d2dd773435d8a53b4547b0a2f980ebb3d997810e634e07",
+        "803bf25898005d67226c0f5cffa058aa80b0a302d09c3c95cf2a964a980c9f3c"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
       "id": "nacimiento-y-cuidado-de-menor",
       "tipo": "ayuda",
       "titulo": "Nacimiento y cuidado de menor",
@@ -259,6 +876,433 @@
       ],
       "relaciones": [],
       "consultado": "2026-10-22"
+    },
+    {
+      "id": "pnc-de-incapacidad",
+      "tipo": "ayuda",
+      "titulo": "PNC de Incapacidad",
+      "administracion": "Estado",
+      "organismo": "Imserso",
+      "frases_usuario": [
+        "tengo una discapacidad del 65% y no tengo ingresos",
+        "no he cotizado y tengo una minusvalía",
+        "pensión no contributiva de invalidez",
+        "no puedo trabajar por mi discapacidad y no cobro nada",
+        "pensión para personas con discapacidad sin recursos"
+      ],
+      "requisitos_clave": [
+        "Edad: Tener dieciocho o más años y menos de sesenta y cinco en la fecha de la solicitud.",
+        "Residencia: Residir en territorio español y haberlo hecho durante un período de cinco años, de los cuales dos han de ser consecutivos e inmediatamente anteriores a la fecha de la solicitud.",
+        "Discapacidad: Estar afectado de un grado de discapacidad igual o superior al 65%.",
+        "Existe carencia cuando las rentas o ingresos personales de que se disponga, en cómputo anual, para 2026, sean inferiores a 8.803,20 € anuales.",
+        "No obstante, si son inferiores a 8.803,20 € anuales y se convive con familiares, únicamente se cumple el requisito cuando la suma de las rentas o ingresos anuales de todos los miembros de su unidad económica de convivencia, sean inferiores a las cuantías que se recogen más adelante."
+      ],
+      "pasos": [
+        "La solicitud de PNC podrá presentarse en las oficinas de los Servicios Sociales de las Comunidades Autónomas, del Imserso o en cualquier otra de la Seguridad Social, en las que se facilitará el impreso correspondiente, o por correo.",
+        "Su solicitud de pensión no contributiva de incapacidad en el ámbito de Ceuta y Melilla, puede realizarla a través de nuestra sede electrónica."
+      ],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://imserso.es/pnc-prestaciones-subvenciones/pnc-incapacidad",
+      "enlace_tramite": "https://sede.imserso.gob.es/web/sede-electronica/procedimiento-servicios/detalle/-/asset_publisher/Clv43EZRrpqn/content/pnc-de-incapacidad/20123#detalle",
+      "fuente": "https://imserso.es/pnc-prestaciones-subvenciones/pnc-incapacidad ; https://imserso.es/pnc-prestaciones-subvenciones/pnc-invalidez/normativa-requisitos ; https://imserso.es/pnc-prestaciones-subvenciones/pnc-invalidez/donde-solicitar-una-pnc-incapacidad ; https://imserso.es/pnc-prestaciones-subvenciones/pnc-invalidez/solicitudes-formularios-dd-tt-imserso-ceuta-melilla ; https://imserso.es/documents/20123/2317292/pncinv.pdf/288b1818-e96c-63b8-fbfa-51079eaabc70 ; https://imserso.es/documents/20123/2317292/pncinv_ogca.pdf/3d0c7432-4a5b-d38e-a69b-9f4caa65e441 ; https://imserso.es/documents/20123/2317292/cert_renta_pnc.pdf/83444333-fa8c-ae85-2317-2c02e869feff ; https://imserso.es/documents/20123/1595507/fpnc_2026.pdf/d76f3d01-3c8b-9fc5-9ea8-4d7f6dfdcec4 ; https://imserso.es/documents/20123/1595507/pncresumen2026.pdf/c4b41c80-63fe-942d-7231-f3ee20e28694",
+      "verificado": false,
+      "nota": "La gestión y reconocimiento del derecho a percibir una Pensión no Contributiva se realiza por las Comunidades Autónomas que tienen transferidas las funciones y servicios del Instituto de Mayores y Servicios Sociales (Imserso). En las ciudades autónomas de Ceuta y de Melilla se hace directamente por el Imserso.",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "La cuantía individual de la pensión se establece en función del número de beneficiarios de pensión no contributiva integrados en la misma unidad económica de convivencia, de los ingresos personales y/o los de las personas que integran la unidad económica, no pudiendo ser inferior dicha cuantía a 2.200,80 € anuales, que se corresponde con el 25 por 100 del importe íntegro para el año 2026.",
+      "ambito": null,
+      "exclusiones": [
+        "La pensión no contributiva de incapacidad es incompatible con la pensión no contributiva de jubilación, con las pensiones asistenciales reguladas en la Ley 45/1960,de 21 de julio, por la que se crean determinados Fondos Nacionales para la aplicación social del Impuesto y del Ahorro, y suprimidas por la Ley 28/1992, de 24 de noviembre, de Medidas Presupuestarias Urgentes y con los subsidios de garantía de ingresos mínimos y por ayuda de tercera persona contemplados en el Real Decreto Legislativo 1/2013, de 29 de noviembre, por el que se aprueba el Texto Refundido de la Ley General de derechos de las personas con discapacidad y de su inclusión social, así como con la condición de causante de la asignación familiar por hijo a cargo mayor de 18 años con discapacidad igual o superior al 65%."
+      ],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "Formulario de solicitud para las DD.TT. del Imserso en Ceuta y Melilla (2,8 MB)",
+          "url": "https://imserso.es/documents/20123/2317292/pncinv.pdf/288b1818-e96c-63b8-fbfa-51079eaabc70"
+        },
+        {
+          "titulo": "Formulario de solicitud OO. GG. Comunidades Autónomas (1.019 KB)",
+          "url": "https://imserso.es/documents/20123/2317292/pncinv_ogca.pdf/3d0c7432-4a5b-d38e-a69b-9f4caa65e441"
+        },
+        {
+          "titulo": "Certificado anual de rentas PNC (2,6 MB)",
+          "url": "https://imserso.es/documents/20123/2317292/cert_renta_pnc.pdf/83444333-fa8c-ae85-2317-2c02e869feff"
+        },
+        {
+          "titulo": "Folleto informativo 2026 (508 KB)",
+          "url": "https://imserso.es/documents/20123/1595507/fpnc_2026.pdf/d76f3d01-3c8b-9fc5-9ea8-4d7f6dfdcec4"
+        },
+        {
+          "titulo": "Guía resumen de las PNC 2026 (278 KB)",
+          "url": "https://imserso.es/documents/20123/1595507/pncresumen2026.pdf/c4b41c80-63fe-942d-7231-f3ee20e28694"
+        }
+      ],
+      "textos": [
+        "35fc663b85256b658038945098a494f558d6090cdd7032ca8f7e7ca1f6c7fbed",
+        "a33948694ffde19302ad3b1d5af3bdc69df3d346396ffe92c070ce869d654f47",
+        "9b704cdbd92a2a74fbc2235276cd6cb8b397ae660c7a78eb90f620f853e143d8",
+        "9998ab7d39de098a2b0f2a9af8a852bc56b2524a6ffc2bf48887666dff5cfb03",
+        "963750485fd302b245ed4e54b44c81afd88d6e9196f3e3e3360ad659a974f9d5",
+        "b8f65a28b4398bdd23c0abc001b35c13bea10ee17dd79f96b652396fda1239b2"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "pnc-de-jubilacion",
+      "tipo": "ayuda",
+      "titulo": "PNC de Jubilación",
+      "administracion": "Estado",
+      "organismo": "Imserso",
+      "frases_usuario": [
+        "tengo más de 65 años y no tengo pensión",
+        "nunca he cotizado y soy mayor",
+        "pensión para jubilados sin cotizar",
+        "cobro muy poco y tengo 67 años",
+        "cómo pido la no contributiva de jubilación"
+      ],
+      "requisitos_clave": [
+        "Edad: tener sesenta y cinco o más años.",
+        "Residencia: residir en territorio español y haberlo hecho durante un período de diez años, en el período que media entre la fecha de cumplimiento de los dieciséis años y la de devengo de la pensión, de los cuales dos han de ser consecutivos e inmediatamente anteriores a la fecha de la solicitud.",
+        "Existe carencia cuando las rentas o ingresos personales de que se disponga, en cómputo anual para 2026, sean inferiores a 8.803,20 € anuales.",
+        "No obstante, si las rentas o ingresos personales son inferiores a 8.803,20 € anuales y se convive con familiares, únicamente se cumple el requisito cuando la suma de las rentas o ingresos anuales de todos los miembros de su unidad económica de convivencia, sean inferiores a las cuantías que se recogen más adelante."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://imserso.es/pnc-prestaciones-subvenciones/pnc-jubilacion",
+      "enlace_tramite": "https://sede.imserso.gob.es/procedimiento-servicios/detalle/-/asset_publisher/Clv43EZRrpqn/content/pnc-de-jubilacion/20123",
+      "fuente": "https://imserso.es/pnc-prestaciones-subvenciones/pnc-jubilacion ; https://imserso.es/pnc-prestaciones-subvenciones/pnc-jubilacion/normativa-requisitos ; https://imserso.es/pnc-prestaciones-subvenciones/pnc-jubilacion/actualizacion-pensiones ; https://imserso.es/pnc-prestaciones-subvenciones/pnc-jubilacion/regularizacion-pensionistas-y-revision-pensiones ; https://imserso.es/documents/20123/2317292/pncjub.pdf/be769e7b-950b-e313-a3aa-ab976884076d ; https://imserso.es/documents/20123/2317292/pncjub_ogca.pdf/1858b87f-9499-3fee-21a3-3935c6c3223e ; https://imserso.es/documents/20123/2317292/cert_renta_pnc.pdf/83444333-fa8c-ae85-2317-2c02e869feff ; https://imserso.es/documents/20123/1595507/fpnc_2026.pdf/d76f3d01-3c8b-9fc5-9ea8-4d7f6dfdcec4 ; https://imserso.es/documents/20123/1595507/pncresumen2026.pdf/c4b41c80-63fe-942d-7231-f3ee20e28694",
+      "verificado": false,
+      "nota": "Comunicar al Organismo que gestiona su pensión las variaciones en su convivencia, estado civil, residencia, recursos económicos propios y/o familiares, y cuantas otras puedan tener incidencia en la conservación del derecho o en la cuantía de su pensión (415 Kb) en el plazo de 30 días desde la fecha en que se produzca la variación.",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "El Real Decreto-ley 3/2026, de 3 de febrero, para la revalorización de las pensiones públicas y otras medidas urgentes en materia de Seguridad Social, establece la cuantía de las pensiones de invalidez y jubilación de la Seguridad Social en su modalidad no contributiva, quedando el importe anual para el año 2026 en 8.803,20 € anuales, que se abonan en 12 mensualidades más dos pagas extraordinarias al año.",
+      "ambito": null,
+      "exclusiones": [
+        "La pensión no contributiva de jubilación es incompatible con la pensión no contributiva de invalidez, con las pensiones asistenciales, reguladas en la Ley 45/1960, de 21 de julio, por la que se crean determinados Fondos Nacionales para la aplicación social del Impuesto y del Ahorro, y suprimidas por la Ley 28/1992, de 24 de noviembre, de Medidas Presupuestarias Urgentes y con los subsidios de garantía de ingresos mínimos y por ayuda de tercera persona contemplados por el Real Decreto Legislativo 1/2013, de 29 de noviembre, por el que se aprueba el Texto Refundido de la Ley General de derechos de las personas con discapacidad y de su inclusión social, así como con la condición de causante de la asignación familiar por hijo a cargo mayor de 18 años y con discapacidad igual o superior al 65%."
+      ],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "Formulario de solicitud para las DD.TT. del Imserso en Ceuta y Melilla (2,3 MB)",
+          "url": "https://imserso.es/documents/20123/2317292/pncjub.pdf/be769e7b-950b-e313-a3aa-ab976884076d"
+        },
+        {
+          "titulo": "Formulario de solicitud OO. GG. Comunidades Autónomas (581 KB)",
+          "url": "https://imserso.es/documents/20123/2317292/pncjub_ogca.pdf/1858b87f-9499-3fee-21a3-3935c6c3223e"
+        },
+        {
+          "titulo": "Certificado anual de rentas PNC (2,6 MB)",
+          "url": "https://imserso.es/documents/20123/2317292/cert_renta_pnc.pdf/83444333-fa8c-ae85-2317-2c02e869feff"
+        },
+        {
+          "titulo": "Folleto informativo 2026 (508 KB)",
+          "url": "https://imserso.es/documents/20123/1595507/fpnc_2026.pdf/d76f3d01-3c8b-9fc5-9ea8-4d7f6dfdcec4"
+        },
+        {
+          "titulo": "Guía resumen de las PNC 2026 (278 KB)",
+          "url": "https://imserso.es/documents/20123/1595507/pncresumen2026.pdf/c4b41c80-63fe-942d-7231-f3ee20e28694"
+        }
+      ],
+      "textos": [
+        "4a36c1a38322a2e0049e0f6fb24111431dfac2b9cd5b9637c3a24eae05af7a65",
+        "e1116d4e969d69f075ed1fedf6ee3d98fd85432db33b2bbfc01d6877b97e8f3a",
+        "be43965e595fbaca6f31ceb941514c8588256712aebddae16cb9e98b08511d98",
+        "860a2f090fe6251a480b665d6165814e3cf2fb10ca676b48ada0d670625c0bfb",
+        "963750485fd302b245ed4e54b44c81afd88d6e9196f3e3e3360ad659a974f9d5",
+        "b8f65a28b4398bdd23c0abc001b35c13bea10ee17dd79f96b652396fda1239b2"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "prestacion-contributiva-por-desempleo",
+      "tipo": "ayuda",
+      "titulo": "Prestación contributiva por desempleo",
+      "administracion": "Estado",
+      "organismo": null,
+      "frases_usuario": [
+        "me han despedido y quiero cobrar el paro",
+        "cómo pido el paro",
+        "he perdido mi trabajo, ¿tengo derecho a paro?",
+        "me han reducido la jornada, ¿puedo cobrar desempleo?",
+        "he trabajado más de un año y me he quedado sin trabajo"
+      ],
+      "requisitos_clave": [
+        "Si tienes 360 o más días cotizados a la contingencia por desempleo, has perdido tu empleo y cumples todos los requisitos, puedes tener derecho a una prestación contributiva (paro)."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://www.sepe.es/HomeSepe/prestaciones-desempleo/prestacion-contributiva.html",
+      "enlace_tramite": null,
+      "fuente": "https://www.sepe.es/HomeSepe/prestaciones-desempleo/prestacion-contributiva.html",
+      "verificado": false,
+      "nota": "La prestación contributiva protege a quienes pierdan su empleo de forma temporal o definitiva o vean reducida temporalmente su jornada ordinaria de trabajo entre un 10 % y un 70 %.",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "cd97971dac802b1a1523973d110ec31f6b31be2f92a9ce09b42e2f95789c7e62"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "prestacion-de-sostenibilidad-y-mantenimiento-del-empleo-red",
+      "tipo": "ayuda",
+      "titulo": "Prestación de sostenibilidad y mantenimiento del empleo (RED)",
+      "administracion": "Estado",
+      "organismo": "Servicio Público de Empleo Estatal",
+      "frases_usuario": [
+        "mi empresa me ha reducido la jornada por el mecanismo RED",
+        "me han suspendido el contrato temporalmente",
+        "ERTE RED cuánto cobro",
+        "mi empresa está en crisis y me han mandado a casa",
+        "me han bajado las horas y el sueldo por la empresa"
+      ],
+      "requisitos_clave": [
+        "Se suspenda temporalmente su contrato de trabajo o se reduzca temporalmente su jornada ordinaria de trabajo.",
+        "Siempre que su salario sea objeto de análoga reducción.",
+        "Haber iniciado la relación laboral o societaria en la empresa autorizada a aplicar el Mecanismo RED de Flexibilidad y Estabilización del Empleo con anterioridad a la fecha del Acuerdo del Consejo de Ministros que declare la activación del mismo.",
+        "Estar inscrita la persona trabajadora ante el Servicio Público de Empleo que le corresponda.",
+        "No se exige periodo de ocupación cotizado previo.",
+        "La relación laboral no puede estar suspendida por cualquier causa ajena a la aplicación del Mecanismo RED."
+      ],
+      "pasos": [
+        "Será la empresa quien deberá formular la solicitud, en representación de las personas trabajadoras, en el modelo establecido que se encontrará publicado en la página web o en la sede electrónica del Servicio Público de Empleo Estatal.",
+        "En dicha solicitud, que deberá contar con la autorización de cada persona trabajadora, constarán los datos de las mismas que pudieran resultar afectadas por la aplicación del Mecanismo RED, así como, en caso de reducción de jornada, el porcentaje máximo de reducción autorizado."
+      ],
+      "documentacion": [],
+      "plazo": "La empresa tiene de plazo de un mes para presentar la solicitud, a contar desde la fecha de la notificación de la resolución de la Autoridad Laboral en la que se autorice la aplicación del Mecanismo RED de Flexibilidad y Estabilización del Empleo o desde la del certificado del silencio administrativo negativo.",
+      "enlace_info": "https://www.sepe.es/HomeSepe/prestaciones-desempleo/prestacion-sostenibilidad-mantenimiento-empleo-RED.html",
+      "enlace_tramite": "https://sede.sepe.gob.es/portalSedeEstaticos/flows/gestorContenidos?page=sv00A",
+      "fuente": "https://www.sepe.es/HomeSepe/prestaciones-desempleo/prestacion-sostenibilidad-mantenimiento-empleo-RED.html ; https://www.sepe.es/HomeSepe/prestaciones-desempleo/Cuantias-anuales.html ; https://www.sepe.es/HomeSepe/mas-informacion-contacto/contacta-redireccion.html ; https://www.sepe.es/HomeSepe/mas-informacion-contacto/preguntas-frecuentes.html",
+      "verificado": false,
+      "nota": "Esta necesidad ha de ser reconocida por el Consejo de Ministros a través de la activación del Mecanismo RED de Flexibilidad y Estabilización del Empleo.",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "relativo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "La cuantía de la prestación se determinará aplicando a la base reguladora el porcentaje del 70 por ciento, durante toda la vigencia de la medida. No obstante, la cuantía máxima mensual a percibir será la equivalente al 225 por ciento del indicador público de rentas de efectos múltiples mensual (IPREM) vigente en el momento del nacimiento del derecho incrementado en una sexta parte.",
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": [
+          "BOE-A-2015-11724",
+          "BOE-A-2021-21788",
+          "BOE-A-2015-11430"
+        ]
+      },
+      "documentos": [],
+      "textos": [
+        "a7a6968c32159bd6382200695730f1b2063539575e183e25dd27b914393b699e",
+        "057a5de859ea107674a32c0f3b66d8d7f314d82b22dea204cedfa7ae11781e7c",
+        "5bcfa74f8da6f0926c6d0cb39d0f79782ee755dcac5c67a702c5f36279323ed5",
+        "2c5b5f39b4d713e9fde97c885c98ec02bbb7a41bd83abf012368e25adc57bb24"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "prestaciones-del-seguro-escolar",
+      "tipo": "ayuda",
+      "titulo": "Prestaciones del Seguro escolar",
+      "administracion": "Estado",
+      "organismo": "INSS",
+      "frases_usuario": [
+        "soy estudiante y he tenido un accidente en clase",
+        "qué cubre el seguro escolar",
+        "el seguro escolar me paga el psicólogo",
+        "soy universitario, ¿tengo seguro escolar?",
+        "murió mi padre y estoy estudiando, ¿hay alguna ayuda?"
+      ],
+      "requisitos_clave": [
+        "Tener menos de 28 años, si bien el Seguro Escolar cubrirá todo el año escolar en el que el estudiante cumpla dicha edad.",
+        "Como se ha indicado, ser español, nacional de la UE/EEE o extranjero que resida legalmente en España.",
+        "Estar matriculado en España en alguno de los estudios citados en el apartado anterior.",
+        "Haber abonado la cuota correspondiente del Seguro Escolar en el año presente.",
+        "Acreditar que ha transcurrido un período mínimo de un año desde que el estudiante se matriculó por primera vez en cualquier centro de enseñanza de los comprendidos en dicho seguro."
+      ],
+      "pasos": [],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/28622",
+      "enlace_tramite": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/28622/28851",
+      "fuente": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/28622 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/28622/28623 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/28622/fc6405f6-da9b-48b5-b829-96ed73fa54b6 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/28622/7631f3e5-5a90-4152-a76e-2867f19635a8",
+      "verificado": false,
+      "nota": "Los gastos derivados de la asistencia sanitaria al estudiante ocasionados en dichas Comunidades Autónomas no serán objeto de reembolso ni al estudiante ni a los Centros o profesionales sanitarios.",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [
+        "No procederá la cobertura del Seguro Escolar para los estudiantes en situación irregular en España."
+      ],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "9046a46d48fed56baa4ec54fbf4a5099aa8331eef92aa5f9c0501fde809ae095",
+        "918e5494f867701dabe96575bf346cbc40d2af90ab974384641cc95c41a55941",
+        "49935d7255211f65bb5094f1e8dbf43bd350fd3d2cde03b11375691d95440b34",
+        "c0d06b02ebd8484a4ae9fccc572c27b1f81a31bbc0b6ef0cef1c22507717454b"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "programas-valencia",
+      "tipo": "ayuda",
+      "titulo": "Programas - València",
+      "administracion": "Local",
+      "organismo": null,
+      "frases_usuario": [
+        "estoy en exclusión social y necesito ayuda para encontrar trabajo",
+        "quiero que me acompañen para formarme y buscar empleo en Valencia",
+        "necesito apoyo de servicios sociales para salir adelante",
+        "busco un itinerario de inserción laboral en Valencia"
+      ],
+      "requisitos_clave": [
+        "El programa de implementación de itinerarios de inclusión social FSE+ persigue atender y promover la integración social y laboral de personas en situación de exclusión social o vulnerabilidad en el ámbito territorial de Valencia."
+      ],
+      "pasos": [
+        "Puede solicitar cita previa presencial para información y asesoramiento al respecto en el centro municipal de servicios sociales de su zona de residencia o a través de la central de llamadas ([teléfono])."
+      ],
+      "documentacion": [],
+      "plazo": null,
+      "enlace_info": "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=40668527",
+      "enlace_tramite": null,
+      "fuente": "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=40668527 ; https://www.valencia.es/documents/20142/618951/PROGRAMA+MARCO+DE+INSERCION+SOCIAL+Y+LABORAL.pdf/6793a6ed-3b0f-5ac8-487c-a77aedddcf6f?t=1619253382906 ; https://www.valencia.es/documents/20142/618951/20190830%2520PROGRAMA%2520CAST%25202019%2520castellano%2520%255Bpersonas%2520sin%2520techo.pdf/5e96e164-b9bd-df20-6707-623a54c8fe94",
+      "verificado": false,
+      "nota": "Estos itinerarios consisten en el desarrollo de intervenciones planificadas a través de acciones formativas, laborales, educativas y de apoyo social, favoreciendo la participación social y el acceso a la ocupación.",
+      "relacionados": [],
+      "naturaleza": "servicio",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": "en el ámbito territorial de Valencia",
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "Programa marco de Inserción Social y Laboral",
+          "url": "https://www.valencia.es/documents/20142/618951/PROGRAMA+MARCO+DE+INSERCION+SOCIAL+Y+LABORAL.pdf/6793a6ed-3b0f-5ac8-487c-a77aedddcf6f?t=1619253382906"
+        },
+        {
+          "titulo": "Programa del Centro de Atención a Personas sin Techo \"CAST 2019\".",
+          "url": "https://www.valencia.es/documents/20142/618951/20190830%2520PROGRAMA%2520CAST%25202019%2520castellano%2520%255Bpersonas%2520sin%2520techo.pdf/5e96e164-b9bd-df20-6707-623a54c8fe94"
+        }
+      ],
+      "textos": [
+        "8781b61887b4b92ff206455799f8ff7cf7a3a455f1351db5b732d04087ecddb1"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "programas-valencia-2",
+      "tipo": "ayuda",
+      "titulo": "Programas - València",
+      "administracion": "Local",
+      "organismo": null,
+      "frases_usuario": [
+        "quiero acoger a mi nieto",
+        "a mi sobrina le han retirado la custodia y la quiero acoger",
+        "cómo me ofrezco para cuidar a un menor de mi familia",
+        "acogimiento de un familiar menor en Valencia"
+      ],
+      "requisitos_clave": [
+        "El acogimiento en familia extensa se entiende como el que se produce cuando la familia de acogida mantiene un vínculo de parentesco o una relación afectiva previa relevante con la persona menor de edad que se quiere acoger.",
+        "Toda familia extensa que se ofrece para el acogimiento de una persona menor de edad en particular ha de someterse a un proceso valoración de su aptitud."
+      ],
+      "pasos": [
+        "Para ello debe informarse en el Centro Municipal de Servicios Sociales de su zona de residencia o de residencia de la persona menor de edad para la que se ofrece como familia de acogida."
+      ],
+      "documentacion": [],
+      "plazo": "Se establece un plazo máximo de seis meses desde la fecha de la resolución por la que se declara el desamparo de la persona menor de edad para que la familia extensa presente su ofrecimiento para acogerla.",
+      "enlace_info": "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=5F163188F995CA86C12582C800403610",
+      "enlace_tramite": null,
+      "fuente": "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=5F163188F995CA86C12582C800403610 ; https://www.valencia.es/documents/20142/618951/PROGRAMA+MARCO+DE+INSERCION+SOCIAL+Y+LABORAL.pdf/6793a6ed-3b0f-5ac8-487c-a77aedddcf6f?t=1619253382906 ; https://www.valencia.es/documents/20142/618951/20190830%2520PROGRAMA%2520CAST%25202019%2520castellano%2520%255Bpersonas%2520sin%2520techo.pdf/5e96e164-b9bd-df20-6707-623a54c8fe94",
+      "verificado": false,
+      "nota": "Transcurrido dicho plazo los ofrecimientos únicamente podrán tramitarse de oficio por la administración pública.",
+      "relacionados": [],
+      "naturaleza": "servicio",
+      "tipoPlazo": "relativo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": null,
+      "ambito": null,
+      "exclusiones": [],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [
+        {
+          "titulo": "Programa marco de Inserción Social y Laboral",
+          "url": "https://www.valencia.es/documents/20142/618951/PROGRAMA+MARCO+DE+INSERCION+SOCIAL+Y+LABORAL.pdf/6793a6ed-3b0f-5ac8-487c-a77aedddcf6f?t=1619253382906"
+        },
+        {
+          "titulo": "Programa del Centro de Atención a Personas sin Techo \"CAST 2019\".",
+          "url": "https://www.valencia.es/documents/20142/618951/20190830%2520PROGRAMA%2520CAST%25202019%2520castellano%2520%255Bpersonas%2520sin%2520techo.pdf/5e96e164-b9bd-df20-6707-623a54c8fe94"
+        }
+      ],
+      "textos": [
+        "972793f1b8aaa991708a96fceecbfe80be051ec66559e8592348f0aed23f8f91"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22",
+      "posibleDuplicado": "programas-valencia"
     },
     {
       "id": "riesgo-durante-el-embarazo",
@@ -328,11 +1372,181 @@
       ],
       "relaciones": [],
       "consultado": "2026-10-22"
+    },
+    {
+      "id": "riesgo-durante-la-lactancia-natural",
+      "tipo": "ayuda",
+      "titulo": "Riesgo durante la lactancia natural",
+      "administracion": "Estado",
+      "organismo": "Seguridad Social",
+      "frases_usuario": [
+        "estoy dando el pecho y mi trabajo es peligroso para el bebé",
+        "no me pueden cambiar de puesto mientras doy de mamar",
+        "baja por lactancia por riesgo en el trabajo",
+        "cobro algo si dejo de trabajar por la lactancia"
+      ],
+      "requisitos_clave": [
+        "Las trabajadoras por cuenta ajena y socias trabajadoras de sociedades cooperativas o laborales, declaradas en situación de suspensión de contrato o permiso por riesgo durante la lactancia, siempre que reúnan los siguientes requisitos:",
+        "Estar afiliadas y en alta en alguno de los regímenes del sistema de la Seguridad Social.",
+        "No se exige período mínimo de cotización al derivarse de contingencias profesionales."
+      ],
+      "pasos": [
+        "El procedimiento se inicia a instancia de la trabajadora mediante un informe médico que deberá solicitar al facultativo del Servicio Público de Salud, en el que se acredite la situación de lactancia natural.",
+        "Con el citado informe y un certificado de la empresa sobre la actividad desarrollada y las condiciones del puesto de trabajo, la trabajadora solicitará la emisión de la certificación médica sobre la existencia de riesgo durante la lactancia ante la Entidad gestora o colaboradora que corresponda.",
+        "Una vez certificado el riesgo, si no ha sido posible el cambio del puesto de trabajo, la empresa declarará a la trabajadora afectada en situación de suspensión del contrato por riesgo durante la lactancia.",
+        "Para el reconocimiento del subsidio, la trabajadora deberá presentar solicitud dirigida a la Dirección provincial competente de la Entidad gestora de la provincia en que aquélla tenga su domicilio o ante Mutua Colaboradora con la Seguridad Social que le corresponda."
+      ],
+      "documentacion": [],
+      "plazo": "El derecho al reconocimiento de la prestación prescribe a los 5 años, contados desde el día siguiente a aquél en que se produce el hecho causante",
+      "enlace_info": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/51288",
+      "enlace_tramite": null,
+      "fuente": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/51288 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/51288/51289 ; https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/51288/51311",
+      "verificado": false,
+      "nota": "Se abonará durante el período necesario para la protección de la salud de la trabajadora y/o del hijo, como máximo hasta que éste cumpla los 9 meses, salvo que la beneficiaria se haya reincorporado con anterioridad a su puesto de trabajo anterior o a otro compatible con su situación.",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "relativo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "La prestación económica consiste en un subsidio equivalente al 100% de la base reguladora correspondiente, que será la equivalente a la que esté establecida para la prestación de incapacidad temporal, derivada de contingencias profesionales.",
+      "ambito": null,
+      "exclusiones": [
+        "No se considerará situación protegida la derivada de riesgos o patologías que puedan influir negativamente en la salud de la trabajadora o en la del hijo, cuando no esté relacionada con agentes, procedimientos o condiciones de trabajo del puesto o actividad desempeñados.",
+        "No procede el reconocimiento de la prestación económica de riesgo durante la lactancia en tanto no se haya extinguido el período de descanso por maternidad."
+      ],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": []
+      },
+      "documentos": [],
+      "textos": [
+        "0d7678c789f4ac27f57c360790c0b8b9d3c5ef9fe2674e7007eb5b1af0cb2cf1",
+        "50a4b8e6a981af207a006594e78277f6e1d7a6c4c5ac6d7de9c6569f5142b8dc",
+        "8a93836952d6c6657bbcef34f5da0519219e359e64c2b7a491cdac4a5fb91a26"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
+    },
+    {
+      "id": "solicitud-de-complemento-para-titulares-de-pension-no-contri",
+      "tipo": "ayuda",
+      "titulo": "Solicitud de complemento para titulares de pensión no contributiva que residan en una vivienda alquilada",
+      "administracion": "Estado",
+      "organismo": "Instituto de Mayores y Servicios Sociales",
+      "frases_usuario": [
+        "cobro una pensión no contributiva y vivo de alquiler",
+        "ayuda al alquiler para pensionistas",
+        "complemento de alquiler de la PNC",
+        "no me llega la pensión para pagar el alquiler"
+      ],
+      "requisitos_clave": [
+        "Tener reconocida una pensión de jubilación o incapacidad de la Seguridad Social en su modalidad no contributiva (PNC), en la fecha de la solicitud y en la de resolución.",
+        "Carecer de vivienda en propiedad.",
+        "Ser titular del contrato de arrendamiento de la vivienda.",
+        "No tener con el arrendador de la vivienda alquilada relación conyugal o de parentesco hasta el tercer grado ni constituir con aquél una unión estable y de convivencia con análoga relación de afectividad a la conyugal.",
+        "Tener fijada su residencia, como domicilio habitual, en una vivienda alquilada. Se entenderá que es el domicilio habitual cuando la vigencia del arrendamiento no sea inferior a un año y haya residido en la misma durante un período mínimo de 180 días anteriores a la fecha de la solicitud."
+      ],
+      "pasos": [
+        "Las personas interesadas podrán dirigir la solicitud de este complemento a los órganos competentes de las respectivas Comunidades Autónomas, Diputaciones Forales del País Vasco y Navarra, y Direcciones Territoriales del Instituto de Mayores y Servicios Sociales de Ceuta y Melilla, que tienen atribuida la competencia para la gestión de las pensiones no contributivas de la Seguridad Social.",
+        "A través de este servicio podrá solicitar electrónicamente este complemento mediante la cumplimentación previa del documento Formulario de solicitud en formato PDF que deberá descargar desde el detalle de este procedimiento."
+      ],
+      "documentacion": [],
+      "plazo": "El plazo de solicitud de este complemento para 2026 finalizará el 31 de diciembre.",
+      "enlace_info": "https://imserso.es/pnc-prestaciones-subvenciones/solicitud-complemento-titulares-pension-contributiva",
+      "enlace_tramite": "https://imserso.es/pnc-prestaciones-subvenciones/donde-solicitar-pension-no-contributiva-pnc",
+      "fuente": "https://imserso.es/pnc-prestaciones-subvenciones/solicitud-complemento-titulares-pension-contributiva ; https://imserso.es/web/imserso/pnc-prestaciones-subvenciones/donde-solicitar-pension-no-contributiva-pnc ; https://imserso.es/es/web/sede-electronica/procedimiento-servicios/detalle/-/asset_publisher/Clv43EZRrpqn/content/complemento-de-pnc-por-vivienda-alquilada/20123 ; https://imserso.es/pnc-prestaciones-subvenciones/donde-solicitar-pension-no-contributiva-pnc ; https://imserso.es/documents/20123/2317292/pncalquiler.pdf/7d5080cc-5622-88e7-64f1-bddba08b55b1 ; https://imserso.es/documents/20123/2317292/pncalquilerceyme.pdf/237c90f7-d45c-5d12-f81b-2ff003ea7371",
+      "verificado": false,
+      "nota": "Este procedimiento se circunscribe al ámbito de actuación del Imserso, en concreto las Ciudades Autónomas de Ceuta y Melilla; si no reside en estas ciudades, su solicitud tendrá que tramitarla ante el órgano gestor competente de la Comunidad Autónoma de su domicilio.",
+      "relacionados": [],
+      "naturaleza": "prestacion",
+      "tipoPlazo": "sin_plazo",
+      "fechaInicio": null,
+      "fechaFin": null,
+      "cuantia": "La cuantía anual del complemento asciende a 525 €.",
+      "ambito": null,
+      "exclusiones": [
+        "Si en la misma vivienda alquilada conviven dos o más personas que tuvieran reconocida una PNC, solo tendrá derecho a este complemento aquel que sea el titular del contrato de arrendamiento o, de ser varios, el primero de ellos."
+      ],
+      "codigos": {
+        "sia": [],
+        "idProc": [],
+        "bdns": [],
+        "boe": [
+          "BOE-A-2026-2548",
+          "BOE-A-2022-22128",
+          "BOE-A-2012-10476"
+        ]
+      },
+      "documentos": [
+        {
+          "titulo": "Formulario de solicitud OO. GG. Comunidades Autónomas (1.017 KB)",
+          "url": "https://imserso.es/documents/20123/2317292/pncalquiler.pdf/7d5080cc-5622-88e7-64f1-bddba08b55b1"
+        },
+        {
+          "titulo": "Formulario de solicitud para las DD.TT. del Imserso de Ceuta y Melilla (2,7 MB)",
+          "url": "https://imserso.es/documents/20123/2317292/pncalquilerceyme.pdf/237c90f7-d45c-5d12-f81b-2ff003ea7371"
+        }
+      ],
+      "textos": [
+        "69ada88a363b06fa8782efceeefe654ab7c4922e637f364c7478e735beb20abe",
+        "316e875174fabf653a0890d7dab1c1b6b8bd2b13aed3ac58bd662f5395a76b4d",
+        "1db0222194212a48dc9cf9036a7dd56b6318e452962f0f0734f2fae3fe3eddbe",
+        "fffa375d180714d7c69107d7d2e8109e54d7e3ae0fed931d11fe88fecf9f11c6"
+      ],
+      "relaciones": [],
+      "consultado": "2026-10-22"
     }
   ],
   "rastreo": {
+    "https://imserso.es/es/web/sede-electronica/procedimiento-servicios/detalle/-/asset_publisher/Clv43EZRrpqn/content/subvenciones-a-personas-en-situacion-de-dependencia-residentes-en-ceuta-y-melilla/20123": {
+      "hash": "da2bb1cc6eeda1b2684485fb4e961a64e18e4708d0c0adac1739bf1b40edf4bf",
+      "consultado": "2026-10-22",
+      "cubiertaPor": "bdns"
+    },
+    "https://imserso.es/es/web/sede-electronica/procedimiento-servicios/detalle/-/asset_publisher/Clv43EZRrpqn/content/subvenciones-a-personas-mayores-con-residencia-en-ceuta-y-melilla/20123": {
+      "hash": "d2d0640876fe44bad03edef1b7b3bd696eb784489730261fe6576b9485157ec3",
+      "consultado": "2026-10-22",
+      "cubiertaPor": "bdns"
+    },
+    "https://imserso.es/es/web/sede-electronica/procedimiento-servicios/detalle/-/asset_publisher/Clv43EZRrpqn/content/subvenciones-para-personas-con-discapacidad-residentes-en-ceuta-y-melilla/20123": {
+      "hash": "73970c41d06f58b76f9571c39397bf0d923cabd99a53d8f4a5c64705b6e8f95e",
+      "consultado": "2026-10-22",
+      "cubiertaPor": "bdns"
+    },
+    "https://imserso.es/pnc-prestaciones-subvenciones/ayudas-personas-afectadas-por-talidomida-1950-1985": {
+      "id": "ayudas-a-las-personas-afectadas-por-la-talidomida-1950-1985",
+      "hash": "d5d6329cad16702c1552db8950e990308e2dec8e1dff3e5129600307bfebb327",
+      "consultado": "2026-10-22"
+    },
+    "https://imserso.es/pnc-prestaciones-subvenciones/pnc-incapacidad": {
+      "id": "pnc-de-incapacidad",
+      "hash": "35fc663b85256b658038945098a494f558d6090cdd7032ca8f7e7ca1f6c7fbed",
+      "consultado": "2026-10-22"
+    },
+    "https://imserso.es/pnc-prestaciones-subvenciones/pnc-jubilacion": {
+      "id": "pnc-de-jubilacion",
+      "hash": "4a36c1a38322a2e0049e0f6fb24111431dfac2b9cd5b9637c3a24eae05af7a65",
+      "consultado": "2026-10-22"
+    },
     "https://imserso.es/pnc-prestaciones-subvenciones/presentaciones-sistema-autonomia-atencion-dependencia": {
       "hash": "a107aebb6b8a7cfd1a824e4895f2b508e5857ff0c64131ba08424db84beaa345",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://imserso.es/pnc-prestaciones-subvenciones/prestaciones-sociales-economicas-personas-discapacidad": {
+      "hash": "266ecbe6cd11672fc172961af21b93e7caa10263751bc402af0cf45e23866881",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://imserso.es/pnc-prestaciones-subvenciones/solicitud-complemento-titulares-pension-contributiva": {
+      "id": "solicitud-de-complemento-para-titulares-de-pension-no-contri",
+      "hash": "69ada88a363b06fa8782efceeefe654ab7c4922e637f364c7478e735beb20abe",
+      "consultado": "2026-10-22"
+    },
+    "https://imserso.es/pnc-prestaciones-subvenciones/subvenciones": {
+      "hash": "bcc297d3c2dd4502057a92dee2b52480b273b658f7d4583dcada340ff50d29f4",
       "consultado": "2026-10-22",
       "noEsAyuda": true
     },
@@ -346,15 +1560,95 @@
       "hash": "de5f1651b916021978698bf6dc45324cec79729273684b85f12a3044a955bbc9",
       "consultado": "2026-10-22"
     },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10952": {
+      "id": "gestion-de-la-prestacion-de-incapacidad-temporal",
+      "hash": "bd34e491fea293a7e82aa9cd05f593f4dd1951bc437ead17f0cb0b7f7c5a20ec",
+      "consultado": "2026-10-22"
+    },
     "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10956": {
       "id": "riesgo-durante-el-embarazo",
       "hash": "4509b9c564a42273411335276ff6e5336164363653689d6ee0286f026f4371aa",
       "consultado": "2026-10-22"
     },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10960": {
+      "id": "incapacidad-permanente",
+      "hash": "bc7c457cb51a812c2284675bfcf96686bcae88f25955b0419b69466853c03170",
+      "consultado": "2026-10-22"
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10963": {
+      "id": "jubilacion",
+      "hash": "e9a1ce777856fd0d5b3aafb9772e68690ed17e14e3ab50f9304341338db6898e",
+      "consultado": "2026-10-22"
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10964": {
+      "hash": "c54c0399d25cbf7704d47e629b454f96b6deda1cb86c3f7b0015729c495c0c6e",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10967": {
+      "hash": "1646011aea4ab55e71816577c281bf91c736386de35d67c3872cac16bc0a0deb",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10970": {
+      "hash": "c0c32c1ba416135b3928963b8c4eb909c7aed4a9d14bcac0acaf535217766c38",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
     "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/12778": {
       "hash": "cb5cf92bf5f8398b5146d527626771a828e8dca8fd1d0128f1d83577cb0fb419",
       "consultado": "2026-10-22",
       "noEsAyuda": true
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/1941": {
+      "id": "cuidado-de-menores-afectados-por-cancer-u-otra-enfermedad-gr",
+      "hash": "6fc92e3c5d1e843db1112f2c09dc2abca0586570c1ee1810b64665909525f4d0",
+      "consultado": "2026-10-22"
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/2399057c-418a-4764-a97c-e3ae9f61fb91": {
+      "hash": "3e89a8ab603116b656dd6963bd761b6cd94cd7c756ee4855b83700a9965d6f9c",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/28622": {
+      "id": "prestaciones-del-seguro-escolar",
+      "hash": "9046a46d48fed56baa4ec54fbf4a5099aa8331eef92aa5f9c0501fde809ae095",
+      "consultado": "2026-10-22"
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/28879": {
+      "hash": "4fca1ac43b27145cd4bdcc6e3e9dab552deae73e633897adb61358fac4b52df0",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/32857": {
+      "id": "lesiones-permanentes-no-incapacitantes",
+      "hash": "4f1e609fc9b5670fef79eb2d86c4f5b144a8e0fc8835129d3d96fe89de1404b9",
+      "consultado": "2026-10-22"
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/3ad031ff-e95d-4b89-a3cb-4e2c6f432e8d": {
+      "id": "amianto",
+      "hash": "c13b853279705a2545c708dad2319238baf6910c0a7dfe20cc2320978ca861a9",
+      "consultado": "2026-10-22"
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/42924": {
+      "hash": "7a354f477caf32a5bcb8d26d309297fae5716edc6ce1e8ade3886e565f3c55ad",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/4c43ce49-6636-4a12-bacf-5e6697eb81da": {
+      "id": "complemento-para-la-reduccion-de-la-brecha-de-genero",
+      "hash": "44f39cf85cd17f6be1bbbd8ac798ca16a88eb66524f0b3698fd0ad39a21179c1",
+      "consultado": "2026-10-22"
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/4c43ce49-6636-4a12-bacf-5e6697eb81da/mantenimiento+transitorio+del+complemento+por+maternidad": {
+      "id": "complemento-para-la-reduccion-de-la-brecha-de-genero",
+      "hash": "44f39cf85cd17f6be1bbbd8ac798ca16a88eb66524f0b3698fd0ad39a21179c1",
+      "consultado": "2026-10-22"
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/51288": {
+      "id": "riesgo-durante-la-lactancia-natural",
+      "hash": "0d7678c789f4ac27f57c360790c0b8b9d3c5ef9fe2674e7007eb5b1af0cb2cf1",
+      "consultado": "2026-10-22"
     },
     "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/61f8b540-c867-43cf-926d-77476b975f36": {
       "id": "corresponsabilidad-en-el-cuidado-del-lactante",
@@ -365,6 +1659,142 @@
       "id": "nacimiento-y-cuidado-de-menor",
       "hash": "db676ac6dddc25b611a11b31d9250166637261379d61fc254647316b230bebbb",
       "consultado": "2026-10-22"
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/79b71b0e-bd78-4952-a74f-eb012c21a66d": {
+      "hash": "6b1c4b855348f0037435aca8aa7a0aaf0553820979147b9b6613226e2303f529",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/9b5e05b9-90f9-490d-9fde-0cb3446fed9e": {
+      "hash": "7830fcd9c88f5e732ffa41e452edaf7fe3ae27163e52cbf8ae9db215103a939f",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/d415fd2b-cb2e-4b71-8dca-3416c5aca2d4": {
+      "hash": "728deda9bde9ec454a1ecfcd130647ff645e7b237ffde2094918c73e97ddeeeb",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.sepe.es/HomeSepe/prestaciones-desempleo/artistas.html": {
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "modificado": "Thu, 22 Oct 2026 19:04:38 GMT",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.sepe.es/HomeSepe/prestaciones-desempleo/cobrando-prestacion-subsidio-desempleo.html": {
+      "hash": "825c895a95f718c4f139295af3d0acbd8f4dcfe84506972db1d4344bf8dff811",
+      "modificado": "Thu, 22 Oct 2026 19:04:29 GMT",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.sepe.es/HomeSepe/prestaciones-desempleo/complemento-de-apoyo-empleo.html": {
+      "id": "complemento-de-apoyo-al-empleo-cae",
+      "hash": "9e171e41a7c4cd6b2a5aa6dac3169ca4ddadde6177e03529402f9518430336df",
+      "modificado": "Thu, 22 Oct 2026 19:04:23 GMT",
+      "consultado": "2026-10-22"
+    },
+    "https://www.sepe.es/HomeSepe/prestaciones-desempleo/Cuantias-anuales.html": {
+      "hash": "84d1fb9b51fe2b4511ccafa5015276acd27e00edd3adce7822246811d8f3a7a4",
+      "modificado": "Thu, 22 Oct 2026 19:03:42 GMT",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.sepe.es/HomeSepe/prestaciones-desempleo/FAQS.html": {
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "modificado": "Thu, 22 Oct 2026 19:04:35 GMT",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.sepe.es/HomeSepe/prestaciones-desempleo/Gibraltar-situacion-fronterizos.html": {
+      "id": "mi-prestacion-y-el-trabajo-en-gibraltar-situacion-de-los-fro",
+      "hash": "a826c5636dfa8bce09c96e491ec4f990cfc7fd3d7a2b102ba3d2daa1bff3979c",
+      "modificado": "Thu, 22 Oct 2026 19:04:45 GMT",
+      "consultado": "2026-10-22"
+    },
+    "https://www.sepe.es/HomeSepe/prestaciones-desempleo/impresos.html": {
+      "hash": "665a82f301e4c2ad4a3b7010722408d1020380819628d7739a2e387061f2715d",
+      "modificado": "Thu, 22 Oct 2026 19:04:57 GMT",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.sepe.es/HomeSepe/prestaciones-desempleo/instrucciones-directrices.html": {
+      "hash": "6442cbe6b57cf167c50607f175d0f2d757aa8c10b0a1d4d89d6640ece927a95a",
+      "modificado": "Thu, 22 Oct 2026 19:04:49 GMT",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.sepe.es/HomeSepe/prestaciones-desempleo/medidas-catastrofes.html": {
+      "hash": "fd557cb0ea7c9f15b697a1ee58229baaee931fe7e7a0a4e2d7407adbeefba8d2",
+      "modificado": "Thu, 22 Oct 2026 19:04:40 GMT",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.sepe.es/HomeSepe/prestaciones-desempleo/normativa-prestaciones.html": {
+      "hash": "330dbd4d4ae9d5adb27f53c85ccd8ed2b1933144225398facee61a40c2b66dd5",
+      "modificado": "Thu, 22 Oct 2026 19:04:47 GMT",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.sepe.es/HomeSepe/prestaciones-desempleo/presentar-documentos-sepe.html": {
+      "hash": "ceb50680bdc8c25db13f2ec29a9acb092885a00e632c576b2114e8fd4d476958",
+      "modificado": "Thu, 22 Oct 2026 19:04:32 GMT",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.sepe.es/HomeSepe/prestaciones-desempleo/prestacion-contributiva.html": {
+      "id": "prestacion-contributiva-por-desempleo",
+      "hash": "cd97971dac802b1a1523973d110ec31f6b31be2f92a9ce09b42e2f95789c7e62",
+      "modificado": "Thu, 22 Oct 2026 19:03:58 GMT",
+      "consultado": "2026-10-22"
+    },
+    "https://www.sepe.es/HomeSepe/prestaciones-desempleo/prestacion-sostenibilidad-mantenimiento-empleo-RED.html": {
+      "id": "prestacion-de-sostenibilidad-y-mantenimiento-del-empleo-red",
+      "hash": "a7a6968c32159bd6382200695730f1b2063539575e183e25dd27b914393b699e",
+      "modificado": "Thu, 22 Oct 2026 19:04:41 GMT",
+      "consultado": "2026-10-22"
+    },
+    "https://www.sepe.es/HomeSepe/prestaciones-desempleo/prestaciones-desempleo-trabajo-ue.html": {
+      "id": "mi-prestacion-y-el-trabajo-en-la-ue",
+      "hash": "82a57d67fa673b9912d2dd773435d8a53b4547b0a2f980ebb3d997810e634e07",
+      "modificado": "Thu, 22 Oct 2026 19:04:36 GMT",
+      "consultado": "2026-10-22"
+    },
+    "https://www.sepe.es/HomeSepe/prestaciones-desempleo/quiero-cobrar-prestacion-subsidio-desempleo.html": {
+      "hash": "9c834b92d20349739a64e2fc8c1c61cd814e394c93f37a7594bf31c1da87a899",
+      "modificado": "Thu, 22 Oct 2026 19:04:28 GMT",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.sepe.es/HomeSepe/prestaciones-desempleo/tramites-prestaciones-subsidios-desempleo.html": {
+      "hash": "7f20e1db6b79ed366e09e8d572cf341a90c9e5750de03c297808c74e443e0b62",
+      "modificado": "Thu, 22 Oct 2026 19:04:09 GMT",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=40668527": {
+      "id": "programas-valencia",
+      "hash": "8781b61887b4b92ff206455799f8ff7cf7a3a455f1351db5b732d04087ecddb1",
+      "consultado": "2026-10-22"
+    },
+    "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=5CA97AE518C9E818C12572F800415BD8": {
+      "hash": "207ccc1725e90a4b2ae12046923c0ebf7094c6be927598e12587b393b8fb6694",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=5F163188F995CA86C12582C800403610": {
+      "id": "programas-valencia-2",
+      "hash": "972793f1b8aaa991708a96fceecbfe80be051ec66559e8592348f0aed23f8f91",
+      "consultado": "2026-10-22"
+    },
+    "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=B5A0B6D8D7F8BEF1C12572F300260845": {
+      "hash": "82904d0b47f42d53e03b5483598d789ebe645eed5fb54bf3816de886d2638a79",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
+    },
+    "https://www.valencia.es/cas/bienestar-social-integracion/programas/-/content/programas?uid=BA8D7F69EC24FE0EC1257560003B4562": {
+      "hash": "13305bb4db5fd18ca7b4cf621d19091c21b1ca370c172f4a410413544ac8d1d6",
+      "consultado": "2026-10-22",
+      "noEsAyuda": true
     }
   },
   "pendientes": []

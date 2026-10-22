@@ -1,0 +1,14 @@
+## Quiero cobrar la prestación o el subsidio por desempleo
+Diferentes situaciones que se pueden producir antes de cobrar la prestación contributiva o el subsidio por desempleo.
+He trabajado más de un año
+He trabajado menos de un año
+Estoy afectado o afectada por un ERE/ERTE
+Soy persona del colectivo de artistas
+Soy persona trabajadora del campo
+Soy persona emigrante retornada
+Soy persona trabajadora del servicio del hogar
+Subsidio para víctimas de violencia de género o sexual
+Estoy en situación de nacimiento, adopción, guarda con fines de adopción o acogimiento
+Subsidio agrario
+Renta agraria
+Estoy de baja por incapacidad temporal

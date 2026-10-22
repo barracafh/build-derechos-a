@@ -1,0 +1,39 @@
+## Subpágina: Normativa y requisitos
+## Normativa y requisitos
+Real Decreto Legislativo 8/2015, de 30 de octubre, por el que se aprueba el texto refundido de la Ley General de la Seguridad Social. (BOE de 31 de octubre).
+Real Decreto 357/1991, de 15 de marzo, por el que se desarrolla en materia de pensiones no contributivas la Ley 26/1990, de 20 de diciembre, por la que se establecen en la Seguridad Social prestaciones no contributivas (integrada en el Real Decreto Legislativo anterior), (BOE de 21 de marzo).
+Orden PRE/3113/2009, de 13 de noviembre, por la que se dictan normas de aplicación y desarrollo del Real Decreto 357/1991, de 15 de marzo, por el que se desarrolla, en materia de pensiones no contributivas, la Ley 26/1990, de 20 de diciembre, por la que se establecen en la Seguridad Social prestaciones no contributivas, sobre rentas o ingresos computables y su imputación (BOE de 20 de noviembre).
+El Estado a través de la Seguridad Social garantiza a las personas comprendidas en su campo de aplicación, por realizar una actividad profesional o por cumplir los requisitos exigidos en la modalidad no contributiva, la protección adecuada frente a las contingencias y en las situaciones que se contemplan en la Ley General de la Seguridad Social.
+La pensión no contributiva de jubilación asegura a todos los ciudadanos mayores de 65 años y en estado de necesidad una prestación económica, asistencia médico-farmacéutica gratuita y servicios sociales complementarios.
+Pueden ser beneficiarios de la pensión no contributiva de jubilación los ciudadanos españoles y nacionales de otros países, con residencia legal en España que cumplen los siguientes REQUISITOS:
+Edad: tener sesenta y cinco o más años.
+Residencia: residir en territorio español y haberlo hecho durante un período de diez años, en el período que media entre la fecha de cumplimiento de los dieciséis años y la de devengo de la pensión, de los cuales dos han de ser consecutivos e inmediatamente anteriores a la fecha de la solicitud.
+Carecer de ingresos suficientes:
+Existe carencia cuando las rentas o ingresos personales de que se disponga, en cómputo anual para 2026, sean inferiores a 8.803,20 € anuales.
+No obstante, si las rentas o ingresos personales son inferiores a 8.803,20 € anuales y se convive con familiares, únicamente se cumple el requisito cuando la suma de las rentas o ingresos anuales de todos los miembros de su unidad económica de convivencia, sean inferiores a las cuantías que se recogen más adelante.
+Existirá unidad económica de convivencia en todos los casos de convivencia del beneficiario con otras personas unidas con aquel por matrimonio o por lazos de parentesco de consanguinidad o adopción hasta el segundo grado. El parentesco por consanguinidad hasta el 2º grado alcanza a: padres, abuelos, hijos, nietos y hermanos del solicitante. Las personas que convivan con el solicitante en el mismo domicilio y no estén unidas con el solicitante por matrimonio o por lazos de parentesco de consanguinidad o adopción hasta el segundo grado no se integran en la unidad económica de convivencia y las rentas o ingresos imputables a esas personas no se computan a efectos de acreditar el requisito de carecer de ingresos suficientes.
+Convivencia sólo con su cónyuge y/o parientes consanguíneos de segundo grado:
+Nº convivientes
+€/Año
+2
+14.965,44
+3
+21.127,68
+4
+27.289,92
+...
+...
+Si entre las personas con las que convive se encuentra algún pariente consanguíneo de primer grado (padres o hijos):
+Nº convivientes
+€/Año
+2
+37.413,60
+3
+52.819,20
+4
+68.224,80
+...
+...
+La pensión no contributiva de jubilación es incompatible con la pensión no contributiva de invalidez, con las pensiones asistenciales, reguladas en la Ley 45/1960, de 21 de julio, por la que se crean determinados Fondos Nacionales para la aplicación social del Impuesto y del Ahorro, y suprimidas por la Ley 28/1992, de 24 de noviembre, de Medidas Presupuestarias Urgentes y con los subsidios de garantía de ingresos mínimos y por ayuda de tercera persona contemplados por el Real Decreto Legislativo 1/2013, de 29 de noviembre, por el que se aprueba el Texto Refundido de la Ley General de derechos de las personas con discapacidad y de su inclusión social, así como con la condición de causante de la asignación familiar por hijo a cargo mayor de 18 años y con discapacidad igual o superior al 65%.
+La cuantía individual de la pensión se establece en función del número de beneficiarios de pensión no contributiva integrados en la misma unidad económica de convivencia, de los ingresos personales y/o los de las personas que integran la unidad económica, no pudiendo ser inferior dicha cuantía a 2.200,80 € anuales, que se corresponde con el 25 por 100 del importe íntegro para el año 2026.
+viernes, 26 diciembre 2025 09:38

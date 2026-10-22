@@ -120,8 +120,8 @@ describe("enmascarar", () => {
   const tel = (...partes: string[]) => partes.join(" ");
   const correo = ["buzon", "imserso.es"].join("@");
   test("hides emails and phone numbers, and leaves dates, amounts and codes alone", () => {
-    expect(enmascarar(`Escriba a ${correo} o llame al ${tel("917", "033", "000")} o al ${tel("+34", "900", "927", "567")} o al ${tel("963", "52", "54", "78")}.`)).toBe(
-      "Escriba a [email] o llame al [teléfono] o al [teléfono] o al [teléfono].",
+    expect(enmascarar(`Escriba a ${correo} o llame al ${tel("917", "033", "000")} o al ${tel("+34", "900", "927", "567")} o al ${tel("963", "52", "54", "78")} o al ${["901", "166", "565"].join("")}/${tel("915", "000", "000")} o ${tel("965", "938", "771")}- fax o ${tel("91", "568", "88", "86")}.`)).toBe(
+      "Escriba a [email] o llame al [teléfono] o al [teléfono] o al [teléfono] o al [teléfono]/[teléfono] o [teléfono]- fax o [teléfono].",
     );
     expect(enmascarar("Código SIA: 3152996. 8.803,20 € del 04-10-2025 al 28/11/2025, id 65850d68.")).toBe(
       "Código SIA: 3152996. 8.803,20 € del 04-10-2025 al 28/11/2025, id 65850d68.",
