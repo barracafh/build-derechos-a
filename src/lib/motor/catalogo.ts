@@ -356,6 +356,12 @@ function administracionDe(a: string): Ficha["administracion"] {
   return "Local";
 }
 
+function ambitoDe(a: string): string | null {
+  if (a === "Estado") return null;
+  if (a.startsWith("Generalitat")) return "Comunitat Valenciana";
+  return a.replace(/^Ajuntament de /, "");
+}
+
 // La entrada trae las fuentes en un solo texto separado por « ; »; se enlazan
 // tal cual, cada una a la página concreta que sostiene la respuesta.
 function fuentesDe(e: Entrada) {
@@ -412,6 +418,7 @@ export function fichasDelCatalogo(perfil: Perfil, hoy = new Date()): Ficha[] {
       pendiente: (PENDIENTE[e.id] ?? []).filter((c) => !conocidos.has(c)),
       verificado: e.verificado,
       detalle: {
+        ambito: ambitoDe(e.administracion),
         resumen: a.resumen,
         avisos,
         dinero: a.dinero ?? null,

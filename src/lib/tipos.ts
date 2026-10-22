@@ -51,6 +51,8 @@ export type Ficha = {
 };
 
 export type DetalleFicha = {
+  /** Nombre del ámbito: «Comunitat Valenciana», «València»… */
+  ambito: string | null;
   resumen: string[];
   avisos: string[];
   dinero: { intro: string[]; lista?: string[] } | null;

@@ -7,19 +7,28 @@ import { Fuentes } from "@/components/Fuentes";
 import { Lineas, Lista } from "@/components/Texto";
 import type { Ficha } from "@/lib/tipos";
 
-const VARIANTE_ESTADO = {
-  abierta: "default",
-  permanente: "secondary",
-  cerrada: "outline",
-  desconocido: "outline",
+// Colores de las etiquetas: texto oscuro sobre fondo claro (contraste > 7:1).
+// El estado se dice siempre con palabras, no solo con el color.
+const ESTADO = {
+  abierta: { texto: "Plazo abierto", clase: "bg-green-100 text-green-900" },
+  permanente: { texto: "Sin fecha límite", clase: "bg-green-100 text-green-900" },
+  cerrada: { texto: "Plazo cerrado", clase: "bg-orange-100 text-orange-950" },
+  desconocido: {
+    texto: "Plazo sin confirmar",
+    clase: "border-(--text-secondary) text-foreground",
+  },
 } as const;
 
-// El estado se dice con palabras, no solo con el color.
-const ETIQUETA_ESTADO = {
-  abierta: "Plazo abierto",
-  permanente: "Sin fecha límite",
-  cerrada: "Plazo cerrado",
-  desconocido: "Plazo sin confirmar",
+const AMBITO = {
+  Estado: { texto: () => "Estatal", clase: "bg-blue-100 text-blue-950" },
+  "Comunitat Valenciana": {
+    texto: (n: string | null) => `Autonómica: ${n ?? "Comunitat Valenciana"}`,
+    clase: "bg-violet-100 text-violet-950",
+  },
+  Local: {
+    texto: (n: string | null) => (n ? `Municipal: ${n}` : "Municipal"),
+    clase: "bg-pink-100 text-pink-950",
+  },
 } as const;
 
 // Etiqueta de cada bloque: pequeña y en gris, como en el resto de la herramienta.
@@ -50,13 +59,16 @@ export function TarjetaAyuda({ f, n }: { f: Ficha; n: number }) {
         <header className="grid gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <Badge
-              variant={VARIANTE_ESTADO[f.estado]}
-              className="h-8 px-3 text-base"
+              variant="outline"
+              className={`h-8 px-3 text-base ${ESTADO[f.estado].clase}`}
             >
-              {ETIQUETA_ESTADO[f.estado]}
+              {ESTADO[f.estado].texto}
             </Badge>
-            <Badge variant="outline" className="h-8 px-3 text-base">
-              {f.administracion}
+            <Badge
+              variant="outline"
+              className={`h-8 px-3 text-base ${AMBITO[f.administracion].clase}`}
+            >
+              {AMBITO[f.administracion].texto(d?.ambito ?? null)}
             </Badge>
             {!f.verificado && (
               <Badge variant="outline" className="h-8 px-3 text-base">
