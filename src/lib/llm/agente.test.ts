@@ -2,6 +2,7 @@ import { describe, expect, test } from "bun:test";
 import type { ArgsBuscar, AyudaEncontrada, ResultadoBuscar } from "@/lib/ayudas/buscar";
 import type { MensajeAgente, RespuestaAgente } from "@/lib/ia";
 import type { MensajeChat } from "@/lib/tipos";
+import { conversarConHerramientas, nuevosHallazgos } from "./agente";
 import { busquedaDelPerfil, nombrePropio } from "./bdns";
 import { responder } from "./index";
 
@@ -267,5 +268,50 @@ describe("busquedaDelPerfil", () => {
   test("nombrePropio", () => {
     expect(nombrePropio("AYUNTAMIENTO DE LA VALL D'UIXÓ")).toBe("Ayuntamiento de la Vall d'Uixó");
     expect(nombrePropio("DIPUTACIÓN PROVINCIAL DE VALENCIA")).toBe("Diputación Provincial de Valencia");
+  });
+});
+
+describe("búsquedas del agente", () => {
+  // Un agente que pide en cada ronda las llamadas de `rondas` y al final responde.
+  function agenteQuePide(rondas: object[][]) {
+    let ronda = 0;
+    return async (): Promise<RespuestaAgente> => {
+      const pedidas = rondas[ronda++];
+      if (!pedidas) return { content: "{}", tool_calls: [] };
+      return {
+        content: null,
+        tool_calls: pedidas.map((args, i) => ({
+          id: `t${ronda}-${i}`,
+          type: "function" as const,
+          function: { name: "buscar_ayudas", arguments: JSON.stringify(args) },
+        })),
+      };
+    };
+  }
+
+  test("una búsqueda por turno, aunque pida más páginas o varias a la vez", async () => {
+    const llamadas: unknown[] = [];
+    const ejecutar = async (_: string, args: unknown) => (llamadas.push(args), resultado([]));
+    const agente = agenteQuePide([
+      [{ municipio: "Gandia" }, { municipio: "Valencia" }],
+      [{ municipio: "Gandia", pagina: 2 }],
+    ]);
+    await conversarConHerramientas([usuario(TEXTO)], agente, nuevosHallazgos(), ejecutar);
+    expect(llamadas).toEqual([{ municipio: "Gandia", catalogo: false }]);
+  });
+
+  test("si no reconoce el lugar, puede buscar otra vez", async () => {
+    const llamadas: unknown[] = [];
+    const ejecutar = async (_: string, args: unknown) => {
+      llamadas.push(args);
+      return llamadas.length === 1 ? { error: "Hay varios", opciones: ["A", "B"] } : resultado([]);
+    };
+    const agente = agenteQuePide([
+      [{ municipio: "Villanueva" }],
+      [{ municipio: "Villanueva", provincia: "Valencia" }],
+      [{ municipio: "Gandia" }],
+    ]);
+    await conversarConHerramientas([usuario(TEXTO)], agente, nuevosHallazgos(), ejecutar);
+    expect(llamadas).toHaveLength(2);
   });
 });

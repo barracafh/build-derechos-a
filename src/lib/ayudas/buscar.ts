@@ -91,7 +91,8 @@ export type ResultadoBuscar = {
   origen_datos: string;
 };
 
-const FICHAS_POR_PAGINA = 12;
+// Unas 10 fichas por consulta, como pide la organización (SETUP.md).
+const FICHAS_POR_PAGINA = 10;
 const LIMITE_MS = 18_000;
 const MS_RECURRENTES = 8_000;
 

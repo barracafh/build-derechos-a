@@ -50,7 +50,7 @@ export const HERRAMIENTAS = [
             type: "integer",
             minimum: 1,
             maximum: 10,
-            description: "Página de resultados: cada página revisa 12 convocatorias más.",
+            description: "Página de resultados: cada página revisa 10 convocatorias más.",
           },
         },
         additionalProperties: false,

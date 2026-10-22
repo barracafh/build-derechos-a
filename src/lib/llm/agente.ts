@@ -119,6 +119,9 @@ export async function conversarConHerramientas(
   anteriores: string[] = [],
 ): Promise<string | null> {
   const historia: MensajeAgente[] = construirMensajes(mensajes, { herramientas: true, anteriores });
+  // Cada búsqueda son unas 13 peticiones a la BDNS: una por turno y, si no
+  // reconoció el lugar, otra para corregirlo.
+  let busquedas = 0;
   for (let ronda = 1; ronda <= RONDAS; ronda++) {
     const r = await agente(historia, HERRAMIENTAS);
     if (!r.tool_calls.length) return r.content;
@@ -129,6 +132,9 @@ export async function conversarConHerramientas(
           return { error: "No quedan llamadas: responde ya con el JSON." };
         let args: unknown = t.function.arguments;
         if (t.function.name === "buscar_ayudas") {
+          const otra = busquedas === 0 || (busquedas === 1 && hallazgos.errorUbicacion);
+          if (!otra) return { error: "Ya has buscado: responde ya con el JSON." };
+          busquedas++;
           // El catálogo ya va en el sistema: de la búsqueda solo interesa la BDNS.
           try {
             args = { ...JSON.parse(t.function.arguments || "{}"), catalogo: false };

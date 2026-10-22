@@ -1,15 +1,15 @@
 // Cliente de la API pública de la BDNS (sin clave, sin CORS: solo servidor).
-// La BDNS admite 10 peticiones por segundo por IP y responde 429 si se pasa:
-// dejamos margen con 125 ms entre inicios (8/s en cualquier ventana de 1 s),
-// como mucho 4 a la vez, y reintentamos con espera si aun así llega un 429. Caché en memoria de datos públicos
-// (nunca de lo que escribe el ciudadano).
+// La organización pide no pasar de una petición por segundo (SETUP.md): un
+// segundo entre inicios, como mucho 2 a la vez, y reintentamos con espera si
+// aun así llega un 429. Caché en memoria de datos públicos (nunca de lo que
+// escribe el ciudadano).
 
 export const API_BDNS = "https://www.infosubvenciones.es/bdnstrans/api";
 export const fichaOficial = (numero: string) =>
   `https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/${numero}`;
 
-const MAX_EN_VUELO = 4;
-const ENTRE_INICIOS_MS = 125;
+const MAX_EN_VUELO = 2;
+const ENTRE_INICIOS_MS = 1000;
 let enVuelo = 0;
 let ultimoInicio = 0;
 const cola: (() => void)[] = [];
