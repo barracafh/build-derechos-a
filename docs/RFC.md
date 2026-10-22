@@ -105,5 +105,6 @@ S0 is code, not a checklist; these are the hand-made items it needs.
 | 3 | Version `docs/` (in `.gitignore` today) or share the page another way? | none | team |
 | 4 | LLM fallback: BM25 on `frases_usuario`, or a plain "try again" message? | S3 | S3 owner |
 | 5 | S4: add `ambito`, `exclusiones` and `cuantia` as quoted fields, and hold changed requisites, deadlines or amounts of an existing aid for review before publishing? | S4 | S4 owner |
+| 6 | Third-sector resources (NGO school support and childhood programmes, 10 gathered on 22 Oct): may the chat recommend private resources, under which label and verification rule? Wanted, not built. List in `docs/backlog/third-sector-resources.md` | none | team |
 
 **Decision (2026-10-22):** Work split S0–S4 with catalogue rules in S2 and S0 first. Revisit if S0 is not done before the others start.

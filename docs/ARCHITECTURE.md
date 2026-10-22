@@ -93,6 +93,7 @@ S4 indexes offline: a daily job crawls seed pages, makes one LLM call per new or
 S4 keeps only aids that no API gives (no BDNS calls), so it never overlaps S2.
 Limits that appear first: BDNS ficha calls (1 per result) and the shared LLM rate limit.
 Embeddings and pgvector are not built until measured: past a few thousand aids, or when keyword match misses aids; the texts saved by hash let us build them without crawling again.
+A candidate next source, not built: third-sector resources (NGO programmes for school support and families), listed in `docs/backlog/third-sector-resources.md`; it needs its own shape and label, since these are services of private entities, not public aids.
 
 ## Decisions
 
