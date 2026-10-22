@@ -1,3 +1,7 @@
+"use client";
+
+import { useIdioma } from "@/components/Idioma";
+
 export type Source = { nombre: string; url: string };
 
 const sinProtocolo = (url: string) =>
@@ -6,7 +10,9 @@ const sinProtocolo = (url: string) =>
 export function Fuentes({ fuentes }: { fuentes: readonly Source[] }) {
   return (
     <div className="text-lg">
-      <h4 className="text-xl leading-[1.3] font-medium">Fuentes oficiales</h4>
+      <h4 className="text-xl leading-[1.3] font-medium">
+        {useIdioma() === "es" ? "Fuentes oficiales" : "Fonts oficials"}
+      </h4>
       <ul className="mt-3 divide-y overflow-hidden rounded-xl ring-1 ring-foreground/10">
         {fuentes.map((source) => (
           <li key={source.url}>

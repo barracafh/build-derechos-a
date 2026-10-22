@@ -3,18 +3,38 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useIdioma } from "@/components/Idioma";
+import type { Idioma } from "@/lib/idioma";
 import { TEXTO_PREGUNTA } from "@/lib/llm/pregunta";
 import type { CampoFormulario } from "@/lib/tipos";
 
 // Todo lo que falta se pregunta a la vez. Las respuestas se mandan como una
 // frase normal («Tengo 34 años. Vivo de alquiler.»): así pasan por la misma
-// lectura y validación que lo que se escribe a mano.
+// lectura y validación que lo que se escribe a mano. En valenciano, las frases
+// van en valenciano: el LLM las lee igual.
 
 type Opcion = { etiqueta: string; frase: string };
 
+// Las preguntas en castellano son las del servidor, que las usa para no
+// repetirlas.
+const PREGUNTA: Record<Idioma, Record<CampoFormulario, string>> = {
+  es: TEXTO_PREGUNTA,
+  va: {
+    necesidad: "Què necessites? Per exemple, pagar el lloguer, la llum o els llibres de l'escola.",
+    edad: "Quants anys tens?",
+    municipio: "En quin municipi vius?",
+    situacionLaboral: "Treballes ara o estàs a l'atur?",
+    vivienda: "Vius de lloguer, en una casa teua o d'una altra manera?",
+    hijos: "Tens fills? Quants?",
+    ingresos: "Quants diners entren a casa teua cada mes, més o menys?",
+    pension: "Cobres alguna pensió?",
+    discapacidad: "Tens alguna discapacitat?",
+  },
+};
+
 // Los campos con respuestas cerradas: una frase por opción que lleva a uno de
 // los valores de OPCIONES (lib/llm/pregunta.ts).
-const RESPUESTAS: Partial<Record<CampoFormulario, Opcion[]>> = {
+const RESPUESTAS_ES: Partial<Record<CampoFormulario, Opcion[]>> = {
   situacionLaboral: [
     { etiqueta: "En paro", frase: "Estoy en paro." },
     { etiqueta: "Se me acabó el paro", frase: "Se me ha acabado el paro." },
@@ -52,11 +72,71 @@ const RESPUESTAS: Partial<Record<CampoFormulario, Opcion[]>> = {
   ],
 };
 
+const RESPUESTAS: Record<Idioma, Partial<Record<CampoFormulario, Opcion[]>>> = {
+  es: RESPUESTAS_ES,
+  va: {
+    situacionLaboral: [
+      { etiqueta: "A l'atur", frase: "Estic a l'atur." },
+      { etiqueta: "Se m'ha acabat l'atur", frase: "Se m'ha acabat l'atur." },
+      { etiqueta: "Treballe", frase: "Estic treballant." },
+      { etiqueta: "Autònom/a", frase: "Treballe com a autònom/a." },
+      { etiqueta: "Jubilat/ada", frase: "Estic jubilat/ada." },
+      { etiqueta: "Estudie", frase: "Estic estudiant." },
+      { etiqueta: "Una altra", frase: "La meua situació de treball és una altra." },
+    ],
+    vivienda: [
+      { etiqueta: "De lloguer", frase: "Visc de lloguer." },
+      { etiqueta: "En una habitació", frase: "Visc en una habitació llogada." },
+      { etiqueta: "En una casa meua", frase: "Visc en una casa de la meua propietat." },
+      { etiqueta: "Una altra", frase: "Visc d'una altra manera." },
+    ],
+    hijos: [
+      { etiqueta: "No", frase: "No tinc fills." },
+      { etiqueta: "1", frase: "Tinc 1 fill." },
+      { etiqueta: "2", frase: "Tinc 2 fills." },
+      { etiqueta: "3 o més", frase: "Tinc 3 fills o més." },
+    ],
+    ingresos: [
+      { etiqueta: "Cap", frase: "No tinc ingressos." },
+      { etiqueta: "Baixos", frase: "Els meus ingressos són baixos." },
+      { etiqueta: "Mitjans", frase: "Els meus ingressos són mitjans." },
+      { etiqueta: "Alts", frase: "Els meus ingressos són alts." },
+    ],
+    pension: [
+      { etiqueta: "Sí", frase: "Cobre una pensió." },
+      { etiqueta: "No", frase: "No cobre cap pensió." },
+    ],
+    discapacidad: [
+      { etiqueta: "Sí", frase: "Tinc una discapacitat." },
+      { etiqueta: "No", frase: "No tinc cap discapacitat." },
+    ],
+  },
+};
+
 // Los campos de texto libre: cómo se convierte lo escrito en frase.
-const FRASE: Partial<Record<CampoFormulario, (v: string) => string>> = {
-  necesidad: (v) => (/[.!?]$/.test(v) ? v : `${v}.`),
-  municipio: (v) => `Vivo en ${v}.`,
-  edad: (v) => `Tengo ${v} años.`,
+const punto = (v: string) => (/[.!?]$/.test(v) ? v : `${v}.`);
+const FRASE: Record<Idioma, Partial<Record<CampoFormulario, (v: string) => string>>> = {
+  es: {
+    necesidad: punto,
+    municipio: (v) => `Vivo en ${v}.`,
+    edad: (v) => `Tengo ${v} años.`,
+  },
+  va: {
+    necesidad: punto,
+    municipio: (v) => `Visc a ${v}.`,
+    edad: (v) => `Tinc ${v} anys.`,
+  },
+};
+
+const TEXTOS = {
+  es: {
+    enviar: "Enviar respuestas",
+    ayuda: "Contesta solo lo que quieras. También puedes escribirlo abajo.",
+  },
+  va: {
+    enviar: "Enviar respostes",
+    ayuda: "Contesta només el que vulgues. També ho pots escriure a baix.",
+  },
 };
 
 export function Formulario({
@@ -70,6 +150,7 @@ export function Formulario({
   alEnviar: (texto: string) => void;
   enfocar: boolean;
 }) {
+  const idioma = useIdioma();
   const [valores, setValores] = useState<Partial<Record<CampoFormulario, string>>>({});
   const formulario = useRef<HTMLFormElement>(null);
   const poner = (c: CampoFormulario, v: string) => setValores((vs) => ({ ...vs, [c]: v }));
@@ -87,7 +168,7 @@ export function Formulario({
   const frases = campos.flatMap((c) => {
     const v = valores[c]?.trim();
     if (!v) return [];
-    return [RESPUESTAS[c] ? v : FRASE[c]!(v)];
+    return [RESPUESTAS[idioma][c] ? v : FRASE[idioma][c]!(v)];
   });
 
   return (
@@ -101,10 +182,10 @@ export function Formulario({
     >
       {campos.map((c) => {
         const nombre = `${c}-${id}`;
-        const opciones = RESPUESTAS[c];
+        const opciones = RESPUESTAS[idioma][c];
         return opciones ? (
           <fieldset key={c} className="grid gap-2">
-            <legend className="mb-2 font-medium">{TEXTO_PREGUNTA[c]}</legend>
+            <legend className="mb-2 font-medium">{PREGUNTA[idioma][c]}</legend>
             <div className="flex flex-wrap gap-2">
               {opciones.map((o) => (
                 <label
@@ -127,7 +208,7 @@ export function Formulario({
         ) : (
           <div key={c} className="grid gap-2">
             <label htmlFor={nombre} className="font-medium">
-              {TEXTO_PREGUNTA[c]}
+              {PREGUNTA[idioma][c]}
             </label>
             <Input
               id={nombre}
@@ -150,10 +231,10 @@ export function Formulario({
           disabled={frases.length === 0}
           className="h-auto min-h-12 px-5 py-2 text-lg"
         >
-          Enviar respuestas
+          {TEXTOS[idioma].enviar}
         </Button>
         <p className="text-base text-(--text-secondary)">
-          Contesta solo lo que quieras. También puedes escribirlo abajo.
+          {TEXTOS[idioma].ayuda}
         </p>
       </div>
     </form>

@@ -22,22 +22,180 @@ import { BotonAviso } from "@/components/BotonAviso";
 import { TarjetaAyuda } from "@/components/TarjetaAyuda";
 import { Formulario } from "@/components/Formulario";
 import { Lineas } from "@/components/Texto";
+import { SelectorIdioma, useIdioma } from "@/components/Idioma";
 import { ruta, site } from "@/config/sitio";
 import { CATALOGO_ACTUALIZADO } from "@/datos/actualizacion";
 import { PanelCobertura } from "@/components/PanelCobertura";
+import { LANG, type Idioma } from "@/lib/idioma";
 import type { EventoChat, MensajeChat, Paso, Respuesta } from "@/lib/tipos";
 import ficha from "../../ficha.json";
 
 // Cada texto sigue las pautas de lectura fácil (UNE 153101 EX): frases cortas,
 // una por línea, en presente y con palabras sencillas.
-const PREGUNTA = "¿Qué ayudas puedes pedir?";
+const ES = {
+  pregunta: "¿Qué ayudas puedes pedir?",
+  subtitulo: "Cuéntanos tu situación y te decimos qué ayudas pueden ser para ti.",
+  ejemplos: [
+    "Tengo 24 años, estoy en paro y vivo de alquiler en València",
+    "Tengo 2 hijos en Castelló y ingresos bajos",
+    "Soy jubilado, tengo 70 años, cobro la pensión mínima y la luz es muy cara",
+    "Tengo 3 hijos en edad escolar y vivo en València",
+  ],
+  tituloEjemplos: "Ejemplos para empezar",
+  // Lo que se ve mientras se busca, según la fase que manda el servidor.
+  paso: {
+    leyendo: "Leyendo tu mensaje",
+    reintentando: "Tarda un poco más. Lo intento otra vez",
+    comprobando: "Comprobando requisitos y plazos",
+    buscando: "Buscando convocatorias de tu zona",
+  } satisfies Record<Paso, string>,
+  pensando: "Pensando",
+  escribe: "Escribe tu situación con tus palabras",
+  buscarAyudas: "Buscar ayudas",
+  unidad: {
+    edad: "Edad",
+    municipio: "Lugar",
+    situacionLaboral: "Trabajo",
+    vivienda: "Vivienda",
+    hijos: "Hijos",
+    ingresos: "Ingresos",
+    pension: "Pensión",
+    discapacidad: "Discapacidad",
+  } as Record<string, string>,
+  // Los valores cerrados del perfil (OPCIONES de lib/llm/pregunta.ts) llegan en
+  // castellano; aquí se traducen solo para mostrarlos.
+  valor: {} as Record<string, string>,
+  loQueBuscas: "Lo que buscas",
+  cuentame: "Para buscar tus ayudas, cuéntame un poco de ti.",
+  titulo: (n: number) =>
+    n === 0 ? "No he encontrado ayudas" : n === 1 ? "Podrías optar a 1 ayuda" : `Podrías optar a ${n} ayudas`,
+  mirado: (fecha: string) => `Hemos mirado el ${fecha}.`,
+  afinar: "Para afinar la búsqueda",
+  responder: "Responder",
+  entendido: "Lo que he entendido de ti: ",
+  corrige: "Si algo está mal, escríbelo otra vez.",
+  quePuedesHacer: "Qué puedes hacer",
+  sinAyudas: [
+    "Añade más datos sobre ti.",
+    "Por ejemplo, si trabajas, cuánto ganas, si tienes hijos o si vives de alquiler.",
+    "También puedes mirar la sede electrónica de la Generalitat.",
+  ],
+  abrirSede: "Abrir la sede de la Generalitat",
+  despues: (ahora: number, despues: number) =>
+    ahora === 0
+      ? "Ayudas que no puedes pedir ahora o sin plazo confirmado"
+      : despues === 1
+        ? "1 ayuda más que no puedes pedir ahora o sin plazo confirmado"
+        : `${despues} ayudas más que no puedes pedir ahora o sin plazo confirmado`,
+  respuesta: "Respuesta: ",
+  problema: "Ha habido un problema.",
+  otraVez: "Intentar otra vez",
+  noHePodido: "No he podido buscar ahora mismo.",
+  noHePodidoReintenta: "No he podido buscar ahora mismo. Inténtalo otra vez.",
+  buscando: "Buscando ayudas.",
+  tePregunto: "Te pregunto unos datos para buscar tus ayudas.",
+  encontrado: (n: number) =>
+    n === 0 ? "No he encontrado ayudas." : `He encontrado ${n} ${n === 1 ? "ayuda" : "ayudas"}.`,
+  inicio: "Buscador de ayudas, volver al inicio",
+  actualizadas: (fecha: string) => `Ayudas actualizadas a ${fecha}`,
+  nueva: "Nueva conversación",
+  conversacion: "Conversación",
+  tu: "Tú: ",
+  privacidad: "Tu conversación solo se guarda en esta pestaña y se borra al cerrarla.",
+  aviso: "¿Algo está mal? Avísanos",
+  accesibilidad: "Accesibilidad",
+  pieza: "Una pieza del squad",
+};
 
-const EJEMPLOS = [
-  "Tengo 24 años, estoy en paro y vivo de alquiler en València",
-  "Tengo 2 hijos en Castelló y ingresos bajos",
-  "Soy jubilado, tengo 70 años, cobro la pensión mínima y la luz es muy cara",
-  "Tengo 3 hijos en edad escolar y vivo en València",
-];
+const TEXTOS: Record<Idioma, typeof ES> = {
+  es: ES,
+  va: {
+    pregunta: "Quines ajudes pots demanar?",
+    subtitulo: "Conta'ns la teua situació i et diem quines ajudes poden ser per a tu.",
+    ejemplos: [
+      "Tinc 24 anys, estic a l'atur i visc de lloguer a València",
+      "Tinc 2 fills a Castelló i ingressos baixos",
+      "Soc jubilat, tinc 70 anys, cobre la pensió mínima i la llum és molt cara",
+      "Tinc 3 fills en edat escolar i visc a València",
+    ],
+    tituloEjemplos: "Exemples per a començar",
+    paso: {
+      leyendo: "Llegint el teu missatge",
+      reintentando: "Tarda un poc més. Ho torne a intentar",
+      comprobando: "Comprovant requisits i terminis",
+      buscando: "Buscant convocatòries de la teua zona",
+    },
+    pensando: "Pensant",
+    escribe: "Escriu la teua situació amb les teues paraules",
+    buscarAyudas: "Buscar ajudes",
+    unidad: {
+      edad: "Edat",
+      municipio: "Lloc",
+      situacionLaboral: "Treball",
+      vivienda: "Habitatge",
+      hijos: "Fills",
+      ingresos: "Ingressos",
+      pension: "Pensió",
+      discapacidad: "Discapacitat",
+    },
+    valor: {
+      "en paro": "a l'atur",
+      "paro agotado": "atur esgotat",
+      trabajando: "treballant",
+      autónomo: "autònom",
+      jubilado: "jubilat",
+      estudiando: "estudiant",
+      otra: "una altra",
+      alquiler: "lloguer",
+      habitación: "habitació",
+      propiedad: "propietat",
+      "sin ingresos": "sense ingressos",
+      bajos: "baixos",
+      medios: "mitjans",
+      altos: "alts",
+    },
+    loQueBuscas: "El que busques",
+    cuentame: "Per a buscar les teues ajudes, conta'm un poc de tu.",
+    titulo: (n) =>
+      n === 0 ? "No he trobat ajudes" : n === 1 ? "Podries optar a 1 ajuda" : `Podries optar a ${n} ajudes`,
+    mirado: (fecha) => `Hem mirat el ${fecha}.`,
+    afinar: "Per a afinar la cerca",
+    responder: "Respondre",
+    entendido: "El que he entés de tu: ",
+    corrige: "Si alguna cosa està malament, torna a escriure-la.",
+    quePuedesHacer: "Què pots fer",
+    sinAyudas: [
+      "Afig més dades sobre tu.",
+      "Per exemple, si treballes, quant guanyes, si tens fills o si vius de lloguer.",
+      "També pots mirar la seu electrònica de la Generalitat.",
+    ],
+    abrirSede: "Obrir la seu de la Generalitat",
+    despues: (ahora, despues) =>
+      ahora === 0
+        ? "Ajudes que no pots demanar ara o sense termini confirmat"
+        : despues === 1
+          ? "1 ajuda més que no pots demanar ara o sense termini confirmat"
+          : `${despues} ajudes més que no pots demanar ara o sense termini confirmat`,
+    respuesta: "Resposta: ",
+    problema: "Hi ha hagut un problema.",
+    otraVez: "Tornar-ho a intentar",
+    noHePodido: "No he pogut buscar ara mateix.",
+    noHePodidoReintenta: "No he pogut buscar ara mateix. Torna-ho a intentar.",
+    buscando: "Buscant ajudes.",
+    tePregunto: "Et pregunte unes dades per a buscar les teues ajudes.",
+    encontrado: (n) =>
+      n === 0 ? "No he trobat ajudes." : `He trobat ${n} ${n === 1 ? "ajuda" : "ajudes"}.`,
+    inicio: "Cercador d'ajudes, tornar a l'inici",
+    actualizadas: (fecha) => `Ajudes actualitzades a ${fecha}`,
+    nueva: "Conversa nova",
+    conversacion: "Conversa",
+    tu: "Tu: ",
+    privacidad: "La teua conversa només es guarda en esta pestanya i s'esborra en tancar-la.",
+    aviso: "Hi ha algun error? Avisa'ns",
+    accesibilidad: "Accessibilitat",
+    pieza: "Una peça de l'squad",
+  },
+};
 
 type Mensaje =
   | { id: number; rol: "usuario"; texto: string }
@@ -45,20 +203,12 @@ type Mensaje =
   | { id: number; rol: "asistente"; estado: "error"; error: string; historial: MensajeChat[] }
   | { id: number; rol: "asistente"; estado: "ok"; respuesta: Respuesta };
 
-// Lo que se ve mientras se busca, según la fase que manda el servidor.
-const TEXTO_PASO: Record<Paso, string> = {
-  leyendo: "Leyendo tu mensaje",
-  reintentando: "Tarda un poco más. Lo intento otra vez",
-  comprobando: "Comprobando requisitos y plazos",
-  buscando: "Buscando convocatorias de tu zona",
-};
-
 // La conversación se guarda solo en esta pestaña (sessionStorage): sobrevive a
 // recargar y se borra al cerrarla. Nunca sale del navegador.
 const CLAVE_CONVERSACION = "akorda:conversacion";
 
-const fechaLarga = (iso: string) =>
-  new Date(`${iso}T12:00:00`).toLocaleDateString("es-ES", {
+const fechaLarga = (iso: string, idioma: Idioma) =>
+  new Date(`${iso}T12:00:00`).toLocaleDateString(LANG[idioma], {
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -81,6 +231,7 @@ function Composer({
   flotante: boolean;
   entrada: RefObject<HTMLTextAreaElement | null>;
 }) {
+  const t = TEXTOS[useIdioma()];
   // El cuadro crece con el texto hasta un máximo, en todos los navegadores.
   useEffect(() => {
     const el = entrada.current;
@@ -108,7 +259,7 @@ function Composer({
       )}
     >
       <label htmlFor="situacion" className="sr-only">
-        Escribe tu situación con tus palabras
+        {t.escribe}
       </label>
       <textarea
         id="situacion"
@@ -119,13 +270,13 @@ function Composer({
         rows={1}
         maxLength={2000}
         autoComplete="off"
-        placeholder="Escribe tu situación con tus palabras"
+        placeholder={t.escribe}
         className="max-h-52 min-h-12 min-w-0 flex-1 resize-none bg-transparent py-3 text-lg leading-6 placeholder:text-(--text-secondary)"
       />
       <Button
         type="submit"
         variant="sunset"
-        aria-label="Buscar ayudas"
+        aria-label={t.buscarAyudas}
         disabled={ocupado || !texto.trim()}
         className="size-12 rounded-full"
       >
@@ -134,17 +285,6 @@ function Composer({
     </form>
   );
 }
-
-const UNIDAD_HECHO: Record<string, string> = {
-  edad: "Edad",
-  municipio: "Lugar",
-  situacionLaboral: "Trabajo",
-  vivienda: "Vivienda",
-  hijos: "Hijos",
-  ingresos: "Ingresos",
-  pension: "Pensión",
-  discapacidad: "Discapacidad",
-};
 
 function VistaRespuesta({
   id,
@@ -159,10 +299,12 @@ function VistaRespuesta({
   alEnviar: (texto: string) => void;
   activa: boolean;
 }) {
+  const idioma = useIdioma();
+  const t = TEXTOS[idioma];
   const n = r.fichas.length;
   const entendido = [
-    ...r.perfil.hechos.map((h) => `${UNIDAD_HECHO[h.campo]}: ${h.valor}`),
-    ...(r.perfil.necesidad ? [`Lo que buscas: ${r.perfil.necesidad}`] : []),
+    ...r.perfil.hechos.map((h) => `${t.unidad[h.campo]}: ${t.valor[h.valor] ?? h.valor}`),
+    ...(r.perfil.necesidad ? [`${t.loQueBuscas}: ${r.perfil.necesidad}`] : []),
   ];
   const esAhora = (f: Respuesta["fichas"][number]) =>
     f.estado === "abierta" || f.estado === "permanente";
@@ -176,7 +318,7 @@ function VistaRespuesta({
   if (n === 0 && r.pregunta)
     return campos.length ? (
       <div className="grid gap-6 pt-1">
-        <p>Para buscar tus ayudas, cuéntame un poco de ti.</p>
+        <p>{t.cuentame}</p>
         {activa && <Formulario id={id} campos={campos} alEnviar={alEnviar} enfocar />}
       </div>
     ) : (
@@ -190,20 +332,16 @@ function VistaRespuesta({
           tabIndex={-1}
           className="font-sans text-3xl leading-9 font-medium"
         >
-          {n === 0
-            ? "No he encontrado ayudas"
-            : n === 1
-              ? "Podrías optar a 1 ayuda"
-              : `Podrías optar a ${n} ayudas`}
+          {t.titulo(n)}
         </h2>
         <p className="text-base text-(--text-secondary)">
-          Hemos mirado el {fechaLarga(r.cobertura.fechaConsulta)}.
+          {t.mirado(fechaLarga(r.cobertura.fechaConsulta, idioma))}
         </p>
       </div>
 
       {r.pregunta && campos.length === 0 && (
         <section className="flex flex-wrap items-center gap-x-4 gap-y-2">
-          <h3 className="sr-only">Para afinar la búsqueda</h3>
+          <h3 className="sr-only">{t.afinar}</h3>
           <p>{r.pregunta}</p>
           <Button
             type="button"
@@ -211,17 +349,17 @@ function VistaRespuesta({
             onClick={alPreguntar}
             className="h-auto min-h-11 px-4 py-2 text-base"
           >
-            Responder
+            {t.responder}
           </Button>
         </section>
       )}
 
       {entendido.length > 0 && (
         <p>
-          <span className="font-medium">Lo que he entendido de ti: </span>
+          <span className="font-medium">{t.entendido}</span>
           {entendido.join(" · ")}.{" "}
           <span className="text-(--text-secondary)">
-            Si algo está mal, escríbelo otra vez.
+            {t.corrige}
           </span>
         </p>
       )}
@@ -231,14 +369,8 @@ function VistaRespuesta({
           render={<section />}
           className="gap-4 bg-muted px-6 py-6 text-lg ring-0"
         >
-          <h3 className={H3}>Qué puedes hacer</h3>
-          <Lineas
-            lineas={[
-              "Añade más datos sobre ti.",
-              "Por ejemplo, si trabajas, cuánto ganas, si tienes hijos o si vives de alquiler.",
-              "También puedes mirar la sede electrónica de la Generalitat.",
-            ]}
-          />
+          <h3 className={H3}>{t.quePuedesHacer}</h3>
+          <Lineas lineas={t.sinAyudas} />
           <div>
             <a
               href="https://sede.gva.es"
@@ -247,7 +379,7 @@ function VistaRespuesta({
                 "h-auto min-h-12 px-5 py-2 text-lg",
               )}
             >
-              Abrir la sede de la Generalitat
+              {t.abrirSede}
               <ArrowUpRight aria-hidden="true" className="size-5" />
             </a>
           </div>
@@ -268,11 +400,7 @@ function VistaRespuesta({
                   aria-hidden="true"
                   className="size-5 shrink-0 transition-transform group-open:rotate-90"
                 />
-                {ahora.length === 0
-                  ? "Ayudas que no puedes pedir ahora o sin plazo confirmado"
-                  : despues.length === 1
-                    ? "1 ayuda más que no puedes pedir ahora o sin plazo confirmado"
-                    : `${despues.length} ayudas más que no puedes pedir ahora o sin plazo confirmado`}
+                {t.despues(ahora.length, despues.length)}
               </summary>
               <ol className="mt-4 grid grid-cols-[minmax(0,1fr)] gap-6">
                 {despues.map((x, i) => (
@@ -287,7 +415,7 @@ function VistaRespuesta({
       {campos.length > 0 && activa && (
         <section aria-labelledby={`afinar-${id}`} className="grid gap-6">
           <h3 id={`afinar-${id}`} className={H3}>
-            Para afinar la búsqueda
+            {t.afinar}
           </h3>
           <Formulario id={id} campos={campos} alEnviar={alEnviar} enfocar={false} />
         </section>
@@ -313,6 +441,7 @@ function BurbujaAsistente({
   activa: boolean;
   alReintentar: (id: number, historial: MensajeChat[]) => void;
 }) {
+  const t = TEXTOS[useIdioma()];
   return (
     <div className="grid grid-cols-[36px_minmax(0,1fr)] gap-x-3 md:gap-x-4">
       <span
@@ -326,7 +455,7 @@ function BurbujaAsistente({
         key={m.estado}
         className="aparece min-w-0 text-lg leading-[1.6] [&>:not(.sr-only)~*]:mt-8"
       >
-        <span className="sr-only">Respuesta: </span>
+        <span className="sr-only">{t.respuesta}</span>
         {m.estado === "cargando" && (
           <p className="flex items-center gap-3 leading-9 text-(--text-secondary)">
             <span aria-hidden="true" className="escribiendo flex gap-1">
@@ -335,7 +464,7 @@ function BurbujaAsistente({
               <span className="size-1.5 rounded-full bg-current" />
             </span>
             <span key={m.paso ?? "buscando"} className="aparece">
-              {m.paso ? TEXTO_PASO[m.paso] : "Pensando"}
+              {m.paso ? t.paso[m.paso] : t.pensando}
             </span>
           </p>
         )}
@@ -344,7 +473,7 @@ function BurbujaAsistente({
             role="alert"
             className="rounded-lg bg-(--warning) px-4 py-3 text-(--warning-foreground)"
           >
-            <p className="font-medium">Ha habido un problema.</p>
+            <p className="font-medium">{t.problema}</p>
             <p>{m.error}</p>
             <Button
               type="button"
@@ -352,7 +481,7 @@ function BurbujaAsistente({
               onClick={() => alReintentar(m.id, m.historial)}
               className="mt-3 h-auto min-h-12 px-5 py-2 text-lg"
             >
-              Intentar otra vez
+              {t.otraVez}
             </Button>
           </div>
         )}
@@ -371,6 +500,8 @@ function BurbujaAsistente({
 }
 
 export function Chat() {
+  const idioma = useIdioma();
+  const t = TEXTOS[idioma];
   const [mensajes, setMensajes] = useState<Mensaje[]>([]);
   const [texto, setTexto] = useState("");
   const [anuncio, setAnuncio] = useState("");
@@ -465,7 +596,7 @@ export function Chat() {
 
   async function buscar(idA: number, historial: MensajeChat[]) {
     reemplazar(idA, { id: idA, rol: "asistente", estado: "cargando" });
-    setAnuncio("Buscando ayudas.");
+    setAnuncio(t.buscando);
     // La última respuesta: el servidor junta su perfil con lo nuevo y le
     // recuerda al LLM qué ayudas ya se vieron.
     const previa = mensajes
@@ -483,25 +614,25 @@ export function Chat() {
       });
       if (!res.ok || !res.body) {
         const datos = await res.json().catch(() => null);
-        throw new Error(datos?.error ?? "No he podido buscar ahora mismo.");
+        throw new Error(datos?.error ?? t.noHePodido);
       }
       // Llega una línea JSON por evento: fases y, al final, la respuesta.
       let respuesta: Respuesta | null = null;
       let resto = "";
       const lector = res.body.pipeThrough(new TextDecoderStream()).getReader();
-      for (let t = await lector.read(); !t.done; t = await lector.read()) {
-        const lineas = (resto + t.value).split("\n");
+      for (let l = await lector.read(); !l.done; l = await lector.read()) {
+        const lineas = (resto + l.value).split("\n");
         resto = lineas.pop()!;
         for (const linea of lineas.filter(Boolean)) {
           const e = JSON.parse(linea) as EventoChat;
           if ("respuesta" in e) respuesta = e.respuesta;
           else {
             reemplazar(idA, { id: idA, rol: "asistente", estado: "cargando", paso: e.paso });
-            setAnuncio(`${TEXTO_PASO[e.paso]}.`);
+            setAnuncio(`${t.paso[e.paso]}.`);
           }
         }
       }
-      if (!respuesta) throw new Error("No he podido buscar ahora mismo.");
+      if (!respuesta) throw new Error(t.noHePodido);
       reemplazar(idA, { id: idA, rol: "asistente", estado: "ok", respuesta });
       const n = respuesta.fichas.length;
       // Una pregunta se lee en voz alta y el foco se queda en el cuadro de
@@ -509,16 +640,12 @@ export function Chat() {
       if (n === 0 && respuesta.pregunta) {
         setAnuncio(
           respuesta.formulario.length
-            ? "Te pregunto unos datos para buscar tus ayudas."
+            ? t.tePregunto
             : respuesta.pregunta,
         );
         return;
       }
-      setAnuncio(
-        n === 0
-          ? "No he encontrado ayudas."
-          : `He encontrado ${n} ${n === 1 ? "ayuda" : "ayudas"}.`,
-      );
+      setAnuncio(t.encontrado(n));
       setFocoEn(idA);
     } catch (err) {
       reemplazar(idA, {
@@ -529,9 +656,9 @@ export function Chat() {
         error:
           err instanceof Error
             ? err.message
-            : "No he podido buscar ahora mismo. Inténtalo otra vez.",
+            : t.noHePodidoReintenta,
       });
-      setAnuncio("Ha habido un problema.");
+      setAnuncio(t.problema);
     }
   }
 
@@ -573,7 +700,7 @@ export function Chat() {
         <button
           type="button"
           onClick={nueva}
-          aria-label="Buscador de ayudas, volver al inicio"
+          aria-label={t.inicio}
           className="cursor-pointer rounded-lg"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -591,8 +718,9 @@ export function Chat() {
               aria-hidden="true"
               className="size-2.5 shrink-0 rounded-full bg-green-700"
             />
-            Ayudas actualizadas a {fechaLarga(CATALOGO_ACTUALIZADO)}
+            {t.actualizadas(fechaLarga(CATALOGO_ACTUALIZADO, idioma))}
           </p>
+          <SelectorIdioma />
           {enChat && (
             <Button
               type="button"
@@ -601,7 +729,7 @@ export function Chat() {
               className="h-9 px-3 text-base"
             >
               <SquarePen aria-hidden="true" className="size-4" />
-              Nueva conversación
+              {t.nueva}
             </Button>
           )}
         </div>
@@ -616,11 +744,10 @@ export function Chat() {
           <div className="mx-auto grid w-full max-w-[760px] flex-1 grid-cols-[minmax(0,1fr)] content-center gap-10 px-(--page-gutter) py-10">
             <div className="grid gap-5 text-center">
               <h1 className="font-sans text-[clamp(32px,5vw,48px)] leading-[1.15] font-medium">
-                {PREGUNTA}
+                {t.pregunta}
               </h1>
               <p className="text-xl leading-[1.5] text-(--text-secondary)">
-                Cuéntanos tu situación y te decimos qué ayudas pueden ser para
-                ti.
+                {t.subtitulo}
               </p>
             </div>
 
@@ -640,10 +767,10 @@ export function Chat() {
                 id="titulo-ejemplos"
                 className="font-sans text-xl leading-[1.3] font-medium"
               >
-                Ejemplos para empezar
+                {t.tituloEjemplos}
               </h2>
               <ul>
-                {EJEMPLOS.map((ej) => (
+                {t.ejemplos.map((ej) => (
                   <li key={ej}>
                     <button
                       type="button"
@@ -663,9 +790,9 @@ export function Chat() {
           </div>
         ) : (
           <>
-            <h1 className="sr-only">{PREGUNTA}</h1>
+            <h1 className="sr-only">{t.pregunta}</h1>
             <section
-              aria-label="Conversación"
+              aria-label={t.conversacion}
               className="mx-auto grid w-full max-w-[760px] flex-1 grid-cols-[minmax(0,1fr)] content-start gap-10 px-(--page-gutter) pt-6 pb-10"
             >
               {mensajes.map((m) =>
@@ -675,7 +802,7 @@ export function Chat() {
                     ref={m.id === idUltimoUsuario ? ultimoUsuario : undefined}
                     className="aparece ml-auto max-w-[85%] scroll-mt-4 rounded-3xl bg-muted px-5 py-3 text-lg leading-[1.6] whitespace-pre-wrap [overflow-wrap:anywhere]"
                   >
-                    <span className="sr-only">Tú: </span>
+                    <span className="sr-only">{t.tu}</span>
                     {m.texto}
                   </div>
                 ) : (
@@ -693,7 +820,7 @@ export function Chat() {
               {hayRespuesta && (
                 <footer className="flex flex-wrap items-center gap-3">
                   <p className="w-full text-base text-(--text-secondary)">
-                    Tu conversación solo se guarda en esta pestaña y se borra al cerrarla.
+                    {t.privacidad}
                   </p>
                   <a
                     href={site.feedbackUrl}
@@ -702,7 +829,7 @@ export function Chat() {
                       "h-auto min-h-12 px-5 py-2 text-lg",
                     )}
                   >
-                    ¿Algo está mal? Avísanos
+                    {t.aviso}
                   </a>
                   <Link
                     href="/declaracion-de-accesibilidad"
@@ -711,7 +838,7 @@ export function Chat() {
                       "h-auto min-h-12 px-5 py-2 text-lg",
                     )}
                   >
-                    Accesibilidad
+                    {t.accesibilidad}
                   </Link>
                 </footer>
               )}
@@ -737,7 +864,7 @@ export function Chat() {
         <footer className="px-(--page-gutter) pb-4">
           <div className="mx-auto flex max-w-(--container-content) flex-wrap items-center justify-between gap-3 border-t pt-4">
             <p className="text-base text-(--text-secondary)">
-              Una pieza del squad{" "}
+              {t.pieza}{" "}
               <span className="font-mono">{ficha.equipo}</span> · Build night
             </p>
             <div className="flex flex-wrap items-center gap-3">
@@ -748,7 +875,7 @@ export function Chat() {
                   "h-auto min-h-11 px-4 py-2 text-base",
                 )}
               >
-                Accesibilidad
+                {t.accesibilidad}
               </Link>
               <BotonAviso discreto />
             </div>

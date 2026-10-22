@@ -1,6 +1,14 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
+import { useIdioma } from "@/components/Idioma";
 import { site } from "@/config/sitio";
+
+const TEXTO = {
+  es: "¿Algo está mal? Avísanos",
+  va: "Hi ha algun error? Avisa'ns",
+};
 
 export function BotonAviso({ discreto = false }: { discreto?: boolean }) {
   return (
@@ -13,7 +21,7 @@ export function BotonAviso({ discreto = false }: { discreto?: boolean }) {
           : "h-auto min-h-12 px-5 py-2 text-lg",
       )}
     >
-      ¿Algo está mal? Avísanos
+      {TEXTO[useIdioma()]}
     </a>
   );
 }
