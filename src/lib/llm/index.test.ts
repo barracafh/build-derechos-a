@@ -3,6 +3,7 @@ import type { Mensaje } from "@/lib/ia";
 import type { MensajeChat, Respuesta } from "@/lib/tipos";
 import { VERSION_CENTRAL } from "@/lib/motor/central";
 import { responder } from "./index";
+import { TEXTO_PREGUNTA } from "./pregunta";
 
 const hoy = new Date("2026-10-22T10:00:00+02:00");
 const usuario = (texto: string): MensajeChat => ({ rol: "usuario", texto });
@@ -134,6 +135,19 @@ describe("perfiles de prueba con el LLM", () => {
 });
 
 describe("responder", () => {
+  test("una queja tras el cuestionario antiguo retoma la conversación sin anunciar cero ayudas", async () => {
+    const { completar } = llmFalso({ hechos: [], necesidad: null, elegidos: [] });
+    const r = await responder([
+      usuario("Hola"),
+      { rol: "asistente", texto: Object.values(TEXTO_PREGUNTA).join(" ") },
+      usuario("Oye, no puedo contestarte a todo así de mal"),
+    ], { completar, hoy });
+    expect(r.formulario[0]).toBe("necesidad");
+    expect(r.formulario.length).toBeGreaterThan(1);
+    expect(r.pregunta).not.toBeNull();
+    expect(r.perfil).toEqual({ hechos: [], necesidad: null });
+  });
+
   test("ningún texto del LLM llega a una ficha salvo las citas", async () => {
     const { completar } = llmFalso({
       elegidos: [

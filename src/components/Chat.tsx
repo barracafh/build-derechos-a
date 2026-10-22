@@ -26,9 +26,10 @@ import { Lineas } from "@/components/Texto";
 import { SelectorIdioma, useIdioma } from "@/components/Idioma";
 import { ruta, site } from "@/config/sitio";
 import { CATALOGO_ACTUALIZADO } from "@/datos/actualizacion";
+import { TEXTO_PREGUNTA } from "@/lib/llm/pregunta";
 import { PanelCobertura } from "@/components/PanelCobertura";
 import { LANG, type Idioma } from "@/lib/idioma";
-import type { EventoChat, MensajeChat, Paso, Respuesta } from "@/lib/tipos";
+import type { CampoFormulario, EventoChat, MensajeChat, Paso, Respuesta } from "@/lib/tipos";
 import ficha from "../../ficha.json";
 
 // Cada texto sigue las pautas de lectura fácil (UNE 153101 EX): frases cortas,
@@ -70,7 +71,7 @@ const ES = {
   // castellano; aquí se traducen solo para mostrarlos.
   valor: {} as Record<string, string>,
   loQueBuscas: "Lo que buscas",
-  cuentame: "Para buscar tus ayudas, cuéntame un poco de ti.",
+  cuentame: "Para buscar tus ayudas, completa los datos que quieras. No hace falta responder a todo.",
   titulo: (n: number) =>
     n === 0 ? "No he encontrado ayudas" : n === 1 ? "Podrías optar a 1 ayuda" : `Podrías optar a ${n} ayudas`,
   mirado: (fecha: string) => `Hemos mirado el ${fecha}.`,
@@ -101,7 +102,7 @@ const ES = {
   encontrado: (n: number) =>
     n === 0 ? "No he encontrado ayudas." : `He encontrado ${n} ${n === 1 ? "ayuda" : "ayudas"}.`,
   inicio: "Buscador de ayudas, volver al inicio",
-  actualizadas: (fecha: string) => `Ayudas actualizadas a ${fecha}`,
+  actualizadas: (fecha: string) => `Catálogo revisado el ${fecha}`,
   nueva: "Nueva conversación",
   conversacion: "Conversación",
   tu: "Tú: ",
@@ -161,7 +162,7 @@ const TEXTOS: Record<Idioma, typeof ES> = {
       bajos: "baixos",
     },
     loQueBuscas: "El que busques",
-    cuentame: "Per a buscar les teues ajudes, conta'm un poc de tu.",
+    cuentame: "Per a buscar les teues ajudes, completa les dades que vulgues. No cal respondre a tot.",
     titulo: (n) =>
       n === 0 ? "No he trobat ajudes" : n === 1 ? "Podries optar a 1 ajuda" : `Podries optar a ${n} ajudes`,
     mirado: (fecha) => `Hem mirat el ${fecha}.`,
@@ -192,7 +193,7 @@ const TEXTOS: Record<Idioma, typeof ES> = {
     encontrado: (n) =>
       n === 0 ? "No he trobat ajudes." : `He trobat ${n} ${n === 1 ? "ajuda" : "ajudes"}.`,
     inicio: "Cercador d'ajudes, tornar a l'inici",
-    actualizadas: (fecha) => `Ajudes actualitzades a ${fecha}`,
+    actualizadas: (fecha) => `Catàleg revisat el ${fecha}`,
     nueva: "Conversa nova",
     conversacion: "Conversa",
     tu: "Tu: ",
@@ -315,13 +316,17 @@ function VistaRespuesta({
     f.estado === "abierta" || f.estado === "permanente";
   const ahora = r.fichas.filter(esAhora);
   const despues = r.fichas.filter((f) => !esAhora(f));
-  // Las conversaciones guardadas antes del formulario no lo traen.
-  const campos = r.formulario ?? [];
+  // Las conversaciones antiguas pueden traer las preguntas sin los campos.
+  // También se presentan como formulario, no como un párrafo de preguntas.
+  const campos = r.formulario?.length
+    ? r.formulario
+    : (Object.keys(TEXTO_PREGUNTA) as CampoFormulario[])
+      .filter((c) => r.pregunta?.includes(TEXTO_PREGUNTA[c]));
   // Mientras se conoce a la persona, la respuesta es solo la pregunta o el
   // formulario, como en un chat. El formato de resultados es para cuando hay
   // ayudas que enseñar. Solo la última respuesta deja contestar.
   if (n === 0 && r.pregunta)
-    return campos.length ? (
+    return campos.length > 1 ? (
       <div className="grid gap-6 pt-1">
         <p>{t.cuentame}</p>
         {activa && <Formulario id={id} campos={campos} alEnviar={alEnviar} enfocar />}
@@ -344,7 +349,7 @@ function VistaRespuesta({
         </p>
       </div>
 
-      {r.pregunta && campos.length === 0 && (
+      {r.pregunta && campos.length <= 1 && (
         <section className="flex flex-wrap items-center gap-x-4 gap-y-2">
           <h3 className="sr-only">{t.afinar}</h3>
           <p>{r.pregunta}</p>
@@ -417,7 +422,7 @@ function VistaRespuesta({
         </>
       )}
 
-      {campos.length > 0 && activa && (
+      {campos.length > 1 && activa && (
         <section aria-labelledby={`afinar-${id}`} className="grid gap-6">
           <h3 id={`afinar-${id}`} className={H3}>
             {t.afinar}
@@ -623,7 +628,9 @@ export function Chat() {
       m.rol === "usuario"
         ? [{ rol: "usuario", texto: m.texto }]
         : m.estado === "ok" && m.respuesta.pregunta
-          ? [{ rol: "asistente", texto: m.respuesta.pregunta }]
+          ? m.respuesta.formulario?.length
+            ? m.respuesta.formulario.map((c) => ({ rol: "asistente" as const, texto: TEXTO_PREGUNTA[c] }))
+            : [{ rol: "asistente", texto: m.respuesta.pregunta }]
           : [],
     );
     return [...previos, { rol: "usuario" as const, texto: nuevo }].slice(-60);
@@ -676,7 +683,7 @@ export function Chat() {
       // texto, o va al formulario, para contestar sin moverse.
       if (n === 0 && respuesta.pregunta) {
         setAnuncio(
-          respuesta.formulario.length
+          respuesta.formulario.length > 1
             ? t.tePregunto
             : respuesta.pregunta,
         );
@@ -751,10 +758,6 @@ export function Chat() {
         </button>
         <div className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2">
           <p className="flex items-center gap-2 text-base text-(--text-secondary)">
-            <span
-              aria-hidden="true"
-              className="size-2.5 shrink-0 rounded-full bg-green-700"
-            />
             {t.actualizadas(fechaLarga(CATALOGO_ACTUALIZADO, idioma))}
           </p>
           <SelectorIdioma />

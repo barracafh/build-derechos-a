@@ -1,8 +1,7 @@
 import type { CampoFormulario, CampoPerfil, Ficha, MensajeChat, Perfil } from "@/lib/tipos";
 
-// Las preguntas las elige el código, no el modelo (spec 003, FR-005). Se
-// preguntan todos los datos que faltan a la vez, en un formulario, para no ir y
-// volver al modelo por cada uno.
+// Las preguntas las elige el código, no el modelo. Si falta más de un dato,
+// la interfaz los presenta juntos en un formulario, nunca como un párrafo.
 
 export const TEXTO_PREGUNTA: Record<CampoFormulario, string> = {
   necesidad: "¿Qué necesitas? Por ejemplo, pagar el alquiler, la luz o los libros del colegio.",
@@ -50,29 +49,40 @@ const BASICOS: CampoPerfil[] = [
   "ingresos",
 ];
 
-// 1. Qué necesita, si aún no hay ayudas. 2. Lo que piden más fichas. 3. Los
-// datos básicos. Nunca se repite una pregunta ya hecha: si la persona la dejó
-// sin contestar, no se vuelve a pedir.
+// Primero la necesidad; después, lo que falta para buscar o afinar las fichas.
+// Las preguntas individuales se pueden saltar. Los antiguos cuestionarios en
+// bloque no cuentan como preguntas atendidas: permiten retomar la conversación.
 export function elegirPreguntas(
   fichas: Ficha[],
   perfil: Perfil,
   mensajes: MensajeChat[],
 ): { formulario: CampoFormulario[]; pregunta: string | null } {
-  const hechas = mensajes.filter((m) => m.rol === "asistente").map((m) => m.texto);
-  const libre = (c: CampoFormulario) => !hechas.some((t) => t.includes(TEXTO_PREGUNTA[c]));
+  const hechas = new Set(
+    mensajes.filter((m) => m.rol === "asistente").flatMap((m) => {
+      const campos = (Object.keys(TEXTO_PREGUNTA) as CampoFormulario[])
+        .filter((c) => m.texto.includes(TEXTO_PREGUNTA[c]));
+      return campos.length === 1 ? campos : [];
+    }),
+  );
+  const libre = (c: CampoFormulario) => !hechas.has(c);
   const conocidos = new Set(perfil.hechos.map((h) => h.campo));
 
   const cuenta = new Map<CampoPerfil, number>();
   for (const f of fichas) for (const c of f.pendiente) cuenta.set(c, (cuenta.get(c) ?? 0) + 1);
   const porFichas = [...cuenta].sort((a, b) => b[1] - a[1]).map(([c]) => c);
-  const formulario: CampoFormulario[] = [...new Set([...porFichas, ...BASICOS])].filter(
+  const candidatas = fichas.length ? porFichas : [...porFichas, ...BASICOS];
+  const formulario: CampoFormulario[] = [...new Set(candidatas)].filter(
     (c) => !conocidos.has(c) && libre(c),
   );
-  if (!perfil.necesidad && fichas.length === 0 && libre("necesidad"))
+  if (!perfil.necesidad && !perfil.hechos.length && fichas.length === 0 && libre("necesidad"))
     formulario.unshift("necesidad");
 
   return {
     formulario,
-    pregunta: formulario.length ? formulario.map((c) => TEXTO_PREGUNTA[c]).join("\n") : null,
+    pregunta: formulario.length
+      ? formulario.map((c) => TEXTO_PREGUNTA[c]).join("\n")
+      : fichas.length === 0 && !perfil.hechos.length && !perfil.necesidad
+        ? "Todavía no tengo información para buscar ayudas. Cuando quieras, cuéntame qué necesitas, sin datos personales."
+        : null,
   };
 }

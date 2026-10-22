@@ -8,7 +8,7 @@ import type { Idioma } from "@/lib/idioma";
 import { TEXTO_PREGUNTA } from "@/lib/llm/pregunta";
 import type { CampoFormulario } from "@/lib/tipos";
 
-// Todo lo que falta se pregunta a la vez. Las respuestas se mandan como una
+// Si faltan varios datos se muestran juntos. Las respuestas se mandan como una
 // frase normal («Tengo 34 años. Vivo de alquiler.»): así pasan por la misma
 // lectura y validación que lo que se escribe a mano. En valenciano, las frases
 // van en valenciano: el LLM las lee igual.
@@ -150,12 +150,16 @@ const FRASE: Record<Idioma, Partial<Record<CampoFormulario, (v: string) => strin
 
 const TEXTOS = {
   es: {
-    enviar: "Enviar respuestas",
+    enviar: "Continuar",
+    saltar: "Prefiero no responder",
+    omitir: "Prefiero no responder a estas preguntas.",
     cual: "¿Cuál?",
     ayuda: "Contesta solo lo que quieras. También puedes escribirlo abajo.",
   },
   va: {
-    enviar: "Enviar respostes",
+    enviar: "Continuar",
+    saltar: "Preferisc no respondre",
+    omitir: "Preferisc no respondre a estes preguntes.",
     cual: "Quina?",
     ayuda: "Contesta només el que vulgues. També ho pots escriure a baix.",
   },
@@ -269,10 +273,18 @@ export function Formulario({
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
         <Button
           type="submit"
+          variant="sunset"
           disabled={frases.length === 0}
           className="h-auto min-h-12 px-5 py-2 text-lg"
         >
           {TEXTOS[idioma].enviar}
+        </Button>
+        <Button
+          type="button"
+          variant="outline"
+          onClick={() => alEnviar(TEXTOS[idioma].omitir)}
+        >
+          {TEXTOS[idioma].saltar}
         </Button>
         <p className="text-base text-(--text-secondary)">
           {TEXTOS[idioma].ayuda}
