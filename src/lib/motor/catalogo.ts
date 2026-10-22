@@ -379,6 +379,84 @@ const ORDEN: Record<Ficha["estado"], number> = {
   cerrada: 3,
 };
 
+/** Ids de las ayudas del catálogo que el motor sabe presentar. */
+export const IDS_AYUDAS = ayudas.map((e) => e.id).filter((id) => ADAPTADAS[id]);
+
+// Una ayuda del catálogo como `Ficha`, con sus textos en lectura fácil. La usan
+// las reglas de aquí y la lectura con IA (src/lib/llm): todo sale del catálogo y
+// de src/datos/, salvo `porQue`, que trae las palabras de la persona.
+export function crearFicha(
+  id: string,
+  perfil: Perfil,
+  porQue: string[],
+  avisosExtra: string[],
+  hoy: Date,
+): Ficha {
+  const e = ayudas.find((x) => x.id === id)!;
+  const a = ADAPTADAS[id];
+  const avisos = [...avisosExtra];
+  if (!e.verificado)
+    avisos.push(
+      "La ley cambió el 20 de octubre de 2026.",
+      "No hemos encontrado el procedimiento nuevo.",
+      "Pregunta en los **servicios sociales** de tu ayuntamiento.",
+      "O llama al 012.",
+    );
+
+  const estado = estadoDe(e.id, hoy);
+  const conocidos = new Set(perfil.hechos.map((h) => h.campo));
+  return {
+    id: e.id,
+    titulo: a.nombre,
+    finalidad: a.resumen.join(" "),
+    fuente: "catalogo",
+    administracion: administracionDe(e.administracion),
+    estado: ESTADO_FICHA[estado.tipo],
+    fechaFin: estado.fechaFin,
+    enlace: e.enlace_info,
+    porQue,
+    requisitos: a.requisitos,
+    pendiente: (PENDIENTE[e.id] ?? []).filter((c) => !conocidos.has(c)),
+    verificado: e.verificado,
+    detalle: {
+      ambito: ambitoDe(e.administracion),
+      resumen: a.resumen,
+      avisos,
+      dinero: a.dinero ?? null,
+      plazo: estado.lineas,
+      pasos: a.pasos,
+      documentos: a.documentos,
+      enlaceTramite: e.enlace_tramite,
+      fuentes: fuentesDe(e),
+      oficial: {
+        titulo: e.titulo,
+        organismo: e.organismo,
+        requisitos: e.requisitos_clave,
+        plazo: e.plazo,
+      },
+    },
+  };
+}
+
+export const porEstado = (fichas: Ficha[]) =>
+  [...fichas].sort((a, b) => ORDEN[a.estado] - ORDEN[b.estado]);
+
+// Un dato dicho por la persona que el catálogo pone como límite descarta la ayuda.
+const CON_HIJOS = ["complemento-ayuda-infancia", "ayudas-comedor-escolar", "xarxa-llibres"];
+
+export function bloqueada(id: string, perfil: Perfil): boolean {
+  const e = ayudas.find((x) => x.id === id)!;
+  const p = senalesDe(perfil);
+  const dato = (c: CampoPerfil) => perfil.hechos.find((h) => h.campo === c)?.valor;
+  const fueraDeEdad =
+    id === "bono-alquiler-joven" && p.edad !== null && (p.edad < 18 || p.edad > 35);
+  const conPropiedad = id === "bono-alquiler-joven" && dato("vivienda") === "propiedad";
+  const sinHijos = CON_HIJOS.includes(id) && dato("hijos") === "0";
+  // Fuera de la Comunitat Valenciana no se proponen ayudas de la Generalitat.
+  const fueraDeCV = p.lugar === "fuera" && e.administracion !== "Estado";
+  return fueraDeEdad || conPropiedad || sinHijos || fueraDeCV;
+}
+
 export function fichasDelCatalogo(perfil: Perfil, hoy = new Date()): Ficha[] {
   const p = senalesDe(perfil);
   const fichas: Ficha[] = [];
@@ -393,50 +471,17 @@ export function fichasDelCatalogo(perfil: Perfil, hoy = new Date()): Ficha[] {
     const puntos = senales.reduce((s, x) => s + x.peso, 0);
     if (puntos < regla.umbral) continue;
 
-    const avisos = senales.flatMap((s) => s.aviso ?? []);
-    if (!e.verificado)
-      avisos.push(
-        "La ley cambió el 20 de octubre de 2026.",
-        "No hemos encontrado el procedimiento nuevo.",
-        "Pregunta en los **servicios sociales** de tu ayuntamiento.",
-        "O llama al 012.",
-      );
-
-    const estado = estadoDe(e.id, hoy);
-    const conocidos = new Set(perfil.hechos.map((h) => h.campo));
-    fichas.push({
-      id: e.id,
-      titulo: a.nombre,
-      finalidad: a.resumen.join(" "),
-      fuente: "catalogo",
-      administracion: administracionDe(e.administracion),
-      estado: ESTADO_FICHA[estado.tipo],
-      fechaFin: estado.fechaFin,
-      enlace: e.enlace_info,
-      porQue: senales.flatMap((s) => s.motivo),
-      requisitos: a.requisitos,
-      pendiente: (PENDIENTE[e.id] ?? []).filter((c) => !conocidos.has(c)),
-      verificado: e.verificado,
-      detalle: {
-        ambito: ambitoDe(e.administracion),
-        resumen: a.resumen,
-        avisos,
-        dinero: a.dinero ?? null,
-        plazo: estado.lineas,
-        pasos: a.pasos,
-        documentos: a.documentos,
-        enlaceTramite: e.enlace_tramite,
-        fuentes: fuentesDe(e),
-        oficial: {
-          titulo: e.titulo,
-          organismo: e.organismo,
-          requisitos: e.requisitos_clave,
-          plazo: e.plazo,
-        },
-      },
-    });
+    fichas.push(
+      crearFicha(
+        e.id,
+        perfil,
+        senales.flatMap((s) => s.motivo),
+        senales.flatMap((s) => s.aviso ?? []),
+        hoy,
+      ),
+    );
   }
-  return fichas.sort((a, b) => ORDEN[a.estado] - ORDEN[b.estado]);
+  return porEstado(fichas);
 }
 
 /** Lo que este catálogo no cubre según lo que ha dicho la persona. */

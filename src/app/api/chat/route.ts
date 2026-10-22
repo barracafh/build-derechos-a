@@ -1,10 +1,13 @@
-import { buscarAyudas } from "@/lib/motor";
-import { elegirPregunta } from "@/lib/llm/pregunta";
-import { hablaDeDana, perfilDeTexto } from "@/lib/llm/respaldo";
-import type { MensajeChat, Perfil, Respuesta } from "@/lib/tipos";
+import { completar } from "@/lib/ia";
+import { responder } from "@/lib/llm";
+import type { MensajeChat } from "@/lib/tipos";
 
 // POST {"mensajes": MensajeChat[]} → Respuesta (spec 003).
 // No se guarda ni se registra lo que escribe la persona.
+
+// Dos intentos al LLM de 20 s como mucho, más el margen de los reintentos por 429.
+export const maxDuration = 60;
+
 const error400 = (m: string) => Response.json({ error: m }, { status: 400 });
 
 function validos(m: unknown): m is MensajeChat[] {
@@ -29,38 +32,14 @@ export async function POST(req: Request) {
     return error400(
       "Envía entre 1 y 20 mensajes de hasta 2.000 caracteres cada uno.",
     );
-  const mensajes: MensajeChat[] = cuerpo.mensajes;
-  const delUsuario = mensajes.filter((m) => m.rol === "usuario");
-  if (delUsuario.length === 0) return error400("Falta un mensaje de la persona.");
-  const texto = delUsuario.map((m) => m.texto).join("\n");
+  // Solo rol y texto: cualquier otro campo del cuerpo se ignora.
+  const mensajes: MensajeChat[] = cuerpo.mensajes.map((m: MensajeChat) => ({
+    rol: m.rol,
+    texto: m.texto,
+  }));
+  if (!mensajes.some((m) => m.rol === "usuario"))
+    return error400("Falta un mensaje de la persona.");
 
-  const perfil: Perfil = perfilDeTexto(texto);
-  const fecha = new Date().toISOString().slice(0, 10);
-
-  // Las ayudas de la DANA no están en el catálogo: se remite a la sede.
-  if (hablaDeDana(texto)) {
-    const r: Respuesta = {
-      perfil,
-      fichas: [],
-      cobertura: {
-        consultado: [],
-        noConsultado: [
-          "Ayudas por la DANA de 2024: míralas en https://sede.gva.es",
-        ],
-        respaldo: true,
-        fechaConsulta: fecha,
-      },
-      pregunta: null,
-    };
-    return Response.json(r, { headers: { "cache-control": "no-store" } });
-  }
-
-  const { fichas, cobertura } = await buscarAyudas(perfil);
-  const r: Respuesta = {
-    perfil,
-    fichas,
-    cobertura,
-    pregunta: elegirPregunta(fichas, perfil),
-  };
+  const r = await responder(mensajes, { completar, hoy: new Date() });
   return Response.json(r, { headers: { "cache-control": "no-store" } });
 }

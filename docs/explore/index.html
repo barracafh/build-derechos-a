@@ -1177,7 +1177,7 @@
   <section role="tabpanel" id="tab-spec-003" data-spec="003" hidden>
     <div class="layout">
     <div class="figures">
-    <p class="lead guide">This tab tracks the real chat route: one AI call turns what the citizen wrote into a profile with exact quotes, and the engine does the rest. The AI never names aids, amounts or dates.</p>
+    <p class="lead guide">This tab tracks the real chat route: the AI reads what the citizen wrote and suggests facts and aids from the catalogue, code checks every suggestion, and the engine builds the cards the chat UI shows. If the AI fails twice, the rule-based reader answers instead.</p>
     <div class="bento">
       <div class="card kpi kpi-wide" data-progress="t-spec-003"><span>Tasks done</span><b></b><div class="bar"><i></i></div><span>from Tasks table</span></div>
       <div class="card kpi kpi-wide" data-progress="t-spec-003-fr"><span>Requirements met</span><b></b><div class="bar"><i></i></div><span>from Requirements table</span></div>
@@ -1186,16 +1186,16 @@
       <figcaption><h3>Tasks</h3><p>Task order from the spec; green is done, dashed is to do.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a task for its card</li><li>Drag to pan</li><li>⌘/Ctrl + scroll to zoom</li><li>Double-click to reset</li></ul></span></figcaption>
       <div class="diagram"></div>
       <details><summary>Diagram source</summary><pre class="mermaid-src">flowchart LR
-  T001[T001 · Profile] --&gt; T004[T004 · Route]
-  T002[T002 · Question picker] --&gt; T004
-  T003[T003 · Fallback] --&gt; T004</pre></details>
+  T001[T001 · Engine helpers] --&gt; T002[T002 · Profile and picks]
+  T002 --&gt; T003[T003 · responder]
+  T003 --&gt; T004[T004 · Route]</pre></details>
       <details><summary>Data table</summary><div><table id="t-spec-003">
           <thead><tr><th>Task</th><th>Change</th><th>File</th><th>Requirements</th><th>Status</th></tr></thead>
           <tbody>
-            <tr><td>T001</td><td>Write prompt, parse and quote check with tests</td><td>src/lib/llm/perfil.ts</td><td>FR-002, FR-003</td><td>todo</td></tr>
-            <tr><td>T002</td><td>Write the question picker with tests</td><td>src/lib/llm/pregunta.ts</td><td>FR-005</td><td>todo</td></tr>
-            <tr><td>T003</td><td>Write the fallback with tests</td><td>src/lib/llm/respaldo.ts</td><td>FR-007</td><td>todo</td></tr>
-            <tr><td>T004</td><td>Write the route with validation, DANA check and no logging; test the 4 profiles with a faked LLM</td><td>src/app/api/chat/route.ts</td><td>FR-001, FR-004, FR-006, FR-008</td><td>todo</td></tr>
+            <tr><td>T001</td><td>Export crearFicha, bloqueada, porEstado and IDS_AYUDAS; the rules use crearFicha</td><td>src/lib/motor/catalogo.ts</td><td>FR-005, FR-006, FR-007</td><td>done</td></tr>
+            <tr><td>T002</td><td>Write prompt, parse, fact and pick validation with tests</td><td>src/lib/llm/perfil.ts</td><td>FR-003, FR-004, FR-005</td><td>done</td></tr>
+            <tr><td>T003</td><td>Wire DANA, retries, fichas, fallback, question and coverage; test the 4 profiles on both paths</td><td>src/lib/llm/index.ts</td><td>FR-001, FR-006–FR-012</td><td>done</td></tr>
+            <tr><td>T004</td><td>Point the route at responder, keep its 400 tests</td><td>src/app/api/chat/route.ts</td><td>FR-002, FR-012</td><td>done</td></tr>
           </tbody>
         </table></div></details>
     </figure>
@@ -1204,14 +1204,18 @@
       <table id="t-spec-003-fr" class="list">
         <thead><tr><th>ID</th><th>Requirement</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td>FR-001</td><td>Accepts 1–20 messages of at most 2,000 characters; 400 otherwise.</td><td>todo</td></tr>
-          <tr><td>FR-002</td><td>Exactly one LLM call per request, parsed into a Perfil.</td><td>todo</td></tr>
-          <tr><td>FR-003</td><td>Each quote is a literal substring of a user message; failing facts are dropped.</td><td>todo</td></tr>
-          <tr><td>FR-004</td><td>Fichas come only from buscarAyudas; the LLM never names aids, amounts or dates.</td><td>todo</td></tr>
-          <tr><td>FR-005</td><td>The question asks for the field that appears most in the fichas&#x27; pending list, or none.</td><td>todo</td></tr>
-          <tr><td>FR-006</td><td>A DANA message answers with the sede.gva.es link and no engine fichas.</td><td>todo</td></tr>
-          <tr><td>FR-007</td><td>If the LLM fails, falls back to keyword match on frases_usuario.</td><td>todo</td></tr>
-          <tr><td>FR-008</td><td>Does not log or store citizen text.</td><td>todo</td></tr>
+          <tr><td>FR-001</td><td>Uses the S0 contracts unchanged; every catalogue card carries the plain-language detail for the UI.</td><td>done</td></tr>
+          <tr><td>FR-002</td><td>Accepts 1–20 messages of 1–2,000 characters with at least one from the user; 400 otherwise; no logging of citizen text.</td><td>done</td></tr>
+          <tr><td>FR-003</td><td>At most 2 LLM calls (the second only after an error, a 20 s timeout or no JSON), with the 8 aids as a closed list.</td><td>done</td></tr>
+          <tr><td>FR-004</td><td>Facts with an unknown field, a wrong value or a quote not in the user&#x27;s text are dropped.</td><td>done</td></tr>
+          <tr><td>FR-005</td><td>Picks with an unknown id, no valid quote or a blocking fact are dropped.</td><td>done</td></tr>
+          <tr><td>FR-006</td><td>Cards come only from crearFicha (catalogue, plain-language texts, states); the reason is the citizen&#x27;s own quote.</td><td>done</td></tr>
+          <tr><td>FR-007</td><td>Cards are ordered by status: open, no deadline, unconfirmed, closed.</td><td>done</td></tr>
+          <tr><td>FR-008</td><td>The question asks for the field missing from most cards, or none.</td><td>done</td></tr>
+          <tr><td>FR-009</td><td>A DANA message gets no cards, no LLM call and the sede.gva.es link.</td><td>done</td></tr>
+          <tr><td>FR-010</td><td>If both LLM attempts fail, the regex reader and the catalogue rules still answer, and coverage says so.</td><td>done</td></tr>
+          <tr><td>FR-011</td><td>Coverage names the catalogue and what was not checked.</td><td>done</td></tr>
+          <tr><td>FR-012</td><td>The 4 test profiles pass on both paths with a faked LLM; typecheck, build and test pass.</td><td>done</td></tr>
         </tbody>
       </table>
     </figure>
@@ -1220,29 +1224,29 @@
       <article data-note="default">
         <p class="kind">Spec</p>
         <h3>S3 · LLM loop</h3>
-        <p class="role">POST /api/chat turns the conversation into a quoted profile with one LLM call and answers with the engine&#x27;s fichas and the most useful next question.</p>
+        <p class="role">POST /api/chat answers a conversation with catalogue aid cards for the S1 UI: the LLM suggests facts and aid ids, and code validates every one before it reaches the answer.</p>
         <ul class="tags"><li>docs/specs/003-llm-loop/spec.md</li></ul>
         <dl class="facts"><div><dt>RFC row</dt><dd>S3</dd></div></dl>
       </article>
       <article data-note="T001" hidden>
         <p class="kind">Task</p>
-        <h3>T001 · Profile</h3>
-        <p class="role">Write prompt, parse and quote check with tests in src/lib/llm/perfil.ts.</p>
+        <h3>T001 · Engine helpers</h3>
+        <p class="role">Export crearFicha, bloqueada, porEstado and IDS_AYUDAS; the rules use crearFicha in src/lib/motor/catalogo.ts.</p>
       </article>
       <article data-note="T002" hidden>
         <p class="kind">Task</p>
-        <h3>T002 · Question picker</h3>
-        <p class="role">Write the question picker with tests in src/lib/llm/pregunta.ts.</p>
+        <h3>T002 · Profile and picks</h3>
+        <p class="role">Write prompt, parse, fact and pick validation with tests in src/lib/llm/perfil.ts.</p>
       </article>
       <article data-note="T003" hidden>
         <p class="kind">Task</p>
-        <h3>T003 · Fallback</h3>
-        <p class="role">Write the fallback with tests in src/lib/llm/respaldo.ts.</p>
+        <h3>T003 · responder</h3>
+        <p class="role">Wire DANA, retries, fichas, fallback, question and coverage; test the 4 profiles on both paths in src/lib/llm/index.ts.</p>
       </article>
       <article data-note="T004" hidden>
         <p class="kind">Task</p>
         <h3>T004 · Route</h3>
-        <p class="role">Write the route with validation, DANA check and no logging; test the 4 profiles with a faked LLM in src/app/api/chat/route.ts.</p>
+        <p class="role">Point the route at responder, keep its 400 tests in src/app/api/chat/route.ts.</p>
       </article>
     </aside>
     </div>
