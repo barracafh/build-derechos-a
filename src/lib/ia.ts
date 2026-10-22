@@ -54,14 +54,21 @@ async function pedirHelmCode(cuerpo: object) {
   }
 }
 
-export async function completar(messages: Mensaje[]): Promise<string> {
-  return (await pedirHelmCode({ messages })).content;
+// Por defecto el modelo razona antes de contestar: unos 1.000 tokens y 25-30 s
+// por llamada. Con `razonar: false` contesta en unos 5 s.
+export type Opciones = { razonar?: boolean };
+const sinRazonar = ({ razonar = true }: Opciones) =>
+  razonar ? {} : { thinking: { type: "disabled" } };
+
+export async function completar(messages: Mensaje[], opciones: Opciones = {}): Promise<string> {
+  return (await pedirHelmCode({ messages, ...sinRazonar(opciones) })).content;
 }
 
 export async function completarConHerramientas(
   messages: MensajeAgente[],
   tools: readonly object[],
+  opciones: Opciones = {},
 ): Promise<RespuestaAgente> {
-  const m = await pedirHelmCode({ messages, tools });
+  const m = await pedirHelmCode({ messages, tools, ...sinRazonar(opciones) });
   return { content: m.content ?? null, tool_calls: m.tool_calls ?? [] };
 }

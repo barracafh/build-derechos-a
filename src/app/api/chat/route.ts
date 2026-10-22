@@ -48,10 +48,12 @@ export async function POST(req: Request) {
     async start(controller) {
       const enviar = (e: EventoChat) =>
         controller.enqueue(new TextEncoder().encode(`${JSON.stringify(e)}\n`));
+      // Sin razonar: con razonamiento, cada llamada tarda 25-30 s y el agente no
+      // cabe en su tiempo.
       const respuesta = await responder(mensajes, {
-        completar,
+        completar: (m) => completar(m, { razonar: false }),
         hoy: new Date(),
-        agente: completarConHerramientas,
+        agente: (m, tools) => completarConHerramientas(m, tools, { razonar: false }),
         buscar: buscarAyudas,
         requisitos: requisitosDelExtracto,
         anterior: cuerpo.perfil,

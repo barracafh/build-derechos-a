@@ -2,7 +2,7 @@
 // fichas y la cobertura del contrato (tipos.ts). Todo lo que sale aquí viene de
 // la fuente oficial o de lo que dijo la persona: nada se redacta ni se supone.
 import type { ArgsBuscar, AyudaEncontrada, ResultadoBuscar } from "@/lib/ayudas/buscar";
-import type { Tema } from "@/lib/ayudas/temas";
+import { sinOrganismo, type Tema } from "@/lib/ayudas/temas";
 import { normalizar } from "@/lib/lugares";
 import type { Cobertura, Ficha, Perfil } from "@/lib/tipos";
 
@@ -79,12 +79,13 @@ export function busquedaDelPerfil(perfil: Perfil): Busqueda | null {
 
 // Para proponer una convocatoria sin que la elija el LLM, su título tiene que
 // hablar de lo que contó la persona, no solo compartir tema: «vivienda» también
-// son las ayudas a propietarios para rehabilitar edificios.
+// son las ayudas a propietarios para rehabilitar edificios. Y «beca» sola
+// tampoco: la mayoría son de formación para adultos.
 const TITULO_POR_TEMA: Partial<Record<Tema, RegExp>> = {
   vivienda: /\b(alquiler|lloguer|arrendamiento|arrendataria|inquilin)/,
   empleo: /\b(desemplead|parad[oa]s|aturad|demandantes de empleo)/,
   familia: /\b(hij[oa]s|fills|famili|natalidad|nacimiento|naixement|crianza|infancia|guarderia|escoleta)/,
-  educacion: /\b(beca|libros|llibres|comedor|menjador|material escolar|matricula|estudiantes|alumn)/,
+  educacion: /\b(libros|llibres|comedor|menjador|material escolar|matricula|estudiantes|alumn)/,
   energia: /\b(suministr|pobreza energetica|factura|electric|calefaccion)/,
   mayores: /\b(mayores|majors|jubilad|pensionist|tercera edad|envejecimiento)/,
   discapacidad: /\b(discapacidad|diversidad funcional|dependencia)/,
@@ -97,12 +98,7 @@ const NO_PARA_PERSONAS =
 
 // Temas de la convocatoria que su título confirma, o ninguno si no es para personas.
 export function temasEnTitulo(a: AyudaEncontrada): Tema[] {
-  // Sin el nombre del organismo que convoca («Conselleria de Vivienda, Empleo,
-  // Juventud e Igualdad»), que no dice nada de la ayuda.
-  const t = normalizar(a.titulo).replace(
-    /\b(conselleria|consejeria|ministerio|departament\w*|vicep\w*)\b.*?(\bque\b|\bpor la que\b|\bde aprobacion\b|,|$)/g,
-    " ",
-  );
+  const t = sinOrganismo(a.titulo);
   if (NO_PARA_PERSONAS.test(t)) return [];
   return a.encaja_con.filter((tema) => TITULO_POR_TEMA[tema]?.test(t));
 }

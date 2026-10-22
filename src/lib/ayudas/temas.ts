@@ -51,13 +51,24 @@ const FINALIDADES: Record<Tema, string[]> = {
   emprendimiento: ["comercio", "industria", "empleo"],
 };
 
+// El organismo que convoca, con su lista de materias («Conselleria de Vivienda,
+// Empleo, Juventud e Igualdad»), hasta donde empieza lo que se convoca. Si no
+// se ve dónde acaba en 10 palabras, se deja.
+const ORGANISMO =
+  /\b(?:conselleria|consejeria|ministerio|vicep\w*|departament\w*|(?:sub)?secretaria|direccion general)\b(?: \S+){0,10}?(?= (?:que|por|para|sobre|de aprobacion|de las bases)\b|$)/g;
+
+// Título normalizado sin el organismo: no dice nada de la ayuda.
+export function sinOrganismo(titulo: string): string {
+  return normalizar(titulo).replace(ORGANISMO, " ").replace(/\s+/g, " ").trim();
+}
+
 export function relevancia(
   titulo: string,
   finalidad: string | null,
   temas: Tema[],
   palabras: string[],
 ): number {
-  const t = normalizar(titulo);
+  const t = sinOrganismo(titulo);
   const f = normalizar(finalidad ?? "");
   let puntos = 0;
   for (const tema of temas) {
@@ -70,7 +81,7 @@ export function relevancia(
 
 // Temas cuyo vocabulario aparece en el título o la finalidad: el «por qué encaja».
 export function temasQueEncajan(titulo: string, finalidad: string | null, temas: Tema[]): Tema[] {
-  const t = normalizar(titulo);
+  const t = sinOrganismo(titulo);
   const f = normalizar(finalidad ?? "");
   return temas.filter(
     (tema) => PALABRAS[tema].some((p) => t.includes(p)) || (f && FINALIDADES[tema].some((p) => f.includes(p))),

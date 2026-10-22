@@ -15,6 +15,7 @@ import {
 } from "./catalogo";
 import { delPack, desdeApi, grupoDelPack, PACK_CONSULTADO, type Convocatoria } from "./convocatoria";
 import { calcularEstado, fechaLegible, hoyEnMadrid, sumarDias, type Estado } from "./plazo";
+import { normalizar } from "./nombres";
 import { relevancia, temasQueEncajan, type Tema } from "./temas";
 import { regionCubre, resolverUbicacion, type ErrorUbicacion, type Ubicacion } from "./territorio";
 
@@ -198,6 +199,14 @@ export async function buscarAyudas(
   for (const r of resultados.flat()) {
     if (vistas.has(r.numeroConvocatoria)) continue;
     vistas.add(r.numeroConvocatoria);
+    // Llegan de la más reciente a la más antigua: del mismo organismo y con el
+    // mismo título, solo la primera («AYUDAS PARA INSERCIÓN LABORAL» ×13).
+    const mismoTitulo = `${r.nivel3}|${normalizar(r.descripcion)}`;
+    if (vistas.has(mismoTitulo)) {
+      descartar("Mismo título que otra convocatoria más reciente del mismo organismo");
+      continue;
+    }
+    vistas.add(mismoTitulo);
     if (NO_SOLICITABLE_TITULO.test(r.descripcion)) {
       descartar("Subvención nominativa, directa o convenio: no admite solicitudes");
       continue;
