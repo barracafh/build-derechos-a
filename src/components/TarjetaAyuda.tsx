@@ -66,7 +66,16 @@ const SIN_PLAZO = [
 // Una ayuda: a la vista solo lo que decide (por qué encaja, plazo e importe) y,
 // plegado, todo lo demás. `detalle` es opcional: una ficha de otra fuente puede
 // traer solo los campos del contrato.
-export function TarjetaAyuda({ f, n }: { f: Ficha; n: number }) {
+export function TarjetaAyuda({
+  f,
+  n,
+  principal = false,
+}: {
+  f: Ficha;
+  n: number;
+  // La acción principal de la pantalla (una sola, con el sol); el resto, oscura.
+  principal?: boolean;
+}) {
   const d = f.detalle;
   const resumen = d?.resumen ?? [f.finalidad];
   const avisos = d?.avisos ?? [];
@@ -153,23 +162,15 @@ export function TarjetaAyuda({ f, n }: { f: Ficha; n: number }) {
         )}
 
         <div className="flex flex-wrap items-center gap-3">
-          <a
-            href={f.enlace}
-            className={cn(
-              buttonVariants({ variant: "outline", size: "lg" }),
-              "h-auto min-h-12 px-5 py-2 text-lg whitespace-normal max-md:w-full",
-            )}
-          >
-            Información oficial
-            <span className="sr-only"> de {f.titulo}</span>
-            <ArrowUpRight aria-hidden="true" className="size-5" />
-          </a>
           {d?.enlaceTramite && (
             <a
               href={d.enlaceTramite}
               className={cn(
-                buttonVariants({ variant: "secondary", size: "lg" }),
-                "h-auto min-h-12 px-5 py-2 text-lg whitespace-normal max-md:w-full",
+                buttonVariants({
+                  variant: principal ? "sunset" : "default",
+                  size: "lg",
+                }),
+                "h-auto min-h-12 px-6 py-2 text-lg font-medium whitespace-normal max-md:w-full",
               )}
             >
               Hacer el trámite
@@ -177,6 +178,16 @@ export function TarjetaAyuda({ f, n }: { f: Ficha; n: number }) {
               <ArrowUpRight aria-hidden="true" className="size-5" />
             </a>
           )}
+          <a
+            href={f.enlace}
+            className={cn(
+              buttonVariants({ variant: "ghost", size: "lg" }),
+              "h-auto min-h-12 px-4 py-2 text-lg whitespace-normal underline underline-offset-4 max-md:w-full",
+            )}
+          >
+            Información oficial
+            <span className="sr-only"> de {f.titulo}</span>
+          </a>
         </div>
 
         <details className="group">
