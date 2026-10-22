@@ -4,11 +4,18 @@ import { ejecutarHerramienta, HERRAMIENTAS } from "@/lib/ayudas/herramientas";
 // POST {"nombre": "buscar_ayudas", "argumentos": {...}} → resultado de ejecutarla.
 // Para probar a mano y para depurar el agente; el chat las ejecuta en el servidor
 // llamando directamente a ejecutarHerramienta. No se guarda nada de lo enviado.
+// Solo en local: publicada, cualquiera podría lanzar búsquedas en la BDNS y
+// descargas de PDF desde la IP que comparten todos los equipos.
+const soloEnLocal = () =>
+  process.env.NODE_ENV === "production" ? new Response(null, { status: 404 }) : null;
+
 export function GET() {
-  return Response.json({ herramientas: HERRAMIENTAS });
+  return soloEnLocal() ?? Response.json({ herramientas: HERRAMIENTAS });
 }
 
 export async function POST(req: Request) {
+  const cerrada = soloEnLocal();
+  if (cerrada) return cerrada;
   const { nombre, argumentos } = await req.json().catch(() => ({}));
   if (typeof nombre !== "string")
     return Response.json({ error: "Falta «nombre»." }, { status: 400 });
