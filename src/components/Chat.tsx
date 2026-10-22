@@ -449,15 +449,15 @@ export function Chat() {
         <button
           type="button"
           onClick={nueva}
-          aria-label="Akorda, volver al inicio"
+          aria-label="Buscador de ayudas, volver al inicio"
           className="cursor-pointer rounded-lg"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={ruta("/logo-akorda.png")}
             alt=""
-            width={839}
-            height={213}
+            width={900}
+            height={134}
             className="h-9 w-auto"
           />
         </button>
