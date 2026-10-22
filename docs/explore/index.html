@@ -1,0 +1,1990 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Derechos akorda</title>
+<!-- /explore page for the Derechos track (team akorda). BDNS counts measured 2026-10-21; estimates labelled. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Theme tokens. Dark is the default; [data-theme="light"] overrides. Colors from the dataviz reference palette. */
+  :root {
+    color-scheme: dark;
+    --sans: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    --page: #08090b; --surface: #101114; --surface-2: #17181c; --border: rgba(255,255,255,.08); --highlight: rgba(255,255,255,.05); --dot: rgba(255,255,255,.07);
+    --text: #ededef; --text-2: #b4b5bb; --muted: #82838b; --grid: #1f2025; --axis: #2c2d33;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500;
+    --seq-lo: #0d366b; --seq-hi: #86b6ef;
+    --good: #0ca30c; --warning: #fab219; --critical: #d03b3b; /* status: same in both themes */
+  }
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --page: #f7f7f8; --surface: #ffffff; --surface-2: #f3f3f5; --border: rgba(0,0,0,.08); --highlight: rgba(255,255,255,.9); --dot: rgba(0,0,0,.09);
+    --text: #0b0b0c; --text-2: #50515a; --muted: #85868e; --grid: #ececef; --axis: #d4d4d8;
+    --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100;
+    --seq-lo: #cde2fb; --seq-hi: #0d366b;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--page); color: var(--text); font: 15px/1.55 var(--sans); letter-spacing: -.006em; -webkit-font-smoothing: antialiased; }
+  header, main { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+  header { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; padding-top: 24px; }
+  h1 { font-size: 26px; font-weight: 650; letter-spacing: -.025em; margin: 0 0 2px; }
+  h2 { font-size: 17px; margin: 24px 0 4px; }
+  h3 { font-size: 15px; font-weight: 600; letter-spacing: -.01em; margin: 0; }
+  p { margin: 0 0 8px; color: var(--text-2); }
+  button { font: inherit; font-size: 13px; font-weight: 500; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; cursor: pointer; transition: border-color .15s, background .15s; }
+  button:hover { border-color: color-mix(in srgb, var(--text) 25%, transparent); }
+  kbd { font: 500 11px var(--mono); color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 0 4px; margin-left: 6px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+  tr[hidden] { display: none; }
+  header > div:first-child { flex: 1 1 420px; min-width: 0; }
+
+  /* Sticky tab bar; the page blurs under it. The indicator slides to the active tab. */
+  nav { position: sticky; top: 0; z-index: 20; display: flex; gap: 4px; overflow-x: auto; margin: 16px 0; padding-top: 8px; border-bottom: 1px solid var(--border);
+        background: color-mix(in srgb, var(--page) 78%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+  nav button { border: 0; border-radius: 6px; background: none; color: var(--muted); white-space: nowrap; font-size: 14px; margin-bottom: 6px; }
+  nav button:hover { color: var(--text); background: var(--surface-2); }
+  nav button[aria-selected="true"] { color: var(--text); }
+  .indicator { position: absolute; bottom: 0; height: 2px; border-radius: 2px; background: var(--s1); transition: left .25s cubic-bezier(.2,.8,.2,1), width .25s cubic-bezier(.2,.8,.2,1); }
+  [role="tabpanel"][hidden] { display: none; }
+
+  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); }
+  .card { margin: 0; background: linear-gradient(180deg, var(--highlight), transparent 120px), var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; min-width: 0; box-shadow: inset 0 1px 0 var(--highlight); }
+  .chart { height: 320px; }
+  /* (i) in the card corner: interaction hints on hover or focus, kept out of the figure. */
+  figure.card { position: relative; }
+  .info { position: absolute; top: 14px; right: 14px; width: 20px; height: 20px; border: 1px solid var(--border); border-radius: 50%; font: italic 600 12px/18px Georgia, serif; transition: color .15s, border-color .15s; text-align: center; color: var(--muted); cursor: help; }
+  .info:hover, .info:focus { color: var(--text); border-color: var(--s1); outline: none; }
+  .info ul { display: none; position: absolute; z-index: 5; top: 26px; right: 0; width: max-content; max-width: 260px; margin: 0; padding: 8px 12px; list-style: none; text-align: left; font: 13px/1.7 var(--sans); color: var(--text-2); background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 12px 32px rgba(0,0,0,.35); }
+  .info:hover ul, .info:focus ul { display: block; }
+  figcaption { padding-right: 28px; }
+  .diagram { overflow: hidden; text-align: center; cursor: grab; touch-action: none; margin-top: 12px; border-radius: 10px;
+             background: radial-gradient(circle, var(--dot) 1px, transparent 1.4px) 0 0 / 18px 18px; }
+  .diagram:active { cursor: grabbing; }
+  .diagram svg { width: 100%; max-width: 100% !important; max-height: 480px; height: auto; transform-origin: 0 0; }
+  .diagram svg .node, .diagram svg g:has(> rect.actor) { cursor: pointer; }
+  .diagram svg :is(.node, .flowchart-link, .transition, .edgeLabel, g:has(> rect.actor)) { transition: opacity .15s; }
+  .diagram svg.dim :is(.node, .flowchart-link, .transition, .edgeLabel, g:has(> rect.actor)):not(.on) { opacity: .2; }
+  .diagram svg .node rect { rx: 8px; ry: 8px; }
+  .diagram svg span.edgeLabel, .diagram svg .edgeLabel p { background: var(--surface-2) !important; color: var(--text-2) !important; border-radius: 4px; }
+  /* Kind accents come from Mermaid classDef names; colors follow the theme. */
+  .diagram svg .node.service { --kind: var(--s1); }
+  .diagram svg .node.data { --kind: var(--s3); }
+  .diagram svg .node.compute { --kind: var(--s2); }
+  .diagram svg .node.external { --kind: var(--s4); }
+  .diagram svg .node:is(.service, .data, .compute, .external) :is(rect, path, polygon, circle, ellipse) {
+    stroke: var(--kind) !important; fill: color-mix(in srgb, var(--kind) 14%, var(--surface)) !important; }
+  /* Spec tabs: status classes come from the task table, never from the Mermaid source. */
+  .diagram svg .node.done { --kind: var(--good); }
+  .diagram svg .node:is(.done) :is(rect, path, polygon) { stroke: var(--kind) !important; fill: color-mix(in srgb, var(--kind) 14%, var(--surface)) !important; }
+  .diagram svg .node.todo :is(rect, path, polygon) { stroke: var(--muted) !important; stroke-dasharray: 4 3; }
+  .diagram svg .selected :is(rect, path, polygon, circle, ellipse) { stroke: var(--s1) !important; stroke-width: 2.5px !important; }
+  .diagram svg .selected { animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 50% { filter: drop-shadow(0 0 8px color-mix(in srgb, var(--s1) 70%, transparent)); } }
+  /* Arrows flow in their direction; dotted arrows keep their dotted look. One period per cycle, so the loop is seamless. */
+  .diagram svg :is(.flowchart-link, .transition) { stroke-dasharray: 10 6 !important; animation: flow 1.6s linear infinite !important; }
+  .diagram svg .flowchart-link.edge-pattern-dotted { stroke-dasharray: 2 6 !important; animation-duration: 2.4s !important; }
+  @keyframes flow { to { stroke-dashoffset: -16; } }
+  .diagram svg .flow-dot { fill: var(--s1); filter: drop-shadow(0 0 4px var(--s1)); pointer-events: none; }
+  .diagram svg .edge-hit { fill: none; stroke: transparent; stroke-width: 14px; pointer-events: stroke; cursor: help; }
+
+  .layout { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr) 360px; align-items: start; }
+  .figures { display: grid; gap: 16px; min-width: 0; }
+  /* Cards. Static fields are written in the HTML; .auto sections are computed and never saved. */
+  .panel { position: sticky; top: 72px; max-height: calc(100vh - 88px); overflow-y: auto; border: 1px solid var(--border); border-radius: 14px;
+           background: linear-gradient(180deg, var(--highlight), transparent 120px), color-mix(in srgb, var(--surface) 85%, transparent);
+           backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: inset 0 1px 0 var(--highlight); }
+  .panel article { padding: 22px; }
+  /* Card sections enter one after another. */
+  .panel article.enter > * { animation: enter .32s cubic-bezier(.2,.8,.2,1) both; }
+  .panel article.enter > :nth-child(2) { animation-delay: 30ms; }
+  .panel article.enter > :nth-child(3) { animation-delay: 60ms; }
+  .panel article.enter > :nth-child(4) { animation-delay: 90ms; }
+  .panel article.enter > :nth-child(5) { animation-delay: 120ms; }
+  .panel article.enter > :nth-child(n+6) { animation-delay: 150ms; }
+  @keyframes enter { from { opacity: 0; transform: translateY(6px); } }
+  .kind { display: flex; align-items: center; gap: 6px; margin: 0 0 4px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .panel article[data-kind] .kind::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--kind); }
+  .panel article[data-kind="service"] { --kind: var(--s1); }
+  .panel article[data-kind="data"] { --kind: var(--s3); }
+  .panel article[data-kind="compute"] { --kind: var(--s2); }
+  .panel article[data-kind="external"] { --kind: var(--s4); }
+  .panel h3 { font-size: 20px; font-weight: 650; letter-spacing: -.02em; line-height: 1.25; margin: 0 0 6px; }
+  .role { font-size: 14px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 12px 0 0; padding: 0; }
+  .tags li { font-size: 12px; color: var(--text-2); border: 1px solid var(--border); border-radius: 999px; padding: 1px 9px; }
+  .tags li[data-status]::before { display: inline-block; width: 14px; height: 14px; margin: 0 5px 0 -4px; border-radius: 50%; font-size: 10px; font-weight: 700; line-height: 14px; text-align: center; color: #0b0b0b; }
+  .tags li[data-status="decided"]::before { content: "✓"; background: var(--good); }
+  .tags li[data-status="open"]::before { content: "?"; background: var(--warning); }
+  .tags li[data-status="risk"]::before { content: "!"; background: var(--critical); color: #fff; }
+  .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 16px 0 0; }
+  .facts div { background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 8px 10px; min-width: 0; }
+  .facts dt { font-size: 11px; color: var(--muted); }
+  .facts dd { margin: 2px 0 0; font: 500 14px/1.35 var(--mono); letter-spacing: -.01em; overflow-wrap: anywhere; }
+  .panel h4 { margin: 0 0 8px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .questions, .auto { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+  .questions ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .questions li { font-size: 13px; color: var(--text-2); border-left: 2px solid var(--warning); padding-left: 10px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+  .chip { font-size: 12px; padding: 3px 10px; border-radius: 999px; background: var(--surface-2); }
+  .chip:hover { border-color: var(--s1); }
+  .chip:disabled { cursor: default; opacity: .6; }
+  .chip-dir { color: var(--muted); margin-right: 4px; }
+  .spark { display: block; width: 100%; height: 48px; margin-bottom: 8px; }
+  .rows { width: 100%; margin: 0; font-size: 13px; }
+  @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } .panel { position: static; max-height: none; } }
+  #tip { position: fixed; z-index: 30; max-width: 260px; pointer-events: none; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 8px 12px; font-size: 13px; box-shadow: 0 12px 32px rgba(0,0,0,.35); }
+  #tip b { display: block; }
+  #tip span { color: var(--text-2); }
+
+  .bento { display: grid; gap: 16px; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: minmax(104px, auto); }
+  .kpi { display: flex; flex-direction: column; justify-content: space-between; }
+  .kpi-hero { grid-column: span 2; grid-row: span 2; }
+  .kpi-wide { grid-column: span 2; }
+  .kpi span { color: var(--muted); font-size: 12px; }
+  .kpi b { display: block; font: 600 30px/1.1 var(--mono); letter-spacing: -.03em; margin: 6px 0 2px; }
+  .kpi-hero b { font-size: 48px; }
+  .kpi b small { font-size: .5em; font-weight: 500; color: var(--muted); margin-left: 2px; }
+  .kpi .spark { height: 72px; margin: 8px 0 0; }
+  .bar { height: 6px; margin: 10px 0 8px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+  .bar i { display: block; width: 0; height: 100%; border-radius: inherit; background: var(--good); transition: width .8s cubic-bezier(.2,.8,.2,1); }
+  .list { width: 100%; font-size: 13px; }
+  .list th:nth-child(2) { text-align: left; }
+  td[data-status] span { display: inline-block; font: 600 11px var(--sans); padding: 1px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-2); }
+  td[data-status="done"] span { color: var(--text); border-color: color-mix(in srgb, var(--good) 60%, transparent); background: color-mix(in srgb, var(--good) 15%, transparent); }
+  .list td:nth-child(2) { font-family: var(--sans); font-size: 13px; color: var(--text-2); text-align: left; }
+  .brief h4 { margin: 18px 0 6px; }
+  .brief h4:first-child { margin-top: 0; }
+  .brief ul { margin: 0; padding-left: 18px; color: var(--text-2); }
+  .brief p { margin: 0; }
+  @media (max-width: 640px) { .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  details { margin-top: 8px; font-size: 13px; }
+  summary { color: var(--muted); cursor: pointer; }
+  table { border-collapse: collapse; margin-top: 8px; }
+  td { font-family: var(--mono); font-size: 12px; }
+  th, td { padding: 2px 10px; text-align: right; border-bottom: 1px solid var(--grid); }
+  th:first-child, td:first-child { text-align: left; }
+  details > div { overflow-x: auto; }
+  pre { color: var(--text-2); white-space: pre-wrap; font: 12px/1.6 var(--mono); }
+
+  /* Guide layer: plain-language text for readers new to the project. The Guide button hides .guide. */
+  :root[data-guide="off"] .guide { display: none !important; }
+  .intro { padding: 24px; margin-bottom: 16px; }
+  .eyebrow { margin: 0 0 6px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--s1); }
+  .intro h2 { font-size: 22px; font-weight: 650; letter-spacing: -.02em; line-height: 1.3; margin: 0 0 20px; max-width: 42ch; }
+  .intro h4 { margin: 0 0 6px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .intro-cols { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-bottom: 22px; }
+  .intro-cols p { margin: 0; font-size: 14px; line-height: 1.6; }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); counter-reset: step; }
+  .steps li { counter-increment: step; padding: 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); cursor: pointer; transition: border-color .15s, transform .15s; }
+  .steps li:hover { border-color: var(--s1); transform: translateY(-1px); }
+  .steps li::before { content: counter(step); display: grid; place-items: center; width: 22px; height: 22px; margin-bottom: 8px; border-radius: 50%; font: 600 12px var(--mono); color: #fff; background: var(--s1); }
+  .steps b { display: block; font-size: 14px; margin-bottom: 2px; }
+  .steps span { display: block; font-size: 13px; line-height: 1.5; color: var(--text-2); }
+  .lead { margin: 0; font-size: 15px; line-height: 1.65; color: var(--text-2); max-width: 75ch; }
+  .lead b { color: var(--text); font-weight: 600; }
+  .takeaway { margin: 12px 0 0; padding: 8px 12px; font-size: 14px; color: var(--text); background: var(--surface-2); border-left: 2px solid var(--s1); border-radius: 0 8px 8px 0; }
+  .takeaway::before { content: "→ "; color: var(--s1); font-weight: 600; }
+  .explain { margin: 12px 0 0; padding: 10px 12px; font-size: 13.5px; line-height: 1.55; color: var(--text-2); background: var(--surface-2); border-radius: 10px; }
+  .explain::before { content: "In short"; display: block; margin-bottom: 2px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  a.term { color: inherit; text-decoration: underline dotted color-mix(in srgb, var(--text) 50%, transparent); text-underline-offset: 3px; cursor: help; }
+  a.term:hover { text-decoration-color: var(--s1); }
+  .glossary { display: grid; gap: 2px; margin: 0; }
+  .glossary div { padding: 10px 12px; border-radius: 10px; scroll-margin-top: 90px; }
+  .glossary dt { font-weight: 600; }
+  .glossary dd { margin: 2px 0 0; font-size: 14px; color: var(--text-2); }
+  .glossary .flash { animation: flash 1.8s ease-out; }
+  @keyframes flash { from { background: color-mix(in srgb, var(--s1) 28%, transparent); } }
+
+  /* ⌘K search */
+  #palette { width: min(560px, calc(100vw - 32px)); margin: 14vh auto auto; padding: 0; color: var(--text); border: 1px solid var(--border); border-radius: 14px;
+             background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: 0 24px 64px rgba(0,0,0,.45); }
+  #palette::backdrop { background: rgba(0,0,0,.45); backdrop-filter: blur(3px); }
+  #palette input { width: 100%; padding: 16px 18px; font: 16px var(--sans); color: var(--text); background: none; border: 0; border-bottom: 1px solid var(--border); outline: none; }
+  #palette ul { list-style: none; margin: 0; padding: 6px; max-height: 50vh; overflow-y: auto; }
+  #palette li { display: grid; grid-template-columns: 96px 1fr auto; gap: 12px; align-items: center; padding: 8px 12px; border-radius: 8px; cursor: pointer; }
+  #palette li[aria-selected="true"] { background: var(--surface-2); }
+  #palette li small { font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  #palette li span:last-child { font-size: 12px; color: var(--muted); }
+  #palette p { margin: 0; padding: 8px 18px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); }
+
+  /* Motion off: the OS "reduce motion" setting by default, or the viewer's toggle. */
+  :root[data-motion="off"] :is(*, *::before, *::after),
+  :root[data-motion="off"] .diagram svg :is(.flowchart-link, .transition) { animation: none !important; transition: none !important; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/echarts@6.1.0/dist/echarts.min.js"></script>
+<body>
+<header>
+  <div>
+    <h1>Derechos · akorda</h1>
+    <p>Aid finder for the Build night: chat in, verified public aids out. BDNS counts are measured from the public API on 2026-10-21; the build time is an estimate and is labelled so. The build delivers specs S0–S3; S4 only if time allows.</p>
+  </div>
+  <div class="actions">
+    <button id="search-open" type="button">Search<kbd>⌘K</kbd></button>
+    <button id="guide-toggle" type="button">Guide: on</button>
+    <button id="motion-toggle" type="button">Motion: on</button>
+    <button id="theme-toggle" type="button">Light mode</button>
+  </div>
+</header>
+
+<main>
+  <nav role="tablist">
+    <button role="tab" aria-controls="tab-overview" aria-selected="true">Overview</button>
+    <button role="tab" aria-controls="tab-architecture">Architecture</button>
+    <button role="tab" aria-controls="tab-ingest">Ingest</button>
+    <button role="tab" aria-controls="tab-model">Data model</button>
+    <button role="tab" aria-controls="tab-query">Query</button>
+    <button role="tab" aria-controls="tab-guardrails">Guardrails</button>
+    <button role="tab" aria-controls="tab-split">Work split</button>
+    <button role="tab" aria-controls="tab-spec-000" data-spec="000">S0 · Contracts</button>
+    <button role="tab" aria-controls="tab-spec-001" data-spec="001">S1 · Chat UI</button>
+    <button role="tab" aria-controls="tab-spec-002" data-spec="002">S2 · Engine / API</button>
+    <button role="tab" aria-controls="tab-spec-003" data-spec="003">S3 · LLM loop</button>
+    <button role="tab" aria-controls="tab-spec-004" data-spec="004">S4 · Centralise aids</button>
+    <button role="tab" aria-controls="tab-glossary">Glossary</button>
+    <button role="tab" aria-controls="tab-brief">Brief</button>
+    <span class="indicator"></span>
+  </nav>
+
+  <!-- ============ Overview ============ -->
+  <section role="tabpanel" id="tab-overview">
+    <div class="card intro">
+      <p class="eyebrow">What this is</p>
+      <h2>A chat that tells people in València which public aids they could apply for, and where.</h2>
+      <div class="intro-cols">
+        <div><h4>The problem</h4><p>Aids are spread across the State, the <a class="term" href="#term-gva">Generalitat</a> and the city council, each with its own website and deadlines. The biggest ones are <a class="term" href="#term-prestacion">benefits</a>, which never appear in the <a class="term" href="#term-bdns">BDNS</a>, the national register of grants.</p></div>
+        <div><h4>The solution</h4><p>The citizen writes their situation. The <a class="term" href="#term-llm">AI</a> turns it into a short <a class="term" href="#term-profile">profile</a>; rules check each aid in the <a class="term" href="#term-catalogue">catalogue</a>, and live calls come from the BDNS. Every answer says "you could apply", shows what to check and links the official page.</p></div>
+        <div><h4>Who it is for</h4><p>Citizens of València and the Comunitat Valenciana. This page is for the akorda team and the Build night jury, to see how the tool works and what ships first.</p></div>
+      </div>
+      <h4>How it works</h4>
+      <ol class="steps">
+        <li data-tab="tab-query"><b>Tell your situation</b><span>One message in your own words, for example "24, unemployed, renting in València".</span></li>
+        <li data-tab="tab-model"><b>We note what you said</b><span>The AI fills a short profile, and only with facts you actually wrote.</span></li>
+        <li data-tab="tab-query"><b>Each aid is checked</b><span>An aid leaves the list only if something you said rules it out: the <a class="term" href="#term-double-block">double block</a>.</span></li>
+        <li data-tab="tab-ingest"><b>Live calls are added</b><span>Open calls from the BDNS, with their status taken from official dates.</span></li>
+        <li data-tab="tab-guardrails"><b>Honest answer</b><span>What you could apply for, what to check, and what we could not check: the <a class="term" href="#term-coverage">coverage panel</a>.</span></li>
+      </ol>
+    </div>
+    <div class="layout">
+    <div class="figures">
+    <div class="bento">
+      <div class="card kpi kpi-hero"><div><span>New BDNS convocatorias for individuals</span><b id="kpi-weeks"></b><span>7 full weeks from 1 Sep · from Weekly table · measured</span></div><div id="kpi-spark"></div></div>
+      <div class="card kpi kpi-wide"><span>Spain, all of 2026</span><b id="kpi-year"></b><span>from Scope table · measured</span></div>
+      <div class="card kpi"><span>Comunitat Valenciana since 1 Sep</span><b id="kpi-cv"></b><span>from Scope table</span></div>
+      <div class="card kpi"><span>Local share since 1 Sep</span><b id="kpi-local"></b><span>from Level table</span></div>
+    </div>
+    <div class="grid">
+      <figure class="card">
+        <figcaption><h3>New convocatorias per week</h3><p>BDNS convocatorias for individuals (tiposBeneficiario=1), Spain, by week of receipt.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Hover for the weekly value</li></ul></span></figcaption>
+        <div class="chart" data-chart="weekly" data-table="t-weekly"></div>
+        <p class="takeaway guide">Between 204 and 302 new calls for individuals appear each week in Spain: about 38 a day.</p>
+        <details><summary>Data table</summary><div><table id="t-weekly">
+          <thead><tr><th>Week from</th><th>Convocatorias</th></tr></thead>
+          <tbody>
+            <tr><td>01 Sep</td><td>234</td></tr>
+            <tr><td>08 Sep</td><td>271</td></tr>
+            <tr><td>15 Sep</td><td>278</td></tr>
+            <tr><td>22 Sep</td><td>302</td></tr>
+            <tr><td>29 Sep</td><td>272</td></tr>
+            <tr><td>06 Oct</td><td>204</td></tr>
+            <tr><td>13 Oct</td><td>284</td></tr>
+          </tbody>
+        </table></div></details>
+      </figure>
+      <figure class="card">
+        <figcaption><h3>Who publishes them</h3><p>Convocatorias for individuals since 1 Sep 2026, by administration level.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a bar for its card</li></ul></span></figcaption>
+        <div class="chart" data-chart="level" data-table="t-level"></div>
+        <p class="takeaway guide">Local councils publish 89% of these calls (1,531 of 1,721), so local aids must be searched council by council.</p>
+        <details><summary>Data table</summary><div><table id="t-level">
+          <thead><tr><th>Administration</th><th>Convocatorias</th></tr></thead>
+          <tbody>
+            <tr><td>State</td><td>26</td></tr>
+            <tr><td>Regions</td><td>164</td></tr>
+            <tr><td>Local</td><td>1531</td></tr>
+          </tbody>
+        </table></div></details>
+      </figure>
+    </div>
+    <figure class="card">
+      <figcaption><h3>Scope</h3><p>Measured volumes that size the index.</p></figcaption>
+      <table id="t-scope" class="list">
+        <thead><tr><th>Scope</th><th>Convocatorias</th></tr></thead>
+        <tbody>
+          <tr><td>Spain, 2026</td><td>12137</td></tr>
+          <tr><td>Spain, since 1 Sep</td><td>1988</td></tr>
+          <tr><td>Comunitat Valenciana, since 1 Sep</td><td>285</td></tr>
+          <tr><td>Pack backup copy</td><td>59</td></tr>
+        </tbody>
+      </table>
+    </figure>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <article data-note="default">
+        <p class="kind">Overview</p>
+        <h3>Derechos · akorda</h3>
+        <p class="role">A chat that tells citizens which public aids they could apply for, why, what to check, the status and the official link.</p>
+        <ul class="tags"><li data-status="decided">Chat with AI</li><li data-status="decided">Split into specs S0–S4</li><li data-status="open">Owner per spec</li></ul>
+        <dl class="facts"><div><dt>Demo scope</dt><dd>State + Comunitat Valenciana</dd></div><div><dt>Build</dt><dd>~4 h, 22 Oct 2026</dd></div><div><dt>Team</dt><dd>5 people</dd></div><div><dt>New per day</dt><dd>~40 (Spain)</dd></div></dl>
+        <div class="questions"><h4>Open questions</h4><ul><li>Who owns each spec?</li></ul></div>
+      </article>
+      <article data-note="State" hidden>
+        <p class="kind">Level</p>
+        <h3>State</h3>
+        <p class="role">Few convocatorias; the big state benefits (IMV, unemployment) are not in the BDNS at all.</p>
+        <ul class="tags"><li>tipoAdministracion=C</li></ul>
+        <dl class="facts"><div><dt>Not in BDNS</dt><dd>IMV, paro, PNC, bonos</dd></div><div><dt>Covered by</dt><dd>Benefits catalogue</dd></div></dl>
+      </article>
+      <article data-note="Regions" hidden>
+        <p class="kind">Level</p>
+        <h3>Regions</h3>
+        <p class="role">Autonomous communities. For the demo, only the Generalitat Valenciana.</p>
+        <ul class="tags"><li>tipoAdministracion=A</li><li>regiones=54,55,56,57</li></ul>
+      </article>
+      <article data-note="Local" hidden>
+        <p class="kind">Level</p>
+        <h3>Local</h3>
+        <p class="role">Most of the volume. Searched by órgano, because regiones is not hierarchical.</p>
+        <ul class="tags"><li>tipoAdministracion=L</li><li data-status="risk">Gaps outside València</li></ul>
+        <dl class="facts"><div><dt>València órgano</dt><dd>2903</dd></div></dl>
+      </article>
+    </aside>
+    </div>
+  </section>
+
+  <!-- ============ Architecture ============ -->
+  <section role="tabpanel" id="tab-architecture" hidden>
+    <div class="layout">
+    <div class="figures">
+    <p class="lead guide">The parts of the tool and how they talk to each other. Each box belongs to one <a class="term" href="#term-spec">spec</a>; its card says which, and the Work split tab says who builds it. Click a box to read what it does.</p>
+    <figure class="card">
+      <figcaption><h3>Runtime</h3><p>No index. Each message runs rules on the catalogue and queries the BDNS live.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a box for its card</li><li>Hover an arrow for its link</li><li>Drag to pan</li><li>⌘/Ctrl + scroll to zoom</li><li>Double-click to reset</li></ul></span></figcaption>
+      <div class="diagram"></div>
+      <p class="takeaway guide">Nothing is stored: each message costs one AI call plus live BDNS requests.</p>
+      <details><summary>Diagram source</summary><pre class="mermaid-src">flowchart TB
+  U([Citizen]) --> UI[Chat UI]
+  UI --> IA[LLM interpreter]
+  IA --> MO[Candidate engine]
+  CA[(Benefits catalogue)] --> MO
+  MO --> LV[Live BDNS route]
+  LV --> BD[BDNS API]
+  PK[(Pack backup copy)] -. fallback .-> LV
+  MO --> UI
+  TS[Test set] -.-> MO
+  classDef service stroke-width:1px
+  classDef data stroke-width:1px
+  classDef compute stroke-width:1px
+  classDef external stroke-width:1px
+  class UI,LV service
+  class CA,PK data
+  class MO,TS compute
+  class IA,BD external</pre></details>
+    </figure>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <article data-note="default">
+        <p class="kind">Architecture</p>
+        <h3>Rules + live BDNS</h3>
+        <p class="role">No index: hand-written rules on the catalogue and the BDNS queried live per message. One LLM call per message.</p>
+        <ul class="tags"><li data-status="decided">One LLM call per message</li><li data-status="decided">Catalogue rules in S2</li></ul>
+        <dl class="facts"><div><dt>LLM calls / message</dt><dd>1</dd></div><div><dt>Stored user text</dt><dd>none</dd></div></dl>
+      </article>
+      <article data-note="U" hidden>
+        <p class="kind">Actor</p>
+        <h3>Citizen</h3>
+        <p class="role">Writes their situation in their own words.</p>
+        <p class="explain guide">A person in València who needs help and does not know which aids exist. They write in their own words; no form.</p>
+        <ul class="tags"><li>no personal data stored</li></ul>
+      </article>
+      <article data-note="UI" hidden data-kind="service">
+        <p class="kind">Service</p>
+        <h3>Chat UI</h3>
+        <p class="role">Shows "I understood", the result cards and the coverage panel.</p>
+        <p class="explain guide">The page where the conversation happens. It keeps the chat in the browser only, so nothing the citizen writes reaches a database.</p>
+        <ul class="tags"><li>S1</li><li data-status="decided">Chat, no form</li><li>Sol design system</li></ul>
+        <dl class="facts"><div><dt>Route</dt><dd>/derechos-a</dd></div><div><dt>State</dt><dd>browser only</dd></div></dl>
+      </article>
+      <article data-note="IA" hidden data-kind="external">
+        <p class="kind">External</p>
+        <h3>LLM interpreter</h3>
+        <p class="role">Turns the message into profile fields, a need and legal search terms. Writes nothing the user sees.</p>
+        <p class="explain guide">The <a class="term" href="#term-llm">AI</a> reads the message and writes down only facts the citizen stated, each with the words it came from. It never writes the answer, so it cannot invent an amount or a deadline.</p>
+        <ul class="tags"><li>S3</li><li>glm5.3-flash</li><li>JSON only</li></ul>
+        <dl class="facts"><div><dt>Calls / message</dt><dd>1</dd></div><div><dt>Each field</dt><dd>needs a user quote</dd></div></dl>
+      </article>
+      <article data-note="MO" hidden data-kind="compute">
+        <p class="kind">Compute</p>
+        <h3>Candidate engine</h3>
+        <p class="role">Keeps every aid that no stated fact blocks, then asks the field that resolves the most remaining aids.</p>
+        <p class="explain guide">Checks every aid against what the citizen said. An aid leaves the list only if a stated fact rules it out, which is the <a class="term" href="#term-double-block">double block</a>. It can also ask one optional question that would settle the most aids.</p>
+        <ul class="tags"><li>S2</li><li data-status="decided">Unknown never blocks</li></ul>
+        <dl class="facts"><div><dt>Results</dt><dd>could apply · may fit if · no</dd></div></dl>
+      </article>
+      <article data-note="LV" hidden data-kind="service">
+        <p class="kind">Service</p>
+        <h3>Live BDNS route / status check</h3>
+        <p class="role">Runs the 3 tested BDNS searches and reads up to 10 fichas for status, in parallel, with a timeout and a short cache.</p>
+        <p class="explain guide">Asks the <a class="term" href="#term-bdns">BDNS</a> directly. It does the whole search on each message, so a closed call is never shown as open.</p>
+        <ul class="tags"><li>S2</li></ul>
+        <dl class="facts"><div><dt>Max fichas</dt><dd>10</dd></div><div><dt>Rate</dt><dd>1 / s</dd></div></dl>
+      </article>
+      <article data-note="BD" hidden data-kind="external">
+        <p class="kind">External</p>
+        <h3>BDNS API</h3>
+        <p class="role">Public register of <a class="term" href="#term-convocatoria">convocatorias</a>. No key; only the server may call it.</p>
+        <p class="explain guide">The national register of grant calls. It is free and public, but blocks browser calls, so only our server talks to it, at most once per second.</p>
+        <ul class="tags"><li>S2</li><li data-status="risk">abierto ≠ open today</li></ul>
+        <dl class="facts"><div><dt>Spain 2026</dt><dd>12,137</dd></div><div><dt>Fallback</dt><dd>pack copy</dd></div></dl>
+      </article>
+      <article data-note="TS" hidden data-kind="compute">
+        <p class="kind">Compute</p>
+        <h3>Test set</h3>
+        <p class="role">Expected aids per profile; runs before each push.</p>
+        <p class="explain guide">A fixed list of example citizens and the aids each must see. It runs before every publish, so a change that loses an aid is caught.</p>
+        <ul class="tags"><li>S3</li></ul>
+        <dl class="facts"><div><dt>Must-include recall</dt><dd>100%</dd></div></dl>
+      </article>
+      <article data-note="LV->BD" hidden>
+        <p class="kind">Link</p>
+        <h3>Status check → BDNS</h3>
+        <p class="role">Ficha requests for the shown results only.</p>
+        <dl class="facts"><div><dt>Endpoint</dt><dd>/convocatorias?numConv=</dd></div></dl>
+      </article>
+          <article data-note="PK" hidden data-kind="data">
+        <p class="kind">Datastore</p>
+        <h3>Pack backup copy</h3>
+        <p class="role">59 convocatorias received 1 Jul–16 Oct 2026, used when the BDNS API does not answer.</p>
+        <p class="explain guide">The <a class="term" href="#term-pack">pack</a> holds a copy of 59 BDNS calls from 16 Oct. If the BDNS does not answer, the tool uses it and says the data is a copy.</p>
+        <ul class="tags"><li>S2</li><li>says it is a copy</li></ul>
+        <dl class="facts"><div><dt>Field names</dt><dd>differ from API</dd></div></dl>
+      </article>
+    </aside>
+    </div>
+  </section>
+
+  <!-- ============ Ingest ============ -->
+  <section role="tabpanel" id="tab-ingest" hidden>
+    <div class="layout">
+    <div class="figures">
+    <p class="lead guide">How public calls get into the tool: the BDNS is asked live for every message, with no stored index. The chart below shows why most calls in the organisers' copy do not help citizens.</p>
+    <figure class="card">
+      <figcaption><h3>Live BDNS, one query</h3><p>No indexer: the S2 engine queries the BDNS per message, as SETUP.md describes.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a box for its card</li><li>Hover an arrow for its link</li><li>Drag to pan</li><li>⌘/Ctrl + scroll to zoom</li><li>Double-click to reset</li></ul></span></figcaption>
+      <div class="diagram"></div>
+      <p class="takeaway guide">A query reads at most 10 fichas, at 1 per second.</p>
+      <details><summary>Diagram source</summary><pre class="mermaid-src">flowchart TB
+  P[Profile + need] --> Q[3 tested searches]
+  Q -. API down .-> PK[(Pack copy with date)]
+  Q --> FL{Not instrumental and purpose fits?}
+  PK --> FL
+  FL -- no --> X([Skip])
+  FL -- yes --> FC[Read up to 10 fichas]
+  FC --> ST[Status from dates]
+  ST --> RK[Rank by keywords]
+  RK --> OUT[(Cards with IGAE attribution)]
+  classDef data stroke-width:1px
+  classDef compute stroke-width:1px
+  classDef external stroke-width:1px
+  class Q,FC external
+  class FL,ST,RK compute
+  class PK,OUT data</pre></details>
+    </figure>
+    <figure class="card">
+      <figcaption><h3>Pack backup copy</h3><p>59 convocatorias by type and whether the ficha carries dates.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a bar for its card</li><li>Click a legend item to hide it</li></ul></span></figcaption>
+      <div class="chart" data-chart="pack" data-table="t-pack"></div>
+        <p class="takeaway guide">Only 21 of the 59 calls in the copy are open to applications and carry dates; 14 are instrumental and cannot be requested.</p>
+      <details><summary>Data table</summary><div><table id="t-pack">
+        <thead><tr><th>Type</th><th>With dates</th><th>Without dates</th></tr></thead>
+        <tbody>
+          <tr><td>Canonical</td><td>21</td><td>24</td></tr>
+          <tr><td>Instrumental</td><td>6</td><td>8</td></tr>
+        </tbody>
+      </table></div></details>
+    </figure>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <article data-note="default">
+        <p class="kind">Pipeline</p>
+        <h3>Live BDNS route</h3>
+        <p class="role">No PDFs and no index: search, filter, read up to 10 fichas, status from dates, pack copy as fallback.</p>
+        <ul class="tags"><li>S2</li><li data-status="decided">Parallel calls, timeout, short cache</li></ul>
+        <dl class="facts"><div><dt>Instrumental in pack</dt><dd>14 of 59</dd></div><div><dt>No dates in pack</dt><dd>32 of 59</dd></div></dl>
+      </article>
+      <article data-note="Canonical" hidden>
+        <p class="kind">Type</p>
+        <h3>Canonical</h3>
+        <p class="role">Open calls a citizen can apply to.</p>
+      </article>
+      <article data-note="Instrumental" hidden>
+        <p class="kind">Type</p>
+        <h3>Instrumental</h3>
+        <p class="role">Direct or nominative grants; citizens usually cannot apply. Filtered out.</p>
+        <p class="explain guide">An <a class="term" href="#term-instrumental">instrumental call</a> only records a payment already decided, so showing it would mislead.</p>
+        <ul class="tags"><li data-status="risk">Never show as an option</li></ul>
+      </article>
+      <article data-note="Without dates" hidden>
+        <p class="kind">Series</p>
+        <h3>Without dates</h3>
+        <p class="role">Deadline only in free text: show "deadline per the bases", never "closed".</p>
+      </article>
+          <article data-note="P" hidden>
+        <p class="kind">Input</p>
+        <h3>Profile + need</h3>
+        <p class="role">Fields the user stated plus the need, from the one LLM call.</p>
+        <ul class="tags"><li>S0 · type</li></ul>
+      </article>
+      <article data-note="Q" hidden data-kind="external">
+        <p class="kind">API call</p>
+        <h3>3 tested searches</h3>
+        <p class="role">Generalitat (A + regions 54–57), State (C) and València city council (L, órgano 2903), individuals only.</p>
+        <ul class="tags"><li>S2</li></ul>
+        <dl class="facts"><div><dt>Order</dt><dd>fechaRecepcion desc</dd></div></dl>
+      </article>
+      <article data-note="FL" hidden data-kind="compute">
+        <p class="kind">Check</p>
+        <h3>Not instrumental, purpose fits?</h3>
+        <p class="role">Drops calls citizens cannot apply to and purposes unrelated to the need.</p>
+        <ul class="tags"><li>S2</li><li data-status="decided">Veracity</li></ul>
+      </article>
+      <article data-note="FC" hidden data-kind="external">
+        <p class="kind">API call</p>
+        <h3>Read up to 10 fichas</h3>
+        <p class="role">The search has no deadlines, so each kept result needs its ficha; cached in memory while the server runs.</p>
+        <ul class="tags"><li>S2</li></ul>
+        <dl class="facts"><div><dt>Max</dt><dd>10</dd></div><div><dt>Rate</dt><dd>1 / s</dd></div></dl>
+      </article>
+      <article data-note="ST" hidden data-kind="compute">
+        <p class="kind">Step</p>
+        <h3>Status from dates</h3>
+        <p class="role">fechaInicio, fechaFin, textInicio, textFin; never the abierto field. Null dates show "per the bases".</p>
+        <p class="explain guide">The <a class="term" href="#term-abierto">"abierto"</a> field only means "no fixed deadline", so status comes from the dates; when there are none, the card says "deadline per the <a class="term" href="#term-bases">bases</a>".</p>
+        <ul class="tags"><li>S2</li><li data-status="risk">abierto ≠ open today</li></ul>
+      </article>
+      <article data-note="RK" hidden data-kind="compute">
+        <p class="kind">Step</p>
+        <h3>Rank by keywords</h3>
+        <p class="role">Maps the need to BDNS purposes (housing = 8, social services, education, employment) and adds title keyword matches. No second LLM call.</p>
+        <p class="explain guide">The <a class="term" href="#term-finalidad">purpose</a> code says what a call is about; matching it to the need puts housing calls first for someone who rents.</p>
+        <ul class="tags"><li>S2</li></ul>
+      </article>
+      <article data-note="OUT" hidden data-kind="data">
+        <p class="kind">Output</p>
+        <h3>Cards with IGAE attribution</h3>
+        <p class="role">Each call links its official ficha and cites the data origin with the consult date.</p>
+        <p class="explain guide">The BDNS terms ask us to cite the <a class="term" href="#term-igae">IGAE</a> as the origin of the data.</p>
+        <ul class="tags"><li>S2</li></ul>
+        <dl class="facts"><div><dt>Ficha URL</dt><dd>/GE/es/convocatorias/N</dd></div></dl>
+      </article>
+      <article data-note="PK" hidden data-kind="data">
+        <p class="kind">Datastore</p>
+        <h3>Pack copy with date</h3>
+        <p class="role">Fallback when the API is down; the answer says the data is a copy from 16 Oct.</p>
+        <ul class="tags"><li>S2</li></ul>
+      </article>
+    </aside>
+    </div>
+  </section>
+
+  <!-- ============ Data model ============ -->
+  <section role="tabpanel" id="tab-model" hidden>
+    <div class="layout">
+    <div class="figures">
+    <p class="lead guide">What the tool keeps in memory or on disk, and how the pieces refer to each other. Nothing the citizen writes is ever stored.</p>
+    <figure class="card">
+      <figcaption><h3>Runtime entities</h3><p>Nothing is stored: rules are code and convocatorias are cached in memory.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a box for its card</li><li>Hover an arrow for its link</li><li>Drag to pan</li><li>⌘/Ctrl + scroll to zoom</li><li>Double-click to reset</li></ul></span></figcaption>
+      <div class="diagram"></div>
+      <p class="takeaway guide">No database: rules are code and fetched calls stay in memory.</p>
+      <details><summary>Diagram source</summary><pre class="mermaid-src">flowchart LR
+  AID[(Catalogue aid)] --> RU[(Hand-written rule)]
+  RU --> FI[(Profile field)]
+  PE[Profile] -. fills .-> FI
+  LC[(Live convocatoria)] -. status from .-> FC[(Ficha dates)]
+  classDef data stroke-width:1px
+  classDef compute stroke-width:1px
+  class AID,RU,FI,LC,FC data
+  class PE compute</pre></details>
+    </figure>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <article data-note="default">
+        <p class="kind">Model</p>
+        <h3>Nothing stored</h3>
+        <p class="role">Rules are code; live convocatorias live in a memory cache; the profile lives in the browser.</p>
+        <ul class="tags"><li>S0 fixes the types</li></ul>
+        <dl class="facts"><div><dt>Entities</dt><dd>6 + profile</dd></div></dl>
+      </article>
+      <article data-note="FI" hidden data-kind="data">
+        <p class="kind">Entity</p>
+        <h3>Field</h3>
+        <p class="role">Active vocabulary: name, type, question text, answer options, convocatorias using it.</p>
+        <ul class="tags"><li>S0 · type</li></ul>
+      </article>
+      <article data-note="PE" hidden data-kind="compute">
+        <p class="kind">Runtime</p>
+        <h3>Profile</h3>
+        <p class="role">The user's known fields in this chat. Every field is optional; empty means unknown.</p>
+        <ul class="tags"><li>never stored</li><li>no sensitive fields</li></ul>
+      </article>
+          <article data-note="AID" hidden data-kind="data">
+        <p class="kind">Entity</p>
+        <h3>Catalogue aid</h3>
+        <p class="role">One of the 8 hand-checked aids in datos/catalogo-tramites-ayudas.json.</p>
+        <ul class="tags"><li>S2</li></ul>
+        <dl class="facts"><div><dt>Verified</dt><dd>7 of 8</dd></div><div><dt>Unverified</dt><dd>RVI</dd></div></dl>
+      </article>
+      <article data-note="RU" hidden data-kind="data">
+        <p class="kind">Entity</p>
+        <h3>Hand-written rule</h3>
+        <p class="role">Code written from requisitos_clave: which stated facts block the aid, and the reason text.</p>
+        <ul class="tags"><li>S2</li></ul>
+      </article>
+      <article data-note="LC" hidden data-kind="data">
+        <p class="kind">Entity</p>
+        <h3>Live convocatoria</h3>
+        <p class="role">A BDNS result normalised to one shape, from the API or the pack copy.</p>
+        <ul class="tags"><li>S2</li><li>in memory</li></ul>
+      </article>
+      <article data-note="FC" hidden data-kind="data">
+        <p class="kind">Entity</p>
+        <h3>Ficha dates</h3>
+        <p class="role">Start and end dates or free-text deadline; the only source of status.</p>
+        <ul class="tags"><li>S2</li></ul>
+      </article>
+    </aside>
+    </div>
+  </section>
+
+  <!-- ============ Query ============ -->
+  <section role="tabpanel" id="tab-query" hidden>
+    <div class="layout">
+    <div class="figures">
+    <p class="lead guide">What happens when a citizen sends one message, step by step, and how the tool decides whether an aid stays in the answer. Read the first diagram from top to bottom; each arrow is one message between parts.</p>
+    <figure class="card">
+      <figcaption><h3>One chat message</h3><p>S3 runs the loop; S2 applies catalogue rules and live BDNS searches.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click an actor for its card</li><li>Drag to pan</li><li>⌘/Ctrl + scroll to zoom</li><li>Double-click to reset</li></ul></span></figcaption>
+      <div class="diagram"></div>
+      <p class="takeaway guide">One message costs one AI call, at most 3 searches and up to 10 ficha reads.</p>
+      <details><summary>Diagram source</summary><pre class="mermaid-src">sequenceDiagram
+  participant U as Citizen
+  participant UI as Chat UI
+  participant IA as LLM
+  participant MO as Engine
+  participant BD as BDNS
+  U->>UI: "24, unemployed, renting in València"
+  UI->>IA: message + known profile
+  IA-->>UI: fields with quotes, need
+  UI->>MO: profile + need
+  MO-->>MO: rules on 8 catalogue aids, double block
+  MO->>BD: 3 tested searches
+  BD-->>MO: matching convocatorias
+  MO->>BD: up to 10 fichas, 1 per s
+  BD-->>MO: dates, documents
+  MO-->>UI: cards, coverage, next question
+  UI-->>U: "I understood…" + results</pre></details>
+    </figure>
+    <figure class="card">
+      <figcaption><h3>Decision per aid</h3><p>An aid leaves the list only when two conditions hold.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a box for its card</li><li>Drag to pan</li><li>Double-click to reset</li></ul></span></figcaption>
+      <div class="diagram"></div>
+      <p class="takeaway guide">An aid is folded only when both checks say yes; any unknown keeps it in the list.</p>
+      <details><summary>Diagram source</summary><pre class="mermaid-src">flowchart LR
+  A[Aid] --> Q1{Stated fact contradicts it?}
+  Q1 -- no --> KEEP([Shown])
+  Q1 -- yes --> Q2{Criterion verified?}
+  Q2 -- no --> KEEP
+  Q2 -- yes --> DROP([Folded with reason])
+  classDef compute stroke-width:1px
+  class Q1,Q2 compute</pre></details>
+    </figure>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <article data-note="default">
+        <p class="kind">Flow</p>
+        <h3>Query</h3>
+        <p class="role">Filter first, then order. Results show from the first message and sharpen with each answer.</p>
+        <ul class="tags"><li data-status="decided">Ask top filters first</li><li data-status="decided">Refine on what is left</li></ul>
+        <dl class="facts"><div><dt>LLM calls</dt><dd>1</dd></div><div><dt>Rerank calls</dt><dd>1</dd></div><div><dt>Fichas re-read</dt><dd>≤ 10</dd></div></dl>
+      </article>
+      <article data-note="U" hidden>
+        <p class="kind">Actor</p>
+        <h3>Citizen</h3>
+        <p class="role">Can skip any question and correct "I understood".</p>
+      </article>
+      <article data-note="UI" hidden>
+        <p class="kind">Actor</p>
+        <h3>Chat UI</h3>
+        <p class="role">Keeps the conversation in the browser only and sends the known profile with each message.</p>
+        <ul class="tags"><li>S1</li><li>nothing stored</li></ul>
+      </article>
+      <article data-note="IA" hidden>
+        <p class="kind">Actor</p>
+        <h3>LLM</h3>
+        <p class="role">Returns JSON only; a field without a quote from the message is dropped.</p>
+        <ul class="tags"><li>fallback: BM25 on frases_usuario</li></ul>
+      </article>
+      <article data-note="MO" hidden>
+        <p class="kind">Actor</p>
+        <h3>Engine</h3>
+        <p class="role">Picks the next question: the unknown field that appears in the most remaining candidates.</p>
+      </article>
+      <article data-note="BD" hidden>
+        <p class="kind">Actor</p>
+        <h3>BDNS</h3>
+        <p class="role">Returns current dates for the shown convocatorias only.</p>
+        <dl class="facts"><div><dt>Fichas</dt><dd>≤ 10, 1 / s</dd></div></dl>
+      </article>
+      <article data-note="Q1" hidden data-kind="compute">
+        <p class="kind">Check</p>
+        <h3>Stated fact contradicts it?</h3>
+        <p class="role">Only facts the user wrote count; an empty field never blocks.</p>
+        <ul class="tags"><li data-status="decided">Unknown never blocks</li></ul>
+      </article>
+      <article data-note="Q2" hidden data-kind="compute">
+        <p class="kind">Check</p>
+        <h3>Criterion verified?</h3>
+        <p class="role">The criterion's quote must exist in the bases text.</p>
+        <ul class="tags"><li data-status="open">Proposed guardrail</li></ul>
+      </article>
+      <article data-note="KEEP" hidden>
+        <p class="kind">Outcome</p>
+        <h3>Shown</h3>
+        <p class="role">"Could apply" or "may fit if…", with what to check.</p>
+      </article>
+      <article data-note="DROP" hidden>
+        <p class="kind">Outcome</p>
+        <h3>Folded with reason</h3>
+        <p class="role">Listed under "Does not fit" with the blocking criterion, so the user can contest it.</p>
+      </article>
+    </aside>
+    </div>
+  </section>
+
+  <!-- ============ Guardrails ============ -->
+  <section role="tabpanel" id="tab-guardrails" hidden>
+    <div class="layout">
+    <div class="figures">
+    <p class="lead guide">The rules that keep answers true and complete. "Veracity" means nothing false is shown; "coverage" means no aid is silently dropped. The last column says which spec builds each rule.</p>
+    <figure class="card">
+      <figcaption><h3>Guardrails by layer</h3><p>Each guardrail, the risk it targets (veracity or coverage) and the spec that builds it.</p></figcaption>
+      <div><table id="t-guard" class="list">
+        <thead><tr><th>Layer</th><th>Guardrail</th><th>Protects</th><th>Spec</th></tr></thead>
+        <tbody>
+          <tr><td>Index</td><td>Official domains only; every fact keeps its URL and consult date</td><td>Veracity</td><td>S2</td></tr>
+          <tr><td>Profile</td><td>Each extracted field needs a quote from the user message</td><td>Veracity</td><td>S3</td></tr>
+          <tr><td>Profile</td><td>"I understood" shown and correctable; no sensitive questions</td><td>Veracity</td><td>S1</td></tr>
+          <tr><td>Decision</td><td>Double block: stated fact AND verified criterion</td><td>Coverage</td><td>S2</td></tr>
+          <tr><td>Decision</td><td>Status from dates; null dates show "per the bases", never closed</td><td>Veracity</td><td>S2</td></tr>
+          <tr><td>Decision</td><td>Live re-check of the top 10 fichas; instrumental calls hidden</td><td>Veracity</td><td>S2</td></tr>
+          <tr><td>Decision</td><td>Benefits always evaluated; related aids added; one need maps to several purposes</td><td>Coverage</td><td>S2</td></tr>
+          <tr><td>Decision</td><td>Search orders, never filters; unparsed bases are shown, not dropped</td><td>Coverage</td><td>S2</td></tr>
+          <tr><td>Answer</td><td>Cards are templates from the index; no LLM text shown</td><td>Veracity</td><td>S1</td></tr>
+          <tr><td>Answer</td><td>Coverage panel: what was and was not consulted</td><td>Coverage</td><td>S1</td></tr>
+          <tr><td>Answer</td><td>Banned phrases ("tienes derecho"…); amounts only with quote and date</td><td>Veracity</td><td>S3</td></tr>
+        </tbody>
+      </table></div>
+      <p class="takeaway guide">S2 builds 6 of the 11 guardrails; S1 and S3 build the rest.</p>
+    </figure>
+    <figure class="card">
+      <figcaption><h3>Test set</h3><p>Expected behaviour per case; runs with bun test before each push.</p></figcaption>
+      <div><table id="t-tests" class="list">
+        <thead><tr><th>Case</th><th>Must include</th><th>Must not / must say</th></tr></thead>
+        <tbody>
+          <tr><td>24, unemployed, renting, València</td><td>Subsidy, IMV, Bono Alquiler Joven (closed)</td><td>School meals, Xarxa Llibres</td></tr>
+          <tr><td>Self-employed mother, 2 kids, Castelló</td><td>Child supplement, IMV, school meals</td><td>Says Castelló local aids were not consulted</td></tr>
+          <tr><td>70, la Safor, minimum pension, high power bill</td><td>Bono social eléctrico</td><td>Bono Alquiler Joven; says town not consulted</td></tr>
+          <tr><td>Family, 3 school-age kids, València</td><td>Xarxa Llibres (open to 10 Nov), school meals</td><td>—</td></tr>
+          <tr><td>DANA aid</td><td>Link to sede.gva.es</td><td>No invented calls</td></tr>
+          <tr><td>Prompt injection</td><td>Normal answer</td><td>No "derecho", no invented amounts</td></tr>
+          <tr><td>No data ("I need help")</td><td>Main benefits as "may fit if"</td><td>Empty list</td></tr>
+        </tbody>
+      </table></div>
+      <p class="takeaway guide">Every aid the tests require comes from the catalogue, not from the BDNS.</p>
+    </figure>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <article data-note="default">
+        <p class="kind">Guardrails</p>
+        <h3>True and complete</h3>
+        <p class="role">The LLM never writes what the user reads; unknowns never remove an aid.</p>
+        <ul class="tags"><li data-status="open">Proposed set</li></ul>
+        <dl class="facts"><div><dt>Recall target</dt><dd>100% must-include</dd></div><div><dt>Banned phrases</dt><dd>0</dd></div><div><dt>Cards without source</dt><dd>0</dd></div><div><dt>Closed shown open</dt><dd>0</dd></div></dl>
+        <div class="questions"><h4>Open questions</h4><ul><li>Approve the proposed guardrail set?</li></ul></div>
+      </article>
+    </aside>
+    </div>
+  </section>
+
+  <!-- ============ Work split ============ -->
+  <section role="tabpanel" id="tab-split" hidden>
+    <div class="layout">
+    <div class="figures">
+    <p class="lead guide">Who builds what. The work is split into five <a class="term" href="#term-spec">specs</a>, and one person owns each spec from start to finish. S0 fixes the <a class="term" href="#term-contract">contract</a> first, so the frontend, the engine and the AI loop can then be built at the same time without waiting for each other. Click a box to see its owner, its files and how it is checked.</p>
+    <figure class="card">
+      <figcaption><h3>Specs and dependencies</h3><p>Solid arrow: needs it first. Dashed arrow: connects at the end.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a box for its card</li><li>Hover an arrow for its link</li><li>Drag to pan</li><li>⌘/Ctrl + scroll to zoom</li><li>Double-click to reset</li></ul></span></figcaption>
+      <div class="diagram"></div>
+      <p class="takeaway guide">After S0, which takes about 1 hour, three people work in parallel; only S3 depends on S2, and it calls S2 as a plain function.</p>
+      <details><summary>Diagram source</summary><pre class="mermaid-src">flowchart LR
+  S0[S0 · Contracts] --> S1[S1 · Frontend]
+  S0 --> S2[S2 · Engine / API]
+  S0 --> S3[S3 · LLM loop]
+  S3 -- calls --> S2
+  S1 -. real route .-> S3
+  S4[S4 · Centralise, optional] -. new source .-> S2
+  classDef service stroke-width:1px
+  classDef data stroke-width:1px
+  classDef compute stroke-width:1px
+  classDef external stroke-width:1px
+  class S0,S4 data
+  class S1 service
+  class S2,S3 compute</pre></details>
+    </figure>
+    <figure class="card">
+      <figcaption><h3>What each spec delivers</h3><p>Owner, delivery and check per spec. Files and dependencies are in each card and the diagram.</p></figcaption>
+      <div><table id="t-specs" class="list">
+        <thead><tr><th>Spec</th><th>Owner</th><th>Delivers</th><th>Done when</th></tr></thead>
+        <tbody>
+          <tr><td>S0 · Contracts</td><td>1 technical person</td><td>Types Perfil, Ficha, Respuesta; fixtures for the 4 test profiles; mock /api/chat</td><td>It compiles and the mock responds</td></tr>
+          <tr><td>S1 · Frontend</td><td>Non-technical person</td><td>Chat, aid cards, coverage panel, optional question; loading, error and unconfirmed states</td><td>The 4 profiles render on mobile and desktop</td></tr>
+          <tr><td>S2 · Engine / API</td><td>API person</td><td>Perfil → fichas + coverage: catalogue rules for 8 aids, 3 BDNS searches, non-instrumental, ≤ 10 fichas, status from dates, ranking; parallel calls, timeout, short cache; pack fallback</td><td>Tests on recorded BDNS responses pass with no network</td></tr>
+          <tr><td>S3 · LLM loop</td><td>LLM person</td><td>Real /api/chat: message + history → one LLM call → quoted Perfil → S2 → Respuesta with the next question; guardrails; fallback</td><td>The 4-profile test set passes: must include and must not include</td></tr>
+          <tr><td>S4 · Centralise</td><td>Whoever finishes first</td><td>Unstructured aids and benefits normalised into the Ficha type</td><td>Fichas pass the type check; a new aid appears in the chat</td></tr>
+        </tbody>
+      </table></div>
+      <p class="takeaway guide">Each spec owns its own files, so no two people edit the same file; S0 owns the only shared one, the types.</p>
+    </figure>
+    <figure class="card">
+      <figcaption><h3>Out of the project for now</h3><p>Parts of the earlier plan that no spec builds.</p></figcaption>
+      <div><table id="t-out" class="list">
+        <thead><tr><th>Part</th><th>Why it waits</th></tr></thead>
+        <tbody>
+          <tr><td>Postgres + pgvector</td><td>Needs a database from the organisers; the demo stores nothing</td></tr>
+          <tr><td>Embeddings and rerank</td><td>Unconfirmed in the event key; keyword ranking is enough for 8 aids</td></tr>
+          <tr><td>PDF indexing with quoted criteria</td><td>Slow and fragile; the catalogue already holds the key requirements</td></tr>
+          <tr><td>Dynamic vocabulary and cron</td><td>Needs a place to run on a schedule</td></tr>
+          <tr><td>Catalogue pipeline with human validation, all of Spain</td><td>A product of its own, after the build</td></tr>
+        </tbody>
+      </table></div>
+    </figure>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <article data-note="default">
+        <p class="kind">Plan</p>
+        <h3>Work split</h3>
+        <p class="role">Five specs, one owner each, end to end; S0 first, then S1, S2 and S3 in parallel, S4 if time allows.</p>
+        <p class="explain guide">Each person can build and test their part alone. The shared types and example answers from S0 are what lets them meet at the end without surprises.</p>
+        <ul class="tags"><li data-status="decided">Split approved 2026-10-22</li><li data-status="decided">S0 first, today</li><li data-status="decided">Catalogue rules in S2</li><li data-status="open">Owners</li></ul>
+        <dl class="facts"><div><dt>Specs</dt><dd>4 + 1 optional</dd></div><div><dt>In parallel</dt><dd>S1, S2, S3</dd></div><div><dt>S0</dt><dd>~1 h</dd></div><div><dt>Build</dt><dd>~4 h (estimate)</dd></div></dl>
+        <div class="questions"><h4>Open questions</h4><ul><li>Who owns each spec?</li></ul></div>
+      </article>
+      <article data-note="S0" hidden data-kind="data">
+        <p class="kind">Spec</p>
+        <h3>S0 · Contracts</h3>
+        <p class="role">Fixes the shapes every part shares, plus example answers and a stand-in route.</p>
+        <p class="explain guide">Before anyone builds, we agree what a profile, an aid card and an answer look like. With saved <a class="term" href="#term-fixture">example answers</a> and a <a class="term" href="#term-mock">mock route</a>, the frontend can start at once.</p>
+        <ul class="tags"><li data-status="decided">First, today</li><li data-status="open">Owner</li></ul>
+        <dl class="facts"><div><dt>Owner</dt><dd>1 technical person</dd></div><div><dt>Files</dt><dd>src/lib/tipos.ts, src/datos/ejemplos/</dd></div><div><dt>Check</dt><dd>compiles, mock responds</dd></div><div><dt>Time</dt><dd>~1 h</dd></div></dl>
+      </article>
+      <article data-note="S1" hidden data-kind="service">
+        <p class="kind">Spec</p>
+        <h3>S1 · Frontend</h3>
+        <p class="role">Everything the citizen sees: chat, aid cards, coverage panel and the optional question.</p>
+        <p class="explain guide">Built with <a class="term" href="#term-vibe">vibe coding</a> by a non-technical member. It reads the example answers from S0, so it never waits for the AI or the BDNS; at the end one line points it to the real route.</p>
+        <ul class="tags"><li data-status="decided">Against the mock</li><li data-status="open">Owner</li></ul>
+        <dl class="facts"><div><dt>Owner</dt><dd>non-technical person</dd></div><div><dt>Files</dt><dd>src/app/page.tsx, src/components/*</dd></div><div><dt>Check</dt><dd>4 profiles, mobile + desktop</dd></div></dl>
+      </article>
+      <article data-note="S2" hidden data-kind="compute">
+        <p class="kind">Spec</p>
+        <h3>S2 · Engine / API</h3>
+        <p class="role">Turns a profile into the list of aids and the coverage panel.</p>
+        <p class="explain guide">Checks the 8 catalogue aids with fixed rules and asks the <a class="term" href="#term-bdns">BDNS</a> for live calls. It makes the calls fast and safe: in parallel, with a time limit and a short cache, and with the pack copy if the BDNS fails.</p>
+        <ul class="tags"><li data-status="decided">Catalogue rules here</li><li data-status="open">Owner</li></ul>
+        <dl class="facts"><div><dt>Owner</dt><dd>API person</dd></div><div><dt>Files</dt><dd>src/lib/motor/*, src/lib/bdns.ts</dd></div><div><dt>Check</dt><dd>recorded responses, no network</dd></div><div><dt>Fichas</dt><dd>≤ 10 per message</dd></div></dl>
+      </article>
+      <article data-note="S3" hidden data-kind="compute">
+        <p class="kind">Spec</p>
+        <h3>S3 · LLM loop</h3>
+        <p class="role">The real /api/chat: from the citizen's message to the answer.</p>
+        <p class="explain guide">One <a class="term" href="#term-llm">AI</a> call reads the message and returns a <a class="term" href="#term-profile">profile</a> where every fact quotes the citizen. The engine does the rest, and S3 adds the next question that rules in or out the most aids.</p>
+        <ul class="tags"><li data-status="decided">One LLM call per message</li><li data-status="decided">Nothing stored</li><li data-status="open">Owner</li></ul>
+        <dl class="facts"><div><dt>Owner</dt><dd>LLM person</dd></div><div><dt>Files</dt><dd>src/app/api/chat/, src/lib/llm/*</dd></div><div><dt>Check</dt><dd>4-profile test set</dd></div></dl>
+      </article>
+      <article data-note="S4" hidden data-kind="data">
+        <p class="kind">Spec · optional</p>
+        <h3>S4 · Centralise</h3>
+        <p class="role">Brings scattered aids and benefits into the same Ficha shape, as one more source for S2.</p>
+        <p class="explain guide">Aid information comes in many formats. S4 rewrites it into the shape the engine already reads, so new aids appear in the chat without touching the frontend or the AI loop.</p>
+        <ul class="tags"><li data-status="decided">Only if time allows</li><li data-status="open">Owner</li></ul>
+        <dl class="facts"><div><dt>Owner</dt><dd>whoever finishes first</dd></div><div><dt>Files</dt><dd>src/datos/, bun run indexar</dd></div><div><dt>Check</dt><dd>type check, new aid in chat</dd></div></dl>
+      </article>
+      <article data-note="S3->S2" hidden>
+        <p class="kind">Link</p>
+        <h3>S3 calls S2</h3>
+        <p class="role">A plain function call with a Perfil; it returns fichas and coverage.</p>
+        <ul class="tags"><li data-status="decided">Function, not HTTP</li></ul>
+      </article>
+      <article data-note="S1->S3" hidden>
+        <p class="kind">Link</p>
+        <h3>Switch to the real route</h3>
+        <p class="role">At the end, S1 stops reading the mock and calls the real /api/chat. Same Respuesta shape, so nothing else changes.</p>
+      </article>
+      <article data-note="S4->S2" hidden>
+        <p class="kind">Link</p>
+        <h3>New source for the engine</h3>
+        <p class="role">S2 reads the normalised fichas like the catalogue; S1 and S3 do not change.</p>
+      </article>
+    </aside>
+    </div>
+  </section>
+
+  <!-- ============ Spec 000: owned by /mini-spec and /mini-implement ============ -->
+  <section role="tabpanel" id="tab-spec-000" data-spec="000" hidden>
+    <div class="layout">
+    <div class="figures">
+    <p class="lead guide">This tab tracks the shared contracts: the data shapes, sample answers and a stand-in chat route. It comes first so the other three people can start at the same time without waiting for each other.</p>
+    <div class="bento">
+      <div class="card kpi kpi-wide" data-progress="t-spec-000"><span>Tasks done</span><b></b><div class="bar"><i></i></div><span>from Tasks table</span></div>
+      <div class="card kpi kpi-wide" data-progress="t-spec-000-fr"><span>Requirements met</span><b></b><div class="bar"><i></i></div><span>from Requirements table</span></div>
+    </div>
+    <figure class="card" data-status-table="t-spec-000">
+      <figcaption><h3>Tasks</h3><p>Task order from the spec; green is done, dashed is to do.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a task for its card</li><li>Drag to pan</li><li>⌘/Ctrl + scroll to zoom</li><li>Double-click to reset</li></ul></span></figcaption>
+      <div class="diagram"></div>
+      <details><summary>Diagram source</summary><pre class="mermaid-src">flowchart LR
+  T001[T001 · Types] --&gt; T002[T002 · Fixtures]
+  T001 --&gt; T003[T003 · Engine stub]
+  T002 --&gt; T004[T004 · Mock route]
+  T003 --&gt; T004
+  T004 --&gt; T005[T005 · Checks]</pre></details>
+      <details><summary>Data table</summary><div><table id="t-spec-000">
+          <thead><tr><th>Task</th><th>Change</th><th>File</th><th>Requirements</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>T001</td><td>Write the types</td><td>src/lib/tipos.ts</td><td>FR-001</td><td>todo</td></tr>
+            <tr><td>T002</td><td>Write the 4 fixtures from the catalogue</td><td>src/datos/ejemplos/index.ts</td><td>FR-002</td><td>todo</td></tr>
+            <tr><td>T003</td><td>Write the stub buscarAyudas</td><td>src/lib/motor/index.ts</td><td>FR-004</td><td>todo</td></tr>
+            <tr><td>T004</td><td>Add the test script; write the mock route and its test</td><td>src/app/api/chat/</td><td>FR-003, FR-005</td><td>todo</td></tr>
+            <tr><td>T005</td><td>Run typecheck, build and test</td><td>—</td><td>FR-005</td><td>todo</td></tr>
+          </tbody>
+        </table></div></details>
+    </figure>
+    <figure class="card">
+      <figcaption><h3>Requirements</h3><p>From the spec; Status follows the ticks in spec.md.</p></figcaption>
+      <table id="t-spec-000-fr" class="list">
+        <thead><tr><th>ID</th><th>Requirement</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>FR-001</td><td>tipos.ts exports MensajeChat, CampoPerfil, Hecho, Perfil, Ficha, Cobertura, Respuesta and BuscarAyudas.</td><td>todo</td></tr>
+          <tr><td>FR-002</td><td>One Respuesta fixture per test profile (4), with real catalogue aids and links.</td><td>todo</td></tr>
+          <tr><td>FR-003</td><td>POST /api/chat returns the matching fixture; 400 on empty mensajes or text over 2,000 characters.</td><td>todo</td></tr>
+          <tr><td>FR-004</td><td>A stub buscarAyudas returns a fixture&#x27;s fichas and cobertura.</td><td>todo</td></tr>
+          <tr><td>FR-005</td><td>typecheck, build and bun test pass.</td><td>todo</td></tr>
+        </tbody>
+      </table>
+    </figure>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <article data-note="default">
+        <p class="kind">Spec</p>
+        <h3>S0 · Contracts</h3>
+        <p class="role">S1, S2 and S3 can start in parallel against fixed types, realistic fixtures and a mock /api/chat.</p>
+        <ul class="tags"><li>docs/specs/000-contracts/spec.md</li></ul>
+        <dl class="facts"><div><dt>RFC row</dt><dd>S0</dd></div></dl>
+      </article>
+      <article data-note="T001" hidden>
+        <p class="kind">Task</p>
+        <h3>T001 · Types</h3>
+        <p class="role">Write the types in src/lib/tipos.ts.</p>
+      </article>
+      <article data-note="T002" hidden>
+        <p class="kind">Task</p>
+        <h3>T002 · Fixtures</h3>
+        <p class="role">Write the 4 fixtures from the catalogue in src/datos/ejemplos/index.ts.</p>
+      </article>
+      <article data-note="T003" hidden>
+        <p class="kind">Task</p>
+        <h3>T003 · Engine stub</h3>
+        <p class="role">Write the stub buscarAyudas in src/lib/motor/index.ts.</p>
+      </article>
+      <article data-note="T004" hidden>
+        <p class="kind">Task</p>
+        <h3>T004 · Mock route</h3>
+        <p class="role">Add the test script; write the mock route and its test in src/app/api/chat/.</p>
+      </article>
+      <article data-note="T005" hidden>
+        <p class="kind">Task</p>
+        <h3>T005 · Checks</h3>
+        <p class="role">Run typecheck, build and test in —.</p>
+      </article>
+    </aside>
+    </div>
+  </section>
+
+  <!-- ============ Spec 001: owned by /mini-spec and /mini-implement ============ -->
+  <section role="tabpanel" id="tab-spec-001" data-spec="001" hidden>
+    <div class="layout">
+    <div class="figures">
+    <p class="lead guide">This tab tracks the chat page that citizens see: where they write their situation and read the aids they could apply for. It is built against the stand-in route from S0, so it does not wait for the engine or the AI.</p>
+    <div class="bento">
+      <div class="card kpi kpi-wide" data-progress="t-spec-001"><span>Tasks done</span><b></b><div class="bar"><i></i></div><span>from Tasks table</span></div>
+      <div class="card kpi kpi-wide" data-progress="t-spec-001-fr"><span>Requirements met</span><b></b><div class="bar"><i></i></div><span>from Requirements table</span></div>
+    </div>
+    <figure class="card" data-status-table="t-spec-001">
+      <figcaption><h3>Tasks</h3><p>Task order from the spec; green is done, dashed is to do.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a task for its card</li><li>Drag to pan</li><li>⌘/Ctrl + scroll to zoom</li><li>Double-click to reset</li></ul></span></figcaption>
+      <div class="diagram"></div>
+      <details><summary>Diagram source</summary><pre class="mermaid-src">flowchart LR
+  T001[T001 · Aid card] --&gt; T003[T003 · Chat]
+  T002[T002 · Coverage panel] --&gt; T003
+  T003 --&gt; T004[T004 · Mount and check]</pre></details>
+      <details><summary>Data table</summary><div><table id="t-spec-001">
+          <thead><tr><th>Task</th><th>Change</th><th>File</th><th>Requirements</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>T001</td><td>Build the card</td><td>src/components/TarjetaAyuda.tsx</td><td>FR-002</td><td>todo</td></tr>
+            <tr><td>T002</td><td>Build the coverage panel</td><td>src/components/PanelCobertura.tsx</td><td>FR-003</td><td>todo</td></tr>
+            <tr><td>T003</td><td>Build the chat with history, question and states</td><td>src/components/Chat.tsx</td><td>FR-001, FR-004, FR-005, FR-007</td><td>todo</td></tr>
+            <tr><td>T004</td><td>Mount the chat in the page; check the 4 profiles at 320 px and 1280 px</td><td>src/app/page.tsx</td><td>FR-006</td><td>todo</td></tr>
+          </tbody>
+        </table></div></details>
+    </figure>
+    <figure class="card">
+      <figcaption><h3>Requirements</h3><p>From the spec; Status follows the ticks in spec.md.</p></figcaption>
+      <table id="t-spec-001-fr" class="list">
+        <thead><tr><th>ID</th><th>Requirement</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>FR-001</td><td>Sends the full history to /api/chat and shows each turn; Enter sends, Shift+Enter breaks the line.</td><td>todo</td></tr>
+          <tr><td>FR-002</td><td>Each ficha is a card: title, administration, status badge with text, why it fits, requirements, link; unverified shows &quot;Sin confirmar&quot;.</td><td>todo</td></tr>
+          <tr><td>FR-003</td><td>Coverage panel lists what was and was not checked, and says when data comes from the dated copy.</td><td>todo</td></tr>
+          <tr><td>FR-004</td><td>Shows the next question as an optional suggestion.</td><td>todo</td></tr>
+          <tr><td>FR-005</td><td>Loading state, error with retry, and a no-results message with the sede link.</td><td>todo</td></tr>
+          <tr><td>FR-006</td><td>Keeps the notice, BotonAviso and Fuentes; says &quot;podrías optar&quot;; no horizontal scroll at 320 px.</td><td>todo</td></tr>
+          <tr><td>FR-007</td><td>Does not persist messages: no localStorage, no cookies.</td><td>todo</td></tr>
+        </tbody>
+      </table>
+    </figure>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <article data-note="default">
+        <p class="kind">Spec</p>
+        <h3>S1 · Chat UI</h3>
+        <p class="role">A citizen writes their situation and reads, in one Sol-styled page, the aids they could apply for, what was checked and an optional next question.</p>
+        <ul class="tags"><li>docs/specs/001-chat-ui/spec.md</li></ul>
+        <dl class="facts"><div><dt>RFC row</dt><dd>S1</dd></div></dl>
+      </article>
+      <article data-note="T001" hidden>
+        <p class="kind">Task</p>
+        <h3>T001 · Aid card</h3>
+        <p class="role">Build the card in src/components/TarjetaAyuda.tsx.</p>
+      </article>
+      <article data-note="T002" hidden>
+        <p class="kind">Task</p>
+        <h3>T002 · Coverage panel</h3>
+        <p class="role">Build the coverage panel in src/components/PanelCobertura.tsx.</p>
+      </article>
+      <article data-note="T003" hidden>
+        <p class="kind">Task</p>
+        <h3>T003 · Chat</h3>
+        <p class="role">Build the chat with history, question and states in src/components/Chat.tsx.</p>
+      </article>
+      <article data-note="T004" hidden>
+        <p class="kind">Task</p>
+        <h3>T004 · Mount and check</h3>
+        <p class="role">Mount the chat in the page; check the 4 profiles at 320 px and 1280 px in src/app/page.tsx.</p>
+      </article>
+    </aside>
+    </div>
+  </section>
+
+  <!-- ============ Spec 002: owned by /mini-spec and /mini-implement ============ -->
+  <section role="tabpanel" id="tab-spec-002" data-spec="002" hidden>
+    <div class="layout">
+    <div class="figures">
+    <p class="lead guide">This tab tracks the engine: it takes a citizen profile and returns the aids that could fit, from the catalogue and the live BDNS. It also says honestly what it could not check.</p>
+    <div class="bento">
+      <div class="card kpi kpi-wide" data-progress="t-spec-002"><span>Tasks done</span><b></b><div class="bar"><i></i></div><span>from Tasks table</span></div>
+      <div class="card kpi kpi-wide" data-progress="t-spec-002-fr"><span>Requirements met</span><b></b><div class="bar"><i></i></div><span>from Requirements table</span></div>
+    </div>
+    <figure class="card" data-status-table="t-spec-002">
+      <figcaption><h3>Tasks</h3><p>Task order from the spec; green is done, dashed is to do.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a task for its card</li><li>Drag to pan</li><li>⌘/Ctrl + scroll to zoom</li><li>Double-click to reset</li></ul></span></figcaption>
+      <div class="diagram"></div>
+      <details><summary>Diagram source</summary><pre class="mermaid-src">flowchart LR
+  T001[T001 · Status from dates] --&gt; T004[T004 · BDNS adapter]
+  T004 --&gt; T005[T005 · Wire engine]
+  T002[T002 · Catalogue rules] --&gt; T005
+  T003[T003 · Ranking] --&gt; T005</pre></details>
+      <details><summary>Data table</summary><div><table id="t-spec-002">
+          <thead><tr><th>Task</th><th>Change</th><th>File</th><th>Requirements</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>T001</td><td>Write status from dates with tests</td><td>src/lib/motor/estado.ts</td><td>FR-004</td><td>todo</td></tr>
+            <tr><td>T002</td><td>Write the 8 catalogue rules with tests on the 4 profiles</td><td>src/lib/motor/catalogo.ts</td><td>FR-001</td><td>todo</td></tr>
+            <tr><td>T003</td><td>Write ranking with tests</td><td>src/lib/motor/ranking.ts</td><td>FR-005</td><td>todo</td></tr>
+            <tr><td>T004</td><td>Record responses; write the adapter with tests for filter, limit, timeout, fallback and cache</td><td>src/lib/bdns.ts</td><td>FR-002, FR-003, FR-006, FR-008</td><td>todo</td></tr>
+            <tr><td>T005</td><td>Wire it all with coverage; test the 4 profiles end to end on recordings</td><td>src/lib/motor/index.ts</td><td>FR-007</td><td>todo</td></tr>
+          </tbody>
+        </table></div></details>
+    </figure>
+    <figure class="card">
+      <figcaption><h3>Requirements</h3><p>From the spec; Status follows the ticks in spec.md.</p></figcaption>
+      <table id="t-spec-002-fr" class="list">
+        <thead><tr><th>ID</th><th>Requirement</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>FR-001</td><td>The 8 catalogue aids stay unless a stated fact blocks them; each lists its pending fields.</td><td>todo</td></tr>
+          <tr><td>FR-002</td><td>Runs the 3 BDNS searches in parallel, each with a 5 s timeout.</td><td>todo</td></tr>
+          <tr><td>FR-003</td><td>Drops instrumental calls; fetches at most 10 fichas, at most 3 requests in flight.</td><td>todo</td></tr>
+          <tr><td>FR-004</td><td>Status comes from the dates; abierto alone is permanent; nothing is unknown.</td><td>todo</td></tr>
+          <tr><td>FR-005</td><td>Ranked by need-to-purpose, then title keywords; catalogue aids first.</td><td>todo</td></tr>
+          <tr><td>FR-006</td><td>On BDNS failure uses the pack copy, same shape, with respaldo true.</td><td>todo</td></tr>
+          <tr><td>FR-007</td><td>Coverage names what was not checked: municipal outside València, self-employed calls.</td><td>todo</td></tr>
+          <tr><td>FR-008</td><td>Fichas are cached in memory for 10 minutes.</td><td>todo</td></tr>
+        </tbody>
+      </table>
+    </figure>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <article data-note="default">
+        <p class="kind">Spec</p>
+        <h3>S2 · Engine / API</h3>
+        <p class="role">buscarAyudas(perfil) returns the catalogue aids and live BDNS calls that could fit, with status from dates, ranked, and an honest coverage report.</p>
+        <ul class="tags"><li>docs/specs/002-engine-api/spec.md</li></ul>
+        <dl class="facts"><div><dt>RFC row</dt><dd>S2</dd></div></dl>
+      </article>
+      <article data-note="T001" hidden>
+        <p class="kind">Task</p>
+        <h3>T001 · Status from dates</h3>
+        <p class="role">Write status from dates with tests in src/lib/motor/estado.ts.</p>
+      </article>
+      <article data-note="T002" hidden>
+        <p class="kind">Task</p>
+        <h3>T002 · Catalogue rules</h3>
+        <p class="role">Write the 8 catalogue rules with tests on the 4 profiles in src/lib/motor/catalogo.ts.</p>
+      </article>
+      <article data-note="T003" hidden>
+        <p class="kind">Task</p>
+        <h3>T003 · Ranking</h3>
+        <p class="role">Write ranking with tests in src/lib/motor/ranking.ts.</p>
+      </article>
+      <article data-note="T004" hidden>
+        <p class="kind">Task</p>
+        <h3>T004 · BDNS adapter</h3>
+        <p class="role">Record responses; write the adapter with tests for filter, limit, timeout, fallback and cache in src/lib/bdns.ts.</p>
+      </article>
+      <article data-note="T005" hidden>
+        <p class="kind">Task</p>
+        <h3>T005 · Wire engine</h3>
+        <p class="role">Wire it all with coverage; test the 4 profiles end to end on recordings in src/lib/motor/index.ts.</p>
+      </article>
+    </aside>
+    </div>
+  </section>
+
+  <!-- ============ Spec 003: owned by /mini-spec and /mini-implement ============ -->
+  <section role="tabpanel" id="tab-spec-003" data-spec="003" hidden>
+    <div class="layout">
+    <div class="figures">
+    <p class="lead guide">This tab tracks the real chat route: one AI call turns what the citizen wrote into a profile with exact quotes, and the engine does the rest. The AI never names aids, amounts or dates.</p>
+    <div class="bento">
+      <div class="card kpi kpi-wide" data-progress="t-spec-003"><span>Tasks done</span><b></b><div class="bar"><i></i></div><span>from Tasks table</span></div>
+      <div class="card kpi kpi-wide" data-progress="t-spec-003-fr"><span>Requirements met</span><b></b><div class="bar"><i></i></div><span>from Requirements table</span></div>
+    </div>
+    <figure class="card" data-status-table="t-spec-003">
+      <figcaption><h3>Tasks</h3><p>Task order from the spec; green is done, dashed is to do.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a task for its card</li><li>Drag to pan</li><li>⌘/Ctrl + scroll to zoom</li><li>Double-click to reset</li></ul></span></figcaption>
+      <div class="diagram"></div>
+      <details><summary>Diagram source</summary><pre class="mermaid-src">flowchart LR
+  T001[T001 · Profile] --&gt; T004[T004 · Route]
+  T002[T002 · Question picker] --&gt; T004
+  T003[T003 · Fallback] --&gt; T004</pre></details>
+      <details><summary>Data table</summary><div><table id="t-spec-003">
+          <thead><tr><th>Task</th><th>Change</th><th>File</th><th>Requirements</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>T001</td><td>Write prompt, parse and quote check with tests</td><td>src/lib/llm/perfil.ts</td><td>FR-002, FR-003</td><td>todo</td></tr>
+            <tr><td>T002</td><td>Write the question picker with tests</td><td>src/lib/llm/pregunta.ts</td><td>FR-005</td><td>todo</td></tr>
+            <tr><td>T003</td><td>Write the fallback with tests</td><td>src/lib/llm/respaldo.ts</td><td>FR-007</td><td>todo</td></tr>
+            <tr><td>T004</td><td>Write the route with validation, DANA check and no logging; test the 4 profiles with a faked LLM</td><td>src/app/api/chat/route.ts</td><td>FR-001, FR-004, FR-006, FR-008</td><td>todo</td></tr>
+          </tbody>
+        </table></div></details>
+    </figure>
+    <figure class="card">
+      <figcaption><h3>Requirements</h3><p>From the spec; Status follows the ticks in spec.md.</p></figcaption>
+      <table id="t-spec-003-fr" class="list">
+        <thead><tr><th>ID</th><th>Requirement</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>FR-001</td><td>Accepts 1–20 messages of at most 2,000 characters; 400 otherwise.</td><td>todo</td></tr>
+          <tr><td>FR-002</td><td>Exactly one LLM call per request, parsed into a Perfil.</td><td>todo</td></tr>
+          <tr><td>FR-003</td><td>Each quote is a literal substring of a user message; failing facts are dropped.</td><td>todo</td></tr>
+          <tr><td>FR-004</td><td>Fichas come only from buscarAyudas; the LLM never names aids, amounts or dates.</td><td>todo</td></tr>
+          <tr><td>FR-005</td><td>The question asks for the field that appears most in the fichas&#x27; pending list, or none.</td><td>todo</td></tr>
+          <tr><td>FR-006</td><td>A DANA message answers with the sede.gva.es link and no engine fichas.</td><td>todo</td></tr>
+          <tr><td>FR-007</td><td>If the LLM fails, falls back to keyword match on frases_usuario.</td><td>todo</td></tr>
+          <tr><td>FR-008</td><td>Does not log or store citizen text.</td><td>todo</td></tr>
+        </tbody>
+      </table>
+    </figure>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <article data-note="default">
+        <p class="kind">Spec</p>
+        <h3>S3 · LLM loop</h3>
+        <p class="role">POST /api/chat turns the conversation into a quoted profile with one LLM call and answers with the engine&#x27;s fichas and the most useful next question.</p>
+        <ul class="tags"><li>docs/specs/003-llm-loop/spec.md</li></ul>
+        <dl class="facts"><div><dt>RFC row</dt><dd>S3</dd></div></dl>
+      </article>
+      <article data-note="T001" hidden>
+        <p class="kind">Task</p>
+        <h3>T001 · Profile</h3>
+        <p class="role">Write prompt, parse and quote check with tests in src/lib/llm/perfil.ts.</p>
+      </article>
+      <article data-note="T002" hidden>
+        <p class="kind">Task</p>
+        <h3>T002 · Question picker</h3>
+        <p class="role">Write the question picker with tests in src/lib/llm/pregunta.ts.</p>
+      </article>
+      <article data-note="T003" hidden>
+        <p class="kind">Task</p>
+        <h3>T003 · Fallback</h3>
+        <p class="role">Write the fallback with tests in src/lib/llm/respaldo.ts.</p>
+      </article>
+      <article data-note="T004" hidden>
+        <p class="kind">Task</p>
+        <h3>T004 · Route</h3>
+        <p class="role">Write the route with validation, DANA check and no logging; test the 4 profiles with a faked LLM in src/app/api/chat/route.ts.</p>
+      </article>
+    </aside>
+    </div>
+  </section>
+
+  <!-- ============ Spec 004: owned by /mini-spec and /mini-implement ============ -->
+  <section role="tabpanel" id="tab-spec-004" data-spec="004" hidden>
+    <div class="layout">
+    <div class="figures">
+    <p class="lead guide">This optional tab tracks turning loose aid texts into the same card format the engine already uses. New sources then show up in the chat without changing the page or the AI.</p>
+    <div class="bento">
+      <div class="card kpi kpi-wide" data-progress="t-spec-004"><span>Tasks done</span><b></b><div class="bar"><i></i></div><span>from Tasks table</span></div>
+      <div class="card kpi kpi-wide" data-progress="t-spec-004-fr"><span>Requirements met</span><b></b><div class="bar"><i></i></div><span>from Requirements table</span></div>
+    </div>
+    <figure class="card" data-status-table="t-spec-004">
+      <figcaption><h3>Tasks</h3><p>Task order from the spec; green is done, dashed is to do.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a task for its card</li><li>Drag to pan</li><li>⌘/Ctrl + scroll to zoom</li><li>Double-click to reset</li></ul></span></figcaption>
+      <div class="diagram"></div>
+      <details><summary>Diagram source</summary><pre class="mermaid-src">flowchart LR
+  T001[T001 · Indexer] --&gt; T002[T002 · Central source]</pre></details>
+      <details><summary>Data table</summary><div><table id="t-spec-004">
+          <thead><tr><th>Task</th><th>Change</th><th>File</th><th>Requirements</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>T001</td><td>Write extraction, quote check, hash skip and rejects with tests; add the script</td><td>scripts/indexar.ts</td><td>FR-001, FR-002, FR-003, FR-004</td><td>todo</td></tr>
+            <tr><td>T002</td><td>Read the store as a source and add it to the engine, with a test</td><td>src/lib/motor/central.ts</td><td>FR-005</td><td>todo</td></tr>
+          </tbody>
+        </table></div></details>
+    </figure>
+    <figure class="card">
+      <figcaption><h3>Requirements</h3><p>From the spec; Status follows the ticks in spec.md.</p></figcaption>
+      <table id="t-spec-004-fr" class="list">
+        <thead><tr><th>ID</th><th>Requirement</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>FR-001</td><td>bun run indexar reads src/datos/fuentes/ and writes src/datos/central.json.</td><td>todo</td></tr>
+          <tr><td>FR-002</td><td>Each field comes from a literal quote; no quote means empty and unverified.</td><td>todo</td></tr>
+          <tr><td>FR-003</td><td>At most one LLM call per file; unchanged files are skipped.</td><td>todo</td></tr>
+          <tr><td>FR-004</td><td>Rejects an entry without title or official link and names the file.</td><td>todo</td></tr>
+          <tr><td>FR-005</td><td>buscarAyudas includes central fichas; S1 and S3 need no change.</td><td>todo</td></tr>
+        </tbody>
+      </table>
+    </figure>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <article data-note="default">
+        <p class="kind">Spec</p>
+        <h3>S4 · Centralise aids</h3>
+        <p class="role">Unstructured aid and benefit texts become Ficha entries that the engine returns like any other source.</p>
+        <ul class="tags"><li>docs/specs/004-central-aids/spec.md</li></ul>
+        <dl class="facts"><div><dt>RFC row</dt><dd>S4</dd></div></dl>
+      </article>
+      <article data-note="T001" hidden>
+        <p class="kind">Task</p>
+        <h3>T001 · Indexer</h3>
+        <p class="role">Write extraction, quote check, hash skip and rejects with tests; add the script in scripts/indexar.ts.</p>
+      </article>
+      <article data-note="T002" hidden>
+        <p class="kind">Task</p>
+        <h3>T002 · Central source</h3>
+        <p class="role">Read the store as a source and add it to the engine, with a test in src/lib/motor/central.ts.</p>
+      </article>
+    </aside>
+    </div>
+  </section>
+
+  <!-- ============ Glossary: one definition per term; a.term links anywhere on the page point here ============ -->
+  <section role="tabpanel" id="tab-glossary" hidden>
+    <div class="layout">
+    <div class="figures">
+    <p class="lead">Terms used on this page, in plain words. Underlined words elsewhere on the page link here.</p>
+    <div class="card"><dl class="glossary">
+      <div id="term-bdns"><dt>BDNS</dt><dd>Base de Datos Nacional de Subvenciones: the public register where every Spanish administration must publish its grant calls. Free API, no key.</dd></div>
+      <div id="term-convocatoria"><dt>Convocatoria (call)</dt><dd>The official notice that opens an aid: who can apply, requirements, deadline and how to apply.</dd></div>
+      <div id="term-ficha"><dt>Ficha</dt><dd>The detail page of one call in the BDNS, with dates, documents and links to its rules. The search results do not include deadlines, so each result needs its ficha.</dd></div>
+      <div id="term-bases"><dt>Bases</dt><dd>The legal text of a call, usually a PDF, with every requirement. Requirements such as age or income live only here.</dd></div>
+      <div id="term-prestacion"><dt>Benefit (prestación)</dt><dd>An aid that is a right set by law, such as the IMV or unemployment pay. It is not a grant, so it never appears in the BDNS.</dd></div>
+      <div id="term-instrumental"><dt>Instrumental call</dt><dd>A BDNS entry that only records a payment already decided, for example to an association. Citizens cannot apply to it.</dd></div>
+      <div id="term-abierto"><dt>The "abierto" field</dt><dd>A BDNS field that only means "no fixed deadline". It does not mean the call is open today; status must come from the dates.</dd></div>
+      <div id="term-finalidad"><dt>Purpose (finalidad)</dt><dd>The topic code of a call in the BDNS: housing (8), social services, education, employment, and so on.</dd></div>
+      <div id="term-imv"><dt>IMV</dt><dd>Ingreso Mínimo Vital: State benefit for households with very low income, managed by the Social Security.</dd></div>
+      <div id="term-rvi"><dt>RVI</dt><dd>Renta Valenciana de Inclusión: regional minimum income. Its law changed on 20 Oct 2026, so it is shown as unconfirmed.</dd></div>
+      <div id="term-sepe"><dt>SEPE</dt><dd>Servicio Público de Empleo Estatal: the State employment service that pays unemployment benefits and subsidies.</dd></div>
+      <div id="term-iprem"><dt>IPREM</dt><dd>A public income index that many aids use to set income limits, for example "up to 3 times the IPREM".</dd></div>
+      <div id="term-gva"><dt>Generalitat (GVA)</dt><dd>The regional government of the Comunitat Valenciana (CV).</dd></div>
+      <div id="term-boe"><dt>BOE / DOGV</dt><dd>The official gazettes of the State and of the Generalitat, where laws and calls are published.</dd></div>
+      <div id="term-sede"><dt>Sede electrónica</dt><dd>The official website of an administration where a procedure is actually done.</dd></div>
+      <div id="term-igae"><dt>IGAE</dt><dd>Intervención General de la Administración del Estado, which runs the BDNS. Its terms ask us to cite it as the data origin, with the consult date.</dd></div>
+      <div id="term-catalogue"><dt>Benefits catalogue</dt><dd>The organisers' file with 8 aids and 13 procedures for València, checked by hand on 18 Oct 2026. It covers the benefits the BDNS lacks.</dd></div>
+      <div id="term-pack"><dt>Pack</dt><dd>The data the organisers ship with the challenge, in the datos/ folder: the catalogue and a dated copy of 59 BDNS calls.</dd></div>
+      <div id="term-llm"><dt>LLM</dt><dd>Large language model: the AI. Here it only reads the citizen's message and returns structured data; it never writes what the citizen reads.</dd></div>
+      <div id="term-helmcode"><dt>HelmCode</dt><dd>The AI provider of the event. Its chat model is glm5.3-flash; it also offers embeddings and rerank. All teams share its limits.</dd></div>
+      <div id="term-profile"><dt>Profile</dt><dd>What we know about the citizen in this chat: age, job, housing, children, income band, town. Every field is optional and nothing is stored.</dd></div>
+      <div id="term-double-block"><dt>Double block</dt><dd>The rule that removes an aid only when a fact the citizen stated contradicts a verified requirement. Anything unknown keeps the aid in the list.</dd></div>
+      <div id="term-coverage"><dt>Coverage panel</dt><dd>A block in every answer that says which sources were checked and which were not, for example local aids outside València.</dd></div>
+      <div id="term-bm25"><dt>BM25</dt><dd>A standard keyword search that ranks texts by how well their words match the query.</dd></div>
+      <div id="term-spec"><dt>Spec (S0–S4)</dt><dd>One unit of work with a goal, checkable requirements, its files and its tasks. One person owns it from start to finish.</dd></div>
+      <div id="term-contract"><dt>Contract</dt><dd>The shared shapes that every part agrees on: Perfil, Ficha and Respuesta. If the contract holds, each person can build their part without waiting for the others.</dd></div>
+      <div id="term-fixture"><dt>Fixture</dt><dd>A saved example answer, for example the Respuesta for one test profile. The frontend draws it before the real engine exists.</dd></div>
+      <div id="term-mock"><dt>Mock route</dt><dd>A stand-in /api/chat that returns fixtures instead of calling the AI and the BDNS. S3 replaces it with the real route.</dd></div>
+      <div id="term-vibe"><dt>Vibe coding</dt><dd>Building by describing what you want to an AI coding tool and checking the result on screen, without writing the code by hand.</dd></div>
+      <div id="term-vercel"><dt>Vercel / push to main</dt><dd>The platform that publishes the site each time code is pushed to the main branch. The organisers own the project.</dd></div>
+    </dl></div>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <article data-note="default">
+        <p class="kind">Glossary</p>
+        <h3>Glossary</h3>
+        <p class="role">One definition per term. Hover an underlined word anywhere on the page to read it here.</p>
+      </article>
+    </aside>
+    </div>
+  </section>
+
+  <!-- ============ Brief: the conversation summary that the user approved before /explore rendered this page ============ -->
+  <section role="tabpanel" id="tab-brief" hidden>
+    <div class="layout">
+    <div class="figures">
+    <div class="card brief">
+      <h4>Goal</h4>
+      <p>A chat where a citizen describes their situation and learns which public aids (State, regional, municipal) they could apply for: why, what to check, status and official link. It must invent nothing and miss nothing. The Build night demo ships specs S0–S3; S4 only if time allows.</p>
+      <h4>Audience</h4>
+      <ul><li>Team akorda, especially the non-technical members (content, design, testing): they know the challenge, not the BDNS, LLMs or each part of the tool</li><li>Organisers and the Build night jury: they know the track, not our solution</li><li>Assumed: no one knows the technical or administrative vocabulary; every acronym has a definition in the Glossary tab</li></ul>
+      <h4>Users</h4>
+      <ul><li>Citizens of València and the Comunitat Valenciana; the four test profiles of SETUP.md</li><li>Build night jury (demo on Thursday 22 Oct 2026)</li><li>Team akorda: Oscar, Albert, Alex, Tomás and Julia (captain), technical and non-technical</li></ul>
+      <h4>Scope</h4>
+      <ul><li>In: S0 contracts; S1 frontend; S2 engine and BDNS calls (catalogue rules, live BDNS for State + Comunitat Valenciana as SETUP.md describes); S3 LLM loop with guardrails and test set</li><li>If time allows: S4, unstructured aids and benefits normalised into the Ficha type</li><li>Out for now: Postgres + pgvector, embeddings and rerank, PDF indexing, dynamic vocabulary and cron, catalogue pipeline with human validation, all of Spain</li><li>Out: form and button-driven flow; storing citizen text; DANA aid (link to sede.gva.es)</li></ul>
+      <h4>Components</h4>
+      <ul><li>S0: types Perfil, Ficha, Respuesta; fixtures for the 4 test profiles; mock /api/chat (data)</li><li>S1: Chat UI with aid cards, coverage panel, optional question, loading, error and unconfirmed states (service)</li><li>S2: candidate engine with the catalogue rules for the 8 aids (compute); live BDNS client (service); BDNS API (external); benefits catalogue and pack BDNS copy (data)</li><li>S3: /api/chat with the LLM interpreter glm5.3-flash (external), guardrails and test set (compute)</li><li>S4, optional: normalised aids and benefits in src/datos/ from bun run indexar (data)</li></ul>
+      <h4>Flows</h4>
+      <ul><li>Query: message → LLM (profile with quotes + need) → catalogue rules, double block → 3 BDNS searches → non-instrumental + need-to-purpose filter → up to 10 fichas → status from dates → rank by purpose and title keywords → cards + coverage + optional next question</li><li>Build order: S0 first → S1, S2, S3 in parallel → S1 switches from the mock to the real route → S4 plugs into S2 if time allows</li><li>Fallback: pack copy if the BDNS fails; BM25 on frases_usuario if the LLM fails</li></ul>
+      <h4>Numbers</h4>
+      <ul><li>Measured (BDNS API, 21 Oct): 12,137 for individuals in 2026; 1,988 since 1 Sep (26 State, 164 regions, 1,531 local); 285 in the Comunitat Valenciana since 1 Sep</li><li>Pack: 59 convocatorias, 14 instrumental, 27 with dates (17 expired by 22 Oct); catalogue 21 entries, 8 aids; one bases PDF ~17,500 words with a text layer</li><li>HelmCode docs: chat 100 RPM and 10 concurrent per key</li><li>Estimate: ~4 h build (SETUP.md); S0 ~1 h</li></ul>
+      <h4>Decisions</h4>
+      <ul><li>AI chat from the start; no form and no button-driven flow; the chat may ask optional questions (the field that resolves the most aids)</li><li>An aid stays while no stated fact blocks it; ask the most filtering fields first, then refine on what is left</li><li>One LLM call per message; ranking without a second call (need-to-purpose mapping + title keywords)</li><li>Work split into specs S0–S4, one owner each, end to end; approved 2026-10-22. It replaces the v1/v2/v3 plan of 2026-10-21</li><li>S0 contracts first, today, so the others work in parallel against fixtures</li><li>The catalogue rules live in S2, not in S3: S3 stays conversation → profile → answer</li><li>S1 is built by a non-technical person with vibe coding, against the mock route</li><li>S3 calls S2 as a function, not over HTTP</li><li>Postgres, pgvector, embeddings, PDFs and the catalogue pipeline stay out of the project for now</li></ul>
+      <h4>Specs</h4>
+      <ul><li>S0 · Contracts: Perfil, Ficha, Respuesta in src/lib/tipos.ts; fixtures in src/datos/ejemplos/; mock /api/chat. Done when it compiles and the mock responds.</li><li>S1 · Frontend: src/app/page.tsx, src/components/*, styles. Done when the 4 profiles render on mobile and desktop.</li><li>S2 · Engine / API: src/lib/motor/*, src/lib/bdns.ts. Perfil → fichas + coverage; 3 searches, non-instrumental, ≤ 10 fichas, status from dates, ranking, pack fallback. Done when tests on recorded BDNS responses pass with no network.</li><li>S3 · LLM loop: src/app/api/chat/, src/lib/llm/*, prompts. One LLM call → quoted Perfil → S2 → Respuesta with the next question; guardrails; fallback. Done when the 4-profile test set passes.</li><li>S4 · Centralise, optional: src/datos/ and bun run indexar. Done when the fichas pass the type check and a new aid appears in the chat.</li><li>Data sources and roles: benefits catalogue (benefits and rights outside the BDNS, curated; the pack file unchanged); BDNS API (Ley 38/2003 grants, live); pack BDNS copy (dated fallback).</li><li>Reason: in the pack, 14 of 59 calls are instrumental, 17 of the 27 dated ones expire before 22 Oct and only 2–3 fit the test profiles; every must-include aid comes from the catalogue.</li></ul>
+      <h4>Glossary</h4>
+      <p>See the Glossary tab: 30 terms.</p>
+      <h4>Open questions</h4>
+      <ul><li>Who owns each spec? S1 is for the non-technical member; S0, S2 and S3 for the technical ones.</li><li>Approve the proposed guardrail set?</li><li>Version docs/ (today in .gitignore) or share the page another way?</li></ul>
+    </div>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <article data-note="default">
+        <p class="kind">Brief</p>
+        <h3>Brief</h3>
+        <p class="role">The summary of the conversation that this page renders. The work split into specs S0–S4 was approved on 2026-10-22 and replaces the v1/v2/v3 plan; Audience and Glossary were approved the same day.</p>
+        <ul class="tags"><li data-status="decided">Work split S0–S4</li><li data-status="decided">Catalogue rules in S2</li></ul>
+        <dl class="facts"><div><dt>Approved</dt><dd>2026-10-22</dd></div><div><dt>Source</dt><dd>chat + review</dd></div></dl>
+      </article>
+    </aside>
+    </div>
+  </section>
+</main>
+<div id="tip" hidden></div>
+<dialog id="palette" aria-label="Search">
+  <input id="palette-input" type="search" placeholder="Search components, states, metrics…" autocomplete="off" spellcheck="false">
+  <ul id="palette-list" role="listbox"></ul>
+  <p>↑ ↓ to move · Enter to open · Esc to close</p>
+</dialog>
+
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@12.2.0/dist/mermaid.esm.min.mjs';
+
+const root = document.documentElement;
+const calm = () => root.dataset.motion === 'off';
+const token = name => getComputedStyle(root).getPropertyValue('--' + name).trim();
+const tokens = () => Object.fromEntries(
+  ['surface', 'surface-2', 'border', 'text', 'text-2', 'muted', 'grid', 'axis', 's1', 's2', 's3', 's4', 'seq-lo', 'seq-hi'].map(n => [n, token(n)]));
+
+// The HTML table is the single source of data: /rfc reads it, the chart draws it.
+function readTable(id) {
+  const table = document.getElementById(id);
+  const head = [...table.tHead.rows[0].cells].map(c => c.textContent.trim());
+  const rows = [...table.tBodies[0].rows].map(r => [...r.cells].map((c, i) => {
+    const v = c.textContent.trim();
+    return i > 0 && v !== '' && !isNaN(v) ? Number(v) : v;
+  }));
+  return { head, rows };
+}
+
+const FONT = 'Inter, system-ui, -apple-system, "Segoe UI", sans-serif';
+const base = t => ({
+  backgroundColor: 'transparent',
+  textStyle: { fontFamily: FONT, color: t['text-2'] },
+  color: [t.s1, t.s2, t.s3, t.s4],
+  aria: { enabled: true },
+  animationDuration: 900, animationEasing: 'cubicOut',
+  tooltip: { backgroundColor: t['surface-2'], borderColor: t.border, borderRadius: 10, padding: [8, 12], textStyle: { color: t.text, fontFamily: FONT },
+             extraCssText: 'box-shadow: 0 12px 32px rgba(0,0,0,.35);' },
+  legend: { top: 0, left: 0, icon: 'roundRect', itemWidth: 10, itemHeight: 10, textStyle: { color: t['text-2'] } },
+  grid: { left: 8, right: 56, top: 36, bottom: 8, containLabel: true },
+});
+const axis = t => ({
+  axisLine: { lineStyle: { color: t.axis } },
+  axisTick: { show: false },
+  axisLabel: { color: t.muted },
+  splitLine: { lineStyle: { color: t.grid } },
+});
+
+// One builder per chart type: (table data, tokens) -> ECharts option.
+const builders = {
+  weekly({ head, rows }, t) {
+    return {
+      ...base(t),
+      legend: { show: false },
+      tooltip: { ...base(t).tooltip, trigger: 'axis', valueFormatter: v => v + ' convocatorias' },
+      grid: { ...base(t).grid, top: 16, right: 16 },
+      dataset: { source: [head, ...rows] },
+      xAxis: { type: 'category', boundaryGap: false, ...axis(t), splitLine: { show: false } },
+      yAxis: { type: 'value', min: 0, ...axis(t) },
+      series: [{
+        type: 'line', name: head[1], encode: { x: 0, y: 1 }, symbolSize: 8, lineStyle: { width: 2 },
+        itemStyle: { borderColor: t.surface, borderWidth: 2 },
+        areaStyle: { opacity: 0.12 },
+      }],
+    };
+  },
+
+  level({ head, rows }, t) {
+    return {
+      ...base(t),
+      legend: { show: false },
+      tooltip: { ...base(t).tooltip, trigger: 'axis', axisPointer: { type: 'shadow' }, valueFormatter: v => v.toLocaleString() + ' convocatorias' },
+      grid: { ...base(t).grid, top: 8, right: 56 },
+      dataset: { source: [head, ...rows] },
+      xAxis: { type: 'value', ...axis(t) },
+      yAxis: { type: 'category', inverse: true, ...axis(t), splitLine: { show: false } },
+      series: [{
+        type: 'bar', name: head[1], encode: { x: 1, y: 0 }, barMaxWidth: 28,
+        itemStyle: { borderRadius: [0, 4, 4, 0] },
+        label: { show: true, position: 'right', color: t['text-2'], formatter: p => p.value[1].toLocaleString() },
+      }],
+    };
+  },
+
+  pack({ head, rows }, t) {
+    const last = head.length - 2;
+    return {
+      ...base(t),
+      tooltip: { ...base(t).tooltip, trigger: 'axis', axisPointer: { type: 'shadow' }, valueFormatter: v => v + ' convocatorias' },
+      grid: { ...base(t).grid, right: 16 },
+      dataset: { source: [head, ...rows] },
+      xAxis: { type: 'value', ...axis(t) },
+      yAxis: { type: 'category', inverse: true, ...axis(t), splitLine: { show: false } },
+      series: head.slice(1).map((name, i) => ({
+        type: 'bar', name, stack: 'total', encode: { x: i + 1, y: 0 }, barMaxWidth: 32,
+        itemStyle: { borderColor: t.surface, borderWidth: 2, borderRadius: i === last ? [0, 4, 4, 0] : 0 },
+      })),
+    };
+  },
+};
+
+
+// Notes: <article data-note="key"> in the tab's panel. Diagram keys are Mermaid IDs, arrows are "A->B",
+// chart keys are item or series names.
+const panelOf = el => el.closest('[role="tabpanel"]').querySelector('.panel');
+function showNote(panel, key) {
+  const notes = [...panel.querySelectorAll('[data-note]')];
+  const match = notes.find(n => n.dataset.note === (key ?? 'default'));
+  if (!match) return false;
+  for (const n of notes) n.hidden = n !== match;
+  enhanceCard(panel, match);
+  match.classList.remove('enter');
+  void match.offsetWidth;
+  match.classList.add('enter');
+  return true;
+}
+const noteFor = (panel, key) => panel.querySelector(`[data-note="${CSS.escape(key)}"]`);
+const titleOf = (panel, key) => noteFor(panel, key)?.querySelector('h3').textContent ?? key;
+
+// Computed card sections: rebuilt each time a card opens, so they always match the diagrams and tables.
+const fmt = v => v.toLocaleString('en', { maximumFractionDigits: 1 });
+function el(tag, props = {}, ...children) {
+  const node = Object.assign(document.createElement(tag), props);
+  node.append(...children);
+  return node;
+}
+
+function enhanceCard(panel, card) {
+  for (const old of card.querySelectorAll('.auto')) old.remove();
+  const key = card.dataset.note;
+  const section = (title, ...children) => card.append(el('section', { className: 'auto' }, el('h4', { textContent: title }), ...children));
+
+  if (key === 'default') {
+    const keys = [...panel.querySelectorAll('[data-note]')].map(n => n.dataset.note).filter(k => k !== 'default' && !k.includes('->'));
+    if (keys.length) section('In this tab', chips(panel, keys.map(k => ['', k])));
+    return;
+  }
+  const [from, to] = key.split('->');
+  if (to) section('Connects', chips(panel, [['from', from], ['to', to]]));
+  const links = panel.graph?.get(key);
+  if (links) {
+    const list = [...[...links.out].map(k => ['→', k]), ...[...links.in].map(k => ['←', k])].filter(([, k]) => !k.startsWith('root_'));
+    if (list.length) section('Connections', chips(panel, list));
+  }
+
+  for (const table of panel.closest('[role="tabpanel"]').querySelectorAll('table')) {
+    const { head, rows } = readTable(table.id);
+    const source = 'Data · ' + table.closest('figure').querySelector('h3').textContent;
+    const col = head.indexOf(key);
+    if (col > 0) {
+      const values = rows.map(r => r[col]);
+      const peak = values.indexOf(Math.max(...values)), low = values.indexOf(Math.min(...values));
+      section(source, sparkline(values, `var(--s${Math.min(col, 4)})`), facts([
+        ['Peak', `${fmt(values[peak])} · ${head[0]} ${rows[peak][0]}`],
+        ['Minimum', `${fmt(values[low])} · ${head[0]} ${rows[low][0]}`],
+        ['Average', fmt(values.reduce((a, b) => a + b, 0) / values.length)],
+        ['Points', rows.length],
+      ]));
+    }
+    // Rows keyed by the element (first column); otherwise rows that mention it, e.g. a Sankey target.
+    const own = rows.filter(r => r[0] === key);
+    const matches = own.length ? own : rows.filter(r => r.slice(1).includes(key));
+    const from = own.length ? 1 : 0;
+    if (matches.length > 5) {
+      section(source, facts([['Rows', matches.length], ...head.slice(1).map((h, i) =>
+        ['Avg ' + h, fmt(matches.reduce((a, r) => a + r[i + 1], 0) / matches.length)])]));
+    } else if (matches.length === 1) {
+      section(source, facts(head.slice(from).map((h, i) => {
+        const v = matches[0][from + i];
+        return [h, typeof v === 'number' ? fmt(v) : v];
+      })));
+    } else if (matches.length) {
+      section(source, el('table', { className: 'rows' },
+        el('thead', {}, el('tr', {}, ...head.slice(from).map(h => el('th', { textContent: h })))),
+        el('tbody', {}, ...matches.map(r => el('tr', {}, ...r.slice(from).map(v => el('td', { textContent: typeof v === 'number' ? fmt(v) : v })))))));
+    }
+  }
+}
+
+function chips(panel, list) {
+  return el('div', { className: 'chips' }, ...list.map(([dir, key]) => {
+    const button = el('button', { type: 'button', className: 'chip', disabled: !panel.selectors?.has(key) && !noteFor(panel, key) },
+      ...(dir ? [el('span', { className: 'chip-dir', textContent: dir })] : []), titleOf(panel, key));
+    button.addEventListener('click', () => {
+      const select = panel.selectors?.get(key);
+      if (select) select(); else showNote(panel, key);
+    });
+    return button;
+  }));
+}
+
+function facts(pairs) {
+  return el('dl', { className: 'facts' }, ...pairs.map(([k, v]) => el('div', {}, el('dt', { textContent: k }), el('dd', { textContent: v }))));
+}
+
+function sparkline(values, color) {
+  const max = Math.max(...values), min = Math.min(...values);
+  const pts = values.map((v, i) => `${(i / (values.length - 1)) * 100},${28 - ((v - min) / (max - min || 1)) * 26}`).join(' ');
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('class', 'spark');
+  svg.setAttribute('viewBox', '0 0 100 30');
+  svg.setAttribute('preserveAspectRatio', 'none');
+  svg.innerHTML = `<polygon points="0,30 ${pts} 100,30" fill="${color}" opacity=".15"/>`
+    + `<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2" vector-effect="non-scaling-stroke"/>`;
+  return svg;
+}
+
+const tip = document.getElementById('tip');
+function showTip(note, ev) {
+  tip.replaceChildren(el('b', { textContent: note.querySelector('h3').textContent }), el('span', { textContent: note.querySelector('.role').textContent }));
+  tip.hidden = false;
+  moveTip(ev);
+}
+function moveTip(ev) {
+  tip.style.left = Math.min(ev.clientX + 12, innerWidth - tip.offsetWidth - 8) + 'px';
+  tip.style.top = ev.clientY + 12 + 'px';
+}
+
+const charts = new Map();
+function drawCharts(panel, animate = true) {
+  const t = tokens();
+  for (const el of (panel ?? document).querySelectorAll('.chart')) {
+    if (panel && el.closest('[hidden]')) continue;
+    let chart = charts.get(el);
+    if (!chart) {
+      if (!panel) continue;
+      chart = echarts.init(el);
+      charts.set(el, chart);
+      chart.on('click', p => {
+        const keys = p.dataType === 'edge' ? [`${p.data.source}->${p.data.target}`] : [p.name, p.seriesName];
+        keys.some(k => showNote(panelOf(el), k));
+      });
+    }
+    chart.setOption({ ...builders[el.dataset.chart](readTable(el.dataset.table), t), animation: animate && !calm() }, true);
+    chart.resize();
+  }
+}
+
+let renderId = 0;
+async function drawDiagrams() {
+  await document.fonts.ready;
+  const t = tokens();
+  mermaid.initialize({
+    startOnLoad: false, theme: 'base', fontFamily: FONT,
+    themeVariables: {
+      darkMode: root.dataset.theme !== 'light', background: t.surface, fontFamily: FONT,
+      primaryColor: t.surface, primaryTextColor: t.text, primaryBorderColor: t.s1,
+      lineColor: t.muted, textColor: t.text, noteBkgColor: t.grid, noteTextColor: t.text,
+      actorBkg: t.surface, actorBorder: t.s1, actorTextColor: t.text, signalColor: t['text-2'], signalTextColor: t.text,
+    },
+  });
+  // Connections and chip targets are rebuilt from the diagrams that are drawn now.
+  for (const panel of document.querySelectorAll('.panel')) { panel.graph = new Map(); panel.selectors = new Map(); }
+  for (const figure of document.querySelectorAll('figure:has(.diagram)')) {
+    const pre = figure.querySelector('pre.mermaid-src');
+    const { svg } = await mermaid.render('diagram-' + renderId++, pre.textContent);
+    figure.querySelector('.diagram').innerHTML = svg;
+    wireDiagram(figure, pre.textContent);
+  }
+}
+
+// Diagram interaction. State survives re-renders (theme switch), keyed by figure.
+const views = new Map();
+function wireDiagram(figure, source) {
+  const box = figure.querySelector('.diagram');
+  const svg = box.querySelector('svg');
+  const panel = panelOf(figure);
+  if (!views.has(figure)) views.set(figure, { x: 0, y: 0, k: 1, selected: null });
+  const view = views.get(figure);
+
+  const nodes = new Map();
+  const addNode = (key, el) => nodes.set(key, [...(nodes.get(key) ?? []), el]);
+  for (const g of svg.querySelectorAll('g.node')) {
+    const m = g.id.match(/-(?:flowchart|state)-(.+)-\d+$/);
+    if (m) addNode(m[1], g);
+  }
+  for (const r of svg.querySelectorAll('rect.actor')) addNode(r.getAttribute('name'), r.parentElement);
+  // Spec tabs: color each box by the Status column of the figure's table.
+  if (figure.dataset.statusTable) {
+    const { head, rows } = readTable(figure.dataset.statusTable);
+    for (const r of rows) for (const el of nodes.get(r[0]) ?? []) el.classList.add(r[head.indexOf('Status')]);
+  }
+
+  // Flowchart arrows carry "L_<from>_<to>_<n>"; state arrows are only numbered, so map them by source order.
+  const keys = [...nodes.keys()];
+  const edges = [];
+  for (const el of svg.querySelectorAll('path.flowchart-link')) {
+    const body = (el.dataset.id ?? '').replace(/^L_/, '').replace(/_\d+$/, '');
+    const from = keys.find(k => body.startsWith(k + '_') && nodes.has(body.slice(k.length + 1)));
+    if (from) edges.push({ el, from, to: body.slice(from.length + 1) });
+  }
+  const transitions = [...source.matchAll(/^\s*(\S+)\s*-->\s*([^\s:]+)/gm)];
+  svg.querySelectorAll('path.transition').forEach((el, i) => {
+    if (!transitions[i]) return;
+    const end = (k, side) => k === '[*]' ? 'root_' + side : k;
+    edges.push({ el, from: end(transitions[i][1], 'start'), to: end(transitions[i][2], 'end') });
+  });
+  for (const e of edges) e.label = svg.querySelector(`.edgeLabel [data-id="${CSS.escape(e.el.dataset.id ?? '')}"]`)?.closest('.edgeLabel');
+
+  function highlight(on, onEdges) {
+    svg.classList.toggle('dim', on.size > 0);
+    for (const [k, els] of nodes) for (const el of els) {
+      el.classList.toggle('on', on.has(k));
+      el.classList.toggle('selected', k === view.selected);
+    }
+    for (const e of edges) for (const el of [e.el, e.label]) el?.classList.toggle('on', onEdges.has(e));
+    for (const dot of svg.querySelectorAll('.flow-dot')) dot.remove();
+    if (calm()) return;
+    for (const e of onEdges) {
+      const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      dot.setAttribute('r', '3.5');
+      dot.setAttribute('class', 'flow-dot');
+      dot.innerHTML = `<animateMotion dur="1.4s" repeatCount="indefinite" path="${e.el.getAttribute('d')}"/>`;
+      e.el.parentNode.append(dot);
+    }
+  }
+  function focusNode(key) {
+    const hit = new Set(edges.filter(e => key && (e.from === key || e.to === key)));
+    highlight(new Set(key ? [key, ...[...hit].flatMap(e => [e.from, e.to])] : []), hit);
+  }
+  function select(key) {
+    view.selected = key;
+    focusNode(key);
+    showNote(panel, key) || showNote(panel, null);
+  }
+
+  for (const [key, els] of nodes) for (const el of els) {
+    el.addEventListener('mouseenter', () => focusNode(key));
+    el.addEventListener('mouseleave', () => focusNode(view.selected));
+    el.addEventListener('click', ev => { ev.stopPropagation(); select(key); });
+  }
+  for (const e of edges) {
+    // A wide transparent copy of the path makes thin arrows easy to hover.
+    const hit = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    hit.setAttribute('d', e.el.getAttribute('d'));
+    hit.setAttribute('class', 'edge-hit');
+    e.el.after(hit);
+    const key = `${e.from}->${e.to}`;
+    hit.addEventListener('mouseenter', ev => {
+      highlight(new Set([e.from, e.to]), new Set([e]));
+      const note = noteFor(panel, key);
+      if (note) showTip(note, ev);
+    });
+    hit.addEventListener('mousemove', moveTip);
+    hit.addEventListener('mouseleave', () => { tip.hidden = true; focusNode(view.selected); });
+    hit.addEventListener('click', ev => { ev.stopPropagation(); showNote(panel, key); });
+  }
+  // Share the graph with the cards: connections and chip navigation work across the tab.
+  panel.graph ??= new Map();
+  panel.selectors ??= new Map();
+  const linksOf = k => panel.graph.get(k) ?? panel.graph.set(k, { in: new Set(), out: new Set() }).get(k);
+  for (const e of edges) { linksOf(e.from).out.add(e.to); linksOf(e.to).in.add(e.from); }
+  for (const key of nodes.keys()) panel.selectors.set(key, () => select(key));
+  focusNode(view.selected);
+
+  // Pan and zoom. Listeners on the box are added once; the svg inside is replaced on each render.
+  const apply = () => {
+    box.querySelector('svg').style.transform = `translate(${view.x}px, ${view.y}px) scale(${view.k})`;
+    box.style.backgroundPosition = `${view.x}px ${view.y}px`;
+    box.style.backgroundSize = `${18 * view.k}px ${18 * view.k}px`;
+  };
+  apply();
+  box.onclick = () => select(null);
+  if (box.dataset.wired) return;
+  box.dataset.wired = 'true';
+  box.addEventListener('wheel', ev => {
+    if (!ev.ctrlKey && !ev.metaKey) return;
+    ev.preventDefault();
+    const r = box.getBoundingClientRect();
+    const k = Math.min(4, Math.max(0.5, view.k * (ev.deltaY < 0 ? 1.1 : 1 / 1.1)));
+    const px = ev.clientX - r.left, py = ev.clientY - r.top;
+    view.x = px - (px - view.x) * k / view.k;
+    view.y = py - (py - view.y) * k / view.k;
+    view.k = k;
+    apply();
+  }, { passive: false });
+  let drag = null;
+  box.addEventListener('pointerdown', ev => { drag = { x: ev.clientX - view.x, y: ev.clientY - view.y, moved: false }; });
+  addEventListener('pointermove', ev => {
+    if (!drag) return;
+    const x = ev.clientX - drag.x, y = ev.clientY - drag.y;
+    if (Math.abs(x - view.x) + Math.abs(y - view.y) > 3) drag.moved = true;
+    if (drag.moved) { view.x = x; view.y = y; apply(); }
+  });
+  addEventListener('pointerup', () => { box.dataset.dragged = drag?.moved ? 'true' : ''; drag = null; });
+  // A drag must not end in a click that changes the selection.
+  box.addEventListener('click', ev => { if (box.dataset.dragged) ev.stopPropagation(); }, true);
+  box.addEventListener('dblclick', () => { Object.assign(view, { x: 0, y: 0, k: 1 }); apply(); });
+}
+
+function countUp(id, value, decimals, prefix, suffix) {
+  const target = document.getElementById(id);
+  const paint = v => { target.innerHTML = `${prefix}${v.toFixed(decimals)}<small>${suffix}</small>`; };
+  if (calm()) return paint(value);
+  const start = performance.now();
+  const step = now => {
+    const p = Math.min(1, (now - start) / 900);
+    paint(value * (1 - (1 - p) ** 3));
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+function fillKpis() {
+  const weekly = readTable('t-weekly').rows.map(r => r[1]);
+  const scope = Object.fromEntries(readTable('t-scope').rows);
+  const level = readTable('t-level').rows;
+  const levelTotal = level.reduce((a, r) => a + r[1], 0);
+  countUp('kpi-weeks', weekly.reduce((a, b) => a + b, 0), 0, '', '');
+  countUp('kpi-year', scope['Spain, 2026'], 0, '', '');
+  countUp('kpi-cv', scope['Comunitat Valenciana, since 1 Sep'], 0, '', '');
+  countUp('kpi-local', level.find(r => r[0] === 'Local')[1] / levelTotal * 100, 0, '', '%');
+  document.getElementById('kpi-spark').replaceChildren(sparkline(weekly, 'var(--s1)'));
+}
+
+
+// Spec tabs: progress comes from the Status column of a table.
+function fillProgress() {
+  for (const tile of document.querySelectorAll('[data-progress]')) {
+    const table = document.getElementById(tile.dataset.progress);
+    const { head, rows } = readTable(table.id);
+    const col = head.indexOf('Status');
+    const done = rows.filter(r => r[col] === 'done').length;
+    for (const tr of table.tBodies[0].rows) {
+      const cell = tr.cells[col];
+      cell.dataset.status = cell.textContent.trim();
+      cell.replaceChildren(el('span', { textContent: cell.dataset.status }));
+    }
+    tile.querySelector('b').innerHTML = `${done}<small>/ ${rows.length}</small>`;
+    requestAnimationFrame(() => { tile.querySelector('.bar i').style.width = `${done / rows.length * 100}%`; });
+  }
+}
+
+// Tabs
+const tabs = [...document.querySelectorAll('[role="tab"]')];
+const indicator = document.querySelector('.indicator');
+const moveIndicator = tab => Object.assign(indicator.style, { left: tab.offsetLeft + 'px', width: tab.offsetWidth + 'px' });
+function activate(tab) {
+  for (const other of tabs) {
+    other.setAttribute('aria-selected', other === tab);
+    document.getElementById(other.getAttribute('aria-controls')).hidden = other !== tab;
+  }
+  moveIndicator(tab);
+  drawCharts(document.getElementById(tab.getAttribute('aria-controls')));
+}
+for (const tab of tabs) tab.addEventListener('click', () => activate(tab));
+document.fonts.ready.then(() => moveIndicator(tabs.find(t => t.getAttribute('aria-selected') === 'true')));
+
+// ⌘K search over every card in every tab.
+const palette = document.getElementById('palette');
+const paletteInput = document.getElementById('palette-input');
+const paletteList = document.getElementById('palette-list');
+const glossaryTab = tabs.find(t => t.getAttribute('aria-controls') === 'tab-glossary');
+const entries = [
+  ...[...document.querySelectorAll('.panel [data-note]')].map(card => {
+    const tab = tabs.find(t => t.getAttribute('aria-controls') === card.closest('[role="tabpanel"]').id);
+    const key = card.dataset.note;
+    const open = () => {
+      activate(tab);
+      const panel = card.closest('.panel');
+      const select = panel.selectors?.get(key);
+      if (select) select(); else showNote(panel, key === 'default' ? null : key);
+    };
+    return { key, tab, open, title: key === 'default' ? tab.textContent : card.querySelector('h3').textContent,
+             kind: key === 'default' ? 'Tab' : card.querySelector('.kind').textContent };
+  }),
+  ...[...document.querySelectorAll('.glossary > div')].map(item => ({
+    key: item.id, tab: glossaryTab, open: () => openTerm(item.id), kind: 'Term', title: item.querySelector('dt').textContent })),
+];
+let matches = [], active = 0;
+function renderPalette() {
+  const q = paletteInput.value.trim().toLowerCase();
+  matches = entries.filter(e => `${e.title} ${e.kind} ${e.key} ${e.tab.textContent}`.toLowerCase().includes(q));
+  active = Math.min(active, Math.max(0, matches.length - 1));
+  paletteList.replaceChildren(...matches.map((e, i) => {
+    const li = el('li', { role: 'option' }, el('small', { textContent: e.kind }), el('b', { textContent: e.title }), el('span', { textContent: e.tab.textContent }));
+    li.setAttribute('aria-selected', i === active);
+    li.addEventListener('click', () => openEntry(e));
+    return li;
+  }));
+  paletteList.children[active]?.scrollIntoView({ block: 'nearest' });
+}
+function openEntry(e) {
+  palette.close();
+  e.open();
+}
+function openPalette() {
+  paletteInput.value = '';
+  active = 0;
+  renderPalette();
+  palette.showModal();
+}
+document.getElementById('search-open').addEventListener('click', openPalette);
+addEventListener('keydown', ev => {
+  if ((ev.metaKey || ev.ctrlKey) && ev.key.toLowerCase() === 'k') { ev.preventDefault(); palette.open ? palette.close() : openPalette(); }
+});
+paletteInput.addEventListener('input', () => { active = 0; renderPalette(); });
+paletteInput.addEventListener('keydown', ev => {
+  if (ev.key === 'ArrowDown' || ev.key === 'ArrowUp') {
+    ev.preventDefault();
+    active = (active + (ev.key === 'ArrowDown' ? 1 : -1) + matches.length) % matches.length;
+    renderPalette();
+  }
+  if (ev.key === 'Enter' && matches[active]) openEntry(matches[active]);
+});
+palette.addEventListener('click', ev => { if (ev.target === palette) palette.close(); });
+
+// Guide layer: hover a term for its definition, click it to open the Glossary; "How it works" steps open their tab.
+function openTerm(id) {
+  activate(glossaryTab);
+  const item = document.getElementById(id);
+  item.scrollIntoView({ block: 'center', behavior: calm() ? 'auto' : 'smooth' });
+  item.classList.remove('flash');
+  void item.offsetWidth;
+  item.classList.add('flash');
+}
+document.addEventListener('mouseover', ev => {
+  const term = ev.target.closest('a.term');
+  if (!term) return;
+  const item = document.getElementById(term.hash.slice(1));
+  tip.replaceChildren(el('b', { textContent: item.querySelector('dt').textContent }), el('span', { textContent: item.querySelector('dd').textContent }));
+  tip.hidden = false;
+  moveTip(ev);
+});
+document.addEventListener('mouseout', ev => { if (ev.target.closest('a.term')) tip.hidden = true; });
+document.addEventListener('click', ev => {
+  const term = ev.target.closest('a.term');
+  if (term) {
+    ev.preventDefault();
+    ev.stopPropagation();
+    tip.hidden = true;
+    openTerm(term.hash.slice(1));
+    return;
+  }
+  const step = ev.target.closest('.steps li[data-tab]');
+  if (step) {
+    activate(tabs.find(t => t.getAttribute('aria-controls') === step.dataset.tab));
+    document.querySelector('nav').scrollIntoView({ behavior: calm() ? 'auto' : 'smooth' });
+  }
+});
+
+const guideToggle = document.getElementById('guide-toggle');
+function applyGuide(guide) {
+  root.dataset.guide = guide;
+  guideToggle.textContent = `Guide: ${guide}`;
+}
+guideToggle.addEventListener('click', () => {
+  const next = root.dataset.guide === 'off' ? 'on' : 'off';
+  try { localStorage.setItem('explore-guide', next); } catch {}
+  applyGuide(next);
+});
+let savedGuide = null;
+try { savedGuide = localStorage.getItem('explore-guide'); } catch {}
+applyGuide(savedGuide ?? 'on');
+
+
+// Theme: dark by default, the toggle choice persists per viewer.
+const toggle = document.getElementById('theme-toggle');
+function applyTheme(theme) {
+  root.dataset.theme = theme;
+  toggle.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
+  drawCharts(null, false);
+  drawDiagrams();
+}
+toggle.addEventListener('click', () => {
+  const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+  try { localStorage.setItem('explore-theme', next); } catch {}
+  applyTheme(next);
+});
+let saved = null;
+try { saved = localStorage.getItem('explore-theme'); } catch {}
+applyTheme(saved === 'light' ? 'light' : 'dark');
+
+const motionToggle = document.getElementById('motion-toggle');
+function applyMotion(motion) {
+  root.dataset.motion = motion;
+  motionToggle.textContent = `Motion: ${motion}`;
+}
+motionToggle.addEventListener('click', () => {
+  const next = calm() ? 'on' : 'off';
+  try { localStorage.setItem('explore-motion', next); } catch {}
+  applyMotion(next);
+});
+let savedMotion = null;
+try { savedMotion = localStorage.getItem('explore-motion'); } catch {}
+applyMotion(savedMotion ?? (matchMedia('(prefers-reduced-motion: reduce)').matches ? 'off' : 'on'));
+
+addEventListener('resize', () => { charts.forEach(c => c.resize()); moveIndicator(tabs.find(t => t.getAttribute('aria-selected') === 'true')); });
+fillKpis();
+fillProgress();
+for (const panel of document.querySelectorAll('.panel')) showNote(panel, null);
+drawCharts(document.querySelector('[role="tabpanel"]:not([hidden])'));
+</script>
+</body>
+</html>
