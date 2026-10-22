@@ -54,6 +54,8 @@ export type DetalleFicha = {
   /** Nombre del ámbito: «Comunitat Valenciana», «València»… */
   ambito: string | null;
   resumen: string[];
+  /** La explicación de cada motivo de `porQue`, en frases cortas. */
+  porQueDetalle: string[];
   avisos: string[];
   dinero: { intro: string[]; lista?: string[] } | null;
   /** El plazo, en frases cortas. */

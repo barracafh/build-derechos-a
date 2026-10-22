@@ -12,7 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Fuentes } from "@/components/Fuentes";
-import { Lineas, Lista } from "@/components/Texto";
+import { Lineas, Lista, Texto } from "@/components/Texto";
 import type { Ficha } from "@/lib/tipos";
 
 // Colores de las etiquetas: texto oscuro sobre fondo claro (contraste > 7:1).
@@ -63,14 +63,15 @@ const SIN_PLAZO = [
   "Mira el plazo en la información oficial.",
 ];
 
-// Una ayuda: lo que decide va a la vista (por qué encaja, qué hay que cumplir y
-// plazo) y el detalle de cómo se pide queda plegado. `detalle` es opcional: una
-// ficha de otra fuente puede traer solo los campos del contrato.
+// Una ayuda: a la vista solo lo que decide (por qué encaja, plazo e importe) y,
+// plegado, todo lo demás. `detalle` es opcional: una ficha de otra fuente puede
+// traer solo los campos del contrato.
 export function TarjetaAyuda({ f, n }: { f: Ficha; n: number }) {
   const d = f.detalle;
   const resumen = d?.resumen ?? [f.finalidad];
   const avisos = d?.avisos ?? [];
   const plazo = d?.plazo ?? (f.estado === "desconocido" ? SIN_PLAZO : []);
+  const dinero = d?.dinero ?? null;
   const fuentes = d?.fuentes ?? [
     { nombre: new URL(f.enlace).hostname, url: f.enlace },
   ];
@@ -78,7 +79,7 @@ export function TarjetaAyuda({ f, n }: { f: Ficha; n: number }) {
     <li>
       <Card
         render={<article />}
-        className="gap-6 px-6 py-6 text-lg leading-[1.6] max-sm:px-5"
+        className="gap-5 px-6 py-6 text-lg leading-[1.6] max-sm:px-5"
       >
         <header className="grid gap-3">
           <div className="flex flex-wrap items-center gap-2">
@@ -106,62 +107,49 @@ export function TarjetaAyuda({ f, n }: { f: Ficha; n: number }) {
             </span>
             <span>{f.titulo}</span>
           </h3>
-          <Lineas lineas={resumen} className="text-(--text-secondary)" />
+          <p className="text-(--text-secondary)">
+            <Texto>{resumen[0]}</Texto>
+          </p>
         </header>
 
-        <section className="grid gap-2">
-          <Titulo icono={Lightbulb}>Por qué puede ser para ti</Titulo>
-          <Lineas lineas={f.porQue} />
-          {avisos.length > 0 && (
-            <div className="mt-1 rounded-lg bg-(--warning) px-4 py-3 text-(--warning-foreground)">
-              <p className="mb-1 font-medium">Ten cuidado:</p>
-              <Lineas lineas={avisos} />
-            </div>
-          )}
-        </section>
-
-        <div className="grid gap-3 md:grid-cols-2">
-          <section className="grid content-start gap-2 rounded-xl bg-muted px-5 py-5">
-            <Titulo icono={ListChecks}>Qué tienes que cumplir</Titulo>
-            <Lista items={f.requisitos} />
+        {f.porQue.length > 0 && (
+          <section className="grid gap-2">
+            <Titulo icono={Lightbulb}>Por qué puede ser para ti</Titulo>
+            <Lineas lineas={f.porQue} />
           </section>
-          <div className="grid content-start gap-3">
-            {plazo.length > 0 && (
-              <section className="grid gap-2 rounded-xl bg-muted px-5 py-5">
-                <Titulo icono={CalendarClock}>Plazo</Titulo>
-                <Lineas lineas={plazo} />
-              </section>
-            )}
-            {d?.dinero && (
-              <section className="grid gap-2 rounded-xl bg-muted px-5 py-5">
-                <Titulo icono={Euro}>Cuánto dinero es</Titulo>
-                <Lineas lineas={d.dinero.intro} />
-                {d.dinero.lista && <Lista items={d.dinero.lista} />}
-              </section>
-            )}
-          </div>
-        </div>
+        )}
 
-        {d && (
-        <details className="group">
-          <summary className="flex min-h-12 cursor-pointer list-none items-center gap-2 text-lg font-medium [&::-webkit-details-marker]:hidden">
-            <ChevronRight
-              aria-hidden="true"
-              className="size-5 shrink-0 transition-transform group-open:rotate-90"
-            />
-            Cómo se pide y papeles que necesitas
-          </summary>
-          <div className="mt-3 grid gap-6 pl-7">
-            <section className="grid gap-2">
-              <h4 className={ETIQUETA}>Cómo se pide</h4>
-              <Lista items={d.pasos} ordenada />
-            </section>
-            <section className="grid gap-2">
-              <h4 className={ETIQUETA}>Papeles que necesitas</h4>
-              <Lista items={d.documentos} />
-            </section>
+        {avisos.length > 0 && (
+          <div className="rounded-lg bg-(--warning) px-4 py-3 text-(--warning-foreground)">
+            <p className="mb-1 font-medium">Ten cuidado:</p>
+            <Lineas lineas={avisos} />
           </div>
-        </details>
+        )}
+
+        {(plazo.length > 0 || dinero) && (
+          <div className="grid gap-3 rounded-xl bg-muted px-5 py-4">
+            {plazo.length > 0 && (
+              <p className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-2">
+                <CalendarClock
+                  aria-hidden="true"
+                  className="mt-1 size-5 shrink-0"
+                />
+                <span>
+                  <span className="sr-only">Plazo: </span>
+                  <Texto>{plazo[0]}</Texto>
+                </span>
+              </p>
+            )}
+            {dinero && (
+              <p className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-2">
+                <Euro aria-hidden="true" className="mt-1 size-5 shrink-0" />
+                <span>
+                  <span className="sr-only">Dinero: </span>
+                  <Texto>{dinero.intro[0]}</Texto>
+                </span>
+              </p>
+            )}
+          </div>
         )}
 
         <div className="flex flex-wrap items-center gap-3">
@@ -191,28 +179,75 @@ export function TarjetaAyuda({ f, n }: { f: Ficha; n: number }) {
           )}
         </div>
 
-        <Fuentes fuentes={fuentes} />
-
-        {d && (
-        <details className="group rounded-xl bg-muted px-5 py-4">
-          <summary className="min-h-11 cursor-pointer py-2 text-lg font-medium">
-            Texto oficial, no está en lectura fácil
+        <details className="group">
+          <summary className="flex min-h-12 cursor-pointer list-none items-center gap-2 text-lg font-medium [&::-webkit-details-marker]:hidden">
+            <ChevronRight
+              aria-hidden="true"
+              className="size-5 shrink-0 transition-transform group-open:rotate-90"
+            />
+            Ver requisitos y cómo pedirla
+            <span className="sr-only"> de {f.titulo}</span>
           </summary>
-          <div className="mt-3 grid gap-4">
-            <p className="text-(--text-secondary)">
-              Este es el texto del catálogo, tal como está escrito.
-            </p>
-            <p>{d.oficial.titulo}</p>
-            <p className="[overflow-wrap:anywhere]">{d.oficial.organismo}</p>
-            <ul className="grid list-disc gap-2 pl-7">
-              {d.oficial.requisitos.map((q) => (
-                <li key={q}>{q}</li>
-              ))}
-            </ul>
-            {d.oficial.plazo && <p>Plazo: {d.oficial.plazo}</p>}
+          <div className="mt-3 grid grid-cols-[minmax(0,1fr)] gap-6 pl-7">
+            {resumen.length > 1 && <Lineas lineas={resumen.slice(1)} />}
+            {d && d.porQueDetalle.length > 0 && (
+              <section className="grid gap-2">
+                <Titulo icono={Lightbulb}>Por qué encaja</Titulo>
+                <Lineas lineas={d.porQueDetalle} />
+              </section>
+            )}
+            <section className="grid gap-2">
+              <Titulo icono={ListChecks}>Qué tienes que cumplir</Titulo>
+              <Lista items={f.requisitos} />
+            </section>
+            {plazo.length > 1 && (
+              <section className="grid gap-2">
+                <Titulo icono={CalendarClock}>Plazo</Titulo>
+                <Lineas lineas={plazo} />
+              </section>
+            )}
+            {dinero && (
+              <section className="grid gap-2">
+                <Titulo icono={Euro}>Cuánto dinero es</Titulo>
+                <Lineas lineas={dinero.intro} />
+                {dinero.lista && <Lista items={dinero.lista} />}
+              </section>
+            )}
+            {d && (
+              <>
+                <section className="grid gap-2">
+                  <h4 className={ETIQUETA}>Cómo se pide</h4>
+                  <Lista items={d.pasos} ordenada />
+                </section>
+                <section className="grid gap-2">
+                  <h4 className={ETIQUETA}>Papeles que necesitas</h4>
+                  <Lista items={d.documentos} />
+                </section>
+              </>
+            )}
+            <Fuentes fuentes={fuentes} />
+            {d && (
+              <details className="group rounded-xl bg-muted px-5 py-4">
+                <summary className="min-h-11 cursor-pointer py-2 text-lg font-medium">
+                  Texto oficial, no está en lectura fácil
+                </summary>
+                <div className="mt-3 grid grid-cols-[minmax(0,1fr)] gap-4">
+                  <p className="text-(--text-secondary)">
+                    Este es el texto del catálogo, tal como está escrito.
+                  </p>
+                  <p>{d.oficial.titulo}</p>
+                  <p className="[overflow-wrap:anywhere]">{d.oficial.organismo}</p>
+                  <ul className="grid list-disc gap-2 pl-7">
+                    {d.oficial.requisitos.map((q) => (
+                      <li key={q}>{q}</li>
+                    ))}
+                  </ul>
+                  {d.oficial.plazo && <p>Plazo: {d.oficial.plazo}</p>}
+                </div>
+              </details>
+            )}
           </div>
         </details>
-        )}
       </Card>
     </li>
   );

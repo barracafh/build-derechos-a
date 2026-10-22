@@ -11,6 +11,7 @@ import {
 import {
   ArrowUp,
   ArrowUpRight,
+  ChevronRight,
   Search,
   SquarePen,
 } from "lucide-react";
@@ -19,7 +20,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { BotonAviso } from "@/components/BotonAviso";
 import { TarjetaAyuda } from "@/components/TarjetaAyuda";
-import { Lineas, Lista } from "@/components/Texto";
+import { Lineas } from "@/components/Texto";
 import { ruta, site } from "@/config/sitio";
 import { PanelCobertura } from "@/components/PanelCobertura";
 import type { MensajeChat, Respuesta } from "@/lib/tipos";
@@ -145,9 +146,10 @@ function VistaRespuesta({
     ...r.perfil.hechos.map((h) => `${UNIDAD_HECHO[h.campo]}: ${h.valor}`),
     ...(r.perfil.necesidad ? [`Lo que buscas: ${r.perfil.necesidad}`] : []),
   ];
-  const ahora = r.fichas.filter(
-    (f) => f.estado === "abierta" || f.estado === "permanente",
-  );
+  const esAhora = (f: Respuesta["fichas"][number]) =>
+    f.estado === "abierta" || f.estado === "permanente";
+  const ahora = r.fichas.filter(esAhora);
+  const despues = r.fichas.filter((f) => !esAhora(f));
   return (
     <>
       <div className="grid gap-3">
@@ -167,12 +169,29 @@ function VistaRespuesta({
         </p>
       </div>
 
-      {entendido.length > 0 && (
-        <section className="grid gap-3">
-          <h3 className={H3}>Lo que he entendido de ti</h3>
-          <Lista items={entendido} />
-          <p>Si algo está mal, escríbelo otra vez.</p>
+      {r.pregunta && (
+        <section className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <h3 className="sr-only">Para afinar la búsqueda</h3>
+          <p>{r.pregunta}</p>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={alPreguntar}
+            className="h-auto min-h-11 px-4 py-2 text-base"
+          >
+            Responder
+          </Button>
         </section>
+      )}
+
+      {entendido.length > 0 && (
+        <p>
+          <span className="font-medium">Lo que he entendido de ti: </span>
+          {entendido.join(" · ")}.{" "}
+          <span className="text-(--text-secondary)">
+            Si algo está mal, escríbelo otra vez.
+          </span>
+        </p>
       )}
 
       {n === 0 ? (
@@ -202,49 +221,40 @@ function VistaRespuesta({
           </div>
         </Card>
       ) : (
-        <ol className="grid gap-6">
-          {r.fichas.map((x, i) => (
-            <TarjetaAyuda key={x.id} f={x} n={i + 1} />
-          ))}
-        </ol>
+        <>
+          {ahora.length > 0 && (
+            <ol className="grid grid-cols-[minmax(0,1fr)] gap-6">
+              {ahora.map((x, i) => (
+                <TarjetaAyuda key={x.id} f={x} n={i + 1} />
+              ))}
+            </ol>
+          )}
+          {despues.length > 0 && (
+            <details open={ahora.length === 0} className="group grid grid-cols-[minmax(0,1fr)] gap-4">
+              <summary className="flex min-h-12 cursor-pointer list-none items-center gap-2 text-lg font-medium [&::-webkit-details-marker]:hidden">
+                <ChevronRight
+                  aria-hidden="true"
+                  className="size-5 shrink-0 transition-transform group-open:rotate-90"
+                />
+                {ahora.length === 0
+                  ? "Ayudas que no puedes pedir ahora o sin plazo confirmado"
+                  : despues.length === 1
+                    ? "1 ayuda más que no puedes pedir ahora o sin plazo confirmado"
+                    : `${despues.length} ayudas más que no puedes pedir ahora o sin plazo confirmado`}
+              </summary>
+              <ol className="mt-4 grid grid-cols-[minmax(0,1fr)] gap-6">
+                {despues.map((x, i) => (
+                  <TarjetaAyuda key={x.id} f={x} n={ahora.length + i + 1} />
+                ))}
+              </ol>
+            </details>
+          )}
+        </>
       )}
 
       <PanelCobertura c={r.cobertura} />
 
-      {r.pregunta && (
-        <section className="grid gap-3">
-          <h3 className={H3}>Para afinar la búsqueda</h3>
-          <p>{r.pregunta}</p>
-          <div>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={alPreguntar}
-              className="h-auto min-h-12 px-5 py-2 text-lg"
-            >
-              Responder
-            </Button>
-          </div>
-        </section>
-      )}
 
-      {n > 0 && (
-        <section className="grid gap-3">
-          <h3 className={H3}>Resumen</h3>
-          <Lista
-            items={[
-              n === 1
-                ? "Hay 1 ayuda que puede ser para ti."
-                : `Hay ${n} ayudas que pueden ser para ti.`,
-              ...(ahora.length
-                ? [`Puedes pedir ahora: ${ahora.map((f) => f.titulo).join(", ")}.`]
-                : []),
-              "Comprueba siempre los requisitos en la información oficial.",
-            ]}
-          />
-          <p>Puedes escribirme más datos y busco otra vez.</p>
-        </section>
-      )}
     </>
   );
 }

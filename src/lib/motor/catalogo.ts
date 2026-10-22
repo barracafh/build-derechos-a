@@ -391,6 +391,7 @@ export function crearFicha(
   porQue: string[],
   avisosExtra: string[],
   hoy: Date,
+  explicacion: string[] = [],
 ): Ficha {
   const e = ayudas.find((x) => x.id === id)!;
   const a = ADAPTADAS[id];
@@ -421,6 +422,7 @@ export function crearFicha(
     detalle: {
       ambito: ambitoDe(e.administracion),
       resumen: a.resumen,
+      porQueDetalle: explicacion,
       avisos,
       dinero: a.dinero ?? null,
       plazo: estado.lineas,
@@ -475,9 +477,10 @@ export function fichasDelCatalogo(perfil: Perfil, hoy = new Date()): Ficha[] {
       crearFicha(
         e.id,
         perfil,
-        senales.flatMap((s) => s.motivo),
+        senales.flatMap((s) => s.motivo.slice(0, 1)),
         senales.flatMap((s) => s.aviso ?? []),
         hoy,
+        senales.flatMap((s) => s.motivo.slice(1)),
       ),
     );
   }
