@@ -51,7 +51,7 @@ describe("leerRespuesta", () => {
         { campo: "situacionLaboral", valor: "En Paro", cita: "estoy en paro" },
         { campo: "vivienda", valor: "alquiler", cita: "vivo de alquiler" },
         { campo: "municipio", valor: "València", cita: "en Madrid" },
-        { campo: "dni", valor: "12345678Z", cita: "24 años" },
+        { campo: "dni", valor: "no-aplica", cita: "24 años" },
         { campo: "vivienda", valor: "chalet", cita: "vivo de alquiler" },
         { campo: "hijos", valor: "-1", cita: "24 años" },
         { campo: "hijos", valor: "2", cita: "24 años" },
