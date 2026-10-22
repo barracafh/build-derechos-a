@@ -598,9 +598,9 @@ export function Chat() {
       </main>
 
       {!enChat && (
-        <footer className="p-2">
-          <div className="flex flex-wrap items-center justify-between gap-6 rounded-[28px] px-(--page-gutter) py-12 [background:radial-gradient(80%_70%_at_50%_-12%,#ffe58f_0%,rgba(255,229,143,0)_70%),linear-gradient(180deg,#ffd34d_0%,var(--brand-yellow)_46%,var(--brand-orange)_100%)] md:px-12">
-            <p className="text-lg">
+        <footer className="px-(--page-gutter) pb-4">
+          <div className="mx-auto flex max-w-(--container-content) flex-wrap items-center justify-between gap-3 border-t pt-4">
+            <p className="text-base text-(--text-secondary)">
               Una pieza del squad{" "}
               <span className="font-mono">{ficha.equipo}</span> · Build night
             </p>
@@ -609,12 +609,12 @@ export function Chat() {
                 href="/declaracion-de-accesibilidad"
                 className={cn(
                   buttonVariants({ variant: "outline", size: "lg" }),
-                  "h-auto min-h-12 px-5 py-2 text-lg",
+                  "h-auto min-h-11 px-4 py-2 text-base",
                 )}
               >
                 Accesibilidad
               </Link>
-              <BotonAviso />
+              <BotonAviso discreto />
             </div>
           </div>
         </footer>
