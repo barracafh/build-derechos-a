@@ -3,6 +3,7 @@ import type { Mensaje, MensajeAgente } from "@/lib/ia";
 import type { MensajeChat } from "@/lib/tipos";
 import { conversarConHerramientas, nuevosHallazgos } from "./agente";
 import { dentroDelTema, LIMITES, responderProtegido } from "./guardarrailes";
+import { TEXTO_PREGUNTA } from "./pregunta";
 
 const usuario = (texto: string): MensajeChat => ({ rol: "usuario", texto });
 const hoy = new Date("2026-10-22T10:00:00+02:00");
@@ -101,6 +102,47 @@ describe("guardarraíles de ámbito", () => {
     });
     expect(historia[0]).toEqual({ role: "system", content: LIMITES });
     expect(JSON.stringify(r)).not.toContain("Contenido ajeno");
+  });
+
+  test.each([
+    "Prefiero no responder a estas preguntas.",
+    "Preferisc no respondre a estes preguntes.",
+    "Me estás repitiendo las mismas preguntas y no puedo continuar",
+  ])("no reabre el formulario ni inventa datos al omitirlo: %s", async (texto) => {
+    const mensajes: MensajeChat[] = [
+      usuario("Hola"),
+      ...Object.values(TEXTO_PREGUNTA).map((texto): MensajeChat => ({ rol: "asistente", texto })),
+      usuario(texto),
+    ];
+    let llamadas = 0;
+    const r = await responderProtegido(mensajes, {
+      hoy,
+      completar: async () => ++llamadas === 1
+        ? "PERMITIR"
+        : '{"hechos":[],"necesidad":null,"elegidos":[]}',
+    });
+    expect(llamadas).toBe(2);
+    expect(r.perfil).toEqual({ hechos: [], necesidad: null });
+    expect(r.formulario).toEqual([]);
+    expect(r.pregunta).toContain("Todavía no tengo información");
+  });
+
+  test("una respuesta breve completa el perfil sin repetir la pregunta", async () => {
+    const mensajes: MensajeChat[] = [
+      usuario("Busco ayudas"),
+      { rol: "asistente", texto: TEXTO_PREGUNTA.hijos },
+      usuario("2"),
+    ];
+    let llamadas = 0;
+    const r = await responderProtegido(mensajes, {
+      hoy,
+      completar: async () => ++llamadas === 1
+        ? "PERMITIR"
+        : '{"hechos":[{"campo":"hijos","valor":"2","cita":"2"}],"necesidad":null,"elegidos":[]}',
+    });
+    expect(r.perfil.hechos).toEqual([{ campo: "hijos", valor: "2", cita: "2" }]);
+    expect(r.formulario).not.toContain("hijos");
+    expect(r.pregunta).not.toContain(TEXTO_PREGUNTA.hijos);
   });
 
   test("una herramienta no permitida nunca llega al ejecutor", async () => {
