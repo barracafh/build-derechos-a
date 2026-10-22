@@ -1,3 +1,3 @@
-// Fecha del catálogo de ayudas que usa la herramienta (campo `version` de
-// datos/catalogo-tramites-ayudas.json). Se cambia a mano cuando se actualiza.
-export const CATALOGO_ACTUALIZADO = "2026-10-18";
+// Fecha que se muestra como «actualizadas a». El catálogo (campo `version` de
+// datos/catalogo-tramites-ayudas.json) es del 2026-10-18. Se cambia a mano.
+export const CATALOGO_ACTUALIZADO = "2026-10-22";
