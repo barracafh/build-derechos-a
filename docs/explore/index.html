@@ -232,7 +232,7 @@
 <header>
   <div>
     <h1>Derechos · akorda</h1>
-    <p>Aid finder for the Build night: chat in, verified public aids out. BDNS counts are measured from the public API on 2026-10-21; the build time is an estimate and is labelled so. The build delivers specs S0–S3; S4 only if time allows.</p>
+    <p>Aid finder for the Build night: chat in, verified public aids out. State at the close of the night, 22 Oct 2026: S0–S4 delivered, a nightly job feeds a central store of 25 aids, the tool is registered in the event registry. BDNS counts were measured on 2026-10-21; every other number was measured on 22 Oct and is labelled so. Nothing is invented.</p>
   </div>
   <div class="actions">
     <button id="search-open" type="button">Search<kbd>⌘K</kbd></button>
@@ -251,6 +251,10 @@
     <button role="tab" aria-controls="tab-query">Query</button>
     <button role="tab" aria-controls="tab-guardrails">Guardrails</button>
     <button role="tab" aria-controls="tab-split">Work split</button>
+    <button role="tab" aria-controls="tab-night">Nightly job</button>
+    <button role="tab" aria-controls="tab-llm">LLM &amp; retrieval</button>
+    <button role="tab" aria-controls="tab-data">Team data</button>
+    <button role="tab" aria-controls="tab-event">Event</button>
     <button role="tab" aria-controls="tab-spec-000" data-spec="000">S0 · Contracts</button>
     <button role="tab" aria-controls="tab-spec-001" data-spec="001">S1 · Chat UI</button>
     <button role="tab" aria-controls="tab-spec-002" data-spec="002">S2 · Engine / API</button>
@@ -269,13 +273,13 @@
       <div class="intro-cols">
         <div><h4>The problem</h4><p>Aids are spread across the State, the <a class="term" href="#term-gva">Generalitat</a> and the city council, each with its own website and deadlines. The biggest ones are <a class="term" href="#term-prestacion">benefits</a>, which never appear in the <a class="term" href="#term-bdns">BDNS</a>, the national register of grants.</p></div>
         <div><h4>The solution</h4><p>The citizen writes their situation. The <a class="term" href="#term-llm">AI</a> turns it into a short <a class="term" href="#term-profile">profile</a>; rules check each aid in the <a class="term" href="#term-catalogue">catalogue</a>, and live calls come from the BDNS. Every answer says "you could apply", shows what to check and links the official page.</p></div>
-        <div><h4>Who it is for</h4><p>Citizens of València and the Comunitat Valenciana. This page is for the akorda team and the Build night jury, to see how the tool works and what ships first.</p></div>
+        <div><h4>Who it is for</h4><p>Citizens of València and the Comunitat Valenciana. This page is for the akorda team, the Build night jury and the committee: how the tool works, where its data comes from and what runs on its own every night.</p></div>
       </div>
       <h4>How it works</h4>
       <ol class="steps">
         <li data-tab="tab-query"><b>Tell your situation</b><span>One message in your own words, for example "24, unemployed, renting in València".</span></li>
         <li data-tab="tab-model"><b>We note what you said</b><span>The AI fills a short profile, and only with facts you actually wrote.</span></li>
-        <li data-tab="tab-query"><b>Each aid is checked</b><span>An aid leaves the list only if something you said rules it out: the <a class="term" href="#term-double-block">double block</a>.</span></li>
+        <li data-tab="tab-query"><b>Each aid is checked</b><span>Catalogue aids by rules, then the <a class="term" href="#term-central-store">central store</a> that a <a class="term" href="#term-cron">nightly job</a> fills from official pages. An aid leaves the list only if something you said rules it out: the <a class="term" href="#term-double-block">double block</a>.</span></li>
         <li data-tab="tab-ingest"><b>Live calls are added</b><span>Open calls from the BDNS, with their status taken from official dates.</span></li>
         <li data-tab="tab-guardrails"><b>Honest answer</b><span>What you could apply for, what to check, and what we could not check: the <a class="term" href="#term-coverage">coverage panel</a>.</span></li>
       </ol>
@@ -283,11 +287,26 @@
     <div class="layout">
     <div class="figures">
     <div class="bento">
-      <div class="card kpi kpi-hero"><div><span>New BDNS convocatorias for individuals</span><b id="kpi-weeks"></b><span>7 full weeks from 1 Sep · from Weekly table · measured</span></div><div id="kpi-spark"></div></div>
-      <div class="card kpi kpi-wide"><span>Spain, all of 2026</span><b id="kpi-year"></b><span>from Scope table · measured</span></div>
-      <div class="card kpi"><span>Comunitat Valenciana since 1 Sep</span><b id="kpi-cv"></b><span>from Scope table</span></div>
-      <div class="card kpi"><span>Local share since 1 Sep</span><b id="kpi-local"></b><span>from Level table</span></div>
+      <div class="card kpi kpi-hero"><div><span>Aids in the central store</span><b id="kpi-central"></b><span>from the Store growth table · measured 22 Oct, two runs of the job</span></div><div id="kpi-spark"></div></div>
+      <div class="card kpi kpi-wide"><span>Tests green at close</span><b id="kpi-tests"></b><span>from Checks table · measured</span></div>
+      <div class="card kpi"><span>Seed pages the job reads</span><b id="kpi-seeds"></b><span>from Seeds table</span></div>
+      <div class="card kpi"><span>AI tokens counted on this machine</span><b id="kpi-tokens"></b><span>from Tokens table · first count, 19:03</span></div>
     </div>
+    <figure class="card">
+      <figcaption><h3>Where each spec stands</h3><p>Requirements and tasks marked done or open in docs/specs, at the close of 22 Oct 2026.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a bar for its card</li></ul></span></figcaption>
+      <div class="chart" data-chart="status" data-table="t-status"></div>
+      <p class="takeaway guide">S2 and S3 are closed; S0 and S1 keep only items that no longer apply or a screen check; S4 has 21 of 36 done, the rest is the hand review and the next backfill.</p>
+      <details><summary>Data table</summary><div><table id="t-status">
+        <thead><tr><th>Spec</th><th>Done</th><th>Open</th></tr></thead>
+        <tbody>
+          <tr><td>S0 · Contracts</td><td>8</td><td>2</td></tr>
+          <tr><td>S1 · Chat UI</td><td>9</td><td>2</td></tr>
+          <tr><td>S2 · Engine / API</td><td>13</td><td>0</td></tr>
+          <tr><td>S3 · LLM loop</td><td>16</td><td>0</td></tr>
+          <tr><td>S4 · Centralise</td><td>21</td><td>15</td></tr>
+        </tbody>
+      </table></div></details>
+    </figure>
     <div class="grid">
       <figure class="card">
         <figcaption><h3>New convocatorias per week</h3><p>BDNS convocatorias for individuals (tiposBeneficiario=1), Spain, by week of receipt.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Hover for the weekly value</li></ul></span></figcaption>
@@ -321,6 +340,27 @@
       </figure>
     </div>
     <figure class="card">
+      <figcaption><h3>Close-of-night checks</h3><p>What was measured on 22 Oct 2026 before the demo. The tiles above read these tables.</p></figcaption>
+      <div class="grid">
+      <table id="t-growth" class="list">
+        <thead><tr><th>Store written at</th><th>Aids</th></tr></thead>
+        <tbody>
+          <tr><td>20:49 (first store)</td><td>5</td></tr>
+          <tr><td>21:15 (backfill)</td><td>25</td></tr>
+        </tbody>
+      </table>
+      <table id="t-checks" class="list">
+        <thead><tr><th>Check</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Tests passing</td><td>192</td></tr>
+          <tr><td>Tests failing</td><td>0</td></tr>
+          <tr><td>Typecheck errors</td><td>0</td></tr>
+          <tr><td>Event rules passed (of 6)</td><td>6</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </figure>
+    <figure class="card">
       <figcaption><h3>Scope</h3><p>Measured volumes that size the index.</p></figcaption>
       <table id="t-scope" class="list">
         <thead><tr><th>Scope</th><th>Convocatorias</th></tr></thead>
@@ -337,10 +377,23 @@
       <article data-note="default">
         <p class="kind">Overview</p>
         <h3>Derechos · akorda</h3>
-        <p class="role">A chat that tells citizens which public aids they could apply for, why, what to check, the status and the official link.</p>
-        <ul class="tags"><li data-status="decided">Chat with AI</li><li data-status="decided">Split into specs S0–S4</li><li data-status="open">Owner per spec</li></ul>
-        <dl class="facts"><div><dt>Demo scope</dt><dd>State + Comunitat Valenciana</dd></div><div><dt>Build</dt><dd>~4 h, 22 Oct 2026</dd></div><div><dt>Team</dt><dd>5 people</dd></div><div><dt>New per day</dt><dd>~40 (Spain)</dd></div></dl>
-        <div class="questions"><h4>Open questions</h4><ul><li>Who owns each spec?</li></ul></div>
+        <p class="role">A chat that tells citizens which public aids they could apply for, why, what to check, the status and the official link. Live at build.barraca.house/derechos-a.</p>
+        <p class="explain guide">At the close of the night every spec is in production: the chat, the rules, the live BDNS calls and the central store that a job refreshes each night. The team registered the tool with the event CLI and its tokens reach the event room.</p>
+        <ul class="tags"><li data-status="decided">S0–S4 in production</li><li data-status="decided">Registered: PR 15</li><li data-status="open">GVA backfill</li></ul>
+        <dl class="facts"><div><dt>Central aids</dt><dd>25 (22 State, 1 GVA, 2 local)</dd></div><div><dt>Nightly cron</dt><dd>03:17 UTC</dd></div><div><dt>LLM</dt><dd>glm5.3-flash</dd></div><div><dt>Team</dt><dd>5 people</dd></div></dl>
+        <div class="questions"><h4>Open questions</h4><ul><li>Does the GVA backfill (28 requests) land before 22:00?</li><li>Hand review of the first aids (S4 T009)</li></ul></div>
+      </article>
+      <article data-note="S4 · Centralise" hidden>
+        <p class="kind">Spec</p>
+        <h3>S4 · Centralise</h3>
+        <p class="role">21 of 36 items done: seeds, job, extraction, store, cron, engine source. Open: the hand review of 10 aids and the quality items that need the next backfill.</p>
+        <ul class="tags"><li data-status="decided">Cron green</li><li data-status="open">T009 hand review</li></ul>
+      </article>
+      <article data-note="S2 · Engine / API" hidden>
+        <p class="kind">Spec</p>
+        <h3>S2 · Engine / API</h3>
+        <p class="role">Closed, with a different shape than planned: the BDNS calls live in src/lib/ayudas and are called by the LLM agent as tools, not by motor/index.ts.</p>
+        <ul class="tags"><li data-status="decided">Closed</li><li>Deviation noted in the spec</li></ul>
       </article>
       <article data-note="State" hidden>
         <p class="kind">Level</p>
@@ -372,36 +425,41 @@
     <div class="figures">
     <p class="lead guide">The parts of the tool and how they talk to each other. Each box belongs to one <a class="term" href="#term-spec">spec</a>; its card says which, and the Work split tab says who builds it. Click a box to read what it does.</p>
     <figure class="card">
-      <figcaption><h3>Runtime</h3><p>No index. Each message runs rules on the catalogue and queries the BDNS live.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a box for its card</li><li>Hover an arrow for its link</li><li>Drag to pan</li><li>⌘/Ctrl + scroll to zoom</li><li>Double-click to reset</li></ul></span></figcaption>
+      <figcaption><h3>Runtime</h3><p>Each message runs rules on the catalogue, reads the central store in memory and queries the BDNS live. The store is refilled by a nightly job.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a box for its card</li><li>Hover an arrow for its link</li><li>Drag to pan</li><li>⌘/Ctrl + scroll to zoom</li><li>Double-click to reset</li></ul></span></figcaption>
       <div class="diagram"></div>
-      <p class="takeaway guide">Nothing is stored: each message costs one AI call plus live BDNS requests.</p>
+      <p class="takeaway guide">Nothing the citizen writes is stored: each message costs one AI call plus live BDNS requests; the central store costs one AI call per changed page, at night.</p>
       <details><summary>Diagram source</summary><pre class="mermaid-src">flowchart TB
   U([Citizen]) --> UI[Chat UI]
   UI --> IA[LLM interpreter]
+  IA --> HC[HelmCode API]
   IA --> MO[Candidate engine]
   CA[(Benefits catalogue)] --> MO
+  CS[(Central store)] --> MO
   MO --> LV[Live BDNS route]
   LV --> BD[BDNS API]
   PK[(Pack backup copy)] -. fallback .-> LV
   MO --> UI
+  CR[GitHub Actions cron] --> JB[Nightly job]
+  JB --> HC
+  JB --> CS
   TS[Test set] -.-> MO
   classDef service stroke-width:1px
   classDef data stroke-width:1px
   classDef compute stroke-width:1px
   classDef external stroke-width:1px
-  class UI,LV service
-  class CA,PK data
-  class MO,TS compute
-  class IA,BD external</pre></details>
+  class UI,LV,CR service
+  class CA,PK,CS data
+  class MO,TS,JB compute
+  class IA,BD,HC external</pre></details>
     </figure>
     </div>
     <aside class="panel" aria-live="polite">
       <article data-note="default">
         <p class="kind">Architecture</p>
         <h3>Rules + live BDNS</h3>
-        <p class="role">No index: hand-written rules on the catalogue and the BDNS queried live per message. One LLM call per message.</p>
-        <ul class="tags"><li data-status="decided">One LLM call per message</li><li data-status="decided">Catalogue rules in S2</li></ul>
-        <dl class="facts"><div><dt>LLM calls / message</dt><dd>1</dd></div><div><dt>Stored user text</dt><dd>none</dd></div></dl>
+        <p class="role">Hand-written rules on the catalogue, the central store read in memory and the BDNS queried live per message. One LLM call to read the message, plus tool calls for the BDNS.</p>
+        <ul class="tags"><li data-status="decided">Catalogue rules in S2</li><li data-status="decided">Central aids after catalogue aids</li><li data-status="decided">No retrieval index</li></ul>
+        <dl class="facts"><div><dt>Stored user text</dt><dd>none</dd></div><div><dt>Central store</dt><dd>25 aids, JSON in the repo</dd></div><div><dt>Refresh</dt><dd>nightly, 03:17 UTC</dd></div></dl>
       </article>
       <article data-note="U" hidden>
         <p class="kind">Actor</p>
@@ -423,8 +481,50 @@
         <h3>LLM interpreter</h3>
         <p class="role">Turns the message into profile fields, a need and legal search terms. Writes nothing the user sees.</p>
         <p class="explain guide">The <a class="term" href="#term-llm">AI</a> reads the message and writes down only facts the citizen stated, each with the words it came from. It never writes the answer, so it cannot invent an amount or a deadline.</p>
-        <ul class="tags"><li>S3</li><li>glm5.3-flash</li><li>JSON only</li></ul>
-        <dl class="facts"><div><dt>Calls / message</dt><dd>1</dd></div><div><dt>Each field</dt><dd>needs a user quote</dd></div></dl>
+        <ul class="tags"><li>S3</li><li>glm5.3-flash</li><li>JSON only</li><li>NDJSON progress</li></ul>
+        <dl class="facts"><div><dt>Reads the message</dt><dd>1 call</dd></div><div><dt>Each field</dt><dd>needs a user quote</dd></div><div><dt>BDNS</dt><dd>as tool calls</dd></div></dl>
+      </article>
+      <article data-note="HC" hidden data-kind="external">
+        <p class="kind">External</p>
+        <h3>HelmCode API</h3>
+        <p class="role">The event's AI provider, OpenAI-compatible. The chat and the nightly job use glm5.3-flash; the key lives only on the server and in a GitHub secret.</p>
+        <p class="explain guide">All teams share one provider and its limits, so the tool never calls it in a loop. See the <a class="term" href="#term-helmcode">HelmCode</a> entry and the LLM &amp; retrieval tab for the whole catalogue.</p>
+        <ul class="tags"><li data-status="decided">glm5.3-flash</li><li data-status="decided">No embeddings now</li><li data-status="risk">Shared limits</li></ul>
+        <dl class="facts"><div><dt>Per key</dt><dd>100 RPM · 10 concurrent · 2M TPM</dd></div><div><dt>Models visible</dt><dd>19</dd></div></dl>
+      </article>
+      <article data-note="CS" hidden data-kind="data">
+        <p class="kind">Datastore</p>
+        <h3>Central store</h3>
+        <p class="role">src/datos/central.json: aids extracted from official pages, in the catalogue shape, with a hash per page read so the job knows what changed.</p>
+        <p class="explain guide">The benefits that no API offers (Social Security, SEPE, IMSERSO, GVA, the city) live only on web pages. The <a class="term" href="#term-central-store">central store</a> is our own copy of what those pages say, quote by quote, refreshed every night.</p>
+        <ul class="tags"><li>S4</li><li data-status="decided">Quotes only</li><li>verificado: false</li></ul>
+        <dl class="facts"><div><dt>Aids</dt><dd>25</dd></div><div><dt>Incomplete</dt><dd>0</dd></div><div><dt>Version</dt><dd>2026-10-22</dd></div></dl>
+      </article>
+      <article data-note="JB" hidden data-kind="compute">
+        <p class="kind">Compute</p>
+        <h3>Nightly job</h3>
+        <p class="role">bun run indexar: seeds → aid pages → hash → one LLM call per changed page → quote and link checks → store.</p>
+        <p class="explain guide">It visits the seed pages, reads each aid page, and only when a page changed asks the AI to copy out the fields. Code checks that every requisite, deadline and amount is a literal quote. Capped at 30 AI calls a night.</p>
+        <ul class="tags"><li>S4</li><li data-status="decided">≤ 30 LLM calls / run</li><li data-status="decided">Masks contact data</li></ul>
+        <dl class="facts"><div><dt>Seeds</dt><dd>7</dd></div><div><dt>Rate</dt><dd>1 request / s per host</dd></div><div><dt>Timeout</dt><dd>10 s</dd></div></dl>
+      </article>
+      <article data-note="CR" hidden data-kind="service">
+        <p class="kind">Service</p>
+        <h3>GitHub Actions cron</h3>
+        <p class="role">.github/workflows/indexar.yml: runs the job daily at 03:17 UTC and on demand, builds, and commits src/datos only when it changed.</p>
+        <p class="explain guide">The <a class="term" href="#term-cron">cron</a> is the clock. It runs on GitHub's machines with the HelmCode key as a <a class="term" href="#term-secret">secret</a>, and pushes a commit only if the store changed, which Vercel then publishes.</p>
+        <ul class="tags"><li>S4</li><li data-status="decided">Daily 03:17 UTC</li><li data-status="decided">Green dry run</li></ul>
+        <dl class="facts"><div><dt>First dry run</dt><dd>22 Oct, run 39835125842</dd></div><div><dt>Commits as</dt><dd>github-actions[bot]</dd></div></dl>
+      </article>
+      <article data-note="CS->MO" hidden>
+        <p class="kind">Link</p>
+        <h3>Central store → engine</h3>
+        <p class="role">Read in memory; need matched against the citizen phrases and the title; fichas marked "central", status computed on the day.</p>
+      </article>
+      <article data-note="JB->HC" hidden>
+        <p class="kind">Link</p>
+        <h3>Job → HelmCode</h3>
+        <p class="role">One call per new or changed page, input capped at about 12k tokens; at most 30 per run, lifted only for a manual backfill.</p>
       </article>
       <article data-note="MO" hidden data-kind="compute">
         <p class="kind">Compute</p>
@@ -869,9 +969,9 @@
         <thead><tr><th>Part</th><th>Why it waits</th></tr></thead>
         <tbody>
           <tr><td>Postgres + pgvector</td><td>Needs a database from the organisers; the demo stores nothing</td></tr>
-          <tr><td>Embeddings and rerank</td><td>Unconfirmed in the event key; keyword ranking is enough for 8 aids</td></tr>
+          <tr><td>Embeddings and rerank</td><td>Measured on 22 Oct and decided not now: keyword match on citizen phrases is enough for 25 + 8 aids (see LLM &amp; retrieval)</td></tr>
           <tr><td>PDF indexing with quoted criteria</td><td>Slow and fragile; the catalogue already holds the key requirements</td></tr>
-          <tr><td>Dynamic vocabulary and cron</td><td>Needs a place to run on a schedule</td></tr>
+          <tr><td>Dynamic vocabulary</td><td>Not needed yet; the cron now exists (GitHub Actions) and runs the S4 job</td></tr>
           <tr><td>Catalogue pipeline with human validation, all of Spain</td><td>A product of its own, after the build</td></tr>
         </tbody>
       </table></div>
@@ -885,7 +985,7 @@
         <p class="explain guide">Each person can build and test their part alone. The shared types and example answers from S0 are what lets them meet at the end without surprises.</p>
         <ul class="tags"><li data-status="decided">Split approved 2026-10-22</li><li data-status="decided">S0 first, today</li><li data-status="decided">Catalogue rules in S2</li><li data-status="open">Owners</li></ul>
         <dl class="facts"><div><dt>Specs</dt><dd>4 + 1 optional</dd></div><div><dt>In parallel</dt><dd>S1, S2, S3</dd></div><div><dt>S0</dt><dd>~1 h</dd></div><div><dt>Build</dt><dd>~4 h (estimate)</dd></div></dl>
-        <div class="questions"><h4>Open questions</h4><ul><li>Who owns each spec?</li></ul></div>
+        <div class="questions"><h4>Open questions</h4><ul><li>S1: screen check at 320 px and 1280 px</li><li>S4: hand review of 10 aids</li></ul></div>
       </article>
       <article data-note="S0" hidden data-kind="data">
         <p class="kind">Spec</p>
@@ -924,8 +1024,8 @@
         <h3>S4 · Centralise</h3>
         <p class="role">A daily job collects the aids that no API gives us and stores them in the catalogue shape, as one more source for S2.</p>
         <p class="explain guide">Grant calls are already in BDNS, which S2 reads live. Social Security and SEPE benefits, social bonuses, tax deductions and municipal social aid are only on web pages. S4 visits those pages once a day, has the AI copy out the requisites, steps and deadlines word for word, and saves the result in our own file, so the chat finds them without touching the frontend or the AI loop.</p>
-        <ul class="tags"><li data-status="decided">Only if time allows</li><li data-status="decided">No BDNS calls</li><li data-status="decided">JSON in the repo, daily cron</li><li data-status="open">Review queue for changes</li></ul>
-        <dl class="facts"><div><dt>Owner</dt><dd>Alex</dd></div><div><dt>Files</dt><dd>scripts/indexar/, src/datos/central.json, .github/workflows/indexar.yml</dd></div><div><dt>Check</dt><dd>job e2e test, new aid in chat</dd></div></dl>
+        <ul class="tags"><li data-status="decided">Delivered 22 Oct</li><li data-status="decided">No BDNS calls</li><li data-status="decided">JSON in the repo, daily cron</li><li data-status="open">Hand review (T009)</li></ul>
+        <dl class="facts"><div><dt>Owner</dt><dd>Alex, two Claude sessions</dd></div><div><dt>Files</dt><dd>scripts/indexar/, src/datos/central.json, .github/workflows/indexar.yml, src/lib/motor/central.ts</dd></div><div><dt>Check</dt><dd>job e2e test green; new aid shown in production</dd></div></dl>
       </article>
       <article data-note="S3->S2" hidden>
         <p class="kind">Link</p>
@@ -941,7 +1041,409 @@
       <article data-note="S4->S2" hidden>
         <p class="kind">Link</p>
         <h3>New source for the engine</h3>
-        <p class="role">S2 reads central.json in memory like the catalogue, through one line in src/lib/motor/index.ts; S1, S3 and the S2 spec do not change.</p>
+        <p class="role">central.json is read in memory like the catalogue. The spec said one line in src/lib/motor/index.ts; in the end the chat route reads it from src/lib/llm/index.ts too, because that is the path the chat really uses.</p>
+      </article>
+    </aside>
+    </div>
+  </section>
+
+
+  <!-- ============ Nightly job ============ -->
+  <section role="tabpanel" id="tab-night" hidden>
+    <div class="layout">
+    <div class="figures">
+    <p class="lead guide">What runs while nobody is at the keyboard. Every night a <a class="term" href="#term-cron">cron</a> on GitHub starts the S4 job, which visits official pages and refills the <a class="term" href="#term-central-store">central store</a>. This tab answers three questions: what the job does step by step, what it has collected so far, and how you can tell it is working. Click a box for its card.</p>
+    <figure class="card">
+      <figcaption><h3>One night of the job</h3><p>From the clock to a published store. Solid arrows always happen; the dashed one only when a page changed.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a box for its card</li><li>Hover an arrow for its link</li><li>Drag to pan</li><li>⌘/Ctrl + scroll to zoom</li><li>Double-click to reset</li></ul></span></figcaption>
+      <div class="diagram"></div>
+      <p class="takeaway guide">A night without changed pages ends with no AI call and no commit; the first real dry run on GitHub made exactly 1 AI call and wrote nothing.</p>
+      <details><summary>Diagram source</summary><pre class="mermaid-src">flowchart TB
+  CR[Cron 03:17 UTC] --> SE[Read 7 seed pages]
+  SE --> PG[Fetch each aid page]
+  PG --> HS{Hash changed?}
+  HS -- no --> SK[Skip, no call]
+  HS -- yes --> LL[One LLM call]
+  LL --> CK[Quote and link checks]
+  CK --> ST[(central.json)]
+  SK --> ST
+  ST --> BU[bun run build]
+  BU --> CM[Commit and push]
+  CM --> VE[Vercel deploy]
+  classDef service stroke-width:1px
+  classDef data stroke-width:1px
+  classDef compute stroke-width:1px
+  classDef external stroke-width:1px
+  class CR,CM,VE service
+  class ST data
+  class SE,PG,HS,SK,CK,BU compute
+  class LL external</pre></details>
+    </figure>
+    <div class="grid">
+      <figure class="card">
+        <figcaption><h3>Who publishes the central aids</h3><p>Aids in the store on 22 Oct 2026, by administration.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a bar for its card</li></ul></span></figcaption>
+        <div class="chart" data-chart="count" data-table="t-central-admin"></div>
+        <p class="takeaway guide">22 of 25 aids are State benefits; the Generalitat and the city are thin, which is what the GVA listing filter and the next backfill address.</p>
+        <details><summary>Data table</summary><div><table id="t-central-admin">
+          <thead><tr><th>Administration</th><th>Aids</th></tr></thead>
+          <tbody>
+            <tr><td>State</td><td>22</td></tr>
+            <tr><td>Comunitat Valenciana</td><td>1</td></tr>
+            <tr><td>Local (València)</td><td>2</td></tr>
+          </tbody>
+        </table></div></details>
+      </figure>
+      <figure class="card">
+        <figcaption><h3>How their deadlines look</h3><p>Aids by deadline type, the field the job sets by code, never by the AI.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a bar for its card</li></ul></span></figcaption>
+        <div class="chart" data-chart="count" data-table="t-central-plazo"></div>
+        <p class="takeaway guide">14 of 25 pages state no deadline at all, so most central aids show "status unknown" and send the citizen to the official page.</p>
+        <details><summary>Data table</summary><div><table id="t-central-plazo">
+          <thead><tr><th>Deadline type</th><th>Aids</th></tr></thead>
+          <tbody>
+            <tr><td>No deadline stated</td><td>14</td></tr>
+            <tr><td>Relative (e.g. 3 months from…)</td><td>8</td></tr>
+            <tr><td>Fixed dates</td><td>2</td></tr>
+            <tr><td>Ex officio</td><td>1</td></tr>
+          </tbody>
+        </table></div></details>
+      </figure>
+    </div>
+    <figure class="card">
+      <figcaption><h3>Seeds and the first runs</h3><p>The seven official pages the job starts from, and the two dry runs on GitHub Actions on 22 Oct 2026.</p></figcaption>
+      <div class="grid">
+      <table id="t-seeds" class="list">
+        <thead><tr><th>Seed</th><th>Lists</th><th>Administration</th></tr></thead>
+        <tbody>
+          <tr><td>seg-social</td><td>Workers' benefits and pensions</td><td>State</td></tr>
+          <tr><td>sepe</td><td>Unemployment benefits</td><td>State</td></tr>
+          <tr><td>imserso</td><td>Non-contributory pensions</td><td>State</td></tr>
+          <tr><td>gva-servicios-sociales</td><td>GVA search: social services</td><td>Comunitat Valenciana</td></tr>
+          <tr><td>gva-familias</td><td>GVA search: families</td><td>Comunitat Valenciana</td></tr>
+          <tr><td>gva-vivienda</td><td>GVA search: housing</td><td>Comunitat Valenciana</td></tr>
+          <tr><td>valencia-programas</td><td>City social welfare programmes</td><td>Local</td></tr>
+        </tbody>
+      </table>
+      <table id="t-runs" class="list">
+        <thead><tr><th>Run (dry, limit 3)</th><th>LLM calls</th><th>Result</th></tr></thead>
+        <tbody>
+          <tr><td>39834842553</td><td>1</td><td>Green, but the call failed: empty HELMCODE_BASE_URL exported by the workflow</td></tr>
+          <tr><td>39835125842</td><td>1</td><td>Green: 6 aids in memory, nothing written</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="takeaway guide">How to know it works: a green run each night in the Actions tab, a commit by github-actions[bot] when something changed, and the date after "Ayudas leídas de páginas oficiales" in every chat answer.</p>
+    </figure>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <article data-note="default">
+        <p class="kind">Nightly job</p>
+        <h3>S4 in production</h3>
+        <p class="role">A GitHub Actions cron runs bun run indexar every night; the store holds 25 aids and the chat reads it after the catalogue.</p>
+        <p class="explain guide">Three signs that it is alive: the run in the Actions tab, the bot commit when the store changed, and the store date in the coverage panel of every answer. If that date stops moving, the cron is not writing.</p>
+        <ul class="tags"><li data-status="decided">Daily 03:17 UTC</li><li data-status="decided">≤ 30 LLM calls</li><li data-status="decided">Contact data masked</li><li data-status="open">GVA backfill</li></ul>
+        <dl class="facts"><div><dt>Aids</dt><dd>25 · 0 incomplete</dd></div><div><dt>Seeds</dt><dd>7</dd></div><div><dt>Secret</dt><dd>HELMCODE_API_KEY set 22 Oct</dd></div><div><dt>First auto run</dt><dd>night of 23 Oct</dd></div></dl>
+        <div class="questions"><h4>Open questions</h4><ul><li>GVA backfill of 28 requests: before 22:00 or next night?</li><li>valencia.es timed out once from GitHub runners (10 s)</li><li>First aid for a disability question is an IMSERSO complement for Ceuta and Melilla only: T009</li></ul></div>
+      </article>
+      <article data-note="CR" hidden data-kind="service">
+        <p class="kind">Service</p>
+        <h3>Cron 03:17 UTC</h3>
+        <p class="role">indexar.yml: schedule plus manual run with dry_run, limit and backfill inputs; one run at a time.</p>
+        <p class="explain guide">Off-peak on purpose: all teams share the HelmCode quota, so the job runs at night. From the Actions tab anyone can run it by hand in dry mode, which writes nothing.</p>
+        <ul class="tags"><li data-status="decided">03:17 UTC daily</li><li>workflow_dispatch</li></ul>
+        <dl class="facts"><div><dt>Time in València</dt><dd>05:17 winter · 04:17 summer</dd></div><div><dt>Secret</dt><dd>HELMCODE_API_KEY</dd></div></dl>
+      </article>
+      <article data-note="SE" hidden data-kind="compute">
+        <p class="kind">Compute</p>
+        <h3>Read the seed pages</h3>
+        <p class="role">Seven official listings; each gives the links to aid pages and, on GVA, the application period next to each link.</p>
+        <p class="explain guide">A <a class="term" href="#term-seed">seed</a> is where the job starts. A GVA listing also mixes in permits and grants to entities, so a text filter drops those before any page is fetched.</p>
+        <ul class="tags"><li data-status="decided">7 seeds</li><li data-status="decided">GVA listing filter</li></ul>
+        <dl class="facts"><div><dt>Seed that errors</dt><dd>keeps its previous aids</dd></div><div><dt>Seed with 0 links</dt><dd>fails the run</dd></div></dl>
+      </article>
+      <article data-note="PG" hidden data-kind="compute">
+        <p class="kind">Compute</p>
+        <h3>Fetch each aid page</h3>
+        <p class="role">Plain GET, 1 request per second per host, 10 s timeout, conditional when the server gave an ETag. Up to 3 detail subpages and leaflets per aid.</p>
+        <ul class="tags"><li data-status="decided">1 req / s per host</li><li>seg-social in Spanish</li></ul>
+      </article>
+      <article data-note="HS" hidden data-kind="compute">
+        <p class="kind">State</p>
+        <h3>Hash changed?</h3>
+        <p class="role">SHA-256 of the cleaned main text. Same hash as last time: skip. New URL with a known hash: alias of the same aid.</p>
+        <p class="explain guide">The <a class="term" href="#term-hash">fingerprint</a> is what keeps the job cheap: an unchanged page costs nothing, and a page served under two addresses counts once.</p>
+      </article>
+      <article data-note="LL" hidden data-kind="external">
+        <p class="kind">External</p>
+        <h3>One LLM call</h3>
+        <p class="role">glm5.3-flash reads the page text (about 12k tokens max) and returns the catalogue fields, esAyuda, naturaleza, deadline type, amount, scope, exclusions and the aids the page references.</p>
+        <ul class="tags"><li data-status="decided">≤ 30 per run</li><li>--backfill lifts the cap</li></ul>
+      </article>
+      <article data-note="CK" hidden data-kind="compute">
+        <p class="kind">Compute</p>
+        <h3>Quote and link checks</h3>
+        <p class="role">Every requisite, step, document, deadline, amount and note must be a literal substring of the text or it is dropped; an invented procedure link becomes null.</p>
+        <p class="explain guide">This is how platform rule 4 holds without trusting the AI: the model may only copy, and the code checks the copy. Phones and emails are masked before anything is saved.</p>
+        <ul class="tags"><li data-status="decided">Quotes only</li><li data-status="decided">Masks contacts</li></ul>
+      </article>
+      <article data-note="ST" hidden data-kind="data">
+        <p class="kind">Datastore</p>
+        <h3>central.json</h3>
+        <p class="role">{version, ambito, aviso, items, rastreo, pendientes}; items sorted by id; rastreo maps each canonical URL to its id, hash and date. Read texts go to src/datos/textos/ by hash.</p>
+        <dl class="facts"><div><dt>Items</dt><dd>25</dd></div><div><dt>App imports textos/</dt><dd>never</dd></div></dl>
+      </article>
+      <article data-note="CM" hidden data-kind="service">
+        <p class="kind">Service</p>
+        <h3>Commit and push</h3>
+        <p class="role">Only if src/datos changed and the build passed: commit as github-actions[bot], git pull --rebase, push to main.</p>
+      </article>
+      <article data-note="VE" hidden data-kind="service">
+        <p class="kind">Service</p>
+        <h3>Vercel deploy</h3>
+        <p class="role">Every push to main is published; the backfill of 21:15 was live at 21:17 on 22 Oct.</p>
+      </article>
+      <article data-note="HS->LL" hidden>
+        <p class="kind">Link</p>
+        <h3>Changed page → LLM</h3>
+        <p class="role">Only new or changed hashes reach the model; 40 new texts make 30 calls and the rest wait for the next night.</p>
+      </article>
+      <article data-note="State" hidden>
+        <p class="kind">Level</p>
+        <h3>State</h3>
+        <p class="role">22 aids: Social Security benefits (retirement, incapacity, birth, lactation), SEPE unemployment, IMSERSO non-contributory pensions, the heating social bonus.</p>
+      </article>
+      <article data-note="Comunitat Valenciana" hidden>
+        <p class="kind">Level</p>
+        <h3>Comunitat Valenciana</h3>
+        <p class="role">1 aid so far. The GVA listings mix aids with grants to entities and permits; the new listing filter and the backfill in progress should raise this.</p>
+        <ul class="tags"><li data-status="open">Backfill in progress</li></ul>
+      </article>
+      <article data-note="Local (València)" hidden>
+        <p class="kind">Level</p>
+        <h3>Local (València)</h3>
+        <p class="role">2 entries, both index pages of city programmes rather than single aids: a T009 item.</p>
+        <ul class="tags"><li data-status="open">Hand review</li></ul>
+      </article>
+      <article data-note="No deadline stated" hidden>
+        <p class="kind">Deadline type</p>
+        <h3>No deadline stated</h3>
+        <p class="role">The page gives no sentence on when to apply. Shown as "status unknown" with the line "La página oficial no indica plazo".</p>
+      </article>
+      <article data-note="Fixed dates" hidden>
+        <p class="kind">Deadline type</p>
+        <h3>Fixed dates</h3>
+        <p class="role">Start and end dates read by code from the GVA listing or from the deadline quote. Status is computed on the day of the query, never stored.</p>
+      </article>
+    </aside>
+    </div>
+  </section>
+
+  <!-- ============ LLM & retrieval ============ -->
+  <section role="tabpanel" id="tab-llm" hidden>
+    <div class="layout">
+    <div class="figures">
+    <p class="lead guide">Which AI models the event gives us and which ones we use. <a class="term" href="#term-helmcode">HelmCode</a> serves nineteen models behind one key; the chat and the nightly job use one of them. This tab lists the catalogue, shows the <a class="term" href="#term-rerank">rerank</a> test we ran, and records why we decided not to build a retrieval layer tonight.</p>
+    <figure class="card">
+      <figcaption><h3>HelmCode catalogue seen by the event key</h3><p>From the HelmCode docs and a /v1/models call on 22 Oct 2026. Per-key limits are shared by every team.</p></figcaption>
+      <div><table id="t-models" class="list">
+        <thead><tr><th>Model</th><th>Kind</th><th>Context</th><th>Inputs</th><th>Plan</th><th>Our use</th></tr></thead>
+        <tbody>
+          <tr><td>glm5.3-flash</td><td>Chat, 320B MoE</td><td>1M</td><td>text, image, video</td><td>Included; monthly quota shared with DeepSeek</td><td>Chat and nightly job</td></tr>
+          <tr><td>deepseek-v4-flash</td><td>Chat, 552B MoE</td><td>1M</td><td>text</td><td>Included; same quota</td><td>Fallback for long PDFs, unused</td></tr>
+          <tr><td>qwen3.6</td><td>Chat, 35B MoE</td><td>256K</td><td>text, image</td><td>Included, no quota</td><td>Backup if the quota runs out</td></tr>
+          <tr><td>gemma4</td><td>Chat, 26B MoE</td><td>256K</td><td>text, image</td><td>Included, no quota</td><td>Not used: XML tool calls</td></tr>
+          <tr><td>glm5.3 · glm5.2</td><td>Chat, 744B MoE</td><td>1M</td><td>text, image, video, audio</td><td>Add-on, 150 € per key</td><td>Not used</td></tr>
+          <tr><td>qwen3-embedding</td><td>Embeddings 4096 dims</td><td>—</td><td>text, 100+ languages</td><td>60 RPM, batches of 32</td><td>Tested, not used</td></tr>
+          <tr><td>rerank</td><td>Qwen3 Reranker 8B</td><td>—</td><td>text</td><td>1000 RPM</td><td>Tested, not used</td></tr>
+          <tr><td>whisper · kokoro</td><td>Speech to text · text to speech</td><td>—</td><td>audio · text</td><td>10 RPM · 15 RPM</td><td>Not used</td></tr>
+          <tr><td>claude-*, gpt-5.6-*, gemini-3.*</td><td>Frontier, resold</td><td>—</td><td>—</td><td>Prepaid credit, outside the EU</td><td>Not used</td></tr>
+        </tbody>
+      </table></div>
+      <p class="takeaway guide">Every model we might need is included in the plan; the only paid ones are the add-on GLM 5.3 and the frontier models, and we use none of them.</p>
+    </figure>
+    <figure class="card">
+      <figcaption><h3>Rerank test</h3><p>Relevance score (0–1) of four aid titles for the query "24, unemployed, renting in València", measured with the rerank model on 22 Oct 2026.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a bar for its card</li></ul></span></figcaption>
+      <div class="chart" data-chart="score" data-table="t-rerank"></div>
+      <p class="takeaway guide">The reranker separates rent from mortgage cleanly (0.944 against 0.001), so it would work; we parked it because keyword match on citizen phrases already covers 33 aids.</p>
+      <details><summary>Data table</summary><div><table id="t-rerank">
+        <thead><tr><th>Aid title</th><th>Score</th></tr></thead>
+        <tbody>
+          <tr><td>Bono alquiler joven (rent, under 35)</td><td>0.944</td></tr>
+          <tr><td>Ingreso Mínimo Vital</td><td>0.528</td></tr>
+          <tr><td>Unemployment subsidy, over 52</td><td>0.062</td></tr>
+          <tr><td>Home renovation with mortgage</td><td>0.001</td></tr>
+        </tbody>
+      </table></div></details>
+    </figure>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <article data-note="default">
+        <p class="kind">Decision</p>
+        <h3>glm5.3-flash, no retrieval layer</h3>
+        <p class="role">The event model for the chat and the job; qwen3.6 as a quota-free backup; embeddings and rerank measured and parked.</p>
+        <p class="explain guide">With 8 catalogue aids and 25 central ones, matching the citizen's words against each aid's citizen phrases is enough and needs no extra service. A vector index would add two calls per message for little gain tonight.</p>
+        <ul class="tags"><li data-status="decided">glm5.3-flash</li><li data-status="decided">No embeddings, no rerank</li><li data-status="decided">No frontier models</li></ul>
+        <dl class="facts"><div><dt>Per key</dt><dd>100 RPM · 2M TPM</dd></div><div><dt>Concurrent</dt><dd>10 on the Flash models, 5 others</dd></div><div><dt>Embedding dims</dt><dd>4096, or 1024 with dimensions</dd></div><div><dt>ES↔EN similarity</dt><dd>0.915 (docs)</dd></div></dl>
+        <div class="questions"><h4>Open questions</h4><ul><li>Each chat send returns a 503 then a 200: cold start or HelmCode?</li></ul></div>
+      </article>
+      <article data-note="Bono alquiler joven (rent, under 35)" hidden>
+        <p class="kind">Rerank item</p>
+        <h3>Bono alquiler joven</h3>
+        <p class="role">Top score for the renting profile. The catalogue rule reaches the same answer from the stated facts, without the model.</p>
+      </article>
+      <article data-note="Home renovation with mortgage" hidden>
+        <p class="kind">Rerank item</p>
+        <h3>Home renovation with mortgage</h3>
+        <p class="role">Near zero: the reranker reads query and title together, so "rent" and "mortgage" do not get confused as a plain word overlap would.</p>
+      </article>
+    </aside>
+    </div>
+  </section>
+
+  <!-- ============ Team data ============ -->
+  <section role="tabpanel" id="tab-data" hidden>
+    <div class="layout">
+    <div class="figures">
+    <p class="lead guide">The data the team added in src/datos, as opposed to the organisers' <a class="term" href="#term-pack">pack</a> in datos/. Each file says where it comes from, who maintains it and whether a machine or a person wrote it. All of it is public data, never personal.</p>
+    <figure class="card">
+      <figcaption><h3>Files in src/datos</h3><p>Origin and upkeep of each file, at 22 Oct 2026.</p></figcaption>
+      <div><table id="t-files" class="list">
+        <thead><tr><th>File</th><th>What it holds</th><th>Source</th><th>Written by</th></tr></thead>
+        <tbody>
+          <tr><td>central.json · textos/</td><td>25 central aids and the page texts by hash</td><td>7 official seed pages</td><td>Nightly job (S4)</td></tr>
+          <tr><td>semillas.ts</td><td>The seed pages, URL patterns and the GVA listing filter</td><td>Hand-written</td><td>Team</td></tr>
+          <tr><td>territorio.json</td><td>Every municipality → province, BDNS region chain and local bodies</td><td>BDNS API (regions, local bodies) + INE municipalities by island, 1 Jan 2025</td><td>scripts/territorio/generar.ts, 22 Oct 17:52</td></tr>
+          <tr><td>rentas-autonomicas.json</td><td>17 regional minimum incomes with links and deadline</td><td>Official page of each region, opened one by one on 22 Oct</td><td>Hand-written, 22 Oct 19:00</td></tr>
+          <tr><td>estados.ts · lectura-facil.ts</td><td>Deadline status and easy-read texts of the 8 catalogue aids</td><td>Catalogue fields only</td><td>Hand-written</td></tr>
+          <tr><td>actualizacion.ts</td><td>The "updated on" date shown in the header (18 Oct, the catalogue date)</td><td>Catalogue version</td><td>Hand-written</td></tr>
+        </tbody>
+      </table></div>
+      <p class="takeaway guide">Only central.json and textos/ are machine-written; the territory file is generated by a script from public APIs and the rest is typed by hand with a consult date.</p>
+    </figure>
+    <figure class="card">
+      <figcaption><h3>Regional minimum incomes</h3><p>One <a class="term" href="#term-renta-autonomica">regional minimum income</a> per community, so that a citizen outside the Comunitat Valenciana is sent to their own region's scheme. Castilla-La Mancha is missing: in 2026 it only accepts renewals.</p></figcaption>
+      <div><table id="t-rentas" class="list">
+        <thead><tr><th>Region</th><th>Scheme</th><th>Deadline as stated</th></tr></thead>
+        <tbody>
+          <tr><td>Andalucía</td><td>Renta Mínima de Inserción Social en Andalucía</td><td>Sin Plazo</td></tr>
+          <tr><td>Aragón</td><td>Prestación Aragonesa Complementaria del Ingreso Mínimo Vital</td><td>Plazo permanente</td></tr>
+          <tr><td>Principado de Asturias</td><td>Salario Social Básico</td><td>Todo el año.</td></tr>
+          <tr><td>Illes Balears</td><td>Renta social garantizada</td><td>Plazo máximo: No se establece</td></tr>
+          <tr><td>Canarias</td><td>Renta Canaria de Ciudadanía</td><td>Todo el año</td></tr>
+          <tr><td>Cantabria</td><td>Renta Social Básica</td><td>Todo el año.</td></tr>
+          <tr><td>Castilla y León</td><td>Renta Garantizada de Ciudadanía</td><td>Abierto y permanente.</td></tr>
+          <tr><td>Cataluña</td><td>Renta garantizada de ciudadanía y prestación complementaria a prestaciones estatales (personas activables)</td><td>La puedes solicitar en cualquier momento.</td></tr>
+          <tr><td>Extremadura</td><td>Renta Extremeña Garantizada</td><td>Abierto. En plazo permanente.</td></tr>
+          <tr><td>Galicia</td><td>Renta de inclusión social de Galicia (RISGA)</td><td>Plazo de presentación: abierto todo el año.</td></tr>
+          <tr><td>Comunidad de Madrid</td><td>Renta Mínima de Inserción</td><td>En plazo: permanente</td></tr>
+          <tr><td>Región de Murcia</td><td>Renta Básica de Inserción</td><td>Plazo de Presentación: Abierto. 30 días hábiles. ¿Cuándo se solicita la ayuda? Cuando exista la situación de necesidad, apreciada por los Servicios Sociales Municipales. Esta ayuda no está sujeta a plazo alguno.</td></tr>
+          <tr><td>Comunidad Foral de Navarra</td><td>Renta garantizada</td><td>En plazo</td></tr>
+          <tr><td>País Vasco (Euskadi)</td><td>Renta de garantía de ingresos - RGI</td><td>not stated</td></tr>
+          <tr><td>La Rioja</td><td>Renta de Ciudadanía de La Rioja</td><td>Continuo</td></tr>
+          <tr><td>Ceuta</td><td>Ingreso Mínimo de Inserción Social (IMIS)</td><td>not stated</td></tr>
+          <tr><td>Melilla</td><td>Ingreso Melillense de Integración (IMI)</td><td>Permanente.</td></tr>
+        </tbody>
+      </table></div>
+    </figure>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <article data-note="default">
+        <p class="kind">Team data</p>
+        <h3>src/datos</h3>
+        <p class="role">Six kinds of files: one written by the nightly job, one generated by a script, the rest by hand. None pass through the chat LLM.</p>
+        <p class="explain guide">The organisers' rule is that their material in datos/ stays untouched, so everything the team needed went to src/datos. The territory file is what lets the chat answer for any Spanish town; the regional incomes file is what lets it answer outside València.</p>
+        <ul class="tags"><li data-status="decided">Public data only</li><li data-status="decided">datos/ untouched</li></ul>
+        <dl class="facts"><div><dt>Regional incomes</dt><dd>17 of 19 regions (+ Ceuta, Melilla)</dd></div><div><dt>Territory size</dt><dd>284 KB</dd></div><div><dt>Central texts</dt><dd>by SHA-256 hash</dd></div></dl>
+      </article>
+    </aside>
+    </div>
+  </section>
+
+  <!-- ============ Event ============ -->
+  <section role="tabpanel" id="tab-event" hidden>
+    <div class="layout">
+    <div class="figures">
+    <p class="lead guide">How the tool was handed in. The event ships a command-line tool, <a class="term" href="#term-buildnight">buildnight</a>, that checks six rules, registers the team's ficha with the committee and sends the team's AI token usage to the event <a class="term" href="#term-sala">room</a>. This tab shows that flow, the rule results before and after the privacy fix, and the usage that was sent.</p>
+    <figure class="card">
+      <figcaption><h3>Registration and usage flow</h3><p>What the CLI does on the team machine and where each result goes.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click an actor for its card</li><li>Hover an arrow for its link</li></ul></span></figcaption>
+      <div class="diagram"></div>
+      <p class="takeaway guide">The CLI's own registrar command failed with a 404, so the same three steps were done by hand with gh; the registry shows the team as "Registro Derechos · pendiente", the first of the night.</p>
+      <details><summary>Diagram source</summary><pre class="mermaid-src">sequenceDiagram
+  participant T as Team machine
+  participant C as buildnight CLI
+  participant R as Registry (GitHub)
+  participant S as Event room
+  T->>C: revisar
+  C-->>T: 6 rules, 0 findings
+  T->>C: registrar
+  C--xR: 404 (trailing slash bug)
+  T->>R: branch + ficha + PR 15 (by hand)
+  R-->>T: Registro Derechos · pendiente
+  T->>C: observar
+  C->>S: tokens, every 60 s
+  S-->>T: Sincronizado</pre></details>
+    </figure>
+    <div class="grid">
+      <figure class="card">
+        <figcaption><h3>The six rules</h3><p>buildnight revisar on 22 Oct 2026, before and after the privacy fix in the S4 recordings.</p></figcaption>
+        <div><table id="t-rules" class="list">
+          <thead><tr><th>Rule</th><th>Before</th><th>After</th></tr></thead>
+          <tbody>
+            <tr><td>1 Template marker</td><td>OK</td><td>OK</td></tr>
+            <tr><td>2 Public URL</td><td>OK</td><td>OK</td></tr>
+            <tr><td>3 Ficha valid</td><td>OK</td><td>OK</td></tr>
+            <tr><td>4 Sources over HTTPS</td><td>OK</td><td>OK</td></tr>
+            <tr><td>5 Personal data</td><td>41 findings</td><td>0 findings</td></tr>
+            <tr><td>6 Report button</td><td>OK</td><td>OK</td></tr>
+          </tbody>
+        </table></div>
+        <p class="takeaway guide">The 41 findings were institutional phones and emails in recorded official pages plus one DNI-shaped test value; none was real personal data, but the rule blocks registration all the same.</p>
+      </figure>
+      <figure class="card">
+        <figcaption><h3>AI usage counted on this machine</h3><p>Tokens for this project since 17:40, by kind, as the CLI counted them at 19:03. The first sync to the room at 21:07 sent 107.5 M.</p><span class="info" tabindex="0" aria-label="How to use">i<ul role="tooltip"><li>Click a bar for its card</li></ul></span></figcaption>
+        <div class="chart" data-chart="count" data-table="t-tokens"></div>
+        <p class="takeaway guide">Of the 104.5 M counted, 102.6 M are cache reads: the long sessions re-read their own context, which the room counts but which costs little.</p>
+        <details><summary>Data table</summary><div><table id="t-tokens">
+          <thead><tr><th>Kind</th><th>Tokens</th></tr></thead>
+          <tbody>
+            <tr><td>Cache read</td><td>102593115</td></tr>
+            <tr><td>Cache write</td><td>1518416</td></tr>
+            <tr><td>Output</td><td>380346</td></tr>
+            <tr><td>Input</td><td>2646</td></tr>
+          </tbody>
+        </table></div></details>
+      </figure>
+    </div>
+    </div>
+    <aside class="panel" aria-live="polite">
+      <article data-note="default">
+        <p class="kind">Event</p>
+        <h3>Registered and counted</h3>
+        <p class="role">Six rules green, ficha registered as PR 15 in barracafh/build-registro, tokens syncing to the room from one machine.</p>
+        <p class="explain guide">The CLI reads only local logs and sends aggregate counters, never text. Each teammate must run it on their own machine for their usage to count; Cursor has no collector by design.</p>
+        <ul class="tags"><li data-status="decided">PR 15 open</li><li data-status="decided">Watcher running</li><li data-status="open">Committee integration</li></ul>
+        <dl class="facts"><div><dt>CLI version</dt><dd>0.1.5</dd></div><div><dt>Requests counted</dt><dd>423</dd></div><div><dt>Squad</dt><dd>akorda · table 3</dd></div><div><dt>Deadline</dt><dd>22:00 Europe/Madrid</dd></div></dl>
+        <div class="questions"><h4>Open questions</h4><ul><li>registrar 0.1.5 asks repos/&lt;repo&gt;/ with a trailing slash and gets 404: tell the committee</li><li>Will the committee integrate PR 15 tonight?</li></ul></div>
+      </article>
+      <article data-note="C" hidden data-kind="external">
+        <p class="kind">External</p>
+        <h3>buildnight CLI</h3>
+        <p class="role">The event's tool: expediente, revisar, registrar, tablon, observar. Installed from build.barraca.house/instalar.sh with a SHA-256 check.</p>
+        <ul class="tags"><li>0.1.5</li><li data-status="risk">registrar 404</li></ul>
+      </article>
+      <article data-note="R" hidden data-kind="external">
+        <p class="kind">External</p>
+        <h3>Registry</h3>
+        <p class="role">barracafh/build-registro: teams, tracks and fichas. A ficha arrives as a PR on branch buildnight/ficha-&lt;squad&gt; and the committee merges it.</p>
+        <dl class="facts"><div><dt>Our PR</dt><dd>15, open</dd></div><div><dt>Branch</dt><dd>buildnight/ficha-derechos-a</dd></div></dl>
+      </article>
+      <article data-note="S" hidden data-kind="external">
+        <p class="kind">External</p>
+        <h3>Event room</h3>
+        <p class="role">sala.build.barraca.house: the leaderboard by squad. Receives counters from each machine's watcher after a one-time GitHub device confirmation.</p>
+      </article>
+      <article data-note="Cache read" hidden>
+        <p class="kind">Token kind</p>
+        <h3>Cache read</h3>
+        <p class="role">Context re-read from the prompt cache. It dominates because the sessions were long; it is the cheapest kind.</p>
       </article>
     </aside>
     </div>
@@ -1444,7 +1946,7 @@
       <div id="term-catalogue"><dt>Benefits catalogue</dt><dd>The organisers' file with 8 aids and 13 procedures for València, checked by hand on 18 Oct 2026. It covers the benefits the BDNS lacks.</dd></div>
       <div id="term-pack"><dt>Pack</dt><dd>The data the organisers ship with the challenge, in the datos/ folder: the catalogue and a dated copy of 59 BDNS calls.</dd></div>
       <div id="term-llm"><dt>LLM</dt><dd>Large language model: the AI. Here it only reads the citizen's message and returns structured data; it never writes what the citizen reads.</dd></div>
-      <div id="term-helmcode"><dt>HelmCode</dt><dd>The AI provider of the event. Its chat model is glm5.3-flash; it also offers embeddings and rerank. All teams share its limits.</dd></div>
+      <div id="term-helmcode"><dt>HelmCode</dt><dd>The AI provider of the event, with an OpenAI-compatible API. We use glm5.3-flash; it also serves DeepSeek, Qwen, Gemma, embeddings, rerank and speech. All teams share its limits: 100 requests a minute per key.</dd></div>
       <div id="term-profile"><dt>Profile</dt><dd>What we know about the citizen in this chat: age, job, housing, children, income band, town. Every field is optional and nothing is stored.</dd></div>
       <div id="term-double-block"><dt>Double block</dt><dd>The rule that removes an aid only when a fact the citizen stated contradicts a verified requirement. Anything unknown keeps the aid in the list.</dd></div>
       <div id="term-coverage"><dt>Coverage panel</dt><dd>A block in every answer that says which sources were checked and which were not, for example local aids outside València.</dd></div>
@@ -1458,6 +1960,17 @@
       <div id="term-canonical"><dt>Canonical URL</dt><dd>The one way we write a page's address, so that two spellings of the same page (Valencian or Spanish, with tracking codes, with a final slash) count as one.</dd></div>
       <div id="term-hash"><dt>Hash (fingerprint)</dt><dd>A short code computed from a text: always the same for the same text, different if one word changes. S4 uses it to know whether a page changed since the last visit.</dd></div>
       <div id="term-vercel"><dt>Vercel / push to main</dt><dd>The platform that publishes the site each time code is pushed to the main branch. The organisers own the project.</dd></div>
+      <div id="term-central-store"><dt>Central store</dt><dd>src/datos/central.json: the aids the nightly job extracted from official pages, in the catalogue shape, each field a literal quote. Shown in the chat as "Sin confirmar".</dd></div>
+      <div id="term-cron"><dt>Cron / nightly job</dt><dd>A task that runs on a clock. Ours is a GitHub Actions workflow at 03:17 UTC that runs the S4 job and commits the store if it changed.</dd></div>
+      <div id="term-tipo-plazo"><dt>Deadline type (tipoPlazo)</dt><dd>How a central aid's deadline works, set by code: fixed dates, permanent, relative ("three months from…"), ex officio, or none stated.</dd></div>
+      <div id="term-dry-run"><dt>Dry run</dt><dd>A run of the job that fetches and extracts but writes nothing. Used to test the cron on GitHub.</dd></div>
+      <div id="term-secret"><dt>Secret</dt><dd>An encrypted value that GitHub Actions injects into a run, such as the HelmCode key. Vercel's environment variables are a different store and do not reach GitHub.</dd></div>
+      <div id="term-embedding"><dt>Embedding</dt><dd>A list of numbers that represents the meaning of a text, so that similar texts are close. Tested with qwen3-embedding, not used.</dd></div>
+      <div id="term-rerank"><dt>Rerank</dt><dd>A model that reads a query and a few candidate texts together and scores each one's relevance. Tested, not used.</dd></div>
+      <div id="term-buildnight"><dt>buildnight CLI</dt><dd>The event's command-line tool: it checks six rules, registers the team's ficha with the committee and sends AI usage counters to the room.</dd></div>
+      <div id="term-sala"><dt>Event room / tablón</dt><dd>The room (sala) is the leaderboard of tokens by squad; the tablón is the committee's feed of registrations and pushes.</dd></div>
+      <div id="term-renta-autonomica"><dt>Regional minimum income</dt><dd>Each autonomous community's own minimum income scheme, distinct from the State IMV. The team keeps one entry per region with its official link.</dd></div>
+      <div id="term-ndjson"><dt>NDJSON</dt><dd>The chat answer arrives line by line: first the phases (reading, checking, searching), then the answer. The page shows progress while it waits.</dd></div>
     </dl></div>
     </div>
     <aside class="panel" aria-live="polite">
@@ -1476,36 +1989,36 @@
     <div class="figures">
     <div class="card brief">
       <h4>Goal</h4>
-      <p>A chat where a citizen describes their situation and learns which public aids (State, regional, municipal) they could apply for: why, what to check, status and official link. It must invent nothing and miss nothing. The Build night demo ships specs S0–S3; S4 only if time allows.</p>
+      <p>Leave this page with the real state at the close of the Build night, 22 Oct 2026: S4 finished and in production, the HelmCode model catalogue and the retrieval decision, the registration of the tool with the event CLI, the team's data files in src/datos and the status of each spec.</p>
       <h4>Audience</h4>
-      <ul><li>Team akorda, especially the non-technical members (content, design, testing): they know the challenge, not the BDNS, LLMs or each part of the tool</li><li>Organisers and the Build night jury: they know the track, not our solution</li><li>Assumed: no one knows the technical or administrative vocabulary; every acronym has a definition in the Glossary tab</li></ul>
+      <ul><li>Someone new to the project, or from the committee, who wants to understand in ten minutes what the tool does, where its data comes from and what runs by itself every night</li><li>They do not know the BDNS, HelmCode or the event CLI; every term is in the Glossary tab</li></ul>
       <h4>Users</h4>
-      <ul><li>Citizens of València and the Comunitat Valenciana; the four test profiles of SETUP.md</li><li>Build night jury (demo on Thursday 22 Oct 2026)</li><li>Team akorda: Oscar, Albert, Alex, Tomás and Julia (captain), technical and non-technical</li></ul>
+      <ul><li>Citizens of València who write their situation in their own words and get aids they could apply for; unchanged from the earlier brief</li></ul>
       <h4>Scope</h4>
-      <ul><li>In: S0 contracts; S1 frontend; S2 engine and BDNS calls (catalogue rules, live BDNS for State + Comunitat Valenciana as SETUP.md describes); S3 LLM loop with guardrails and test set</li><li>If time allows: S4, a daily job that stores the aids no API gives (not BDNS calls) in src/datos/central.json, in the catalogue shape</li><li>Out for now: Postgres + pgvector, embeddings and rerank (until measured), dynamic vocabulary, catalogue pipeline with human validation, all of Spain</li><li>Out: form and button-driven flow; storing citizen text; DANA aid (link to sede.gva.es)</li></ul>
+      <ul><li>In: the chat with LLM and catalogue engine, the live BDNS, the nightly central store, the territory and regional-income data, the event registration</li><li>Out: embeddings and rerank (decided not now), a database, paid frontier models, Cursor in the token counter</li></ul>
       <h4>Components</h4>
-      <ul><li>S0: types Perfil, Ficha, Respuesta; fixtures for the 4 test profiles; mock /api/chat (data)</li><li>S1: Chat UI with aid cards, coverage panel, optional question, loading, error and unconfirmed states (service)</li><li>S2: candidate engine with the catalogue rules for the 8 aids (compute); live BDNS client (service); BDNS API (external); benefits catalogue and pack BDNS copy (data)</li><li>S3: /api/chat with the LLM interpreter glm5.3-flash (external), guardrails and test set (compute)</li><li>S4, optional: daily indexing job in GitHub Actions (compute) writing src/datos/central.json and read texts by hash (data)</li></ul>
+      <ul><li>Chat route · service · /api/chat: reads the message with the LLM, validates in code, answers in NDJSON with fichas, coverage and a question</li><li>Catalogue engine · compute · rules over the 8 catalogue aids, in easy-read text</li><li>BDNS tools · external · BDNS searches and fichas the LLM agent calls as tools, with the pack copy as fallback</li><li>Central store · data · src/datos/central.json, 25 aids extracted from official pages, hashes in rastreo</li><li>Nightly job · compute · bun run indexar: seeds, pages, hash, one LLM call per changed page, checked quotes, commit only on change</li><li>GitHub Actions cron · service · indexar.yml, daily 03:17 UTC and on demand, with the HELMCODE_API_KEY secret</li><li>HelmCode · external · OpenAI-compatible API; glm5.3-flash for chat and job; shared limits 100 RPM, 10 concurrent, 2M TPM</li><li>Territory data · data · territorio.json, municipalities to BDNS regions and bodies, generated by script from BDNS and INE</li><li>Regional incomes · data · rentas-autonomicas.json, 17 regional minimum incomes written by hand with a date</li><li>buildnight CLI · external · event tool: checks 6 rules, registers the ficha by PR, sends tokens to the room</li><li>Vercel · external · deploys every push to main; the API under the event proxy answers 403 to non-browser clients</li></ul>
       <h4>Flows</h4>
-      <ul><li>Query: message → LLM (profile with quotes + need) → catalogue rules, double block → 3 BDNS searches → non-instrumental + need-to-purpose filter → up to 10 fichas → status from dates → rank by purpose and title keywords → cards + coverage + optional next question</li><li>Build order: S0 first → S1, S2, S3 in parallel → S1 switches from the mock to the real route → S4 plugs into S2 if time allows</li><li>Fallback: pack copy if the BDNS fails; BM25 on frases_usuario if the LLM fails</li></ul>
+      <ul><li>Citizen question: message → LLM reads the profile → catalogue + central + BDNS → answer with coverage and next question</li><li>Night: cron → seeds → pages → hash → LLM only if changed → checked quotes → build → commit and push → Vercel deploys</li><li>Event: revisar 6 rules → registrar by PR in build-registro → tablón; observar reads local logs and sends tokens to the room each minute</li></ul>
       <h4>Numbers</h4>
-      <ul><li>Measured (BDNS API, 21 Oct): 12,137 for individuals in 2026; 1,988 since 1 Sep (26 State, 164 regions, 1,531 local); 285 in the Comunitat Valenciana since 1 Sep</li><li>Pack: 59 convocatorias, 14 instrumental, 27 with dates (17 expired by 22 Oct); catalogue 21 entries, 8 aids; one bases PDF ~17,500 words with a text layer</li><li>HelmCode docs: chat 100 RPM and 10 concurrent per key</li><li>Estimate: ~4 h build (SETUP.md); S0 ~1 h</li></ul>
+      <ul><li>All from the conversation, measured on 22 Oct; none invented</li><li>Central store: 25 aids; 22 State, 1 Generalitat, 2 city; by deadline: 14 none stated, 8 relative, 2 fixed dates, 1 ex officio; 0 incomplete</li><li>Seeds: 7. Job cap: 30 LLM calls a night, 1 request/s per host, 10 s timeout</li><li>Tests: 192 green at the close</li><li>Dry run on GitHub: 1 LLM call, 6 aids in memory, nothing written; run 39835125842</li><li>HelmCode: 19 models visible with the key; qwen3-embedding 4096 dims, accepts dimensions 1024; rerank: rent bonus 0.944, IMV 0.528, subsidy 52+ 0.062, mortgage 0.001</li><li>Production: disability question, 2 aids before the backfill, 5 after</li><li>Tokens sent to the room: 107.5 M, 423 requests; local count 104.5 M (102.6 M cache read)</li><li>CLI: 41 personal-data findings before the fix, 0 after; PR 15 in the registry</li><li>Regional incomes: 17 regions, Castilla-La Mancha missing</li></ul>
       <h4>Decisions</h4>
-      <ul><li>AI chat from the start; no form and no button-driven flow; the chat may ask optional questions (the field that resolves the most aids)</li><li>An aid stays while no stated fact blocks it; ask the most filtering fields first, then refine on what is left</li><li>One LLM call per message; ranking without a second call (need-to-purpose mapping + title keywords)</li><li>Work split into specs S0–S4, one owner each, end to end; approved 2026-10-22. It replaces the v1/v2/v3 plan of 2026-10-21</li><li>S0 contracts first, today, so the others work in parallel against fixtures</li><li>The catalogue rules live in S2, not in S3: S3 stays conversation → profile → answer</li><li>S1 is built by a non-technical person with vibe coding, against the mock route</li><li>S3 calls S2 as a function, not over HTTP</li><li>Postgres, pgvector, embeddings, PDFs and the catalogue pipeline stay out of the project for now</li></ul>
-      <h4>Specs</h4>
-      <ul><li>S0 · Contracts: Perfil, Ficha, Respuesta in src/lib/tipos.ts; fixtures in src/datos/ejemplos/; mock /api/chat. Done when it compiles and the mock responds.</li><li>S1 · Frontend: src/app/page.tsx, src/components/*, styles. Done when the 4 profiles render on mobile and desktop.</li><li>S2 · Engine / API: src/lib/motor/*, src/lib/bdns.ts. Perfil → fichas + coverage; 3 searches, non-instrumental, ≤ 10 fichas, status from dates, ranking, pack fallback. Done when tests on recorded BDNS responses pass with no network.</li><li>S3 · LLM loop: src/app/api/chat/, src/lib/llm/*, prompts. One LLM call → quoted Perfil → S2 → Respuesta with the next question; guardrails; fallback. Done when the 4-profile test set passes.</li><li>S4 · Centralise, optional: src/datos/ and bun run indexar. Done when the fichas pass the type check and a new aid appears in the chat.</li><li>Data sources and roles: benefits catalogue (benefits and rights outside the BDNS, curated; the pack file unchanged); BDNS API (Ley 38/2003 grants, live); pack BDNS copy (dated fallback).</li><li>Reason: in the pack, 14 of 59 calls are instrumental, 17 of the 27 dated ones expire before 22 Oct and only 2–3 fit the test profiles; every must-include aid comes from the catalogue.</li></ul>
-      <h4>Glossary</h4>
-      <p>See the Glossary tab: 30 terms.</p>
+      <ul><li>Main model glm5.3-flash; qwen3.6 as quota-free backup; no frontier models and no paid GLM 5.3</li><li>No retrieval for now: no embeddings, no rerank</li><li>Daily cron at 03:17 UTC, once a day</li><li>Split between sessions: one owns scripts/indexar/, src/datos/ and spec 004; the other .github/, src/lib/motor/ and specs 000–002</li><li>Status of a central aid computed on the day of the query from tipoPlazo, fechaInicio, fechaFin and plazoListado; incomplete aids hidden unless they have a procedure link</li><li>Team registration done by hand as a PR because registrar in CLI 0.1.5 fails with 404</li><li>Privacy fix: contact data in the recordings masked, and the job masks what it stores</li></ul>
       <h4>Open questions</h4>
-      <ul><li>Who owns each spec? S1 is for the non-technical member; S0, S2 and S3 for the technical ones.</li><li>Approve the proposed guardrail set?</li><li>Version docs/ (today in .gitignore) or share the page another way?</li></ul>
+      <ul><li>GVA backfill (28 requests) in progress: if it does not land before 22:00, the store stays at 25</li><li>The first central aid for a disability question is an IMSERSO complement for Ceuta and Melilla only: T009</li><li>Each chat send does a 503 then a 200: cold start or HelmCode</li><li>Upgrade Next.js to 16.4.2 for the security notice</li><li>Screen check at 320 px (S1)</li><li>Integration of PR 15 by the committee</li></ul>
+      <h4>Glossary</h4>
+      <p>See the Glossary tab: 30 earlier terms plus central store, cron, deadline type, dry run, secret, embedding, rerank, buildnight CLI, event room, regional minimum income and NDJSON.</p>
+      <h4>Tabs</h4>
+      <ul><li>Overview (changed): pitch, how it works, tiles for central aids (5 → 25 sparkline), tests, seeds, tokens counted locally; spec status chart</li><li>Architecture (changed): runtime diagram with the central store, the job and the cron</li><li>Nightly job (new): night flow, aids by administration and by deadline type, seeds and dry runs</li><li>LLM &amp; retrieval (new): HelmCode catalogue, rerank test, decision</li><li>Team data (new): files in src/datos, the 17 regional incomes</li><li>Event (new): registration and usage flow, the six rules, tokens sent</li><li>Ingest, Data model, Query, Guardrails, Work split: kept; Work split updated with the close-of-night status</li><li>Glossary (changed), Brief (replaced)</li></ul>
     </div>
     </div>
     <aside class="panel" aria-live="polite">
       <article data-note="default">
         <p class="kind">Brief</p>
         <h3>Brief</h3>
-        <p class="role">The summary of the conversation that this page renders. The work split into specs S0–S4 was approved on 2026-10-22 and replaces the v1/v2/v3 plan; Audience and Glossary were approved the same day.</p>
-        <ul class="tags"><li data-status="decided">Work split S0–S4</li><li data-status="decided">Catalogue rules in S2</li></ul>
-        <dl class="facts"><div><dt>Approved</dt><dd>2026-10-22</dd></div><div><dt>Source</dt><dd>chat + review</dd></div></dl>
+        <p class="role">The summary of the conversation that this page renders: the close-of-night update, approved on 2026-10-22 at the end of the build. It replaces the work-split brief of the same morning.</p>
+        <ul class="tags"><li data-status="decided">S0–S4 in production</li><li data-status="decided">No retrieval now</li><li data-status="decided">Registered: PR 15</li></ul>
+        <dl class="facts"><div><dt>Approved</dt><dd>2026-10-22, evening</dd></div><div><dt>Source</dt><dd>chat with two Claude sessions</dd></div></dl>
       </article>
     </aside>
     </div>
@@ -1590,6 +2103,60 @@ const builders = {
         itemStyle: { borderRadius: [0, 4, 4, 0] },
         label: { show: true, position: 'right', color: t['text-2'], formatter: p => p.value[1].toLocaleString() },
       }],
+    };
+  },
+
+  // Horizontal bars with a count label; the unit is the second column header.
+  count({ head, rows }, t) {
+    const unit = head[1].toLowerCase();
+    return {
+      ...base(t),
+      legend: { show: false },
+      tooltip: { ...base(t).tooltip, trigger: 'axis', axisPointer: { type: 'shadow' }, valueFormatter: v => v.toLocaleString() + ' ' + unit },
+      grid: { ...base(t).grid, top: 8, right: 72 },
+      dataset: { source: [head, ...rows] },
+      xAxis: { type: 'value', ...axis(t) },
+      yAxis: { type: 'category', inverse: true, ...axis(t), splitLine: { show: false } },
+      series: [{
+        type: 'bar', name: head[1], encode: { x: 1, y: 0 }, barMaxWidth: 28,
+        itemStyle: { borderRadius: [0, 4, 4, 0] },
+        label: { show: true, position: 'right', color: t['text-2'], formatter: p => p.value[1].toLocaleString() },
+      }],
+    };
+  },
+
+  // Scores between 0 and 1, one bar per item.
+  score({ head, rows }, t) {
+    return {
+      ...base(t),
+      legend: { show: false },
+      tooltip: { ...base(t).tooltip, trigger: 'axis', axisPointer: { type: 'shadow' }, valueFormatter: v => v.toFixed(3) },
+      grid: { ...base(t).grid, top: 8, right: 56 },
+      dataset: { source: [head, ...rows] },
+      xAxis: { type: 'value', min: 0, max: 1, ...axis(t) },
+      yAxis: { type: 'category', inverse: true, ...axis(t), splitLine: { show: false } },
+      series: [{
+        type: 'bar', name: head[1], encode: { x: 1, y: 0 }, barMaxWidth: 28,
+        itemStyle: { borderRadius: [0, 4, 4, 0] },
+        label: { show: true, position: 'right', color: t['text-2'], formatter: p => p.value[1].toFixed(3) },
+      }],
+    };
+  },
+
+  // Done and open items per spec, stacked.
+  status({ head, rows }, t) {
+    return {
+      ...base(t),
+      tooltip: { ...base(t).tooltip, trigger: 'axis', axisPointer: { type: 'shadow' }, valueFormatter: v => v + ' items' },
+      grid: { ...base(t).grid, right: 16 },
+      dataset: { source: [head, ...rows] },
+      xAxis: { type: 'value', ...axis(t) },
+      yAxis: { type: 'category', inverse: true, ...axis(t), splitLine: { show: false } },
+      series: head.slice(1).map((name, i) => ({
+        type: 'bar', name, stack: 'total', encode: { x: i + 1, y: 0 }, barMaxWidth: 28,
+        itemStyle: { borderColor: t.surface, borderWidth: 2, borderRadius: i === head.length - 2 ? [0, 4, 4, 0] : 0 },
+        label: { show: true, color: t.text, formatter: p => p.value[i + 1] || '' },
+      })),
     };
   },
 
@@ -1913,15 +2480,15 @@ function countUp(id, value, decimals, prefix, suffix) {
 }
 
 function fillKpis() {
-  const weekly = readTable('t-weekly').rows.map(r => r[1]);
-  const scope = Object.fromEntries(readTable('t-scope').rows);
-  const level = readTable('t-level').rows;
-  const levelTotal = level.reduce((a, r) => a + r[1], 0);
-  countUp('kpi-weeks', weekly.reduce((a, b) => a + b, 0), 0, '', '');
-  countUp('kpi-year', scope['Spain, 2026'], 0, '', '');
-  countUp('kpi-cv', scope['Comunitat Valenciana, since 1 Sep'], 0, '', '');
-  countUp('kpi-local', level.find(r => r[0] === 'Local')[1] / levelTotal * 100, 0, '', '%');
-  document.getElementById('kpi-spark').replaceChildren(sparkline(weekly, 'var(--s1)'));
+  const growth = readTable('t-growth').rows.map(r => r[1]);
+  const checks = Object.fromEntries(readTable('t-checks').rows);
+  const seeds = readTable('t-seeds').rows.length;
+  const tokens = readTable('t-tokens').rows.reduce((a, r) => a + r[1], 0);
+  countUp('kpi-central', growth[growth.length - 1], 0, '', '');
+  countUp('kpi-tests', checks['Tests passing'], 0, '', '');
+  countUp('kpi-seeds', seeds, 0, '', '');
+  countUp('kpi-tokens', tokens / 1e6, 1, '', ' M');
+  document.getElementById('kpi-spark').replaceChildren(sparkline(growth, 'var(--s1)'));
 }
 
 
