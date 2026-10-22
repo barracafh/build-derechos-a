@@ -1,8 +1,10 @@
 // ver_requisitos: el texto oficial de quién puede pedir una ayuda, cuánto da y
 // el plazo. Devuelve fragmentos literales para que el agente cite, no resúmenes.
 import { leerDocumento, leerFicha, recordar } from "./bdns";
-import { entradaCatalogo } from "./catalogo";
-import { delPack, desdeApi, type Convocatoria } from "./convocatoria";
+import { enlacesCatalogo, entradaCatalogo } from "./catalogo";
+import { comprobarEnlaces } from "./enlaces";
+import { enlacesRenta, RENTAS_CONSULTADO, rentaPorId } from "./rentas";
+import { delPack, desdeApi, enlacesDe, type Convocatoria, type Enlaces } from "./convocatoria";
 
 export type Fragmento = { apartado: string; texto: string };
 
@@ -16,7 +18,7 @@ export type Requisitos =
       documentacion?: string[];
       pasos?: string[];
       enlace: string;
-      enlace_bases: string | null;
+      enlaces: Enlaces;
       aviso: string;
     }
   | { error: string };
@@ -116,9 +118,28 @@ export async function verRequisitos(id: string): Promise<Requisitos> {
       ],
       documentacion: e.documentacion,
       pasos: e.pasos,
-      enlace: e.enlace_tramite ?? e.enlace_info,
-      enlace_bases: e.enlace_info,
+      enlace: e.enlace_info,
+      enlaces: enlacesCatalogo(e),
       aviso: e.verificado ? AVISO : `${AVISO} Esta entrada NO está verificada: dilo.`,
+    };
+  }
+
+  if (fuente === "renta") {
+    const r = rentaPorId(clave);
+    if (!r) return { error: `No hay ninguna renta autonómica «${id}».` };
+    return {
+      id,
+      titulo: r.titulo,
+      origen: `Página oficial de ${r.organismo}, consultada el ${RENTAS_CONSULTADO}`,
+      enlace_origen: r.enlace_info,
+      fragmentos: [
+        { apartado: "Requisitos", texto: r.requisitos_clave.join("\n") },
+        ...(r.plazo ? [{ apartado: "Plazo", texto: r.plazo }] : []),
+        ...(r.nota ? [{ apartado: "Nota", texto: r.nota }] : []),
+      ],
+      enlace: r.enlace_info,
+      enlaces: enlacesRenta(r),
+      aviso: AVISO,
     };
   }
 
@@ -127,7 +148,7 @@ export async function verRequisitos(id: string): Promise<Requisitos> {
 
   const c = await convocatoria(clave);
   if (!c) return { error: "La BDNS no responde y la convocatoria no está en la copia de respaldo." };
-  const base = { id, titulo: c.titulo, enlace: c.enlace, enlace_bases: c.bases.url, aviso: AVISO };
+  const base = { id, titulo: c.titulo, enlace: c.enlace, enlaces: await comprobarEnlaces(enlacesDe(c)), aviso: AVISO };
 
   // 1. Extracto del boletín que viene dentro de la ficha (sin coste extra).
   const anuncio = c.anuncios.find((a) => a.texto && a.texto.length > 200);
@@ -167,7 +188,7 @@ export async function verRequisitos(id: string): Promise<Requisitos> {
   return {
     ...base,
     origen: "La BDNS no trae el texto de esta convocatoria",
-    enlace_origen: c.bases.url ?? c.enlace,
+    enlace_origen: base.enlaces.convocatoria ?? base.enlaces.bases ?? c.enlace,
     fragmentos: [],
     aviso: "No hay texto oficial que leer: di que no puedes confirmar los requisitos y enlaza la ficha oficial y las bases.",
   };

@@ -89,6 +89,12 @@ export type Respuesta = {
   pregunta: string | null;
   /** Los datos que faltan, para preguntarlos todos a la vez en un formulario. */
   formulario: CampoFormulario[];
+  /**
+   * Opcional: ayudas que tradicionalmente han sido anuales, que el año pasado se
+   * abrieron por estas fechas y que este año aún no se han publicado. No se
+   * pueden pedir todavía: van aparte de `fichas`.
+   */
+  recurrentes?: Ficha[];
 };
 
 /** Lo que se puede preguntar: un dato del perfil o qué necesita la persona. */

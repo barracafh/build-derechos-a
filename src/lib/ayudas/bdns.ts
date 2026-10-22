@@ -77,6 +77,7 @@ export type FiltrosBusqueda = {
   organos?: number[];
   tiposBeneficiario: number[];
   fechaDesde: string; // dd/mm/aaaa
+  fechaHasta?: string; // dd/mm/aaaa
 };
 
 export function buscarConvocatorias(f: FiltrosBusqueda): Promise<ResultadoBusqueda[]> {
@@ -92,6 +93,7 @@ export function buscarConvocatorias(f: FiltrosBusqueda): Promise<ResultadoBusque
   if (f.tipoAdministracion) q.set("tipoAdministracion", f.tipoAdministracion);
   if (f.regiones?.length) q.set("regiones", f.regiones.join(","));
   if (f.organos?.length) q.set("organos", f.organos.join(","));
+  if (f.fechaHasta) q.set("fechaHasta", f.fechaHasta);
   const ruta = `/convocatorias/busqueda?${q.toString().replace(/%2C/g, ",").replace(/%2F/g, "/")}`;
   return enCache(ruta, 10 * 60_000, async () => {
     const data = (await (await pedir(ruta, 8000)).json()) as { content?: ResultadoBusqueda[] };

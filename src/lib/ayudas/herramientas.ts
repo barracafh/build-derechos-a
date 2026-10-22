@@ -12,7 +12,7 @@ export const HERRAMIENTAS = [
       name: "buscar_ayudas",
       description:
         "Busca ayudas públicas (Estado, comunidad autónoma, diputación o cabildo y ayuntamiento) a las que una persona de un municipio de España podría optar. " +
-        "Consulta en vivo la Base de Datos Nacional de Subvenciones y un catálogo de prestaciones (IMV, desempleo, bono social…). " +
+        "Consulta en vivo la Base de Datos Nacional de Subvenciones, un catálogo de prestaciones (IMV, desempleo, bono social…) y la renta mínima de la comunidad autónoma. " +
         "Devuelve cada ayuda con su estado calculado por fechas: «abierta» solo si las fechas lo demuestran; «por_confirmar» si no se puede asegurar; " +
         "«sin_plazo_fijo» si se puede pedir en cualquier momento; «proximamente» si aún no empieza. Las cerradas se ocultan salvo que se pidan. " +
         "Llámala cuando sepas al menos el municipio o la provincia. Si devuelve `error` con `opciones`, pregunta al ciudadano cuál es. " +
@@ -62,15 +62,21 @@ export const HERRAMIENTAS = [
     function: {
       name: "ver_requisitos",
       description:
-        "Devuelve el texto oficial literal de una ayuda: quién puede pedirla y requisitos, cuantía, plazo y documentación. " +
-        "Usa el `id` que devuelve buscar_ayudas (p. ej. «bdns:936148» o «catalogo:ingreso-minimo-vital»). " +
+        "Devuelve el texto oficial literal de hasta 3 ayudas: quién puede pedirlas y requisitos, cuantía, plazo y documentación, con sus enlaces (dónde se piden, convocatoria, bases). " +
+        "Usa los `ids` que devuelve buscar_ayudas (p. ej. «bdns:936148», «renta:madrid» o «catalogo:ingreso-minimo-vital»); pide todas las que necesites en una sola llamada. " +
         "Llámala solo para las ayudas que vayas a explicar (puede descargar un PDF). Cita frases del texto; no añadas requisitos que no aparezcan.",
       parameters: {
         type: "object",
         properties: {
-          id: { type: "string", description: "Identificador de la ayuda devuelto por buscar_ayudas." },
+          ids: {
+            type: "array",
+            items: { type: "string" },
+            minItems: 1,
+            maxItems: 3,
+            description: "Identificadores devueltos por buscar_ayudas.",
+          },
         },
-        required: ["id"],
+        required: ["ids"],
         additionalProperties: false,
       },
     },
@@ -124,8 +130,13 @@ export async function ejecutarHerramienta(nombre: string, argumentos: unknown): 
         return "error" in args ? args : await buscarAyudas(args);
       }
       case "ver_requisitos": {
-        const id = texto(obj.id, 60);
-        return id ? await verRequisitos(id) : { error: "Falta el id de la ayuda." };
+        // `id` suelto también vale, por si el modelo usa la forma antigua.
+        const ids = [...new Set([...(Array.isArray(obj.ids) ? obj.ids : []), obj.id])]
+          .map((x) => texto(x, 60))
+          .filter((x): x is string => !!x)
+          .slice(0, 3);
+        if (!ids.length) return { error: "Faltan los ids de las ayudas." };
+        return { ayudas: await Promise.all(ids.map((id) => verRequisitos(id))) };
       }
       default:
         return { error: `Herramienta desconocida: ${nombre}` };

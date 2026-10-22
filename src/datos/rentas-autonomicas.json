@@ -1,0 +1,372 @@
+{
+  "consultado": "2026-10-22",
+  "fuente": "Páginas oficiales de cada comunidad, abiertas una a una el 22/10/2026. Castilla-La Mancha no está: su ingreso mínimo solo admite renovaciones en 2026.",
+  "rentas": [
+    {
+      "id": "andalucia",
+      "ccaa": "Andalucía",
+      "ine_provincias": [
+        "04",
+        "11",
+        "14",
+        "18",
+        "21",
+        "23",
+        "29",
+        "41"
+      ],
+      "titulo": "Renta Mínima de Inserción Social en Andalucía",
+      "organismo": "Consejería de Servicios Sociales, Familia e Igualdad",
+      "enlace_info": "https://www.juntadeandalucia.es/organismos/serviciossocialesfamiliaseigualdad/areas/inclusion/rmi.html",
+      "enlace_tramite": "https://www.juntadeandalucia.es/servicios/sede/tramites/procedimientos/detalle/12563.html",
+      "plazo": "Sin Plazo",
+      "todo_el_ano": null,
+      "requisitos_clave": [
+        "Ostentar la o las personas integrantes de la unidad familiar vecindad administrativa en Andalucía.",
+        "Estar empadronadas, de forma estable, como residentes en un mismo domicilio, ubicado en un municipio de Andalucía, al menos con un año de antelación a la fecha de presentación de la solicitud (salvo excepciones).",
+        "La persona solicitante deberá estar inscrita en el Servicio Andaluz de Empleo como demandante de empleo no ocupada (salvo excepciones).",
+        "Tener resolución expresa denegatoria del Ingreso Mínimo Vital dictada en el mismo ejercicio, salvo excepciones contempladas o estar en situación de urgencia o emergencia social."
+      ],
+      "nota": "La URL antigua (/organismos/inclusionsocialjuventudfamiliaseigualdad/...) redirige con 301 a enlace_info; la nueva respondió 200 con curl, pero WebFetch dio ECONNRESET al pedirla directamente. La consejería se ha renombrado: la página de información pone «Consejería de Servicios Sociales, Familia e Igualdad», y la ficha de la sede aún dice «Inclusión Social, Juventud, Familias e Igualdad» (órgano gestor: D.G. de Prestaciones, Ayudas y Subvenciones; resuelven las Delegaciones Territoriales). La ficha 12563 es una aplicación JavaScript: WebFetch la ve vacía. Su contenido (estado «Abierto», tipo de plazo de presentación «Sin Plazo», requisitos) lo leí en el JSON que la alimenta (URL en comprobado). Dejo todo_el_ano en null porque la ficha no dice «todo el año» ni «en cualquier momento», solo «Sin Plazo». Normativa: Decreto-ley 3/2017, modificado después (Decreto-ley 14/2022 y Decreto-ley 3/2024). La página dice que la ampliación es por periodos de 12 meses."
+    },
+    {
+      "id": "aragon",
+      "ccaa": "Aragón",
+      "ine_provincias": [
+        "22",
+        "44",
+        "50"
+      ],
+      "titulo": "Prestación Aragonesa Complementaria del Ingreso Mínimo Vital",
+      "organismo": "Instituto Aragonés de Servicios Sociales",
+      "enlace_info": "https://www.aragon.es/-/informacion-sobre-la-prestacion-aragonesa-complementaria-al-ingreso-minimo-vital",
+      "enlace_tramite": "https://www.aragon.es/tramitador/-/tramite/prestacion-aragonesa-complementaria-del-ingreso-minimo-vital",
+      "plazo": "Plazo permanente",
+      "todo_el_ano": true,
+      "requisitos_clave": [
+        "Tener residencia efectiva en Aragón.",
+        "Contar con el empadronamiento en Aragón por tiempo superior a 1 año.",
+        "Ser vulnerable económicamente, no superar los límites económicos establecidos en la normativa del ingreso mínimo vital.",
+        "Pertenecer a alguno de los colectivos previstos en el art. 3 del Decreto 161/2021, de 13 de octubre."
+      ],
+      "nota": "WebFetch falla con todo aragon.es («unable to verify the first certificate», un problema de la cadena TLS del servidor). Las tres URLs de comprobado las abrí con curl y respondieron 200 con el contenido citado. El antiguo Ingreso Aragonés de Inserción (IAI, trámite 984) dice «Actualmente esta prestación está en extinción y no es posible presentar nuevas solicitudes», así que no hay que enlazarlo. La prestación vigente, la PACIMV (Ley 3/2021 y Decreto 161/2021), tiene dos modalidades incompatibles: la PACIMV, para quien no cumple los requisitos del IMV, que se pide en los centros de servicios sociales municipales o comarcales; y el complemento para titulares del IMV, que se pide solo por la web del Gobierno de Aragón. Los requisitos copiados son los de la modalidad PACIMV. La página de información pone «Última actualización: 29/09/2026»."
+    },
+    {
+      "id": "asturias",
+      "ccaa": "Principado de Asturias",
+      "ine_provincias": [
+        "33"
+      ],
+      "titulo": "Salario Social Básico",
+      "organismo": "Consejería de Derechos Sociales y Bienestar",
+      "enlace_info": "https://socialasturias.asturias.es/salario_social_basico",
+      "enlace_tramite": "https://miprincipado.asturias.es/-/dboid-6269000005469490007573",
+      "plazo": "Todo el año.",
+      "todo_el_ano": true,
+      "requisitos_clave": [
+        "Ser mayor de 25 años de edad, o menor de 25 y mayor de edad, siempre que se encuentre en alguna de las situaciones previstas (orfandad absoluta, discapacidad igual o superior al 45%, menores o personas dependientes a cargo, entre otras).",
+        "Acreditar haber residido de forma efectiva e ininterrumpida en el Principado de Asturias, durante un mínimo de 2 años anteriores a la presentación de la solicitud.",
+        "Constituir una unidad económica de convivencia independiente, como mínimo, desde los 6 meses anteriores a la solicitud.",
+        "Haber solicitado previamente las pensiones y prestaciones económicas vigentes a las que tenga derecho cualquier miembro de la unidad de convivencia, incluido el ingreso mínimo vital."
+      ],
+      "nota": "La ficha del trámite es la PSPM0003T01 «Solicitud de salario social básico», y su órgano gestor es el «Servicio de Gestión del Salario Social Básico y Otras Prestaciones Económicas». La ficha cita la Ley 3/2021, de Garantía de Derechos y Prestaciones Vitales, y la Ley 5/2025 de Presupuestos para 2026. Hay una discrepancia: la ficha dice comprometerse a acordar el programa personalizado de incorporación «en un plazo no superior a tres meses» y socialasturias dice «en un plazo no superior a un mes»; por eso no lo he incluido como requisito. La ficha antigua de sede.asturias.es (vgnextoid=ae94438...) muestra importes desfasados: no usarla."
+    },
+    {
+      "id": "baleares",
+      "ccaa": "Illes Balears",
+      "ine_provincias": [
+        "07"
+      ],
+      "titulo": "Renta social garantizada",
+      "organismo": "Consejería de Familias, Bienestar Social y Atención a la Dependencia",
+      "enlace_info": "https://www.caib.es/sites/rendasocialgarantida/es/pagina_de_inicio-86203/",
+      "enlace_tramite": "https://www.caib.es/seucaib/es/tramites/tramite/2615446/",
+      "plazo": "Plazo máximo: No se establece",
+      "todo_el_ano": null,
+      "requisitos_clave": [
+        "Que estén en situación de vulnerabilidad económica tal y como establece el artículo 17.",
+        "Que tengan resolución denegatoria, expresa o presunta, del ingreso mínimo vital, salvo en los casos en que no puedan solicitarlo por no cumplir los requisitos de acceso exigibles.",
+        "Que estén empadronadas en cualquiera de los municipios de las Illes Balears en la fecha de la solicitud.",
+        "Que la persona solicitante no sea beneficiaria de la renta social garantizada o del ingreso mínimo vital como miembro de otra unidad de convivencia."
+      ],
+      "nota": "La sede pone, en la presentación de la solicitud, «Plazo máximo: No se establece». No dice «todo el año» ni «en cualquier momento», por eso todo_el_ano es null. Hay una discrepancia en la residencia previa: la ficha de la sede exige «una residencia en las Illes Balears con un mínimo de doce meses de antelación», y la web de la RESOGA (requisitos_para_acceder_a_la_prestacion) dice «residencia legal ininterrumpida… con un mínimo de tres años». No la he incluido en los requisitos. Seguramente la web informativa está desactualizada, porque la sede ya cita la Ley 4/2026, de 11 de junio, además de la Ley 4/2023. La consejería es la que figura en la sede como «Órgano competente para resolver»; tramita la Dirección General de Bienestar Social (Servicio de Reconocimiento de Prestaciones Sociales de Carácter económico). Resolución en 3 meses, silencio negativo."
+    },
+    {
+      "id": "canarias",
+      "ccaa": "Canarias",
+      "ine_provincias": [
+        "35",
+        "38"
+      ],
+      "titulo": "Renta Canaria de Ciudadanía",
+      "organismo": "Consejería de Bienestar Social, Igualdad, Juventud, Infancia y Familias",
+      "enlace_info": "https://www.gobiernodecanarias.org/bienestarsocial/inclusionsocial/renta/",
+      "enlace_tramite": "https://sede.gobiernodecanarias.org/sede/tramites/7441",
+      "plazo": "Todo el año",
+      "todo_el_ano": true,
+      "requisitos_clave": [
+        "Que sean integrantes de una unidad de convivencia en los términos establecidos en el artículo 7 de la ley 5/2022 de 19 de diciembre de Renta Canaria de Ciudadanía.",
+        "Que estén empadronadas o tengan la residencia efectiva debidamente acreditada durante al menos doce meses, de manera continuada, en cualquier municipio de la Comunidad Autónoma de Canarias, inmediatamente anteriores a la fecha de solicitud (o cinco años de los diez anteriores).",
+        "Que previamente hayan solicitado el ingreso mínimo vital a la Administración de la Seguridad Social o alguna de las prestaciones o pensiones que le pudieran corresponder.",
+        "Que estén inscritas como demandantes de empleo en el Servicio Canario de Empleo, salvo excepciones."
+      ],
+      "nota": "La Prestación Canaria de Inserción (PCI) ya no está vigente. La sede solo emite certificados para quien la cobró hasta el 29/03/2023, y desde esa fecha la sustituye la Renta Canaria de Ciudadanía (Ley 5/2022, de 19 de diciembre). El trámite 7441 se llama «Reconocimiento del Derecho a la Renta Canaria de Ciudadanía». Lo tramita el Servicio de Gestión de Pensiones y Ayudas de Integración y lo resuelve la Dirección General de Servicios Sociales e Inmigración; resolución en 3 meses, silencio desestimatorio. La página informativa aún muestra el calendario por fases de 2023, ya obsoleto: el plazo bueno es el de la sede, «Todo el año»."
+    },
+    {
+      "id": "cantabria",
+      "ccaa": "Cantabria",
+      "ine_provincias": [
+        "39"
+      ],
+      "titulo": "Renta Social Básica",
+      "organismo": "Consejería de Inclusión Social, Juventud, Familias e Igualdad",
+      "enlace_info": "https://www.cantabria.es/web/consejeria-de-empleo-y-politicas-sociales/detalle/-/journal_content/56_INSTANCE_DETALLE/16401/31890216",
+      "enlace_tramite": "https://sede.cantabria.es/sede/catalogo-de-tramites/tramite/renta-social-basica/764",
+      "plazo": "Todo el año.",
+      "todo_el_ano": true,
+      "requisitos_clave": [
+        "Carecer la unidad perceptora de recursos económicos suficientes para hacer frente a las necesidades básicas.",
+        "Tener residencia legal en España así como estar empadronadas y tener residencia efectiva en algún municipio de la Comunidad Autónoma de Cantabria, de manera ininterrumpida durante los doce meses inmediatamente anteriores a la fecha de su solicitud.",
+        "Ser mayor de veintitrés años de edad y menor de sesenta y cinco (con excepciones para personas de 18 a 23 años y mayores de 65 en determinadas circunstancias).",
+        "En el caso de tratarse de personas sin empleo que estén en edad laboral, estar inscritos como demandantes de empleo."
+      ],
+      "nota": "La sede escribe la consejería así: «Consejeria De Inclusion Social, Juventud, Familias E Igualdad» (aquí normalizada). El órgano directivo es la Dirección del ICASS (Instituto Cántabro de Servicios Sociales) y el instructor, el Servicio de Acción Social e Integración. Plazo abierto desde el 24/10/2008, sin fecha fin; resolución en 6 meses. La página de cantabria.es usada como enlace_info lleva en la cabecera «Consejería de Empleo y Políticas Sociales», un nombre antiguo, aunque su contenido coincide con la sede. Si se prefiere una sola fuente, usar la de la sede. Se puede presentar en línea (Registro Electrónico General) o en persona en el Registro del ICASS (C/ General Dávila 87, Santander)."
+    },
+    {
+      "id": "castilla-leon",
+      "ccaa": "Castilla y León",
+      "ine_provincias": [
+        "05",
+        "09",
+        "24",
+        "34",
+        "37",
+        "40",
+        "42",
+        "47",
+        "49"
+      ],
+      "titulo": "Renta Garantizada de Ciudadanía",
+      "organismo": "Consejería de Desregulación, Familia y Ayudas Sociales · Dirección General de Ayudas Sociales",
+      "enlace_info": "https://serviciossociales.jcyl.es/web/es/proteccion-familias-vulnerables/renta-garantizada-ciudadania.html",
+      "enlace_tramite": "https://www.tramitacastillayleon.jcyl.es/web/jcyl/AdministracionElectronica/es/Plantilla100Detalle/1251181053840/Ayuda012/1284151434773/Propuesta",
+      "plazo": "Abierto y permanente.",
+      "todo_el_ano": true,
+      "requisitos_clave": [
+        "Residencia legal y domicilio en Castilla y León con un año de antelación",
+        "Empadronamiento en Castilla y León con un año de antelación",
+        "Edad entre 25 y la que permita el acceso a prestaciones contributivas o no contributivas",
+        "Carencia de medios económicos o patrimoniales suficientes para atender sus necesidades básicas de subsistencia"
+      ],
+      "nota": "El plazo y el organismo salen de la ficha de Tramita Castilla y León (actualizada el 26/05/2026). La ficha no lista los requisitos en el texto: los requisitos están copiados del PDF «REQUISITOS (Titular y Unidad Familiar) y CARENCIA DE MEDIOS ECONOMICOS» que enlaza (nombre de archivo «AÑO 2022»; cita el Decreto Legislativo 1/2019 modificado por Ley 2/2020). Hay excepciones al año de residencia y a la edad (emigrantes retornados, víctimas de violencia de género, menores de 25 con familiares a cargo, etc.). La página de serviciossociales.jcyl.es no indica plazo ni fecha de actualización. La solicitud se puede presentar también en los CEAS."
+    },
+    {
+      "id": "cataluna",
+      "ccaa": "Cataluña",
+      "ine_provincias": [
+        "08",
+        "17",
+        "25",
+        "43"
+      ],
+      "titulo": "Renta garantizada de ciudadanía y prestación complementaria a prestaciones estatales (personas activables)",
+      "organismo": "Departament de Drets Socials i Inclusió · Direcció General de Prestacions Socials",
+      "enlace_info": "https://tramits.gencat.cat/es/tramits/tramits-temes/rgc_complement_estatal_activable",
+      "enlace_tramite": "https://tramits.gencat.cat/es/tramits/tramits-temes/rgc_complement_estatal_activable",
+      "plazo": "La puedes solicitar en cualquier momento.",
+      "todo_el_ano": true,
+      "requisitos_clave": [
+        "Tener más de 23 años.",
+        "Estar empadronado en Catalunya en el momento de presentar la solicitud. Haber residido de manera continuada y efectiva en Catalunya durante los 2 años anteriores a la solicitud.",
+        "No estar trabajando.",
+        "Para solicitar la RGC es necesario haber solicitado previamente el ingreso mínimo vital (IMV)."
+      ],
+      "nota": "La ficha de Tràmits gencat en castellano (actualizada el 06/02/2026) es a la vez la página informativa y la del trámite (botón «Por Internet Iniciar»), por eso enlace_info y enlace_tramite coinciden. Es la modalidad para «personas activables»; puede existir otra ficha para personas no activables (pensionistas, etc.) que no se ha abierto. La ficha recoge excepciones a la edad (18-22 en ciertos casos) y a «No estar trabajando», y umbrales de ingresos por tamaño del hogar que pueden cambiar. La cita presencial es en las Oficinas de Trabajo del SOC o por el 012."
+    },
+    {
+      "id": "extremadura",
+      "ccaa": "Extremadura",
+      "ine_provincias": [
+        "06",
+        "10"
+      ],
+      "titulo": "Renta Extremeña Garantizada",
+      "organismo": "Vicepresidencia y Consejería de Desregulación, Servicios Sociales y Familia · Dirección General de Servicios Sociales, Infancia y Familia · Servicio de Renta Extremeña Garantizada",
+      "enlace_info": "https://www.juntaex.es/w/5369",
+      "enlace_tramite": null,
+      "plazo": "Abierto. En plazo permanente.",
+      "todo_el_ano": true,
+      "requisitos_clave": [
+        "Estar empadronados y tener la residencia efectiva durante una suma mínima de seis meses, de manera continuada, en un municipio de Extremadura antes de la solicitud",
+        "No disponer de una cantidad de ingresos, rentas o recursos económicos considerada mínima",
+        "Tener cumplidos los 25 años de edad antes de la presentación de la solicitud de la ayuda.",
+        "Haber solicitado previamente de cualquiera de las Administraciones públicas competentes las prestaciones a que pudieran tener derecho"
+      ],
+      "nota": "juntaex.es/w/5369 es la ficha oficial del procedimiento (código SIA 213776). El enlace de presentación electrónica que da la ficha es el Registro General de la sede (tramites.juntaex.es ... PTS2_REGGENERAL_INFO), genérico y no específico de esta prestación, y no se ha abierto: por eso enlace_tramite es null. La solicitud presencial se hace en los Servicios Sociales de Atención Social Básica del domicilio. Hay excepciones a los seis meses de residencia (emigrantes retornados, refugiados, víctimas de violencia de género o trata) y a la edad (desde 18 en ciertos casos). El primer y el cuarto requisito están ligeramente completados a partir de la ficha, porque el texto literal es más largo."
+    },
+    {
+      "id": "galicia",
+      "ccaa": "Galicia",
+      "ine_provincias": [
+        "15",
+        "27",
+        "32",
+        "36"
+      ],
+      "titulo": "Renta de inclusión social de Galicia (RISGA)",
+      "organismo": "Consellería de Política Social e Igualdade · Dirección Xeral de Inclusión Social",
+      "enlace_info": "https://politicasocial.xunta.gal/es/areas/inclusion-social/ayudas-y-prestaciones/renta-de-inclusion-social-de-galicia-risga",
+      "enlace_tramite": "https://sede.xunta.gal/detalle-procedemento?codtram=BS626F&ano=2019&numpub=1&lang=es",
+      "plazo": "Plazo de presentación: abierto todo el año.",
+      "todo_el_ano": true,
+      "requisitos_clave": [
+        "Tener residencia efectiva y constatada por los servicios sociales comunitarios del ayuntamiento y estar empadronada en cualquiera de los ayuntamientos de la Comunidad Autónoma gallega, por lo menos durante los 6 meses anteriores a la presentación de la solicitud de valoración.",
+        "Tener residencia legal.",
+        "Tener más de 25 años.",
+        "Disponer en la unidad de convivencia de ingresos inferiores al importe del tramo personal y familiar que le correspondería y, además, no disponer de bienes patrimoniales de los cuales se deduzca la existencia de medios suficientes para la subsistencia."
+      ],
+      "nota": "El código del procedimiento en la sede es BS626F (no BS610A). La sede indica «Prazo de presentación: Aberto todo o ano». La página informativa dice que la gestiona el «Departamento Territorial de la Consellería de Política Social e Igualdade de la provincia de residencia». Además hay que estar en situación o riesgo de exclusión social, según la valoración técnica de una trabajadora social. Hay excepciones a la edad y a la residencia que no se recogen aquí. La URL de la sede lleva ano=2019, pero respondió como procedimiento vigente."
+    },
+    {
+      "id": "madrid",
+      "ccaa": "Comunidad de Madrid",
+      "ine_provincias": [
+        "28"
+      ],
+      "titulo": "Renta Mínima de Inserción",
+      "organismo": "Consejería de Familia, Juventud y Asuntos Sociales",
+      "enlace_info": "https://www.comunidad.madrid/asuntos-sociales/renta-minima-insercion",
+      "enlace_tramite": "https://sede.comunidad.madrid/prestacion-social/renta-minima-insercion",
+      "plazo": "En plazo: permanente",
+      "todo_el_ano": true,
+      "requisitos_clave": [
+        "Residir de manera permanente en la Comunidad de Madrid y estar empadronado en alguno de sus municipios, teniendo una residencia efectiva y continuada en la Comunidad de Madrid durante el año inmediatamente anterior a la solicitud.",
+        "Ser mayor de 25 años y menor de 65 en la fecha de la solicitud.",
+        "Constituir una unidad de convivencia con una antelación mínima de 6 meses.",
+        "Carecer de recursos económicos suficientes para hacer frente a las necesidades básicas de la vida."
+      ],
+      "nota": "El plazo («En plazo: permanente») sale de la ficha de la sede (actualizada el 30/05/2025). Ni la ficha ni la página informativa (actualizada el 15/10/2026, sin cambios normativos mencionados) listan los requisitos: remiten al documento «Requisitos», del que se copian. Ese PDF tiene metadatos de creación de enero de 2015 (Decreto 126/2014), así que puede estar desactualizado. Hay excepciones a la edad (menores con cargas, de 18 a 25 en ciertos casos, mayores de 65 sin pensión) y al requisito de los 6 meses. La solicitud se presenta preferentemente en el centro municipal de servicios sociales del domicilio."
+    },
+    {
+      "id": "murcia",
+      "ccaa": "Región de Murcia",
+      "ine_provincias": [
+        "30"
+      ],
+      "titulo": "Renta Básica de Inserción",
+      "organismo": "Instituto Murciano de Acción Social (IMAS)",
+      "enlace_info": "https://regiondemurciasocial.carm.es/-/renta-basica-insercion-codigo-648-sia-206832-",
+      "enlace_tramite": "https://sede.carm.es/web/pagina?IDCONTENIDO=648&IDTIPO=240&RASTRO=c%24m40288",
+      "plazo": "Plazo de Presentación: Abierto. 30 días hábiles. ¿Cuándo se solicita la ayuda? Cuando exista la situación de necesidad, apreciada por los Servicios Sociales Municipales. Esta ayuda no está sujeta a plazo alguno.",
+      "todo_el_ano": null,
+      "requisitos_clave": [
+        "Residir legalmente en territorio español y haberlo hecho por un tiempo no inferior a cinco años.",
+        "Estar empadronado en un municipio de la Comunidad Autónoma de la Región de Murcia y tener residencia efectiva durante el año inmediatamente anterior a la formulación de la solicitud.",
+        "Ser mayor de 25 años y menor de 65, salvo excepciones recogidas en el artículo 7.c) de la Ley 3/2007.",
+        "Carecer de recursos económicos suficientes para hacer frente a las necesidades básicas de la vida."
+      ],
+      "nota": "La sede dice a la vez «Abierto», «30 días hábiles» (sin explicar a qué se refieren) y «Esta ayuda no está sujeta a plazo alguno»; todo_el_ano=true se basa en esta última frase. La solicitud se inicia e instruye en las Unidades de Trabajo Social de los Servicios Sociales Municipales del domicilio, con cita previa; también por sede electrónica. La sede indica como órgano responsable la «D.G. Pensiones, Valoraciones y Programas de Inclusión» y resuelve el IMAS. Ninguna de las dos páginas muestra fecha de actualización."
+    },
+    {
+      "id": "navarra",
+      "ccaa": "Comunidad Foral de Navarra",
+      "ine_provincias": [
+        "31"
+      ],
+      "titulo": "Renta garantizada",
+      "organismo": "Servicio de Garantía de Ingresos y Cooperación al Desarrollo",
+      "enlace_info": "https://www.navarra.es/es/tramites/on/-/line/renta-garantizada",
+      "enlace_tramite": "https://www.navarra.es/es/tramites/on/-/line/renta-garantizada",
+      "plazo": "En plazo",
+      "todo_el_ano": null,
+      "requisitos_clave": [
+        "Personas mayores de 18 años o menores emancipados o emancipadas.",
+        "Residir en Navarra desde al menos dos años antes a la presentación de la solicitud (un año si en la unidad familiar hay menores, personas dependientes o con discapacidad superior al 65%).",
+        "Carecer de medios suficientes para cubrir sus necesidades básicas.",
+        "Haber solicitado previamente, de cualquiera de las Administraciones competentes, las prestaciones que puedan corresponder."
+      ],
+      "nota": "La ficha del catálogo de trámites de navarra.es solo muestra el estado «En plazo», sin decir expresamente que se pueda pedir en cualquier momento, por eso todo_el_ano=null. La solicitud se presenta a través del Servicio Social de Base del domicilio (no hay tramitación online propia). La página no indica departamento; el organismo es la unidad de contacto que figura en la ficha. Normativa citada: Ley Foral 15/2016, Decreto Foral 26/2018 y Orden Foral 10/2025. Sin fecha de actualización visible."
+    },
+    {
+      "id": "pais-vasco",
+      "ccaa": "País Vasco (Euskadi)",
+      "ine_provincias": [
+        "01",
+        "20",
+        "48"
+      ],
+      "titulo": "Renta de garantía de ingresos - RGI",
+      "organismo": "Lanbide - Servicio Público Vasco de Empleo",
+      "enlace_info": "https://www.lanbide.euskadi.eus/ayuda_subvencion/2016/renta-de-garantia-de-ingresos-rgi/weblan00-content/es/",
+      "enlace_tramite": "https://www.euskadi.eus/ayuda_subvencion/2016/renta-de-garantia-de-ingresos-rgi/web01-tramite/es/",
+      "plazo": null,
+      "todo_el_ano": null,
+      "requisitos_clave": [
+        "Ser mayores de 18 años (con excepciones para determinados menores emancipados).",
+        "Estar empadronado y tener la residencia efectiva en algún municipio de la Comunidad Autónoma de Euskadi de forma continuada durante, al menos, 3 años inmediatos anteriores a la fecha de la solicitud (con excepciones).",
+        "Estar en situación de necesidad económica.",
+        "Haber solicitado todas las pensiones y prestaciones públicas a las que pudieran tener derecho."
+      ],
+      "nota": "Ninguna de las dos páginas indica plazo de solicitud ni dice que se pueda pedir en cualquier momento; solo el plazo de resolución («Tres meses desde la fecha de entrada de la solicitud»). Normativa vigente citada: Ley 14/2022 y Decreto 173/2023. Además, entre 18 y 29 años hay que haber vivido un año fuera del domicilio de los progenitores y entre 18 y 23 estar inscrito como demandante de empleo o de alta en la Seguridad Social. Ambas páginas tienen caracteres mal codificados y no muestran fecha de actualización. Se presenta online, en oficinas de Lanbide con cita previa o en cualquier registro público."
+    },
+    {
+      "id": "la-rioja",
+      "ccaa": "La Rioja",
+      "ine_provincias": [
+        "26"
+      ],
+      "titulo": "Renta de Ciudadanía de La Rioja",
+      "organismo": "Consejería de Salud y Políticas Sociales - Dirección General de Servicios Sociales e Igualdad",
+      "enlace_info": "https://web.larioja.org/oficina-electronica/tramite?n=24327",
+      "enlace_tramite": "https://web.larioja.org/oficina-electronica/tramite?n=24327",
+      "plazo": "Continuo",
+      "todo_el_ano": true,
+      "requisitos_clave": [
+        "Tener la residencia efectiva en cualquier municipio de La Rioja, de forma ininterrumpida y al menos con un año de antelación a la solicitud.",
+        "Ser mayor de veintitrés años (con excepciones para mayores de dieciséis con cargas familiares y otros supuestos).",
+        "Constituir una unidad familiar o de convivencia, como mínimo con un año de antelación a la fecha de presentación de la solicitud.",
+        "No disponer su unidad familiar o de convivencia de los medios económicos necesarios para atender las necesidades básicas de la vida."
+      ],
+      "nota": "El antiguo Ingreso Mínimo de Inserción (IMI) de La Rioja fue sustituido por la Renta de Ciudadanía (Ley 4/2017 y Decreto 41/2017). La URL https://www.larioja.org/oficina-electronica/es?proc=24327 redirige (301) a la usada aquí. todo_el_ano=true se basa en el plazo «Continuo» de la ficha. La ficha muestra «Fecha: 28 Julio 2017»; puede estar desactualizada (nombres de consejería, cuantías). Unidad tramitadora: Servicio de Prestaciones Sociales. Plazo de resolución: dos meses."
+    },
+    {
+      "id": "ceuta",
+      "ccaa": "Ceuta",
+      "ine_provincias": [
+        "51"
+      ],
+      "titulo": "Ingreso Mínimo de Inserción Social (IMIS)",
+      "organismo": "Consejería de Sanidad y Servicios Sociales - Servicios Sociales Comunitarios",
+      "enlace_info": "https://sede.ceuta.es/controlador/controlador?cmd=tramite&modulo=tramites&tramite=SIMIS",
+      "enlace_tramite": "https://sede.ceuta.es/controlador/controlador?cmd=tramite&modulo=tramites&tramite=SIMIS",
+      "plazo": null,
+      "todo_el_ano": null,
+      "requisitos_clave": [
+        "Estar empadronado en la Ciudad Autónoma de Ceuta, con residencia efectiva durante el año anterior a la solicitud.",
+        "Carecer de Recursos Económicos hasta el máximo de la cuantía que corresponda a la unidad de convivencia.",
+        "Ser mayor de veinticinco años de edad y menor de sesenta y cinco (con excepciones)."
+      ],
+      "nota": "La ficha de la sede no dice nada del plazo. En ella solo figura como requisito «El ciudadano residente en Ceuta que cumpla los requisitos de la prestación, recogidos en el correspondiente reglamento»; los requisitos_clave están copiados del Reglamento del IMIS (art. 3) publicado en ceuta.es, no de la ficha. Para personas no comunitarias el reglamento pide dos años de residencia legal continuada. Se puede presentar online (certificado o Cl@ve) o en las Oficinas de Registro y Atención al Ciudadano. La sede cita el reglamento publicado en el BOCCE nº 4.996 (2 de noviembre de 2010). Sin fecha de actualización visible."
+    },
+    {
+      "id": "melilla",
+      "ccaa": "Melilla",
+      "ine_provincias": [
+        "52"
+      ],
+      "titulo": "Ingreso Melillense de Integración (IMI)",
+      "organismo": "Consejería de Políticas Sociales y Salud Pública - Dirección General de Servicios Sociales",
+      "enlace_info": "https://www.melilla.es/melillaportal/contenedor.jsp?seccion=s_fdes_d4_v1.jsp&contenido=205&nivel=1400&tipo=6&codResi=1&language=es&codMenu=30&codMenuPN=602&codMenuSN=609",
+      "enlace_tramite": "https://sede.melilla.es/sta/CarpetaPublic/doEvent?APP_CODE=STA&PAGE_CODE=CATALOGO&DETALLE=6269001012806424799500",
+      "plazo": "Permanente.",
+      "todo_el_ano": true,
+      "requisitos_clave": [
+        "Constituir una Unidad de Convivencia al menos con un año y medio de antelación (con excepciones).",
+        "Estar empadronado y tener residencia en Melilla al menos 36 meses anteriores a la solicitud.",
+        "Percibir unos ingresos inferiores a la cuantía del I.M.I.",
+        "Ser mayor de 25 años y menos de la edad exigida para una pensión no contributiva de jubilación (con excepciones)."
+      ],
+      "nota": "Contradicción oficial: la ficha de la sede exige 36 meses de empadronamiento y residencia; la página de requisitos del portal melilla.es (actualizada el 16/10/2025) dice al menos dos años. Se han usado los requisitos de la sede (ficha del procedimiento). La sede indica como órgano gestor la Consejería de Políticas Sociales y Salud Pública, pero en la fase de resolución menciona al «Consejero/a de Bienestar Social y Sanidad»; el nombre de la consejería puede estar desactualizado. El PDF del impreso S-20 (RecursosWeb/DOCUMENTOS/1/19_706_1.pdf) da 404. La página «¿Qué es el IMI?» (enlace_info) no dice plazo ni organismo; se actualizó el 16/12/2025."
+    }
+  ]
+}

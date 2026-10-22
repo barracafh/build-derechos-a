@@ -3,6 +3,7 @@
 // plazo del propio catálogo (verificado a 18/10/2026), nunca se supone.
 import catalogo from "../../../datos/catalogo-tramites-ayudas.json";
 import { calcularEstado, type DatosPlazo, type ResultadoPlazo } from "./plazo";
+import type { Enlaces } from "./convocatoria";
 import type { Tema } from "./temas";
 import type { Ubicacion } from "./territorio";
 
@@ -59,3 +60,14 @@ export function estadoCatalogo(e: Entrada, hoy: string): ResultadoPlazo {
 export const temasCatalogo = (id: string): Tema[] => EXTRA[id]?.temas ?? [];
 
 export const CATALOGO_VERSION = catalogo.version;
+
+export function enlacesCatalogo(e: Entrada): Enlaces {
+  return {
+    solicitud: e.enlace_tramite,
+    sede: null,
+    convocatoria: null,
+    bases: null,
+    pdf: null,
+    ficha: e.enlace_info,
+  };
+}

@@ -87,3 +87,13 @@ export function temasQueEncajan(titulo: string, finalidad: string | null, temas:
     (tema) => PALABRAS[tema].some((p) => t.includes(p)) || (f && FINALIDADES[tema].some((p) => f.includes(p))),
   );
 }
+
+// Al principio de una palabra del título: «renta» no vale dentro de «rentabilidad»
+// pero sí «comedor» en «comedores».
+export const palabrasEnTitulo = (titulo: string, palabras: string[]) => {
+  const t = normalizar(titulo);
+  return palabras.filter((p) => {
+    const n = normalizar(p).trim().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    return n.length > 2 && new RegExp(`(^|[^a-z0-9ñç])${n}`).test(t);
+  });
+};

@@ -10,13 +10,24 @@ import {
   ayudasCatalogo,
   aplicaEn,
   CATALOGO_VERSION,
+  enlacesCatalogo,
   estadoCatalogo,
   temasCatalogo,
 } from "./catalogo";
-import { delPack, desdeApi, grupoDelPack, PACK_CONSULTADO, type Convocatoria } from "./convocatoria";
+import {
+  delPack,
+  desdeApi,
+  enlacesDe,
+  grupoDelPack,
+  PACK_CONSULTADO,
+  type Convocatoria,
+  type Enlaces,
+} from "./convocatoria";
+import { buscarRecurrentes, type Recurrente } from "./recurrentes";
+import { enlacesRenta, estadoRenta, rentaDe } from "./rentas";
 import { calcularEstado, fechaLegible, hoyEnMadrid, sumarDias, type Estado } from "./plazo";
 import { normalizar } from "./nombres";
-import { relevancia, temasQueEncajan, type Tema } from "./temas";
+import { palabrasEnTitulo, relevancia, temasQueEncajan, type Tema } from "./temas";
 import { regionCubre, resolverUbicacion, type ErrorUbicacion, type Ubicacion } from "./territorio";
 
 export type ArgsBuscar = {
@@ -45,11 +56,14 @@ export type AyudaEncontrada = {
   finalidad: string | null;
   // Temas pedidos que aparecen en el título o la finalidad.
   encaja_con: Tema[];
+  // Palabras pedidas que aparecen en el título.
+  palabras_en_titulo: string[];
   para_quien: string[];
   ambito: string[];
   aviso: string | null;
+  // Ficha oficial (BDNS o página del catálogo).
   enlace: string;
-  enlace_bases: string | null;
+  enlaces: Enlaces;
   fuente: "catalogo" | "bdns" | "pack";
 };
 
@@ -70,6 +84,8 @@ export type ResultadoBuscar = {
     cerradas_ocultas: number;
     quedan_por_revisar: number;
   };
+  // Anuales que el año pasado abrieron por estas fechas y este año aún no han salido.
+  recurrentes: Recurrente[];
   no_consultado: string[];
   respaldo: string | null;
   origen_datos: string;
@@ -77,14 +93,15 @@ export type ResultadoBuscar = {
 
 const FICHAS_POR_PAGINA = 12;
 const LIMITE_MS = 18_000;
+const MS_RECURRENTES = 8_000;
 
 // Títulos de subvenciones nominativas, convenios o directas a una entidad:
 // nadie puede solicitarlas, así que no se gasta una ficha en ellas.
-const NO_SOLICITABLE_TITULO =
+export const NO_SOLICITABLE_TITULO =
   /nominativ|nommina|subvenci[oó] directa|subv\.? directa|subvenci[oó]n directa|convenio|conveni |regula y conced|regula i conced|adenda|addenda|concesi[oó]n directa/i;
 
-const PERSONA_FISICA = "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA";
-const AUTONOMO = "PYME Y PERSONAS FÍSICAS QUE DESARROLLAN ACTIVIDAD ECONÓMICA";
+export const PERSONA_FISICA = "PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA";
+export const AUTONOMO = "PYME Y PERSONAS FÍSICAS QUE DESARROLLAN ACTIVIDAD ECONÓMICA";
 
 const ORDEN_ESTADO: Record<Estado, number> = {
   abierta: 0,
@@ -95,7 +112,7 @@ const ORDEN_ESTADO: Record<Estado, number> = {
   no_solicitable: 5,
 };
 
-type Busqueda = {
+export type Busqueda = {
   nivel: Nivel;
   nombre: string;
   filtros: FiltrosBusqueda;
@@ -105,7 +122,7 @@ type Busqueda = {
 
 type Candidata = ResultadoBusqueda & { nivel: Nivel; puntos: number };
 
-function busquedas(u: Ubicacion, args: ArgsBuscar, hoy: string): Busqueda[] {
+export function busquedas(u: Ubicacion, args: ArgsBuscar, hoy: string): Busqueda[] {
   const d = sumarDias(hoy, -365);
   const fechaDesde = `${d.slice(8, 10)}/${d.slice(5, 7)}/${d.slice(0, 4)}`;
   const tiposBeneficiario = args.autonomo ? [1, 3] : [1];
@@ -134,7 +151,14 @@ function busquedas(u: Ubicacion, args: ArgsBuscar, hoy: string): Busqueda[] {
   return lista;
 }
 
-function aAyuda(c: Convocatoria, nivel: Nivel, hoy: string, u: Ubicacion, temas: Tema[]): AyudaEncontrada {
+function aAyuda(
+  c: Convocatoria,
+  nivel: Nivel,
+  hoy: string,
+  u: Ubicacion,
+  temas: Tema[],
+  palabras: string[],
+): AyudaEncontrada {
   const e = calcularEstado(c.plazo, hoy);
   const soloEntidades = c.beneficiarios.some((b) => /JURÍDICAS|GRAN EMPRESA/.test(b));
   const ambito = c.regiones.filter((r) => !/^ES - /.test(r));
@@ -148,6 +172,7 @@ function aAyuda(c: Convocatoria, nivel: Nivel, hoy: string, u: Ubicacion, temas:
     fin_plazo: e.fin,
     finalidad: c.finalidad,
     encaja_con: temasQueEncajan(c.titulo, c.finalidad, temas),
+    palabras_en_titulo: palabrasEnTitulo(c.titulo, palabras),
     para_quien: c.beneficiarios,
     ambito,
     aviso: soloEntidades
@@ -156,7 +181,7 @@ function aAyuda(c: Convocatoria, nivel: Nivel, hoy: string, u: Ubicacion, temas:
         ? "Su ámbito no coincide exactamente con tu zona: compruébalo."
         : null,
     enlace: c.enlace,
-    enlace_bases: c.bases.url,
+    enlaces: enlacesDe(c),
     fuente: c.fuente,
   };
 }
@@ -179,6 +204,15 @@ export async function buscarAyudas(
   // 1. Búsquedas en paralelo (baratas: una llamada cada una).
   const lista = busquedas(u, args, hoy);
   const desdePack: { c: Convocatoria; nivel: Nivel }[] = [];
+  let publicadas: (r: ResultadoBusqueda[]) => void = () => {};
+  // Las anuales van a la vez, con su propio límite: si tardan, no se enseñan.
+  const recurrentes =
+    pagina === 1
+      ? Promise.race([
+          buscarRecurrentes(u, args, hoy, new Promise((r) => (publicadas = r))),
+          new Promise<Recurrente[]>((r) => setTimeout(() => r([]), MS_RECURRENTES)),
+        ]).catch(() => [] as Recurrente[])
+      : Promise.resolve([] as Recurrente[]);
   const resultados = await Promise.all(
     lista.map(async (b) => {
       try {
@@ -192,6 +226,8 @@ export async function buscarAyudas(
       }
     }),
   );
+
+  publicadas(resultados.flat());
 
   // 2. Candidatas sin repetir, sin las que no se pueden solicitar por título y ordenadas.
   const vistas = new Set<string>();
@@ -251,7 +287,7 @@ export async function buscarAyudas(
       descartar("Limitada a otro territorio");
       continue;
     }
-    const a = aAyuda(c, nivel, hoy, u, temas);
+    const a = aAyuda(c, nivel, hoy, u, temas, palabras);
     if (a.estado === "no_solicitable") {
       descartar("Sin plazo de solicitud");
       continue;
@@ -283,28 +319,57 @@ export async function buscarAyudas(
         fin_plazo: est.fin,
         finalidad: null,
         encaja_con: temasCatalogo(e.id).filter((t) => temas.includes(t)),
+        palabras_en_titulo: palabrasEnTitulo(e.titulo, palabras),
         para_quien: [],
         ambito: e.administracion === "Estado" ? [] : ["Comunitat Valenciana"],
         aviso: e.verificado ? null : `No verificado en fuente oficial: ${e.nota ?? "revísalo en la sede"}`,
-        enlace: e.enlace_tramite ?? e.enlace_info,
-        enlace_bases: e.enlace_info,
+        enlace: e.enlace_info,
+        enlaces: enlacesCatalogo(e),
         fuente: "catalogo",
         puntos: puntosTema + (temas.length ? 0 : 1),
       });
     }
 
+  // 6. Renta mínima de la comunidad (fuera de la CV, que está en el catálogo).
+  const renta = pagina === 1 ? rentaDe(u.ineProvincia) : null;
+  if (renta) {
+    const est = estadoRenta(renta);
+    const encaja = temas.filter((t) => t === "servicios_sociales");
+    ayudas.push({
+      id: `renta:${renta.id}`,
+      titulo: renta.titulo,
+      organismo: renta.organismo,
+      nivel: "Comunidad autónoma",
+      estado: est.estado,
+      plazo: est.motivo,
+      fin_plazo: null,
+      finalidad: "Renta mínima para cubrir las necesidades básicas",
+      encaja_con: encaja,
+      palabras_en_titulo: palabrasEnTitulo(renta.titulo, palabras),
+      para_quien: [],
+      ambito: [renta.ccaa],
+      aviso: renta.nota,
+      enlace: renta.enlace_info,
+      enlaces: enlacesRenta(renta),
+      fuente: "catalogo",
+      puntos: encaja.length * 2,
+    });
+  }
+
   ayudas.sort(
     (a, b) => ORDEN_ESTADO[a.estado] - ORDEN_ESTADO[b.estado] || b.puntos - a.puntos,
   );
 
-  // 6. Lo que no se ha podido mirar, dicho claro.
+  // 7. Lo que no se ha podido mirar, dicho claro.
   if (!u.municipio)
     noConsultado.push("Ayudas de tu ayuntamiento: no sé el municipio o no tiene convocatorias en la BDNS.");
   if (["07", "35", "38"].includes(u.ineProvincia) && !u.isla)
     noConsultado.push("Ayudas del cabildo o consell insular: falta saber el municipio para conocer la isla.");
   if (!["03", "12", "46"].includes(u.ineProvincia))
     noConsultado.push(
-      `Renta mínima y otras prestaciones de ${u.comunidad} que no se publican como convocatoria: consulta la sede de la comunidad.`,
+      renta
+        ? `Otras prestaciones de ${u.comunidad} que no se publican como convocatoria: consulta la sede de la comunidad.`
+        : `Renta mínima y otras prestaciones de ${u.comunidad} que no se publican como convocatoria: consulta la sede de la comunidad.`,
     );
   noConsultado.push(
     "Mancomunidades, consorcios, universidades y otros organismos.",
@@ -324,6 +389,7 @@ export async function buscarAyudas(
     },
     fecha_consulta: fechaLegible(hoy),
     ayudas: ayudas.map(({ puntos: _puntos, ...a }) => a),
+    recurrentes: await recurrentes,
     resumen: {
       pagina,
       convocatorias_revisadas: convocatorias.length,

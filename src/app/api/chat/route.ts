@@ -1,4 +1,5 @@
 import { buscarAyudas } from "@/lib/ayudas/buscar";
+import { comprobarEnlaces } from "@/lib/ayudas/enlaces";
 import { requisitosDelExtracto } from "@/lib/ayudas/requisitos";
 import { completar, completarConHerramientas } from "@/lib/ia";
 import { responder } from "@/lib/llm";
@@ -56,6 +57,7 @@ export async function POST(req: Request) {
         agente: (m, tools) => completarConHerramientas(m, tools, { razonar: false }),
         buscar: buscarAyudas,
         requisitos: requisitosDelExtracto,
+        comprobar: comprobarEnlaces,
         anterior: cuerpo.perfil,
         ayudasAnteriores: cuerpo.ayudas,
         alAvanzar: (paso) => enviar({ paso }),

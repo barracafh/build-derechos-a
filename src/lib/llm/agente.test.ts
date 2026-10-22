@@ -20,11 +20,19 @@ function ayuda(n: number, extra: Partial<AyudaEncontrada> = {}): AyudaEncontrada
     fin_plazo: "2026-10-30",
     finalidad: "Vivienda",
     encaja_con: ["vivienda"],
+    palabras_en_titulo: [],
     para_quien: ["PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA"],
     ambito: [],
     aviso: null,
     enlace: `https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/${n}`,
-    enlace_bases: "https://sede.gandia.es/bases.pdf",
+    enlaces: {
+      solicitud: "https://sede.gandia.es/tramite/alquiler",
+      sede: null,
+      convocatoria: "https://bop.dival.es/anuncio",
+      bases: "https://sede.gandia.es/bases.pdf",
+      pdf: null,
+      ficha: `https://www.infosubvenciones.es/bdnstrans/GE/es/convocatorias/${n}`,
+    },
     fuente: "bdns",
     ...extra,
   };
@@ -107,7 +115,8 @@ describe("responder con herramientas", () => {
     expect(llamadas).toEqual([
       { nombre: "buscar_ayudas", args: { municipio: "Gandia", temas: ["vivienda"], catalogo: false } },
     ]);
-    expect(buscadas).toBe(0);
+    // Solo la búsqueda adelantada mientras el LLM lee.
+    expect(buscadas).toBe(1);
     // El resultado vuelve al modelo como mensaje "tool".
     expect(rondas[1].at(-1)).toMatchObject({ role: "tool", tool_call_id: "t1" });
     expect(r.fichas.map((f) => f.id).sort()).toEqual(["bdns:2", "subsidio-desempleo"]);
@@ -122,7 +131,13 @@ describe("responder con herramientas", () => {
       porQue: ["Dices: «vivo de alquiler»."],
     });
     expect(f.detalle?.ambito).toBe("Gandia");
-    expect(f.detalle?.fuentes.map((x) => x.url)).toEqual([ayuda(2).enlace, "https://sede.gandia.es/bases.pdf"]);
+    expect(f.enlace).toBe("https://bop.dival.es/anuncio");
+    expect(f.detalle?.enlaceTramite).toBe("https://sede.gandia.es/tramite/alquiler");
+    expect(f.detalle?.fuentes.map((x) => x.url)).toEqual([
+      "https://bop.dival.es/anuncio",
+      ayuda(2).enlace,
+      "https://sede.gandia.es/bases.pdf",
+    ]);
     expect(r.cobertura.consultado.at(-1)).toContain("Base de Datos Nacional de Subvenciones");
     expect(r.cobertura.noConsultado).not.toContain("Convocatorias publicadas en la BDNS");
     expect(r.cobertura.noConsultado).toContain("Ayudas para autónomos y empresas.");

@@ -52,8 +52,8 @@ const CON_HERRAMIENTAS = `
 
 Herramientas:
 - Si la persona dice dónde vive (municipio, isla o provincia), llama a buscar_ayudas UNA vez antes de responder, con ese lugar tal como lo dice, los "temas" de lo que cuenta y autonomo: true si trabaja por cuenta propia. Si no dice dónde vive, no la llames.
-- Si dudas de si una convocatoria es para alguien como ella, puedes llamar a ver_requisitos con su id (como mucho 3 veces).
-- Después responde con el JSON. En "elegidos" puedes añadir ids "bdns:…" que haya devuelto buscar_ayudas, solo si encajan con lo que cuenta (no premios, concursos ni becas de investigación salvo que los pida), con "citas" literales que expliquen por qué. Como mucho 5 convocatorias "bdns:…".
+- Si dudas de si alguna convocatoria es para alguien como ella, llama UNA vez a ver_requisitos con los ids de esas convocatorias (hasta 3).
+- Después responde con el JSON. En "elegidos" puedes añadir ids "bdns:…" o "renta:…" que haya devuelto buscar_ayudas, solo si encajan con lo que cuenta (no premios, concursos ni becas de investigación salvo que los pida), con "citas" literales que expliquen por qué. Como mucho 5 convocatorias "bdns:…".
 - No elijas convocatorias con estado "cerrada".`;
 
 // `anteriores`: ids de las ayudas que ya vio la persona, para que la lista no

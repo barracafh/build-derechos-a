@@ -1,6 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import type { Mensaje } from "@/lib/ia";
 import type { MensajeChat, Respuesta } from "@/lib/tipos";
+import { VERSION_CENTRAL } from "@/lib/motor/central";
 import { responder } from "./index";
 
 const hoy = new Date("2026-10-22T10:00:00+02:00");
@@ -184,6 +185,7 @@ describe("responder", () => {
     expect(r.cobertura).toEqual({
       consultado: [
         "Catálogo de trámites y ayudas (Estado, Generalitat y Ajuntament de València), a 18/10/2026",
+        `Ayudas leídas de páginas oficiales por un proceso automático, a ${VERSION_CENTRAL}`,
       ],
       noConsultado: ["Convocatorias publicadas en la BDNS"],
       respaldo: true,

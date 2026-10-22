@@ -63,18 +63,27 @@ function paraElModelo(nombre: string, r: unknown): unknown {
         estado: a.estado,
         plazo: a.plazo,
         encaja_con: a.encaja_con,
+        palabras_en_titulo: a.palabras_en_titulo,
         aviso: a.aviso,
       })),
       quedan_por_revisar: b.resumen.quedan_por_revisar,
+      // Aún no se pueden pedir: el código las enseña aparte, no van en "elegidos".
+      recurrentes: (b.recurrentes ?? []).map((x) => ({ titulo: x.titulo, texto: x.texto })),
     };
   }
   if (nombre === "ver_requisitos") {
-    const q = r as Exclude<Requisitos, { error: string }>;
+    const lista = (r as { ayudas: Requisitos[] }).ayudas;
     return {
-      id: q.id,
-      titulo: q.titulo,
-      fragmentos: q.fragmentos.map((f) => ({ ...f, texto: f.texto.slice(0, MAX_FRAGMENTO) })),
-      aviso: q.aviso,
+      ayudas: lista.map((q) =>
+        "error" in q
+          ? q
+          : {
+              id: q.id,
+              titulo: q.titulo,
+              fragmentos: q.fragmentos.map((f) => ({ ...f, texto: f.texto.slice(0, MAX_FRAGMENTO) })),
+              aviso: q.aviso,
+            },
+      ),
     };
   }
   return r;
@@ -91,10 +100,11 @@ function guardar(h: Hallazgos, nombre: string, r: unknown) {
     h.busqueda = b;
     h.errorUbicacion = null;
     for (const a of b.ayudas) h.ayudas.set(a.id, a);
-  } else if (nombre === "ver_requisitos" && !("error" in r)) {
-    const q = r as Requisitos & { id: string };
-    const lineas = lineasDeRequisitos(q);
-    if (lineas.length) h.requisitos.set(q.id, lineas);
+  } else if (nombre === "ver_requisitos" && "ayudas" in r) {
+    for (const q of (r as { ayudas: Requisitos[] }).ayudas) {
+      const lineas = lineasDeRequisitos(q);
+      if (!("error" in q) && lineas.length) h.requisitos.set(q.id, lineas);
+    }
   }
 }
 

@@ -116,6 +116,60 @@ function desdePack(p: EntradaPack): Convocatoria {
   };
 }
 
+// Los enlaces que llevan a la ayuda, del más útil para la persona al menos.
+export type Enlaces = {
+  // Página del trámite en una sede electrónica: donde se pide.
+  solicitud: string | null;
+  // Sede electrónica del organismo, cuando la BDNS solo da la portada.
+  sede: string | null;
+  // Anuncio de esta convocatoria en el boletín oficial.
+  convocatoria: string | null;
+  // Bases reguladoras (pueden ser de años anteriores: rigen varias convocatorias).
+  bases: string | null;
+  // Texto de la convocatoria en PDF, desde la BDNS.
+  pdf: string | null;
+  // Ficha oficial en la BDNS: siempre existe.
+  ficha: string;
+};
+
+// Boletines y sedes que sirven igual por https: mejor no mandar a nadie por http.
+const SOLO_HTTPS = /(^|\.)(boe\.es|gva\.es|bocm\.es|juntadeandalucia\.es|gobiernodecanarias\.org|gob\.es|madrid\.es|valencia\.es)$/;
+
+export function urlLimpia(texto: string | null | undefined): string | null {
+  const t = limpio(texto).replace(/\s+/g, "");
+  if (!t) return null;
+  try {
+    const u = new URL(/^https?:\/\//i.test(t) ? t : `https://${t}`);
+    if (u.protocol === "http:" && SOLO_HTTPS.test(u.hostname)) u.protocol = "https:";
+    // El BOE da un enlace de verificación; el del texto del anuncio es el mismo id.
+    const id = u.hostname.endsWith("boe.es") && u.pathname.endsWith("verifica.php") && u.searchParams.get("c");
+    if (id) return `https://www.boe.es/diario_boe/txt.php?id=${id}`;
+    // El DOGV enlaza en valenciano; la misma página existe en castellano.
+    if (u.hostname === "dogv.gva.es") u.pathname = u.pathname.replace(/^\/va\//, "/es/");
+    return u.protocol === "https:" || u.protocol === "http:" ? u.toString() : null;
+  } catch {
+    return null;
+  }
+}
+
+export function enlacesDe(c: Convocatoria): Enlaces {
+  const sede = urlLimpia(c.sede);
+  const portada = sede ? new URL(sede).pathname.replace(/\/(es|va|ca|eu|gl)?\/?$/, "") === "" : false;
+  // El anuncio más reciente con enlace: el de esta convocatoria, no el de las bases.
+  const anuncio = [...c.anuncios]
+    .filter((a) => a.url)
+    .sort((a, b) => (b.fecha ?? "").localeCompare(a.fecha ?? ""))[0];
+  const pdf = c.documentos.find((d) => /convocatoria|extracto|bases/i.test(d.descripcion)) ?? c.documentos[0];
+  return {
+    solicitud: sede && !portada ? sede : null,
+    sede: sede && portada ? sede : null,
+    convocatoria: urlLimpia(anuncio?.url),
+    bases: urlLimpia(c.bases.url),
+    pdf: pdf ? urlLimpia(pdf.url) : null,
+    ficha: c.enlace,
+  };
+}
+
 export const PACK_CONSULTADO = pack.consultado;
 
 const porNumero = new Map(pack.convocatorias.map((p) => [p.numeroBDNS, p]));

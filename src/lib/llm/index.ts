@@ -1,4 +1,5 @@
 import type { ArgsBuscar, AyudaEncontrada, ResultadoBuscar } from "@/lib/ayudas/buscar";
+import type { Enlaces } from "@/lib/ayudas/convocatoria";
 import type { ErrorUbicacion } from "@/lib/ayudas/territorio";
 import type { Mensaje } from "@/lib/ia";
 import { elegirPreguntas, TEXTO_PREGUNTA } from "@/lib/llm/pregunta";
@@ -11,6 +12,8 @@ import {
   noCubiertoPor,
   porEstado,
 } from "@/lib/motor/catalogo";
+import { fichasCentrales, VERSION_CENTRAL } from "@/lib/motor/central";
+import { normalizar } from "@/lib/lugares";
 import type { Cobertura, Ficha, MensajeChat, Paso, Perfil, Respuesta } from "@/lib/tipos";
 import {
   conversarConHerramientas,
@@ -19,7 +22,15 @@ import {
   type Ejecutar,
   type Hallazgos,
 } from "./agente";
-import { busquedaDelPerfil, coberturaConBdns, fichaDeBdns, temasEnTitulo } from "./bdns";
+import {
+  busquedaDelPerfil,
+  coberturaConBdns,
+  encajaPorTitulo,
+  fichaDeBdns,
+  fichaDeRecurrente,
+  fichaDeRenta,
+  temasEnTitulo,
+} from "./bdns";
 import { construirMensajes, leerDatos, leerRespuesta, type Lectura } from "./perfil";
 
 // Un segundo intento solo si el primero falla, tarda demasiado o no trae JSON.
@@ -35,6 +46,8 @@ type Dependencias = {
   ejecutar?: Ejecutar;
   buscar?: (args: ArgsBuscar) => Promise<ResultadoBuscar | ErrorUbicacion>;
   requisitos?: (numero: string) => Promise<string[]>;
+  // Quita los enlaces rotos antes de enseñarlos.
+  comprobar?: (enlaces: Enlaces) => Promise<Enlaces>;
   msAgente?: number;
   // Lo que manda el navegador del turno anterior: se valida antes de usarlo.
   anterior?: unknown;
@@ -51,6 +64,7 @@ const MS_REQUISITOS = 4_000;
 // puede elegir él.
 const AUTOMATICAS = 4;
 const MAX_ELEGIDAS = 5;
+const MAX_RECURRENTES = 3;
 
 function conLimite<T>(promesa: Promise<T>, ms: number): Promise<T> {
   let reloj: ReturnType<typeof setTimeout> | undefined;
@@ -74,6 +88,7 @@ export async function responder(
     ejecutar,
     buscar,
     requisitos,
+    comprobar,
     msAgente = 30_000,
     anterior = null,
     ayudasAnteriores = [],
@@ -100,12 +115,16 @@ export async function responder(
       formulario: [],
     };
 
+  // Mientras el LLM lee, se adelanta la búsqueda con el municipio que encuentran
+  // las reglas: la BDNS queda en caché para cuando la pida el agente.
+  const adelantada = buscar ? adelantar(delUsuario, buscar) : null;
+
   // En los registros, solo el error de HelmCode, nunca el texto de la persona.
   // Solo ids con forma de ayuda: van al prompt.
   const anteriores = (Array.isArray(ayudasAnteriores) ? ayudasAnteriores : [])
     .filter(
       (id): id is string =>
-        typeof id === "string" && (IDS_AYUDAS.includes(id) || /^bdns:[\w-]{1,40}$/.test(id)),
+        typeof id === "string" && (IDS_AYUDAS.includes(id) || /^(bdns|renta):[\w-]{1,40}$/.test(id)),
     )
     .slice(0, 15);
   let lectura: Lectura | null = null;
@@ -170,9 +189,13 @@ export async function responder(
     );
   }
 
+  // Ayudas centrales (spec 004): después del catálogo, sin repetirlas.
+  fichas = porEstado([...fichas, ...fichasCentrales(perfil, new Set(fichas.map((f) => f.id)), hoy)]);
+
   const base: Cobertura = {
     consultado: [
       "Catálogo de trámites y ayudas (Estado, Generalitat y Ajuntament de València), a 18/10/2026",
+      `Ayudas leídas de páginas oficiales por un proceso automático, a ${VERSION_CENTRAL}`,
     ],
     noConsultado: [...noConsultado, ...noCubiertoPor(perfil)],
     respaldo: true,
@@ -182,7 +205,7 @@ export async function responder(
     return { perfil, fichas, cobertura: base, ...elegirPreguntas(fichas, perfil, mensajes) };
 
   alAvanzar("buscando");
-  const bdns = await conBdns(perfil, lectura, hallazgos, buscar, requisitos);
+  const bdns = await conBdns(perfil, lectura, hallazgos, buscar, requisitos, comprobar, adelantada);
   // Si la BDNS no reconoce el municipio, se aclara eso solo; si falta, ya va
   // en el formulario.
   const hecha = (p: string) => mensajes.some((m) => m.rol === "asistente" && m.texto === p);
@@ -192,6 +215,7 @@ export async function responder(
     perfil,
     fichas: porEstado([...fichas, ...bdns.fichas]),
     cobertura: coberturaConBdns(base, hallazgos.busqueda, bdns.motivo),
+    recurrentes: bdns.recurrentes,
     ...(aclarar
       ? { pregunta: bdns.pregunta, formulario: [] }
       : elegirPreguntas(fichas, perfil, mensajes)),
@@ -203,22 +227,64 @@ const PROPONIBLE = new Set<AyudaEncontrada["estado"]>(["abierta", "sin_plazo_fij
 // Convocatorias de la BDNS para el municipio: las que eligió el LLM entre las
 // que devolvió buscar_ayudas o, si no eligió ninguna, las primeras que tratan de
 // lo que contó la persona y tienen el plazo comprobado.
+// La renta mínima de la comunidad, si el LLM la eligió o si la persona dice que
+// no tiene ingresos, que son bajos o que se le acabó el paro.
+function rentaSiEncaja(
+  perfil: Perfil,
+  lectura: Lectura | null,
+  r: ResultadoBuscar,
+  citasSociales: string[],
+): Ficha[] {
+  const a = r.ayudas.find((x) => x.id.startsWith("renta:"));
+  if (!a || a.estado === "cerrada") return [];
+  const elegida = lectura?.elegidos.find((e) => e.id === a.id);
+  const senales = perfil.hechos
+    .filter(
+      (h) =>
+        (h.campo === "ingresos" && /sin ingresos|bajos/.test(h.valor)) ||
+        (h.campo === "situacionLaboral" && h.valor === "paro agotado"),
+    )
+    .map((h) => h.cita);
+  const citas = [...new Set([...(elegida?.citas ?? []), ...senales, ...citasSociales])];
+  if (!elegida && !senales.length) return [];
+  const conocidos = new Set(perfil.hechos.map((h) => h.campo));
+  const ficha = fichaDeRenta(a, {
+    porQue: citas.map((c) => `Dices: «${c}».`),
+    pendiente: conocidos.has("ingresos") ? [] : ["ingresos"],
+  });
+  return ficha ? [ficha] : [];
+}
+
+type Adelantada = { municipio: string; promesa: Promise<ResultadoBuscar | ErrorUbicacion> };
+
+function adelantar(delUsuario: MensajeChat[], buscar: NonNullable<Dependencias["buscar"]>): Adelantada | null {
+  const b = busquedaDelPerfil(perfilDeTexto(delUsuario.map((m) => m.texto).join("\n")));
+  if (!b?.args.municipio) return null;
+  const promesa = buscar(b.args);
+  promesa.catch(() => {}); // si nadie la espera, que no quede un rechazo suelto
+  return { municipio: b.args.municipio, promesa };
+}
+
 async function conBdns(
   perfil: Perfil,
   lectura: Lectura | null,
   hallazgos: Hallazgos,
   buscar: NonNullable<Dependencias["buscar"]>,
   requisitos: Dependencias["requisitos"],
-): Promise<{ fichas: Ficha[]; motivo: string | null; pregunta: string | null }> {
+  comprobar: Dependencias["comprobar"],
+  adelantada: Adelantada | null,
+): Promise<{ fichas: Ficha[]; recurrentes: Ficha[]; motivo: string | null; pregunta: string | null }> {
   const busqueda = busquedaDelPerfil(perfil);
   if (!hallazgos.busqueda && !hallazgos.errorUbicacion && busqueda) {
+    const mismoSitio =
+      adelantada && normalizar(adelantada.municipio).trim() === normalizar(busqueda.args.municipio ?? "").trim();
     try {
-      const r = await conLimite(buscar(busqueda.args), MS_BUSQUEDA);
+      const r = await conLimite(mismoSitio ? adelantada.promesa : buscar(busqueda.args), MS_BUSQUEDA);
       if ("error" in r) hallazgos.errorUbicacion = r;
       else hallazgos.busqueda = r;
     } catch (error) {
       console.error("BDNS:", (error as Error).message);
-      return { fichas: [], motivo: "no ha respondido a tiempo", pregunta: null };
+      return { fichas: [], recurrentes: [], motivo: "no ha respondido a tiempo", pregunta: null };
     }
   }
 
@@ -228,16 +294,23 @@ async function conBdns(
     if (opciones?.length)
       return {
         fichas: [],
+        recurrentes: [],
         motivo: "hay varios municipios con ese nombre",
         pregunta: `¿En cuál vives: ${opciones.slice(0, -1).join(", ")} o ${opciones.at(-1)}?`,
       };
     if (hallazgos.errorUbicacion)
       return {
         fichas: [],
+        recurrentes: [],
         motivo: "no reconozco el municipio",
         pregunta: "¿En qué municipio y provincia vives?",
       };
-    return { fichas: [], motivo: "falta saber tu municipio", pregunta: TEXTO_PREGUNTA.municipio };
+    return {
+      fichas: [],
+      recurrentes: [],
+      motivo: "falta saber tu municipio",
+      pregunta: TEXTO_PREGUNTA.municipio,
+    };
   }
 
   const ayudas = new Map(r.ayudas.map((a) => [a.id, a]));
@@ -250,13 +323,23 @@ async function conBdns(
   if (!elegidas.length)
     elegidas = r.ayudas
       .filter((a) => a.id.startsWith("bdns:") && PROPONIBLE.has(a.estado))
-      .map((a) => ({ a, temas: temasEnTitulo(a) }))
-      .filter(({ temas }) => temas.length)
+      .filter(encajaPorTitulo)
       .slice(0, AUTOMATICAS)
-      .map(({ a, temas }) => ({
+      .map((a) => ({
         a,
-        porQue: comoPorQue([...new Set(temas.flatMap((t) => busqueda?.citasPorTema[t] ?? []))]),
+        porQue: [
+          ...comoPorQue([...new Set(temasEnTitulo(a).flatMap((t) => busqueda?.citasPorTema[t] ?? []))]),
+          // No es una cita: con las reglas, la necesidad son palabras sueltas.
+          ...(a.palabras_en_titulo.length
+            ? [`Su título habla de ${a.palabras_en_titulo.map((p) => `«${p}»`).join(" y ")}, como lo que pides.`]
+            : []),
+        ],
       }));
+
+  // Enlaces sin los rotos, a la vez que los requisitos.
+  const enlaces = Promise.all(
+    elegidas.map(({ a }) => (comprobar ? comprobar(a.enlaces) : a.enlaces)),
+  );
 
   // Requisitos: los que leyó el agente o, si no, el extracto del boletín (sin PDF).
   const lineas = await conLimite(
@@ -270,10 +353,27 @@ async function conBdns(
     MS_REQUISITOS,
   ).catch(() => elegidas.map(({ a }) => hallazgos.requisitos.get(a.id) ?? []));
 
+  const vivos = await conLimite(enlaces, MS_REQUISITOS).catch(() => elegidas.map(({ a }) => a.enlaces));
   return {
-    fichas: elegidas.map(({ a, porQue }, i) =>
-      fichaDeBdns(a, { comunidad: r.ubicacion.comunidad, porQue, requisitos: lineas[i] }),
-    ),
+    fichas: [
+      ...elegidas.map(({ a, porQue }, i) =>
+        fichaDeBdns(
+          { ...a, enlaces: vivos[i] },
+          { comunidad: r.ubicacion.comunidad, porQue, requisitos: lineas[i] },
+        ),
+      ),
+      ...rentaSiEncaja(perfil, lectura, r, busqueda?.citasPorTema.servicios_sociales ?? []),
+    ],
+    // Solo las que tratan de lo que contó la persona, como las automáticas.
+    recurrentes: (r.recurrentes ?? [])
+      .filter(encajaPorTitulo)
+      .slice(0, MAX_RECURRENTES)
+      .map((x) =>
+        fichaDeRecurrente(x, {
+          comunidad: r.ubicacion.comunidad,
+          porQue: comoPorQue([...new Set(temasEnTitulo(x).flatMap((t) => busqueda?.citasPorTema[t] ?? []))]),
+        }),
+      ),
     motivo: null,
     pregunta: null,
   };
