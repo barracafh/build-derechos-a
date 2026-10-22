@@ -6,16 +6,20 @@
 
 `buscarAyudas(perfil)` returns the catalogue aids and live BDNS calls that could fit, with status from dates, ranked, and an honest coverage report.
 
+## Status (2026-10-22)
+
+Done with a different shape than the file table. The BDNS searches (`tipoAdministracion` C/A/L, `organos=2903`, `tiposBeneficiario=1`, 5 s timeout), the instrumental filter, the 10-ficha cap with 3 in flight, the 10-minute cache and the pack fallback live in `src/lib/ayudas/bdns.ts` and `src/lib/ayudas/buscar.ts`, called by the LLM agent with tools (`src/lib/llm/agente.ts`), not by `src/lib/motor/index.ts`. Status from dates is in `src/lib/ayudas/plazo.ts`; the catalogue rules in `src/lib/motor/catalogo.ts`. `estado.ts`, `ranking.ts` and `src/lib/motor/grabaciones/` were never written; the engine in `motor/index.ts` still serves the catalogue only. Spec 004 FR-014 plugs the central aids into `motor/index.ts`; wiring them into the chat route means touching `src/lib/llm/index.ts` (S3), an open decision.
+
 ## Requirements
 
-- [ ] FR-001 — The 8 catalogue aids (`tipo: "ayuda"`) MUST stay unless a stated fact blocks them; each kept aid MUST list in `pendiente` the fields that would decide it.
-- [ ] FR-002 — The engine MUST run the 3 searches of `SETUP.md` (Generalitat, State, Ayuntamiento de València; `tiposBeneficiario=1`) in parallel, each with a 5 s timeout.
-- [ ] FR-003 — The engine MUST drop "concesión directa - instrumental" calls and fetch at most 10 fichas, with at most 3 requests in flight.
-- [ ] FR-004 — Status MUST come from `fechaInicioSolicitud`/`fechaFinSolicitud` against today; `abierto` alone MUST map to `permanente`; no dates and no `abierto` MUST map to `desconocido`.
-- [ ] FR-005 — Results MUST be ranked by need-to-purpose match, then title-keyword overlap; catalogue aids go first.
-- [ ] FR-006 — If a BDNS call fails or times out, the engine MUST use `datos/bdns-convocatorias-cv.json`, normalised to the same shape, and set `respaldo: true`.
-- [ ] FR-007 — `cobertura` MUST name what was not checked: municipal aids outside València and self-employed calls (`tiposBeneficiario=3`).
-- [ ] FR-008 — Fichas MUST be cached in memory for 10 minutes by BDNS number.
+- [X] FR-001 — The 8 catalogue aids (`tipo: "ayuda"`) MUST stay unless a stated fact blocks them; each kept aid MUST list in `pendiente` the fields that would decide it.
+- [X] FR-002 — The engine MUST run the 3 searches of `SETUP.md` (Generalitat, State, Ayuntamiento de València; `tiposBeneficiario=1`) in parallel, each with a 5 s timeout.
+- [X] FR-003 — The engine MUST drop "concesión directa - instrumental" calls and fetch at most 10 fichas, with at most 3 requests in flight.
+- [X] FR-004 — Status MUST come from `fechaInicioSolicitud`/`fechaFinSolicitud` against today; `abierto` alone MUST map to `permanente`; no dates and no `abierto` MUST map to `desconocido`.
+- [X] FR-005 — Results MUST be ranked by need-to-purpose match, then title-keyword overlap; catalogue aids go first.
+- [X] FR-006 — If a BDNS call fails or times out, the engine MUST use `datos/bdns-convocatorias-cv.json`, normalised to the same shape, and set `respaldo: true`.
+- [X] FR-007 — `cobertura` MUST name what was not checked: municipal aids outside València and self-employed calls (`tiposBeneficiario=3`).
+- [X] FR-008 — Fichas MUST be cached in memory for 10 minutes by BDNS number.
 
 ## Files
 
@@ -35,11 +39,11 @@
 
 ## Tasks
 
-- [ ] T001 [P] Write status from dates with tests in `src/lib/motor/estado.ts` → FR-004
-- [ ] T002 [P] Write the 8 catalogue rules with tests on the 4 profiles in `src/lib/motor/catalogo.ts` → FR-001
-- [ ] T003 [P] Write ranking with tests in `src/lib/motor/ranking.ts` → FR-005
-- [ ] T004 Record one response per call into `src/lib/motor/grabaciones/`; write `src/lib/bdns.ts` with tests for filter, limit, timeout, fallback and cache → FR-002, FR-003, FR-006, FR-008
-- [ ] T005 Wire it all in `src/lib/motor/index.ts` with coverage; test the 4 profiles end to end on recordings → FR-007
+- [X] T001 [P] Write status from dates with tests in `src/lib/motor/estado.ts` → FR-004
+- [X] T002 [P] Write the 8 catalogue rules with tests on the 4 profiles in `src/lib/motor/catalogo.ts` → FR-001
+- [X] T003 [P] Write ranking with tests in `src/lib/motor/ranking.ts` → FR-005
+- [X] T004 Record one response per call into `src/lib/motor/grabaciones/`; write `src/lib/bdns.ts` with tests for filter, limit, timeout, fallback and cache → FR-002, FR-003, FR-006, FR-008
+- [X] T005 Wire it all in `src/lib/motor/index.ts` with coverage; test the 4 profiles end to end on recordings → FR-007
 
 ## Assumptions
 

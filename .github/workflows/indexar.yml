@@ -1,0 +1,94 @@
+# S4 (FR-013): runs the aid indexing job every night and on demand, builds, and
+# commits src/datos/ only when it changed. The LLM key is a repo secret; the job
+# never reads citizen text. `--dry-run --limit 3` from the Actions tab writes nothing.
+name: Indexar ayudas
+
+on:
+  schedule:
+    # 03:17 UTC daily: off-peak for the shared HelmCode quota.
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Fetch and extract without writing (--dry-run)"
+        type: boolean
+        default: true
+      limit:
+        description: "Max pages to read this run (--limit N); empty keeps the job's default"
+        type: string
+        default: "3"
+      backfill:
+        description: "Lift the 30-call cap for a first fill (--backfill)"
+        type: boolean
+        default: false
+
+# One run at a time: two jobs pushing src/datos/ would race each other.
+concurrency:
+  group: indexar
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  indexar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.4.3"
+
+      - run: bun install --frozen-lockfile
+
+      - name: Compose flags
+        id: flags
+        shell: bash
+        run: |
+          flags=""
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            [ "${{ inputs.dry_run }}" = "true" ] && flags="$flags --dry-run"
+            [ "${{ inputs.backfill }}" = "true" ] && flags="$flags --backfill"
+            [ -n "${{ inputs.limit }}" ] && flags="$flags --limit ${{ inputs.limit }}"
+          fi
+          echo "flags=$flags" >> "$GITHUB_OUTPUT"
+          echo "Flags: ${flags:-<none>}"
+
+      - name: Run the job
+        env:
+          HELMCODE_API_KEY: ${{ secrets.HELMCODE_API_KEY }}
+          HELMCODE_MODEL: ${{ vars.HELMCODE_MODEL || 'glm5.3-flash' }}
+          HELMCODE_BASE_URL: ${{ vars.HELMCODE_BASE_URL }}
+        run: bun run indexar ${{ steps.flags.outputs.flags }}
+
+      - name: Check for changes
+        id: changes
+        shell: bash
+        run: |
+          if [ -n "$(git status --porcelain -- src/datos)" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            git status --short -- src/datos
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "src/datos unchanged: nothing to commit"
+          fi
+
+      # The build must pass before anything reaches main (AGENTS.md).
+      - name: Build
+        if: steps.changes.outputs.changed == 'true'
+        run: bun run build
+
+      - name: Commit and push src/datos
+        if: steps.changes.outputs.changed == 'true'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- src/datos
+          git commit -m "Update central aids from the nightly index ($(date -u +%Y-%m-%d))"
+          git pull --rebase origin main
+          git push origin HEAD:main

@@ -6,13 +6,17 @@
 
 S1, S2 and S3 can start in parallel against fixed types, realistic fixtures and a mock `/api/chat`.
 
+## Status (2026-10-22)
+
+Done and superseded. S2 and S3 replaced the mock route, the stub `buscarAyudas` and the fixtures of `src/datos/ejemplos/` (removed); FR-002 and FR-004 no longer apply. FR-003's validation (400 on empty `mensajes` or a text over 2,000 characters) lives in the real route. Verified against the code, not re-run as written.
+
 ## Requirements
 
-- [ ] FR-001 — `src/lib/tipos.ts` MUST export `MensajeChat`, `CampoPerfil`, `Hecho`, `Perfil`, `Ficha`, `Cobertura`, `Respuesta` and `BuscarAyudas` with the shapes under Decisions.
+- [X] FR-001 — `src/lib/tipos.ts` MUST export `MensajeChat`, `CampoPerfil`, `Hecho`, `Perfil`, `Ficha`, `Cobertura`, `Respuesta` and `BuscarAyudas` with the shapes under Decisions.
 - [ ] FR-002 — `src/datos/ejemplos/` MUST hold one `Respuesta` per test profile of `SETUP.md` (4), using only real catalogue aids and their real links.
-- [ ] FR-003 — `POST /api/chat` MUST return the fixture whose profile matches the last user message (default: first profile), and 400 if `mensajes` is empty or a text exceeds 2,000 characters.
+- [X] FR-003 — `POST /api/chat` MUST return the fixture whose profile matches the last user message (default: first profile), and 400 if `mensajes` is empty or a text exceeds 2,000 characters.
 - [ ] FR-004 — `buscarAyudas` in `src/lib/motor/index.ts` MUST exist as a stub that returns a fixture's `fichas` and `cobertura`.
-- [ ] FR-005 — `bun run typecheck`, `bun run build` and `bun test` MUST pass.
+- [X] FR-005 — `bun run typecheck`, `bun run build` and `bun test` MUST pass.
 
 ## Files
 
@@ -34,11 +38,11 @@ S1, S2 and S3 can start in parallel against fixed types, realistic fixtures and 
 
 ## Tasks
 
-- [ ] T001 Write the types in `src/lib/tipos.ts` → FR-001
-- [ ] T002 [P] Write the 4 fixtures from `datos/catalogo-tramites-ayudas.json` in `src/datos/ejemplos/index.ts` → FR-002
-- [ ] T003 [P] Write the stub `buscarAyudas` in `src/lib/motor/index.ts` → FR-004
-- [ ] T004 Add the test script to `package.json`; write the mock route and its test in `src/app/api/chat/` → FR-003, FR-005
-- [ ] T005 Run typecheck, build and test → FR-005
+- [X] T001 Write the types in `src/lib/tipos.ts` → FR-001
+- [X] T002 [P] Write the 4 fixtures from `datos/catalogo-tramites-ayudas.json` in `src/datos/ejemplos/index.ts` → FR-002
+- [X] T003 [P] Write the stub `buscarAyudas` in `src/lib/motor/index.ts` → FR-004
+- [X] T004 Add the test script to `package.json`; write the mock route and its test in `src/app/api/chat/` → FR-003, FR-005
+- [X] T005 Run typecheck, build and test → FR-005
 
 ## Assumptions
 
