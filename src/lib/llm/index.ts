@@ -55,9 +55,10 @@ type Dependencias = {
   alAvanzar?: (paso: Paso) => void;
 };
 
-// Presupuesto con agente, dentro de los 60 s de la ruta: el LLM (agente y, si
+// Presupuesto con agente, dentro de los 120 s de la ruta: el LLM (agente y, si
 // falla rápido, el bucle sin herramientas) y después la BDNS y sus requisitos.
-const MS_LLM_CON_AGENTE = 38_000;
+// Con HelmCode cargado, cada llamada tarda hasta 15 s y el agente hace dos o tres.
+const MS_LLM_CON_AGENTE = 70_000;
 const MS_BUSQUEDA = 14_000;
 const MS_REQUISITOS = 4_000;
 // Convocatorias que se proponen solas si el LLM no elige ninguna, y cuántas
@@ -89,7 +90,7 @@ export async function responder(
     buscar,
     requisitos,
     comprobar,
-    msAgente = 30_000,
+    msAgente = 60_000,
     anterior = null,
     ayudasAnteriores = [],
     alAvanzar = () => {},

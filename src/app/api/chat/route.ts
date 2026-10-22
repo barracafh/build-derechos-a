@@ -8,9 +8,9 @@ import type { EventoChat, MensajeChat } from "@/lib/tipos";
 // POST {"mensajes": MensajeChat[], "perfil"?: Perfil, "ayudas"?: string[]} → NDJSON de EventoChat que acaba en la Respuesta (spec 003).
 // No se guarda ni se registra lo que escribe la persona.
 
-// El LLM con herramientas (30 s como mucho) o, si falla rápido, sin ellas, y
+// El LLM con herramientas (60 s como mucho) o, si falla rápido, sin ellas, y
 // después la BDNS: el reparto está en lib/llm/index.ts.
-export const maxDuration = 60;
+export const maxDuration = 120;
 
 const error400 = (m: string) => Response.json({ error: m }, { status: 400 });
 
