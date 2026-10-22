@@ -89,6 +89,12 @@ export type Respuesta = {
   pregunta: string | null;
 };
 
+/** Fase en la que está la búsqueda. Solo una clave fija, nunca texto del LLM. */
+export type Paso = "leyendo" | "reintentando" | "comprobando" | "buscando";
+
+/** Cada línea de la respuesta de /api/chat (NDJSON): fases y, al final, la respuesta. */
+export type EventoChat = { paso: Paso } | { respuesta: Respuesta };
+
 export type BuscarAyudas = (
   perfil: Perfil,
 ) => Promise<{ fichas: Ficha[]; cobertura: Cobertura }>;

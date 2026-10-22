@@ -1,7 +1,7 @@
 import type { ArgsBuscar, AyudaEncontrada, ResultadoBuscar } from "@/lib/ayudas/buscar";
 import type { ErrorUbicacion } from "@/lib/ayudas/territorio";
 import type { Mensaje } from "@/lib/ia";
-import { elegirPregunta, TEXTO_PREGUNTA } from "@/lib/llm/pregunta";
+import { elegirPregunta, PREGUNTA_INICIAL, TEXTO_PREGUNTA } from "@/lib/llm/pregunta";
 import { hablaDeDana, perfilDeTexto } from "@/lib/llm/respaldo";
 import {
   bloqueada,
@@ -11,7 +11,7 @@ import {
   noCubiertoPor,
   porEstado,
 } from "@/lib/motor/catalogo";
-import type { Cobertura, Ficha, MensajeChat, Perfil, Respuesta } from "@/lib/tipos";
+import type { Cobertura, Ficha, MensajeChat, Paso, Perfil, Respuesta } from "@/lib/tipos";
 import {
   conversarConHerramientas,
   nuevosHallazgos,
@@ -20,7 +20,7 @@ import {
   type Hallazgos,
 } from "./agente";
 import { busquedaDelPerfil, coberturaConBdns, fichaDeBdns, temasEnTitulo } from "./bdns";
-import { construirMensajes, leerRespuesta, type Lectura } from "./perfil";
+import { construirMensajes, leerDatos, leerRespuesta, type Lectura } from "./perfil";
 
 // Un segundo intento solo si el primero falla, tarda demasiado o no trae JSON.
 export const INTENTOS = 2;
@@ -36,6 +36,10 @@ type Dependencias = {
   buscar?: (args: ArgsBuscar) => Promise<ResultadoBuscar | ErrorUbicacion>;
   requisitos?: (numero: string) => Promise<string[]>;
   msAgente?: number;
+  // Lo que manda el navegador del turno anterior: se valida antes de usarlo.
+  anterior?: unknown;
+  ayudasAnteriores?: unknown;
+  alAvanzar?: (paso: Paso) => void;
 };
 
 // Presupuesto con agente, dentro de los 60 s de la ruta: el LLM (agente y, si
@@ -71,6 +75,9 @@ export async function responder(
     buscar,
     requisitos,
     msAgente = 30_000,
+    anterior = null,
+    ayudasAnteriores = [],
+    alAvanzar = () => {},
   }: Dependencias,
 ): Promise<Respuesta> {
   const empezado = Date.now();
@@ -93,16 +100,26 @@ export async function responder(
     };
 
   // En los registros, solo el error de HelmCode, nunca el texto de la persona.
+  // Solo ids con forma de ayuda: van al prompt.
+  const anteriores = (Array.isArray(ayudasAnteriores) ? ayudasAnteriores : [])
+    .filter(
+      (id): id is string =>
+        typeof id === "string" && (IDS_AYUDAS.includes(id) || /^bdns:[\w-]{1,40}$/.test(id)),
+    )
+    .slice(0, 15);
   let lectura: Lectura | null = null;
   const hallazgos = nuevosHallazgos();
   let sinTiempo = false;
   if (agente) {
+    alAvanzar("leyendo");
     try {
       const texto = await conLimite(
-        conversarConHerramientas(mensajes, agente, hallazgos, ejecutar),
+        conversarConHerramientas(mensajes, agente, hallazgos, ejecutar, anteriores),
         msAgente,
       );
-      lectura = texto ? leerRespuesta(texto, mensajes, new Set(hallazgos.ayudas.keys())) : null;
+      lectura = texto
+        ? leerRespuesta(texto, mensajes, new Set(hallazgos.ayudas.keys()), anterior)
+        : null;
       if (!lectura) console.error("LLM con herramientas: la respuesta no trae JSON");
     } catch (error) {
       sinTiempo = (error as Error).message.startsWith("sin respuesta");
@@ -114,14 +131,16 @@ export async function responder(
   for (let intento = 1; intento <= INTENTOS && !lectura && !sinTiempo; intento++) {
     const ms = Math.min(msPorIntento, finLLM - Date.now());
     if (agente && ms < 2_000) break;
+    alAvanzar(intento === 1 && !agente ? "leyendo" : "reintentando");
     try {
-      const texto = await conLimite(completar(construirMensajes(mensajes)), ms);
-      lectura = leerRespuesta(texto, mensajes);
+      const texto = await conLimite(completar(construirMensajes(mensajes, { anteriores })), ms);
+      lectura = leerRespuesta(texto, mensajes, undefined, anterior);
       if (!lectura) console.error(`LLM, intento ${intento}: la respuesta no trae JSON`);
     } catch (error) {
       console.error(`LLM, intento ${intento}:`, (error as Error).message);
     }
   }
+  alAvanzar("comprobando");
 
   let perfil: Perfil;
   let fichas: Ficha[];
@@ -136,7 +155,14 @@ export async function responder(
         ),
     );
   } else {
-    perfil = perfilDeTexto(delUsuario.map((m) => m.texto).join("\n"));
+    // Lo que leen las reglas y, para lo que no encuentran, el perfil anterior validado.
+    const leido = perfilDeTexto(delUsuario.map((m) => m.texto).join("\n"));
+    const previo = leerDatos({}, mensajes, undefined, anterior).perfil;
+    const nuevos = new Set(leido.hechos.map((h) => h.campo));
+    perfil = {
+      hechos: [...previo.hechos.filter((h) => !nuevos.has(h.campo)), ...leido.hechos],
+      necesidad: leido.necesidad ?? previo.necesidad,
+    };
     fichas = fichasDelCatalogo(perfil, hoy);
     noConsultado.push(
       "La lectura de tu mensaje con inteligencia artificial. No ha funcionado y he buscado palabras clave.",
@@ -151,14 +177,21 @@ export async function responder(
     respaldo: true,
     fechaConsulta,
   };
-  if (!buscar) return { perfil, fichas, cobertura: base, pregunta: elegirPregunta(fichas, perfil) };
+  if (!buscar)
+    return { perfil, fichas, cobertura: base, pregunta: elegirPregunta(fichas, perfil, mensajes) };
 
+  alAvanzar("buscando");
   const bdns = await conBdns(perfil, lectura, hallazgos, buscar, requisitos);
+  // La pregunta de la BDNS (dónde vives) va primero, salvo que ya se hiciera o
+  // que aún no se sepa nada de la persona.
+  const guiada = elegirPregunta(fichas, perfil, mensajes);
+  const hecha = (p: string) => mensajes.some((m) => m.rol === "asistente" && m.texto === p);
   return {
     perfil,
     fichas: porEstado([...fichas, ...bdns.fichas]),
     cobertura: coberturaConBdns(base, hallazgos.busqueda, bdns.motivo),
-    pregunta: bdns.pregunta ?? elegirPregunta(fichas, perfil),
+    pregunta:
+      bdns.pregunta && guiada !== PREGUNTA_INICIAL && !hecha(bdns.pregunta) ? bdns.pregunta : guiada,
   };
 }
 

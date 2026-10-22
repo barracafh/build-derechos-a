@@ -36,6 +36,8 @@ Formato:
 
 Reglas:
 - "cita" y cada elemento de "citas" copian literalmente un trozo de lo que escribió la persona. Sin cita no hay dato.
+- En "hechos", solo los del último mensaje de la persona: los de antes ya los tengo.
+- Si la persona contesta a una pregunta del asistente con algo corto ("unos 400 al mes", "no", "dos"), la pregunta te dice a qué campo va. La cita es lo que escribió la persona.
 - Campos posibles, solo si la persona los dice:
   - edad: número entero, como texto ("24")
   - hijos: número entero, como texto ("0" si dice que no tiene)
@@ -60,12 +62,20 @@ Herramientas:
 - Después responde con el JSON. En "elegidos" puedes añadir ids "bdns:…" que haya devuelto buscar_ayudas, solo si encajan con lo que cuenta (no premios, concursos ni becas de investigación salvo que los pida), con "citas" literales que expliquen por qué. Como mucho 5 convocatorias "bdns:…".
 - No elijas convocatorias con estado "cerrada".`;
 
+// `anteriores`: ids de las ayudas que ya vio la persona, para que la lista no
+// cambie de un turno a otro sin motivo. El código los ha filtrado antes.
 export function construirMensajes(
   mensajes: MensajeChat[],
-  { herramientas = false }: { herramientas?: boolean } = {},
+  { herramientas = false, anteriores = [] }: { herramientas?: boolean; anteriores?: string[] } = {},
 ): Mensaje[] {
+  const yaVistas = anteriores.length
+    ? `\n\nEn el turno anterior le mostraste: ${anteriores.join(", ")}. Vuelve a elegirlas si siguen encajando con lo que sabes ahora; quítalas solo si algo nuevo las descarta.`
+    : "";
   return [
-    { role: "system", content: herramientas ? SISTEMA + CON_HERRAMIENTAS : SISTEMA },
+    {
+      role: "system",
+      content: (herramientas ? SISTEMA + CON_HERRAMIENTAS : SISTEMA) + yaVistas,
+    },
     ...mensajes.map((m) => ({
       role: m.rol === "usuario" ? ("user" as const) : ("assistant" as const),
       content: m.texto,
@@ -98,10 +108,13 @@ function valorValido(campo: CampoPerfil, valor: unknown, cita: string): string |
 // Devuelve null si la respuesta no trae un objeto JSON: entonces se usa el respaldo.
 // `idsExtra`: ids «bdns:…» que devolvió buscar_ayudas en esta misma petición;
 // cualquier otro id que no sea del catálogo se descarta.
+// `anterior` es el perfil del turno anterior. Lo manda el navegador, así que pasa
+// las mismas comprobaciones que lo que dice el LLM, y lo nuevo gana.
 export function leerRespuesta(
   texto: string,
   mensajes: MensajeChat[],
   idsExtra: ReadonlySet<string> = new Set(),
+  anterior: unknown = null,
 ): Lectura | null {
   const inicio = texto.indexOf("{");
   const fin = texto.lastIndexOf("}");
@@ -113,7 +126,21 @@ export function leerRespuesta(
     return null;
   }
   if (typeof datos !== "object" || datos === null || Array.isArray(datos)) return null;
-  const { hechos, necesidad, elegidos } = datos as Record<string, unknown>;
+  return leerDatos(datos as Record<string, unknown>, mensajes, idsExtra, anterior);
+}
+
+// Lo mismo, con los datos ya como objeto. Con `{}`, valida solo el perfil anterior.
+export function leerDatos(
+  datos: Record<string, unknown>,
+  mensajes: MensajeChat[],
+  idsExtra: ReadonlySet<string> = new Set(),
+  anterior: unknown = null,
+): Lectura {
+  const { hechos, necesidad, elegidos } = datos;
+  const previo = (typeof anterior === "object" && anterior !== null ? anterior : {}) as Record<
+    string,
+    unknown
+  >;
 
   const escrito = mensajes
     .filter((m) => m.rol === "usuario")
@@ -125,7 +152,8 @@ export function leerRespuesta(
 
   // El último dato válido de cada campo gana.
   const porCampo = new Map<CampoPerfil, Hecho>();
-  for (const h of Array.isArray(hechos) ? hechos : []) {
+  const lista = (x: unknown) => (Array.isArray(x) ? x : []);
+  for (const h of [...lista(previo.hechos), ...lista(hechos)]) {
     if (typeof h !== "object" || h === null) continue;
     const campo = CAMPOS.find((c) => c === h.campo);
     if (!campo || !citaValida(h.cita)) continue;
@@ -136,7 +164,11 @@ export function leerRespuesta(
   }
   const perfil: Perfil = {
     hechos: [...porCampo.values()],
-    necesidad: citaValida(necesidad) ? necesidad : null,
+    necesidad: citaValida(necesidad)
+      ? necesidad
+      : citaValida(previo.necesidad)
+        ? previo.necesidad
+        : null,
   };
 
   const validos: Elegido[] = [];

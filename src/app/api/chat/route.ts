@@ -2,9 +2,9 @@ import { buscarAyudas } from "@/lib/ayudas/buscar";
 import { requisitosDelExtracto } from "@/lib/ayudas/requisitos";
 import { completar, completarConHerramientas } from "@/lib/ia";
 import { responder } from "@/lib/llm";
-import type { MensajeChat } from "@/lib/tipos";
+import type { EventoChat, MensajeChat } from "@/lib/tipos";
 
-// POST {"mensajes": MensajeChat[]} → Respuesta (spec 003).
+// POST {"mensajes": MensajeChat[], "perfil"?: Perfil, "ayudas"?: string[]} → NDJSON de EventoChat que acaba en la Respuesta (spec 003).
 // No se guarda ni se registra lo que escribe la persona.
 
 // El LLM con herramientas (30 s como mucho) o, si falla rápido, sin ellas, y
@@ -17,7 +17,7 @@ function validos(m: unknown): m is MensajeChat[] {
   return (
     Array.isArray(m) &&
     m.length >= 1 &&
-    m.length <= 20 &&
+    m.length <= 60 &&
     m.every(
       (x) =>
         x &&
@@ -33,9 +33,9 @@ export async function POST(req: Request) {
   const cuerpo = await req.json().catch(() => null);
   if (!validos(cuerpo?.mensajes))
     return error400(
-      "Envía entre 1 y 20 mensajes de hasta 2.000 caracteres cada uno.",
+      "Envía entre 1 y 60 mensajes de hasta 2.000 caracteres cada uno.",
     );
-  // Solo rol y texto: cualquier otro campo del cuerpo se ignora.
+  // Solo rol y texto. `perfil` y `ayudas` (las del turno anterior) se validan en responder.
   const mensajes: MensajeChat[] = cuerpo.mensajes.map((m: MensajeChat) => ({
     rol: m.rol,
     texto: m.texto,
@@ -43,12 +43,29 @@ export async function POST(req: Request) {
   if (!mensajes.some((m) => m.rol === "usuario"))
     return error400("Falta un mensaje de la persona.");
 
-  const r = await responder(mensajes, {
-    completar,
-    hoy: new Date(),
-    agente: completarConHerramientas,
-    buscar: buscarAyudas,
-    requisitos: requisitosDelExtracto,
+  // Una línea JSON por evento: las fases según avanzan y, al final, la respuesta.
+  const cuerpoStream = new ReadableStream<Uint8Array>({
+    async start(controller) {
+      const enviar = (e: EventoChat) =>
+        controller.enqueue(new TextEncoder().encode(`${JSON.stringify(e)}\n`));
+      const respuesta = await responder(mensajes, {
+        completar,
+        hoy: new Date(),
+        agente: completarConHerramientas,
+        buscar: buscarAyudas,
+        requisitos: requisitosDelExtracto,
+        anterior: cuerpo.perfil,
+        ayudasAnteriores: cuerpo.ayudas,
+        alAvanzar: (paso) => enviar({ paso }),
+      });
+      enviar({ respuesta });
+      controller.close();
+    },
   });
-  return Response.json(r, { headers: { "cache-control": "no-store" } });
+  return new Response(cuerpoStream, {
+    headers: {
+      "content-type": "application/x-ndjson; charset=utf-8",
+      "cache-control": "no-store",
+    },
+  });
 }

@@ -106,8 +106,9 @@ export async function conversarConHerramientas(
   agente: Agente,
   hallazgos: Hallazgos,
   ejecutar: Ejecutar = ejecutarHerramienta,
+  anteriores: string[] = [],
 ): Promise<string | null> {
-  const historia: MensajeAgente[] = construirMensajes(mensajes, { herramientas: true });
+  const historia: MensajeAgente[] = construirMensajes(mensajes, { herramientas: true, anteriores });
   for (let ronda = 1; ronda <= RONDAS; ronda++) {
     const r = await agente(historia, HERRAMIENTAS);
     if (!r.tool_calls.length) return r.content;

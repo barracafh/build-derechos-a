@@ -24,7 +24,7 @@ import { Lineas } from "@/components/Texto";
 import { ruta, site } from "@/config/sitio";
 import { CATALOGO_ACTUALIZADO } from "@/datos/actualizacion";
 import { PanelCobertura } from "@/components/PanelCobertura";
-import type { MensajeChat, Respuesta } from "@/lib/tipos";
+import type { EventoChat, MensajeChat, Paso, Respuesta } from "@/lib/tipos";
 import ficha from "../../ficha.json";
 
 // Cada texto sigue las pautas de lectura fácil (UNE 153101 EX): frases cortas,
@@ -40,9 +40,21 @@ const EJEMPLOS = [
 
 type Mensaje =
   | { id: number; rol: "usuario"; texto: string }
-  | { id: number; rol: "asistente"; estado: "cargando" }
+  | { id: number; rol: "asistente"; estado: "cargando"; paso?: Paso }
   | { id: number; rol: "asistente"; estado: "error"; error: string; historial: MensajeChat[] }
   | { id: number; rol: "asistente"; estado: "ok"; respuesta: Respuesta };
+
+// Lo que se ve mientras se busca, según la fase que manda el servidor.
+const TEXTO_PASO: Record<Paso, string> = {
+  leyendo: "Leyendo tu mensaje",
+  reintentando: "Tarda un poco más. Lo intento otra vez",
+  comprobando: "Comprobando requisitos y plazos",
+  buscando: "Buscando convocatorias de tu zona",
+};
+
+// La conversación se guarda solo en esta pestaña (sessionStorage): sobrevive a
+// recargar y se borra al cerrarla. Nunca sale del navegador.
+const CLAVE_CONVERSACION = "akorda:conversacion";
 
 const fechaLarga = (iso: string) =>
   new Date(`${iso}T12:00:00`).toLocaleDateString("es-ES", {
@@ -160,7 +172,9 @@ function VistaRespuesta({
           className="font-sans text-3xl leading-9 font-medium"
         >
           {n === 0
-            ? "No he encontrado ayudas"
+            ? r.pregunta
+              ? "Necesito saber un poco más de ti"
+              : "No he encontrado ayudas"
             : n === 1
               ? "Podrías optar a 1 ayuda"
               : `Podrías optar a ${n} ayudas`}
@@ -196,7 +210,7 @@ function VistaRespuesta({
       )}
 
       {n === 0 ? (
-        <Card
+        !r.pregunta && <Card
           render={<section />}
           className="gap-4 bg-muted px-6 py-6 text-lg ring-0"
         >
@@ -281,7 +295,7 @@ function BurbujaAsistente({
         <span className="sr-only">Respuesta: </span>
         {m.estado === "cargando" && (
           <p className="text-(--text-secondary) leading-9">
-            Buscando ayudas
+            {m.paso ? TEXTO_PASO[m.paso] : "Buscando ayudas"}
             <span aria-hidden="true" className="motion-safe:animate-pulse">
               …
             </span>
@@ -360,11 +374,38 @@ export function Chat() {
     setFocoEn(null);
   }, [focoEn]);
 
+  // Al abrir, recupera la conversación de esta pestaña si la hay.
+  const [restaurada, setRestaurada] = useState(false);
+  useEffect(() => {
+    try {
+      const guardada = sessionStorage.getItem(CLAVE_CONVERSACION);
+      if (guardada) {
+        const ms = JSON.parse(guardada) as Mensaje[];
+        contador.current = Math.max(0, ...ms.map((m) => m.id));
+        setMensajes(ms);
+      }
+    } catch {
+      // Sin sessionStorage (modo privado, bloqueado): se empieza de cero.
+    }
+    setRestaurada(true);
+  }, []);
+
+  // Se guarda cuando no hay nada buscándose; «Nueva conversación» la borra.
+  useEffect(() => {
+    if (!restaurada || ocupado) return;
+    try {
+      if (mensajes.length === 0) sessionStorage.removeItem(CLAVE_CONVERSACION);
+      else sessionStorage.setItem(CLAVE_CONVERSACION, JSON.stringify(mensajes));
+    } catch {
+      // Si no se puede guardar, la conversación sigue en memoria.
+    }
+  }, [mensajes, ocupado, restaurada]);
+
   function reemplazar(id: number, nuevo: Mensaje) {
     setMensajes((ms) => ms.map((m) => (m.id === id ? nuevo : m)));
   }
 
-  // Historial que se manda: todo lo dicho, con las últimas 20 entradas.
+  // Historial que se manda: todo lo dicho, con las últimas 60 entradas.
   function historialCon(nuevo: string): MensajeChat[] {
     const previos: MensajeChat[] = mensajes.flatMap((m): MensajeChat[] =>
       m.rol === "usuario"
@@ -373,22 +414,48 @@ export function Chat() {
           ? [{ rol: "asistente", texto: m.respuesta.pregunta }]
           : [],
     );
-    return [...previos, { rol: "usuario" as const, texto: nuevo }].slice(-20);
+    return [...previos, { rol: "usuario" as const, texto: nuevo }].slice(-60);
   }
 
   async function buscar(idA: number, historial: MensajeChat[]) {
     reemplazar(idA, { id: idA, rol: "asistente", estado: "cargando" });
     setAnuncio("Buscando ayudas.");
+    // La última respuesta: el servidor junta su perfil con lo nuevo y le
+    // recuerda al LLM qué ayudas ya se vieron.
+    const previa = mensajes
+      .flatMap((m) => (m.rol === "asistente" && m.estado === "ok" && m.id < idA ? [m.respuesta] : []))
+      .at(-1);
     try {
       const res = await fetch(ruta("/api/chat"), {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ mensajes: historial }),
+        body: JSON.stringify({
+          mensajes: historial,
+          perfil: previa?.perfil,
+          ayudas: previa?.fichas.map((f) => f.id),
+        }),
       });
-      const datos = await res.json().catch(() => null);
-      if (!res.ok || !datos)
+      if (!res.ok || !res.body) {
+        const datos = await res.json().catch(() => null);
         throw new Error(datos?.error ?? "No he podido buscar ahora mismo.");
-      const respuesta = datos as Respuesta;
+      }
+      // Llega una línea JSON por evento: fases y, al final, la respuesta.
+      let respuesta: Respuesta | null = null;
+      let resto = "";
+      const lector = res.body.pipeThrough(new TextDecoderStream()).getReader();
+      for (let t = await lector.read(); !t.done; t = await lector.read()) {
+        const lineas = (resto + t.value).split("\n");
+        resto = lineas.pop()!;
+        for (const linea of lineas.filter(Boolean)) {
+          const e = JSON.parse(linea) as EventoChat;
+          if ("respuesta" in e) respuesta = e.respuesta;
+          else {
+            reemplazar(idA, { id: idA, rol: "asistente", estado: "cargando", paso: e.paso });
+            setAnuncio(`${TEXTO_PASO[e.paso]}.`);
+          }
+        }
+      }
+      if (!respuesta) throw new Error("No he podido buscar ahora mismo.");
       reemplazar(idA, { id: idA, rol: "asistente", estado: "ok", respuesta });
       const n = respuesta.fichas.length;
       setAnuncio(
@@ -567,6 +634,9 @@ export function Chat() {
 
               {hayRespuesta && (
                 <footer className="flex flex-wrap items-center gap-3">
+                  <p className="w-full text-base text-(--text-secondary)">
+                    Tu conversación solo se guarda en esta pestaña y se borra al cerrarla.
+                  </p>
                   <a
                     href={site.feedbackUrl}
                     className={cn(

@@ -19,7 +19,7 @@ describe("/api/chat", () => {
     expect((await pedir({ mensajes: ["hola"] })).status).toBe(400);
     expect((await pedir({ mensajes: [{ rol: "x", texto: "a" }] })).status).toBe(400);
     expect((await pedir({ mensajes: [{ rol: "usuario", texto: "   " }] })).status).toBe(400);
-    const largo = Array.from({ length: 21 }, () => ({ rol: "usuario", texto: "a" }));
+    const largo = Array.from({ length: 61 }, () => ({ rol: "usuario", texto: "a" }));
     expect((await pedir({ mensajes: largo })).status).toBe(400);
     expect(
       (await pedir({ mensajes: [{ rol: "usuario", texto: "a".repeat(2001) }] })).status,

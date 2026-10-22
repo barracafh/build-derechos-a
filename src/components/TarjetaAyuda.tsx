@@ -91,7 +91,7 @@ export function TarjetaAyuda({ f, n }: { f: Ficha; n: number }) {
             </Badge>
             <Badge
               variant="outline"
-              className={`h-8 px-3 text-base ${AMBITO[f.administracion].clase}`}
+              className={`h-auto min-h-8 shrink px-3 py-1 text-base whitespace-normal ${AMBITO[f.administracion].clase}`}
             >
               {AMBITO[f.administracion].texto(d?.ambito ?? null)}
             </Badge>
