@@ -69,3 +69,9 @@
 a.foco-interno:focus-visible {
   outline-offset: -3px;
 }
+
+/* El contenedor principal solo recibe el foco como destino del enlace «Saltar
+   al contenido»; no es un control, así que no lleva anillo. */
+main#contenido:focus-visible {
+  outline: none;
+}
