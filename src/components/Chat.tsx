@@ -476,7 +476,7 @@ export function Chat() {
       >
         {!enChat ? (
           <div className="mx-auto grid w-full max-w-[760px] flex-1 grid-cols-[minmax(0,1fr)] content-center gap-10 px-(--page-gutter) py-10">
-            <div className="grid gap-5">
+            <div className="grid gap-5 text-center">
               <h1 className="font-sans text-[clamp(32px,5vw,48px)] leading-[1.15] font-medium">
                 {PREGUNTA}
               </h1>
