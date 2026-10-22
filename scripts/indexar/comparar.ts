@@ -1,6 +1,6 @@
 // T005 check with the real LLM: extract 2 catalogue aids from their recorded pages
 // and print the result next to the catalogue entry. Needs HELMCODE_API_KEY and
-// HELMCODE_MODEL in .env.local. Run: bun scripts/indexar/comparar.ts
+// HELMCODE_MODEL in .env.local. Run: bun scripts/indexar/comparar.ts [catalogue id …]
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import catalogo from "../../datos/catalogo-tramites-ayudas.json";
@@ -18,7 +18,9 @@ const CASOS = [
 
 const CAMPOS = ["titulo", "organismo", "requisitos_clave", "pasos", "documentacion", "plazo"] as const;
 
-for (const caso of CASOS) {
+const pedidos = process.argv.slice(2);
+
+for (const caso of CASOS.filter((c) => pedidos.length === 0 || pedidos.includes(c.id))) {
   const html = readFileSync(join(import.meta.dir, "grabaciones", caso.archivo), "utf8");
   const { texto, enlaces } = leerHtml(html, caso.url);
   const titulo = texto.split("\n").find((l) => l.startsWith("## "))?.slice(3) ?? null;
