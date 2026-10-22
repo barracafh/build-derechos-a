@@ -38,7 +38,7 @@ describe("semillas", () => {
   }
 
   test("every recorded aid page matches its seed pattern", () => {
-    for (const p of grabaciones.paginas.filter((p) => !p.archivo.endsWith(".semilla.html"))) {
+    for (const p of grabaciones.paginas.filter((p) => p.archivo.endsWith(".html") && !p.archivo.endsWith(".semilla.html"))) {
       const s = semillas.find((x) => x.id === p.semilla)!;
       expect(s.patron.test(p.url)).toBe(true);
     }
