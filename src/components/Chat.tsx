@@ -485,6 +485,14 @@ export function Chat() {
               <h1 className="font-sans text-[clamp(32px,5vw,48px)] leading-[1.15] font-medium">
                 {PREGUNTA}
               </h1>
+              <Lineas
+                lineas={[
+                  "Cuéntanos tu situación.",
+                  "Te decimos qué ayudas pueden ser para ti.",
+                  "También te decimos qué tienes que cumplir y dónde pedirlas.",
+                ]}
+                className="text-xl leading-[1.5] text-(--text-secondary)"
+              />
             </div>
 
             <div className="grid grid-cols-[minmax(0,1fr)] gap-4">
