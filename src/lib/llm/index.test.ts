@@ -2,6 +2,7 @@ import { describe, expect, test } from "bun:test";
 import type { Mensaje } from "@/lib/ia";
 import type { MensajeChat, Respuesta } from "@/lib/tipos";
 import { responder } from "./index";
+import { PREGUNTA_INICIAL } from "./pregunta";
 
 const hoy = new Date("2026-10-22T10:00:00+02:00");
 const usuario = (texto: string): MensajeChat => ({ rol: "usuario", texto });
@@ -190,7 +191,8 @@ describe("responder", () => {
       respaldo: true,
       fechaConsulta: "2026-10-22",
     });
-    expect(r.pregunta).toBeNull();
+    // Sin ningún dato ni necesidad, la primera pregunta guía a la persona.
+    expect(r.pregunta).toBe(PREGUNTA_INICIAL);
   });
 });
 
