@@ -21,7 +21,8 @@ import { BotonAviso } from "@/components/BotonAviso";
 import { TarjetaAyuda } from "@/components/TarjetaAyuda";
 import { Lineas, Lista } from "@/components/Texto";
 import { ruta, site } from "@/config/sitio";
-import type { Respuesta } from "@/lib/buscar";
+import { PanelCobertura } from "@/components/PanelCobertura";
+import type { MensajeChat, Respuesta } from "@/lib/tipos";
 import ficha from "../../ficha.json";
 
 // Cada texto sigue las pautas de lectura fácil (UNE 153101 EX): frases cortas,
@@ -38,7 +39,7 @@ const EJEMPLOS = [
 type Mensaje =
   | { id: number; rol: "usuario"; texto: string }
   | { id: number; rol: "asistente"; estado: "cargando" }
-  | { id: number; rol: "asistente"; estado: "error"; error: string }
+  | { id: number; rol: "asistente"; estado: "error"; error: string; historial: MensajeChat[] }
   | { id: number; rol: "asistente"; estado: "ok"; respuesta: Respuesta };
 
 const fechaLarga = (iso: string) =>
@@ -119,8 +120,34 @@ function Composer({
   );
 }
 
-function VistaRespuesta({ id, r }: { id: number; r: Respuesta }) {
-  const n = r.resultados.length;
+const UNIDAD_HECHO: Record<string, string> = {
+  edad: "Edad",
+  municipio: "Lugar",
+  situacionLaboral: "Trabajo",
+  vivienda: "Vivienda",
+  hijos: "Hijos",
+  ingresos: "Ingresos",
+  pension: "Pensión",
+  discapacidad: "Discapacidad",
+};
+
+function VistaRespuesta({
+  id,
+  r,
+  alPreguntar,
+}: {
+  id: number;
+  r: Respuesta;
+  alPreguntar: () => void;
+}) {
+  const n = r.fichas.length;
+  const entendido = [
+    ...r.perfil.hechos.map((h) => `${UNIDAD_HECHO[h.campo]}: ${h.valor}`),
+    ...(r.perfil.necesidad ? [`Lo que buscas: ${r.perfil.necesidad}`] : []),
+  ];
+  const ahora = r.fichas.filter(
+    (f) => f.estado === "abierta" || f.estado === "permanente",
+  );
   return (
     <>
       <div className="grid gap-3">
@@ -132,23 +159,23 @@ function VistaRespuesta({ id, r }: { id: number; r: Respuesta }) {
           {n === 0
             ? "No he encontrado ayudas"
             : n === 1
-              ? "He encontrado 1 ayuda que puede ser para ti"
-              : `He encontrado ${n} ayudas que pueden ser para ti`}
+              ? "Podrías optar a 1 ayuda"
+              : `Podrías optar a ${n} ayudas`}
         </h2>
         <Lineas
           lineas={[
             "Esto no es seguro.",
             "Comprueba siempre los requisitos en la información oficial.",
-            `Hemos mirado el catálogo el ${fechaLarga(r.consultado)}.`,
+            `Hemos mirado el ${fechaLarga(r.cobertura.fechaConsulta)}.`,
           ]}
           className="text-(--text-secondary)"
         />
       </div>
 
-      {r.perfil.length > 0 && (
+      {entendido.length > 0 && (
         <section className="grid gap-3">
           <h3 className={H3}>Lo que he entendido de ti</h3>
-          <Lista items={r.perfil} />
+          <Lista items={entendido} />
           <p>Si algo está mal, escríbelo otra vez.</p>
         </section>
       )}
@@ -181,41 +208,60 @@ function VistaRespuesta({ id, r }: { id: number; r: Respuesta }) {
         </Card>
       ) : (
         <ol className="grid gap-6">
-          {r.resultados.map((x, i) => (
-            <TarjetaAyuda key={x.id} r={x} n={i + 1} />
+          {r.fichas.map((x, i) => (
+            <TarjetaAyuda key={x.id} f={x} n={i + 1} />
           ))}
         </ol>
       )}
 
-      {r.huecos.length > 0 && (
-        <Card
-          render={<section />}
-          className="gap-4 bg-muted px-6 py-6 text-lg ring-0"
-        >
-          <h3 className={H3}>Lo que no he podido mirar</h3>
-          <ul className="grid gap-4">
-            {r.huecos.map((h) => (
-              <li key={h.join("|")}>
-                <Lineas lineas={h} />
-              </li>
-            ))}
-          </ul>
-        </Card>
+      <PanelCobertura c={r.cobertura} />
+
+      {r.pregunta && (
+        <section className="grid gap-3">
+          <h3 className={H3}>Para afinar la búsqueda</h3>
+          <p>{r.pregunta}</p>
+          <div>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={alPreguntar}
+              className="h-auto min-h-12 px-5 py-2 text-lg"
+            >
+              Responder
+            </Button>
+          </div>
+        </section>
       )}
 
-      <section className="grid gap-3">
-        <h3 className={H3}>Resumen</h3>
-        <Lista items={r.resumen} />
-        <p>Puedes escribirme más datos y busco otra vez.</p>
-      </section>
+      {n > 0 && (
+        <section className="grid gap-3">
+          <h3 className={H3}>Resumen</h3>
+          <Lista
+            items={[
+              n === 1
+                ? "Hay 1 ayuda que puede ser para ti."
+                : `Hay ${n} ayudas que pueden ser para ti.`,
+              ...(ahora.length
+                ? [`Puedes pedir ahora: ${ahora.map((f) => f.titulo).join(", ")}.`]
+                : []),
+              "Comprueba siempre los requisitos en la información oficial.",
+            ]}
+          />
+          <p>Puedes escribirme más datos y busco otra vez.</p>
+        </section>
+      )}
     </>
   );
 }
 
 function BurbujaAsistente({
   m,
+  alPreguntar,
+  alReintentar,
 }: {
   m: Extract<Mensaje, { rol: "asistente" }>;
+  alPreguntar: () => void;
+  alReintentar: (id: number, historial: MensajeChat[]) => void;
 }) {
   return (
     <div className="grid grid-cols-[36px_minmax(0,1fr)] gap-x-3 md:gap-x-4">
@@ -242,9 +288,17 @@ function BurbujaAsistente({
           >
             <p className="font-medium">Ha habido un problema.</p>
             <p>{m.error}</p>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => alReintentar(m.id, m.historial)}
+              className="mt-3 h-auto min-h-12 px-5 py-2 text-lg"
+            >
+              Intentar otra vez
+            </Button>
           </div>
         )}
-        {m.estado === "ok" && <VistaRespuesta id={m.id} r={m.respuesta} />}
+        {m.estado === "ok" && <VistaRespuesta id={m.id} r={m.respuesta} alPreguntar={alPreguntar} />}
       </div>
     </div>
   );
@@ -304,42 +358,33 @@ export function Chat() {
     setMensajes((ms) => ms.map((m) => (m.id === id ? nuevo : m)));
   }
 
-  async function enviar(directo?: string) {
-    const limpio = (directo ?? texto).trim();
-    if (!limpio || ocupado) return;
+  // Historial que se manda: todo lo dicho, con las últimas 20 entradas.
+  function historialCon(nuevo: string): MensajeChat[] {
+    const previos: MensajeChat[] = mensajes.flatMap((m): MensajeChat[] =>
+      m.rol === "usuario"
+        ? [{ rol: "usuario", texto: m.texto }]
+        : m.estado === "ok" && m.respuesta.pregunta
+          ? [{ rol: "asistente", texto: m.respuesta.pregunta }]
+          : [],
+    );
+    return [...previos, { rol: "usuario" as const, texto: nuevo }].slice(-20);
+  }
 
-    // La conversación vive solo en el navegador. Cada búsqueda lleva lo que la
-    // persona ha contado hasta ahora, para que los datos se vayan sumando.
-    const partes = [
-      ...mensajes.flatMap((m) => (m.rol === "usuario" ? [m.texto] : [])),
-      limpio,
-    ];
-    while (partes.length > 1 && partes.join("\n").length > 2000) partes.shift();
-    const contexto = partes.join("\n").slice(-2000);
-
-    const idU = ++contador.current;
-    const idA = ++contador.current;
-    setMensajes((ms) => [
-      ...ms,
-      { id: idU, rol: "usuario", texto: limpio },
-      { id: idA, rol: "asistente", estado: "cargando" },
-    ]);
-    setTexto("");
+  async function buscar(idA: number, historial: MensajeChat[]) {
+    reemplazar(idA, { id: idA, rol: "asistente", estado: "cargando" });
     setAnuncio("Buscando ayudas.");
-    entrada.current?.focus();
-
     try {
-      const res = await fetch(ruta("/api/ayudas"), {
+      const res = await fetch(ruta("/api/chat"), {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ texto: contexto }),
+        body: JSON.stringify({ mensajes: historial }),
       });
       const datos = await res.json().catch(() => null);
       if (!res.ok || !datos)
         throw new Error(datos?.error ?? "No he podido buscar ahora mismo.");
       const respuesta = datos as Respuesta;
       reemplazar(idA, { id: idA, rol: "asistente", estado: "ok", respuesta });
-      const n = respuesta.resultados.length;
+      const n = respuesta.fichas.length;
       setAnuncio(
         n === 0
           ? "No he encontrado ayudas."
@@ -351,6 +396,7 @@ export function Chat() {
         id: idA,
         rol: "asistente",
         estado: "error",
+        historial,
         error:
           err instanceof Error
             ? err.message
@@ -358,6 +404,27 @@ export function Chat() {
       });
       setAnuncio("Ha habido un problema.");
     }
+  }
+
+  function enviar(directo?: string) {
+    const limpio = (directo ?? texto).trim();
+    if (!limpio || ocupado) return;
+    const historial = historialCon(limpio);
+    const idU = ++contador.current;
+    const idA = ++contador.current;
+    setMensajes((ms) => [
+      ...ms,
+      { id: idU, rol: "usuario", texto: limpio },
+      { id: idA, rol: "asistente", estado: "cargando" },
+    ]);
+    setTexto("");
+    entrada.current?.focus();
+    void buscar(idA, historial);
+  }
+
+  // La pregunta de afinado lleva el cursor al cuadro de texto.
+  function preguntar() {
+    entrada.current?.focus();
   }
 
   function nueva() {
@@ -478,7 +545,12 @@ export function Chat() {
                     {m.texto}
                   </div>
                 ) : (
-                  <BurbujaAsistente key={m.id} m={m} />
+                  <BurbujaAsistente
+                    key={m.id}
+                    m={m}
+                    alPreguntar={preguntar}
+                    alReintentar={(id, h) => void buscar(id, h)}
+                  />
                 ),
               )}
 

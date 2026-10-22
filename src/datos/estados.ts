@@ -10,11 +10,13 @@ export type TipoEstado = "abierta" | "cerrada" | "permanente" | "sin-confirmar";
 export type Estado = {
   tipo: TipoEstado;
   lineas: string[];
+  // Último día del plazo (AAAA-MM-DD) cuando el catálogo lo da con fecha.
+  fechaFin: string | null;
 };
 
 type Definicion =
   | { tipo: "permanente"; lineas: string[] }
-  | { tipo: "cerrada"; lineas: string[] }
+  | { tipo: "cerrada"; lineas: string[]; fin?: string }
   | { tipo: "sin-confirmar"; lineas: string[] }
   // Abierta hasta una fecha (inclusive, formato AAAA-MM-DD): a partir del día
   // siguiente pasa a «cerrada» sin tocar el código.
@@ -42,6 +44,7 @@ const DEFINICIONES: Record<string, Definicion> = {
   },
   "bono-alquiler-joven": {
     tipo: "cerrada",
+    fin: "2026-09-11",
     lineas: [
       "El plazo para pedirla terminó el 11 de septiembre de 2026.",
       "Si ya la pediste, todavía puedes entregar documentos.",
@@ -73,11 +76,17 @@ const DEFINICIONES: Record<string, Definicion> = {
 
 export function estadoDe(id: string, hoy: Date): Estado {
   const def = DEFINICIONES[id];
-  if (!def) return { tipo: "sin-confirmar", lineas: SIN_PLAZO };
-  if (def.tipo !== "hasta") return { tipo: def.tipo, lineas: def.lineas };
-  // Fecha local en España: se compara el día, no la hora.
-  const dia = hoy.toLocaleDateString("sv-SE", { timeZone: "Europe/Madrid" });
-  return dia <= def.fin
-    ? { tipo: "abierta", lineas: def.lineas }
-    : { tipo: "cerrada", lineas: def.lineasCerrada };
+  if (!def) return { tipo: "sin-confirmar", lineas: SIN_PLAZO, fechaFin: null };
+  if (def.tipo === "hasta") {
+    // Fecha local en España: se compara el día, no la hora.
+    const dia = hoy.toLocaleDateString("sv-SE", { timeZone: "Europe/Madrid" });
+    return dia <= def.fin
+      ? { tipo: "abierta", lineas: def.lineas, fechaFin: def.fin }
+      : { tipo: "cerrada", lineas: def.lineasCerrada, fechaFin: def.fin };
+  }
+  return {
+    tipo: def.tipo,
+    lineas: def.lineas,
+    fechaFin: def.tipo === "cerrada" ? (def.fin ?? null) : null,
+  };
 }
