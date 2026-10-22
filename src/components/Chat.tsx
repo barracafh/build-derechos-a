@@ -22,6 +22,7 @@ import { BotonAviso } from "@/components/BotonAviso";
 import { TarjetaAyuda } from "@/components/TarjetaAyuda";
 import { Lineas } from "@/components/Texto";
 import { ruta, site } from "@/config/sitio";
+import { CATALOGO_ACTUALIZADO } from "@/datos/actualizacion";
 import { PanelCobertura } from "@/components/PanelCobertura";
 import type { MensajeChat, Respuesta } from "@/lib/tipos";
 import ficha from "../../ficha.json";
@@ -461,17 +462,26 @@ export function Chat() {
             className="h-9 w-auto"
           />
         </button>
-        {enChat && (
-          <Button
-            type="button"
-            variant="outline"
-            onClick={nueva}
-            className="h-9 px-3 text-base"
-          >
-            <SquarePen aria-hidden="true" className="size-4" />
-            Nueva conversación
-          </Button>
-        )}
+        <div className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2">
+          <p className="flex items-center gap-2 text-base text-(--text-secondary)">
+            <span
+              aria-hidden="true"
+              className="size-2.5 shrink-0 rounded-full bg-green-700"
+            />
+            Ayudas actualizadas a {fechaLarga(CATALOGO_ACTUALIZADO)}
+          </p>
+          {enChat && (
+            <Button
+              type="button"
+              variant="outline"
+              onClick={nueva}
+              className="h-9 px-3 text-base"
+            >
+              <SquarePen aria-hidden="true" className="size-4" />
+              Nueva conversación
+            </Button>
+          )}
+        </div>
       </header>
 
       <main
