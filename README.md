@@ -1,3 +1,9 @@
+> **Build night BARRACA x SOTI** · 22 de octubre de 2026, Flywire, València.
+>
+> **Derechos**, de akorda (track Derechos). Encuentra las ayudas a las que podrías optar. Publicada en https://build.barraca.house/derechos-a; la IA funciona hasta el 30 de noviembre de 2026.
+>
+> Repo archivado: es el código tal como quedó tras la noche. Si quieres seguir con él, haz un fork. El CLI del evento y su registro ya no existen, así que las instrucciones de `buildnight` que haya más abajo ya no sirven.
+
 # Derechos · Buscador de ayudas públicas
 
 Encuentra las ayudas a las que podrías optar contando tu situación con tus palabras. Proyecto del equipo **derechos-a**, track 1 del Build night · BARRACA x SOTI.
